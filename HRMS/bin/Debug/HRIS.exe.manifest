@@ -3104,7 +3104,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>E9+70WVw1Lu22YnG52ZG5yX2h2w=</dsig:DigestValue>
+        <dsig:DigestValue>OZMM6XzBLwRr/MApbP7edwxElPg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
