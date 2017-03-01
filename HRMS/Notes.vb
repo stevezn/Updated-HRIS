@@ -39,13 +39,9 @@ Public Class Notes
         Else
             db = "db_hris"
         End If
-        'connectionString = "Server=" + host + "; User Id=root; Password=; Database=db_hris"
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
     Sub loadD()
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         sqlCommand.CommandText = "SELECT a.EmployeeCode, a.FullName, a.Position, a.CompanyCode, a.PlaceOfBirth, a.DateOfBirth, a.Gender, a.Religion, a.Address, a.Email, a.IdNumber, a.OfficeLocation, a.WorkDate, a.PhoneNumber, a.Photo, a.Status, a.TrainingSampai, b.Sp1, b.Sp1Date, b.Sp2, b.Sp2Date, b.Sp3, b.Sp3Date, c.Rotasi, c.RotasiDate, d.Demosi, d.DemosiDate FROM db_pegawai a, db_sp b, db_rotasi c, db_demosi d"
         sqlCommand.Connection = SQLConnection
@@ -55,15 +51,11 @@ Public Class Notes
         For index As Integer = 0 To tbl_par.Rows.Count - 1
             txtname.Properties.Items.Add(tbl_par.Rows(index).Item(1).ToString())
         Next
-        SQLConnection.Close()
     End Sub
 
     Dim tbl_par5 As New DataTable
 
     Sub loadall()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "Select EmployeeCode, FullName, Position, CompanyCode, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Photo, Status, TrainingSampai from db_pegawai"
         sqlcommand.Connection = SQLConnection
@@ -73,15 +65,11 @@ Public Class Notes
         For index As Integer = 0 To tbl_par5.Rows.Count - 1
             txtname.Properties.Items.Add(tbl_par5.Rows(index).Item(1).ToString)
         Next
-        SQLConnection.Close()
     End Sub
 
     Dim tbl_par4 As New DataTable
 
     Sub loadsp()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "SELECT EmployeeCode, CompanyCode, FullName, Sp1, Sp1Date, Sp2, Sp2Date, Sp3, Sp3Date FROM db_sp"
         sqlcommand.Connection = SQLConnection
@@ -96,9 +84,6 @@ Public Class Notes
     Dim tbl_par2 As New DataTable
 
     Sub loadrotasi()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "SELECT FullName, Rotasi, RotasiDate, EmployeeCode FROM db_rotasi"
         sqlcommand.Connection = SQLConnection
@@ -108,7 +93,6 @@ Public Class Notes
         For index As Integer = 0 To tbl_par2.Rows.Count - 1
             txtname.Properties.Items.Add(tbl_par2.Rows(index).Item(0).ToString())
         Next
-        SQLConnection.Close()
     End Sub
 
     Dim tbl_par3 As New DataTable
@@ -128,9 +112,6 @@ Public Class Notes
     End Function
 
     Sub loaddemosi()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "Select FullName, Demosi, DemosiDate, EmployeeCode FROM db_demosi"
         sqlcommand.Connection = SQLConnection
@@ -140,10 +121,12 @@ Public Class Notes
         For index As Integer = 0 To tbl_par3.Rows.Count - 1
             txtname.Properties.Items.Add(tbl_par3.Rows(index).Item(0).ToString())
         Next
-        SQLConnection.Close()
     End Sub
 
     Private Sub Notes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
+        loadinfo()
         loadD()
         loadall()
     End Sub
@@ -168,22 +151,111 @@ Public Class Notes
                 txttrains.Text = tbl_par5.Rows(indexing).Item(16).ToString
                 Dim filefoto As Byte() = CType(tbl_par5.Rows(indexing).Item(14), Byte())
                 If filefoto.Length > 0 Then
-                    PictureEdit1.Image = ByteToImage(filefoto)
+                    pictureedit.Image = ByteToImage(filefoto)
                 Else
-                    PictureEdit1.Image = Nothing
-                    PictureEdit1.Refresh()
+                    pictureedit.Image = Nothing
+                    pictureedit.Refresh()
                 End If
-                'txtsp1.Text = tbl_par.Rows(indexing).Item(17).ToString
-                'txtsp1date.Text = tbl_par.Rows(indexing).Item(18).ToString
-                'txtsp2.Text = tbl_par.Rows(indexing).Item(19).ToString
-                'txtsp2date.Text = tbl_par.Rows(indexing).Item(20).ToString
-                'txtsp3.Text = tbl_par.Rows(indexing).Item(21).ToString
-                'txtsp3date.Text = tbl_par.Rows(indexing).Item(22).ToString
-                'txtrotasi.Text = tbl_par.Rows(indexing).Item(23).ToString
-                'txtrotasidate.Text = tbl_par.Rows(indexing).Item(24).ToString
-                'txtdemosi.Text = tbl_par.Rows(indexing).Item(25).ToString
-                'txtdemosidate.Text = tbl_par.Rows(indexing).Item(26).ToString
             End If
         Next
+    End Sub
+
+    Private Sub loadinfo()
+        GridControl1.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "Select EmployeeCode, FullName, IdNumber from db_pegawai where status != 'Fired'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl1.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub terminate()
+        GridControl1.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select EmployeeCode, FullName, IdNumber from db_pegawai where status = 'Terminate' or status =  'Fired'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl1.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
+        Dim datatabl As New DataTable
+        Dim sqlCommand As New MySqlCommand
+        datatabl.Clear()
+        Dim param As String = ""
+        Try
+            param = "and FullName='" + GridView1.GetFocusedRowCellValue("FullName").ToString() + "'"
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Try
+            sqlCommand.CommandText = "SELECT * FROM db_pegawai WHERE 1=1 " + param.ToString()
+            sqlCommand.Connection = SQLConnection
+
+            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(datatabl)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        If datatabl.Rows.Count > 0 Then
+            txtname.Text = datatabl.Rows(0).Item(2).ToString()
+            txtempcode.Text = datatabl.Rows(0).Item(0).ToString()
+            txtcompcode.Text = datatabl.Rows(0).Item(1).ToString()
+            txtpos.Text = datatabl.Rows(0).Item(3).ToString()
+            txtpob.Text = datatabl.Rows(0).Item(4).ToString()
+            txtdob.Text = datatabl.Rows(0).Item(5).ToString()
+            txtaddress.Text = datatabl.Rows(0).Item(8).ToString()
+            txtgender.Text = datatabl.Rows(0).Item(6).ToString()
+            Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(14), Byte())
+            If filefoto.Length > 0 Then
+                pictureEdit.Image = ByteToImage(filefoto)
+            Else
+                pictureEdit.Image = Nothing
+                pictureEdit.Refresh()
+            End If
+            txtemail.Text = datatabl.Rows(0).Item(9).ToString
+            txtol.Text = datatabl.Rows(0).Item(11).ToString
+            txtwd.Text = datatabl.Rows(0).Item(12).ToString
+            txtemptype.Text = datatabl.Rows(0).Item(16).ToString
+            txtreligion.Text = datatabl.Rows(0).Item(7).ToString()
+            txtidcard.Text = datatabl.Rows(0).Item(10).ToString()
+            txtstat.Text = datatabl.Rows(0).Item(15).ToString()
+            txttrains.Text = datatabl.Rows(0).Item(17).ToString
+            txtphone.Text = datatabl.Rows(0).Item(13).ToString
+        End If
+    End Sub
+
+    Private Sub BarButtonItem4_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem4.ItemClick
+        terminate()
+    End Sub
+
+    Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
+        loadinfo()
+    End Sub
+
+    Dim mini As New minirep
+
+    Private Sub BarButtonItem5_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem5.ItemClick
+        If mini Is Nothing OrElse mini.IsDisposed Then
+            mini = New minirep
+        End If
+        mini.Show()
     End Sub
 End Class

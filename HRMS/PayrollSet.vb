@@ -7,9 +7,6 @@ Public Class PayrollSet
     Dim tbl_par As New DataTable
 
     Sub loaddata()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "SELECT Bpjs, JamKecelakaanKerja, JaminanKesehatan, IuranPensiun, JaminanHariTua, BiayaJabatan, Lates, JaminanKematian From db_setpayroll"
         sqlcommand.Connection = SQLConnection
@@ -18,7 +15,6 @@ Public Class PayrollSet
         adapter.Fill(tbl_par)
         For index As Integer = 0 To tbl_par.Rows.Count - 1
         Next
-        SQLConnection.Close()
     End Sub
 
     Public Sub New()
@@ -45,7 +41,6 @@ Public Class PayrollSet
         Else
             password = ""
         End If
-
         If File.Exists("settingdb.txt") Then
             db = File.ReadAllText("settingdb.txt")
         Else
@@ -59,9 +54,6 @@ Public Class PayrollSet
     End Sub
 
     Public Function InsertPer() As Boolean
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Dim str_carsql As String
         Try
@@ -83,16 +75,12 @@ Public Class PayrollSet
             MessageBox.Show("Data Succesfully Added!")
             Return True
         Catch ex As Exception
-            SQLConnection.Close()
             Return False
             MsgBox(ex.Message)
         End Try
     End Function
 
     Public Sub updatebpjs()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll SET" +
@@ -102,17 +90,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Public Sub updatejamkk()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll SET" +
@@ -122,17 +105,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Public Sub updatejht2()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll Set" +
@@ -142,17 +120,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Public Sub updatejamkes()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll SET" +
@@ -162,17 +135,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Public Sub updateiupe()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll SET" +
@@ -182,17 +150,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Public Sub updatejht()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll SET" +
@@ -202,17 +165,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Public Sub updatebj()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll SET" +
@@ -222,17 +180,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Public Sub updatelates()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll SET" +
@@ -242,17 +195,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Public Sub updatejamkem()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_setpayroll SET" +
@@ -262,15 +210,12 @@ Public Class PayrollSet
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        'InsertPer()
         If radiobpjs.Checked = True Then
             If txtnew.Text = "" Then
                 MsgBox("Please input the new value!")
@@ -330,6 +275,8 @@ Public Class PayrollSet
     End Sub
 
     Private Sub PayrollSet_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
         loaddata()
     End Sub
 

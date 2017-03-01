@@ -1,5 +1,6 @@
 ﻿Imports System.IO
-Imports MySql.Data.MySqlClient
+Imports DevExpress.Utils.Menu
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class RotasiMutasi
     Dim connectionString As String
@@ -37,7 +38,6 @@ Public Class RotasiMutasi
         Else
             db = "db_hris"
         End If
-        'connectionString = "Server=" + host + "; User Id=root; Password=; Database=db_hris"
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
@@ -51,9 +51,6 @@ Public Class RotasiMutasi
     End Sub
 
     Public Function saverotasi() As Boolean
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
         Try
@@ -100,9 +97,6 @@ Public Class RotasiMutasi
     End Function
 
     Public Function savedemosi() As Boolean
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
         Try
@@ -122,7 +116,6 @@ Public Class RotasiMutasi
                 sqlCommand.Parameters.AddWithValue("@Position", txtPosition.Text)
                 sqlCommand.Parameters.AddWithValue("@Demosi", txtChange.Text)
                 sqlCommand.Parameters.AddWithValue("@DemosiDate", txtDate.Text)
-
             ElseIf act = "input" Then
                 str_carSql = "INSERT INTO db_Demosi " +
                        "(EmployeeCode, CompanyCode, FullName, Position, Demosi, DemosiDate) " +
@@ -150,9 +143,6 @@ Public Class RotasiMutasi
     End Function
 
     Public Sub historydemosi()
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         Try
             sqlCommand.CommandText = "INSERT INTO db_demotehistory " +
@@ -167,16 +157,11 @@ Public Class RotasiMutasi
             sqlCommand.Parameters.AddWithValue("@DemosiDate", txtDate.Text)
             sqlCommand.Connection = SQLConnection
             sqlCommand.ExecuteNonQuery()
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
         End Try
     End Sub
 
     Public Sub updatepos()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_pegawai SET" +
@@ -187,16 +172,11 @@ Public Class RotasiMutasi
             sqlcommand.Parameters.AddWithValue("@Position", txtChange.Text)
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
         End Try
     End Sub
 
     Public Sub historyrotasi()
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         Try
             sqlCommand.CommandText = "INSERT INTO db_rotasihistory " +
@@ -211,9 +191,7 @@ Public Class RotasiMutasi
             sqlCommand.Parameters.AddWithValue("@RotasiDate", txtDate.Text)
             sqlCommand.Connection = SQLConnection
             sqlCommand.ExecuteNonQuery()
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
         End Try
     End Sub
 
@@ -230,9 +208,6 @@ Public Class RotasiMutasi
     Dim tbl_par As New DataTable
 
     Sub loadDataKaryawan()
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         sqlCommand.CommandText = "SELECT EmployeeCode, FullName, Position, CompanyCode FROM db_pegawai WHERE Status!='Fired'"
         sqlCommand.Connection = SQLConnection
@@ -242,7 +217,6 @@ Public Class RotasiMutasi
         For index As Integer = 0 To tbl_par.Rows.Count - 1
             txtnamakaryawan.Properties.Items.Add(tbl_par.Rows(index).Item(1).ToString())
         Next
-        SQLConnection.Close()
     End Sub
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
@@ -282,9 +256,6 @@ Public Class RotasiMutasi
     Private Sub loadData()
         GridControl1.RefreshDataSource()
         Dim table As New DataTable
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         Try
             If barJudul.Caption = "Rotasi" Then
@@ -298,9 +269,7 @@ Public Class RotasiMutasi
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
             GridControl1.DataSource = table
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
@@ -310,6 +279,8 @@ Public Class RotasiMutasi
     End Sub
 
     Private Sub RotasiMutasi_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
         act = "input"
         BarButtonItem1.PerformClick()
         reset()
@@ -328,9 +299,6 @@ Public Class RotasiMutasi
     Dim act As String = ""
 
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand
         datatabl.Clear()
@@ -351,9 +319,7 @@ Public Class RotasiMutasi
                 Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
                 Dim cb As New MySqlCommandBuilder(adapter)
                 adapter.Fill(datatabl)
-                SQLConnection.Close()
             Catch ex As Exception
-                SQLConnection.Close()
                 MsgBox(ex.Message, MsgBoxStyle.Critical)
             End Try
             If datatabl.Rows.Count > 0 Then
@@ -364,7 +330,6 @@ Public Class RotasiMutasi
                 txtChange.Text = datatabl.Rows(0).Item(4).ToString()
                 txtDate.Text = datatabl.Rows(0).Item(5).ToString()
             End If
-
         ElseIf barJudul.Caption = "Demosi" Then
             Dim param As String = ""
             Try
@@ -441,5 +406,16 @@ Public Class RotasiMutasi
             history2 = New DemosiHistory
         End If
         history2.Show()
+    End Sub
+
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+        Dim view As GridView = CType(sender, GridView)
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            Dim rowHandle As Integer = e.HitInfo.RowHandle
+            e.Menu.Items.Clear()
+            Dim item As DXMenuItem = CreateMergingEnabledMenuItem(view, rowHandle)
+            item.BeginGroup = True
+            e.Menu.Items.Add(item)
+        End If
     End Sub
 End Class

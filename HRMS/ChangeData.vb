@@ -46,9 +46,6 @@ Public Class ChangeData
     Private Sub loadinfo()
         GridControl1.RefreshDataSource()
         Dim table As New DataTable
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "Select IdRec, FullName, IdNumber from db_recruitment where status != 'In Progress'"
@@ -58,9 +55,7 @@ Public Class ChangeData
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
             GridControl1.DataSource = table
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
@@ -80,9 +75,6 @@ Public Class ChangeData
     End Function
 
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand
         datatabl.Clear()
@@ -94,13 +86,10 @@ Public Class ChangeData
         Try
             sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceofBirth, DateOfBirth, Address,Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, PhoneNumber, InterviewDate, Reason FROM db_recruitment WHERE 1=1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
-
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
         If datatabl.Rows.Count > 0 Then
@@ -127,9 +116,10 @@ Public Class ChangeData
     End Sub
 
     Public Sub updatechange2()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
+        Dim dtb As Date
+        txtinterviewdate.Format = DateTimePickerFormat.Custom
+        txtinterviewdate.CustomFormat = "yyyy-MM-dd"
+        dtb = txtinterviewdate.Value
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_recruitment SET" +
@@ -165,19 +155,19 @@ Public Class ChangeData
                 sqlcommand.Parameters.AddWithValue("@Photo", "")
             End If
             sqlcommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlcommand.Parameters.AddWithValue("@InterviewDate", txtinterviewdate.Text)
+            sqlcommand.Parameters.AddWithValue("@InterviewDate", dtb.ToString("yyyy-MM-dd"))
             sqlcommand.Parameters.AddWithValue("@Cv", txtcv.Text)
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MessageBox.Show("Data Successfully Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Private Sub ChangeData_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
         loadinfo()
     End Sub
 

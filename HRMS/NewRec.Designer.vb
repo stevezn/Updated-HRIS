@@ -31,10 +31,9 @@ Partial Class NewRec
         Me.barJudul = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.txtno = New DevExpress.XtraEditors.TextEdit()
+        Me.txtinterviewdate = New System.Windows.Forms.DateTimePicker()
         Me.txtcv = New DevExpress.XtraEditors.TextEdit()
         Me.btnCV = New DevExpress.XtraEditors.SimpleButton()
-        Me.txtinterviewdate = New DevExpress.XtraEditors.DateEdit()
         Me.btnPhoto = New DevExpress.XtraEditors.SimpleButton()
         Me.txtinterview = New DevExpress.XtraEditors.TextEdit()
         Me.txtstatus = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -66,10 +65,9 @@ Partial Class NewRec
         Me.lcstats = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcinterview = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcinterviewdate = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcbtncv = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcCv = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
         Me.btnCapture = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
@@ -77,10 +75,7 @@ Partial Class NewRec
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.txtno.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtinterviewdate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtinterviewdate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtreligion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,10 +105,9 @@ Partial Class NewRec
         CType(Me.lcstats, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcinterview, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcinterviewdate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcbtncv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcCv, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -171,10 +165,9 @@ Partial Class NewRec
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.txtno)
+        Me.LayoutControl1.Controls.Add(Me.txtinterviewdate)
         Me.LayoutControl1.Controls.Add(Me.txtcv)
         Me.LayoutControl1.Controls.Add(Me.btnCV)
-        Me.LayoutControl1.Controls.Add(Me.txtinterviewdate)
         Me.LayoutControl1.Controls.Add(Me.btnPhoto)
         Me.LayoutControl1.Controls.Add(Me.txtinterview)
         Me.LayoutControl1.Controls.Add(Me.txtstatus)
@@ -194,26 +187,23 @@ Partial Class NewRec
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(409, 411, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(292, 428)
+        Me.LayoutControl1.Size = New System.Drawing.Size(292, 406)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
-        'txtno
+        'txtinterviewdate
         '
-        Me.txtno.Location = New System.Drawing.Point(111, 352)
-        Me.txtno.MenuManager = Me.RibbonControl1
-        Me.txtno.Name = "txtno"
-        Me.txtno.Size = New System.Drawing.Size(169, 20)
-        Me.txtno.StyleController = Me.LayoutControl1
-        Me.txtno.TabIndex = 29
-        Me.txtno.Visible = False
+        Me.txtinterviewdate.Location = New System.Drawing.Point(102, 304)
+        Me.txtinterviewdate.Name = "txtinterviewdate"
+        Me.txtinterviewdate.Size = New System.Drawing.Size(178, 21)
+        Me.txtinterviewdate.TabIndex = 34
         '
         'txtcv
         '
-        Me.txtcv.Location = New System.Drawing.Point(111, 158)
+        Me.txtcv.Location = New System.Drawing.Point(102, 158)
         Me.txtcv.MenuManager = Me.RibbonControl1
         Me.txtcv.Name = "txtcv"
-        Me.txtcv.Size = New System.Drawing.Size(99, 20)
+        Me.txtcv.Size = New System.Drawing.Size(108, 20)
         Me.txtcv.StyleController = Me.LayoutControl1
         Me.txtcv.TabIndex = 33
         '
@@ -225,23 +215,6 @@ Partial Class NewRec
         Me.btnCV.StyleController = Me.LayoutControl1
         Me.btnCV.TabIndex = 32
         Me.btnCV.Text = "Browse CV"
-        '
-        'txtinterviewdate
-        '
-        Me.txtinterviewdate.EditValue = Nothing
-        Me.txtinterviewdate.Location = New System.Drawing.Point(111, 304)
-        Me.txtinterviewdate.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtinterviewdate.MenuManager = Me.RibbonControl1
-        Me.txtinterviewdate.Name = "txtinterviewdate"
-        Me.txtinterviewdate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtinterviewdate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtinterviewdate.Properties.CalendarTimeProperties.CloseUpKey = New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4)
-        Me.txtinterviewdate.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.[Default]
-        Me.txtinterviewdate.Properties.Mask.EditMask = ""
-        Me.txtinterviewdate.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
-        Me.txtinterviewdate.Size = New System.Drawing.Size(169, 20)
-        Me.txtinterviewdate.StyleController = Me.LayoutControl1
-        Me.txtinterviewdate.TabIndex = 30
         '
         'btnPhoto
         '
@@ -255,10 +228,10 @@ Partial Class NewRec
         'txtinterview
         '
         Me.txtinterview.Enabled = False
-        Me.txtinterview.Location = New System.Drawing.Point(111, 60)
+        Me.txtinterview.Location = New System.Drawing.Point(102, 60)
         Me.txtinterview.MenuManager = Me.RibbonControl1
         Me.txtinterview.Name = "txtinterview"
-        Me.txtinterview.Size = New System.Drawing.Size(169, 20)
+        Me.txtinterview.Size = New System.Drawing.Size(178, 20)
         Me.txtinterview.StyleController = Me.LayoutControl1
         Me.txtinterview.TabIndex = 28
         '
@@ -266,41 +239,41 @@ Partial Class NewRec
         '
         Me.txtstatus.EditValue = ""
         Me.txtstatus.Enabled = False
-        Me.txtstatus.Location = New System.Drawing.Point(111, 328)
+        Me.txtstatus.Location = New System.Drawing.Point(102, 328)
         Me.txtstatus.MenuManager = Me.RibbonControl1
         Me.txtstatus.Name = "txtstatus"
         Me.txtstatus.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtstatus.Properties.Items.AddRange(New Object() {"Pending", "Accepted", "Rejected", "Blocked"})
-        Me.txtstatus.Size = New System.Drawing.Size(169, 20)
+        Me.txtstatus.Size = New System.Drawing.Size(178, 20)
         Me.txtstatus.StyleController = Me.LayoutControl1
         Me.txtstatus.TabIndex = 27
         '
         'txtreligion
         '
-        Me.txtreligion.Location = New System.Drawing.Point(111, 208)
+        Me.txtreligion.Location = New System.Drawing.Point(102, 208)
         Me.txtreligion.MenuManager = Me.RibbonControl1
         Me.txtreligion.Name = "txtreligion"
         Me.txtreligion.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtreligion.Properties.Items.AddRange(New Object() {"Kristen", "Buddha", "Islam", "Hindu"})
-        Me.txtreligion.Size = New System.Drawing.Size(169, 20)
+        Me.txtreligion.Size = New System.Drawing.Size(178, 20)
         Me.txtreligion.StyleController = Me.LayoutControl1
         Me.txtreligion.TabIndex = 26
         '
         'txtgender
         '
-        Me.txtgender.Location = New System.Drawing.Point(111, 184)
+        Me.txtgender.Location = New System.Drawing.Point(102, 184)
         Me.txtgender.MenuManager = Me.RibbonControl1
         Me.txtgender.Name = "txtgender"
         Me.txtgender.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtgender.Properties.Items.AddRange(New Object() {"Male", "Female"})
-        Me.txtgender.Size = New System.Drawing.Size(169, 20)
+        Me.txtgender.Size = New System.Drawing.Size(178, 20)
         Me.txtgender.StyleController = Me.LayoutControl1
         Me.txtgender.TabIndex = 25
         '
         'txtdob
         '
         Me.txtdob.EditValue = Nothing
-        Me.txtdob.Location = New System.Drawing.Point(111, 108)
+        Me.txtdob.Location = New System.Drawing.Point(102, 108)
         Me.txtdob.Margin = New System.Windows.Forms.Padding(2)
         Me.txtdob.MenuManager = Me.RibbonControl1
         Me.txtdob.Name = "txtdob"
@@ -310,37 +283,37 @@ Partial Class NewRec
         Me.txtdob.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.[Default]
         Me.txtdob.Properties.Mask.EditMask = ""
         Me.txtdob.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
-        Me.txtdob.Size = New System.Drawing.Size(169, 20)
+        Me.txtdob.Size = New System.Drawing.Size(178, 20)
         Me.txtdob.StyleController = Me.LayoutControl1
         Me.txtdob.TabIndex = 21
         '
         'txtbrowse
         '
         Me.txtbrowse.EditValue = CType(resources.GetObject("txtbrowse.EditValue"), Object)
-        Me.txtbrowse.Location = New System.Drawing.Point(111, 132)
+        Me.txtbrowse.Location = New System.Drawing.Point(102, 132)
         Me.txtbrowse.Margin = New System.Windows.Forms.Padding(2)
         Me.txtbrowse.MenuManager = Me.RibbonControl1
         Me.txtbrowse.Name = "txtbrowse"
         Me.txtbrowse.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtbrowse.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
-        Me.txtbrowse.Size = New System.Drawing.Size(61, 20)
+        Me.txtbrowse.Size = New System.Drawing.Size(70, 20)
         Me.txtbrowse.StyleController = Me.LayoutControl1
         Me.txtbrowse.TabIndex = 24
         '
         'txtphone
         '
         Me.txtphone.EditValue = ""
-        Me.txtphone.Location = New System.Drawing.Point(111, 280)
+        Me.txtphone.Location = New System.Drawing.Point(102, 280)
         Me.txtphone.MenuManager = Me.RibbonControl1
         Me.txtphone.Name = "txtphone"
-        Me.txtphone.Size = New System.Drawing.Size(169, 20)
+        Me.txtphone.Size = New System.Drawing.Size(178, 20)
         Me.txtphone.StyleController = Me.LayoutControl1
         Me.txtphone.TabIndex = 13
         '
         'btnReset
         '
         Me.btnReset.Image = CType(resources.GetObject("btnReset.Image"), System.Drawing.Image)
-        Me.btnReset.Location = New System.Drawing.Point(149, 376)
+        Me.btnReset.Location = New System.Drawing.Point(149, 352)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(131, 38)
         Me.btnReset.StyleController = Me.LayoutControl1
@@ -350,7 +323,7 @@ Partial Class NewRec
         'btnSave
         '
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
-        Me.btnSave.Location = New System.Drawing.Point(12, 376)
+        Me.btnSave.Location = New System.Drawing.Point(12, 352)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(133, 38)
         Me.btnSave.StyleController = Me.LayoutControl1
@@ -359,47 +332,47 @@ Partial Class NewRec
         '
         'txtaddress
         '
-        Me.txtaddress.Location = New System.Drawing.Point(111, 256)
+        Me.txtaddress.Location = New System.Drawing.Point(102, 256)
         Me.txtaddress.MenuManager = Me.RibbonControl1
         Me.txtaddress.Name = "txtaddress"
-        Me.txtaddress.Size = New System.Drawing.Size(169, 20)
+        Me.txtaddress.Size = New System.Drawing.Size(178, 20)
         Me.txtaddress.StyleController = Me.LayoutControl1
         Me.txtaddress.TabIndex = 10
         '
         'txtpob
         '
-        Me.txtpob.Location = New System.Drawing.Point(111, 84)
+        Me.txtpob.Location = New System.Drawing.Point(102, 84)
         Me.txtpob.MenuManager = Me.RibbonControl1
         Me.txtpob.Name = "txtpob"
-        Me.txtpob.Size = New System.Drawing.Size(169, 20)
+        Me.txtpob.Size = New System.Drawing.Size(178, 20)
         Me.txtpob.StyleController = Me.LayoutControl1
         Me.txtpob.TabIndex = 9
         '
         'txtidcard
         '
-        Me.txtidcard.Location = New System.Drawing.Point(111, 232)
+        Me.txtidcard.Location = New System.Drawing.Point(102, 232)
         Me.txtidcard.MenuManager = Me.RibbonControl1
         Me.txtidcard.Name = "txtidcard"
-        Me.txtidcard.Size = New System.Drawing.Size(169, 20)
+        Me.txtidcard.Size = New System.Drawing.Size(178, 20)
         Me.txtidcard.StyleController = Me.LayoutControl1
         Me.txtidcard.TabIndex = 7
         '
         'txtid
         '
         Me.txtid.Enabled = False
-        Me.txtid.Location = New System.Drawing.Point(111, 36)
+        Me.txtid.Location = New System.Drawing.Point(102, 36)
         Me.txtid.MenuManager = Me.RibbonControl1
         Me.txtid.Name = "txtid"
-        Me.txtid.Size = New System.Drawing.Size(169, 20)
+        Me.txtid.Size = New System.Drawing.Size(178, 20)
         Me.txtid.StyleController = Me.LayoutControl1
         Me.txtid.TabIndex = 6
         '
         'txtnames
         '
-        Me.txtnames.Location = New System.Drawing.Point(111, 12)
+        Me.txtnames.Location = New System.Drawing.Point(102, 12)
         Me.txtnames.MenuManager = Me.RibbonControl1
         Me.txtnames.Name = "txtnames"
-        Me.txtnames.Size = New System.Drawing.Size(169, 20)
+        Me.txtnames.Size = New System.Drawing.Size(178, 20)
         Me.txtnames.StyleController = Me.LayoutControl1
         Me.txtnames.TabIndex = 5
         '
@@ -408,10 +381,10 @@ Partial Class NewRec
         Me.LayoutControlGroup1.CustomizationFormText = "LayoutControlGroup1"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcid, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcbtnsave, Me.lcbtnreset, Me.lcphone, Me.lcdob, Me.lcbrowse, Me.lcgender, Me.lcreligion, Me.lcstats, Me.lcinterview, Me.LayoutControlItem1, Me.lcinterviewdate, Me.lcbtncv, Me.lcCv, Me.LayoutControlItem2})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcid, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcbtnsave, Me.lcbtnreset, Me.lcphone, Me.lcdob, Me.lcbrowse, Me.lcgender, Me.lcreligion, Me.lcstats, Me.lcinterview, Me.LayoutControlItem1, Me.lcbtncv, Me.lcCv, Me.LayoutControlItem3})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(292, 428)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(292, 406)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -423,7 +396,7 @@ Partial Class NewRec
         Me.lcName.Name = "lcName"
         Me.lcName.Size = New System.Drawing.Size(272, 24)
         Me.lcName.Text = "Full Name"
-        Me.lcName.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcName.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcid
         '
@@ -433,7 +406,7 @@ Partial Class NewRec
         Me.lcid.Name = "lcid"
         Me.lcid.Size = New System.Drawing.Size(272, 24)
         Me.lcid.Text = "ID Rec"
-        Me.lcid.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcid.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcpob
         '
@@ -443,7 +416,7 @@ Partial Class NewRec
         Me.lcpob.Name = "lcpob"
         Me.lcpob.Size = New System.Drawing.Size(272, 24)
         Me.lcpob.Text = "Place Of Birth"
-        Me.lcpob.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcpob.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcidcard
         '
@@ -453,7 +426,7 @@ Partial Class NewRec
         Me.lcidcard.Name = "lcidcard"
         Me.lcidcard.Size = New System.Drawing.Size(272, 24)
         Me.lcidcard.Text = "ID Number"
-        Me.lcidcard.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcidcard.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcaddress
         '
@@ -463,15 +436,15 @@ Partial Class NewRec
         Me.lcaddress.Name = "lcaddress"
         Me.lcaddress.Size = New System.Drawing.Size(272, 24)
         Me.lcaddress.Text = "Address"
-        Me.lcaddress.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcaddress.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcbtnsave
         '
         Me.lcbtnsave.Control = Me.btnSave
         Me.lcbtnsave.CustomizationFormText = "LayoutControlItem8"
-        Me.lcbtnsave.Location = New System.Drawing.Point(0, 364)
+        Me.lcbtnsave.Location = New System.Drawing.Point(0, 340)
         Me.lcbtnsave.Name = "lcbtnsave"
-        Me.lcbtnsave.Size = New System.Drawing.Size(137, 44)
+        Me.lcbtnsave.Size = New System.Drawing.Size(137, 46)
         Me.lcbtnsave.Text = "lcbtnsave"
         Me.lcbtnsave.TextSize = New System.Drawing.Size(0, 0)
         Me.lcbtnsave.TextToControlDistance = 0
@@ -481,9 +454,9 @@ Partial Class NewRec
         '
         Me.lcbtnreset.Control = Me.btnReset
         Me.lcbtnreset.CustomizationFormText = "LayoutControlItem9"
-        Me.lcbtnreset.Location = New System.Drawing.Point(137, 364)
+        Me.lcbtnreset.Location = New System.Drawing.Point(137, 340)
         Me.lcbtnreset.Name = "lcbtnreset"
-        Me.lcbtnreset.Size = New System.Drawing.Size(135, 44)
+        Me.lcbtnreset.Size = New System.Drawing.Size(135, 46)
         Me.lcbtnreset.Text = "lcbtnreset"
         Me.lcbtnreset.TextSize = New System.Drawing.Size(0, 0)
         Me.lcbtnreset.TextToControlDistance = 0
@@ -497,7 +470,7 @@ Partial Class NewRec
         Me.lcphone.Name = "lcphone"
         Me.lcphone.Size = New System.Drawing.Size(272, 24)
         Me.lcphone.Text = "Phone Number"
-        Me.lcphone.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcphone.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcdob
         '
@@ -507,7 +480,7 @@ Partial Class NewRec
         Me.lcdob.Name = "lcdob"
         Me.lcdob.Size = New System.Drawing.Size(272, 24)
         Me.lcdob.Text = "Date Of Birth"
-        Me.lcdob.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcdob.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcbrowse
         '
@@ -517,7 +490,7 @@ Partial Class NewRec
         Me.lcbrowse.Name = "lcbrowse"
         Me.lcbrowse.Size = New System.Drawing.Size(164, 26)
         Me.lcbrowse.Text = "Photo"
-        Me.lcbrowse.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcbrowse.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcgender
         '
@@ -527,7 +500,7 @@ Partial Class NewRec
         Me.lcgender.Name = "lcgender"
         Me.lcgender.Size = New System.Drawing.Size(272, 24)
         Me.lcgender.Text = "Gender"
-        Me.lcgender.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcgender.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcreligion
         '
@@ -537,7 +510,7 @@ Partial Class NewRec
         Me.lcreligion.Name = "lcreligion"
         Me.lcreligion.Size = New System.Drawing.Size(272, 24)
         Me.lcreligion.Text = "Religion"
-        Me.lcreligion.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcreligion.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcstats
         '
@@ -547,7 +520,7 @@ Partial Class NewRec
         Me.lcstats.Name = "lcstats"
         Me.lcstats.Size = New System.Drawing.Size(272, 24)
         Me.lcstats.Text = "Status"
-        Me.lcstats.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcstats.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcinterview
         '
@@ -557,7 +530,7 @@ Partial Class NewRec
         Me.lcinterview.Name = "lcinterview"
         Me.lcinterview.Size = New System.Drawing.Size(272, 24)
         Me.lcinterview.Text = "Interview Times"
-        Me.lcinterview.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcinterview.TextSize = New System.Drawing.Size(87, 13)
         '
         'LayoutControlItem1
         '
@@ -570,16 +543,6 @@ Partial Class NewRec
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextToControlDistance = 0
         Me.LayoutControlItem1.TextVisible = False
-        '
-        'lcinterviewdate
-        '
-        Me.lcinterviewdate.Control = Me.txtinterviewdate
-        Me.lcinterviewdate.CustomizationFormText = "Tanggal Interview"
-        Me.lcinterviewdate.Location = New System.Drawing.Point(0, 292)
-        Me.lcinterviewdate.Name = "lcinterviewdate"
-        Me.lcinterviewdate.Size = New System.Drawing.Size(272, 24)
-        Me.lcinterviewdate.Text = "Tanggal Interview"
-        Me.lcinterviewdate.TextSize = New System.Drawing.Size(96, 13)
         '
         'lcbtncv
         '
@@ -601,18 +564,17 @@ Partial Class NewRec
         Me.lcCv.Name = "lcCv"
         Me.lcCv.Size = New System.Drawing.Size(202, 26)
         Me.lcCv.Text = "Upload CV"
-        Me.lcCv.TextSize = New System.Drawing.Size(96, 13)
+        Me.lcCv.TextSize = New System.Drawing.Size(87, 13)
         '
-        'LayoutControlItem2
+        'LayoutControlItem3
         '
-        Me.LayoutControlItem2.Control = Me.txtno
-        Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 340)
-        Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(272, 24)
-        Me.LayoutControlItem2.Text = "LayoutControlItem2"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(96, 13)
-        Me.LayoutControlItem2.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        Me.LayoutControlItem3.Control = Me.txtinterviewdate
+        Me.LayoutControlItem3.CustomizationFormText = "Tanggal Interview"
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 292)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(272, 24)
+        Me.LayoutControlItem3.Text = "Tanggal Interview"
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(87, 13)
         '
         'pictureEdit
         '
@@ -627,7 +589,7 @@ Partial Class NewRec
         'btnCapture
         '
         Me.btnCapture.Image = CType(resources.GetObject("btnCapture.Image"), System.Drawing.Image)
-        Me.btnCapture.Location = New System.Drawing.Point(328, 318)
+        Me.btnCapture.Location = New System.Drawing.Point(313, 318)
         Me.btnCapture.Name = "btnCapture"
         Me.btnCapture.Size = New System.Drawing.Size(119, 36)
         Me.btnCapture.TabIndex = 30
@@ -635,7 +597,7 @@ Partial Class NewRec
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(297, 415)
+        Me.LabelControl1.Location = New System.Drawing.Point(296, 386)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(36, 13)
         Me.LabelControl1.TabIndex = 36
@@ -643,7 +605,7 @@ Partial Class NewRec
         '
         'txtreason
         '
-        Me.txtreason.Location = New System.Drawing.Point(289, 434)
+        Me.txtreason.Location = New System.Drawing.Point(285, 408)
         Me.txtreason.Name = "txtreason"
         Me.txtreason.Size = New System.Drawing.Size(169, 89)
         Me.txtreason.TabIndex = 34
@@ -653,13 +615,15 @@ Partial Class NewRec
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(462, 574)
+        Me.ClientSize = New System.Drawing.Size(462, 549)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.btnCapture)
         Me.Controls.Add(Me.pictureEdit)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.txtreason)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.MaximumSize = New System.Drawing.Size(472, 554)
+        Me.MinimumSize = New System.Drawing.Size(472, 554)
         Me.Name = "NewRec"
         Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -667,10 +631,7 @@ Partial Class NewRec
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.txtno.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtinterviewdate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtinterviewdate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtreligion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -700,10 +661,9 @@ Partial Class NewRec
         CType(Me.lcstats, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcinterview, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcinterviewdate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcbtncv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcCv, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -748,17 +708,15 @@ Partial Class NewRec
     Friend WithEvents btnPhoto As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents pictureEdit As PictureBox
-    Friend WithEvents txtinterviewdate As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents lcinterviewdate As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnCV As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents lcbtncv As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtcv As DevExpress.XtraEditors.TextEdit
     Friend WithEvents lcCv As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents txtno As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents btnCapture As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtreason As DevExpress.Tutorials.Controls.RichTextBoxEx
+    Friend WithEvents txtinterviewdate As DateTimePicker
+    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
 End Class

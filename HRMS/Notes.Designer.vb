@@ -24,13 +24,19 @@ Partial Class Notes
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Notes))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.txttrains = New DevExpress.XtraEditors.TextEdit()
+        Me.txtemptype = New DevExpress.XtraEditors.TextEdit()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarCheckItem1 = New DevExpress.XtraBars.BarCheckItem()
+        Me.BarButtonItem5 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup5 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.txttrains = New DevExpress.XtraEditors.TextEdit()
         Me.txtstat = New DevExpress.XtraEditors.TextEdit()
         Me.txtphone = New DevExpress.XtraEditors.TextEdit()
         Me.txtwd = New DevExpress.XtraEditors.TextEdit()
@@ -63,9 +69,9 @@ Partial Class Notes
         Me.lcphone = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcstat = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lctrain = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.PictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtsp3date = New DevExpress.XtraEditors.TextEdit()
         Me.txtsp3 = New DevExpress.XtraEditors.TextEdit()
@@ -88,10 +94,14 @@ Partial Class Notes
         Me.lcsp2date = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcsp3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcsp3date = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.pictureedit = New System.Windows.Forms.PictureBox()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.txttrains.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtemptype.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txttrains.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtstat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtwd.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,7 +134,7 @@ Partial Class Notes
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcstat, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lctrain, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
         CType(Me.txtsp3date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -148,10 +158,14 @@ Partial Class Notes
         CType(Me.lcsp2date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcsp3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcsp3date, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureedit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.txtemptype)
         Me.LayoutControl1.Controls.Add(Me.txttrains)
         Me.LayoutControl1.Controls.Add(Me.txtstat)
         Me.LayoutControl1.Controls.Add(Me.txtphone)
@@ -168,31 +182,31 @@ Partial Class Notes
         Me.LayoutControl1.Controls.Add(Me.txtname)
         Me.LayoutControl1.Controls.Add(Me.txtpos)
         Me.LayoutControl1.Controls.Add(Me.txtempcode)
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 150)
+        Me.LayoutControl1.Location = New System.Drawing.Point(433, 144)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(256, 409)
+        Me.LayoutControl1.Size = New System.Drawing.Size(256, 433)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
-        'txttrains
+        'txtemptype
         '
-        Me.txttrains.Location = New System.Drawing.Point(92, 372)
-        Me.txttrains.MenuManager = Me.RibbonControl1
-        Me.txttrains.Name = "txttrains"
-        Me.txttrains.Size = New System.Drawing.Size(152, 20)
-        Me.txttrains.StyleController = Me.LayoutControl1
-        Me.txttrains.TabIndex = 19
+        Me.txtemptype.Location = New System.Drawing.Point(92, 372)
+        Me.txtemptype.MenuManager = Me.RibbonControl1
+        Me.txtemptype.Name = "txtemptype"
+        Me.txtemptype.Size = New System.Drawing.Size(152, 20)
+        Me.txtemptype.StyleController = Me.LayoutControl1
+        Me.txtemptype.TabIndex = 20
         '
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3, Me.BarButtonItem4, Me.BarCheckItem1, Me.BarButtonItem5})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 4
+        Me.RibbonControl1.MaxItemId = 7
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
-        Me.RibbonControl1.Size = New System.Drawing.Size(467, 144)
+        Me.RibbonControl1.Size = New System.Drawing.Size(903, 144)
         '
         'BarButtonItem1
         '
@@ -218,9 +232,33 @@ Partial Class Notes
         Me.BarButtonItem3.Name = "BarButtonItem3"
         Me.BarButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
+        'BarButtonItem4
+        '
+        Me.BarButtonItem4.Caption = "Terminated Employee"
+        Me.BarButtonItem4.Glyph = CType(resources.GetObject("BarButtonItem4.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem4.Id = 4
+        Me.BarButtonItem4.Name = "BarButtonItem4"
+        Me.BarButtonItem4.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'BarCheckItem1
+        '
+        Me.BarCheckItem1.Caption = "BarCheckItem1"
+        Me.BarCheckItem1.Id = 5
+        Me.BarCheckItem1.Name = "BarCheckItem1"
+        '
+        'BarButtonItem5
+        '
+        Me.BarButtonItem5.Caption = "Mini Reports"
+        Me.BarButtonItem5.Glyph = CType(resources.GetObject("BarButtonItem5.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem5.Id = 6
+        Me.BarButtonItem5.Name = "BarButtonItem5"
+        Me.BarButtonItem5.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup5})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "Employee"
         '
@@ -229,6 +267,27 @@ Partial Class Notes
         Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonItem1)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "                                                      "
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem4)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "                                                      "
+        '
+        'RibbonPageGroup5
+        '
+        Me.RibbonPageGroup5.ItemLinks.Add(Me.BarButtonItem5)
+        Me.RibbonPageGroup5.Name = "RibbonPageGroup5"
+        Me.RibbonPageGroup5.Text = "                                                      "
+        '
+        'txttrains
+        '
+        Me.txttrains.Location = New System.Drawing.Point(92, 396)
+        Me.txttrains.MenuManager = Me.RibbonControl1
+        Me.txttrains.Name = "txttrains"
+        Me.txttrains.Size = New System.Drawing.Size(152, 20)
+        Me.txttrains.StyleController = Me.LayoutControl1
+        Me.txttrains.TabIndex = 19
         '
         'txtstat
         '
@@ -371,10 +430,10 @@ Partial Class Notes
         Me.LayoutControlGroup1.CustomizationFormText = "LayoutControlGroup1"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcempcode, Me.lcpos, Me.lcname, Me.lcpob, Me.lcdob, Me.lccompcode, Me.lcgender, Me.lcreligion, Me.lcaddress, Me.lcemail, Me.lcid, Me.lcol, Me.lcwd, Me.lcphone, Me.lcstat, Me.lctrain})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcempcode, Me.lcpos, Me.lcname, Me.lcpob, Me.lcdob, Me.lccompcode, Me.lcgender, Me.lcreligion, Me.lcaddress, Me.lcemail, Me.lcid, Me.lcol, Me.lcwd, Me.lcphone, Me.lcstat, Me.lctrain, Me.LayoutControlItem1})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(256, 409)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(256, 433)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -532,11 +591,21 @@ Partial Class Notes
         '
         Me.lctrain.Control = Me.txttrains
         Me.lctrain.CustomizationFormText = "Training Until"
-        Me.lctrain.Location = New System.Drawing.Point(0, 360)
+        Me.lctrain.Location = New System.Drawing.Point(0, 384)
         Me.lctrain.Name = "lctrain"
         Me.lctrain.Size = New System.Drawing.Size(236, 29)
         Me.lctrain.Text = "Training Until"
         Me.lctrain.TextSize = New System.Drawing.Size(77, 13)
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.txtemptype
+        Me.LayoutControlItem1.CustomizationFormText = "Employee Type"
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 360)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(236, 24)
+        Me.LayoutControlItem1.Text = "Employee Type"
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(77, 13)
         '
         'RibbonPageGroup3
         '
@@ -550,15 +619,6 @@ Partial Class Notes
         Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
         Me.RibbonPageGroup4.Text = "                                                      "
         '
-        'PictureEdit1
-        '
-        Me.PictureEdit1.Location = New System.Drawing.Point(262, 159)
-        Me.PictureEdit1.MenuManager = Me.RibbonControl1
-        Me.PictureEdit1.Name = "PictureEdit1"
-        Me.PictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
-        Me.PictureEdit1.Size = New System.Drawing.Size(129, 120)
-        Me.PictureEdit1.TabIndex = 1
-        '
         'LayoutControl2
         '
         Me.LayoutControl2.Controls.Add(Me.txtsp3date)
@@ -571,10 +631,10 @@ Partial Class Notes
         Me.LayoutControl2.Controls.Add(Me.txtrotasi)
         Me.LayoutControl2.Controls.Add(Me.txtdemosidate)
         Me.LayoutControl2.Controls.Add(Me.txtdemosi)
-        Me.LayoutControl2.Location = New System.Drawing.Point(251, 285)
+        Me.LayoutControl2.Location = New System.Drawing.Point(687, 293)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.Root = Me.LayoutControlGroup2
-        Me.LayoutControl2.Size = New System.Drawing.Size(217, 261)
+        Me.LayoutControl2.Size = New System.Drawing.Size(215, 260)
         Me.LayoutControl2.TabIndex = 2
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -583,7 +643,7 @@ Partial Class Notes
         Me.txtsp3date.Location = New System.Drawing.Point(75, 228)
         Me.txtsp3date.MenuManager = Me.RibbonControl1
         Me.txtsp3date.Name = "txtsp3date"
-        Me.txtsp3date.Size = New System.Drawing.Size(130, 20)
+        Me.txtsp3date.Size = New System.Drawing.Size(128, 20)
         Me.txtsp3date.StyleController = Me.LayoutControl2
         Me.txtsp3date.TabIndex = 13
         '
@@ -592,7 +652,7 @@ Partial Class Notes
         Me.txtsp3.Location = New System.Drawing.Point(75, 204)
         Me.txtsp3.MenuManager = Me.RibbonControl1
         Me.txtsp3.Name = "txtsp3"
-        Me.txtsp3.Size = New System.Drawing.Size(130, 20)
+        Me.txtsp3.Size = New System.Drawing.Size(128, 20)
         Me.txtsp3.StyleController = Me.LayoutControl2
         Me.txtsp3.TabIndex = 12
         '
@@ -601,7 +661,7 @@ Partial Class Notes
         Me.txtsp2date.Location = New System.Drawing.Point(75, 180)
         Me.txtsp2date.MenuManager = Me.RibbonControl1
         Me.txtsp2date.Name = "txtsp2date"
-        Me.txtsp2date.Size = New System.Drawing.Size(130, 20)
+        Me.txtsp2date.Size = New System.Drawing.Size(128, 20)
         Me.txtsp2date.StyleController = Me.LayoutControl2
         Me.txtsp2date.TabIndex = 11
         '
@@ -610,7 +670,7 @@ Partial Class Notes
         Me.txtsp2.Location = New System.Drawing.Point(75, 156)
         Me.txtsp2.MenuManager = Me.RibbonControl1
         Me.txtsp2.Name = "txtsp2"
-        Me.txtsp2.Size = New System.Drawing.Size(130, 20)
+        Me.txtsp2.Size = New System.Drawing.Size(128, 20)
         Me.txtsp2.StyleController = Me.LayoutControl2
         Me.txtsp2.TabIndex = 10
         '
@@ -619,7 +679,7 @@ Partial Class Notes
         Me.txtsp1date.Location = New System.Drawing.Point(75, 132)
         Me.txtsp1date.MenuManager = Me.RibbonControl1
         Me.txtsp1date.Name = "txtsp1date"
-        Me.txtsp1date.Size = New System.Drawing.Size(130, 20)
+        Me.txtsp1date.Size = New System.Drawing.Size(128, 20)
         Me.txtsp1date.StyleController = Me.LayoutControl2
         Me.txtsp1date.TabIndex = 9
         '
@@ -628,7 +688,7 @@ Partial Class Notes
         Me.txtsp1.Location = New System.Drawing.Point(75, 108)
         Me.txtsp1.MenuManager = Me.RibbonControl1
         Me.txtsp1.Name = "txtsp1"
-        Me.txtsp1.Size = New System.Drawing.Size(130, 20)
+        Me.txtsp1.Size = New System.Drawing.Size(128, 20)
         Me.txtsp1.StyleController = Me.LayoutControl2
         Me.txtsp1.TabIndex = 8
         '
@@ -637,7 +697,7 @@ Partial Class Notes
         Me.txtrotasidate.Location = New System.Drawing.Point(75, 84)
         Me.txtrotasidate.MenuManager = Me.RibbonControl1
         Me.txtrotasidate.Name = "txtrotasidate"
-        Me.txtrotasidate.Size = New System.Drawing.Size(130, 20)
+        Me.txtrotasidate.Size = New System.Drawing.Size(128, 20)
         Me.txtrotasidate.StyleController = Me.LayoutControl2
         Me.txtrotasidate.TabIndex = 7
         '
@@ -646,7 +706,7 @@ Partial Class Notes
         Me.txtrotasi.Location = New System.Drawing.Point(75, 60)
         Me.txtrotasi.MenuManager = Me.RibbonControl1
         Me.txtrotasi.Name = "txtrotasi"
-        Me.txtrotasi.Size = New System.Drawing.Size(130, 20)
+        Me.txtrotasi.Size = New System.Drawing.Size(128, 20)
         Me.txtrotasi.StyleController = Me.LayoutControl2
         Me.txtrotasi.TabIndex = 6
         '
@@ -655,7 +715,7 @@ Partial Class Notes
         Me.txtdemosidate.Location = New System.Drawing.Point(75, 36)
         Me.txtdemosidate.MenuManager = Me.RibbonControl1
         Me.txtdemosidate.Name = "txtdemosidate"
-        Me.txtdemosidate.Size = New System.Drawing.Size(130, 20)
+        Me.txtdemosidate.Size = New System.Drawing.Size(128, 20)
         Me.txtdemosidate.StyleController = Me.LayoutControl2
         Me.txtdemosidate.TabIndex = 5
         '
@@ -664,7 +724,7 @@ Partial Class Notes
         Me.txtdemosi.Location = New System.Drawing.Point(75, 12)
         Me.txtdemosi.MenuManager = Me.RibbonControl1
         Me.txtdemosi.Name = "txtdemosi"
-        Me.txtdemosi.Size = New System.Drawing.Size(130, 20)
+        Me.txtdemosi.Size = New System.Drawing.Size(128, 20)
         Me.txtdemosi.StyleController = Me.LayoutControl2
         Me.txtdemosi.TabIndex = 4
         '
@@ -676,7 +736,7 @@ Partial Class Notes
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcdemosi, Me.lcdemosidate, Me.lcrotasi, Me.lcrotasidate, Me.lcsp1, Me.lcsp1date, Me.lcsp2, Me.lcsp2date, Me.lcsp3, Me.lcsp3date})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(217, 261)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(215, 260)
         Me.LayoutControlGroup2.Text = "LayoutControlGroup2"
         Me.LayoutControlGroup2.TextVisible = False
         '
@@ -686,7 +746,7 @@ Partial Class Notes
         Me.lcdemosi.CustomizationFormText = "Last Demosi"
         Me.lcdemosi.Location = New System.Drawing.Point(0, 0)
         Me.lcdemosi.Name = "lcdemosi"
-        Me.lcdemosi.Size = New System.Drawing.Size(197, 24)
+        Me.lcdemosi.Size = New System.Drawing.Size(195, 24)
         Me.lcdemosi.Text = "Last Demosi"
         Me.lcdemosi.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -696,7 +756,7 @@ Partial Class Notes
         Me.lcdemosidate.CustomizationFormText = "Demosi Date"
         Me.lcdemosidate.Location = New System.Drawing.Point(0, 24)
         Me.lcdemosidate.Name = "lcdemosidate"
-        Me.lcdemosidate.Size = New System.Drawing.Size(197, 24)
+        Me.lcdemosidate.Size = New System.Drawing.Size(195, 24)
         Me.lcdemosidate.Text = "Demosi Date"
         Me.lcdemosidate.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -706,7 +766,7 @@ Partial Class Notes
         Me.lcrotasi.CustomizationFormText = "Rotasi"
         Me.lcrotasi.Location = New System.Drawing.Point(0, 48)
         Me.lcrotasi.Name = "lcrotasi"
-        Me.lcrotasi.Size = New System.Drawing.Size(197, 24)
+        Me.lcrotasi.Size = New System.Drawing.Size(195, 24)
         Me.lcrotasi.Text = "Rotasi"
         Me.lcrotasi.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -716,7 +776,7 @@ Partial Class Notes
         Me.lcrotasidate.CustomizationFormText = "Rotasi Date"
         Me.lcrotasidate.Location = New System.Drawing.Point(0, 72)
         Me.lcrotasidate.Name = "lcrotasidate"
-        Me.lcrotasidate.Size = New System.Drawing.Size(197, 24)
+        Me.lcrotasidate.Size = New System.Drawing.Size(195, 24)
         Me.lcrotasidate.Text = "Rotasi Date"
         Me.lcrotasidate.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -726,7 +786,7 @@ Partial Class Notes
         Me.lcsp1.CustomizationFormText = "SP 1"
         Me.lcsp1.Location = New System.Drawing.Point(0, 96)
         Me.lcsp1.Name = "lcsp1"
-        Me.lcsp1.Size = New System.Drawing.Size(197, 24)
+        Me.lcsp1.Size = New System.Drawing.Size(195, 24)
         Me.lcsp1.Text = "SP 1"
         Me.lcsp1.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -736,7 +796,7 @@ Partial Class Notes
         Me.lcsp1date.CustomizationFormText = "SP 1 Date"
         Me.lcsp1date.Location = New System.Drawing.Point(0, 120)
         Me.lcsp1date.Name = "lcsp1date"
-        Me.lcsp1date.Size = New System.Drawing.Size(197, 24)
+        Me.lcsp1date.Size = New System.Drawing.Size(195, 24)
         Me.lcsp1date.Text = "SP 1 Date"
         Me.lcsp1date.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -746,7 +806,7 @@ Partial Class Notes
         Me.lcsp2.CustomizationFormText = "SP 2"
         Me.lcsp2.Location = New System.Drawing.Point(0, 144)
         Me.lcsp2.Name = "lcsp2"
-        Me.lcsp2.Size = New System.Drawing.Size(197, 24)
+        Me.lcsp2.Size = New System.Drawing.Size(195, 24)
         Me.lcsp2.Text = "SP 2"
         Me.lcsp2.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -756,7 +816,7 @@ Partial Class Notes
         Me.lcsp2date.CustomizationFormText = "SP 2 Date"
         Me.lcsp2date.Location = New System.Drawing.Point(0, 168)
         Me.lcsp2date.Name = "lcsp2date"
-        Me.lcsp2date.Size = New System.Drawing.Size(197, 24)
+        Me.lcsp2date.Size = New System.Drawing.Size(195, 24)
         Me.lcsp2date.Text = "SP 2 Date"
         Me.lcsp2date.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -766,7 +826,7 @@ Partial Class Notes
         Me.lcsp3.CustomizationFormText = "SP 3"
         Me.lcsp3.Location = New System.Drawing.Point(0, 192)
         Me.lcsp3.Name = "lcsp3"
-        Me.lcsp3.Size = New System.Drawing.Size(197, 24)
+        Me.lcsp3.Size = New System.Drawing.Size(195, 24)
         Me.lcsp3.Text = "SP 3"
         Me.lcsp3.TextSize = New System.Drawing.Size(60, 13)
         '
@@ -776,31 +836,58 @@ Partial Class Notes
         Me.lcsp3date.CustomizationFormText = "SP 3 Date"
         Me.lcsp3date.Location = New System.Drawing.Point(0, 216)
         Me.lcsp3date.Name = "lcsp3date"
-        Me.lcsp3date.Size = New System.Drawing.Size(197, 25)
+        Me.lcsp3date.Size = New System.Drawing.Size(195, 24)
         Me.lcsp3date.Text = "SP 3 Date"
         Me.lcsp3date.TextSize = New System.Drawing.Size(60, 13)
+        '
+        'GridControl1
+        '
+        Me.GridControl1.Location = New System.Drawing.Point(4, 150)
+        Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.MenuManager = Me.RibbonControl1
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(433, 390)
+        Me.GridControl1.TabIndex = 4
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        '
+        'GridView1
+        '
+        Me.GridView1.GridControl = Me.GridControl1
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsFind.AlwaysVisible = True
+        Me.GridView1.OptionsFind.FindDelay = 100
+        Me.GridView1.OptionsView.ColumnAutoWidth = False
+        '
+        'pictureedit
+        '
+        Me.pictureedit.Location = New System.Drawing.Point(718, 159)
+        Me.pictureedit.Name = "pictureedit"
+        Me.pictureedit.Size = New System.Drawing.Size(141, 128)
+        Me.pictureedit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pictureedit.TabIndex = 6
+        Me.pictureedit.TabStop = False
         '
         'Notes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(467, 561)
+        Me.ClientSize = New System.Drawing.Size(903, 582)
+        Me.Controls.Add(Me.pictureedit)
+        Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.LayoutControl2)
-        Me.Controls.Add(Me.PictureEdit1)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.RibbonControl1)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(477, 566)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(477, 566)
         Me.Name = "Notes"
         Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Notes"
+        Me.Text = "Employee Details"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.txttrains.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtemptype.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txttrains.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtstat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtwd.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -833,7 +920,7 @@ Partial Class Notes
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcstat, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lctrain, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
         CType(Me.txtsp3date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -857,6 +944,9 @@ Partial Class Notes
         CType(Me.lcsp2date, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcsp3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcsp3date, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureedit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -903,7 +993,6 @@ Partial Class Notes
     Friend WithEvents lcphone As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcstat As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lctrain As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents PictureEdit1 As DevExpress.XtraEditors.PictureEdit
     Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents txtrotasidate As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtrotasi As DevExpress.XtraEditors.TextEdit
@@ -926,4 +1015,14 @@ Partial Class Notes
     Friend WithEvents lcsp2date As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcsp3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcsp3date As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents BarButtonItem4 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarCheckItem1 As DevExpress.XtraBars.BarCheckItem
+    Friend WithEvents BarButtonItem5 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup5 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents pictureedit As PictureBox
+    Friend WithEvents txtemptype As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
 End Class

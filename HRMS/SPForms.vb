@@ -51,9 +51,6 @@ Public Class SPForms
     Dim tbl_par As New DataTable
 
     Sub loadDataKaryawan()
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         sqlCommand.CommandText = "SELECT EmployeeCode, FullName, Position, CompanyCode FROM db_pegawai WHERE Status != 'Fired'"
         sqlCommand.Connection = SQLConnection
@@ -63,7 +60,6 @@ Public Class SPForms
         For index As Integer = 0 To tbl_par.Rows.Count - 1
             txtNamaKaryawan.Properties.Items.Add(tbl_par.Rows(index).Item(1).ToString())
         Next
-        SQLConnection.Close()
     End Sub
 
     Private Sub clear()
@@ -78,6 +74,8 @@ Public Class SPForms
     End Sub
 
     Private Sub SPForms_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
         clear()
         BarButtonItem1.PerformClick()
     End Sub
@@ -132,7 +130,6 @@ Public Class SPForms
         Dim objword As word.Application = Nothing
         Try
             objword = New word.Application
-            'Dim objdoc As word.Document
             objword.Documents.Open("E:\Backup\141113007Latihan4.pdf")
             Dim findobject As word.Find = objword.Selection.Find
             With findobject
@@ -257,8 +254,8 @@ Public Class SPForms
     End Sub
 
     Private Sub insertSP1()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
+        'SQLConnection = New MySqlConnection
+        'SQLConnection.ConnectionString = connectionString
         'SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Dim str_carsql As String
@@ -291,8 +288,8 @@ Public Class SPForms
     End Sub
 
     Private Sub insertSP2()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
+        'SQLConnection = New MySqlConnection
+        'SQLConnection.ConnectionString = connectionString
         'SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Dim str_carsql As String
@@ -317,8 +314,8 @@ Public Class SPForms
     End Sub
 
     Private Sub insertSP3()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
+        'SQLConnection = New MySqlConnection
+        'SQLConnection.ConnectionString = connectionString
         'SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Dim str_carsql As String

@@ -31,13 +31,11 @@ Public Class NewSalary
         Else
             password = ""
         End If
-
         If File.Exists("settingdb.txt") Then
             db = File.ReadAllText("settingdb.txt")
         Else
             db = "db_hris"
         End If
-        'connectionString = "Server=" + host + "; User Id=root; Password=; Database=db_hris"
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
@@ -85,8 +83,6 @@ Public Class NewSalary
         lcfm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lctm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
     End Sub
-
-    Dim newform As New PayrollCount
 
     Public Sub updatechange()
         SQLConnection = New MySqlConnection
@@ -229,9 +225,7 @@ Public Class NewSalary
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MessageBox.Show("Data Successfully Changed!")
-            ' SQLConnection.Close()
         Catch ex As Exception
-            'SQLConnection.Close()
             MsgBox("Error Occured: Could Not Change Records")
         End Try
     End Sub
@@ -476,9 +470,6 @@ Public Class NewSalary
             End If
         Next
     End Sub
-
-    Dim payroll As New PayrollCount
-
 
     Private Sub NewSalary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadDataKaryawan()

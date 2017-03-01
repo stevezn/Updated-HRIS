@@ -30,13 +30,11 @@ Public Class NewEmp
         Else
             password = ""
         End If
-
         If File.Exists("settingdb.txt") Then
             db = File.ReadAllText("settingdb.txt")
         Else
             db = "db_hris"
         End If
-        'connectionString = "Server=" + host + "; User Id=root; Password=; Database=db_hris"
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
@@ -76,9 +74,6 @@ Public Class NewEmp
     End Function
 
     Public Sub UpdateEmp()
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
         Try
@@ -129,9 +124,7 @@ Public Class NewEmp
             sqlCommand.Connection = SQLConnection
             sqlCommand.ExecuteNonQuery()
             MsgBox("Data Successfully Changed")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MessageBox.Show("Process Failed!")
         End Try
     End Sub
@@ -159,9 +152,6 @@ Public Class NewEmp
     End Sub
 
     Public Function InsertEmp() As Boolean
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim dtb As DateTime
         txtworkdate.Format = DateTimePickerFormat.Custom
         txtworkdate.CustomFormat = "yyyy-MM-dd"
@@ -220,24 +210,9 @@ Public Class NewEmp
 
     Dim tbl_par As New DataTable
 
-    'Sub loadDataKaryawan()
-    '    SQLConnection = New MySqlConnection()
-    '    SQLConnection.ConnectionString = connectionString
-    '    SQLConnection.Open()
-    '    Dim sqlCommand As New MySqlCommand
-    '    sqlCommand.CommandText = "SELECT EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Photo, Status, TrainingSampai, EmployeeType FROM db_pegawai"
-    '    sqlCommand.Connection = SQLConnection
-    '    Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-    '    Dim cb As New MySqlCommandBuilder(adapter)
-    '    adapter.Fill(tbl_par)
-    '    For index As Integer = 0 To tbl_par.Rows.Count - 1
-    '        txtfullname.Properties.Items.Add(tbl_par.Rows(index).Item(2).ToString())
-    '    Next
-    '    SQLConnection.Close()
-    'End Sub
-
     Private Sub NewEmp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'loadDataKaryawan()
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
         reset()
         cleartxt()
     End Sub
@@ -339,10 +314,6 @@ Public Class NewEmp
                 If CType(mess2, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
                     UpdateEmp()
                 End If
-                'MsgBox("Are you sure to change this employee status to be FIRED?", MsgBoxStyle.YesNo)
-                'If vbYes = CType(True, Global.Microsoft.VisualBasic.MsgBoxResult) Then
-                '    UpdateEmp()
-                'End If
             Else
                 UpdateEmp()
             End If

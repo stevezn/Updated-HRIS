@@ -2251,7 +2251,7 @@ Partial Class NewSalary
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1123, 775)
+        Me.ClientSize = New System.Drawing.Size(1123, 767)
         Me.Controls.Add(Me.LayoutControl5)
         Me.Controls.Add(Me.LayoutControl4)
         Me.Controls.Add(Me.btnCount)

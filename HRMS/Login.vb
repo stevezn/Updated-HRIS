@@ -38,6 +38,7 @@ Public Class Login
         Else
             db = "db_hris"
         End If
+        connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
     Dim main As New MainApp
@@ -60,54 +61,30 @@ Public Class Login
 
     Dim bar As New ProgressBar
 
-    Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
-        'SQLConnection = New MySqlConnection()
-        'SQLConnection.ConnectionString = connectionString
-        'SQLConnection.Open()
-        koneksi()
-        Dim tbl_par As New DataTable
-        Dim sqlCommand As New MySqlCommand
-        sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
-        sqlCommand.Connection = SQLConnection
-        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-        Dim cb As New MySqlCommandBuilder(adapter)
-        adapter.Fill(tbl_par)
-        If tbl_par.Rows.Count > 0 Then
-            main.Show()
-            Hide()
-        Else
-            MessageBox.Show("Username and Password Didn't Match!")
-        End If
-        'If File.Exists("settinghost.txt") Then
-        '    My.Computer.FileSystem.DeleteFile("settinghost.txt")
-        '    File.Create("settinghost.txt").Dispose()
-        'End If
-        'If File.Exists("settingid.txt") Then
-        '    My.Computer.FileSystem.DeleteFile("settingid.txt")
-        '    File.Create("settinghost.txt").Dispose()
-        'End If
-        'If File.Exists("settingpass.txt") Then
-        '    My.Computer.FileSystem.DeleteFile("settingpass.txt")
-        '    File.Create("settingpass.txt").Dispose()
-        'End If
-        'If File.Exists("settingdb.txt") Then
-        '    My.Computer.FileSystem.DeleteFile("settingdb.txt")
-        '    File.Create("settingdb.txt").Dispose()
-        'End If
-        'My.Computer.FileSystem.WriteAllText("settinghost.txt", txtserver.Text, True)
-        'My.Computer.FileSystem.WriteAllText("settingid.txt", txtuser.Text, True)
-        'My.Computer.FileSystem.WriteAllText("settingpass.txt", txtpass.Text, True)
-        'My.Computer.FileSystem.WriteAllText("settingdb.txt", txtdb.Text, True)
-    End Sub
-
-
+    'If File.Exists("settinghost.txt") Then
+    '    My.Computer.FileSystem.DeleteFile("settinghost.txt")
+    '    File.Create("settinghost.txt").Dispose()
+    'End If
+    'If File.Exists("settingid.txt") Then
+    '    My.Computer.FileSystem.DeleteFile("settingid.txt")
+    '    File.Create("settinghost.txt").Dispose()
+    'End If
+    'If File.Exists("settingpass.txt") Then
+    '    My.Computer.FileSystem.DeleteFile("settingpass.txt")
+    '    File.Create("settingpass.txt").Dispose()
+    'End If
+    'If File.Exists("settingdb.txt") Then
+    '    My.Computer.FileSystem.DeleteFile("settingdb.txt")
+    '    File.Create("settingdb.txt").Dispose()
+    'End If
+    'My.Computer.FileSystem.WriteAllText("settinghost.txt", txtserver.Text, True)
+    'My.Computer.FileSystem.WriteAllText("settingid.txt", txtuser.Text, True)
+    'My.Computer.FileSystem.WriteAllText("settingpass.txt", txtpass.Text, True)
+    'My.Computer.FileSystem.WriteAllText("settingdb.txt", txtdb.Text, True)
+    'End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs)
         Try
-            'SQLConnection = New MySqlConnection()
-            'SQLConnection.ConnectionString = connectionString
-            'SQLConnection.Open()
-            koneksi()
             Dim tbl_par As New DataTable
             Dim sqlCommand As New MySqlCommand
             sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
@@ -129,12 +106,33 @@ Public Class Login
         Close()
     End Sub
 
-    Private Sub Login_Enter(sender As Object, e As EventArgs) Handles MyBase.Enter
-        Try
-            'SQLConnection = New MySqlConnection()
-            'SQLConnection.ConnectionString = connectionString
-            'SQLConnection.Open()
-            koneksi()
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
+    End Sub
+
+    Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
+        Dim tbl_par As New DataTable
+        Dim sqlCommand As New MySqlCommand
+        sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
+        sqlCommand.Connection = SQLConnection
+        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par)
+        If tbl_par.Rows.Count > 0 Then
+            main.Show()
+            Hide()
+        Else
+            MessageBox.Show("Username and Password Didn't Match!")
+        End If
+    End Sub
+
+    Private Sub tePassword_Enter(sender As Object, e As EventArgs) Handles tePassword.Enter
+
+    End Sub
+
+    Private Sub tePassword_KeyDown(sender As Object, e As KeyEventArgs) Handles tePassword.KeyDown
+        If e.KeyCode = Keys.Enter Then
             Dim tbl_par As New DataTable
             Dim sqlCommand As New MySqlCommand
             sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
@@ -148,7 +146,6 @@ Public Class Login
             Else
                 MessageBox.Show("Username and Password Didn't Match!")
             End If
-        Catch ex As Exception
-        End Try
+        End If
     End Sub
 End Class

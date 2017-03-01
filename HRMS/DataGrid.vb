@@ -12,14 +12,12 @@ Module DataGrid
         Return checkItem
     End Function
 
-
     'The handler for the DeleteRow menu item
     Sub OnDeleteRowClick(ByVal sender As Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = CType(sender, DXMenuItem)
         Dim info As RowInfo = CType(item.Tag, RowInfo)
         info.View.DeleteRow(info.RowHandle)
     End Sub
-
 
     'The handler for the MergingEnabled menu item
     Sub OnMergingEnabledClick(ByVal sender As Object, ByVal e As EventArgs)

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ClosePayroll
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class ClosePayroll
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ClosePayroll))
         Me.LayoutControl8 = New DevExpress.XtraLayout.LayoutControl()
@@ -48,8 +48,6 @@ Partial Class ClosePayroll
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.btnProcess = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.LayoutControl8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl8.SuspendLayout()
@@ -293,7 +291,7 @@ Partial Class ClosePayroll
         '
         'date1
         '
-        Me.date1.Location = New System.Drawing.Point(79, 283)
+        Me.date1.Location = New System.Drawing.Point(80, 257)
         Me.date1.Name = "date1"
         Me.date1.Size = New System.Drawing.Size(179, 20)
         Me.date1.TabIndex = 4
@@ -301,7 +299,7 @@ Partial Class ClosePayroll
         '
         'date2
         '
-        Me.date2.Location = New System.Drawing.Point(79, 311)
+        Me.date2.Location = New System.Drawing.Point(79, 285)
         Me.date2.Name = "date2"
         Me.date2.Size = New System.Drawing.Size(179, 20)
         Me.date2.TabIndex = 5
@@ -309,7 +307,7 @@ Partial Class ClosePayroll
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(10, 287)
+        Me.Label1.Location = New System.Drawing.Point(10, 259)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(69, 13)
         Me.Label1.TabIndex = 6
@@ -318,7 +316,7 @@ Partial Class ClosePayroll
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(57, 313)
+        Me.Label2.Location = New System.Drawing.Point(56, 287)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(20, 13)
         Me.Label2.TabIndex = 7
@@ -334,26 +332,10 @@ Partial Class ClosePayroll
         Me.LabelControl1.TabIndex = 10
         Me.LabelControl1.Text = "Salary"
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(7, 250)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(74, 13)
-        Me.Label3.TabIndex = 11
-        Me.Label3.Text = "Payment Date"
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(79, 244)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(179, 20)
-        Me.DateTimePicker1.TabIndex = 12
-        '
         'btnProcess
         '
         Me.btnProcess.Image = CType(resources.GetObject("btnProcess.Image"), System.Drawing.Image)
-        Me.btnProcess.Location = New System.Drawing.Point(121, 339)
+        Me.btnProcess.Location = New System.Drawing.Point(121, 313)
         Me.btnProcess.Name = "btnProcess"
         Me.btnProcess.Size = New System.Drawing.Size(137, 33)
         Me.btnProcess.TabIndex = 3
@@ -363,9 +345,7 @@ Partial Class ClosePayroll
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(264, 380)
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.Label3)
+        Me.ClientSize = New System.Drawing.Size(264, 350)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -374,11 +354,9 @@ Partial Class ClosePayroll
         Me.Controls.Add(Me.btnProcess)
         Me.Controls.Add(Me.LayoutControl8)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(280, 419)
-        Me.MinimumSize = New System.Drawing.Size(280, 419)
         Me.Name = "ClosePayroll"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "ClosePayroll"
+        Me.Text = "Close Payroll"
         CType(Me.LayoutControl8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl8.ResumeLayout(False)
         CType(Me.checkovertime.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -428,6 +406,4 @@ Partial Class ClosePayroll
     Friend WithEvents checkovertime As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents Label3 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class

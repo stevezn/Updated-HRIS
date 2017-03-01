@@ -1,11 +1,12 @@
 ﻿Imports System.IO
+Imports DevExpress.Utils.Menu
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class Attendances
     Dim connectionString As String
     Dim SQLConnection As MySqlConnection = New MySqlConnection
     Dim oDt_sched As New DataTable()
     Dim tbl_par As New DataTable
-
 
     Public Sub New()
         ' This call is required by the designer.
@@ -26,13 +27,11 @@ Public Class Attendances
         Else
             id = "root"
         End If
-
         If File.Exists("settingpass.txt") Then
             password = File.ReadAllText("settingpass.txt")
         Else
             password = ""
         End If
-
         If File.Exists("settingdb.txt") Then
             db = File.ReadAllText("settingdb.txt")
         Else
@@ -42,15 +41,12 @@ Public Class Attendances
     End Sub
 
     Sub loadhari()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, a.JamMulai, a.JamSelesai, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Harian'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
-        p1.Value = date1.Value
+        p1.Value = date1.Value.Date
         p2.Value = date2.Value
         sqlcommand.Parameters.Add(p1)
         sqlcommand.Parameters.Add(p2)
@@ -58,19 +54,15 @@ Public Class Attendances
         Dim dt As New DataTable
         dt.Load(sqlcommand.ExecuteReader)
         GridControl1.DataSource = dt
-        SQLConnection.Close()
     End Sub
 
     Sub loadbulan()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, a.JamMulai, a.JamSelesai, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Bulanan'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
-        p1.Value = date1.Value
+        p1.Value = date1.Value.Date
         p2.Value = date2.Value
         sqlcommand.Parameters.Add(p1)
         sqlcommand.Parameters.Add(p2)
@@ -78,19 +70,15 @@ Public Class Attendances
         Dim dt As New DataTable
         dt.Load(sqlcommand.ExecuteReader)
         GridControl1.DataSource = dt
-        SQLConnection.Close()
     End Sub
 
     Private Sub loadborongan()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, a.JamMulai, a.JamSelesai, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Borongan'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
-        p1.Value = date1.Value
+        p1.Value = date1.Value.Date
         p2.Value = date2.Value
         sqlcommand.Parameters.Add(p1)
         sqlcommand.Parameters.Add(p2)
@@ -98,19 +86,15 @@ Public Class Attendances
         Dim dt As New DataTable
         dt.Load(sqlcommand.ExecuteReader)
         GridControl1.DataSource = dt
-        SQLConnection.Close()
     End Sub
 
     Private Sub loadall()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, a.JamMulai, a.JamSelesai, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal between @date1 and @date2"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
-        p1.Value = date1.Value
+        p1.Value = date1.Value.Date
         p2.Value = date2.Value
         sqlcommand.Parameters.Add(p1)
         sqlcommand.Parameters.Add(p2)
@@ -118,7 +102,6 @@ Public Class Attendances
         Dim dt As New DataTable
         dt.Load(sqlcommand.ExecuteReader)
         GridControl1.DataSource = dt
-        SQLConnection.Close()
     End Sub
 
     Private Sub btnFind_Click(sender As Object, e As EventArgs) Handles btnFind.Click
@@ -131,14 +114,11 @@ Public Class Attendances
         ElseIf checkborongan.Checked = True Then
             loadborongan()
         Else
-            MsgBox("Please Checklist the checkboxes")
+            MsgBox("Please choose the filters")
         End If
     End Sub
 
     Private Sub resultpages()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Dim lastn As Integer
         Try
@@ -160,17 +140,13 @@ Public Class Attendances
             sqlcommand.Parameters.AddWithValue("@Result", txtpages.Text)
             sqlcommand.ExecuteNonQuery()
             MsgBox("Added")
-            SQLConnection.Close()
         Else
             MsgBox("This employee has already input the result for today")
         End If
     End Sub
 
     Private Sub overtimeresult()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
-        Dim dtb, dtr As DateTime
+        Dim dtb As DateTime
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.CustomFormat = "yyyy-MM-dd"
         dtb = DateTimePicker1.Value
@@ -186,7 +162,6 @@ Public Class Attendances
             sqlcommand.Parameters.AddWithValue("@Hours", txtsav.Text)
             sqlcommand.ExecuteNonQuery()
             MsgBox("Added")
-            SQLConnection.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -195,21 +170,16 @@ Public Class Attendances
     Private Sub loadDataReq1()
         GridControl2.RefreshDataSource()
         Dim table As New DataTable
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         Try
-            sqlCommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Borongan'"
+            sqlCommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Borongan' and a.tanggal = curdate()"
             sqlCommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
             GridControl2.DataSource = table
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
@@ -217,8 +187,6 @@ Public Class Attendances
     Private Sub loadovertime()
         GridControl3.RefreshDataSource()
         Dim table As New DataTable
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "select a.EmployeeCode, a.CompanyCode, a.FullName, a.EmployeeType, a.Status from db_pegawai a, db_payrolldata b where a.EmployeeCode = b.EmployeeCode"
@@ -228,14 +196,12 @@ Public Class Attendances
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
             GridControl3.DataSource = table
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
         loadDataReq1()
         Result.Visible = True
         overtime.Visible = False
@@ -247,6 +213,8 @@ Public Class Attendances
     End Sub
 
     Private Sub Attendances_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
         Result.Visible = False
         overtime.Visible = False
     End Sub
@@ -256,14 +224,18 @@ Public Class Attendances
         overtime.Visible = False
     End Sub
 
-    Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
+    Private Sub SimpleButton2_Click(sender As Object, e As EventArgs)
         loadovertime()
         overtime.Visible = True
         Result.Visible = False
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        resultpages()
+        If txtpages.Text = "" Or lblname.Text = "-" Or Label5.Text = "//" Then
+            MsgBox("The input is wrong")
+        Else
+            resultpages()
+        End If
     End Sub
 
     Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
@@ -272,9 +244,6 @@ Public Class Attendances
     End Sub
 
     Private Sub GridView2_FocusedRowChanged_1(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView2.FocusedRowChanged
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand
         datatabl.Clear()
@@ -290,9 +259,7 @@ Public Class Attendances
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
         If datatabl.Rows.Count > 0 Then
@@ -302,13 +269,14 @@ Public Class Attendances
     End Sub
 
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
-        overtimeresult()
+        If txtsav.Text = "" Or DateTimePicker1.Value = Now.Date Then
+            MsgBox("Please fill hours textbox")
+        Else
+            overtimeresult()
+        End If
     End Sub
 
     Private Sub GridView3_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView3.FocusedRowChanged
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand
         datatabl.Clear()
@@ -324,14 +292,67 @@ Public Class Attendances
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
         If datatabl.Rows.Count > 0 Then
             Label9.Text = datatabl.Rows(0).Item(1).ToString()
             Label10.Text = datatabl.Rows(0).Item(0).ToString
         End If
+    End Sub
+
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+        Dim view As GridView = CType(sender, GridView)
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            Dim rowHandle As Integer = e.HitInfo.RowHandle
+            e.Menu.Items.Clear()
+            Dim item As DXMenuItem = CreateMergingEnabledMenuItem(view, rowHandle)
+            item.BeginGroup = True
+            e.Menu.Items.Add(item)
+        End If
+    End Sub
+
+    Dim att As New Attendance
+
+    Private Sub SimpleButton4_Click(sender As Object, e As EventArgs)
+        If att Is Nothing OrElse att.IsDisposed OrElse att.MinimizeBox Then
+            att.Close()
+            att = New Attendance
+        End If
+        att.Show()
+    End Sub
+
+    Private Sub BarButtonItem3_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem3.ItemClick
+        If att Is Nothing OrElse att.IsDisposed OrElse att.MinimizeBox Then
+            att.Close()
+            att = New Attendance
+        End If
+        att.Show()
+    End Sub
+
+    Dim addmen As New addmenu
+
+    Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
+        If addmen Is Nothing OrElse addmen.IsDisposed OrElse addmen.MinimizeBox Then
+            addmen.Close()
+            addmen = New addmenu
+        End If
+        addmenu.Show()
+        addmen.Overtime.Show()
+        'loadovertime()
+        'overtime.Visible = True
+        'Result.Visible = False
+    End Sub
+
+    Private Sub BarButtonItem2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem2.ItemClick
+        If addmen Is Nothing OrElse addmen.IsDisposed OrElse addmen.MinimizeBox Then
+            addmen.Close()
+            addmen = New addmenu
+        End If
+        addmenu.Show()
+        addmen.Borongan.Show()
+        'loadDataReq1()
+        'Result.Visible = True
+        'overtime.Visible = False
     End Sub
 End Class

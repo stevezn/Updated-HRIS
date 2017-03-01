@@ -39,7 +39,6 @@ Public Class Additional
         Else
             db = "db_hris"
         End If
-        'connectionString = "Server=" + host + "; User Id=root; Password=; Database=db_hris"
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 

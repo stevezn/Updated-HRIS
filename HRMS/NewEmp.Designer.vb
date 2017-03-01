@@ -33,6 +33,7 @@ Partial Class NewEmp
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtworkdate = New System.Windows.Forms.DateTimePicker()
         Me.txtemptype = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtemail = New DevExpress.XtraEditors.TextEdit()
         Me.txtposition = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -74,9 +75,8 @@ Partial Class NewEmp
         Me.lcposition = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcemail = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.pictureEdit = New System.Windows.Forms.PictureBox()
-        Me.txtworkdate = New System.Windows.Forms.DateTimePicker()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.pictureEdit = New System.Windows.Forms.PictureBox()
         CType(Me.lcaddress, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtaddress.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,8 +122,8 @@ Partial Class NewEmp
         CType(Me.lcposition, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcemail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lcaddress
@@ -228,6 +228,13 @@ Partial Class NewEmp
         Me.LayoutControl1.Size = New System.Drawing.Size(292, 520)
         Me.LayoutControl1.TabIndex = 29
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'txtworkdate
+        '
+        Me.txtworkdate.Location = New System.Drawing.Point(102, 374)
+        Me.txtworkdate.Name = "txtworkdate"
+        Me.txtworkdate.Size = New System.Drawing.Size(178, 21)
+        Me.txtworkdate.TabIndex = 40
         '
         'txtemptype
         '
@@ -664,23 +671,6 @@ Partial Class NewEmp
         Me.LayoutControlItem2.Text = "Employee Type"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(87, 13)
         '
-        'pictureEdit
-        '
-        Me.pictureEdit.Image = Global.HRMS.My.Resources.Resources.user_icon_6
-        Me.pictureEdit.Location = New System.Drawing.Point(310, 163)
-        Me.pictureEdit.Name = "pictureEdit"
-        Me.pictureEdit.Size = New System.Drawing.Size(148, 150)
-        Me.pictureEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pictureEdit.TabIndex = 30
-        Me.pictureEdit.TabStop = False
-        '
-        'txtworkdate
-        '
-        Me.txtworkdate.Location = New System.Drawing.Point(102, 374)
-        Me.txtworkdate.Name = "txtworkdate"
-        Me.txtworkdate.Size = New System.Drawing.Size(178, 21)
-        Me.txtworkdate.TabIndex = 40
-        '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.txtworkdate
@@ -690,6 +680,16 @@ Partial Class NewEmp
         Me.LayoutControlItem3.Size = New System.Drawing.Size(272, 24)
         Me.LayoutControlItem3.Text = "Work Date"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(87, 13)
+        '
+        'pictureEdit
+        '
+        Me.pictureEdit.Image = Global.HRMS.My.Resources.Resources.user_icon_6
+        Me.pictureEdit.Location = New System.Drawing.Point(310, 163)
+        Me.pictureEdit.Name = "pictureEdit"
+        Me.pictureEdit.Size = New System.Drawing.Size(148, 150)
+        Me.pictureEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pictureEdit.TabIndex = 30
+        Me.pictureEdit.TabStop = False
         '
         'NewEmp
         '
@@ -750,8 +750,8 @@ Partial Class NewEmp
         CType(Me.lcposition, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcemail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -29,11 +29,12 @@ Partial Class Payslip
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.txtempcode = New DevExpress.XtraEditors.TextEdit()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.txtto = New System.Windows.Forms.DateTimePicker()
         Me.txtperiod = New System.Windows.Forms.DateTimePicker()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.txtname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtempcode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -42,7 +43,7 @@ Partial Class Payslip
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(5, 11)
+        Me.LabelControl1.Location = New System.Drawing.Point(5, 34)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(86, 13)
         Me.LabelControl1.TabIndex = 0
@@ -50,7 +51,8 @@ Partial Class Payslip
         '
         'txtname
         '
-        Me.txtname.Location = New System.Drawing.Point(102, 8)
+        Me.txtname.Enabled = False
+        Me.txtname.Location = New System.Drawing.Point(102, 32)
         Me.txtname.Name = "txtname"
         Me.txtname.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtname.Size = New System.Drawing.Size(100, 20)
@@ -58,7 +60,7 @@ Partial Class Payslip
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(5, 63)
+        Me.LabelControl2.Location = New System.Drawing.Point(5, 89)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(63, 13)
         Me.LabelControl2.TabIndex = 3
@@ -66,7 +68,7 @@ Partial Class Payslip
         '
         'LabelControl3
         '
-        Me.LabelControl3.Location = New System.Drawing.Point(5, 37)
+        Me.LabelControl3.Location = New System.Drawing.Point(5, 62)
         Me.LabelControl3.Name = "LabelControl3"
         Me.LabelControl3.Size = New System.Drawing.Size(74, 13)
         Me.LabelControl3.TabIndex = 4
@@ -74,13 +76,15 @@ Partial Class Payslip
         '
         'txtempcode
         '
-        Me.txtempcode.Location = New System.Drawing.Point(102, 34)
+        Me.txtempcode.Enabled = False
+        Me.txtempcode.Location = New System.Drawing.Point(102, 58)
         Me.txtempcode.Name = "txtempcode"
         Me.txtempcode.Size = New System.Drawing.Size(100, 20)
         Me.txtempcode.TabIndex = 5
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.RadioButton2)
         Me.GroupControl1.Controls.Add(Me.txtto)
         Me.GroupControl1.Controls.Add(Me.txtperiod)
         Me.GroupControl1.Controls.Add(Me.LabelControl4)
@@ -93,46 +97,46 @@ Partial Class Payslip
         Me.GroupControl1.Controls.Add(Me.LabelControl3)
         Me.GroupControl1.Location = New System.Drawing.Point(2, 1)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(211, 182)
+        Me.GroupControl1.Size = New System.Drawing.Size(211, 205)
         Me.GroupControl1.TabIndex = 6
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(6, 8)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(110, 17)
+        Me.RadioButton2.TabIndex = 7
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "Choose Employee"
+        Me.RadioButton2.UseVisualStyleBackColor = True
         '
         'txtto
         '
-        Me.txtto.Location = New System.Drawing.Point(102, 90)
+        Me.txtto.Location = New System.Drawing.Point(102, 110)
         Me.txtto.Name = "txtto"
-        Me.txtto.Size = New System.Drawing.Size(100, 20)
+        Me.txtto.Size = New System.Drawing.Size(109, 20)
         Me.txtto.TabIndex = 10
-        Me.txtto.Value = New Date(2017, 2, 8, 0, 0, 0, 0)
         '
         'txtperiod
         '
-        Me.txtperiod.Location = New System.Drawing.Point(102, 63)
+        Me.txtperiod.Location = New System.Drawing.Point(102, 85)
         Me.txtperiod.Name = "txtperiod"
-        Me.txtperiod.Size = New System.Drawing.Size(100, 20)
+        Me.txtperiod.Size = New System.Drawing.Size(109, 20)
         Me.txtperiod.TabIndex = 9
-        Me.txtperiod.Value = New Date(2017, 2, 8, 0, 0, 0, 0)
         '
         'LabelControl4
         '
-        Me.LabelControl4.Location = New System.Drawing.Point(56, 87)
+        Me.LabelControl4.Location = New System.Drawing.Point(56, 113)
         Me.LabelControl4.Name = "LabelControl4"
         Me.LabelControl4.Size = New System.Drawing.Size(12, 13)
         Me.LabelControl4.TabIndex = 8
         Me.LabelControl4.Text = "To"
         '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(102, 139)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(100, 38)
-        Me.SimpleButton1.TabIndex = 7
-        Me.SimpleButton1.Text = "Preview"
-        '
         'RadioButton1
         '
         Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(57, 116)
+        Me.RadioButton1.Location = New System.Drawing.Point(58, 137)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(145, 17)
         Me.RadioButton1.TabIndex = 6
@@ -140,14 +144,21 @@ Partial Class Payslip
         Me.RadioButton1.Text = "Print All Employee Payslip"
         Me.RadioButton1.UseVisualStyleBackColor = True
         '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(105, 162)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(100, 38)
+        Me.SimpleButton1.TabIndex = 7
+        Me.SimpleButton1.Text = "Preview"
+        '
         'Payslip
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(213, 181)
+        Me.ClientSize = New System.Drawing.Size(211, 206)
         Me.Controls.Add(Me.GroupControl1)
-        Me.MaximumSize = New System.Drawing.Size(229, 220)
-        Me.MinimumSize = New System.Drawing.Size(229, 220)
         Me.Name = "Payslip"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Payslip"
@@ -171,4 +182,5 @@ Partial Class Payslip
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtto As DateTimePicker
     Friend WithEvents txtperiod As DateTimePicker
+    Friend WithEvents RadioButton2 As RadioButton
 End Class

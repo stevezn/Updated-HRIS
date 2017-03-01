@@ -51,9 +51,6 @@ Public Class ReportsForm
 
     Sub attendance()
         Dim table As New DataTable
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim a As MySqlCommand = SQLConnection.CreateCommand
         a.CommandText = "select * from db_absensi where tanggal between @date1 and @date2"
         a.Parameters.AddWithValue("@date1", date1.Value)
@@ -63,13 +60,9 @@ Public Class ReportsForm
         Dim cb As New MySqlCommandBuilder(adapter)
         adapter.Fill(table)
         lis.GridControl1.DataSource = table
-        SQLConnection.Close()
     End Sub
 
     Sub attend()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "select * from db_absensi where tanggal between @date1 and @date2"
         Dim p1, p2 As New MySqlParameter
@@ -83,11 +76,36 @@ Public Class ReportsForm
         Dim dt As New DataTable
         dt.Load(sqlcommand.ExecuteReader)
         lis.GridControl1.DataSource = dt
-        SQLConnection.Close()
+    End Sub
+
+    Sub showemp()
+        Dim showemps As MySqlCommand = SQLConnection.CreateCommand
+        showemps.CommandText = "select employeecode, fullname, status, changedate As DateChanged from db_pegawai where changedate between @date1 and @date2 and status = 'active' or status = 'terminate' or status = 'fired'"
+        showemps.Parameters.AddWithValue("@date1", date1.Value.Date)
+        showemps.Parameters.AddWithValue("@date2", date2.Value)
+        Dim tab As New DataTable
+        tab.Load(showemps.ExecuteReader)
+        lis.GridControl1.DataSource = tab
     End Sub
 
     Sub employee()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select count(*) from db_pegawai where status = 'Terminate' and TerminateDate between @date1 and @date2"
+        sqlcommand.Parameters.AddWithValue("@date1", date1.Value.Date)
+        sqlcommand.Parameters.AddWithValue("@date2", date2.Value)
+        Dim terminate As Integer = CInt(sqlcommand.ExecuteScalar)
 
+        Dim newemp As MySqlCommand = SQLConnection.CreateCommand
+        newemp.CommandText = "select count(*) from db_pegawai where workdate between @date1 and @date2"
+        newemp.Parameters.AddWithValue("@date1", date1.Value.Date)
+        newemp.Parameters.AddWithValue("@date2", date2.Value)
+        Dim employee As Integer = CInt(newemp.ExecuteScalar)
+
+        Dim fired As MySqlCommand = SQLConnection.CreateCommand
+        fired.CommandText = "select count(*) from db_pegawai where status = 'fired' and ChangeDate between @date1 and @date2"
+        fired.Parameters.AddWithValue("@date1", date1.Value.Date)
+        fired.Parameters.AddWithValue("@date2", date2.Value)
+        Dim fire As Integer = DirectCast(fired.ExecuteScalar, Integer)
     End Sub
 
     Dim reports As Report
@@ -109,7 +127,8 @@ Public Class ReportsForm
         If lis Is Nothing OrElse lis.IsDisposed Then
             lis = New Lists
         End If
-        attend()
+        'attend()
+        showemp()
         lis.Show()
         'end if
         'End If
@@ -118,6 +137,7 @@ Public Class ReportsForm
     Dim lis As New Lists
 
     Private Sub ReportsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
     End Sub
 End Class

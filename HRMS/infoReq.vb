@@ -40,7 +40,6 @@ Public Class infoReq
             Else
                 db = "db_hris"
             End If
-            'connectionString = "Server=" + host + "; User Id=root; Password=; Database=db_hris"
             connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -51,9 +50,6 @@ Public Class infoReq
     Private Sub loadinfo()
         GridControl1.RefreshDataSource()
         Dim table As New DataTable
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "Select IdRec, FullName from db_recruitment where status != 'In Progress'"
@@ -63,17 +59,12 @@ Public Class infoReq
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
             GridControl1.DataSource = table
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Sub loadD()
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlCommand As New MySqlCommand
         sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, status, InterviewDate FROM db_recruitment"
         sqlCommand.Connection = SQLConnection
@@ -83,10 +74,11 @@ Public Class infoReq
         For index As Integer = 0 To tbl_par.Rows.Count - 1
             txtnamakaryawan.Properties.Items.Add(tbl_par.Rows(index).Item(2).ToString())
         Next
-        SQLConnection.Close()
     End Sub
 
     Private Sub infoReq_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
         loadD()
         loadinfo()
     End Sub
@@ -132,23 +124,19 @@ Public Class infoReq
     Dim act As String = ""
 
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand
         datatabl.Clear()
-        'If barJudul.Caption = "Module Recruitment" Then
         Dim param As String = ""
-            Try
-                param = "and IdRec='" + GridView1.GetFocusedRowCellValue("IdRec").ToString() + "'"
-            Catch ex As Exception
-            End Try
-            If param > "" Then
-                act = "edit"
-            Else
-                act = "input"
-            End If
+        Try
+            param = "and IdRec='" + GridView1.GetFocusedRowCellValue("IdRec").ToString() + "'"
+        Catch ex As Exception
+        End Try
+        If param > "" Then
+            act = "edit"
+        Else
+            act = "input"
+        End If
         Try
             sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceofBirth, DateOfBirth, Address,Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, Reason FROM db_recruitment WHERE 1=1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
@@ -156,9 +144,7 @@ Public Class infoReq
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
         If datatabl.Rows.Count > 0 Then

@@ -38,7 +38,6 @@ Public Class DemosiHistory
         Else
             db = "db_hris"
         End If
-        'connectionString = "Server=" + host + "; User Id=root; Password=; Database=db_hris"
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
@@ -72,14 +71,9 @@ Public Class DemosiHistory
 
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         Dim view As GridView = CType(sender, GridView)
-        ' Check whether a row is right-clicked.
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
             Dim rowHandle As Integer = e.HitInfo.RowHandle
-            ' Delete existing menu items, if any.
             e.Menu.Items.Clear()
-            ' Add a submenu with a single menu item.
-            ' e.Menu.Items.Add(CreateRowSubMenu(view, rowHandle))
-            ' Add a check menu item.           
             Dim item As DXMenuItem = CreateMergingEnabledMenuItem(view, rowHandle)
             item.BeginGroup = True
             e.Menu.Items.Add(item)

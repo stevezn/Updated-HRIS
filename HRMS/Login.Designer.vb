@@ -25,8 +25,8 @@ Partial Class Login
         Me.teUsername = New DevExpress.XtraEditors.TextEdit()
         Me.tePassword = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.btnTest = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnTest = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.teUsername.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tePassword.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -75,6 +75,14 @@ Partial Class Login
         Me.LabelControl4.TabIndex = 70
         Me.LabelControl4.Text = "Sign In To Enter HRIS"
         '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(201, 3)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(22, 23)
+        Me.SimpleButton1.TabIndex = 80
+        '
         'btnTest
         '
         Me.btnTest.Image = CType(resources.GetObject("btnTest.Image"), System.Drawing.Image)
@@ -83,14 +91,6 @@ Partial Class Login
         Me.btnTest.Size = New System.Drawing.Size(100, 27)
         Me.btnTest.TabIndex = 79
         Me.btnTest.Text = "Connect.."
-        '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(201, 3)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(22, 23)
-        Me.SimpleButton1.TabIndex = 80
         '
         'Login
         '

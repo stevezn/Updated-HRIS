@@ -24,13 +24,11 @@ Partial Class PayrollSet
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PayrollSet))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.txtnew = New DevExpress.XtraEditors.TextEdit()
         Me.txtcurrent = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.lccurrent = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcnew = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
@@ -52,6 +50,8 @@ Partial Class PayrollSet
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtnew.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,7 +59,6 @@ Partial Class PayrollSet
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lccurrent, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcnew, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,6 +73,7 @@ Partial Class PayrollSet
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -87,16 +87,6 @@ Partial Class PayrollSet
         Me.LayoutControl1.Size = New System.Drawing.Size(289, 110)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
-        '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(12, 60)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(265, 38)
-        Me.SimpleButton1.StyleController = Me.LayoutControl1
-        Me.SimpleButton1.TabIndex = 6
-        Me.SimpleButton1.Text = "Change"
         '
         'txtnew
         '
@@ -145,18 +135,6 @@ Partial Class PayrollSet
         Me.lcnew.Size = New System.Drawing.Size(269, 24)
         Me.lcnew.Text = "New Value"
         Me.lcnew.TextSize = New System.Drawing.Size(66, 13)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.SimpleButton1
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 48)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(269, 42)
-        Me.LayoutControlItem1.Text = "LayoutControlItem1"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextToControlDistance = 0
-        Me.LayoutControlItem1.TextVisible = False
         '
         'GroupControl1
         '
@@ -395,6 +373,28 @@ Partial Class PayrollSet
         Me.LayoutControlItem10.TextToControlDistance = 0
         Me.LayoutControlItem10.TextVisible = False
         '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(12, 60)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(265, 38)
+        Me.SimpleButton1.StyleController = Me.LayoutControl1
+        Me.SimpleButton1.TabIndex = 6
+        Me.SimpleButton1.Text = "Change"
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.SimpleButton1
+        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 48)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(269, 42)
+        Me.LayoutControlItem1.Text = "LayoutControlItem1"
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem1.TextToControlDistance = 0
+        Me.LayoutControlItem1.TextVisible = False
+        '
         'PayrollSet
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -414,7 +414,6 @@ Partial Class PayrollSet
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lccurrent, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcnew, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -429,6 +428,7 @@ Partial Class PayrollSet
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

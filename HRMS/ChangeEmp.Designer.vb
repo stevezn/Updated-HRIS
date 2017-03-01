@@ -27,6 +27,8 @@ Partial Class ChangeEmp
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.txtworkdate = New System.Windows.Forms.DateTimePicker()
         Me.txtemptype = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtemail = New DevExpress.XtraEditors.TextEdit()
         Me.txtposition = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -68,8 +70,8 @@ Partial Class ChangeEmp
         Me.lcposition = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcemail = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.txtworkdate = New System.Windows.Forms.DateTimePicker()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,6 +118,7 @@ Partial Class ChangeEmp
         CType(Me.lcemail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView1
@@ -130,7 +133,7 @@ Partial Class ChangeEmp
         Me.GridControl1.Location = New System.Drawing.Point(2, 161)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(226, 329)
+        Me.GridControl1.Size = New System.Drawing.Size(226, 352)
         Me.GridControl1.TabIndex = 30
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -146,6 +149,7 @@ Partial Class ChangeEmp
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.DateTimePicker1)
         Me.LayoutControl1.Controls.Add(Me.txtworkdate)
         Me.LayoutControl1.Controls.Add(Me.txtemptype)
         Me.LayoutControl1.Controls.Add(Me.txtemail)
@@ -171,9 +175,24 @@ Partial Class ChangeEmp
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(409, 411, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(292, 501)
+        Me.LayoutControl1.Size = New System.Drawing.Size(292, 525)
         Me.LayoutControl1.TabIndex = 32
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Enabled = False
+        Me.DateTimePicker1.Location = New System.Drawing.Point(102, 446)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(178, 20)
+        Me.DateTimePicker1.TabIndex = 41
+        '
+        'txtworkdate
+        '
+        Me.txtworkdate.Location = New System.Drawing.Point(102, 350)
+        Me.txtworkdate.Name = "txtworkdate"
+        Me.txtworkdate.Size = New System.Drawing.Size(178, 20)
+        Me.txtworkdate.TabIndex = 40
         '
         'txtemptype
         '
@@ -251,7 +270,7 @@ Partial Class ChangeEmp
         Me.txtstatus.Location = New System.Drawing.Point(102, 398)
         Me.txtstatus.Name = "txtstatus"
         Me.txtstatus.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtstatus.Properties.Items.AddRange(New Object() {"Active", "Training", "Fired"})
+        Me.txtstatus.Properties.Items.AddRange(New Object() {"Active", "Training", "Fired", "Terminate"})
         Me.txtstatus.Size = New System.Drawing.Size(178, 20)
         Me.txtstatus.StyleController = Me.LayoutControl1
         Me.txtstatus.TabIndex = 27
@@ -316,7 +335,7 @@ Partial Class ChangeEmp
         'btnReset
         '
         Me.btnReset.Image = CType(resources.GetObject("btnReset.Image"), System.Drawing.Image)
-        Me.btnReset.Location = New System.Drawing.Point(149, 446)
+        Me.btnReset.Location = New System.Drawing.Point(149, 470)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(131, 38)
         Me.btnReset.StyleController = Me.LayoutControl1
@@ -326,7 +345,7 @@ Partial Class ChangeEmp
         'btnSave
         '
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
-        Me.btnSave.Location = New System.Drawing.Point(12, 446)
+        Me.btnSave.Location = New System.Drawing.Point(12, 470)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(133, 38)
         Me.btnSave.StyleController = Me.LayoutControl1
@@ -379,10 +398,10 @@ Partial Class ChangeEmp
         Me.LayoutControlGroup1.CustomizationFormText = "LayoutControlGroup1"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcempcode, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcbtnsave, Me.lcbtnreset, Me.lcphone, Me.lcdob, Me.lcbrowse, Me.lcgender, Me.lcreligion, Me.lcstats, Me.LayoutControlItem1, Me.lccompcode, Me.lcoffice, Me.lctrains, Me.lcposition, Me.lcemail, Me.LayoutControlItem2, Me.LayoutControlItem3})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcempcode, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcbtnsave, Me.lcbtnreset, Me.lcphone, Me.lcdob, Me.lcbrowse, Me.lcgender, Me.lcreligion, Me.lcstats, Me.LayoutControlItem1, Me.lccompcode, Me.lcoffice, Me.lctrains, Me.lcposition, Me.lcemail, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(292, 501)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(292, 525)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -440,7 +459,7 @@ Partial Class ChangeEmp
         '
         Me.lcbtnsave.Control = Me.btnSave
         Me.lcbtnsave.CustomizationFormText = "LayoutControlItem8"
-        Me.lcbtnsave.Location = New System.Drawing.Point(0, 434)
+        Me.lcbtnsave.Location = New System.Drawing.Point(0, 458)
         Me.lcbtnsave.Name = "lcbtnsave"
         Me.lcbtnsave.Size = New System.Drawing.Size(137, 47)
         Me.lcbtnsave.Text = "lcbtnsave"
@@ -452,7 +471,7 @@ Partial Class ChangeEmp
         '
         Me.lcbtnreset.Control = Me.btnReset
         Me.lcbtnreset.CustomizationFormText = "LayoutControlItem9"
-        Me.lcbtnreset.Location = New System.Drawing.Point(137, 434)
+        Me.lcbtnreset.Location = New System.Drawing.Point(137, 458)
         Me.lcbtnreset.Name = "lcbtnreset"
         Me.lcbtnreset.Size = New System.Drawing.Size(135, 47)
         Me.lcbtnreset.Text = "lcbtnreset"
@@ -592,13 +611,6 @@ Partial Class ChangeEmp
         Me.LayoutControlItem2.Text = "Employee Type"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(87, 13)
         '
-        'txtworkdate
-        '
-        Me.txtworkdate.Location = New System.Drawing.Point(102, 350)
-        Me.txtworkdate.Name = "txtworkdate"
-        Me.txtworkdate.Size = New System.Drawing.Size(178, 20)
-        Me.txtworkdate.TabIndex = 40
-        '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.txtworkdate
@@ -609,18 +621,26 @@ Partial Class ChangeEmp
         Me.LayoutControlItem3.Text = "Work Date"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(87, 13)
         '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.DateTimePicker1
+        Me.LayoutControlItem4.CustomizationFormText = "Terminate Date"
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 434)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(272, 24)
+        Me.LayoutControlItem4.Text = "Terminate Date"
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(87, 13)
+        '
         'ChangeEmp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(506, 502)
+        Me.ClientSize = New System.Drawing.Size(506, 522)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.pictureEdit)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(522, 541)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(522, 541)
         Me.Name = "ChangeEmp"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ChangeEmp"
@@ -670,6 +690,7 @@ Partial Class ChangeEmp
         CType(Me.lcemail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -721,4 +742,6 @@ Partial Class ChangeEmp
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtworkdate As DateTimePicker
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
 End Class

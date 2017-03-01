@@ -89,6 +89,7 @@ Partial Class ReportsForm
         Me.Label2.Size = New System.Drawing.Size(36, 13)
         Me.Label2.TabIndex = 20
         Me.Label2.Text = "visible"
+        Me.Label2.Visible = False
         '
         'ReportsForm
         '

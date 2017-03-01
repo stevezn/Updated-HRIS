@@ -28,18 +28,15 @@ Public Class NewRec
         Else
             password = ""
         End If
-
         If File.Exists("settingdb.txt") Then
             db = File.ReadAllText("settingdb.txt")
         Else
             db = "db_hris"
         End If
-        'connectionString = "Server=" + host + "; User Id=root; Password=; Database=db_hris"
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
     Sub reset()
-        'lcfullname.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -72,9 +69,6 @@ Public Class NewRec
     End Function
 
     Public Sub updatechange2()
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_recruitment SET" +
@@ -116,9 +110,7 @@ Public Class NewRec
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MessageBox.Show("Data Successfully Changed!")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
@@ -143,9 +135,10 @@ Public Class NewRec
     Dim main As MainApp
 
     Public Function insertreq2() As Boolean
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
+        Dim dtb As DateTime
+        txtinterviewdate.Format = DateTimePickerFormat.Custom
+        txtinterviewdate.CustomFormat = "yyyy-MM-dd"
+        dtb = txtinterviewdate.Value
         Dim ynow As String = Format(Now, "yy").ToString
         Dim mnow As String = Month(Now).ToString
         Dim lastn As Integer
@@ -230,7 +223,7 @@ Public Class NewRec
                 sqlCommand.Parameters.AddWithValue("@Photo", "")
             End If
             sqlCommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlCommand.Parameters.AddWithValue("@InterviewDate", txtinterviewdate.Text)
+            sqlCommand.Parameters.AddWithValue("@InterviewDate", dtb.ToString("yyyy-MM-dd"))
             sqlCommand.Parameters.AddWithValue("@Cv", txtcv.Text)
             sqlCommand.Parameters.AddWithValue("@Reason", "")
             sqlCommand.Parameters.AddWithValue("@CreatedDate", Date.Now)
@@ -246,7 +239,8 @@ Public Class NewRec
     Dim tbl_par As New DataTable
 
     Private Sub NewEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'loadDataKaryawan()
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
     End Sub
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
@@ -267,7 +261,6 @@ Public Class NewRec
         lcbtnsave.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbtnreset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         BarButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        'RibbonPageGroup2.Visible = False
     End Sub
 
     Private Sub NewEmployee_Move(sender As Object, e As EventArgs) Handles MyBase.Move
@@ -302,7 +295,6 @@ Public Class NewRec
         cleartxt()
         barJudul.Caption = "Change Data"
         reset()
-        ' lcfullname.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -322,6 +314,31 @@ Public Class NewRec
     Dim openfd As New OpenFileDialog
 
     Private Sub btnCV_Click(sender As Object, e As EventArgs) Handles btnCV.Click
+        'Try
+        '    Dim fs As FileStream
+        '    fs = New FileStream(sfile, FileMode.Open, FileAccess.Read)
+
+        '    Dim docByte As Byte() = New Byte(fs.Length - 1) {}
+
+        '    fs.Read(docByte, 0, System.Convert.ToInt32(fs.Length))
+
+        '    fs.Close()
+        '    'Insert statement for sql query
+        '    Dim sqltxt As String
+        '    sqltxt = "insert into db_recruitment values('" & txtcv.Text & "',@fdoc)"
+
+        '    'store doc as Binary value using SQLParameter
+        '    Dim docfile As New MySqlParameter
+        '    docfile.MySqlDbType = MySqlDbType.Binary
+        '    docfile.ParameterName = "fdoc"
+        '    docfile.Value = docByte
+        '    Dim sqlcmd = New MySqlCommand(sqltxt, SQLConnection)
+        '    sqlcmd.Parameters.Add(docfile)
+        '    sqlcmd.ExecuteNonQuery()
+        '    MsgBox("Data Saved Successfully")
+        'Catch ex As Exception
+        'End Try
+
         openfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer)
         openfd.Title = "Open a CV File"
         openfd.Filter = "Word Files|*.docx|Text Files|*.txt"
@@ -330,10 +347,10 @@ Public Class NewRec
     End Sub
 
     Private Sub OpenPreviewWindows()
+        Dim iHeight As Integer = pictureEdit.Height
+        Dim iWidth As Integer = pictureEdit.Width
+        hHwnd = capCreateCaptureWindowA((iDevice), WS_VISIBLE Or WS_CHILD, 0, 0, 640, 480, pictureEdit.Handle.ToInt32, 0)
         Try
-            Dim iHeight As Integer = pictureEdit.Height
-            Dim iWidth As Integer = pictureEdit.Width
-            hHwnd = capCreateCaptureWindowA(iDevice, WS_VISIBLE Or WS_CHILD, 0, 0, 640, 480, pictureEdit.Handle.ToInt32, 0)
             If SendMessage(hHwnd, WM_Cap_Paki_CONNECT, iDevice, 0) Then
                 SendMessage(hHwnd, WM_Cap_SET_SCALE, True, 0)
                 SendMessage(hHwnd, WM_Cap_SET_PREVIEWRATE, 66, 0)
@@ -353,23 +370,27 @@ Public Class NewRec
     End Sub
 
     Private Sub btnCapture_Click(sender As Object, e As EventArgs) Handles btnCapture.Click
-        If btnCapture.Text = "Camera" Then
-            Call OpenPreviewWindows()
-            btnCapture.Text = "Capture"
-        ElseIf btnCapture.Text = "Capture" Then
-            Dim data As IDataObject
-            Dim Bmap As Drawing.Image
-            SendMessage(hHwnd, WM_Cap_EDIT_COPY, 0, 0)
-            data = Clipboard.GetDataObject()
-            If data.GetDataPresent(GetType(System.Drawing.Bitmap)) Then
-                Bmap = CType(data.GetData(GetType(System.Drawing.Bitmap)), Drawing.Image)
-                pictureEdit.Image = Bmap
-                ClosePreviewWindow()
+        Try
+            If btnCapture.Text = "Camera" Then
+                Call OpenPreviewWindows()
+                btnCapture.Text = "Capture"
+            ElseIf btnCapture.Text = "Capture" Then
+                Dim data As IDataObject
+                Dim Bmap As Drawing.Image
+                SendMessage(hHwnd, WM_Cap_EDIT_COPY, 0, 0)
+                data = Clipboard.GetDataObject()
+                If data.GetDataPresent(GetType(System.Drawing.Bitmap)) Then
+                    Bmap = CType(data.GetData(GetType(System.Drawing.Bitmap)), Drawing.Image)
+                    pictureEdit.Image = Bmap
+                    ClosePreviewWindow()
+                End If
+                btnCapture.Text = "Camera"
+                pictureEdit.Enabled = True
+                pictureEdit.Enabled = True
+                Call ClosePreviewWindow()
             End If
-            btnCapture.Text = "Camera"
-            pictureEdit.Enabled = True
-            pictureEdit.Enabled = True
-            Call ClosePreviewWindow()
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

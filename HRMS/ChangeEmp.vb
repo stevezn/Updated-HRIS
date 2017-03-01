@@ -58,13 +58,9 @@ Public Class ChangeEmp
         Return Image.FromStream(pictureBytes)
     End Function
 
-
     Private Sub loadinfo()
         GridControl1.RefreshDataSource()
         Dim table As New DataTable
-        SQLConnection = New MySqlConnection
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "Select EmployeeCode, FullName, IdNumber from db_pegawai where status != 'Fired'"
@@ -74,17 +70,12 @@ Public Class ChangeEmp
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
             GridControl1.DataSource = table
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand
         datatabl.Clear()
@@ -100,7 +91,6 @@ Public Class ChangeEmp
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
-            SQLConnection.Close()
         Catch ex As Exception
             SQLConnection.Close()
             MsgBox(ex.Message)
@@ -134,6 +124,8 @@ Public Class ChangeEmp
     End Sub
 
     Private Sub ChangeEmp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
         loadinfo()
     End Sub
 
@@ -146,13 +138,14 @@ Public Class ChangeEmp
     End Sub
 
     Public Sub UpdateEmp()
-        SQLConnection = New MySqlConnection()
-        SQLConnection.ConnectionString = connectionString
-        SQLConnection.Open()
-        Dim dtb As DateTime
+        Dim dtb, dtr As DateTime
         txtworkdate.Format = DateTimePickerFormat.Custom
         txtworkdate.CustomFormat = "yyyy-MM-dd"
         dtb = txtworkdate.Value
+        DateTimePicker1.Format = DateTimePickerFormat.Custom
+        DateTimePicker1.CustomFormat = "yyyy-MM-dd"
+        dtr = DateTimePicker1.Value
+
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
         Try
@@ -173,7 +166,9 @@ Public Class ChangeEmp
                    ", Photo = @Photo" +
                    ", Status = @Status" +
                    ", TrainingSampai = @TrainingSampai" +
+                   ", TerminateDate = @TerminateDate" +
                    ", EmployeeType = @EmployeeType " +
+                   ", ChangeDate = @ChangeDate" +
                    " WHERE EmployeeCode = @EmployeeCode"
             sqlCommand.Connection = SQLConnection
             sqlCommand.CommandText = str_carSql
@@ -199,13 +194,13 @@ Public Class ChangeEmp
             End If
             sqlCommand.Parameters.AddWithValue("@Status", txtstatus.Text)
             sqlCommand.Parameters.AddWithValue("@TrainingSampai", txtrains.Text)
+            sqlCommand.Parameters.AddWithValue("@TerminateDate", dtr.ToString("yyyy-MM-dd"))
             sqlCommand.Parameters.AddWithValue("@EmployeeType", txtemptype.Text)
+            sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
             sqlCommand.Connection = SQLConnection
             sqlCommand.ExecuteNonQuery()
             MsgBox("Data Successfully Changed")
-            SQLConnection.Close()
         Catch ex As Exception
-            SQLConnection.Close()
             MessageBox.Show("Process Failed!")
         End Try
     End Sub
@@ -242,5 +237,11 @@ Public Class ChangeEmp
 
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         cleartxt()
+    End Sub
+
+    Private Sub txtstatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtstatus.SelectedIndexChanged
+        If txtstatus.SelectedIndex = 3 Then
+            DateTimePicker1.Enabled = True
+        End If
     End Sub
 End Class
