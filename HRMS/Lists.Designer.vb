@@ -22,7 +22,7 @@ Partial Class Lists
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.CardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
@@ -32,8 +32,8 @@ Partial Class Lists
         '
         'GridControl1
         '
-        GridLevelNode2.RelationName = "Level1"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.GridControl1.Location = New System.Drawing.Point(-1, -1)
         Me.GridControl1.MainView = Me.CardView1
         Me.GridControl1.Name = "GridControl1"

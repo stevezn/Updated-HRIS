@@ -44,7 +44,7 @@ Public Class NewEmp
         lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcempcode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        ' lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcoffice.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcposition.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -152,10 +152,13 @@ Public Class NewEmp
     End Sub
 
     Public Function InsertEmp() As Boolean
-        Dim dtb As DateTime
+        Dim dtb, dtr As DateTime
         txtworkdate.Format = DateTimePickerFormat.Custom
         txtworkdate.CustomFormat = "yyyy-MM-dd"
         dtb = txtworkdate.Value
+        txtdob.Format = DateTimePickerFormat.Custom
+        txtdob.CustomFormat = "yyyy-MM-dd"
+        dtr = txtdob.Value
         Dim lastn As Integer
         Dim ynow As String = Format(Now, "yy").ToString
         Dim mnow As String = Month(Now).ToString
@@ -181,7 +184,7 @@ Public Class NewEmp
             sqlCommand.Parameters.AddWithValue("@FullName", txtnames.Text)
             sqlCommand.Parameters.AddWithValue("@Position", txtposition.Text)
             sqlCommand.Parameters.AddWithValue("@PlaceOfBirth", txtpob.Text)
-            sqlCommand.Parameters.AddWithValue("@DateOfBirth", txtdob.Text)
+            sqlCommand.Parameters.AddWithValue("@DateOfBirth", dtr.ToString("yyyy-MM-dd"))
             sqlCommand.Parameters.AddWithValue("@Gender", txtgender.Text)
             sqlCommand.Parameters.AddWithValue("@Religion", txtreligion.Text)
             sqlCommand.Parameters.AddWithValue("@Address", txtaddress.Text)
@@ -227,7 +230,7 @@ Public Class NewEmp
         lccompcode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcposition.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        ' lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -250,7 +253,7 @@ Public Class NewEmp
         lcemail.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcoffice.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        ' lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcposition.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcempcode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lccompcode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always

@@ -40,7 +40,7 @@ Public Class NewRec
         lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        ' lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcCv.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbtncv.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -135,10 +135,13 @@ Public Class NewRec
     Dim main As MainApp
 
     Public Function insertreq2() As Boolean
-        Dim dtb As DateTime
+        Dim dtb, dtr As DateTime
         txtinterviewdate.Format = DateTimePickerFormat.Custom
         txtinterviewdate.CustomFormat = "yyyy-MM-dd"
         dtb = txtinterviewdate.Value
+        txtdob.Format = DateTimePickerFormat.Custom
+        txtdob.CustomFormat = "yyyy-MM-dd"
+        dtr = txtdob.Value
         Dim ynow As String = Format(Now, "yy").ToString
         Dim mnow As String = Month(Now).ToString
         Dim lastn As Integer
@@ -210,7 +213,7 @@ Public Class NewRec
             sqlCommand.Parameters.AddWithValue("@InterviewTimes", txtinterview.Text)
             sqlCommand.Parameters.AddWithValue("@FullName", txtnames.Text)
             sqlCommand.Parameters.AddWithValue("@PlaceOfBirth", txtpob.Text)
-            sqlCommand.Parameters.AddWithValue("@DateOfBirth", txtdob.Text)
+            sqlCommand.Parameters.AddWithValue("@DateOfBirth", dtr.ToString("yyyy-MM-dd"))
             sqlCommand.Parameters.AddWithValue("@Address", txtaddress.Text)
             sqlCommand.Parameters.AddWithValue("@Gender", txtgender.Text)
             sqlCommand.Parameters.AddWithValue("@Religion", txtreligion.Text)
@@ -250,7 +253,7 @@ Public Class NewRec
         lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        'lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -297,7 +300,7 @@ Public Class NewRec
         reset()
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        '  lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always

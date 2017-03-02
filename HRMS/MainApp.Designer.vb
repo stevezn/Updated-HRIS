@@ -25,9 +25,9 @@ Partial Class MainApp
         Me.components = New System.ComponentModel.Container()
         Dim RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainApp))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode5 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode6 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
@@ -736,10 +736,10 @@ Partial Class MainApp
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(2)
-        GridLevelNode1.RelationName = "Level1"
-        GridLevelNode2.RelationName = "Level2"
-        GridLevelNode3.RelationName = "Level3"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1, GridLevelNode2, GridLevelNode3})
+        GridLevelNode4.RelationName = "Level1"
+        GridLevelNode5.RelationName = "Level2"
+        GridLevelNode6.RelationName = "Level3"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode4, GridLevelNode5, GridLevelNode6})
         Me.GridControl1.Location = New System.Drawing.Point(-316, -108)
         Me.GridControl1.MainView = Me.CardView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(2)

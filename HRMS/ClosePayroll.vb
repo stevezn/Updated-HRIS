@@ -204,8 +204,8 @@ Public Class ClosePayroll
         Dim realb As String = CStr(babsen.ExecuteScalar)
 
         Dim sqlcommand1 As New MySqlCommand
-        sqlcommand0.CommandType = CommandType.StoredProcedure
-        sqlcommand0.CommandText = "rangedate"
+        sqlcommand1.CommandType = CommandType.StoredProcedure
+        sqlcommand1.CommandText = "rangedate"
         Dim d1, d2 As New MySqlParameter
         d1.ParameterName = "@date1"
         d2.ParameterName = "@date2"

@@ -116,10 +116,13 @@ Public Class ChangeData
     End Sub
 
     Public Sub updatechange2()
-        Dim dtb As Date
+        Dim dtb, dtr As Date
         txtinterviewdate.Format = DateTimePickerFormat.Custom
         txtinterviewdate.CustomFormat = "yyyy-MM-dd"
         dtb = txtinterviewdate.Value
+        txtdob.Format = DateTimePickerFormat.Custom
+        txtdob.CustomFormat = "yyyy-MM-dd"
+        dtr = txtdob.Value
         Dim sqlcommand As New MySqlCommand
         Try
             sqlcommand.CommandText = "UPDATE db_recruitment SET" +
@@ -142,7 +145,7 @@ Public Class ChangeData
             sqlcommand.Parameters.AddWithValue("@InterviewTimes", txtinterview.Text)
             sqlcommand.Parameters.AddWithValue("@FullName", txtnames.Text)
             sqlcommand.Parameters.AddWithValue("@PlaceOfBirth", txtpob.Text)
-            sqlcommand.Parameters.AddWithValue("@DateOfBirth", txtdob.Text)
+            sqlcommand.Parameters.AddWithValue("@DateOfBirth", dtr.ToString("yyyy-MM-dd"))
             sqlcommand.Parameters.AddWithValue("@Address", txtaddress.Text)
             sqlcommand.Parameters.AddWithValue("@Gender", txtgender.Text)
             sqlcommand.Parameters.AddWithValue("@Religion", txtreligion.Text)

@@ -8,11 +8,9 @@ Public Class Payslip
     Dim oDt_sched As New DataTable()
     Dim tbl_par As New DataTable
 
-
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
-
         ' Add any initialization after the InitializeComponent() call.
         Dim host As String
         Dim id As String
@@ -130,69 +128,71 @@ Public Class Payslip
     End Sub
 
     Sub hasilslip(emp As String)
-        Dim names As MySqlCommand = SQLConnection.CreateCommand
-        names.CommandText = "select employeetype from db_pegawai where EmployeeCode = '" & emp & "'"
-        Dim name As String = CStr(names.ExecuteScalar)
+        Try
+            Dim names As MySqlCommand = SQLConnection.CreateCommand
+            names.CommandText = "select employeetype from db_pegawai where EmployeeCode = '" & emp & "'"
+            Dim name As String = CStr(names.ExecuteScalar)
 
-        Dim q As MySqlCommand = SQLConnection.CreateCommand()
-        q.CommandText = "select * from db_employeetype where emptype = '" & name & "'"
+            Dim q As MySqlCommand = SQLConnection.CreateCommand()
+            q.CommandText = "select * from db_employeetype where emptype = '" & name & "'"
 
-        Dim a As MySqlCommand = SQLConnection.CreateCommand
-        a.CommandText = "select count(*) from db_absensi where Tanggal between @date1 and @date2 and EmployeeCode = '" & emp & "'"
-        a.Parameters.AddWithValue("@date1", txtperiod.Value.Date)
-        a.Parameters.AddWithValue("@date2", txtto.Value)
-        Dim hk As Integer = CInt(a.ExecuteScalar)
+            Dim a As MySqlCommand = SQLConnection.CreateCommand
+            a.CommandText = "select count(*) from db_absensi where Tanggal between @date1 and @date2 and EmployeeCode = '" & emp & "'"
+            a.Parameters.AddWithValue("@date1", txtperiod.Value.Date)
+            a.Parameters.AddWithValue("@date2", txtto.Value)
+            Dim hk As Integer = CInt(a.ExecuteScalar)
 
-        Dim b As MySqlCommand = SQLConnection.CreateCommand
-        b.CommandText = "select (a.basicrate * b.bpjs / 100) + (a.basicrate * b.JamKecelakaanKerja / 100 ) + (a.basicrate * b.JaminanKesehatan/ 100) + (a.basicrate * b.IuranPensiun/100) + (a.basicrate * b.JaminanHariTua / 100) + (a.basicrate * b.biayajabatan / 100) + (a.basicrate * b.lates / 100) + (a.basicrate * b.JaminanKematian / 100) from db_payrolldata a, db_setpayroll b where employeecode = '" & emp & "'"
-        Dim deduc As Integer = CInt(b.ExecuteScalar)
+            Dim b As MySqlCommand = SQLConnection.CreateCommand
+            b.CommandText = "select (a.basicrate * b.bpjs / 100) + (a.basicrate * b.JamKecelakaanKerja / 100 ) + (a.basicrate * b.JaminanKesehatan/ 100) + (a.basicrate * b.IuranPensiun/100) + (a.basicrate * b.JaminanHariTua / 100) + (a.basicrate * b.biayajabatan / 100) + (a.basicrate * b.lates / 100) + (a.basicrate * b.JaminanKematian / 100) from db_payrolldata a, db_setpayroll b where employeecode = '" & emp & "'"
+            Dim deduc As Integer = CInt(b.ExecuteScalar)
 
-        Dim salary As MySqlCommand = SQLConnection.CreateCommand
-        salary.CommandText = "select basicrate from db_payrolldata where EmployeeCode = '" & emp & "'"
-        Dim realsalary As Integer = CInt(salary.ExecuteScalar)
+            Dim salary As MySqlCommand = SQLConnection.CreateCommand
+            salary.CommandText = "select basicrate from db_payrolldata where EmployeeCode = '" & emp & "'"
+            Dim realsalary As Integer = CInt(salary.ExecuteScalar)
 
-        Dim adp As New MySqlDataAdapter(q)
-        Dim ds As New DataSet
-        Dim income As Integer
-
-        adp.Fill(ds)
-        If ds.Tables.Count = 1 Then
-            If ds.Tables(0).Rows.Count = 1 Then
-                Dim calc = ds.Tables(0).Rows(0).Item("calculation")
-                If calc IsNot Nothing Then
-                    calc = calc.replace("[hk]", hk)
-                    calc = calc.Replace("[output]", "30")
-                    calc = calc.replace("[salarypermonth]", realsalary)
-                    Dim q2 As MySqlCommand = SQLConnection.CreateCommand()
-                    q2.CommandText = CType("select " & calc, String)
-                    income = CInt(q2.ExecuteScalar)
+            Dim adp As New MySqlDataAdapter(q)
+            Dim ds As New DataSet
+            Dim income As Integer
+            adp.Fill(ds)
+            If ds.Tables.Count = 1 Then
+                If ds.Tables(0).Rows.Count = 1 Then
+                    Dim calc = ds.Tables(0).Rows(0).Item("calculation")
+                    If calc IsNot Nothing Then
+                        calc = calc.replace("[hk]", hk)
+                        calc = calc.Replace("[output]", "30")
+                        calc = calc.replace("[salarypermonth]", realsalary)
+                        Dim q2 As MySqlCommand = SQLConnection.CreateCommand()
+                        q2.CommandText = CType("select " & calc, String)
+                        income = CInt(q2.ExecuteScalar)
+                    End If
                 End If
             End If
-        End If
 
-        Dim fix As Integer = income - deduc
-        Dim ovt As MySqlCommand = SQLConnection.CreateCommand
-        ovt.CommandText = "select sum(overtimehours) from db_absensi where employeecode = '" & emp & "'"
-        Dim realovt As Integer = CInt(ovt.ExecuteScalar)
-
-        Dim collect As MySqlCommand = SQLConnection.CreateCommand
-        collect.CommandText = "INSERT INTO db_temp " +
+            Dim fix As Integer = income - deduc
+            Dim ovt As MySqlCommand = SQLConnection.CreateCommand
+            ovt.CommandText = "select sum(overtimehours) from db_absensi where employeecode = '" & emp & "'"
+            Dim realovt As Integer = CInt(ovt.ExecuteScalar)
+            Dim collect As MySqlCommand = SQLConnection.CreateCommand
+            collect.CommandText = "INSERT INTO db_temp " +
                                 "(Dated, EmployeeCode, HK, Overtime, Deductions, FixedSalary) " +
                                 " Values (@Dated, @EmployeeCode, @HK, @Overtime, @Deductions, @FixedSalary)"
-        collect.Parameters.AddWithValue("@Dated", Date.Now)
-        collect.Parameters.AddWithValue("@EmployeeCode", emp)
-        collect.Parameters.AddWithValue("@HK", hk)
-        collect.Parameters.AddWithValue("@Overtime", realovt)
-        collect.Parameters.AddWithValue("@Deductions", deduc)
-        collect.Parameters.AddWithValue("@FixedSalary", fix)
-        collect.ExecuteNonQuery()
-        Dim table As New DataTable
-        Dim sqlCommand As New MySqlCommand
-        sqlCommand.CommandText = "Select b.Dated as Tanggal, a.EmployeeCode, b.HK as JumlahHariKerja, a.FullName, a.BasicRate as Salary, a.MealRate, a.Allowance, a.Incentives, b.Overtime, b.Deductions, b.FixedSalary FROM db_payrolldata a, db_temp b where a.Employeecode = b.Employeecode"
-        sqlCommand.Connection = SQLConnection
-        Dim dt As New DataTable
-        dt.Load(sqlCommand.ExecuteReader)
-        viw.GridControl1.DataSource = dt
+            collect.Parameters.AddWithValue("@Dated", Date.Now)
+            collect.Parameters.AddWithValue("@EmployeeCode", emp)
+            collect.Parameters.AddWithValue("@HK", hk)
+            collect.Parameters.AddWithValue("@Overtime", realovt)
+            collect.Parameters.AddWithValue("@Deductions", deduc)
+            collect.Parameters.AddWithValue("@FixedSalary", fix)
+            collect.ExecuteNonQuery()
+            Dim table As New DataTable
+            Dim sqlCommand As New MySqlCommand
+            sqlCommand.CommandText = "Select b.Dated as Tanggal, a.EmployeeCode, b.HK as JumlahHariKerja, a.FullName, a.BasicRate as Salary, a.MealRate, a.Allowance, a.Incentives, b.Overtime, b.Deductions, b.FixedSalary FROM db_payrolldata a, db_temp b where a.Employeecode = b.Employeecode"
+            sqlCommand.Connection = SQLConnection
+            Dim dt As New DataTable
+            dt.Load(sqlCommand.ExecuteReader)
+            viw.GridControl1.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub Payslip_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -45,7 +45,6 @@ Partial Class NewEmp
         Me.txtstatus = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtreligion = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtgender = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.txtdob = New DevExpress.XtraEditors.DateEdit()
         Me.txtfoto = New DevExpress.XtraEditors.ImageEdit()
         Me.txtphone = New DevExpress.XtraEditors.TextEdit()
         Me.btnReset = New DevExpress.XtraEditors.SimpleButton()
@@ -62,7 +61,6 @@ Partial Class NewEmp
         Me.lcbtnsave = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcbtnreset = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcphone = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcdob = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcbrowse = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcgender = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcreligion = New DevExpress.XtraLayout.LayoutControlItem()
@@ -77,6 +75,8 @@ Partial Class NewEmp
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
+        Me.txtdob = New System.Windows.Forms.DateTimePicker()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.lcaddress, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtaddress.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,8 +93,6 @@ Partial Class NewEmp
         CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtreligion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtgender.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtdob.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtdob.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtfoto.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtpob.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,7 +107,6 @@ Partial Class NewEmp
         CType(Me.lcbtnsave, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcbtnreset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcdob, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcbrowse, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcgender, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcreligion, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,6 +121,7 @@ Partial Class NewEmp
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lcaddress
@@ -199,6 +197,7 @@ Partial Class NewEmp
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.txtdob)
         Me.LayoutControl1.Controls.Add(Me.txtworkdate)
         Me.LayoutControl1.Controls.Add(Me.txtemptype)
         Me.LayoutControl1.Controls.Add(Me.txtemail)
@@ -211,7 +210,6 @@ Partial Class NewEmp
         Me.LayoutControl1.Controls.Add(Me.txtstatus)
         Me.LayoutControl1.Controls.Add(Me.txtreligion)
         Me.LayoutControl1.Controls.Add(Me.txtgender)
-        Me.LayoutControl1.Controls.Add(Me.txtdob)
         Me.LayoutControl1.Controls.Add(Me.txtfoto)
         Me.LayoutControl1.Controls.Add(Me.txtphone)
         Me.LayoutControl1.Controls.Add(Me.btnReset)
@@ -356,23 +354,6 @@ Partial Class NewEmp
         Me.txtgender.StyleController = Me.LayoutControl1
         Me.txtgender.TabIndex = 25
         '
-        'txtdob
-        '
-        Me.txtdob.EditValue = Nothing
-        Me.txtdob.Location = New System.Drawing.Point(102, 180)
-        Me.txtdob.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtdob.MenuManager = Me.RibbonControl1
-        Me.txtdob.Name = "txtdob"
-        Me.txtdob.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtdob.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtdob.Properties.CalendarTimeProperties.CloseUpKey = New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4)
-        Me.txtdob.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.[Default]
-        Me.txtdob.Properties.Mask.EditMask = ""
-        Me.txtdob.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
-        Me.txtdob.Size = New System.Drawing.Size(178, 20)
-        Me.txtdob.StyleController = Me.LayoutControl1
-        Me.txtdob.TabIndex = 21
-        '
         'txtfoto
         '
         Me.txtfoto.EditValue = CType(resources.GetObject("txtfoto.EditValue"), Object)
@@ -458,7 +439,7 @@ Partial Class NewEmp
         Me.LayoutControlGroup1.CustomizationFormText = "LayoutControlGroup1"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcempcode, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcbtnsave, Me.lcbtnreset, Me.lcphone, Me.lcdob, Me.lcbrowse, Me.lcgender, Me.lcreligion, Me.lcstats, Me.LayoutControlItem1, Me.lcfullname, Me.lccompcode, Me.lcoffice, Me.lctrains, Me.lcposition, Me.lcemail, Me.LayoutControlItem2, Me.LayoutControlItem3})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcempcode, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcbtnsave, Me.lcbtnreset, Me.lcphone, Me.lcbrowse, Me.lcgender, Me.lcreligion, Me.lcstats, Me.LayoutControlItem1, Me.lcfullname, Me.lccompcode, Me.lcoffice, Me.lctrains, Me.lcposition, Me.lcemail, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(292, 520)
@@ -538,16 +519,6 @@ Partial Class NewEmp
         Me.lcphone.Size = New System.Drawing.Size(272, 24)
         Me.lcphone.Text = "Phone Number"
         Me.lcphone.TextSize = New System.Drawing.Size(87, 13)
-        '
-        'lcdob
-        '
-        Me.lcdob.Control = Me.txtdob
-        Me.lcdob.CustomizationFormText = "Date Of Birth"
-        Me.lcdob.Location = New System.Drawing.Point(0, 168)
-        Me.lcdob.Name = "lcdob"
-        Me.lcdob.Size = New System.Drawing.Size(272, 24)
-        Me.lcdob.Text = "Date Of Birth"
-        Me.lcdob.TextSize = New System.Drawing.Size(87, 13)
         '
         'lcbrowse
         '
@@ -684,12 +655,29 @@ Partial Class NewEmp
         'pictureEdit
         '
         Me.pictureEdit.Image = Global.HRMS.My.Resources.Resources.user_icon_6
-        Me.pictureEdit.Location = New System.Drawing.Point(310, 163)
+        Me.pictureEdit.Location = New System.Drawing.Point(310, 160)
         Me.pictureEdit.Name = "pictureEdit"
         Me.pictureEdit.Size = New System.Drawing.Size(148, 150)
         Me.pictureEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pictureEdit.TabIndex = 30
         Me.pictureEdit.TabStop = False
+        '
+        'txtdob
+        '
+        Me.txtdob.Location = New System.Drawing.Point(102, 180)
+        Me.txtdob.Name = "txtdob"
+        Me.txtdob.Size = New System.Drawing.Size(178, 21)
+        Me.txtdob.TabIndex = 41
+        '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.txtdob
+        Me.LayoutControlItem4.CustomizationFormText = "Date Of Birth"
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(272, 24)
+        Me.LayoutControlItem4.Text = "Date Of Birth"
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(87, 13)
         '
         'NewEmp
         '
@@ -721,8 +709,6 @@ Partial Class NewEmp
         CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtreligion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtgender.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtdob.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtdob.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtfoto.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtpob.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -737,7 +723,6 @@ Partial Class NewEmp
         CType(Me.lcbtnsave, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcbtnreset, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcdob, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcbrowse, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcgender, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcreligion, System.ComponentModel.ISupportInitialize).EndInit()
@@ -752,6 +737,7 @@ Partial Class NewEmp
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -775,7 +761,6 @@ Partial Class NewEmp
     Friend WithEvents txtstatus As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents txtreligion As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents txtgender As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents txtdob As DevExpress.XtraEditors.DateEdit
     Friend WithEvents txtfoto As DevExpress.XtraEditors.ImageEdit
     Friend WithEvents txtphone As DevExpress.XtraEditors.TextEdit
     Friend WithEvents btnReset As DevExpress.XtraEditors.SimpleButton
@@ -792,7 +777,6 @@ Partial Class NewEmp
     Friend WithEvents lcbtnsave As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcbtnreset As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcphone As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcdob As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcbrowse As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcgender As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcreligion As DevExpress.XtraLayout.LayoutControlItem
@@ -810,4 +794,6 @@ Partial Class NewEmp
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtworkdate As DateTimePicker
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtdob As DateTimePicker
+    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
 End Class

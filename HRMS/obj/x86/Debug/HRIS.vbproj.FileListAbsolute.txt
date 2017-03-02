@@ -876,3 +876,5 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.selectemp.resourc
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Analytical.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.addmenu.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Rating.resources
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.vbprojResolveAssemblyReference.cache
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.comparison.resources

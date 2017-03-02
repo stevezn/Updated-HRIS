@@ -3097,14 +3097,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HRIS.exe" size="1779712">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HRIS.exe" size="1790976">
       <assemblyIdentity name="HRIS" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>OZMM6XzBLwRr/MApbP7edwxElPg=</dsig:DigestValue>
+        <dsig:DigestValue>y/6H7rwR0Lw3OSz7jqHGNaCXp1E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

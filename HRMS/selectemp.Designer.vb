@@ -94,7 +94,7 @@ Partial Class selectemp
         Me.SimpleButton4.Name = "SimpleButton4"
         Me.SimpleButton4.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton4.TabIndex = 15
-        Me.SimpleButton4.Text = "Refresh now"
+        Me.SimpleButton4.Text = "Refresh"
         '
         'txtrec1
         '

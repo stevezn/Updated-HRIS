@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Analytical
-    Inherits System.Windows.Forms.Form
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -22,25 +22,22 @@ Partial Class Analytical
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Analytical))
+        Dim RadarDiagram2 As DevExpress.XtraCharts.RadarDiagram = New DevExpress.XtraCharts.RadarDiagram()
+        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim RadarPointSeriesLabel2 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
+        Dim RadarLineSeriesView2 As DevExpress.XtraCharts.RadarLineSeriesView = New DevExpress.XtraCharts.RadarLineSeriesView()
+        Dim SideBySideBarSeriesLabel2 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.txtinterviewdate = New System.Windows.Forms.DateTimePicker()
-        Me.txtcv = New DevExpress.XtraEditors.TextEdit()
-        Me.btnCV = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnPhoto = New DevExpress.XtraEditors.SimpleButton()
+        Me.txtposition = New DevExpress.XtraEditors.TextEdit()
+        Me.txtexpsal = New DevExpress.XtraEditors.TextEdit()
+        Me.txtdob = New System.Windows.Forms.DateTimePicker()
+        Me.txtage = New DevExpress.XtraEditors.TextEdit()
+        Me.txtgender = New DevExpress.XtraEditors.TextEdit()
+        Me.txtreligion = New DevExpress.XtraEditors.TextEdit()
+        Me.txtstatus = New DevExpress.XtraEditors.TextEdit()
         Me.txtinterview = New DevExpress.XtraEditors.TextEdit()
-        Me.txtstatus = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.txtreligion = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.txtgender = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.txtdob = New DevExpress.XtraEditors.DateEdit()
-        Me.txtbrowse = New DevExpress.XtraEditors.ImageEdit()
         Me.txtphone = New DevExpress.XtraEditors.TextEdit()
         Me.txtaddress = New DevExpress.XtraEditors.TextEdit()
         Me.txtpob = New DevExpress.XtraEditors.TextEdit()
@@ -54,30 +51,34 @@ Partial Class Analytical
         Me.lcidcard = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcaddress = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcphone = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcdob = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcbrowse = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcgender = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcreligion = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcstats = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcinterview = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcbtncv = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcCv = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.btnFind = New DevExpress.XtraEditors.SimpleButton()
+        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.ChartControl2 = New DevExpress.XtraCharts.ChartControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.label2 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.btnYes = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtreligion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtposition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtexpsal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtgender.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtdob.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtdob.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtbrowse.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtreligion.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtaddress.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtpob.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,230 +92,170 @@ Partial Class Analytical
         CType(Me.lcidcard, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcaddress, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcdob, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcbrowse, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcgender, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcreligion, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcstats, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcinterview, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcbtncv, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcCv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ChartControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarPointSeriesLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarLineSeriesView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(SideBySideBarSeriesLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SimpleButton1
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(443, 355)
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(798, 554)
         Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(99, 23)
+        Me.SimpleButton1.Size = New System.Drawing.Size(131, 38)
         Me.SimpleButton1.TabIndex = 6
-        Me.SimpleButton1.Text = "SimpleButton1"
-        '
-        'Chart1
-        '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(423, 13)
-        Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(502, 335)
-        Me.Chart1.TabIndex = 11
-        Me.Chart1.Text = "Chart1"
-        '
-        'GridControl1
-        '
-        Me.GridControl1.Location = New System.Drawing.Point(12, 12)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(156, 538)
-        Me.GridControl1.TabIndex = 12
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
+        Me.SimpleButton1.Text = "Show Comparison"
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.txtinterviewdate)
-        Me.LayoutControl1.Controls.Add(Me.txtcv)
-        Me.LayoutControl1.Controls.Add(Me.btnCV)
-        Me.LayoutControl1.Controls.Add(Me.btnPhoto)
-        Me.LayoutControl1.Controls.Add(Me.txtinterview)
-        Me.LayoutControl1.Controls.Add(Me.txtstatus)
-        Me.LayoutControl1.Controls.Add(Me.txtreligion)
-        Me.LayoutControl1.Controls.Add(Me.txtgender)
+        Me.LayoutControl1.Controls.Add(Me.txtposition)
+        Me.LayoutControl1.Controls.Add(Me.txtexpsal)
         Me.LayoutControl1.Controls.Add(Me.txtdob)
-        Me.LayoutControl1.Controls.Add(Me.txtbrowse)
+        Me.LayoutControl1.Controls.Add(Me.txtage)
+        Me.LayoutControl1.Controls.Add(Me.txtgender)
+        Me.LayoutControl1.Controls.Add(Me.txtreligion)
+        Me.LayoutControl1.Controls.Add(Me.txtstatus)
+        Me.LayoutControl1.Controls.Add(Me.txtinterview)
         Me.LayoutControl1.Controls.Add(Me.txtphone)
         Me.LayoutControl1.Controls.Add(Me.txtaddress)
         Me.LayoutControl1.Controls.Add(Me.txtpob)
         Me.LayoutControl1.Controls.Add(Me.txtidcard)
         Me.LayoutControl1.Controls.Add(Me.txtid)
         Me.LayoutControl1.Controls.Add(Me.txtnames)
-        Me.LayoutControl1.Location = New System.Drawing.Point(174, 198)
+        Me.LayoutControl1.Location = New System.Drawing.Point(178, 239)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(409, 411, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(243, 362)
+        Me.LayoutControl1.Size = New System.Drawing.Size(243, 364)
         Me.LayoutControl1.TabIndex = 13
         Me.LayoutControl1.Text = "LayoutControl1"
         '
-        'txtinterviewdate
+        'txtposition
         '
-        Me.txtinterviewdate.Location = New System.Drawing.Point(100, 304)
-        Me.txtinterviewdate.Name = "txtinterviewdate"
-        Me.txtinterviewdate.Size = New System.Drawing.Size(131, 20)
-        Me.txtinterviewdate.TabIndex = 34
+        Me.txtposition.Location = New System.Drawing.Point(93, 300)
+        Me.txtposition.Name = "txtposition"
+        Me.txtposition.Size = New System.Drawing.Size(138, 20)
+        Me.txtposition.StyleController = Me.LayoutControl1
+        Me.txtposition.TabIndex = 40
         '
-        'txtcv
+        'txtexpsal
         '
-        Me.txtcv.Location = New System.Drawing.Point(100, 158)
-        Me.txtcv.Name = "txtcv"
-        Me.txtcv.Size = New System.Drawing.Size(64, 20)
-        Me.txtcv.StyleController = Me.LayoutControl1
-        Me.txtcv.TabIndex = 33
-        '
-        'btnCV
-        '
-        Me.btnCV.Location = New System.Drawing.Point(168, 158)
-        Me.btnCV.Name = "btnCV"
-        Me.btnCV.Size = New System.Drawing.Size(63, 22)
-        Me.btnCV.StyleController = Me.LayoutControl1
-        Me.btnCV.TabIndex = 32
-        Me.btnCV.Text = "Browse CV"
-        '
-        'btnPhoto
-        '
-        Me.btnPhoto.Location = New System.Drawing.Point(168, 132)
-        Me.btnPhoto.Name = "btnPhoto"
-        Me.btnPhoto.Size = New System.Drawing.Size(63, 22)
-        Me.btnPhoto.StyleController = Me.LayoutControl1
-        Me.btnPhoto.TabIndex = 29
-        Me.btnPhoto.Text = "Browse"
-        '
-        'txtinterview
-        '
-        Me.txtinterview.Enabled = False
-        Me.txtinterview.Location = New System.Drawing.Point(100, 60)
-        Me.txtinterview.Name = "txtinterview"
-        Me.txtinterview.Size = New System.Drawing.Size(131, 20)
-        Me.txtinterview.StyleController = Me.LayoutControl1
-        Me.txtinterview.TabIndex = 28
-        '
-        'txtstatus
-        '
-        Me.txtstatus.EditValue = ""
-        Me.txtstatus.Location = New System.Drawing.Point(100, 328)
-        Me.txtstatus.Name = "txtstatus"
-        Me.txtstatus.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtstatus.Properties.Items.AddRange(New Object() {"Pending", "Accepted", "Rejected", "Blocked"})
-        Me.txtstatus.Size = New System.Drawing.Size(131, 20)
-        Me.txtstatus.StyleController = Me.LayoutControl1
-        Me.txtstatus.TabIndex = 27
-        '
-        'txtreligion
-        '
-        Me.txtreligion.Location = New System.Drawing.Point(100, 208)
-        Me.txtreligion.Name = "txtreligion"
-        Me.txtreligion.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtreligion.Properties.Items.AddRange(New Object() {"Kristen", "Buddha", "Islam", "Hindu"})
-        Me.txtreligion.Size = New System.Drawing.Size(131, 20)
-        Me.txtreligion.StyleController = Me.LayoutControl1
-        Me.txtreligion.TabIndex = 26
-        '
-        'txtgender
-        '
-        Me.txtgender.Location = New System.Drawing.Point(100, 184)
-        Me.txtgender.Name = "txtgender"
-        Me.txtgender.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtgender.Properties.Items.AddRange(New Object() {"Male", "Female"})
-        Me.txtgender.Size = New System.Drawing.Size(131, 20)
-        Me.txtgender.StyleController = Me.LayoutControl1
-        Me.txtgender.TabIndex = 25
+        Me.txtexpsal.Location = New System.Drawing.Point(93, 324)
+        Me.txtexpsal.Name = "txtexpsal"
+        Me.txtexpsal.Size = New System.Drawing.Size(138, 20)
+        Me.txtexpsal.StyleController = Me.LayoutControl1
+        Me.txtexpsal.TabIndex = 42
         '
         'txtdob
         '
-        Me.txtdob.EditValue = Nothing
-        Me.txtdob.Location = New System.Drawing.Point(100, 108)
-        Me.txtdob.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtdob.Location = New System.Drawing.Point(93, 108)
         Me.txtdob.Name = "txtdob"
-        Me.txtdob.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtdob.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtdob.Properties.CalendarTimeProperties.CloseUpKey = New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4)
-        Me.txtdob.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.[Default]
-        Me.txtdob.Properties.Mask.EditMask = ""
-        Me.txtdob.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
-        Me.txtdob.Size = New System.Drawing.Size(131, 20)
-        Me.txtdob.StyleController = Me.LayoutControl1
-        Me.txtdob.TabIndex = 21
+        Me.txtdob.Size = New System.Drawing.Size(138, 21)
+        Me.txtdob.TabIndex = 38
         '
-        'txtbrowse
+        'txtage
         '
-        Me.txtbrowse.EditValue = CType(resources.GetObject("txtbrowse.EditValue"), Object)
-        Me.txtbrowse.Location = New System.Drawing.Point(100, 132)
-        Me.txtbrowse.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtbrowse.Name = "txtbrowse"
-        Me.txtbrowse.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtbrowse.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
-        Me.txtbrowse.Size = New System.Drawing.Size(64, 20)
-        Me.txtbrowse.StyleController = Me.LayoutControl1
-        Me.txtbrowse.TabIndex = 24
+        Me.txtage.EditValue = ""
+        Me.txtage.Location = New System.Drawing.Point(93, 132)
+        Me.txtage.Name = "txtage"
+        Me.txtage.Size = New System.Drawing.Size(138, 20)
+        Me.txtage.StyleController = Me.LayoutControl1
+        Me.txtage.TabIndex = 37
+        '
+        'txtgender
+        '
+        Me.txtgender.Location = New System.Drawing.Point(93, 156)
+        Me.txtgender.Name = "txtgender"
+        Me.txtgender.Size = New System.Drawing.Size(138, 20)
+        Me.txtgender.StyleController = Me.LayoutControl1
+        Me.txtgender.TabIndex = 36
+        '
+        'txtreligion
+        '
+        Me.txtreligion.Location = New System.Drawing.Point(93, 180)
+        Me.txtreligion.Name = "txtreligion"
+        Me.txtreligion.Size = New System.Drawing.Size(138, 20)
+        Me.txtreligion.StyleController = Me.LayoutControl1
+        Me.txtreligion.TabIndex = 35
+        '
+        'txtstatus
+        '
+        Me.txtstatus.Location = New System.Drawing.Point(93, 276)
+        Me.txtstatus.Name = "txtstatus"
+        Me.txtstatus.Size = New System.Drawing.Size(138, 20)
+        Me.txtstatus.StyleController = Me.LayoutControl1
+        Me.txtstatus.TabIndex = 34
+        '
+        'txtinterview
+        '
+        Me.txtinterview.Location = New System.Drawing.Point(93, 60)
+        Me.txtinterview.Name = "txtinterview"
+        Me.txtinterview.Size = New System.Drawing.Size(138, 20)
+        Me.txtinterview.StyleController = Me.LayoutControl1
+        Me.txtinterview.TabIndex = 28
         '
         'txtphone
         '
         Me.txtphone.EditValue = ""
-        Me.txtphone.Location = New System.Drawing.Point(100, 280)
+        Me.txtphone.Location = New System.Drawing.Point(93, 252)
         Me.txtphone.Name = "txtphone"
-        Me.txtphone.Size = New System.Drawing.Size(131, 20)
+        Me.txtphone.Size = New System.Drawing.Size(138, 20)
         Me.txtphone.StyleController = Me.LayoutControl1
         Me.txtphone.TabIndex = 13
         '
         'txtaddress
         '
-        Me.txtaddress.Location = New System.Drawing.Point(100, 256)
+        Me.txtaddress.Location = New System.Drawing.Point(93, 228)
         Me.txtaddress.Name = "txtaddress"
-        Me.txtaddress.Size = New System.Drawing.Size(131, 20)
+        Me.txtaddress.Size = New System.Drawing.Size(138, 20)
         Me.txtaddress.StyleController = Me.LayoutControl1
         Me.txtaddress.TabIndex = 10
         '
         'txtpob
         '
-        Me.txtpob.Location = New System.Drawing.Point(100, 84)
+        Me.txtpob.Location = New System.Drawing.Point(93, 84)
         Me.txtpob.Name = "txtpob"
-        Me.txtpob.Size = New System.Drawing.Size(131, 20)
+        Me.txtpob.Size = New System.Drawing.Size(138, 20)
         Me.txtpob.StyleController = Me.LayoutControl1
         Me.txtpob.TabIndex = 9
         '
         'txtidcard
         '
-        Me.txtidcard.Location = New System.Drawing.Point(100, 232)
+        Me.txtidcard.Location = New System.Drawing.Point(93, 204)
         Me.txtidcard.Name = "txtidcard"
-        Me.txtidcard.Size = New System.Drawing.Size(131, 20)
+        Me.txtidcard.Size = New System.Drawing.Size(138, 20)
         Me.txtidcard.StyleController = Me.LayoutControl1
         Me.txtidcard.TabIndex = 7
         '
         'txtid
         '
-        Me.txtid.Location = New System.Drawing.Point(100, 36)
+        Me.txtid.Location = New System.Drawing.Point(93, 36)
         Me.txtid.Name = "txtid"
-        Me.txtid.Size = New System.Drawing.Size(131, 20)
+        Me.txtid.Size = New System.Drawing.Size(138, 20)
         Me.txtid.StyleController = Me.LayoutControl1
         Me.txtid.TabIndex = 6
         '
         'txtnames
         '
-        Me.txtnames.Location = New System.Drawing.Point(100, 12)
+        Me.txtnames.Location = New System.Drawing.Point(93, 12)
         Me.txtnames.Name = "txtnames"
-        Me.txtnames.Size = New System.Drawing.Size(131, 20)
+        Me.txtnames.Size = New System.Drawing.Size(138, 20)
         Me.txtnames.StyleController = Me.LayoutControl1
         Me.txtnames.TabIndex = 5
         '
@@ -323,10 +264,10 @@ Partial Class Analytical
         Me.LayoutControlGroup1.CustomizationFormText = "LayoutControlGroup1"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcid, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcphone, Me.lcdob, Me.lcbrowse, Me.lcgender, Me.lcreligion, Me.lcstats, Me.lcinterview, Me.LayoutControlItem1, Me.lcbtncv, Me.lcCv, Me.LayoutControlItem2})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcid, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcphone, Me.lcinterview, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.LayoutControlItem1, Me.LayoutControlItem7})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(243, 362)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(243, 364)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -338,7 +279,7 @@ Partial Class Analytical
         Me.lcName.Name = "lcName"
         Me.lcName.Size = New System.Drawing.Size(223, 24)
         Me.lcName.Text = "Full Name"
-        Me.lcName.TextSize = New System.Drawing.Size(85, 13)
+        Me.lcName.TextSize = New System.Drawing.Size(78, 13)
         '
         'lcid
         '
@@ -348,7 +289,7 @@ Partial Class Analytical
         Me.lcid.Name = "lcid"
         Me.lcid.Size = New System.Drawing.Size(223, 24)
         Me.lcid.Text = "ID Rec"
-        Me.lcid.TextSize = New System.Drawing.Size(85, 13)
+        Me.lcid.TextSize = New System.Drawing.Size(78, 13)
         '
         'lcpob
         '
@@ -358,87 +299,37 @@ Partial Class Analytical
         Me.lcpob.Name = "lcpob"
         Me.lcpob.Size = New System.Drawing.Size(223, 24)
         Me.lcpob.Text = "Place Of Birth"
-        Me.lcpob.TextSize = New System.Drawing.Size(85, 13)
+        Me.lcpob.TextSize = New System.Drawing.Size(78, 13)
         '
         'lcidcard
         '
         Me.lcidcard.Control = Me.txtidcard
         Me.lcidcard.CustomizationFormText = "LayoutControlItem4"
-        Me.lcidcard.Location = New System.Drawing.Point(0, 220)
+        Me.lcidcard.Location = New System.Drawing.Point(0, 192)
         Me.lcidcard.Name = "lcidcard"
         Me.lcidcard.Size = New System.Drawing.Size(223, 24)
         Me.lcidcard.Text = "ID Number"
-        Me.lcidcard.TextSize = New System.Drawing.Size(85, 13)
+        Me.lcidcard.TextSize = New System.Drawing.Size(78, 13)
         '
         'lcaddress
         '
         Me.lcaddress.Control = Me.txtaddress
         Me.lcaddress.CustomizationFormText = "Address"
-        Me.lcaddress.Location = New System.Drawing.Point(0, 244)
+        Me.lcaddress.Location = New System.Drawing.Point(0, 216)
         Me.lcaddress.Name = "lcaddress"
         Me.lcaddress.Size = New System.Drawing.Size(223, 24)
         Me.lcaddress.Text = "Address"
-        Me.lcaddress.TextSize = New System.Drawing.Size(85, 13)
+        Me.lcaddress.TextSize = New System.Drawing.Size(78, 13)
         '
         'lcphone
         '
         Me.lcphone.Control = Me.txtphone
         Me.lcphone.CustomizationFormText = "Phone Number"
-        Me.lcphone.Location = New System.Drawing.Point(0, 268)
+        Me.lcphone.Location = New System.Drawing.Point(0, 240)
         Me.lcphone.Name = "lcphone"
         Me.lcphone.Size = New System.Drawing.Size(223, 24)
         Me.lcphone.Text = "Phone Number"
-        Me.lcphone.TextSize = New System.Drawing.Size(85, 13)
-        '
-        'lcdob
-        '
-        Me.lcdob.Control = Me.txtdob
-        Me.lcdob.CustomizationFormText = "Date Of Birth"
-        Me.lcdob.Location = New System.Drawing.Point(0, 96)
-        Me.lcdob.Name = "lcdob"
-        Me.lcdob.Size = New System.Drawing.Size(223, 24)
-        Me.lcdob.Text = "Date Of Birth"
-        Me.lcdob.TextSize = New System.Drawing.Size(85, 13)
-        '
-        'lcbrowse
-        '
-        Me.lcbrowse.Control = Me.txtbrowse
-        Me.lcbrowse.CustomizationFormText = "Browse"
-        Me.lcbrowse.Location = New System.Drawing.Point(0, 120)
-        Me.lcbrowse.Name = "lcbrowse"
-        Me.lcbrowse.Size = New System.Drawing.Size(156, 26)
-        Me.lcbrowse.Text = "Photo"
-        Me.lcbrowse.TextSize = New System.Drawing.Size(85, 13)
-        '
-        'lcgender
-        '
-        Me.lcgender.Control = Me.txtgender
-        Me.lcgender.CustomizationFormText = "Gender"
-        Me.lcgender.Location = New System.Drawing.Point(0, 172)
-        Me.lcgender.Name = "lcgender"
-        Me.lcgender.Size = New System.Drawing.Size(223, 24)
-        Me.lcgender.Text = "Gender"
-        Me.lcgender.TextSize = New System.Drawing.Size(85, 13)
-        '
-        'lcreligion
-        '
-        Me.lcreligion.Control = Me.txtreligion
-        Me.lcreligion.CustomizationFormText = "Religion"
-        Me.lcreligion.Location = New System.Drawing.Point(0, 196)
-        Me.lcreligion.Name = "lcreligion"
-        Me.lcreligion.Size = New System.Drawing.Size(223, 24)
-        Me.lcreligion.Text = "Religion"
-        Me.lcreligion.TextSize = New System.Drawing.Size(85, 13)
-        '
-        'lcstats
-        '
-        Me.lcstats.Control = Me.txtstatus
-        Me.lcstats.CustomizationFormText = "Status"
-        Me.lcstats.Location = New System.Drawing.Point(0, 316)
-        Me.lcstats.Name = "lcstats"
-        Me.lcstats.Size = New System.Drawing.Size(223, 26)
-        Me.lcstats.Text = "Status"
-        Me.lcstats.TextSize = New System.Drawing.Size(85, 13)
+        Me.lcphone.TextSize = New System.Drawing.Size(78, 13)
         '
         'lcinterview
         '
@@ -448,87 +339,209 @@ Partial Class Analytical
         Me.lcinterview.Name = "lcinterview"
         Me.lcinterview.Size = New System.Drawing.Size(223, 24)
         Me.lcinterview.Text = "Interview Times"
-        Me.lcinterview.TextSize = New System.Drawing.Size(85, 13)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.btnPhoto
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(156, 120)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(67, 26)
-        Me.LayoutControlItem1.Text = "LayoutControlItem1"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextToControlDistance = 0
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'lcbtncv
-        '
-        Me.lcbtncv.Control = Me.btnCV
-        Me.lcbtncv.CustomizationFormText = "lcbtncv"
-        Me.lcbtncv.Location = New System.Drawing.Point(156, 146)
-        Me.lcbtncv.Name = "lcbtncv"
-        Me.lcbtncv.Size = New System.Drawing.Size(67, 26)
-        Me.lcbtncv.Text = "lcbtncv"
-        Me.lcbtncv.TextSize = New System.Drawing.Size(0, 0)
-        Me.lcbtncv.TextToControlDistance = 0
-        Me.lcbtncv.TextVisible = False
-        '
-        'lcCv
-        '
-        Me.lcCv.Control = Me.txtcv
-        Me.lcCv.CustomizationFormText = "Upload CV"
-        Me.lcCv.Location = New System.Drawing.Point(0, 146)
-        Me.lcCv.Name = "lcCv"
-        Me.lcCv.Size = New System.Drawing.Size(156, 26)
-        Me.lcCv.Text = "Upload CV"
-        Me.lcCv.TextSize = New System.Drawing.Size(85, 13)
+        Me.lcinterview.TextSize = New System.Drawing.Size(78, 13)
         '
         'LayoutControlItem2
         '
-        Me.LayoutControlItem2.Control = Me.txtinterviewdate
-        Me.LayoutControlItem2.CustomizationFormText = "Tanggal interview"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 292)
+        Me.LayoutControlItem2.Control = Me.txtstatus
+        Me.LayoutControlItem2.CustomizationFormText = "Status"
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 264)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(223, 24)
-        Me.LayoutControlItem2.Text = "Tanggal interview"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(85, 13)
+        Me.LayoutControlItem2.Text = "Status"
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(78, 13)
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.txtreligion
+        Me.LayoutControlItem3.CustomizationFormText = "Religion"
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem3.Text = "Religion"
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(78, 13)
+        '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.txtgender
+        Me.LayoutControlItem4.CustomizationFormText = "Gender"
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 144)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem4.Text = "Gender"
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(78, 13)
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.txtage
+        Me.LayoutControlItem5.CustomizationFormText = "Age"
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 120)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem5.Text = "Age"
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(78, 13)
+        '
+        'LayoutControlItem6
+        '
+        Me.LayoutControlItem6.Control = Me.txtdob
+        Me.LayoutControlItem6.CustomizationFormText = "Date Of Birth"
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 96)
+        Me.LayoutControlItem6.Name = "LayoutControlItem6"
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem6.Text = "Date Of Birth"
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(78, 13)
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.txtposition
+        Me.LayoutControlItem1.CustomizationFormText = "Position"
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 288)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem1.Text = "Position"
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(78, 13)
+        '
+        'LayoutControlItem7
+        '
+        Me.LayoutControlItem7.Control = Me.txtexpsal
+        Me.LayoutControlItem7.CustomizationFormText = "Expected Salary"
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 312)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(223, 32)
+        Me.LayoutControlItem7.Text = "Expected Salary"
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(78, 13)
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(216, 13)
+        Me.PictureBox1.Location = New System.Drawing.Point(219, 54)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(161, 179)
+        Me.PictureBox1.Size = New System.Drawing.Size(161, 184)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 35
         Me.PictureBox1.TabStop = False
+        '
+        'GridControl1
+        '
+        Me.GridControl1.Location = New System.Drawing.Point(1, 86)
+        Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(178, 506)
+        Me.GridControl1.TabIndex = 36
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        '
+        'GridView1
+        '
+        Me.GridView1.GridControl = Me.GridControl1
+        Me.GridView1.Name = "GridView1"
+        '
+        'btnFind
+        '
+        Me.btnFind.Location = New System.Drawing.Point(117, 54)
+        Me.btnFind.Name = "btnFind"
+        Me.btnFind.Size = New System.Drawing.Size(62, 23)
+        Me.btnFind.TabIndex = 37
+        Me.btnFind.Text = "Search"
+        '
+        'TextEdit1
+        '
+        Me.TextEdit1.Location = New System.Drawing.Point(6, 55)
+        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Size = New System.Drawing.Size(105, 20)
+        Me.TextEdit1.TabIndex = 38
+        '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 1
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Size = New System.Drawing.Size(937, 49)
+        '
+        'ChartControl2
+        '
+        Me.ChartControl2.AppearanceNameSerializable = "Chameleon"
+        RadarDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = True
+        RadarDiagram2.AxisY.Range.AlwaysShowZeroLevel = True
+        RadarDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = True
+        RadarDiagram2.AxisY.Range.SideMarginsEnabled = True
+        Me.ChartControl2.Diagram = RadarDiagram2
+        Me.ChartControl2.Location = New System.Drawing.Point(415, 54)
+        Me.ChartControl2.Name = "ChartControl2"
+        RadarPointSeriesLabel2.LineVisible = True
+        Series2.Label = RadarPointSeriesLabel2
+        Series2.Name = "Series 1"
+        Series2.View = RadarLineSeriesView2
+        Me.ChartControl2.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
+        SideBySideBarSeriesLabel2.LineVisible = True
+        Me.ChartControl2.SeriesTemplate.Label = SideBySideBarSeriesLabel2
+        Me.ChartControl2.Size = New System.Drawing.Size(522, 483)
+        Me.ChartControl2.TabIndex = 45
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Location = New System.Drawing.Point(417, 549)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(65, 13)
+        Me.LabelControl1.TabIndex = 47
+        Me.LabelControl1.Text = "Created Date"
+        '
+        'label2
+        '
+        Me.label2.Location = New System.Drawing.Point(493, 549)
+        Me.label2.Name = "label2"
+        Me.label2.Size = New System.Drawing.Size(4, 13)
+        Me.label2.TabIndex = 48
+        Me.label2.Text = "-"
+        '
+        'LabelControl2
+        '
+        Me.LabelControl2.Location = New System.Drawing.Point(417, 570)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(153, 13)
+        Me.LabelControl2.TabIndex = 49
+        Me.LabelControl2.Text = "Change status to be accepted ?"
+        '
+        'btnYes
+        '
+        Me.btnYes.Location = New System.Drawing.Point(579, 566)
+        Me.btnYes.Name = "btnYes"
+        Me.btnYes.Size = New System.Drawing.Size(52, 23)
+        Me.btnYes.TabIndex = 50
+        Me.btnYes.Text = "Yes"
         '
         'Analytical
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(937, 563)
+        Me.ClientSize = New System.Drawing.Size(937, 603)
+        Me.Controls.Add(Me.btnYes)
+        Me.Controls.Add(Me.LabelControl2)
+        Me.Controls.Add(Me.label2)
+        Me.Controls.Add(Me.LabelControl1)
+        Me.Controls.Add(Me.ChartControl2)
+        Me.Controls.Add(Me.TextEdit1)
+        Me.Controls.Add(Me.btnFind)
+        Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.SimpleButton1)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.MaximumSize = New System.Drawing.Size(947, 608)
+        Me.MinimumSize = New System.Drawing.Size(947, 608)
         Me.Name = "Analytical"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Analytical"
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtreligion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtposition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtexpsal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtgender.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtdob.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtdob.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtbrowse.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtreligion.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtaddress.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtpob.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -542,35 +555,32 @@ Partial Class Analytical
         CType(Me.lcidcard, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcaddress, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcdob, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcbrowse, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcgender, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcreligion, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcstats, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcinterview, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcbtncv, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcCv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarPointSeriesLabel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarLineSeriesView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(SideBySideBarSeriesLabel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ChartControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
-    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents txtinterviewdate As DateTimePicker
-    Friend WithEvents txtcv As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents btnCV As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents btnPhoto As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txtinterview As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtstatus As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents txtreligion As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents txtgender As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents txtdob As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents txtbrowse As DevExpress.XtraEditors.ImageEdit
     Friend WithEvents txtphone As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtaddress As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtpob As DevExpress.XtraEditors.TextEdit
@@ -584,15 +594,30 @@ Partial Class Analytical
     Friend WithEvents lcidcard As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcaddress As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcphone As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcdob As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcbrowse As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcgender As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcreligion As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcstats As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcinterview As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcbtncv As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcCv As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents btnFind As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtposition As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtexpsal As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtgender As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtreligion As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents txtstatus As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtage As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtdob As DateTimePicker
+    Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents ChartControl2 As DevExpress.XtraCharts.ChartControl
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents label2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents btnYes As DevExpress.XtraEditors.SimpleButton
 End Class

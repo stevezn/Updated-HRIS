@@ -288,6 +288,12 @@
     <Compile Include="ClosePayroll.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="comparison.Designer.vb">
+      <DependentUpon>comparison.vb</DependentUpon>
+    </Compile>
+    <Compile Include="comparison.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataGrid.vb" />
     <Compile Include="DemosiHistory.Designer.vb">
       <DependentUpon>DemosiHistory.vb</DependentUpon>
@@ -466,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClosePayroll.resx">
       <DependentUpon>ClosePayroll.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="comparison.resx">
+      <DependentUpon>comparison.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DemosiHistory.resx">
       <DependentUpon>DemosiHistory.vb</DependentUpon>
