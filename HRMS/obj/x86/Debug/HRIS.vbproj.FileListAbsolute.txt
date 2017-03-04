@@ -744,7 +744,6 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.MainApp.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Resources.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.NewEmp.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.NewRec.resources
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.NewSalary.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Notes.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.PayrollSet.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Payslip.resources
@@ -876,5 +875,5 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.selectemp.resourc
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Analytical.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.addmenu.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Rating.resources
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.vbprojResolveAssemblyReference.cache
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.comparison.resources
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.vbprojResolveAssemblyReference.cache

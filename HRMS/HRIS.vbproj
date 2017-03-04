@@ -354,12 +354,6 @@
     <Compile Include="NewRec.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewSalary.Designer.vb">
-      <DependentUpon>NewSalary.vb</DependentUpon>
-    </Compile>
-    <Compile Include="NewSalary.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Notes.Designer.vb">
       <DependentUpon>Notes.vb</DependentUpon>
     </Compile>
@@ -514,9 +508,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewRec.resx">
       <DependentUpon>NewRec.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewSalary.resx">
-      <DependentUpon>NewSalary.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notes.resx">
       <DependentUpon>Notes.vb</DependentUpon>

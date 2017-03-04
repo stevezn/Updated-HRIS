@@ -86,7 +86,6 @@ Public Class Comparison
     End Sub
     Private Sub grafik()
         ' ChartControl1.Series.Clear()
-
         ' Add a radar series to it.
         Dim aname As MySqlCommand = SQLConnection.CreateCommand
         aname.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"

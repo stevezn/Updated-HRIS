@@ -127,10 +127,6 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub tePassword_Enter(sender As Object, e As EventArgs) Handles tePassword.Enter
-
-    End Sub
-
     Private Sub tePassword_KeyDown(sender As Object, e As KeyEventArgs) Handles tePassword.KeyDown
         If e.KeyCode = Keys.Enter Then
             Dim tbl_par As New DataTable

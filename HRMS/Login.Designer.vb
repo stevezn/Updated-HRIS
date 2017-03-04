@@ -96,7 +96,7 @@ Partial Class Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(225, 117)
+        Me.ClientSize = New System.Drawing.Size(225, 120)
         Me.ControlBox = False
         Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.btnTest)
@@ -111,7 +111,9 @@ Partial Class Login
         Me.LookAndFeel.UseWindowsXPTheme = True
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(241, 159)
         Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(241, 159)
         Me.Name = "Login"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

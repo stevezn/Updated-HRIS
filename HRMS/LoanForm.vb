@@ -723,8 +723,6 @@ Public Class Payments
         calc.Show()
     End Sub
 
-    Dim proc As New NewSalary
-
     Private Sub ComboBoxEdit6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtname2.SelectedIndexChanged
         For index As Integer = 0 To tbl_par2.Rows.Count - 1
             If txtname2.SelectedItem Is tbl_par2.Rows(index).Item(0).ToString Then
@@ -814,7 +812,7 @@ Public Class Payments
 
     Private Sub BarButtonItem7_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem7.ItemClick
         If proses Is Nothing OrElse proses.IsDisposed OrElse proses.MinimizeBox Then
-            proses.Show()
+            proses.Close()
             proses = New PayrollSet
         End If
         proses.Show()

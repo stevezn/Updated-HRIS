@@ -846,7 +846,7 @@ Partial Class Notes
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(433, 390)
+        Me.GridControl1.Size = New System.Drawing.Size(433, 420)
         Me.GridControl1.TabIndex = 4
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '

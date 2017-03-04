@@ -23,8 +23,6 @@ Partial Class Rating
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Rating))
-        Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.txtname = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
@@ -46,6 +44,8 @@ Partial Class Rating
         Me.Label2 = New System.Windows.Forms.Label()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.txtname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtidrec.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,24 +58,6 @@ Partial Class Rating
         CType(Me.txtskill2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtskill1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'SimpleButton3
-        '
-        Me.SimpleButton3.Image = CType(resources.GetObject("SimpleButton3.Image"), System.Drawing.Image)
-        Me.SimpleButton3.Location = New System.Drawing.Point(253, 35)
-        Me.SimpleButton3.Name = "SimpleButton3"
-        Me.SimpleButton3.Size = New System.Drawing.Size(20, 23)
-        Me.SimpleButton3.TabIndex = 7
-        Me.SimpleButton3.Text = "SimpleButton3"
-        '
-        'SimpleButton2
-        '
-        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
-        Me.SimpleButton2.Location = New System.Drawing.Point(253, 5)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(20, 23)
-        Me.SimpleButton2.TabIndex = 6
-        Me.SimpleButton2.Text = "SimpleButton2"
         '
         'SimpleButton1
         '
@@ -264,6 +246,24 @@ Partial Class Rating
         Me.Label1.Size = New System.Drawing.Size(44, 13)
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Position"
+        '
+        'SimpleButton3
+        '
+        Me.SimpleButton3.Image = CType(resources.GetObject("SimpleButton3.Image"), System.Drawing.Image)
+        Me.SimpleButton3.Location = New System.Drawing.Point(253, 35)
+        Me.SimpleButton3.Name = "SimpleButton3"
+        Me.SimpleButton3.Size = New System.Drawing.Size(20, 23)
+        Me.SimpleButton3.TabIndex = 7
+        Me.SimpleButton3.Text = "SimpleButton3"
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
+        Me.SimpleButton2.Location = New System.Drawing.Point(253, 5)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(20, 23)
+        Me.SimpleButton2.TabIndex = 6
+        Me.SimpleButton2.Text = "SimpleButton2"
         '
         'Rating
         '

@@ -201,7 +201,7 @@ Public Class ChangeEmp
             sqlCommand.ExecuteNonQuery()
             MsgBox("Data Successfully Changed")
         Catch ex As Exception
-            MessageBox.Show("Process Failed!")
+            MessageBox.Show(ex.Message)
         End Try
     End Sub
 
@@ -242,6 +242,42 @@ Public Class ChangeEmp
     Private Sub txtstatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtstatus.SelectedIndexChanged
         If txtstatus.SelectedIndex = 3 Then
             DateTimePicker1.Enabled = True
+        End If
+    End Sub
+
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        GridControl1.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select FullName from db_pegawai where FullName Like '%" + TextBox1.Text + "%'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl1.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            GridControl1.RefreshDataSource()
+            Dim table As New DataTable
+            Dim sqlcommand As New MySqlCommand
+            Try
+                sqlcommand.CommandText = "select FullName, EmployeeCode, IdNumber from db_pegawai where FullName Like '%" + TextBox1.Text + "%'"
+                sqlcommand.Connection = SQLConnection
+                Dim tbl_par As New DataTable
+                Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(table)
+                GridControl1.DataSource = table
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
     End Sub
 End Class

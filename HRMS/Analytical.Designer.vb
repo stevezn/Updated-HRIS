@@ -23,11 +23,11 @@ Partial Class Analytical
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Analytical))
-        Dim RadarDiagram2 As DevExpress.XtraCharts.RadarDiagram = New DevExpress.XtraCharts.RadarDiagram()
-        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim RadarPointSeriesLabel2 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
-        Dim RadarLineSeriesView2 As DevExpress.XtraCharts.RadarLineSeriesView = New DevExpress.XtraCharts.RadarLineSeriesView()
-        Dim SideBySideBarSeriesLabel2 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
+        Dim RadarDiagram1 As DevExpress.XtraCharts.RadarDiagram = New DevExpress.XtraCharts.RadarDiagram()
+        Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim RadarPointSeriesLabel1 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
+        Dim RadarLineSeriesView1 As DevExpress.XtraCharts.RadarLineSeriesView = New DevExpress.XtraCharts.RadarLineSeriesView()
+        Dim SideBySideBarSeriesLabel1 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtposition = New DevExpress.XtraEditors.TextEdit()
@@ -70,6 +70,9 @@ Partial Class Analytical
         Me.label2 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.btnYes = New DevExpress.XtraEditors.SimpleButton()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.label3 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtposition.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,21 +109,22 @@ Partial Class Analytical
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ChartControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarPointSeriesLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarLineSeriesView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(SideBySideBarSeriesLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarPointSeriesLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarLineSeriesView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(SideBySideBarSeriesLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SimpleButton1
         '
         Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(798, 554)
+        Me.SimpleButton1.Location = New System.Drawing.Point(679, 547)
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(131, 38)
         Me.SimpleButton1.TabIndex = 6
         Me.SimpleButton1.Text = "Show Comparison"
+        Me.SimpleButton1.Visible = False
         '
         'LayoutControl1
         '
@@ -142,7 +146,7 @@ Partial Class Analytical
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(409, 411, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(243, 364)
+        Me.LayoutControl1.Size = New System.Drawing.Size(243, 360)
         Me.LayoutControl1.TabIndex = 13
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -267,7 +271,7 @@ Partial Class Analytical
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcid, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcphone, Me.lcinterview, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.LayoutControlItem1, Me.LayoutControlItem7})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(243, 364)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(243, 360)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -407,7 +411,7 @@ Partial Class Analytical
         Me.LayoutControlItem7.CustomizationFormText = "Expected Salary"
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 312)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(223, 32)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(223, 28)
         Me.LayoutControlItem7.Text = "Expected Salary"
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -422,7 +426,7 @@ Partial Class Analytical
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(1, 86)
+        Me.GridControl1.Location = New System.Drawing.Point(4, 86)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(178, 506)
@@ -436,7 +440,7 @@ Partial Class Analytical
         '
         'btnFind
         '
-        Me.btnFind.Location = New System.Drawing.Point(117, 54)
+        Me.btnFind.Location = New System.Drawing.Point(119, 54)
         Me.btnFind.Name = "btnFind"
         Me.btnFind.Size = New System.Drawing.Size(62, 23)
         Me.btnFind.TabIndex = 37
@@ -444,7 +448,7 @@ Partial Class Analytical
         '
         'TextEdit1
         '
-        Me.TextEdit1.Location = New System.Drawing.Point(6, 55)
+        Me.TextEdit1.Location = New System.Drawing.Point(7, 55)
         Me.TextEdit1.Name = "TextEdit1"
         Me.TextEdit1.Size = New System.Drawing.Size(105, 20)
         Me.TextEdit1.TabIndex = 38
@@ -461,20 +465,20 @@ Partial Class Analytical
         'ChartControl2
         '
         Me.ChartControl2.AppearanceNameSerializable = "Chameleon"
-        RadarDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = True
-        RadarDiagram2.AxisY.Range.AlwaysShowZeroLevel = True
-        RadarDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = True
-        RadarDiagram2.AxisY.Range.SideMarginsEnabled = True
-        Me.ChartControl2.Diagram = RadarDiagram2
+        RadarDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = True
+        RadarDiagram1.AxisY.Range.AlwaysShowZeroLevel = True
+        RadarDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = True
+        RadarDiagram1.AxisY.Range.SideMarginsEnabled = True
+        Me.ChartControl2.Diagram = RadarDiagram1
         Me.ChartControl2.Location = New System.Drawing.Point(415, 54)
         Me.ChartControl2.Name = "ChartControl2"
-        RadarPointSeriesLabel2.LineVisible = True
-        Series2.Label = RadarPointSeriesLabel2
-        Series2.Name = "Series 1"
-        Series2.View = RadarLineSeriesView2
-        Me.ChartControl2.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series2}
-        SideBySideBarSeriesLabel2.LineVisible = True
-        Me.ChartControl2.SeriesTemplate.Label = SideBySideBarSeriesLabel2
+        RadarPointSeriesLabel1.LineVisible = True
+        Series1.Label = RadarPointSeriesLabel1
+        Series1.Name = "Series 1"
+        Series1.View = RadarLineSeriesView1
+        Me.ChartControl2.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1}
+        SideBySideBarSeriesLabel1.LineVisible = True
+        Me.ChartControl2.SeriesTemplate.Label = SideBySideBarSeriesLabel1
         Me.ChartControl2.Size = New System.Drawing.Size(522, 483)
         Me.ChartControl2.TabIndex = 45
         '
@@ -484,11 +488,11 @@ Partial Class Analytical
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(65, 13)
         Me.LabelControl1.TabIndex = 47
-        Me.LabelControl1.Text = "Created Date"
+        Me.LabelControl1.Text = "Recruit Dates"
         '
         'label2
         '
-        Me.label2.Location = New System.Drawing.Point(493, 549)
+        Me.label2.Location = New System.Drawing.Point(540, 549)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(4, 13)
         Me.label2.TabIndex = 48
@@ -496,25 +500,53 @@ Partial Class Analytical
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(417, 570)
+        Me.LabelControl2.Location = New System.Drawing.Point(817, 543)
         Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(153, 13)
+        Me.LabelControl2.Size = New System.Drawing.Size(108, 13)
         Me.LabelControl2.TabIndex = 49
-        Me.LabelControl2.Text = "Change status to be accepted ?"
+        Me.LabelControl2.Text = "Change Recruit Status"
         '
         'btnYes
         '
-        Me.btnYes.Location = New System.Drawing.Point(579, 566)
+        Me.btnYes.Location = New System.Drawing.Point(816, 562)
         Me.btnYes.Name = "btnYes"
         Me.btnYes.Size = New System.Drawing.Size(52, 23)
         Me.btnYes.TabIndex = 50
-        Me.btnYes.Text = "Yes"
+        Me.btnYes.Text = "Accept"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(415, 571)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(107, 13)
+        Me.Label1.TabIndex = 52
+        Me.Label1.Text = "Last Interview Dates"
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.Location = New System.Drawing.Point(873, 562)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(52, 23)
+        Me.SimpleButton2.TabIndex = 54
+        Me.SimpleButton2.Text = "Reject"
+        '
+        'label3
+        '
+        Me.label3.Location = New System.Drawing.Point(539, 571)
+        Me.label3.Name = "label3"
+        Me.label3.Size = New System.Drawing.Size(4, 13)
+        Me.label3.TabIndex = 53
+        Me.label3.Text = "-"
         '
         'Analytical
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(937, 603)
+        Me.ClientSize = New System.Drawing.Size(937, 597)
+        Me.Controls.Add(Me.SimpleButton2)
+        Me.Controls.Add(Me.label3)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnYes)
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.label2)
@@ -527,12 +559,10 @@ Partial Class Analytical
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.RibbonControl1)
-        Me.MaximumSize = New System.Drawing.Size(947, 608)
-        Me.MinimumSize = New System.Drawing.Size(947, 608)
         Me.Name = "Analytical"
         Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Analytical"
+        Me.Text = "Statistic"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.txtposition.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -568,11 +598,11 @@ Partial Class Analytical
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarPointSeriesLabel2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarLineSeriesView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(SideBySideBarSeriesLabel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarPointSeriesLabel1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarLineSeriesView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(SideBySideBarSeriesLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -620,4 +650,7 @@ Partial Class Analytical
     Friend WithEvents label2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents btnYes As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Label1 As Label
+    Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents label3 As DevExpress.XtraEditors.LabelControl
 End Class

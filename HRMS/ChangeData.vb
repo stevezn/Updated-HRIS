@@ -48,7 +48,7 @@ Public Class ChangeData
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "Select IdRec, FullName, IdNumber from db_recruitment where status != 'In Progress'"
+            sqlcommand.CommandText = "Select IdRec, FullName from db_recruitment where status != 'In Progress'"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)

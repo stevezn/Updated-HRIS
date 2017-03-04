@@ -23,7 +23,7 @@ Partial Class Payments
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Payments))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
@@ -712,8 +712,8 @@ Partial Class Payments
         '
         'GridControl1
         '
-        GridLevelNode1.RelationName = "Level1"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.RelationName = "Level1"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.GridControl1.Location = New System.Drawing.Point(0, 53)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
@@ -2438,6 +2438,7 @@ Partial Class Payments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.ClientSize = New System.Drawing.Size(871, 501)
         Me.Controls.Add(Me.XtraTabControl2)
         Me.Controls.Add(Me.RibbonControl1)

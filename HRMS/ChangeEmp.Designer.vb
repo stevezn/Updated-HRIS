@@ -72,6 +72,8 @@ Partial Class ChangeEmp
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -125,15 +127,14 @@ Partial Class ChangeEmp
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsFind.AlwaysVisible = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(2, 161)
+        Me.GridControl1.Location = New System.Drawing.Point(2, 196)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(226, 352)
+        Me.GridControl1.Size = New System.Drawing.Size(226, 317)
         Me.GridControl1.TabIndex = 30
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -631,11 +632,28 @@ Partial Class ChangeEmp
         Me.LayoutControlItem4.Text = "Terminate Date"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(87, 13)
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(30, 169)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 33
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Location = New System.Drawing.Point(136, 167)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(62, 23)
+        Me.SimpleButton1.TabIndex = 34
+        Me.SimpleButton1.Text = "Search"
+        '
         'ChangeEmp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(506, 522)
+        Me.Controls.Add(Me.SimpleButton1)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.pictureEdit)
@@ -643,7 +661,6 @@ Partial Class ChangeEmp
         Me.MinimizeBox = False
         Me.Name = "ChangeEmp"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "ChangeEmp"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
@@ -692,6 +709,7 @@ Partial Class ChangeEmp
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -744,4 +762,6 @@ Partial Class ChangeEmp
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
 End Class

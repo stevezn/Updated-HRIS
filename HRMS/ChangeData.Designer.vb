@@ -24,6 +24,7 @@ Partial Class ChangeData
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ChangeData))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtdob = New System.Windows.Forms.DateTimePicker()
         Me.txtinterviewdate = New System.Windows.Forms.DateTimePicker()
         Me.txtcv = New DevExpress.XtraEditors.TextEdit()
         Me.btnCV = New DevExpress.XtraEditors.SimpleButton()
@@ -59,11 +60,10 @@ Partial Class ChangeData
         Me.lcbtncv = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcCv = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
-        Me.txtdob = New System.Windows.Forms.DateTimePicker()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,10 +96,10 @@ Partial Class ChangeData
         CType(Me.lcbtncv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcCv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -129,6 +129,13 @@ Partial Class ChangeData
         Me.LayoutControl1.Size = New System.Drawing.Size(243, 407)
         Me.LayoutControl1.TabIndex = 2
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'txtdob
+        '
+        Me.txtdob.Location = New System.Drawing.Point(100, 108)
+        Me.txtdob.Name = "txtdob"
+        Me.txtdob.Size = New System.Drawing.Size(131, 20)
+        Me.txtdob.TabIndex = 35
         '
         'txtinterviewdate
         '
@@ -165,7 +172,6 @@ Partial Class ChangeData
         '
         'txtinterview
         '
-        Me.txtinterview.Enabled = False
         Me.txtinterview.Location = New System.Drawing.Point(100, 60)
         Me.txtinterview.Name = "txtinterview"
         Me.txtinterview.Size = New System.Drawing.Size(131, 20)
@@ -270,7 +276,6 @@ Partial Class ChangeData
         '
         'txtid
         '
-        Me.txtid.Enabled = False
         Me.txtid.Location = New System.Drawing.Point(100, 36)
         Me.txtid.Name = "txtid"
         Me.txtid.Size = New System.Drawing.Size(131, 20)
@@ -475,39 +480,6 @@ Partial Class ChangeData
         Me.LayoutControlItem2.Text = "Tanggal interview"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(85, 13)
         '
-        'GridControl1
-        '
-        Me.GridControl1.Location = New System.Drawing.Point(0, 161)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(214, 229)
-        Me.GridControl1.TabIndex = 4
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsFind.AlwaysVisible = True
-        Me.GridView1.OptionsView.ColumnAutoWidth = False
-        '
-        'pictureEdit
-        '
-        Me.pictureEdit.Image = Global.HRMS.My.Resources.Resources.user_icon_6
-        Me.pictureEdit.Location = New System.Drawing.Point(24, 4)
-        Me.pictureEdit.Name = "pictureEdit"
-        Me.pictureEdit.Size = New System.Drawing.Size(169, 150)
-        Me.pictureEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pictureEdit.TabIndex = 28
-        Me.pictureEdit.TabStop = False
-        '
-        'txtdob
-        '
-        Me.txtdob.Location = New System.Drawing.Point(100, 108)
-        Me.txtdob.Name = "txtdob"
-        Me.txtdob.Size = New System.Drawing.Size(131, 20)
-        Me.txtdob.TabIndex = 35
-        '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.txtdob
@@ -517,6 +489,31 @@ Partial Class ChangeData
         Me.LayoutControlItem3.Size = New System.Drawing.Size(223, 24)
         Me.LayoutControlItem3.Text = "Date Of Birth"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(85, 13)
+        '
+        'GridControl1
+        '
+        Me.GridControl1.Location = New System.Drawing.Point(4, 178)
+        Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(199, 212)
+        Me.GridControl1.TabIndex = 4
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        '
+        'GridView1
+        '
+        Me.GridView1.GridControl = Me.GridControl1
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsView.ColumnAutoWidth = False
+        '
+        'pictureEdit
+        '
+        Me.pictureEdit.Image = Global.HRMS.My.Resources.Resources.user_icon_6
+        Me.pictureEdit.Location = New System.Drawing.Point(24, 2)
+        Me.pictureEdit.Name = "pictureEdit"
+        Me.pictureEdit.Size = New System.Drawing.Size(161, 150)
+        Me.pictureEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pictureEdit.TabIndex = 28
+        Me.pictureEdit.TabStop = False
         '
         'ChangeData
         '
@@ -531,7 +528,6 @@ Partial Class ChangeData
         Me.MinimumSize = New System.Drawing.Size(462, 434)
         Me.Name = "ChangeData"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "ChangeData"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -564,10 +560,10 @@ Partial Class ChangeData
         CType(Me.lcbtncv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcCv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

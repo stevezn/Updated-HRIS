@@ -41,13 +41,11 @@ Public Class RecProcess
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
     Sub reset()
-        lcreason.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcfullname.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcidcard.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcaddress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcphone.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcstats.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
     End Sub
 
     Function ImageToByte(ByVal pbImg As PictureBox) As Byte()
@@ -71,29 +69,36 @@ Public Class RecProcess
         txtphone.Text = ""
         txtidcard.Text = ""
         txtstatus.Text = ""
-        pictureEdit.Controls.Clear()
         txtinterviewdate.Text = ""
     End Sub
 
-    Public Function InsertReq() As Boolean
+    Public Function skills() As Boolean
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
         Try
-            str_carSql = "INSERT INTO db_recruit " +
-                   "(IdRec, InterviewTimes, FullName,PhoneNumber, IdNumber, Status, InterviewDate, Reason) " +
-                   "values (@IdRec,@InterviewTimes,@FullName,@PhoneNumber,@IdNumber,@Status,@InterviewDate,@Reason)"
+            str_carSql = "INSERT INTO db_skills " +
+                   "(IdRec, FullName, Skill1, Skill2, Skill3, Skill4, Skill5, Position, ExpectedSalary) " +
+                   "values (@Idrec, @fullname, @skill1, @skill2, @skill3, @skill4, @skill5, @position, @expectedsalary)"
             sqlCommand.Connection = SQLConnection
             sqlCommand.CommandText = str_carSql
-            sqlCommand.Parameters.AddWithValue("@IdRec", txtid.Text)
-            sqlCommand.Parameters.AddWithValue("@InterviewTimes", txtinterview.Text)
-            sqlCommand.Parameters.AddWithValue("@FullName", txtfullname.Text)
-            sqlCommand.Parameters.AddWithValue("@PhoneNumber", txtphone.Text)
-            sqlCommand.Parameters.AddWithValue("@IdNumber", txtidcard.Text)
-            sqlCommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlCommand.Parameters.AddWithValue("@InterviewDate", txtinterviewdate.Text)
-            sqlCommand.Parameters.AddWithValue("@Reason", txtreason.Text)
+            sqlCommand.Parameters.AddWithValue("@IdRec", txtidrecc.Text)
+            sqlCommand.Parameters.AddWithValue("@FullName", txtname.Text)
+            sqlCommand.Parameters.AddWithValue("@skill1", skill1.Text)
+            sqlCommand.Parameters.AddWithValue("@skill2", skill2.Text)
+            sqlCommand.Parameters.AddWithValue("@skill3", skill3.Text)
+            sqlCommand.Parameters.AddWithValue("@skill4", skill4.Text)
+            sqlCommand.Parameters.AddWithValue("@skill5", skill5.Text)
+            sqlCommand.Parameters.AddWithValue("@Position", txtpos.Text)
+            sqlCommand.Parameters.AddWithValue("@ExpectedSalary", txtexp.Text)
             sqlCommand.ExecuteNonQuery()
             MessageBox.Show("Data Succesfully Added!")
+            skill1.Text = ""
+            skill2.Text = ""
+            skill3.Text = ""
+            skill4.Text = ""
+            skill5.Text = ""
+            txtpos.Text = ""
+            txtexp.Text = ""
             Return True
         Catch ex As Exception
             Return False
@@ -237,7 +242,7 @@ Public Class RecProcess
             Return True
         Catch ex As Exception
             Return False
-            MsgBox("Error Occured: Could Not Insert Records")
+            MsgBox(ex.Message)
         End Try
     End Function
 
@@ -276,45 +281,37 @@ Public Class RecProcess
                 txtaddress.Text = tbl_par.Rows(indexing).Item(5).ToString()
                 txtphone.Text = tbl_par.Rows(indexing).Item(8).ToString()
                 txtidcard.Text = tbl_par.Rows(indexing).Item(9).ToString()
-                Dim filefoto As Byte() = CType(tbl_par.Rows(indexing).Item(10), Byte())
-                If filefoto.Length > 0 Then
-                    pictureEdit.Image = ByteToImage(filefoto)
-                Else
-                    pictureEdit.Image = Nothing
-                    pictureEdit.Refresh()
-                End If
                 txtstatus.Text = tbl_par.Rows(indexing).Item(11).ToString
                 txtinterviewdate.Text = tbl_par.Rows(indexing).Item(12).ToString
-                txtreason.Text = tbl_par.Rows(indexing).Item(14).ToString
             End If
         Next
     End Sub
 
-    Private Sub loadDataReq()
-        GridControl1.RefreshDataSource()
-        Dim table As New DataTable
-        Dim sqlCommand As New MySqlCommand
-        Try
-            If barJudul.Caption = "Recruitment Process" Then
-                sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PhoneNumber, IdNumber, Status, InterviewDate, Reason FROM db_recruit where status = 'In Progress'"
-            End If
-            sqlCommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl1.DataSource = table
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
+    'Private Sub loadDataReq()
+    '    GridControl1.RefreshDataSource()
+    '    Dim table As New DataTable
+    '    Dim sqlCommand As New MySqlCommand
+    '    Try
+    '        If barJudul.Caption = "Recruitment Process" Then
+    '            sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PhoneNumber, IdNumber, Status, InterviewDate, Reason FROM db_recruit where status = 'In Progress'"
+    '        End If
+    '        sqlCommand.Connection = SQLConnection
+    '        Dim tbl_par As New DataTable
+    '        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+    '        Dim cb As New MySqlCommandBuilder(adapter)
+    '        adapter.Fill(table)
+    '        GridControl1.DataSource = table
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message)
+    '    End Try
+    'End Sub
 
     Private Sub loadinfo()
         GridControl1.RefreshDataSource()
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "select IdRec, FullName, InterviewTimes, IdNumber, Gender, Status CreatedDate from db_recruitment where status = 'Pending'"
+            sqlcommand.CommandText = "select FullName from db_recruitment where status = 'Pending'"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -327,34 +324,17 @@ Public Class RecProcess
     End Sub
 
     Private Sub loadinfo2()
-        GridControl1.RefreshDataSource()
+        GridControl2.RefreshDataSource()
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "select IdRec, FullName, InterviewTimes, IdNumber, Gender, Status CreatedDate from db_recruitment where status = 'In progress'"
+            sqlcommand.CommandText = "select FullName from db_recruitment where status = 'In Progress'"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
-            GridControl1.DataSource = table
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub loadinfo3()
-        GridControl1.RefreshDataSource()
-        Dim table As New DataTable
-        Dim sqlcommand As New MySqlCommand
-        Try
-            sqlcommand.CommandText = "select IdRec, FullName, InterviewTimes, IdNumber, Gender, Status, CreatedDate  from db_recruitment where status = 'Processed'"
-            sqlcommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl1.DataSource = table
+            GridControl2.DataSource = table
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -363,12 +343,14 @@ Public Class RecProcess
     Private Sub RecProcess_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
+        loadinfo()
+        loadinfo2()
     End Sub
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        barJudul.Caption = "Recruitment Process"
-        GridControl1.RefreshDataSource()
-        GridView1.Columns.Clear()
+        'barJudul.Caption = "Recruitment Process"
+        'GridControl1.RefreshDataSource()
+        'GridView1.Columns.Clear()
     End Sub
 
     Private Sub btnReset_Click(sender As Object, e As EventArgs)
@@ -379,9 +361,9 @@ Public Class RecProcess
         cleartxt()
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
         If txtid.Text = "" Then
-            MsgBox("Please insert an employee name or employee code")
+            MsgBox("Please insert an employee name or employee codes")
         Else
             updatechange()
         End If
@@ -400,7 +382,7 @@ Public Class RecProcess
 
     Dim view As New pdfviewer
 
-    Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
+    Private Sub btnView_Click(sender As Object, e As EventArgs)
         If view Is Nothing OrElse view.IsDisposed Then
             view = New pdfviewer
         End If
@@ -416,24 +398,37 @@ Public Class RecProcess
                 txtidcard.Text = tbl_par12.Rows(indexing).Item(4).ToString()
                 txtstatus.Text = tbl_par12.Rows(indexing).Item(5).ToString
                 txtinterviewdate.Text = tbl_par12.Rows(indexing).Item(6).ToString
-                txtreason.Text = tbl_par12.Rows(indexing).Item(7).ToString
             End If
         Next
     End Sub
 
-    Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
-        lcview.Text = "Pending Lists"
-        loadinfo()
-    End Sub
-
     Private Sub SimpleButton2_Click_1(sender As Object, e As EventArgs) Handles SimpleButton2.Click
-        lcview.Text = "In Progress Lists"
-        loadinfo2()
+        GroupControl2.Visible = True
     End Sub
 
     Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
-        lcview.Text = "Proccessed"
-        loadinfo3()
+        Dim mess As String
+        Dim down As MySqlCommand = SQLConnection.CreateCommand
+        Dim dtb As DateTime
+        txtinterviewdate.Format = DateTimePickerFormat.Custom
+        txtinterviewdate.CustomFormat = "yyyy-MM-dd"
+        dtb = txtinterviewdate.Value
+        down.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"
+        Dim downres As String = CStr(down.ExecuteScalar)
+        mess = CType(MsgBox("Are you sure to change " & downres & " to be In Progress ?", MsgBoxStyle.YesNo, "Warning"), String)
+        If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+            Dim up As MySqlCommand = SQLConnection.CreateCommand
+            up.CommandText = "update db_recruitment set" +
+                                " status = @stat" +
+                                ", InterviewDates = @idates" +
+                                " where idrec = @ic"
+            up.Parameters.AddWithValue("@ic", txtid.Text)
+            up.Parameters.AddWithValue("@stat", "In Progress")
+            up.Parameters.AddWithValue("@idates", dtb.ToString("yyyy-MM-dd"))
+            up.ExecuteNonQuery()
+            MsgBox("Status from " & downres & " Is changed to be In progress")
+            GroupControl2.Visible = False
+        End If
     End Sub
 
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
@@ -442,7 +437,7 @@ Public Class RecProcess
         datatabl.Clear()
         Dim param As String = ""
         Try
-            param = "and FullName='" + GridView1.GetFocusedRowCellValue("FullName").ToString() + "'"
+            param = "And FullName='" + GridView1.GetFocusedRowCellValue("FullName").ToString() + "'"
         Catch ex As Exception
         End Try
         Try
@@ -461,18 +456,15 @@ Public Class RecProcess
             txtinterview.Text = datatabl.Rows(0).Item(1).ToString()
             txtidcard.Text = datatabl.Rows(0).Item(9).ToString()
             txtaddress.Text = datatabl.Rows(0).Item(5).ToString()
+            txtdob.Text = datatabl.Rows(0).Item(4).ToString
             txtphone.Text = datatabl.Rows(0).Item(8).ToString()
             txtinterviewdate.Text = datatabl.Rows(0).Item(12).ToString()
-            Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(10), Byte())
-            If filefoto.Length > 0 Then
-                pictureEdit.Image = ByteToImage(filefoto)
-            Else
-                pictureEdit.Image = Nothing
-                pictureEdit.Refresh()
-            End If
+            txtgender.Text = datatabl.Rows(0).Item(6).ToString
+            txtpob.Text = datatabl.Rows(0).Item(3).ToString
             txtstatus.Text = datatabl.Rows(0).Item(11).ToString()
         End If
     End Sub
+
     Dim anly As New Analytical
 
     Private Sub BarButtonItem3_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem3.ItemClick
@@ -485,11 +477,138 @@ Public Class RecProcess
 
     Dim rates As New Rating
 
-    Private Sub BarButtonItem4_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem4.ItemClick
+    Private Sub BarButtonItem4_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
         If rates Is Nothing OrElse rates.IsDisposed OrElse rates.MinimizeBox Then
             rates.Close()
             rates = New Rating
         End If
         rates.Show()
+    End Sub
+
+    Dim dt1 As Date
+    Dim dt2 As Date
+    Dim dt3 As TimeSpan
+    Dim diff As Double
+
+    Private Sub txtdob_ValueChanged(sender As Object, e As EventArgs) Handles txtdob.ValueChanged
+        dt1 = CDate(txtdob.Value.ToShortDateString)
+        dt2 = Date.Now
+        dt3 = (dt2 - dt1)
+        diff = dt3.Days
+        txtage.Text = Str(Int(diff / 365))
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        GridControl1.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextBox1.Text + "%' and status = 'Pending'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl1.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            GridControl1.RefreshDataSource()
+            Dim table As New DataTable
+            Dim sqlcommand As New MySqlCommand
+            Try
+                sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextBox1.Text + "%' and status = 'Pending'"
+                sqlcommand.Connection = SQLConnection
+                Dim tbl_par As New DataTable
+                Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(table)
+                GridControl1.DataSource = table
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub SimpleButton3_Click_1(sender As Object, e As EventArgs) Handles SimpleButton3.Click
+        GroupControl2.Visible = False
+    End Sub
+
+    Private Sub GridView2_FocusedRowChanged(sender As Object, e As Views.Base.FocusedRowChangedEventArgs) Handles GridView2.FocusedRowChanged
+        Dim datatabl As New DataTable
+        Dim sqlCommand As New MySqlCommand
+        datatabl.Clear()
+        Dim param As String = ""
+        Try
+            param = "And FullName='" + GridView2.GetFocusedRowCellValue("FullName").ToString() + "'"
+        Catch ex As Exception
+        End Try
+        Try
+            sqlCommand.CommandText = "SELECT FullName, IdRec, Status FROM db_recruitment WHERE 1=1 " + param.ToString()
+            sqlCommand.Connection = SQLConnection
+
+            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(datatabl)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        If datatabl.Rows.Count > 0 Then
+            txtname.Text = datatabl.Rows(0).Item(0).ToString()
+            txtidrecc.Text = datatabl.Rows(0).Item(1).ToString()
+            txtstat.Text = datatabl.Rows(0).Item(2).ToString()
+        End If
+    End Sub
+
+    Private Sub TextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            GridControl2.RefreshDataSource()
+            Dim table As New DataTable
+            Dim sqlcommand As New MySqlCommand
+            Try
+                sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextBox2.Text + "%' and status = 'In Progress'"
+                sqlcommand.Connection = SQLConnection
+                Dim tbl_par As New DataTable
+                Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(table)
+                GridControl2.DataSource = table
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        GridControl2.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextBox2.Text + "%' and status = 'In Progress'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl2.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        skills()
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
     End Sub
 End Class

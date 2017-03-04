@@ -40,7 +40,6 @@ Public Class NewRec
         lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        ' lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcCv.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbtncv.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -253,7 +252,6 @@ Public Class NewRec
         lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        'lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -300,7 +298,6 @@ Public Class NewRec
         reset()
         lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        '  lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -379,7 +376,7 @@ Public Class NewRec
                 btnCapture.Text = "Capture"
             ElseIf btnCapture.Text = "Capture" Then
                 Dim data As IDataObject
-                Dim Bmap As Drawing.Image
+                Dim Bmap As Image
                 SendMessage(hHwnd, WM_Cap_EDIT_COPY, 0, 0)
                 data = Clipboard.GetDataObject()
                 If data.GetDataPresent(GetType(System.Drawing.Bitmap)) Then

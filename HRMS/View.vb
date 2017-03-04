@@ -9,7 +9,6 @@ Public Class View
     Dim oDt_sched As New DataTable()
     Dim tbl_par As New DataTable
 
-
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
@@ -50,7 +49,6 @@ Public Class View
         End If
         grid.ShowPrintPreview()
     End Sub
-
 
     Sub PrintGrid(ByVal grid As GridControl)
         If Not grid.IsPrintingAvailable Then

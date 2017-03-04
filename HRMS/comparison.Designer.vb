@@ -22,15 +22,15 @@ Partial Class Comparison
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim RadarDiagram1 As DevExpress.XtraCharts.RadarDiagram = New DevExpress.XtraCharts.RadarDiagram()
-        Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim RadarPointSeriesLabel1 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
-        Dim RadarAreaSeriesView1 As DevExpress.XtraCharts.RadarAreaSeriesView = New DevExpress.XtraCharts.RadarAreaSeriesView()
-        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim RadarPointSeriesLabel2 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
-        Dim RadarAreaSeriesView2 As DevExpress.XtraCharts.RadarAreaSeriesView = New DevExpress.XtraCharts.RadarAreaSeriesView()
-        Dim RadarPointSeriesLabel3 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
-        Dim RadarAreaSeriesView3 As DevExpress.XtraCharts.RadarAreaSeriesView = New DevExpress.XtraCharts.RadarAreaSeriesView()
+        Dim RadarDiagram2 As DevExpress.XtraCharts.RadarDiagram = New DevExpress.XtraCharts.RadarDiagram()
+        Dim Series3 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim RadarPointSeriesLabel4 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
+        Dim RadarAreaSeriesView4 As DevExpress.XtraCharts.RadarAreaSeriesView = New DevExpress.XtraCharts.RadarAreaSeriesView()
+        Dim Series4 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim RadarPointSeriesLabel5 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
+        Dim RadarAreaSeriesView5 As DevExpress.XtraCharts.RadarAreaSeriesView = New DevExpress.XtraCharts.RadarAreaSeriesView()
+        Dim RadarPointSeriesLabel6 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
+        Dim RadarAreaSeriesView6 As DevExpress.XtraCharts.RadarAreaSeriesView = New DevExpress.XtraCharts.RadarAreaSeriesView()
         Me.ChartControl1 = New DevExpress.XtraCharts.ChartControl()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -43,15 +43,15 @@ Partial Class Comparison
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarPointSeriesLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarAreaSeriesView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarPointSeriesLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarAreaSeriesView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarPointSeriesLabel3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarAreaSeriesView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarPointSeriesLabel4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarAreaSeriesView4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarPointSeriesLabel5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarAreaSeriesView5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarPointSeriesLabel6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarAreaSeriesView6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,26 +59,26 @@ Partial Class Comparison
         '
         'ChartControl1
         '
-        RadarDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = False
-        RadarDiagram1.AxisY.Range.AlwaysShowZeroLevel = True
-        RadarDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = True
-        RadarDiagram1.AxisY.Range.SideMarginsEnabled = True
-        Me.ChartControl1.Diagram = RadarDiagram1
+        RadarDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = False
+        RadarDiagram2.AxisY.Range.AlwaysShowZeroLevel = True
+        RadarDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = True
+        RadarDiagram2.AxisY.Range.SideMarginsEnabled = True
+        Me.ChartControl1.Diagram = RadarDiagram2
         Me.ChartControl1.Location = New System.Drawing.Point(191, 9)
         Me.ChartControl1.Name = "ChartControl1"
-        RadarPointSeriesLabel1.LineVisible = True
-        Series1.Label = RadarPointSeriesLabel1
-        Series1.Name = "Series 1"
-        Series1.View = RadarAreaSeriesView1
-        RadarPointSeriesLabel2.LineVisible = True
-        Series2.Label = RadarPointSeriesLabel2
-        Series2.Name = "Series 2"
-        Series2.View = RadarAreaSeriesView2
-        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1, Series2}
-        RadarPointSeriesLabel3.LineVisible = True
-        Me.ChartControl1.SeriesTemplate.Label = RadarPointSeriesLabel3
-        RadarAreaSeriesView3.Transparency = CType(0, Byte)
-        Me.ChartControl1.SeriesTemplate.View = RadarAreaSeriesView3
+        RadarPointSeriesLabel4.LineVisible = True
+        Series3.Label = RadarPointSeriesLabel4
+        Series3.Name = "Series 1"
+        Series3.View = RadarAreaSeriesView4
+        RadarPointSeriesLabel5.LineVisible = True
+        Series4.Label = RadarPointSeriesLabel5
+        Series4.Name = "Series 2"
+        Series4.View = RadarAreaSeriesView5
+        Me.ChartControl1.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series3, Series4}
+        RadarPointSeriesLabel6.LineVisible = True
+        Me.ChartControl1.SeriesTemplate.Label = RadarPointSeriesLabel6
+        RadarAreaSeriesView6.Transparency = CType(0, Byte)
+        Me.ChartControl1.SeriesTemplate.View = RadarAreaSeriesView6
         Me.ChartControl1.Size = New System.Drawing.Size(462, 324)
         Me.ChartControl1.TabIndex = 0
         '
@@ -189,15 +189,15 @@ Partial Class Comparison
         Me.Controls.Add(Me.ChartControl1)
         Me.Name = "Comparison"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        CType(RadarDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarPointSeriesLabel1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarAreaSeriesView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarPointSeriesLabel2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarAreaSeriesView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarPointSeriesLabel3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarAreaSeriesView3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarPointSeriesLabel4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarAreaSeriesView4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarPointSeriesLabel5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarAreaSeriesView5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarPointSeriesLabel6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarAreaSeriesView6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()

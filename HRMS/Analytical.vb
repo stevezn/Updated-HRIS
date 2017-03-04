@@ -65,11 +65,10 @@ Public Class Analytical
         series1.Points.Add(New SeriesPoint("SKill5", hasile))
         ' Add the series to the chart.
         ChartControl2.Series.Add(series1)
-
         ' Flip the diagram (if necessary).
-        'CType(ChartControl2.Diagram, RadarDiagram).StartAngleInDegrees = 180
-        'CType(ChartControl2.Diagram, RadarDiagram).RotationDirection =
-        '    RadarDiagramRotationDirection.Counterclockwise
+        CType(ChartControl2.Diagram, RadarDiagram).StartAngleInDegrees = 180
+        CType(ChartControl2.Diagram, RadarDiagram).RotationDirection =
+            RadarDiagramRotationDirection.Counterclockwise
 
         ' Add a title to the chart and hide the legend.
         Dim chartTitle1 As New ChartTitle()
@@ -78,7 +77,7 @@ Public Class Analytical
         ChartControl2.Legend.Visible = False
 
         '' Add the chart to the form.
-        'ChartControl2.Dock = DockStyle.Fill
+        'ChartControl2.Dock = DockStyle.None
         'Me.Controls.Add(ChartControl2)
     End Sub
 
@@ -131,16 +130,12 @@ Public Class Analytical
         Return Image.FromStream(pictureBytes)
     End Function
 
-    Private Sub Chart1_Paint(sender As Object, e As PaintEventArgs)
-        ' drawchart()
-    End Sub
-
     Private Sub loadinfo()
         GridControl1.RefreshDataSource()
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "Select FullName from db_recruitment where status != 'In Progress'"
+            sqlcommand.CommandText = "Select FullName from db_recruitment where status = 'In Progress'"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -150,6 +145,20 @@ Public Class Analytical
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Dim tbl_par As New DataTable
+
+    Sub loadadd()
+        Dim sqlCommand As New MySqlCommand
+        sqlCommand.CommandText = "SELECT Position, ExpectedSalary from db_skills where idrec = '" & txtid.Text & "'"
+        sqlCommand.Connection = SQLConnection
+        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par)
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtposition.Text = (tbl_par.Rows(index).Item(0).ToString())
+        Next
     End Sub
 
     Private Sub GridView1_FocusedRowChanged_1(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
@@ -162,7 +171,7 @@ Public Class Analytical
         Catch ex As Exception
         End Try
         Try
-            sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceofBirth, DateOfBirth, Address,Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, PhoneNumber, InterviewDate, Reason FROM db_recruitment WHERE 1=1 " + param.ToString()
+            sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceofBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, PhoneNumber, InterviewDates, CreatedDate, Reason FROM db_recruitment WHERE 1=1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
@@ -189,6 +198,9 @@ Public Class Analytical
             txtidcard.Text = datatabl.Rows(0).Item(9).ToString()
             txtstatus.Text = datatabl.Rows(0).Item(11).ToString()
             txtphone.Text = datatabl.Rows(0).Item(13).ToString()
+            label2.Text = datatabl.Rows(0).Item(15).ToString
+            label3.Text = datatabl.Rows(0).Item(14).ToString
+
         End If
     End Sub
 
@@ -209,14 +221,6 @@ Public Class Analytical
         End Try
     End Sub
 
-    Public Function GetCurrentAge(ByVal dob As Date) As Integer
-        Dim age As Integer
-        txtdob.Text = CType(dob.Year, String)
-        age = Today.Year - dob.Year
-        If (dob > Today.AddYears(-age)) Then age -= 1
-        Return age
-    End Function
-
     Dim dt1 As Date
     Dim dt2 As Date
     Dim dt3 As TimeSpan
@@ -228,23 +232,6 @@ Public Class Analytical
         dt3 = (dt2 - dt1)
         diff = dt3.Days
         txtage.Text = Str(Int(diff / 365))
-    End Sub
-
-    Private Sub TextEdit1_Enter(sender As Object, e As EventArgs) Handles TextEdit1.Enter
-        GridControl1.RefreshDataSource()
-        Dim table As New DataTable
-        Dim sqlcommand As New MySqlCommand
-        Try
-            sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextEdit1.Text + "%'"
-            sqlcommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl1.DataSource = table
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
     End Sub
 
     Private Sub TextEdit1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextEdit1.KeyDown
@@ -283,5 +270,30 @@ Public Class Analytical
             up.ExecuteNonQuery()
             MsgBox("Status from " & downres & " is changed to be accepted")
         End If
+        loadinfo()
+    End Sub
+
+    Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
+        Dim mess As String
+        Dim down As MySqlCommand = SQLConnection.CreateCommand
+        down.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"
+        Dim downres As String = CStr(down.ExecuteScalar)
+        mess = CType(MsgBox("ARe you sure to change " & downres & " to be rejected ?", MsgBoxStyle.YesNo, "Warning"), String)
+        If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+            Dim up As MySqlCommand = SQLConnection.CreateCommand
+            up.CommandText = "update db_recruitment set status = 'Rejected' where idrec = @ic"
+            up.Parameters.AddWithValue("@ic", txtid.Text)
+            up.ExecuteNonQuery()
+            MsgBox("Status from " & downres & " is changed to be rejected")
+        End If
+        loadinfo()
+    End Sub
+
+    Private Sub txtposition_EditValueChanged(sender As Object, e As EventArgs) Handles txtposition.EditValueChanged
+        For indexing As Integer = 0 To tbl_par.Rows.Count - 1
+            If txtposition.Text Is tbl_par.Rows(indexing).Item(0).ToString() Then
+                txtexpsal.Text = tbl_par.Rows(indexing).Item(1).ToString()
+            End If
+        Next
     End Sub
 End Class

@@ -188,8 +188,6 @@ Public Class ClosePayroll
         sqlcommand0.Connection = SQLConnection
         Dim rangedate As String = CStr(sqlcommand0.ExecuteScalar)
         'end
-
-        'search for rangedate between startdate and enddate in db_attrec to find HK
         Dim aabsen As MySqlCommand = SQLConnection.CreateCommand
         aabsen.CommandText = "select startdate from db_attrec where startdate between @date1 and @date2 and reason = 'Sakit' or reason = 'Izin'"
         aabsen.Parameters.AddWithValue("@date1", date1.Value.Date)

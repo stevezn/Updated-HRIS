@@ -31,6 +31,7 @@ Partial Class NewRec
         Me.barJudul = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtdob = New System.Windows.Forms.DateTimePicker()
         Me.txtinterviewdate = New System.Windows.Forms.DateTimePicker()
         Me.txtcv = New DevExpress.XtraEditors.TextEdit()
         Me.btnCV = New DevExpress.XtraEditors.SimpleButton()
@@ -66,12 +67,11 @@ Partial Class NewRec
         Me.lcbtncv = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcCv = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
         Me.btnCapture = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.txtreason = New DevExpress.Tutorials.Controls.RichTextBoxEx()
-        Me.txtdob = New System.Windows.Forms.DateTimePicker()
-        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -105,8 +105,8 @@ Partial Class NewRec
         CType(Me.lcbtncv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcCv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Employee
@@ -188,6 +188,13 @@ Partial Class NewRec
         Me.LayoutControl1.Size = New System.Drawing.Size(292, 406)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'txtdob
+        '
+        Me.txtdob.Location = New System.Drawing.Point(102, 108)
+        Me.txtdob.Name = "txtdob"
+        Me.txtdob.Size = New System.Drawing.Size(178, 21)
+        Me.txtdob.TabIndex = 35
         '
         'txtinterviewdate
         '
@@ -547,6 +554,16 @@ Partial Class NewRec
         Me.LayoutControlItem3.Text = "Tanggal Interview"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(87, 13)
         '
+        'LayoutControlItem2
+        '
+        Me.LayoutControlItem2.Control = Me.txtdob
+        Me.LayoutControlItem2.CustomizationFormText = "Date Of Birth"
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 96)
+        Me.LayoutControlItem2.Name = "LayoutControlItem2"
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(272, 24)
+        Me.LayoutControlItem2.Text = "Date Of Birth"
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(87, 13)
+        '
         'pictureEdit
         '
         Me.pictureEdit.Image = Global.HRMS.My.Resources.Resources.user_icon_6
@@ -581,23 +598,6 @@ Partial Class NewRec
         Me.txtreason.Size = New System.Drawing.Size(169, 89)
         Me.txtreason.TabIndex = 34
         Me.txtreason.Text = ""
-        '
-        'txtdob
-        '
-        Me.txtdob.Location = New System.Drawing.Point(102, 108)
-        Me.txtdob.Name = "txtdob"
-        Me.txtdob.Size = New System.Drawing.Size(178, 21)
-        Me.txtdob.TabIndex = 35
-        '
-        'LayoutControlItem2
-        '
-        Me.LayoutControlItem2.Control = Me.txtdob
-        Me.LayoutControlItem2.CustomizationFormText = "Date Of Birth"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 96)
-        Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(272, 24)
-        Me.LayoutControlItem2.Text = "Date Of Birth"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(87, 13)
         '
         'NewRec
         '
@@ -649,8 +649,8 @@ Partial Class NewRec
         CType(Me.lcbtncv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcCv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

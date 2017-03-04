@@ -998,7 +998,6 @@ Public Class MainApp
 
     Dim employees As New NewRec
     Dim newemps As New NewEmp
-    Dim salary As New NewSalary
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         If barJudul.Caption = "Module Recruitment" Then
@@ -1013,12 +1012,6 @@ Public Class MainApp
             End If
             newemps.Show()
             newemps.BarButtonItem1.PerformClick()
-        ElseIf barJudul.Caption = "Module Payroll" Then
-            If salary Is Nothing OrElse salary.IsDisposed Then
-                salary = New NewSalary
-            End If
-            salary.Show()
-            salary.BarButtonItem1.PerformClick()
         End If
     End Sub
 
@@ -1037,12 +1030,6 @@ Public Class MainApp
                 changeem = New ChangeEmp
             End If
             changeem.Show()
-        ElseIf barJudul.Caption = "Module Payroll" Then
-            If salary Is Nothing OrElse salary.IsDisposed Then
-                salary = New NewSalary
-            End If
-            salary.Show()
-            salary.BarButtonItem2.PerformClick()
         End If
     End Sub
 
@@ -1108,7 +1095,6 @@ Public Class MainApp
     End Sub
 
     Private Sub MainApp_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-        'End
     End Sub
 
     Dim info As infoReq
