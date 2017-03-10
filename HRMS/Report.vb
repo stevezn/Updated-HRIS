@@ -240,11 +240,6 @@ Public Class Report
         lis.GridControl1.DataSource = dt
     End Sub
 
-    Sub chg()
-        Dim cmd As MySqlCommand = SQLConnection.CreateCommand
-
-    End Sub
-
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs)
         Close()
     End Sub

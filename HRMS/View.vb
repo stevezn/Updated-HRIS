@@ -58,10 +58,6 @@ Public Class View
         grid.Print()
     End Sub
 
-    Private Sub View_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs)
         Dim view As GridView = CType(sender, GridView)
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then

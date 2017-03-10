@@ -237,7 +237,7 @@ Partial Class RecProcess
         '
         'BarButtonItem3
         '
-        Me.BarButtonItem3.Caption = "Analytical SKills"
+        Me.BarButtonItem3.Caption = "Recruitment Statistic Skills"
         Me.BarButtonItem3.Glyph = CType(resources.GetObject("BarButtonItem3.Glyph"), System.Drawing.Image)
         Me.BarButtonItem3.Id = 5
         Me.BarButtonItem3.Name = "BarButtonItem3"
@@ -496,7 +496,7 @@ Partial Class RecProcess
         Me.GroupControl1.Controls.Add(Me.XtraTabControl1)
         Me.GroupControl1.Location = New System.Drawing.Point(0, 141)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(402, 396)
+        Me.GroupControl1.Size = New System.Drawing.Size(402, 378)
         Me.GroupControl1.TabIndex = 35
         '
         'XtraTabControl1
@@ -504,7 +504,7 @@ Partial Class RecProcess
         Me.XtraTabControl1.Location = New System.Drawing.Point(3, 1)
         Me.XtraTabControl1.Name = "XtraTabControl1"
         Me.XtraTabControl1.SelectedTabPage = Me.XtraTabPage1
-        Me.XtraTabControl1.Size = New System.Drawing.Size(399, 390)
+        Me.XtraTabControl1.Size = New System.Drawing.Size(399, 377)
         Me.XtraTabControl1.TabIndex = 50
         Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage1, Me.XtraTabPage2})
         '
@@ -519,7 +519,7 @@ Partial Class RecProcess
         Me.XtraTabPage1.Controls.Add(Me.Label1)
         Me.XtraTabPage1.Controls.Add(Me.SimpleButton2)
         Me.XtraTabPage1.Name = "XtraTabPage1"
-        Me.XtraTabPage1.Size = New System.Drawing.Size(393, 362)
+        Me.XtraTabPage1.Size = New System.Drawing.Size(393, 349)
         Me.XtraTabPage1.Text = "Pending"
         '
         'lcview
@@ -590,7 +590,7 @@ Partial Class RecProcess
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(149, 299)
+        Me.GridControl1.Size = New System.Drawing.Size(149, 279)
         Me.GridControl1.TabIndex = 34
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -603,18 +603,18 @@ Partial Class RecProcess
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(177, 302)
+        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(174, 312)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(194, 14)
+        Me.Label1.Size = New System.Drawing.Size(171, 13)
         Me.Label1.TabIndex = 42
         Me.Label1.Text = "Change status to be In Progress ?"
         '
         'SimpleButton2
         '
-        Me.SimpleButton2.Location = New System.Drawing.Point(243, 326)
+        Me.SimpleButton2.Location = New System.Drawing.Point(351, 305)
         Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(54, 27)
+        Me.SimpleButton2.Size = New System.Drawing.Size(36, 27)
         Me.SimpleButton2.TabIndex = 37
         Me.SimpleButton2.Text = "Yes"
         '
@@ -627,7 +627,7 @@ Partial Class RecProcess
         Me.XtraTabPage2.Controls.Add(Me.TextBox2)
         Me.XtraTabPage2.Controls.Add(Me.GridControl2)
         Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(393, 362)
+        Me.XtraTabPage2.Size = New System.Drawing.Size(393, 349)
         Me.XtraTabPage2.Text = "Progress"
         '
         'LabelControl1
@@ -891,7 +891,7 @@ Partial Class RecProcess
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.MenuManager = Me.RibbonControl1
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(157, 303)
+        Me.GridControl2.Size = New System.Drawing.Size(157, 279)
         Me.GridControl2.TabIndex = 45
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -935,13 +935,13 @@ Partial Class RecProcess
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(402, 531)
+        Me.ClientSize = New System.Drawing.Size(402, 523)
         Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.BackstageViewControl1)
         Me.Controls.Add(Me.BackstageViewControl2)
         Me.Controls.Add(Me.RibbonControl1)
-        Me.MaximumSize = New System.Drawing.Size(412, 536)
-        Me.MinimumSize = New System.Drawing.Size(412, 536)
+        Me.MaximumSize = New System.Drawing.Size(412, 528)
+        Me.MinimumSize = New System.Drawing.Size(412, 528)
         Me.Name = "RecProcess"
         Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

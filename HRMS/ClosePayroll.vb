@@ -40,6 +40,11 @@ Public Class ClosePayroll
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
+    Sub counthk()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select startdate from db_holiday where @D  "
+    End Sub
+
     Sub loaddata()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "SELECT FullName, EmployeeCode From db_payrolldata"
@@ -162,7 +167,8 @@ Public Class ClosePayroll
     Dim pphutang As Decimal
 
     Sub computingsalary(emp As String)
-        'search for rangedate between startdate and enddate in db_holiday
+
+        'find rangedate between start and end holiday
         Dim dates1 As MySqlCommand = SQLConnection.CreateCommand
         dates1.CommandText = "select startdate from db_holiday where startdate between @date1 and @date2"
         dates1.Parameters.AddWithValue("@date1", date1.Value.Date)
@@ -188,12 +194,12 @@ Public Class ClosePayroll
         sqlcommand0.Connection = SQLConnection
         Dim rangedate As String = CStr(sqlcommand0.ExecuteScalar)
         'end
+
         Dim aabsen As MySqlCommand = SQLConnection.CreateCommand
         aabsen.CommandText = "select startdate from db_attrec where startdate between @date1 and @date2 and reason = 'Sakit' or reason = 'Izin'"
         aabsen.Parameters.AddWithValue("@date1", date1.Value.Date)
         aabsen.Parameters.AddWithValue("@date2", date2.Value)
         Dim reala As String = CStr(aabsen.ExecuteScalar)
-
 
         Dim babsen As MySqlCommand = SQLConnection.CreateCommand
         babsen.CommandText = "Select enddate from db_attrec where enddate between @date1 And @date2 and reason = 'Sakit' or reason = 'Izin'"

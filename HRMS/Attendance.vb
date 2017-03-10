@@ -73,7 +73,11 @@ Public Class Attendance
     End Sub
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        save()
+        If ComboBoxEdit1.Text = "" Or RichTextBox1.Text = "" Then
+            MsgBox("Please fill reason field")
+        Else
+            save()
+        End If
     End Sub
 
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click

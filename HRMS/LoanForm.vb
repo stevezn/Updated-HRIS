@@ -1,5 +1,9 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms.DataVisualization.Charting
 Imports DevExpress.Utils.Menu
+Imports DevExpress.XtraEditors.Repository
+Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraGrid.Views
 Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class Payments
@@ -83,6 +87,23 @@ Public Class Payments
         Next
     End Sub
 
+    Sub selectname()
+        GridControl8.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlCommand As New MySqlCommand
+        Try
+            sqlCommand.CommandText = "select a.FullName, a.EmployeeCode, a.BasicRate, b.Gender, b.Status, b.IdNumber, b.Religion from db_payrolldata a, db_pegawai b where a.EMployeeCode = b.EmployeeCode"
+            sqlCommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl8.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     Public Sub Insertpart()
         Dim sqlCommand As MySqlCommand = SQLConnection.CreateCommand
         Try
@@ -98,15 +119,69 @@ Public Class Payments
             sqlCommand.Parameters.AddWithValue("@Incentives", txtincentives.Text)
             sqlCommand.Parameters.AddWithValue("@MealRate", txtmealrate.Text)
             sqlCommand.Parameters.AddWithValue("@Transport", txttransport.Text)
-            sqlCommand.Parameters.AddWithValue("@JaminanKesehatan", cjk.Checked)
-            sqlCommand.Parameters.AddWithValue("@Bpjs", cbpjs.Checked)
-            sqlCommand.Parameters.AddWithValue("@JaminanKecelakaanKerja", cjkk.Checked)
-            sqlCommand.Parameters.AddWithValue("@JaminanKematian", cjamkem.Checked)
-            sqlCommand.Parameters.AddWithValue("@JaminanHariTua", cjht.Checked)
-            sqlCommand.Parameters.AddWithValue("@IuranPensiun", ciupe.Checked)
-            sqlCommand.Parameters.AddWithValue("@BiayaJabatan", cbj.Checked)
-            sqlCommand.Parameters.AddWithValue("@Rapel", crapel.Checked)
-            sqlCommand.Parameters.AddWithValue("@Loan", cloan.Checked)
+            Dim cjks As String
+            If cjk.Checked = True Then
+                cjks = "Yes"
+            Else
+                cjks = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@JaminanKesehatan", "12")
+            Dim cbpjss As String
+            If cbpjs.Checked = True Then
+                cbpjss = "Yes"
+            Else
+                cbpjss = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@Bpjs", cbpjss)
+            Dim cjkks As String
+            If cjkk.Checked = True Then
+                cjkks = "Yes"
+            Else
+                cjkks = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@JaminanKecelakaanKerja", cjkks)
+            Dim jks As String
+            If cjamkem.Checked = True Then
+                jks = "Yes"
+            Else
+                jks = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@JaminanKematian", jks)
+            Dim jhts As String
+            If cjht.Checked = True Then
+                jhts = "Yes"
+            Else
+                jhts = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@JaminanHariTua", jhts)
+            Dim iupes As String
+            If ciupe.Checked = True Then
+                iupes = "Yes"
+            Else
+                iupes = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@IuranPensiun", iupes)
+            Dim bjs As String '
+            If cbj.Checked = True Then
+                bjs = "Yes"
+            Else
+                bjs = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@BiayaJabatan", bjs)
+            Dim rapels As String
+            If crapel.Checked = True Then
+                rapels = "Yes"
+            Else
+                rapels = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@Rapel", rapels)
+            Dim loans As String
+            If cloan.Checked = True Then
+                loans = "Yes"
+            Else
+                loans = "No"
+            End If
+            sqlCommand.Parameters.AddWithValue("@Loan", loans)
             sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
             sqlCommand.Parameters.AddWithValue("@ChangeBy", "Unknown")
             sqlCommand.ExecuteNonQuery()
@@ -119,6 +194,101 @@ Public Class Payments
     Public Sub updatepart()
         Dim sqlCommand As MySqlCommand = SQLConnection.CreateCommand
         Try
+            Dim a As MySqlCommand = SQLConnection.CreateCommand
+            a.CommandText = "select JaminanKesehatan from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim aa As Integer = CInt(a.ExecuteScalar)
+            Dim aaaa As String
+            If aa = 1 Then
+                aaaa = "Yes"
+            Else
+                aaaa = "No"
+            End If
+
+            Dim b As MySqlCommand = SQLConnection.CreateCommand
+            b.CommandText = "select Bpjs from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim bb As Integer = CInt(b.ExecuteScalar)
+            Dim bbbb As String
+            If bb = 1 Then
+                bbbb = "Yes"
+            Else
+                bbbb = "No"
+            End If
+
+            Dim c As MySqlCommand = SQLConnection.CreateCommand
+            c.CommandText = "select JaminanKecelakaanKerja from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim cc As Integer = CInt(c.ExecuteScalar)
+            Dim cccc As String
+            If cc = 1 Then
+                cccc = "Yes"
+            Else
+                cccc = "No"
+            End If
+
+            Dim d As MySqlCommand = SQLConnection.CreateCommand
+            d.CommandText = "select JaminanKematian from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim dd As Integer = CInt(d.ExecuteScalar)
+            Dim dddd As String
+            If dd = 1 Then
+                dddd = "Yes"
+            Else
+                dddd = "No"
+            End If
+
+            Dim e As MySqlCommand = SQLConnection.CreateCommand
+            e.CommandText = "select JaminanHariTua from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim ee As Integer = CInt(e.ExecuteScalar)
+            Dim eeee As String
+            If ee = 1 Then
+                eeee = "Yes"
+            Else
+                eeee = "N0"
+            End If
+
+            Dim f As MySqlCommand = SQLConnection.CreateCommand
+            f.CommandText = "select IuranPensiun from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim ff As Integer = CInt(f.ExecuteScalar)
+            Dim ffff As String
+            If ff = 1 Then
+                ffff = "Yes"
+            Else
+                ffff = "No"
+            End If
+
+            Dim g As MySqlCommand = SQLConnection.CreateCommand
+            g.CommandText = "select BiayaJabatan from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim gg As Integer = CInt(g.ExecuteScalar)
+            Dim gggg As String
+            If bb = 1 Then
+                gggg = "Yes"
+            Else
+                gggg = "No"
+            End If
+
+            Dim h As MySqlCommand = SQLConnection.CreateCommand
+            h.CommandText = "select rapel from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim hh As Integer = CInt(h.ExecuteScalar)
+            Dim hhhh As String
+            If hh = 1 Then
+                hhhh = "Yes"
+            Else
+                hhhh = "No"
+            End If
+
+            Dim i As MySqlCommand = SQLConnection.CreateCommand
+            i.CommandText = "select loan from db_payrolldata where employeecode = '" & txtempcode2.Text & "'"
+            Dim ii As Integer = CInt(i.ExecuteScalar)
+            Dim iiii As String
+            If ii = 1 Then
+                iiii = "Yes"
+            Else
+                iiii = "No"
+            End If
+
+            Dim use As MySqlCommand = SQLConnection.CreateCommand
+            use.CommandText = "select user from db_temp"
+            Dim user As String = CStr(use.ExecuteScalar)
+
+
             sqlCommand.CommandText = "INSERT INTO db_salarychange " +
                                 "(FullName, EmployeeCode, StatusWajibPajak, MemilikiNpwp, BasicRate, Allowance, Incentives, MealRate, Transport, JaminanKesehatan, Bpjs, JaminanKecelakaanKerja, JaminanKematian, JaminanHariTua, IuranPensiun, BiayaJabatan, Rapel, Loan, ChangeDate, ChangeBy) " +
                                 "values (@FullName, @EmployeeCode, @StatusWajibPajak, @MemilikiNpwp, @BasicRate, @Allowance, @Incentives, @MealRate, @Transport, @JaminanKesehatan, @Bpjs, @JaminanKecelakaanKerja, @JaminanKematian, @JaminanHariTua, @IuranPensiun, @BiayaJabatan, @Rapel, @Loan, @ChangeDate, @ChangeBy)"
@@ -131,22 +301,24 @@ Public Class Payments
             sqlCommand.Parameters.AddWithValue("@Incentives", txtincentives1.Text)
             sqlCommand.Parameters.AddWithValue("@MealRate", txtmealrate1.Text)
             sqlCommand.Parameters.AddWithValue("@Transport", txttransport1.Text)
-            sqlCommand.Parameters.AddWithValue("@JaminanKesehatan", cjk1.Checked)
-            sqlCommand.Parameters.AddWithValue("@Bpjs", cbpjs1.Checked)
-            sqlCommand.Parameters.AddWithValue("@JaminanKecelakaanKerja", cjkk1.Checked)
-            sqlCommand.Parameters.AddWithValue("@JaminanKematian", cjamkem1.Checked)
-            sqlCommand.Parameters.AddWithValue("@JaminanHariTua", cjht1.Checked)
-            sqlCommand.Parameters.AddWithValue("@IuranPensiun", ciupe1.Checked)
-            sqlCommand.Parameters.AddWithValue("@BiayaJabatan", cbj1.Checked)
-            sqlCommand.Parameters.AddWithValue("@Rapel", crapel1.Checked)
-            sqlCommand.Parameters.AddWithValue("@Loan", cloan1.Checked)
+            sqlCommand.Parameters.AddWithValue("@JaminanKesehatan", aaaa)
+            sqlCommand.Parameters.AddWithValue("@Bpjs", bbbb)
+            sqlCommand.Parameters.AddWithValue("@JaminanKecelakaanKerja", cccc)
+            sqlCommand.Parameters.AddWithValue("@JaminanKematian", dddd)
+            sqlCommand.Parameters.AddWithValue("@JaminanHariTua", eeee)
+            sqlCommand.Parameters.AddWithValue("@IuranPensiun", ffff)
+            sqlCommand.Parameters.AddWithValue("@BiayaJabatan", gggg)
+            sqlCommand.Parameters.AddWithValue("@Rapel", hhhh)
+            sqlCommand.Parameters.AddWithValue("@Loan", iiii)
             sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
-            sqlCommand.Parameters.AddWithValue("@ChangeBy", "Unknown")
+            sqlCommand.Parameters.AddWithValue("@ChangeBy", user)
             sqlCommand.ExecuteNonQuery()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Dim main As MainApp
 
     Public Sub updatechange()
         Dim sqlcommand As New MySqlCommand
@@ -198,6 +370,60 @@ Public Class Payments
         End Try
     End Sub
 
+    Public Sub insertlists()
+        Dim lesser, greater As Date
+        If txtmonth.Value < txtcompletedon1.Value Then
+            lesser = txtmonth.Value
+            greater = txtcompletedon1.Value
+        Else
+            lesser = txtcompletedon1.Value
+            greater = txtmonth.Value
+        End If
+        While lesser <= greater
+            Dim nilai As String = ""
+            If lesser.Month = 1 Then
+                nilai = "January"
+            ElseIf lesser.Month = 2 Then
+                nilai = "February"
+            ElseIf lesser.Month = 3 Then
+                nilai = "March"
+            ElseIf lesser.Month = 4 Then
+                nilai = "April"
+            ElseIf lesser.Month = 5 Then
+                nilai = "May"
+            ElseIf lesser.Month = 6 Then
+                nilai = "June"
+            ElseIf lesser.Month = 7 Then
+                nilai = "July"
+            ElseIf lesser.Month = 8 Then
+                nilai = "August"
+            ElseIf lesser.Month = 9 Then
+                nilai = "September"
+            ElseIf lesser.Month = 10 Then
+                nilai = "October"
+            ElseIf lesser.Month = 11 Then
+                nilai = "November"
+            ElseIf lesser.Month = 12 Then
+                nilai = "December"
+            End If
+            Try
+                Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+                sqlcommand.CommandText = "insert into db_loanlist " +
+                                        "(FullName, EmployeeCode, AmountOfLoan, Month, Realisasi)" +
+                                        " Values (@FullName, @EmployeeCode, @AmountOfLoan, @Month, @Realisasi)"
+                sqlcommand.Parameters.AddWithValue("@FullName", txtname.Text)
+                sqlcommand.Parameters.AddWithValue("@EmployeeCode", txtempcode.Text)
+                sqlcommand.Parameters.AddWithValue("@AmountOfLoan", txtloan.Text)
+                sqlcommand.Parameters.AddWithValue("@Month", nilai)
+                sqlcommand.Parameters.AddWithValue("@Realisasi", "")
+                sqlcommand.ExecuteNonQuery()
+                lesser = lesser.AddMonths(1)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End While
+    End Sub
+
     Public Sub InsertLoan()
         Dim quer As Integer
         Try
@@ -208,11 +434,12 @@ Public Class Payments
             MsgBox(ex.Message)
         End Try
         If quer = 0 Then
+            insertlists()
             Dim sqlcommand As New MySqlCommand
             Dim str_carsql As String
             str_carsql = "INSERT INTO db_loan " +
-                                "(FullName, EmployeeCode, ApprovedBy, Reason, Dates, AmountOfLoan, Months, SalaryInclude, FromMonths, Year, PaymentPerMonth, CompletedOn ) " +
-                                " Values (@FullName, @EmployeeCode, @ApprovedBy, @Reason, @Dates, @AmountOfLoan, @Months, @SalaryInclude, @FromMonths, @Year, @PaymentPerMonth, @CompletedOn)"
+                                "(FullName, EmployeeCode, ApprovedBy, Reason, Dates, AmountOfLoan, Months, SalaryInclude, FromMonths, PaymentPerMonth, CompletedOn ) " +
+                                " Values (@FullName, @EmployeeCode, @ApprovedBy, @Reason, @Dates, @AmountOfLoan, @Months, @SalaryInclude, @FromMonths, @PaymentPerMonth, @CompletedOn)"
             sqlcommand.Connection = SQLConnection
             sqlcommand.CommandText = str_carsql
             sqlcommand.Parameters.AddWithValue("@FullName", txtname.Text)
@@ -224,7 +451,6 @@ Public Class Payments
             sqlcommand.Parameters.AddWithValue("@Months", txtrangemon.Text)
             sqlcommand.Parameters.AddWithValue("@SalaryInclude", CheckEdit2.Checked)
             sqlcommand.Parameters.AddWithValue("@FromMonths", txtmonth.Text)
-            sqlcommand.Parameters.AddWithValue("@Year", txtyears.Text)
             sqlcommand.Parameters.AddWithValue("@PaymentPerMonth", lcpayment.Text)
             sqlcommand.Parameters.AddWithValue("@CompletedOn", txtcompletedon1.Text)
             sqlcommand.Connection = SQLConnection
@@ -293,7 +519,7 @@ Public Class Payments
             sqlcommand.ExecuteNonQuery()
             MessageBox.Show("Data Successfully Added!")
         Else
-            MsgBox("This employee still has rapel progress on the go")
+            MsgBox("This employee still in rapel progress lists")
         End If
     End Sub
 
@@ -417,7 +643,6 @@ Public Class Payments
             res = a / b
             lcpayment.Text = res.ToString
         Catch ex As Exception
-            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -477,7 +702,7 @@ Public Class Payments
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "select FullName, EmployeeCode, AmountOfLoan, Month, Realisasi from db_loan where FullName Like '%" + txtloanname.Text + "%'"
+            sqlcommand.CommandText = "select FullName, EmployeeCode, AmountOfLoan, Month, Realisasi from db_loanlist where FullName Like '%" + txtloanname.Text + "%'"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -534,9 +759,29 @@ Public Class Payments
         End Try
     End Sub
 
+    'Sub countdate()
+    '    Dim dtr As DateTime
+    '    dtr = CDate(DateEdit1.EditValue)
+    '    DateEdit1.Properties.Mask.EditMask = CType(Date.Now, String)
+    '    dtr = CDate(DateEdit1.EditValue.ToString)
+    '    MsgBox(dtr)
+    '    Try
+    '        Dim tes As MySqlCommand = SQLConnection.CreateCommand
+    '        tes.CommandText = "INSERT INTO test " +
+    '                            "(datedd) " +
+    '                            "values (@datedd)"
+    '        tes.Parameters.AddWithValue("@datedd", dtr.ToString("yyyy-MM-dd HH:mm:ss"))
+    '        tes.ExecuteNonQuery()
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message)
+    '    End Try
+    'End Sub    
+
     Private Sub LoanForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
+        'txtyears.Text = Year(Now).ToString
+        selectname()
         holidays()
         loaddata()
         loaddata1()
@@ -545,6 +790,14 @@ Public Class Payments
         loadloan()
         loanlists()
         loadrapel()
+        txtmonth.Format = DateTimePickerFormat.Custom
+        txtcompletedon1.Format = DateTimePickerFormat.Custom
+        txteffective.Format = DateTimePickerFormat.Custom
+        txtuntil.Format = DateTimePickerFormat.Custom
+        txteffective.CustomFormat = "MMMM yyyy"
+        txtuntil.CustomFormat = "MMMM yyyy"
+        txtcompletedon1.CustomFormat = "MMMM yyyy"
+        txtmonth.CustomFormat = "MMMM yyyy"
     End Sub
 
     Private Sub txtname_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtname.SelectedIndexChanged
@@ -564,74 +817,18 @@ Public Class Payments
 
     Dim value As Integer = 0
 
-    Private Sub months()
-        If txtmonth.Text = "January" Then
-            value = 1
-        ElseIf txtmonth.Text = "February" Then
-            value = 2
-        ElseIf txtmonth.Text = "March" Then
-            value = 3
-        ElseIf txtmonth.Text = "April" Then
-            value = 4
-        ElseIf txtmonth.Text = "May" Then
-            value = 5
-        ElseIf txtmonth.Text = "June" Then
-            value = 6
-        ElseIf txtmonth.Text = "July" Then
-            value = 7
-        ElseIf txtmonth.Text = "August" Then
-            value = 8
-        ElseIf txtmonth.Text = "September" Then
-            value = 9
-        ElseIf txtmonth.Text = "October" Then
-            value = 10
-        ElseIf txtmonth.Text = "November" Then
-            value = 11
-        Else
-            value = 12
-        End If
-        Try
-            Dim a, res As Integer
-            a = Convert.ToInt32(txtrangemon.Text)
-            res = value + a
-            txtcompletedon1.Text = res.ToString
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
-    Sub hasil()
-        months()
-        If txtcompletedon1.Text = "1" Then
-            txtcompletedon1.Text = "January"
-        ElseIf txtcompletedon1.Text = "2" Then
-            txtcompletedon1.Text = "February"
-        ElseIf txtcompletedon1.Text = "3" Then
-            txtcompletedon1.Text = "March"
-        ElseIf txtcompletedon1.Text = "4" Then
-            txtcompletedon1.Text = "April"
-        ElseIf txtcompletedon1.Text = "5" Then
-            txtcompletedon1.Text = "May"
-        ElseIf txtcompletedon1.Text = "6" Then
-            txtcompletedon1.Text = "June"
-        ElseIf txtcompletedon1.Text = "7" Then
-            txtcompletedon1.Text = "July"
-        ElseIf txtcompletedon1.Text = "8" Then
-            txtcompletedon1.Text = "August"
-        ElseIf txtcompletedon1.Text = "9" Then
-            txtcompletedon1.Text = "September"
-        ElseIf txtcompletedon1.Text = "10" Then
-            txtcompletedon1.Text = "October"
-        ElseIf txtcompletedon1.Text = "11" Then
-            txtcompletedon1.Text = "November"
-        ElseIf txtcompletedon1.Text = "12" Then
-            txtcompletedon1.Text = "December"
-        End If
-    End Sub
-
-    Private Sub txtmon_SelectedIndexChanged(sender As Object, e As EventArgs)
-        months()
-        txtyears.Text = Year(Now).ToString
+    Sub dateyear()
+        Dim Msg, Number, StartDate As String
+        Dim Months As Double
+        Dim SecondDate As Date
+        Dim IntervalType As DateInterval
+        IntervalType = DateInterval.Month
+        StartDate = (txtmonth.Value)
+        SecondDate = CDate(StartDate)
+        Number = (txtrangemon.Text)
+        Months = Val(Number)
+        Msg = CType(DateAdd(IntervalType, Months, SecondDate), String)
+        txtcompletedon1.Text = Msg
     End Sub
 
     Private Sub txtamount_KeyPress(sender As Object, e As KeyPressEventArgs)
@@ -646,9 +843,8 @@ Public Class Payments
         XtraTabPage5.Show()
     End Sub
 
-    Private Sub ComboBoxEdit5_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtmonth.SelectedIndexChanged
-        hasil()
-        txtyears.Text = Year(Now).ToString
+    Private Sub ComboBoxEdit5_SelectedIndexChanged(sender As Object, e As EventArgs)
+        ' txtyears.Text = Year(Now).ToString
     End Sub
 
     Private Sub txtname1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtname1.SelectedIndexChanged
@@ -713,16 +909,6 @@ Public Class Payments
         loadpayroll1()
     End Sub
 
-    Dim calc As New Calculate
-
-    Private Sub BarButtonItem4_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem4.ItemClick
-        barJudul.Caption = "Calculate Salary"
-        If calc Is Nothing OrElse calc.IsDisposed Then
-            calc = New Calculate
-        End If
-        calc.Show()
-    End Sub
-
     Private Sub ComboBoxEdit6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtname2.SelectedIndexChanged
         For index As Integer = 0 To tbl_par2.Rows.Count - 1
             If txtname2.SelectedItem Is tbl_par2.Rows(index).Item(0).ToString Then
@@ -777,10 +963,8 @@ Public Class Payments
     Private Sub CheckEdit2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit2.CheckedChanged
         If CheckEdit2.Checked = True Then
             txtmonth.Enabled = True
-            txtyears.Enabled = True
         Else
             txtmonth.Enabled = False
-            txtyears.Enabled = False
         End If
     End Sub
 
@@ -792,10 +976,12 @@ Public Class Payments
             UpdateLoan()
         End If
         loadloan()
+        'loadloanname()
     End Sub
 
     Private Sub txtrangemon_EditValueChanged(sender As Object, e As EventArgs) Handles txtrangemon.EditValueChanged
         loanpay()
+        dateyear()
     End Sub
 
     Dim closer As New ClosePayroll
@@ -1014,12 +1200,23 @@ Public Class Payments
         End Try
     End Sub
 
+    Sub paid()
+        Dim cmd As MySqlCommand = SQLConnection.CreateCommand
+        cmd.CommandText = "update db_loanlist set realisasi = 'PAID' where employeecode = @ec"
+        cmd.Parameters.AddWithValue("@ec", txtnameloan.Text)
+        cmd.ExecuteNonQuery()
+    End Sub
+
     Sub settling()
-        Dim conn As New MySqlConnection(connectionString)
-        Dim cmd As MySqlCommand = conn.CreateCommand
+        Dim cmd As MySqlCommand = SQLConnection.CreateCommand
         Dim mess As String
-        mess = CType(MsgBox("Sure to clear this employee ?", MsgBoxStyle.YesNo, "Warning"), String)
+        Dim name As MySqlCommand = SQLConnection.CreateCommand
+        name.CommandText = "select fullname from db_loan where employeecode = @ec"
+        name.Parameters.AddWithValue("@ec", txtnameloan.Text)
+        Dim rname As String = CStr(name.ExecuteScalar)
+        mess = CType(MsgBox("Sure to clear this employee named  " & rname & " and employee code " & txtnameloan.Text & "?", MsgBoxStyle.YesNo, "Warning"), String)
         If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+            paid()
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add(New MySqlParameter("@empcode", txtnameloan.Text))
             cmd.CommandText = "deleteloan"
@@ -1214,17 +1411,118 @@ Public Class Payments
         End If
     End Sub
 
-    Sub complete()
+    Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
+        GroupControl6.Visible = True
+    End Sub
+
+    Private Sub SimpleButton7_Click(sender As Object, e As EventArgs) Handles SimpleButton7.Click
+        GroupControl6.Visible = False
+    End Sub
+
+    Function ImageToByte(ByVal pbImg As PictureBox) As Byte()
+        If pbImg Is Nothing Then
+            Return Nothing
+        End If
+        Dim ms As New MemoryStream()
+        pbImg.Image.Save(ms, Imaging.ImageFormat.Jpeg)
+        Return ms.ToArray()
+    End Function
+
+    Public Function ByteToImage(ByVal filefoto As Byte()) As Image
+        Dim pictureBytes As New MemoryStream(filefoto)
+        Return Image.FromStream(pictureBytes)
+    End Function
+
+    Private Sub GridView8_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView8.FocusedRowChanged
+        Dim datatabl As New DataTable
+        Dim sqlCommand As New MySqlCommand
+        datatabl.Clear()
+        Dim param As String = ""
         Try
-            Dim conn As New MySqlConnection(connectionString)
-            Dim cmd As MySqlCommand = conn.CreateCommand
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.Add(New MySqlParameter("@empcode", txtnameloan.Text))
-            cmd.CommandText = "completedloan"
-            cmd.ExecuteNonQuery()
-            MsgBox("Processed", MsgBoxStyle.Information, "Success")
+            param = "and EmployeeCode='" + GridView8.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
+        Catch ex As Exception
+        End Try
+        Try
+            sqlCommand.CommandText = "SELECT Photo, FullName from db_pegawai WHERE 1=1 " + param.ToString()
+            sqlCommand.Connection = SQLConnection
+            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(datatabl)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        If datatabl.Rows.Count > 0 Then
+            Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(0), Byte())
+            If filefoto.Length > 0 Then
+                PictureBox1.Image = ByteToImage(filefoto)
+            Else
+                PictureBox1.Image = Nothing
+                PictureBox1.Refresh()
+            End If
+        End If
+        txtname.SelectedItem = (datatabl.Rows(0).Item(1).ToString)
+        txtname3.SelectedItem = (datatabl.Rows(0).Item(1).ToString)
+    End Sub
+
+    Private Sub GridView8_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView8.PopupMenuShowing
+        Dim view As GridView = CType(sender, GridView)
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            Dim rowHandle As Integer = e.HitInfo.RowHandle
+            e.Menu.Items.Clear()
+            Dim item As DXMenuItem = CreateMergingEnabledMenuItem(view, rowHandle)
+            item.BeginGroup = True
+            e.Menu.Items.Add(item)
+        End If
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Select Employee", New EventHandler(AddressOf SimpleButton7_Click)))
+        End If
+    End Sub
+
+    Private Sub SimpleButton8_Click(sender As Object, e As EventArgs) Handles SimpleButton8.Click
+        selectname()
+    End Sub
+
+    Dim form As New Form1
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If form Is Nothing OrElse form.IsDisposed OrElse form.MinimizeBox Then
+            form.Close()
+            form = New Form1
+        End If
+        form.Show()
+    End Sub
+
+    Private Sub txtmonth_ValueChanged(sender As Object, e As EventArgs) Handles txtmonth.ValueChanged
+        dateyear()
+    End Sub
+
+    Sub updateloanlist()
+        Dim count As MySqlCommand = SQLConnection.CreateCommand
+    End Sub
+
+    Private Sub SimpleButton4_Click(sender As Object, e As EventArgs)
+        selectname()
+    End Sub
+
+    Private Sub SimpleButton9_Click(sender As Object, e As EventArgs) Handles SimpleButton9.Click
+        GroupControl6.Visible = True
+    End Sub
+
+    Sub complete()
+        Dim count As MySqlCommand = SQLConnection.CreateCommand
+        count.CommandText = "select count(*) from db_loanlist where realisasi = curdate()"
+        Dim xcount As Integer = CInt(count.ExecuteScalar)
+        If xcount = 0 Then
+            MsgBox("There's no data")
+        Else
+            Dim sqlcommand As New MySqlCommand
+            sqlcommand.CommandType = CommandType.StoredProcedure
+            sqlcommand.CommandText = "completedloan"
+            Dim p1 As New MySqlParameter
+            p1.ParameterName = "@empcode"
+            p1.Value = txtnameloan.Text
+            sqlcommand.Parameters.Add(p1)
+            sqlcommand.Connection = SQLConnection
+        End If
     End Sub
 End Class

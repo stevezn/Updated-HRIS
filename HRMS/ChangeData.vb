@@ -48,7 +48,7 @@ Public Class ChangeData
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "Select IdRec, FullName from db_recruitment where status != 'In Progress'"
+            sqlcommand.CommandText = "Select IdRec, FullName from db_recruitment where status = 'Pending'"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -172,6 +172,7 @@ Public Class ChangeData
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         loadinfo()
+        TextBox1.SelectAll()
     End Sub
 
     Private Sub btnPhoto_Click(sender As Object, e As EventArgs) Handles btnPhoto.Click
@@ -211,5 +212,45 @@ Public Class ChangeData
         pictureEdit.Controls.Clear()
         txtinterviewdate.Text = ""
         txtcv.Text = ""
+    End Sub
+
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        GridControl1.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select IdRec, FullName from db_recruitment where FullName Like '%" + TextBox1.Text + "%' and status = 'Pending'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl1.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ChangeData_MouseHover(sender As Object, e As EventArgs) Handles MyBase.MouseHover
+        TextBox1.Select(0, TextBox1.Text.Length)
+    End Sub
+
+    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            GridControl1.RefreshDataSource()
+            Dim table As New DataTable
+            Dim sqlcommand As New MySqlCommand
+            Try
+                sqlcommand.CommandText = "select IdRec, FullName from db_recruitment where status = 'Pending' and fullname like '%" + TextBox1.Text + "%'"
+                sqlcommand.Connection = SQLConnection
+                Dim tbl_par As New DataTable
+                Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(table)
+                GridControl1.DataSource = table
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
     End Sub
 End Class

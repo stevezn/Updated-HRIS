@@ -672,7 +672,7 @@ Partial Class NewEmp
         'pictureEdit
         '
         Me.pictureEdit.Image = Global.HRMS.My.Resources.Resources.user_icon_6
-        Me.pictureEdit.Location = New System.Drawing.Point(310, 160)
+        Me.pictureEdit.Location = New System.Drawing.Point(310, 158)
         Me.pictureEdit.Name = "pictureEdit"
         Me.pictureEdit.Size = New System.Drawing.Size(148, 150)
         Me.pictureEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage

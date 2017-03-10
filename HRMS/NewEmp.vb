@@ -44,7 +44,6 @@ Public Class NewEmp
         lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcempcode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        ' lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcoffice.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcposition.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -165,7 +164,6 @@ Public Class NewEmp
         Try
             Dim cmd = SQLConnection.CreateCommand()
             cmd.CommandText = "SELECT last_num FROM view_emp_last_code"
-
             lastn = DirectCast(cmd.ExecuteScalar(), Integer) + 1
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -230,7 +228,6 @@ Public Class NewEmp
         lccompcode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcposition.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        ' lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -253,7 +250,6 @@ Public Class NewEmp
         lcemail.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcoffice.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        ' lcdob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcposition.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcempcode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lccompcode.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always

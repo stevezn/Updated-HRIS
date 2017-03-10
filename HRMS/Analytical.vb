@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms.DataVisualization.Charting
 Imports DevExpress.XtraCharts
 
 Public Class Analytical
@@ -41,7 +42,7 @@ Public Class Analytical
     Private Sub grafik3()
         ChartControl2.Series.Clear()
         ' Add a radar series to it.
-        Dim series1 As New Series("Series 1", ViewType.RadarArea)
+        Dim series1 As New DevExpress.XtraCharts.Series("Series 1", ViewType.RadarArea)
         Dim a As MySqlCommand = SQLConnection.CreateCommand
         a.CommandText = "select skill1 from db_skills where idrec = '" & txtid.Text & "'"
         Dim hasila As Integer = CInt(a.ExecuteScalar)
@@ -95,7 +96,6 @@ Public Class Analytical
     '    'draw the chart
     '    Chart1.Series.Clear()
     '    Chart1.Series.Add("Recruitment Statistical")
-
     '    With Chart1.Series(0)
     '        '.ChartType = DataVisualization.Charting.SeriesChartType.Line
     '        .BorderWidth = 1
@@ -135,7 +135,7 @@ Public Class Analytical
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "Select FullName from db_recruitment where status = 'In Progress'"
+            sqlcommand.CommandText = "Select a.FullName from db_skills a, db_recruitment b where b.status = 'In Progress' and a.idrec = b.idrec"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -161,6 +161,21 @@ Public Class Analytical
         Next
     End Sub
 
+    Sub fillit()
+        Dim datat As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        datat.Clear()
+        sqlcommand.CommandText = "select fullname, position, expectedsalary from db_skills where idrec = '" & txtid.Text & "'"
+        sqlcommand.Connection = SQLConnection
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(datat)
+        If datat.Rows.Count > 0 Then
+            txtposition.Text = datat.Rows(0).Item(1).ToString
+            txtexpsal.Text = datat.Rows(0).Item(2).ToString
+        End If
+    End Sub
+
     Private Sub GridView1_FocusedRowChanged_1(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand
@@ -169,6 +184,7 @@ Public Class Analytical
         Try
             param = "and FullName='" + GridView1.GetFocusedRowCellValue("FullName").ToString() + "'"
         Catch ex As Exception
+            MsgBox(ex.Message)
         End Try
         Try
             sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceofBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, PhoneNumber, InterviewDates, CreatedDate, Reason FROM db_recruitment WHERE 1=1 " + param.ToString()
@@ -200,7 +216,6 @@ Public Class Analytical
             txtphone.Text = datatabl.Rows(0).Item(13).ToString()
             label2.Text = datatabl.Rows(0).Item(15).ToString
             label3.Text = datatabl.Rows(0).Item(14).ToString
-
         End If
     End Sub
 
@@ -255,6 +270,7 @@ Public Class Analytical
 
     Private Sub txtid_EditValueChanged(sender As Object, e As EventArgs) Handles txtid.EditValueChanged
         grafik3()
+        fillit()
     End Sub
 
     Private Sub btnYes_Click(sender As Object, e As EventArgs) Handles btnYes.Click
@@ -262,7 +278,7 @@ Public Class Analytical
         Dim down As MySqlCommand = SQLConnection.CreateCommand
         down.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"
         Dim downres As String = CStr(down.ExecuteScalar)
-        mess = CType(MsgBox("Are you sure to change " & downres & " to be accepted ?", MsgBoxStyle.YesNo, "Warning"), String)
+        mess = CType(MsgBox("Are you sure to change " & downres & " status to be accepted ?", MsgBoxStyle.YesNo, "Warning"), String)
         If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             Dim up As MySqlCommand = SQLConnection.CreateCommand
             up.CommandText = "update db_recruitment set status = 'Accepted' where idrec = @ic"
@@ -278,7 +294,7 @@ Public Class Analytical
         Dim down As MySqlCommand = SQLConnection.CreateCommand
         down.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"
         Dim downres As String = CStr(down.ExecuteScalar)
-        mess = CType(MsgBox("ARe you sure to change " & downres & " to be rejected ?", MsgBoxStyle.YesNo, "Warning"), String)
+        mess = CType(MsgBox("Are you sure to change " & downres & " status to be rejected ?", MsgBoxStyle.YesNo, "Warning"), String)
         If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             Dim up As MySqlCommand = SQLConnection.CreateCommand
             up.CommandText = "update db_recruitment set status = 'Rejected' where idrec = @ic"

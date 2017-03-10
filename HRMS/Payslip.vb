@@ -167,7 +167,6 @@ Public Class Payslip
                     End If
                 End If
             End If
-
             Dim fix As Integer = income - deduc
             Dim ovt As MySqlCommand = SQLConnection.CreateCommand
             ovt.CommandText = "select sum(overtimehours) from db_absensi where employeecode = '" & emp & "'"
@@ -191,7 +190,7 @@ Public Class Payslip
             dt.Load(sqlCommand.ExecuteReader)
             viw.GridControl1.DataSource = dt
         Catch ex As Exception
-            MsgBox(ex.Message)
+            'MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -204,7 +203,7 @@ Public Class Payslip
     Dim viw As New View
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        If viw Is Nothing OrElse viw.IsDisposed Then
+        If viw Is Nothing OrElse viw.IsDisposed Or viw.MinimizeBox Then
             viw = New View
         End If
         If RadioButton1.Checked = True Then

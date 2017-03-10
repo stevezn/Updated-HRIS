@@ -64,6 +64,8 @@ Partial Class ChangeData
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,11 +124,11 @@ Partial Class ChangeData
         Me.LayoutControl1.Controls.Add(Me.txtidcard)
         Me.LayoutControl1.Controls.Add(Me.txtid)
         Me.LayoutControl1.Controls.Add(Me.txtnames)
-        Me.LayoutControl1.Location = New System.Drawing.Point(209, 0)
+        Me.LayoutControl1.Location = New System.Drawing.Point(198, 1)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(409, 411, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(243, 407)
+        Me.LayoutControl1.Size = New System.Drawing.Size(243, 403)
         Me.LayoutControl1.TabIndex = 2
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -298,7 +300,7 @@ Partial Class ChangeData
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcid, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcbtnsave, Me.lcbtnreset, Me.lcphone, Me.lcbrowse, Me.lcgender, Me.lcreligion, Me.lcstats, Me.lcinterview, Me.LayoutControlItem1, Me.lcbtncv, Me.lcCv, Me.LayoutControlItem2, Me.LayoutControlItem3})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(243, 407)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(243, 403)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -358,7 +360,7 @@ Partial Class ChangeData
         Me.lcbtnsave.CustomizationFormText = "LayoutControlItem8"
         Me.lcbtnsave.Location = New System.Drawing.Point(0, 340)
         Me.lcbtnsave.Name = "lcbtnsave"
-        Me.lcbtnsave.Size = New System.Drawing.Size(112, 47)
+        Me.lcbtnsave.Size = New System.Drawing.Size(112, 43)
         Me.lcbtnsave.Text = "lcbtnsave"
         Me.lcbtnsave.TextSize = New System.Drawing.Size(0, 0)
         Me.lcbtnsave.TextToControlDistance = 0
@@ -370,7 +372,7 @@ Partial Class ChangeData
         Me.lcbtnreset.CustomizationFormText = "LayoutControlItem9"
         Me.lcbtnreset.Location = New System.Drawing.Point(112, 340)
         Me.lcbtnreset.Name = "lcbtnreset"
-        Me.lcbtnreset.Size = New System.Drawing.Size(111, 47)
+        Me.lcbtnreset.Size = New System.Drawing.Size(111, 43)
         Me.lcbtnreset.Text = "lcbtnreset"
         Me.lcbtnreset.TextSize = New System.Drawing.Size(0, 0)
         Me.lcbtnreset.TextToControlDistance = 0
@@ -492,10 +494,10 @@ Partial Class ChangeData
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(4, 178)
+        Me.GridControl1.Location = New System.Drawing.Point(6, 190)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(199, 212)
+        Me.GridControl1.Size = New System.Drawing.Size(189, 212)
         Me.GridControl1.TabIndex = 4
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -508,24 +510,39 @@ Partial Class ChangeData
         'pictureEdit
         '
         Me.pictureEdit.Image = Global.HRMS.My.Resources.Resources.user_icon_6
-        Me.pictureEdit.Location = New System.Drawing.Point(24, 2)
+        Me.pictureEdit.Location = New System.Drawing.Point(24, 4)
         Me.pictureEdit.Name = "pictureEdit"
         Me.pictureEdit.Size = New System.Drawing.Size(161, 150)
         Me.pictureEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pictureEdit.TabIndex = 28
         Me.pictureEdit.TabStop = False
         '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Location = New System.Drawing.Point(115, 161)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton1.TabIndex = 30
+        Me.SimpleButton1.Text = "Search"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(8, 163)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 5
+        '
         'ChangeData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(446, 395)
+        Me.ClientSize = New System.Drawing.Size(438, 414)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.pictureEdit)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.MaximumSize = New System.Drawing.Size(462, 434)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(462, 434)
         Me.Name = "ChangeData"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -565,6 +582,7 @@ Partial Class ChangeData
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -609,4 +627,6 @@ Partial Class ChangeData
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtdob As DateTimePicker
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents TextBox1 As TextBox
 End Class

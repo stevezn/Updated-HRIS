@@ -47,19 +47,24 @@ Public Class MainApp
 #Region "koneksi "
 
 #End Region
+
+
     Private Sub MainApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
+        Dim lbl As MySqlCommand = SQLConnection.CreateCommand
+        lbl.CommandText = "select user from db_temp"
+        Dim name As String = CStr(lbl.ExecuteScalar)
+        Label1.Text = name
+
         RibbonPageGroup7.Visible = False
         Timer1.Enabled = True
         BarButtonItem1.PerformClick()
         act = "input"
         If barJudul.Caption = "Module Employee" Then
-            CardView1.Focus()
-            CardView1.MoveLast()
         End If
         Dim notify As MySqlCommand = SQLConnection.CreateCommand
-        notify.CommandText = "select count(*) from db_recruitment where interviewdate = curdate() and status = 'Pending'"
+        notify.CommandText = "select count(*) from db_recruitment where interviewdate = curdate() and status = 'In Progress'"
         Dim note As Integer = CInt(notify.ExecuteScalar)
         If note > 0 Then
             NotifyIcon1.Visible = True
@@ -146,7 +151,7 @@ Public Class MainApp
         btnImport.Enabled = False
         barJudul.Caption = "Module Recruitment"
         GridControl1.RefreshDataSource()
-        CardView1.Columns.Clear()
+        GridView1.Columns.Clear()
         loadDataReq()
         RibbonPageGroup7.Visible = False
     End Sub
@@ -168,7 +173,7 @@ Public Class MainApp
         lcprogress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         barJudul.Caption = "Module Employee"
         GridControl1.RefreshDataSource()
-        CardView1.Columns.Clear()
+        GridView1.Columns.Clear()
         loadDataReq()
         RibbonPageGroup7.Visible = False
     End Sub
@@ -183,13 +188,14 @@ Public Class MainApp
         loan.XtraTabPage5.Show()
         RibbonPageGroup7.Visible = False
     End Sub
+    Dim showatt As New ShowAtt
 
     Private Sub BarButtonItem4_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem4.ItemClick
-        If att2 Is Nothing OrElse att2.IsDisposed OrElse att2.MinimizeBox Then
-            att2.Close()
-            att2 = New Attendances
+        If showatt Is Nothing OrElse showatt.IsDisposed OrElse showatt.MinimizeBox Then
+            showatt.Close()
+            showatt = New ShowAtt
         End If
-        att2.Show()
+        showatt.Show()
     End Sub
 
     Private Sub BarButtonItem5_ItemClick(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem5.ItemClick
@@ -325,8 +331,8 @@ Public Class MainApp
 
     Private Sub btnSegarkan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSegarkan.Click
         loadDataReq()
-        CardView1.Focus()
-        CardView1.MoveLast()
+        'CardView1.Focus()
+        'CardView1.MoveLast()
     End Sub
 
     Private Sub btnHapus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHapus.Click
@@ -349,8 +355,8 @@ Public Class MainApp
     Private Sub btnImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImport.Click
         importData()
         updatestats()
-        CardView1.Focus()
-        CardView1.MoveLast()
+        'CardView1.Focus()
+        'CardView1.MoveLast()
     End Sub
 
     Dim infoForm As New infoReq
@@ -949,7 +955,7 @@ Public Class MainApp
         btnImport.Enabled = False
         barJudul.Caption = "Module Payment Details"
         GridControl1.RefreshDataSource()
-        CardView1.Columns.Clear()
+        GridView1.Columns.Clear()
         loadDataReq()
     End Sub
 
@@ -966,13 +972,14 @@ Public Class MainApp
         lcrotasi.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         barJudul.Caption = "Employee Menus"
         GridControl1.RefreshDataSource()
-        CardView1.Columns.Clear()
+        GridView1.Columns.Clear()
         loadDataReq()
     End Sub
 
     Dim employeenotes As New Notes
     Private Sub btnNotes_Click(sender As Object, e As EventArgs) Handles btnNotes.Click
-        If employeenotes Is Nothing OrElse employeenotes.IsDisposed Then
+        If employeenotes Is Nothing OrElse employeenotes.IsDisposed OrElse employeenotes.MinimizeBox Then
+            employeenotes.Close()
             employeenotes = New Notes
         End If
         employeenotes.Show()
@@ -981,7 +988,8 @@ Public Class MainApp
     Dim spforms As New SPForms
 
     Private Sub sp1_Click(sender As Object, e As EventArgs) Handles sp1.Click
-        If spforms Is Nothing OrElse spforms.IsDisposed Then
+        If spforms Is Nothing OrElse spforms.IsDisposed OrElse spforms.MinimizeBox Then
+            spform.Close()
             spforms = New SPForms
         End If
         spforms.Show()
@@ -1001,13 +1009,15 @@ Public Class MainApp
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         If barJudul.Caption = "Module Recruitment" Then
-            If employees Is Nothing OrElse employees.IsDisposed Then
+            If employees Is Nothing OrElse employees.IsDisposed OrElse employees.MinimizeBox Then
+                employees.Close()
                 employees = New NewRec
             End If
             employees.Show()
             employees.BarButtonItem1.PerformClick()
         ElseIf barJudul.Caption = "Module Employee" Then
-            If newemps Is Nothing OrElse newemps.IsDisposed Then
+            If newemps Is Nothing OrElse newemps.IsDisposed OrElse newemps.MinimizeBox Then
+                newemps.Close()
                 newemps = New NewEmp
             End If
             newemps.Show()
@@ -1021,12 +1031,14 @@ Public Class MainApp
 
     Private Sub btnChange_Click(sender As Object, e As EventArgs) Handles btnChange.Click
         If barJudul.Caption = "Module Recruitment" Then
-            If Formed Is Nothing OrElse Formed.IsDisposed Then
-                formed = New changedata
+            If formed Is Nothing OrElse formed.IsDisposed OrElse formed.MinimizeBox Then
+                formed.Close()
+                formed = New ChangeData
             End If
             formed.Show()
         ElseIf barJudul.Caption = "Module Employee" Then
-            If changeem Is Nothing OrElse changeem.IsDisposed Then
+            If changeem Is Nothing OrElse changeem.IsDisposed OrElse changeem.MinimizeBox Then
+                formed.Close()
                 changeem = New ChangeEmp
             End If
             changeem.Show()
@@ -1034,7 +1046,8 @@ Public Class MainApp
     End Sub
 
     Private Sub btnProg_Click(sender As Object, e As EventArgs) Handles btnProg.Click
-        If proses Is Nothing OrElse proses.IsDisposed Then
+        If proses Is Nothing OrElse proses.IsDisposed OrElse proses.MinimizeBox Then
+            proses.Close()
             proses = New RecProcess
         End If
         proses.Show()
@@ -1044,6 +1057,7 @@ Public Class MainApp
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles btnProc.Click
         If loan Is Nothing OrElse loan.IsDisposed OrElse loan.MinimizeBox Then
+            loan.Close()
             loan = New Payments
         End If
         loan.Show()
@@ -1088,7 +1102,8 @@ Public Class MainApp
     Dim att2 As New Attendances
 
     Private Sub BarButtonItem12_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem12.ItemClick
-        If att2 Is Nothing OrElse att2.IsDisposed Then
+        If att2 Is Nothing OrElse att2.IsDisposed OrElse att2.MinimizeBox Then
+            att2.Close()
             att2 = New Attendances
         End If
         att2.Show()
@@ -1098,8 +1113,9 @@ Public Class MainApp
     End Sub
 
     Dim info As infoReq
+    Dim note As New Notes
 
-    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
+    Private Sub GridView1_PopupMenuShowing_2(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         Dim view As GridView = CType(sender, GridView)
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
             Dim rowHandle As Integer = e.HitInfo.RowHandle
@@ -1107,6 +1123,68 @@ Public Class MainApp
             Dim item As DXMenuItem = CreateMergingEnabledMenuItem(view, rowHandle)
             item.BeginGroup = True
             e.Menu.Items.Add(item)
+        End If
+        If barJudul.Caption = "Module Recruitment" Then
+            If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+                e.Menu.Items.Add(New DXMenuItem("View Profile", New EventHandler(AddressOf SimpleButton1_Click)))
+                e.Menu.Items.Add(New DXMenuItem("Reset", New EventHandler(AddressOf btnReset_Click)))
+            End If
+        ElseIf barJudul.Caption = "Module Employee" Then
+            If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+                e.Menu.Items.Add(New DXMenuItem("Terminate This Employee ?", New EventHandler(AddressOf SimpleButton2_Click_1)))
+                e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf btnNotes_Click)))
+            End If
+        End If
+    End Sub
+    Private Sub SimpleButton2_Click_1(sender As Object, e As EventArgs) Handles SimpleButton2.Click
+        Dim mess As String
+        Dim nam As MySqlCommand = SQLConnection.CreateCommand
+        nam.CommandText = "select fullname from db_pegawai where employeecode = '" & SimpleButton2.Text & "'"
+        Dim nama As String = CStr(nam.ExecuteScalar)
+        mess = CType(MsgBox("Are you sure to change " & nama & " status with Employee Code " & SimpleButton2.Text & " to be 'Terminated' ?", MsgBoxStyle.YesNo, "Warning"), String)
+        If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+            Try
+                Dim up As MySqlCommand = SQLConnection.CreateCommand
+                up.CommandText = "update db_pegawai set" +
+                                " Status = @stat" +
+                                ", TerminateDate = @tmntdates" +
+                                " where Employeecode = @ic"
+                up.Parameters.AddWithValue("@ic", SimpleButton2.Text)
+                up.Parameters.AddWithValue("@stat", "Terminated")
+                up.Parameters.AddWithValue("@tmntdates", Date.Now)
+                up.ExecuteNonQuery()
+                MsgBox("Status from " & nama & " Is changed to be 'Terminated'", MsgBoxStyle.Information)
+                Dim delsal As MySqlCommand = SQLConnection.CreateCommand
+                delsal.CommandText = "delete from db_payrolldata where EmployeeCode = '" & SimpleButton2.Text & "'"
+                delsal.ExecuteNonQuery()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub GridView1_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
+        Dim datatabl As New DataTable
+        Dim sqlCommand As New MySqlCommand
+        datatabl.Clear()
+        Dim param As String = ""
+        Try
+            param = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Try
+            sqlCommand.CommandText = "SELECT EmployeeCode FROM db_pegawai WHERE 1=1 " + param.ToString()
+            sqlCommand.Connection = SQLConnection
+            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(datatabl)
+        Catch ex As Exception
+            SQLConnection.Close()
+            MsgBox(ex.Message)
+        End Try
+        If datatabl.Rows.Count > 0 Then
+            SimpleButton2.Text = datatabl.Rows(0).Item(0).ToString
         End If
     End Sub
 End Class

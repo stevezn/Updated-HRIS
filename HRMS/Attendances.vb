@@ -11,7 +11,6 @@ Public Class Attendances
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
-
         'Add any initialization after the InitializeComponent() call.
         Dim host As String
         Dim id As String
@@ -40,9 +39,10 @@ Public Class Attendances
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
+
     Sub loadhari()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, a.JamMulai, a.JamSelesai, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Harian'"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Harian'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
@@ -58,7 +58,7 @@ Public Class Attendances
 
     Sub loadbulan()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, a.JamMulai, a.JamSelesai, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Bulanan'"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Bulanan'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
@@ -74,7 +74,7 @@ Public Class Attendances
 
     Private Sub loadborongan()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, a.JamMulai, a.JamSelesai, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Borongan'"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Borongan'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
@@ -90,7 +90,7 @@ Public Class Attendances
 
     Private Sub loadall()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, a.JamMulai, a.JamSelesai, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal between @date1 and @date2"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal between @date1 and @date2"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
@@ -253,7 +253,7 @@ Public Class Attendances
         Catch ex As Exception
         End Try
         Try
-            sqlCommand.CommandText = "SELECT EmployeeCode, FullName, shift, Tanggal, JamMulai, JamSelesai from db_absensi WHERE 1=1 " + param.ToString()
+            sqlCommand.CommandText = "SELECT EmployeeCode, FullName, shift, Tanggal,  Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut from db_absensi WHERE 1=1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
 
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
@@ -354,5 +354,39 @@ Public Class Attendances
         'loadDataReq1()
         'Result.Visible = True
         'overtime.Visible = False
+    End Sub
+
+    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        GroupControl1.Visible = True
+    End Sub
+
+    Private Sub GroupControl1_Paint(sender As Object, e As PaintEventArgs)
+
+    End Sub
+
+    Private Sub SimpleButton2_Click_1(sender As Object, e As EventArgs) Handles SimpleButton2.Click
+        GroupControl1.Visible = False
+    End Sub
+
+    Private Sub SimpleButton4_Click_1(sender As Object, e As EventArgs) Handles SimpleButton4.Click
+        GroupControl1.Visible = False
+    End Sub
+
+    Private Sub loadabsensi()
+        Dim sqlcommand As New MySqlCommand
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
+        Dim p1 As New MySqlParameter
+        p1.ParameterName = "@date1"
+        p1.Value = DateTimePicker2.Value.Date
+        sqlcommand.Parameters.Add(p1)
+        sqlcommand.Connection = SQLConnection
+        Dim dt As New DataTable
+        dt.Load(sqlcommand.ExecuteReader)
+        GridControl1.DataSource = dt
+    End Sub
+
+    Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
+        loadabsensi()
+        GroupControl1.Visible = False
     End Sub
 End Class

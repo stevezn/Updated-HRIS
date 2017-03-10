@@ -37,8 +37,6 @@ Public Class NewRec
     End Sub
 
     Sub reset()
-        lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcCv.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbtncv.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
@@ -82,9 +80,7 @@ Public Class NewRec
                                      ", IdNumber = @IdNumber" +
                                      ", Photo = @Photo" +
                                      ", Status = @Status" +
-                                     ", InterviewDate = @InterviewDate" +
                                      ", Cv = @Cv" +
-                                     ", Reason = @Reason " +
                                      " WHERE IdRec = @Idrec"
             sqlcommand.Connection = SQLConnection
             sqlcommand.Parameters.AddWithValue("@IdRec", txtid.Text)
@@ -103,9 +99,7 @@ Public Class NewRec
                 sqlcommand.Parameters.AddWithValue("@Photo", "")
             End If
             sqlcommand.Parameters.AddWithValue("@Status", "Pending")
-            sqlcommand.Parameters.AddWithValue("@InterviewDate", txtinterviewdate.Text)
             sqlcommand.Parameters.AddWithValue("@Cv", txtcv.Text)
-            sqlcommand.Parameters.AddWithValue("@Reason", txtreason.Text)
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MessageBox.Show("Data Successfully Changed!")
@@ -127,7 +121,6 @@ Public Class NewRec
         txtidcard.Text = ""
         txtstatus.Text = ""
         pictureEdit.Controls.Clear()
-        txtinterviewdate.Text = ""
         txtcv.Text = ""
     End Sub
 
@@ -135,9 +128,9 @@ Public Class NewRec
 
     Public Function insertreq2() As Boolean
         Dim dtb, dtr As DateTime
-        txtinterviewdate.Format = DateTimePickerFormat.Custom
-        txtinterviewdate.CustomFormat = "yyyy-MM-dd"
-        dtb = txtinterviewdate.Value
+        'txtinterviewdate.Format = DateTimePickerFormat.Custom
+        'txtinterviewdate.CustomFormat = "yyyy-MM-dd"
+        'dtb = txtinterviewdate.Value
         txtdob.Format = DateTimePickerFormat.Custom
         txtdob.CustomFormat = "yyyy-MM-dd"
         dtr = txtdob.Value
@@ -166,7 +159,6 @@ Public Class NewRec
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
         Try
             Dim cmd = SQLConnection.CreateCommand
             cmd.CommandText = "SELECT MID(Idrec, 8, 1) FROM db_recruitment where idrec = '" & lastcode & "'"
@@ -180,7 +172,6 @@ Public Class NewRec
             MsgBox(ex.Message)
         End Try
         Dim actualcode As String = "REQ" & "-" & ynow & "-" & mnow & "-" & Strings.Right("0000" & tmp, 5)
-
         Try
             Dim cmd = SQLConnection.CreateCommand
             cmd.CommandText = "Select count(*) from db_recruitment where IdNumber = '" & txtidcard.Text & "'"
@@ -194,7 +185,6 @@ Public Class NewRec
             MsgBox(ex.Message)
         End Try
         txtinterview.Text = lastres.ToString
-
         If lastres = 1 OrElse lastres = 2 Then
             txtstatus.Text = "Pending"
         ElseIf lastres > 2 Then
@@ -204,8 +194,8 @@ Public Class NewRec
         Dim str_carSql As String
         Try
             str_carSql = "INSERT INTO db_recruitment " +
-                   "(IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, Cv, Reason, CreatedDate) " +
-                   "values (@IdRec,@InterviewTimes,@FullName,@PlaceOfBirth,@DateOfBirth,@Address,@Gender,@Religion, @PhoneNumber, @IdNumber,@Photo,@Status,@InterviewDate,@Cv,@Reason, @CreatedDate)"
+                   "(IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, Cv,CreatedDate) " +
+                   "values (@IdRec,@InterviewTimes,@FullName,@PlaceOfBirth,@DateOfBirth,@Address,@Gender,@Religion, @PhoneNumber, @IdNumber,@Photo,@Status,@Cv,@CreatedDate)"
             sqlCommand.Connection = SQLConnection
             sqlCommand.CommandText = str_carSql
             sqlCommand.Parameters.AddWithValue("@IdRec", actualcode)
@@ -225,9 +215,7 @@ Public Class NewRec
                 sqlCommand.Parameters.AddWithValue("@Photo", "")
             End If
             sqlCommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlCommand.Parameters.AddWithValue("@InterviewDate", dtb.ToString("yyyy-MM-dd"))
             sqlCommand.Parameters.AddWithValue("@Cv", txtcv.Text)
-            sqlCommand.Parameters.AddWithValue("@Reason", "")
             sqlCommand.Parameters.AddWithValue("@CreatedDate", Date.Now)
             sqlCommand.ExecuteNonQuery()
             MessageBox.Show("Data Succesfully Added!")

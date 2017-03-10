@@ -127,6 +127,8 @@ Public Class ChangeEmp
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         loadinfo()
+        txtrains.Format = DateTimePickerFormat.Custom
+        txtrains.CustomFormat = " "
     End Sub
 
     Private Sub btnPhoto_Click(sender As Object, e As EventArgs) Handles btnPhoto.Click
@@ -137,15 +139,16 @@ Public Class ChangeEmp
         End Using
     End Sub
 
+
+
     Public Sub UpdateEmp()
         Dim dtb, dtr As DateTime
         txtworkdate.Format = DateTimePickerFormat.Custom
         txtworkdate.CustomFormat = "yyyy-MM-dd"
         dtb = txtworkdate.Value
-        DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.CustomFormat = "yyyy-MM-dd"
-        dtr = DateTimePicker1.Value
-
+        txtrains.Format = DateTimePickerFormat.Custom
+        txtrains.CustomFormat = "yyyy-MM-dd"
+        dtr = txtrains.Value
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
         Try
@@ -166,7 +169,6 @@ Public Class ChangeEmp
                    ", Photo = @Photo" +
                    ", Status = @Status" +
                    ", TrainingSampai = @TrainingSampai" +
-                   ", TerminateDate = @TerminateDate" +
                    ", EmployeeType = @EmployeeType " +
                    ", ChangeDate = @ChangeDate" +
                    " WHERE EmployeeCode = @EmployeeCode"
@@ -193,8 +195,7 @@ Public Class ChangeEmp
                 sqlCommand.Parameters.AddWithValue("@Photo", "")
             End If
             sqlCommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlCommand.Parameters.AddWithValue("@TrainingSampai", txtrains.Text)
-            sqlCommand.Parameters.AddWithValue("@TerminateDate", dtr.ToString("yyyy-MM-dd"))
+            sqlCommand.Parameters.AddWithValue("@TrainingSampai", dtr.ToString("yyyy-MM-dd"))
             sqlCommand.Parameters.AddWithValue("@EmployeeType", txtemptype.Text)
             sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
             sqlCommand.Connection = SQLConnection
@@ -207,7 +208,7 @@ Public Class ChangeEmp
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If txtempcode.Text = "" Then
-            MsgBox("Please fill the fields")
+            MsgBox("Please fill the empty fields")
         Else
             UpdateEmp()
         End If
@@ -237,12 +238,6 @@ Public Class ChangeEmp
 
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         cleartxt()
-    End Sub
-
-    Private Sub txtstatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtstatus.SelectedIndexChanged
-        If txtstatus.SelectedIndex = 3 Then
-            DateTimePicker1.Enabled = True
-        End If
     End Sub
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
@@ -279,5 +274,10 @@ Public Class ChangeEmp
                 MsgBox(ex.Message)
             End Try
         End If
+    End Sub
+
+    Private Sub txtrains_ValueChanged(sender As Object, e As EventArgs) Handles txtrains.ValueChanged
+        txtrains.Format = DateTimePickerFormat.Custom
+        txtrains.CustomFormat = "yyyy-MM-dd"
     End Sub
 End Class

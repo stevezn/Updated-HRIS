@@ -32,20 +32,12 @@ Public Class RecProcess
         Else
             password = ""
         End If
-
         If File.Exists("settingdb.txt") Then
             db = File.ReadAllText("settingdb.txt")
         Else
             db = "db_hris"
         End If
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
-    End Sub
-    Sub reset()
-        lcfullname.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcidcard.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcaddress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcphone.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
     End Sub
 
     Function ImageToByte(ByVal pbImg As PictureBox) As Byte()
@@ -129,7 +121,6 @@ Public Class RecProcess
         NotifyIcon1.ShowBalloonTip(300000)
     End Sub
 
-
     Public Sub updatechange2()
         Dim dtb As DateTime
         txtinterviewdate.Format = DateTimePickerFormat.Custom
@@ -163,7 +154,6 @@ Public Class RecProcess
         End Try
     End Sub
 
-
     Public Function insertreq2() As Boolean
         Dim ynow As String = Format(Now, "yy").ToString
         Dim mnow As String = Month(Now).ToString
@@ -188,7 +178,7 @@ Public Class RecProcess
             lastcode = DirectCast(cmd.ExecuteScalar(), String)
         Catch ex As Exception
             MsgBox(ex.Message)
-        End Try
+        End Try        
         Try
             Dim cmd = SQLConnection.CreateCommand
             cmd.CommandText = "SELECT MID(Idrec, 8, 1) FROM db_recruitment where idrec = '" & lastcode & "'"
@@ -328,7 +318,7 @@ Public Class RecProcess
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "select FullName from db_recruitment where status = 'In Progress'"
+            sqlcommand.CommandText = "select FullName from db_recruitment a where status = 'In Progress' and a.idrec not in(SELECT b.idrec from db_skills b)"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -407,6 +397,7 @@ Public Class RecProcess
     End Sub
 
     Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
+        loadinfo2()
         Dim mess As String
         Dim down As MySqlCommand = SQLConnection.CreateCommand
         Dim dtb As DateTime
@@ -602,6 +593,8 @@ Public Class RecProcess
 
     Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         skills()
+        loadinfo2()
+        loadinfo()
     End Sub
 
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged

@@ -691,7 +691,7 @@ Partial Class Report
         Me.SimpleButton10.Name = "SimpleButton10"
         Me.SimpleButton10.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton10.TabIndex = 20
-        Me.SimpleButton10.Text = "Show Report"
+        Me.SimpleButton10.Text = "hijh"
         '
         'DateTimePicker8
         '

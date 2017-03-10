@@ -101,8 +101,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.BonusSkins.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Charts.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.CodeParser.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -163,6 +167,7 @@
     <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.VisualStudio.Designer.Interfaces, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -264,12 +269,6 @@
     <Compile Include="Attendances.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calculate.Designer.vb">
-      <DependentUpon>Calculate.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Calculate.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ChangeData.Designer.vb">
       <DependentUpon>ChangeData.vb</DependentUpon>
     </Compile>
@@ -294,11 +293,34 @@
     <Compile Include="comparison.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="cryrep.Designer.vb">
+      <DependentUpon>cryrep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="cryrep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReport4.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport4.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataGrid.vb" />
+    <Compile Include="DataSet11.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet11.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DemosiHistory.Designer.vb">
       <DependentUpon>DemosiHistory.vb</DependentUpon>
     </Compile>
     <Compile Include="DemosiHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="infoReq.Designer.vb">
@@ -428,6 +450,12 @@
     <Compile Include="setting.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ShowAtt.Designer.vb">
+      <DependentUpon>ShowAtt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ShowAtt.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SPForms.Designer.vb">
       <DependentUpon>SPForms.vb</DependentUpon>
     </Compile>
@@ -455,9 +483,6 @@
     <EmbeddedResource Include="Attendances.resx">
       <DependentUpon>Attendances.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calculate.resx">
-      <DependentUpon>Calculate.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ChangeData.resx">
       <DependentUpon>ChangeData.vb</DependentUpon>
     </EmbeddedResource>
@@ -470,8 +495,18 @@
     <EmbeddedResource Include="comparison.resx">
       <DependentUpon>comparison.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cryrep.resx">
+      <DependentUpon>cryrep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport4.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DemosiHistory.resx">
       <DependentUpon>DemosiHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="infoReq.resx">
       <DependentUpon>infoReq.vb</DependentUpon>
@@ -545,6 +580,9 @@
     <EmbeddedResource Include="setting.resx">
       <DependentUpon>setting.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ShowAtt.resx">
+      <DependentUpon>ShowAtt.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SPForms.resx">
       <DependentUpon>SPForms.vb</DependentUpon>
     </EmbeddedResource>
@@ -552,6 +590,17 @@
       <DependentUpon>View.vb</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="DataSet11.xsc">
+      <DependentUpon>DataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet11.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet11.xss">
+      <DependentUpon>DataSet11.xsd</DependentUpon>
+    </None>
     <None Include="HRIS_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Settings.settings">
