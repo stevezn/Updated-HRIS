@@ -56,7 +56,6 @@ Public Class MainApp
         lbl.CommandText = "select user from db_temp"
         Dim name As String = CStr(lbl.ExecuteScalar)
         Label1.Text = name
-
         RibbonPageGroup7.Visible = False
         Timer1.Enabled = True
         BarButtonItem1.PerformClick()
@@ -1126,8 +1125,7 @@ Public Class MainApp
         End If
         If barJudul.Caption = "Module Recruitment" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
-                e.Menu.Items.Add(New DXMenuItem("View Profile", New EventHandler(AddressOf SimpleButton1_Click)))
-                e.Menu.Items.Add(New DXMenuItem("Reset", New EventHandler(AddressOf btnReset_Click)))
+                e.Menu.Items.Add(New DXMenuItem("View Recruitment Details", New EventHandler(AddressOf btnLihat_Click)))
             End If
         ElseIf barJudul.Caption = "Module Employee" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
@@ -1171,7 +1169,6 @@ Public Class MainApp
         Try
             param = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
         Catch ex As Exception
-            MsgBox(ex.Message)
         End Try
         Try
             sqlCommand.CommandText = "SELECT EmployeeCode FROM db_pegawai WHERE 1=1 " + param.ToString()
