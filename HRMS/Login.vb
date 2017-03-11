@@ -142,26 +142,8 @@ Public Class Login
             End If
         End If
     End Sub
-
     Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
-        Dim tbl_par As New DataTable
-        Dim sqlCommand As New MySqlCommand
-        sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
-        sqlCommand.Connection = SQLConnection
-        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-        Dim cb As New MySqlCommandBuilder(adapter)
-        adapter.Fill(tbl_par)
-        If tbl_par.Rows.Count > 0 Then
-            ProgressBar1.Visible = True
-            Timer1.Enabled = True
-            user()
-        Else
-            MessageBox.Show("Username and Password Didn't Match!")
-        End If
-    End Sub
-
-    Private Sub tePassword_KeyDown(sender As Object, e As KeyEventArgs) Handles tePassword.KeyDown
-        If e.KeyCode = Keys.Enter Then
+        Try
             Dim tbl_par As New DataTable
             Dim sqlCommand As New MySqlCommand
             sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
@@ -176,6 +158,31 @@ Public Class Login
             Else
                 MessageBox.Show("Username and Password Didn't Match!")
             End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub tePassword_KeyDown(sender As Object, e As KeyEventArgs) Handles tePassword.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Try
+                Dim tbl_par As New DataTable
+                Dim sqlCommand As New MySqlCommand
+                sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
+                sqlCommand.Connection = SQLConnection
+                Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(tbl_par)
+                If tbl_par.Rows.Count > 0 Then
+                    ProgressBar1.Visible = True
+                    Timer1.Enabled = True
+                    user()
+                Else
+                    MessageBox.Show("Username and Password Didn't Match!")
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
     End Sub
 

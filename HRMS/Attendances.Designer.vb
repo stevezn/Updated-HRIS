@@ -450,7 +450,7 @@ Partial Class Attendances
         Me.RibbonControl1.MaxItemId = 4
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
-        Me.RibbonControl1.Size = New System.Drawing.Size(1101, 144)
+        Me.RibbonControl1.Size = New System.Drawing.Size(1026, 144)
         '
         'BarButtonItem1
         '
@@ -577,7 +577,7 @@ Partial Class Attendances
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1101, 775)
+        Me.ClientSize = New System.Drawing.Size(1026, 647)
         Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.Result)
@@ -595,6 +595,8 @@ Partial Class Attendances
         Me.Controls.Add(Me.btnFind)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.MaximumSize = New System.Drawing.Size(1036, 652)
+        Me.MinimumSize = New System.Drawing.Size(1036, 652)
         Me.Name = "Attendances"
         Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

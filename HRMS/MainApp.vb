@@ -1123,9 +1123,11 @@ Public Class MainApp
             item.BeginGroup = True
             e.Menu.Items.Add(item)
         End If
+
         If barJudul.Caption = "Module Recruitment" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
                 e.Menu.Items.Add(New DXMenuItem("View Recruitment Details", New EventHandler(AddressOf btnLihat_Click)))
+                e.Menu.Items.Add(New DXMenuItem("Abort Recruiter", New EventHandler(AddressOf btnProg_Click)))
             End If
         ElseIf barJudul.Caption = "Module Employee" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then

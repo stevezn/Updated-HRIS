@@ -1,5 +1,4 @@
-﻿Imports System.Data
-Imports System.IO
+﻿Imports System.IO
 
 Public Class cryrep
     Dim connectionString As String

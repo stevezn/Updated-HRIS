@@ -818,17 +818,21 @@ Public Class Payments
     Dim value As Integer = 0
 
     Sub dateyear()
-        Dim Msg, Number, StartDate As String
-        Dim Months As Double
-        Dim SecondDate As Date
-        Dim IntervalType As DateInterval
-        IntervalType = DateInterval.Month
-        StartDate = (txtmonth.Value)
-        SecondDate = CDate(StartDate)
-        Number = (txtrangemon.Text)
-        Months = Val(Number)
-        Msg = CType(DateAdd(IntervalType, Months, SecondDate), String)
-        txtcompletedon1.Text = Msg
+        Try
+            Dim Msg, Number, StartDate As String
+            Dim Months As Double
+            Dim SecondDate As Date
+            Dim IntervalType As DateInterval
+            IntervalType = DateInterval.Month
+            StartDate = CType((txtmonth.Value), String)
+            SecondDate = CDate(StartDate)
+            Number = (txtrangemon.Text)
+            Months = Val(Number)
+            Msg = CType(DateAdd(IntervalType, Months, SecondDate), String)
+            txtcompletedon1.Text = Msg
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub txtamount_KeyPress(sender As Object, e As KeyPressEventArgs)
@@ -1252,7 +1256,7 @@ Public Class Payments
         If date1.Text = "" Then
             MsgBox("Please Input The Start Date")
         ElseIf date1.Value > date2.Value Then
-            MsgBox("Invalid Input")
+            MsgBox("Total days can't be zero or less than zero days")
         ElseIf txtreason.Text = "" Then
             MsgBox("Please insert the reason of the holiday")
         Else
@@ -1506,6 +1510,19 @@ Public Class Payments
 
     Private Sub SimpleButton9_Click(sender As Object, e As EventArgs) Handles SimpleButton9.Click
         GroupControl6.Visible = True
+    End Sub
+
+    Private Sub txtcompletedon1_ValueChanged(sender As Object, e As EventArgs) Handles txtcompletedon1.ValueChanged
+        dateyear()
+    End Sub
+
+    Private Sub txtloan_EditValueChanged(sender As Object, e As EventArgs) Handles txtloan.EditValueChanged
+        loanpay()
+        dateyear()
+    End Sub
+
+    Private Sub date1_ValueChanged(sender As Object, e As EventArgs) Handles date1.ValueChanged
+        days()
     End Sub
 
     Sub complete()

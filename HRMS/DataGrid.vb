@@ -12,9 +12,6 @@ Module DataGrid
         Return checkItem
     End Function
 
-
-
-
     'The handler for the DeleteRow menu item
     Sub OnDeleteRowClick(ByVal sender As Object, ByVal e As EventArgs)
         Dim item As DXMenuItem = CType(sender, DXMenuItem)

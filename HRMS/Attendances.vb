@@ -360,10 +360,6 @@ Public Class Attendances
         GroupControl1.Visible = True
     End Sub
 
-    Private Sub GroupControl1_Paint(sender As Object, e As PaintEventArgs)
-
-    End Sub
-
     Private Sub SimpleButton2_Click_1(sender As Object, e As EventArgs) Handles SimpleButton2.Click
         GroupControl1.Visible = False
     End Sub
@@ -388,5 +384,12 @@ Public Class Attendances
     Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
         loadabsensi()
         GroupControl1.Visible = False
+    End Sub
+
+    Private Sub DateTimePicker2_KeyDown(sender As Object, e As KeyEventArgs) Handles DateTimePicker2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            loadabsensi()
+            GroupControl1.Visible = False
+        End If
     End Sub
 End Class
