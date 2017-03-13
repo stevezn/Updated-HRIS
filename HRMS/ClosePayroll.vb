@@ -40,11 +40,6 @@ Public Class ClosePayroll
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
-    Sub counthk()
-        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
-        sqlcommand.CommandText = "select startdate from db_holiday where @D  "
-    End Sub
-
     Sub loaddata()
         Dim sqlcommand As New MySqlCommand
         sqlcommand.CommandText = "SELECT FullName, EmployeeCode From db_payrolldata"
@@ -87,18 +82,25 @@ Public Class ClosePayroll
         End If
     End Sub
 
+    Sub nilaiot()
+        Dim as1 As MySqlCommand = SQLConnection.CreateCommand
+        as1.CommandText = "select overtimehours from db_absensi where overtimehours != '' and tanggal between @date1 and @date1"
+        as1.Parameters.AddWithValue("@date1", date1.Value.Date)
+        as1.Parameters.AddWithValue("@date2", date2.Value.Date)
+        Dim as11 As String = CStr(as1.ExecuteScalar)
+
+        Dim as2 As MySqlCommand = SQLConnection.CreateCommand
+        as2.CommandText = ""
+
+
+    End Sub
+
     Private Sub txtname_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtname.SelectedIndexChanged
         For index As Integer = 0 To tbl_par.Rows.Count - 1
             If txtname.SelectedItem Is tbl_par.Rows(index).Item(0).ToString Then
                 txtempcode.Text = tbl_par.Rows(index).Item(1).ToString
             End If
         Next
-    End Sub
-
-    Sub loadbonus()
-        If bonuscheck.Checked = True Then
-
-        End If
     End Sub
 
     Sub loadot(emp As String)
@@ -167,7 +169,6 @@ Public Class ClosePayroll
     Dim pphutang As Decimal
 
     Sub computingsalary(emp As String)
-
         'find rangedate between start and end holiday
         Dim dates1 As MySqlCommand = SQLConnection.CreateCommand
         dates1.CommandText = "select startdate from db_holiday where startdate between @date1 and @date2"
@@ -410,7 +411,6 @@ Public Class ClosePayroll
             otout = totot2
         End If
         Dim realot As Integer = otout + otin
-
         Dim collect As MySqlCommand = SQLConnection.CreateCommand
         collect.CommandText = "INSERT INTO db_hasil " +
                                 "(EmployeeCode, SalaryPerYear, Netto, Gross, WajibPajak, pkpn, pphutang, income, Overtime) " +
@@ -425,7 +425,6 @@ Public Class ClosePayroll
         collect.Parameters.AddWithValue("@income", income)
         collect.Parameters.AddWithValue("@Overtime", realot)
         collect.ExecuteNonQuery()
-
         Dim table As New DataTable
         Dim sqlCommand As New MySqlCommand
         sqlCommand.CommandText = "Select a.EmployeeCode, b.FullName, a.SalaryPerYear, a.Netto, a.Gross, a.WajibPajak as StatusWajibPajak, a.pkpn as PenghasilanKenaPajak, a.pphutang as PphHutang, a.income as IncomePerMonth , a.Overtime FROM db_hasil a, db_payrolldata b where a.Employeecode = b.Employeecode"

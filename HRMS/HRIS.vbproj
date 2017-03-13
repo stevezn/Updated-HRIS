@@ -420,10 +420,10 @@
     <Compile Include="Report.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportsForm.Designer.vb">
-      <DependentUpon>ReportsForm.vb</DependentUpon>
+    <Compile Include="Reporting.Designer.vb">
+      <DependentUpon>Reporting.vb</DependentUpon>
     </Compile>
-    <Compile Include="ReportsForm.vb">
+    <Compile Include="Reporting.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RotasiHistory.Designer.vb">
@@ -565,8 +565,8 @@
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportsForm.resx">
-      <DependentUpon>ReportsForm.vb</DependentUpon>
+    <EmbeddedResource Include="Reporting.resx">
+      <DependentUpon>Reporting.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RotasiHistory.resx">
       <DependentUpon>RotasiHistory.vb</DependentUpon>

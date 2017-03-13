@@ -44,7 +44,6 @@ Public Class addmenu
 
     End Sub
 
-
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand

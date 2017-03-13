@@ -31,8 +31,6 @@ Partial Class Attendances
         Me.checkharian = New System.Windows.Forms.RadioButton()
         Me.checkbulanan = New System.Windows.Forms.RadioButton()
         Me.checkborongan = New System.Windows.Forms.RadioButton()
-        Me.overtime = New DevExpress.XtraTab.XtraTabControl()
-        Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
@@ -49,8 +47,6 @@ Partial Class Attendances
         Me.date2 = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Result = New DevExpress.XtraTab.XtraTabControl()
-        Me.XtraTabPage1 = New DevExpress.XtraTab.XtraTabPage()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -77,17 +73,18 @@ Partial Class Attendances
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
+        Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
+        Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton9 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton8 = New DevExpress.XtraEditors.SimpleButton()
+        Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.overtime, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.overtime.SuspendLayout()
-        Me.XtraTabPage2.SuspendLayout()
         CType(Me.txtsav.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Result, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Result.SuspendLayout()
-        Me.XtraTabPage1.SuspendLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtpages.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,6 +93,10 @@ Partial Class Attendances
         Me.GroupControl1.SuspendLayout()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl3.SuspendLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl4.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridControl1
@@ -176,41 +177,16 @@ Partial Class Attendances
         Me.checkborongan.Text = "Borongan"
         Me.checkborongan.UseVisualStyleBackColor = True
         '
-        'overtime
-        '
-        Me.overtime.Location = New System.Drawing.Point(198, 131)
-        Me.overtime.Name = "overtime"
-        Me.overtime.SelectedTabPage = Me.XtraTabPage2
-        Me.overtime.Size = New System.Drawing.Size(482, 125)
-        Me.overtime.TabIndex = 11
-        Me.overtime.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage2})
-        '
-        'XtraTabPage2
-        '
-        Me.XtraTabPage2.Controls.Add(Me.DateTimePicker1)
-        Me.XtraTabPage2.Controls.Add(Me.SimpleButton3)
-        Me.XtraTabPage2.Controls.Add(Me.LabelControl3)
-        Me.XtraTabPage2.Controls.Add(Me.txtsav)
-        Me.XtraTabPage2.Controls.Add(Me.LabelControl2)
-        Me.XtraTabPage2.Controls.Add(Me.Label10)
-        Me.XtraTabPage2.Controls.Add(Me.Label9)
-        Me.XtraTabPage2.Controls.Add(Me.Label8)
-        Me.XtraTabPage2.Controls.Add(Me.Label4)
-        Me.XtraTabPage2.Controls.Add(Me.GridControl3)
-        Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(476, 97)
-        Me.XtraTabPage2.Text = "Overtime"
-        '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(197, 282)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(4, 22)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 21)
         Me.DateTimePicker1.TabIndex = 100
         '
         'SimpleButton3
         '
-        Me.SimpleButton3.Location = New System.Drawing.Point(403, 280)
+        Me.SimpleButton3.Location = New System.Drawing.Point(299, 288)
         Me.SimpleButton3.Name = "SimpleButton3"
         Me.SimpleButton3.Size = New System.Drawing.Size(52, 23)
         Me.SimpleButton3.TabIndex = 99
@@ -218,7 +194,7 @@ Partial Class Attendances
         '
         'LabelControl3
         '
-        Me.LabelControl3.Location = New System.Drawing.Point(255, 259)
+        Me.LabelControl3.Location = New System.Drawing.Point(253, 292)
         Me.LabelControl3.Name = "LabelControl3"
         Me.LabelControl3.Size = New System.Drawing.Size(28, 13)
         Me.LabelControl3.TabIndex = 98
@@ -226,14 +202,14 @@ Partial Class Attendances
         '
         'txtsav
         '
-        Me.txtsav.Location = New System.Drawing.Point(197, 256)
+        Me.txtsav.Location = New System.Drawing.Point(195, 290)
         Me.txtsav.Name = "txtsav"
         Me.txtsav.Size = New System.Drawing.Size(52, 20)
         Me.txtsav.TabIndex = 97
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(197, 235)
+        Me.LabelControl2.Location = New System.Drawing.Point(195, 267)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(75, 13)
         Me.LabelControl2.TabIndex = 96
@@ -242,7 +218,7 @@ Partial Class Attendances
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(118, 262)
+        Me.Label10.Location = New System.Drawing.Point(114, 295)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(15, 13)
         Me.Label10.TabIndex = 95
@@ -252,7 +228,7 @@ Partial Class Attendances
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(123, 237)
+        Me.Label9.Location = New System.Drawing.Point(116, 269)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(12, 14)
         Me.Label9.TabIndex = 94
@@ -261,7 +237,7 @@ Partial Class Attendances
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(15, 262)
+        Me.Label8.Location = New System.Drawing.Point(9, 294)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(81, 13)
         Me.Label8.TabIndex = 93
@@ -270,7 +246,7 @@ Partial Class Attendances
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(17, 237)
+        Me.Label4.Location = New System.Drawing.Point(9, 268)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(34, 13)
         Me.Label4.TabIndex = 92
@@ -278,10 +254,10 @@ Partial Class Attendances
         '
         'GridControl3
         '
-        Me.GridControl3.Location = New System.Drawing.Point(3, 3)
+        Me.GridControl3.Location = New System.Drawing.Point(4, 47)
         Me.GridControl3.MainView = Me.GridView3
         Me.GridControl3.Name = "GridControl3"
-        Me.GridControl3.Size = New System.Drawing.Size(470, 78)
+        Me.GridControl3.Size = New System.Drawing.Size(498, 206)
         Me.GridControl3.TabIndex = 91
         Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
         '
@@ -333,37 +309,12 @@ Partial Class Attendances
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "To"
         '
-        'Result
-        '
-        Me.Result.Location = New System.Drawing.Point(202, 257)
-        Me.Result.Name = "Result"
-        Me.Result.SelectedTabPage = Me.XtraTabPage1
-        Me.Result.Size = New System.Drawing.Size(441, 77)
-        Me.Result.TabIndex = 83
-        Me.Result.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage1})
-        Me.Result.Visible = False
-        '
-        'XtraTabPage1
-        '
-        Me.XtraTabPage1.Controls.Add(Me.GridControl2)
-        Me.XtraTabPage1.Controls.Add(Me.Label6)
-        Me.XtraTabPage1.Controls.Add(Me.Label5)
-        Me.XtraTabPage1.Controls.Add(Me.lblname)
-        Me.XtraTabPage1.Controls.Add(Me.Label7)
-        Me.XtraTabPage1.Controls.Add(Me.LabelControl10)
-        Me.XtraTabPage1.Controls.Add(Me.txtpages)
-        Me.XtraTabPage1.Controls.Add(Me.btnSave)
-        Me.XtraTabPage1.Controls.Add(Me.LabelControl11)
-        Me.XtraTabPage1.Name = "XtraTabPage1"
-        Me.XtraTabPage1.Size = New System.Drawing.Size(435, 49)
-        Me.XtraTabPage1.Text = "Result"
-        '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(0, 0)
+        Me.GridControl2.Location = New System.Drawing.Point(4, 48)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(432, 223)
+        Me.GridControl2.Size = New System.Drawing.Size(493, 230)
         Me.GridControl2.TabIndex = 90
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -377,7 +328,7 @@ Partial Class Attendances
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 262)
+        Me.Label6.Location = New System.Drawing.Point(5, 314)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(81, 13)
         Me.Label6.TabIndex = 89
@@ -386,7 +337,7 @@ Partial Class Attendances
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(105, 262)
+        Me.Label5.Location = New System.Drawing.Point(105, 312)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(15, 13)
         Me.Label5.TabIndex = 85
@@ -396,7 +347,7 @@ Partial Class Attendances
         '
         Me.lblname.AutoSize = True
         Me.lblname.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblname.Location = New System.Drawing.Point(107, 240)
+        Me.lblname.Location = New System.Drawing.Point(108, 290)
         Me.lblname.Name = "lblname"
         Me.lblname.Size = New System.Drawing.Size(12, 14)
         Me.lblname.TabIndex = 88
@@ -405,7 +356,7 @@ Partial Class Attendances
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(12, 240)
+        Me.Label7.Location = New System.Drawing.Point(5, 290)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(34, 13)
         Me.Label7.TabIndex = 87
@@ -413,7 +364,7 @@ Partial Class Attendances
         '
         'LabelControl10
         '
-        Me.LabelControl10.Location = New System.Drawing.Point(268, 267)
+        Me.LabelControl10.Location = New System.Drawing.Point(288, 305)
         Me.LabelControl10.Name = "LabelControl10"
         Me.LabelControl10.Size = New System.Drawing.Size(35, 13)
         Me.LabelControl10.TabIndex = 85
@@ -421,14 +372,14 @@ Partial Class Attendances
         '
         'txtpages
         '
-        Me.txtpages.Location = New System.Drawing.Point(210, 260)
+        Me.txtpages.Location = New System.Drawing.Point(230, 300)
         Me.txtpages.Name = "txtpages"
         Me.txtpages.Size = New System.Drawing.Size(52, 20)
         Me.txtpages.TabIndex = 82
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(210, 286)
+        Me.btnSave.Location = New System.Drawing.Point(338, 299)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(52, 23)
         Me.btnSave.TabIndex = 84
@@ -436,7 +387,7 @@ Partial Class Attendances
         '
         'LabelControl11
         '
-        Me.LabelControl11.Location = New System.Drawing.Point(208, 239)
+        Me.LabelControl11.Location = New System.Drawing.Point(228, 283)
         Me.LabelControl11.Name = "LabelControl11"
         Me.LabelControl11.Size = New System.Drawing.Size(98, 13)
         Me.LabelControl11.TabIndex = 83
@@ -573,20 +524,101 @@ Partial Class Attendances
         Me.SimpleButton5.TabIndex = 8
         Me.SimpleButton5.Text = "OK"
         '
+        'GroupControl3
+        '
+        Me.GroupControl3.Controls.Add(Me.GroupControl4)
+        Me.GroupControl3.Controls.Add(Me.SimpleButton6)
+        Me.GroupControl3.Controls.Add(Me.SimpleButton7)
+        Me.GroupControl3.Controls.Add(Me.SimpleButton3)
+        Me.GroupControl3.Controls.Add(Me.DateTimePicker1)
+        Me.GroupControl3.Controls.Add(Me.GridControl3)
+        Me.GroupControl3.Controls.Add(Me.Label4)
+        Me.GroupControl3.Controls.Add(Me.LabelControl3)
+        Me.GroupControl3.Controls.Add(Me.Label9)
+        Me.GroupControl3.Controls.Add(Me.txtsav)
+        Me.GroupControl3.Controls.Add(Me.Label8)
+        Me.GroupControl3.Controls.Add(Me.LabelControl2)
+        Me.GroupControl3.Controls.Add(Me.Label10)
+        Me.GroupControl3.Location = New System.Drawing.Point(316, 193)
+        Me.GroupControl3.Name = "GroupControl3"
+        Me.GroupControl3.Size = New System.Drawing.Size(506, 325)
+        Me.GroupControl3.TabIndex = 1
+        Me.GroupControl3.Text = "Overtime"
+        Me.GroupControl3.Visible = False
+        '
+        'SimpleButton6
+        '
+        Me.SimpleButton6.Image = CType(resources.GetObject("SimpleButton6.Image"), System.Drawing.Image)
+        Me.SimpleButton6.Location = New System.Drawing.Point(480, 1)
+        Me.SimpleButton6.Name = "SimpleButton6"
+        Me.SimpleButton6.Size = New System.Drawing.Size(23, 21)
+        Me.SimpleButton6.TabIndex = 101
+        '
+        'SimpleButton7
+        '
+        Me.SimpleButton7.Location = New System.Drawing.Point(206, 21)
+        Me.SimpleButton7.Name = "SimpleButton7"
+        Me.SimpleButton7.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton7.TabIndex = 102
+        Me.SimpleButton7.Text = "Show"
+        '
+        'GroupControl4
+        '
+        Me.GroupControl4.Controls.Add(Me.SimpleButton9)
+        Me.GroupControl4.Controls.Add(Me.SimpleButton8)
+        Me.GroupControl4.Controls.Add(Me.DateTimePicker3)
+        Me.GroupControl4.Controls.Add(Me.LabelControl10)
+        Me.GroupControl4.Controls.Add(Me.Label5)
+        Me.GroupControl4.Controls.Add(Me.btnSave)
+        Me.GroupControl4.Controls.Add(Me.txtpages)
+        Me.GroupControl4.Controls.Add(Me.Label6)
+        Me.GroupControl4.Controls.Add(Me.GridControl2)
+        Me.GroupControl4.Controls.Add(Me.LabelControl11)
+        Me.GroupControl4.Controls.Add(Me.Label7)
+        Me.GroupControl4.Controls.Add(Me.lblname)
+        Me.GroupControl4.Location = New System.Drawing.Point(5, 59)
+        Me.GroupControl4.Name = "GroupControl4"
+        Me.GroupControl4.Size = New System.Drawing.Size(502, 336)
+        Me.GroupControl4.TabIndex = 89
+        Me.GroupControl4.Text = "Borongan"
+        Me.GroupControl4.Visible = False
+        '
+        'SimpleButton9
+        '
+        Me.SimpleButton9.Location = New System.Drawing.Point(209, 22)
+        Me.SimpleButton9.Name = "SimpleButton9"
+        Me.SimpleButton9.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton9.TabIndex = 104
+        Me.SimpleButton9.Text = "Show"
+        '
+        'SimpleButton8
+        '
+        Me.SimpleButton8.Image = CType(resources.GetObject("SimpleButton8.Image"), System.Drawing.Image)
+        Me.SimpleButton8.Location = New System.Drawing.Point(476, 2)
+        Me.SimpleButton8.Name = "SimpleButton8"
+        Me.SimpleButton8.Size = New System.Drawing.Size(23, 21)
+        Me.SimpleButton8.TabIndex = 103
+        '
+        'DateTimePicker3
+        '
+        Me.DateTimePicker3.Location = New System.Drawing.Point(5, 24)
+        Me.DateTimePicker3.Name = "DateTimePicker3"
+        Me.DateTimePicker3.Size = New System.Drawing.Size(200, 21)
+        Me.DateTimePicker3.TabIndex = 101
+        '
         'Attendances
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1026, 647)
+        Me.Controls.Add(Me.GroupControl3)
         Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.SimpleButton1)
-        Me.Controls.Add(Me.Result)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.date2)
         Me.Controls.Add(Me.date1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.overtime)
         Me.Controls.Add(Me.checkborongan)
         Me.Controls.Add(Me.checkbulanan)
         Me.Controls.Add(Me.GridControl1)
@@ -603,17 +635,9 @@ Partial Class Attendances
         Me.Text = "Attendances"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.overtime, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.overtime.ResumeLayout(False)
-        Me.XtraTabPage2.ResumeLayout(False)
-        Me.XtraTabPage2.PerformLayout()
         CType(Me.txtsav.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Result, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Result.ResumeLayout(False)
-        Me.XtraTabPage1.ResumeLayout(False)
-        Me.XtraTabPage1.PerformLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtpages.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -623,6 +647,12 @@ Partial Class Attendances
         Me.GroupControl1.PerformLayout()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl3.ResumeLayout(False)
+        Me.GroupControl3.PerformLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl4.ResumeLayout(False)
+        Me.GroupControl4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -636,15 +666,11 @@ Partial Class Attendances
     Friend WithEvents checkharian As RadioButton
     Friend WithEvents checkbulanan As RadioButton
     Friend WithEvents checkborongan As RadioButton
-    Friend WithEvents overtime As DevExpress.XtraTab.XtraTabControl
-    Friend WithEvents XtraTabPage2 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents Label1 As Label
     Friend WithEvents date1 As DateTimePicker
     Friend WithEvents date2 As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Result As DevExpress.XtraTab.XtraTabControl
-    Friend WithEvents XtraTabPage1 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents lblname As Label
@@ -682,4 +708,11 @@ Partial Class Attendances
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents SimpleButton4 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton5 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton7 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents SimpleButton8 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents DateTimePicker3 As DateTimePicker
+    Friend WithEvents SimpleButton9 As DevExpress.XtraEditors.SimpleButton
 End Class

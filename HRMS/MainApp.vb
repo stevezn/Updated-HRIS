@@ -47,8 +47,6 @@ Public Class MainApp
 #Region "koneksi "
 
 #End Region
-
-
     Private Sub MainApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
@@ -60,6 +58,8 @@ Public Class MainApp
         Timer1.Enabled = True
         BarButtonItem1.PerformClick()
         act = "input"
+        If barJudul.Caption = "Module Recruitment" Then
+        End If
         If barJudul.Caption = "Module Employee" Then
         End If
         Dim notify As MySqlCommand = SQLConnection.CreateCommand

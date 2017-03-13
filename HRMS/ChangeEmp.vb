@@ -63,7 +63,7 @@ Public Class ChangeEmp
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "Select EmployeeCode, FullName, IdNumber from db_pegawai where status != 'Fired'"
+            sqlcommand.CommandText = "Select EmployeeCode, FullName from db_pegawai where status != 'Fired' and status != 'Terminated'"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -138,8 +138,6 @@ Public Class ChangeEmp
             pictureEdit.Image = Image.FromFile(dialog.FileName)
         End Using
     End Sub
-
-
 
     Public Sub UpdateEmp()
         Dim dtb, dtr As DateTime
@@ -240,41 +238,24 @@ Public Class ChangeEmp
         cleartxt()
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        GridControl1.RefreshDataSource()
-        Dim table As New DataTable
-        Dim sqlcommand As New MySqlCommand
-        Try
-            sqlcommand.CommandText = "select FullName from db_pegawai where FullName Like '%" + TextBox1.Text + "%'"
-            sqlcommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl1.DataSource = table
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            GridControl1.RefreshDataSource()
-            Dim table As New DataTable
-            Dim sqlcommand As New MySqlCommand
-            Try
-                sqlcommand.CommandText = "select FullName, EmployeeCode, IdNumber from db_pegawai where FullName Like '%" + TextBox1.Text + "%'"
-                sqlcommand.Connection = SQLConnection
-                Dim tbl_par As New DataTable
-                Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-                Dim cb As New MySqlCommandBuilder(adapter)
-                adapter.Fill(table)
-                GridControl1.DataSource = table
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-        End If
-    End Sub
+    'Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs)
+    '    If e.KeyCode = Keys.Enter Then
+    '        GridControl1.RefreshDataSource()
+    '        Dim table As New DataTable
+    '        Dim sqlcommand As New MySqlCommand
+    '        Try
+    '            sqlcommand.CommandText = "select FullName, EmployeeCode from db_pegawai where FullName or EmployeeCode Like '%" + TextBox1.Text + "%' and status != 'Fired' and status != 'Terminated'"
+    '            sqlcommand.Connection = SQLConnection
+    '            Dim tbl_par As New DataTable
+    '            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+    '            Dim cb As New MySqlCommandBuilder(adapter)
+    '            adapter.Fill(table)
+    '            GridControl1.DataSource = table
+    '        Catch ex As Exception
+    '            MsgBox(ex.Message)
+    '        End Try
+    '    End If
+    'End Sub
 
     Private Sub txtrains_ValueChanged(sender As Object, e As EventArgs) Handles txtrains.ValueChanged
         txtrains.Format = DateTimePickerFormat.Custom

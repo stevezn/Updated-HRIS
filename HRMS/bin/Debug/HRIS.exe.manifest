@@ -3109,14 +3109,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HRIS.exe" size="1732608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HRIS.exe" size="1731072">
       <assemblyIdentity name="HRIS" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>1VVY+0bBV0y1LIUyLvO9Z2GCjgw=</dsig:DigestValue>
+        <dsig:DigestValue>3FD9ApRgodL3ePUQKL3bBfKjPSs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

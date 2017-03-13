@@ -950,15 +950,15 @@ Public Class Payments
                 updatepart()
                 cleartxt2()
             End If
-            Dim mess As String
-            mess = CType(MsgBox("Is there any additionals or deductions left?", MsgBoxStyle.YesNo, "Warning"), String)
-            If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
-                If additional Is Nothing OrElse additional.IsDisposed Then
-                    additional = New Additional
-                End If
-                additional.Show()
-            Else
-            End If
+            'Dim mess As String
+            'mess = CType(MsgBox("Is there any additionals or deductions left?", MsgBoxStyle.YesNo, "Warning"), String)
+            'If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+            '    If additional Is Nothing OrElse additional.IsDisposed Then
+            '        additional = New Additional
+            '    End If
+            '    additional.Show()
+            'Else
+            'End If
         End If
         loadpayroll1()
         loadpayroll()
@@ -1218,7 +1218,7 @@ Public Class Payments
         name.CommandText = "select fullname from db_loan where employeecode = @ec"
         name.Parameters.AddWithValue("@ec", txtnameloan.Text)
         Dim rname As String = CStr(name.ExecuteScalar)
-        mess = CType(MsgBox("Sure to clear this employee named  " & rname & " and employee code " & txtnameloan.Text & "?", MsgBoxStyle.YesNo, "Warning"), String)
+        mess = CType(MsgBox("Sure to clear this employee named  " & rname & " with employee code " & txtnameloan.Text & "?", MsgBoxStyle.YesNo, "Warning"), String)
         If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             paid()
             cmd.CommandType = CommandType.StoredProcedure

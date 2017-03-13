@@ -39,7 +39,6 @@ Public Class Report
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
-    Dim reports As New ReportsForm
     Dim lis As New Lists
 
     Sub showallemp()

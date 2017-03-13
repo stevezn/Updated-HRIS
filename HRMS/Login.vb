@@ -14,7 +14,6 @@ Public Class Login
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
-
         If File.Exists("settinghost.txt") Then
             'My.Computer.FileSystem.DeleteFile("settinghost.txt")
             'File.Create("settinghost.txt").Dispose()
@@ -120,10 +119,11 @@ Public Class Login
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
-        CheckForUpdates()
     End Sub
 
     Public Sub CheckForUpdates()
+        Timer1.Enabled = False
+        ProgressBar1.Visible = True
         WebBrowser1.Visible = False
         Dim request As Net.HttpWebRequest = CType(Net.WebRequest.Create("https://dl.dropbox.com/s/f3hbcpzffkdg5y0/version.txt?dl=0"), Net.HttpWebRequest)
         Dim response As Net.HttpWebResponse = CType(request.GetResponse(), Net.HttpWebResponse)
@@ -131,17 +131,18 @@ Public Class Login
         Dim newestversion As String = sr.ReadToEnd()
         Dim currentversion As String = Application.ProductVersion
         If newestversion.Contains(currentversion) Then
+            Timer1.Enabled = True
         Else
             Dim mess As String
             mess = CType(MsgBox("There's a new update, Update ?", MsgBoxStyle.YesNo, "Information"), String)
             If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
-                ProgressPanel1.Visible = True
                 WebBrowser1.Navigate("https://dl.dropbox.com/s/axtsp9oq8pez6u6/HRIS.exe?dl=0")
             Else
-                ProgressPanel1.Visible = False
+                Timer1.Enabled = True
             End If
         End If
     End Sub
+
     Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
         Try
             Dim tbl_par As New DataTable
@@ -189,8 +190,6 @@ Public Class Login
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If ProgressBar1.Value < 100 Then
             ProgressBar1.Value += 10
-        ElseIf ProgressBar1.Value = 50 Then
-            CheckForUpdates()
         ElseIf ProgressBar1.Value = 100 Then
             Timer1.Stop()
             Dim tbl_par As New DataTable
@@ -212,6 +211,8 @@ Public Class Login
             Label1.Text = "Preparing"
         ElseIf ProgressBar1.Value = 50 Then
             Label1.Text = "Check For Updates..."
+        ElseIf ProgressBar1.Value = 60 Then
+            CheckForUpdates()
         ElseIf ProgressBar1.Value = 96 Then
             Label1.Text = "Ready"
         ElseIf ProgressBar1.Value = 97 Then
@@ -223,9 +224,5 @@ Public Class Login
         ElseIf ProgressBar1.Value = 100 Then
             Label1.Text = "Ready...."
         End If
-    End Sub
-
-    Private Sub ProgressPanel1_Click(sender As Object, e As EventArgs)
-
     End Sub
 End Class

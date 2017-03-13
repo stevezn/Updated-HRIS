@@ -120,29 +120,29 @@ Public Class Attendances
 
     Private Sub resultpages()
         Dim sqlcommand As New MySqlCommand
-        Dim lastn As Integer
+        Dim lastn As String
         Try
             Dim cmd = SQLConnection.CreateCommand()
-            cmd.CommandText = "SELECT count(*) FROM db_borongan where EmployeeCode = @ec and Tanggal = curdate()"
+            cmd.CommandText = "SELECT result FROM db_borongan where EmployeeCode = @ec and Tanggal = '" & DateTimePicker3.Value.Date & "'"
             cmd.Parameters.AddWithValue("@ec", Label5.Text)
-            lastn = DirectCast(cmd.ExecuteScalar, Integer)
-            MsgBox(lastn)
-        Catch ex As Exception
-        End Try
-        If lastn = 0 Then
-            sqlcommand.CommandText = "INSERT INTO db_borongan " +
+            lastn = DirectCast(cmd.ExecuteScalar, String)
+            If lastn <> "" Then
+                sqlcommand.CommandText = "INSERT INTO db_borongan " +
                           "(FullName, EmployeeCode, Tanggal, Result) " +
                           "values (@FullName, @EmployeeCode, @Tanggal, @Result)"
-            sqlcommand.Connection = SQLConnection
-            sqlcommand.Parameters.AddWithValue("@FullName", lblname.Text)
-            sqlcommand.Parameters.AddWithValue("@Tanggal", Date.Now)
-            sqlcommand.Parameters.AddWithValue("@EmployeeCode", Label5.Text)
-            sqlcommand.Parameters.AddWithValue("@Result", txtpages.Text)
-            sqlcommand.ExecuteNonQuery()
-            MsgBox("Added")
-        Else
-            MsgBox("This employee has already input the result for today")
-        End If
+                sqlcommand.Connection = SQLConnection
+                sqlcommand.Parameters.AddWithValue("@FullName", lblname.Text)
+                sqlcommand.Parameters.AddWithValue("@Tanggal", DateTimePicker3.Value.Date)
+                sqlcommand.Parameters.AddWithValue("@EmployeeCode", Label5.Text)
+                sqlcommand.Parameters.AddWithValue("@Result", txtpages.Text)
+                sqlcommand.ExecuteNonQuery()
+                MsgBox("Added")
+            Else
+                MsgBox("This employee has already input the result for that date")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub overtimeresult()
@@ -167,67 +167,79 @@ Public Class Attendances
         End Try
     End Sub
 
+    Sub overtimehours()
+        Dim dtb As DateTime
+        DateTimePicker1.Format = DateTimePickerFormat.Custom
+        DateTimePicker1.CustomFormat = "yyyy-MM-dd"
+        dtb = DateTimePicker1.Value
+        Dim exis As MySqlCommand = SQLConnection.CreateCommand
+        exis.CommandText = "select overtimehours from db_absensi where employeecode = '" & Label10.Text & "'"
+        Dim exis2 As String = CStr(exis.ExecuteScalar)
+        If exis2 = "" Then
+
+            Dim holid As MySqlCommand = SQLConnection.CreateCommand
+            holid.CommandText = "select startdate from db_holiday where startdate between @date1 and @date2"
+            holid.Parameters.AddWithValue("@date1", date1.Value.Date)
+            holid.Parameters.AddWithValue("@date2", date2.Value.Date)
+
+
+
+            Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+            Try
+                sqlcommand.CommandText = "update db_absensi set overtimetype = @Ottype, overtimehours = @othours where tanggal = @date1"
+                sqlcommand.Parameters.AddWithValue("@ottype", "")
+                sqlcommand.Parameters.AddWithValue("@othours", txtsav.Text)
+                sqlcommand.Parameters.AddWithValue("@date1", DateTimePicker1.Value.Date)
+                sqlcommand.ExecuteNonQuery()
+                MsgBox("Added")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Else
+            MsgBox("The employee already has overtime hours on this date")
+        End If
+    End Sub
+
     Private Sub loadDataReq1()
-        GridControl2.RefreshDataSource()
-        Dim table As New DataTable
-        Dim sqlCommand As New MySqlCommand
-        Try
-            sqlCommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Borongan' and a.tanggal = curdate()"
-            sqlCommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl2.DataSource = table
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        Dim sqlcommand As New MySqlCommand
+        sqlcommand.CommandText = "Select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode And b.EmployeeType = 'Borongan' and a.tanggal = @date1"
+        Dim p1 As New MySqlParameter
+        p1.ParameterName = "@date1"
+        p1.Value = DateTimePicker3.Value.Date
+        sqlcommand.Parameters.Add(p1)
+        sqlcommand.Connection = SQLConnection
+        Dim dt As New DataTable
+        dt.Load(sqlcommand.ExecuteReader)
+        GridControl2.DataSource = dt
     End Sub
 
     Private Sub loadovertime()
-        GridControl3.RefreshDataSource()
-        Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
-        Try
-            sqlcommand.CommandText = "select a.EmployeeCode, a.CompanyCode, a.FullName, a.EmployeeType, a.Status from db_pegawai a, db_payrolldata b where a.EmployeeCode = b.EmployeeCode"
-            sqlcommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl3.DataSource = table
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        sqlcommand.CommandText = "select a.FullName, a.EmployeeCode, b.CompanyCode, b.Status, b.employeetype from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
+        Dim p1 As New MySqlParameter
+        p1.ParameterName = "@date1"
+        p1.Value = DateTimePicker1.Value.Date
+        sqlcommand.Parameters.Add(p1)
+        sqlcommand.Connection = SQLConnection
+        Dim dt As New DataTable
+        dt.Load(sqlcommand.ExecuteReader)
+        GridControl3.DataSource = dt
     End Sub
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
         loadDataReq1()
-        Result.Visible = True
-        overtime.Visible = False
     End Sub
 
     Private Sub Attendances_Click(sender As Object, e As EventArgs) Handles MyBase.Click
-        Result.Visible = False
-        overtime.Visible = False
     End Sub
 
     Private Sub Attendances_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
-        Result.Visible = False
-        overtime.Visible = False
-    End Sub
-
-    Private Sub GridControl1_Click(sender As Object, e As EventArgs) Handles GridControl1.Click
-        Result.Visible = False
-        overtime.Visible = False
     End Sub
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs)
         loadovertime()
-        overtime.Visible = True
-        Result.Visible = False
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -236,11 +248,6 @@ Public Class Attendances
         Else
             resultpages()
         End If
-    End Sub
-
-    Private Sub GridView1_Click(sender As Object, e As EventArgs) Handles GridView1.Click
-        Result.Visible = False
-        overtime.Visible = False
     End Sub
 
     Private Sub GridView2_FocusedRowChanged_1(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView2.FocusedRowChanged
@@ -253,7 +260,7 @@ Public Class Attendances
         Catch ex As Exception
         End Try
         Try
-            sqlCommand.CommandText = "SELECT EmployeeCode, FullName, shift, Tanggal,  Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut from db_absensi WHERE 1=1 " + param.ToString()
+            sqlCommand.CommandText = "SELECT EmployeeCode, FullName, shift from db_absensi WHERE 1=1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
 
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
@@ -272,7 +279,8 @@ Public Class Attendances
         If txtsav.Text = "" Or DateTimePicker1.Value = Now.Date Then
             MsgBox("Please fill hours textbox")
         Else
-            overtimeresult()
+            overtimehours()
+            'overtimeresult()
         End If
     End Sub
 
@@ -333,27 +341,13 @@ Public Class Attendances
     Dim addmen As New addmenu
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        If addmen Is Nothing OrElse addmen.IsDisposed OrElse addmen.MinimizeBox Then
-            addmen.Close()
-            addmen = New addmenu
-        End If
-        addmenu.Show()
-        addmen.Overtime.Show()
-        'loadovertime()
-        'overtime.Visible = True
-        'Result.Visible = False
+        GroupControl3.Visible = True
+        GroupControl4.Visible = False
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem2.ItemClick
-        If addmen Is Nothing OrElse addmen.IsDisposed OrElse addmen.MinimizeBox Then
-            addmen.Close()
-            addmen = New addmenu
-        End If
-        addmenu.Show()
-        addmen.Borongan.Show()
-        'loadDataReq1()
-        'Result.Visible = True
-        'overtime.Visible = False
+        GroupControl3.Visible = False
+        GroupControl4.Visible = True
     End Sub
 
     Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
@@ -390,6 +384,34 @@ Public Class Attendances
         If e.KeyCode = Keys.Enter Then
             loadabsensi()
             GroupControl1.Visible = False
+        End If
+    End Sub
+
+    Private Sub SimpleButton7_Click(sender As Object, e As EventArgs) Handles SimpleButton7.Click
+        loadovertime()
+    End Sub
+
+    Private Sub SimpleButton6_Click(sender As Object, e As EventArgs) Handles SimpleButton6.Click
+        GroupControl3.Visible = False
+    End Sub
+
+    Private Sub SimpleButton8_Click(sender As Object, e As EventArgs) Handles SimpleButton8.Click
+        GroupControl4.Visible = False
+    End Sub
+
+    Private Sub SimpleButton9_Click(sender As Object, e As EventArgs) Handles SimpleButton9.Click
+        loadDataReq1()
+    End Sub
+
+    Private Sub DateTimePicker3_KeyDown(sender As Object, e As KeyEventArgs) Handles DateTimePicker3.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            loadDataReq1()
+        End If
+    End Sub
+
+    Private Sub DateTimePicker1_KeyDown(sender As Object, e As KeyEventArgs) Handles DateTimePicker1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            loadovertime()
         End If
     End Sub
 End Class
