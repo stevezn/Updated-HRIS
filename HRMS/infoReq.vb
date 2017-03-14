@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 
 Public Class infoReq
-
     Dim connectionString As String
     Dim SQLConnection As MySqlConnection = New MySqlConnection
     Dim oDt_sched As New DataTable()

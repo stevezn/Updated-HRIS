@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports DevExpress.Utils.Menu
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class selectemp
     Dim connectionString As String
@@ -137,5 +139,12 @@ Public Class selectemp
         name.ExecuteNonQuery()
         Close()
         att.Show()
+    End Sub
+
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Select Employee", New EventHandler(AddressOf SimpleButton3_Click)))
+            'e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf btnNotes_Click)))
+        End If
     End Sub
 End Class

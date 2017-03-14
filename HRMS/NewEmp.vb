@@ -239,7 +239,6 @@ Public Class NewEmp
         lcbtnsave.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         lcbtnreset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         BarButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        RibbonPageGroup2.Visible = False
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem2.ItemClick
@@ -342,5 +341,53 @@ Public Class NewEmp
             txtfoto.Image = Image.FromFile(dialog.FileName)
             pictureEdit.Image = Image.FromFile(dialog.FileName)
         End Using
+    End Sub
+
+    Private Sub OpenPreviewWindows()
+        Dim iHeight As Integer = pictureEdit.Height
+        Dim iWidth As Integer = pictureEdit.Width
+        hHwnd = capCreateCaptureWindowA((iDevice), WS_VISIBLE Or WS_CHILD, 0, 0, 640, 480, pictureEdit.Handle.ToInt32, 0)
+        Try
+            If SendMessage(hHwnd, WM_Cap_Paki_CONNECT, iDevice, 0) Then
+                SendMessage(hHwnd, WM_Cap_SET_SCALE, True, 0)
+                SendMessage(hHwnd, WM_Cap_SET_PREVIEWRATE, 66, 0)
+                SendMessage(hHwnd, WM_Cap_SET_PREVIEW, True, 0)
+                SetWindowPos(hHwnd, HWND_BOTTOM, 0, 0, pictureEdit.Width, pictureEdit.Height, SWP_NOMOVE Or SWP_NOZORDER)
+            Else
+                DestroyWindow(hHwnd)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ClosePreviewWindow()
+        SendMessage(hHwnd, WM_Cap_Paki_DISCONNECT, iDevice, 0)
+        DestroyWindow(hHwnd)
+    End Sub
+
+    Private Sub btnCapture_Click(sender As Object, e As EventArgs) Handles btnCapture.Click
+        Try
+            If btnCapture.Text = "Camera" Then
+                Call OpenPreviewWindows()
+                btnCapture.Text = "Capture"
+            ElseIf btnCapture.Text = "Capture" Then
+                Dim data As IDataObject
+                Dim Bmap As Image
+                SendMessage(hHwnd, WM_Cap_EDIT_COPY, 0, 0)
+                data = Clipboard.GetDataObject()
+                If data.GetDataPresent(GetType(System.Drawing.Bitmap)) Then
+                    Bmap = CType(data.GetData(GetType(System.Drawing.Bitmap)), Drawing.Image)
+                    pictureEdit.Image = Bmap
+                    ClosePreviewWindow()
+                End If
+                btnCapture.Text = "Camera"
+                pictureEdit.Enabled = True
+                pictureEdit.Enabled = True
+                Call ClosePreviewWindow()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

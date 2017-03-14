@@ -210,7 +210,7 @@ Public Class Login
         If ProgressBar1.Value = 10 Then
             Label1.Text = "Preparing"
         ElseIf ProgressBar1.Value = 50 Then
-            Label1.Text = "Check For Updates..."
+            Label1.Text = "Check For Updates...."
         ElseIf ProgressBar1.Value = 60 Then
             CheckForUpdates()
         ElseIf ProgressBar1.Value = 96 Then

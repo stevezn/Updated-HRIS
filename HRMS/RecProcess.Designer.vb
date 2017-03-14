@@ -538,7 +538,7 @@ Partial Class RecProcess
         Me.GroupControl2.Controls.Add(Me.LabelControl2)
         Me.GroupControl2.Controls.Add(Me.txtinterviewdate)
         Me.GroupControl2.Controls.Add(Me.SimpleButton4)
-        Me.GroupControl2.Location = New System.Drawing.Point(187, 122)
+        Me.GroupControl2.Location = New System.Drawing.Point(84, 101)
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(197, 113)
         Me.GroupControl2.TabIndex = 43

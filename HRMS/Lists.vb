@@ -10,11 +10,9 @@ Public Class Lists
     Dim oDt_sched As New DataTable()
     Dim tbl_par As New DataTable
 
-
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
-
         'Add any initialization after the InitializeComponent() call.
         Dim host As String
         Dim id As String
@@ -75,7 +73,7 @@ Public Class Lists
         dele.ExecuteNonQuery()
     End Sub
 
-    Private Sub GridView1_PopupMenuShowing(sender As Object, e As Views.Grid.PopupMenuShowingEventArgs) 
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs)
         Dim view As GridView = CType(sender, GridView)
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
             Dim rowHandle As Integer = e.HitInfo.RowHandle

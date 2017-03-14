@@ -91,6 +91,36 @@ Public Class Report
         lis.GridControl1.DataSource = dt
     End Sub
 
+    Sub showpend()
+        Dim newrec As MySqlCommand = SQLConnection.CreateCommand
+        newrec.CommandText = "select IdRec, InterviewTimes, FullName, PlaceOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, Interviewdate, InterviewDates, Reason from db_recruitment where createddate between @date1 and @date2 and status = 'Pending'"
+        newrec.Parameters.AddWithValue("@date1", DateTimePicker1.Value.Date)
+        newrec.Parameters.AddWithValue("@date2", DateTimePicker2.Value)
+        Dim dt As New DataTable
+        dt.Load(newrec.ExecuteReader)
+        lis.GridControl1.DataSource = dt
+    End Sub
+
+    Sub showrej()
+        Dim newrec As MySqlCommand = SQLConnection.CreateCommand
+        newrec.CommandText = "select IdRec, InterviewTimes, FullName, PlaceOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, Interviewdate, InterviewDates, Reason from db_recruitment where createddate between @date1 and @date2 and status = 'Rejected'"
+        newrec.Parameters.AddWithValue("@date1", DateTimePicker1.Value.Date)
+        newrec.Parameters.AddWithValue("@date2", DateTimePicker2.Value)
+        Dim dt As New DataTable
+        dt.Load(newrec.ExecuteReader)
+        lis.GridControl1.DataSource = dt
+    End Sub
+
+    Sub showacc()
+        Dim newrec As MySqlCommand = SQLConnection.CreateCommand
+        newrec.CommandText = "select IdRec, InterviewTimes, FullName, PlaceOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, Interviewdate, InterviewDates, Reason from db_recruitment where createddate between @date1 and @date2 and status = 'Accepted'"
+        newrec.Parameters.AddWithValue("@date1", DateTimePicker1.Value.Date)
+        newrec.Parameters.AddWithValue("@date2", DateTimePicker2.Value)
+        Dim dt As New DataTable
+        dt.Load(newrec.ExecuteReader)
+        lis.GridControl1.DataSource = dt
+    End Sub
+
     Sub izin()
         Dim iz As MySqlCommand = SQLConnection.CreateCommand
         iz.CommandText = "select a.FullName, a.EmployeeCode, b.Reason , b.StartDate, b.EndDate, b.Ket as Keterangan from db_pegawai a, db_attrec b where a.EmployeeCode = b.EmployeeCode and b.startdate between @date1 and @date2 and b.reason = 'Izin'"
@@ -283,6 +313,24 @@ Public Class Report
             End If
             showrecruit()
             lis.Show()
+        ElseIf RadioButton16.Checked = True Then
+            If lis Is Nothing OrElse lis.IsDisposed OrElse lis.MinimizeBox Then
+                lis = New Lists
+            End If
+            showacc()
+            lis.Show()
+        ElseIf RadioButton9.Checked = True Then
+            If lis Is Nothing OrElse lis.IsDisposed OrElse lis.MinimizeBox Then
+                lis = New Lists
+                showrej()
+                lis.Show()
+            End If
+        ElseIf RadioButton17.Checked = True Then
+            If lis Is Nothing OrElse lis.IsDisposed OrElse lis.MinimizeBox Then
+                lis = New Lists
+                showpend()
+                lis.Show()
+            End If
         End If
     End Sub
 

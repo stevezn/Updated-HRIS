@@ -75,6 +75,8 @@ Public Class Attendance
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         If ComboBoxEdit1.Text = "" Or RichTextBox1.Text = "" Then
             MsgBox("Please fill reason field")
+        ElseIf DateTimePicker1.Value.Date > DateTimePicker2.Value.Date Then
+            MsgBox("Total days can't be minus")
         Else
             save()
         End If

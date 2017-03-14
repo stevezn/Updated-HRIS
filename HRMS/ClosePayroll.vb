@@ -82,7 +82,7 @@ Public Class ClosePayroll
         End If
     End Sub
 
-    Sub nilaiot()
+    Sub nilaiot(emp As String)
         Dim as1 As MySqlCommand = SQLConnection.CreateCommand
         as1.CommandText = "select overtimehours from db_absensi where overtimehours != '' and tanggal between @date1 and @date1"
         as1.Parameters.AddWithValue("@date1", date1.Value.Date)
@@ -90,7 +90,12 @@ Public Class ClosePayroll
         Dim as11 As String = CStr(as1.ExecuteScalar)
 
         Dim as2 As MySqlCommand = SQLConnection.CreateCommand
-        as2.CommandText = ""
+        as2.CommandText = "select employeetype from db_pegawai where employeecode = '" & emp & "'"
+        Dim as22 As String = CStr(as2.ExecuteScalar)
+
+        Dim as3 As MySqlCommand = SQLConnection.CreateCommand
+        as3.CommandText = "select overtimetype from db_overtime where employeecode = '" & emp & "'"
+        Dim as33 As String = CStr(as3.ExecuteScalar)
 
 
     End Sub

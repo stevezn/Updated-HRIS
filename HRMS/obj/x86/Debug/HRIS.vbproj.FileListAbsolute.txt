@@ -880,4 +880,3 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.cryrep.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.ShowAtt.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.vbprojResolveAssemblyReference.cache
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Reporting.resources

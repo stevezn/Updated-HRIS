@@ -3,7 +3,6 @@ Imports DevExpress.XtraBars.Docking
 
 Public Class Additional
     Dim connectionString As String
-    '= "Server=localhost; User Id=root; Password=; Database=db_hris"
     Dim SQLConnection As MySqlConnection = New MySqlConnection
     Dim oDt_sched As New DataTable()
     Dim tbl_par As New DataTable

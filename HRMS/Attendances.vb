@@ -215,7 +215,7 @@ Public Class Attendances
 
     Private Sub loadovertime()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.FullName, a.EmployeeCode, b.CompanyCode, b.Status, b.employeetype from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
+        sqlcommand.CommandText = "select a.FullName, a.EmployeeCode, b.CompanyCode, b.Status, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
         Dim p1 As New MySqlParameter
         p1.ParameterName = "@date1"
         p1.Value = DateTimePicker1.Value.Date
@@ -262,7 +262,6 @@ Public Class Attendances
         Try
             sqlCommand.CommandText = "SELECT EmployeeCode, FullName, shift from db_absensi WHERE 1=1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
-
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
@@ -280,7 +279,6 @@ Public Class Attendances
             MsgBox("Please fill hours textbox")
         Else
             overtimehours()
-            'overtimeresult()
         End If
     End Sub
 
@@ -343,14 +341,16 @@ Public Class Attendances
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
         GroupControl3.Visible = True
         GroupControl4.Visible = False
+        GroupControl1.Visible = False
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem2.ItemClick
-        GroupControl3.Visible = False
         GroupControl4.Visible = True
+        GroupControl3.Visible = False
+        GroupControl1.Visible = False
     End Sub
 
-    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs)
         GroupControl1.Visible = True
     End Sub
 
@@ -413,5 +413,11 @@ Public Class Attendances
         If e.KeyCode = Keys.Enter Then
             loadovertime()
         End If
+    End Sub
+
+    Private Sub BarButtonItem4_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem4.ItemClick
+        GroupControl1.Visible = True
+        GroupControl3.Visible = False
+        GroupControl4.Visible = False
     End Sub
 End Class

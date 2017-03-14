@@ -46,15 +46,15 @@ Public Class minirep
 
     Sub totaltmnt()
         Dim terminat As MySqlCommand = SQLConnection.CreateCommand
-        terminat.CommandText = "select count(*) from db_pegawai where status = 'terminate'"
+        terminat.CommandText = "select count(*) from db_pegawai where status = 'Terminated'"
         Dim restmnt As Integer = CInt(terminat.ExecuteScalar)
-        Label4.Text = CType(restmnt, String)
+        Label5.Text = CType(restmnt, String)
     End Sub
 
     Sub totalnew()
         Dim newemp As MySqlCommand = SQLConnection.CreateCommand
-        newemp.CommandText = "select count(*) from db_pegawai where MONTH(FROM_UNIXTIME(workdate))= MONTH(CURDATE())"
+        newemp.CommandText = "select count(*) from db_pegawai where MONTH(FROM_UNIXTIME(workdate)) = MONTH(CURDATE())"
         Dim resnew As Integer = CInt(newemp.ExecuteScalar)
-        Label5.Text = CType(resnew, String)
+        Label4.Text = CType(resnew, String)
     End Sub
 End Class

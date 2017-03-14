@@ -61,11 +61,12 @@ Partial Class Attendances
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
@@ -101,10 +102,10 @@ Partial Class Attendances
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(198, 150)
+        Me.GridControl1.Location = New System.Drawing.Point(198, 162)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(903, 626)
+        Me.GridControl1.Size = New System.Drawing.Size(1349, 750)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -118,7 +119,7 @@ Partial Class Attendances
         'LabelControl1
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl1.Location = New System.Drawing.Point(31, 176)
+        Me.LabelControl1.Location = New System.Drawing.Point(31, 162)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(106, 14)
         Me.LabelControl1.TabIndex = 2
@@ -127,7 +128,7 @@ Partial Class Attendances
         'btnFind
         '
         Me.btnFind.Image = CType(resources.GetObject("btnFind.Image"), System.Drawing.Image)
-        Me.btnFind.Location = New System.Drawing.Point(99, 358)
+        Me.btnFind.Location = New System.Drawing.Point(99, 312)
         Me.btnFind.Name = "btnFind"
         Me.btnFind.Size = New System.Drawing.Size(93, 32)
         Me.btnFind.TabIndex = 5
@@ -136,7 +137,7 @@ Partial Class Attendances
         'checkall
         '
         Me.checkall.AutoSize = True
-        Me.checkall.Location = New System.Drawing.Point(12, 198)
+        Me.checkall.Location = New System.Drawing.Point(12, 183)
         Me.checkall.Name = "checkall"
         Me.checkall.Size = New System.Drawing.Size(36, 17)
         Me.checkall.TabIndex = 7
@@ -147,7 +148,7 @@ Partial Class Attendances
         'checkharian
         '
         Me.checkharian.AutoSize = True
-        Me.checkharian.Location = New System.Drawing.Point(12, 220)
+        Me.checkharian.Location = New System.Drawing.Point(12, 206)
         Me.checkharian.Name = "checkharian"
         Me.checkharian.Size = New System.Drawing.Size(56, 17)
         Me.checkharian.TabIndex = 8
@@ -158,7 +159,7 @@ Partial Class Attendances
         'checkbulanan
         '
         Me.checkbulanan.AutoSize = True
-        Me.checkbulanan.Location = New System.Drawing.Point(81, 200)
+        Me.checkbulanan.Location = New System.Drawing.Point(81, 183)
         Me.checkbulanan.Name = "checkbulanan"
         Me.checkbulanan.Size = New System.Drawing.Size(63, 17)
         Me.checkbulanan.TabIndex = 9
@@ -169,7 +170,7 @@ Partial Class Attendances
         'checkborongan
         '
         Me.checkborongan.AutoSize = True
-        Me.checkborongan.Location = New System.Drawing.Point(81, 221)
+        Me.checkborongan.Location = New System.Drawing.Point(81, 206)
         Me.checkborongan.Name = "checkborongan"
         Me.checkborongan.Size = New System.Drawing.Size(71, 17)
         Me.checkborongan.TabIndex = 10
@@ -271,7 +272,7 @@ Partial Class Attendances
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(10, 243)
+        Me.Label1.Location = New System.Drawing.Point(51, 235)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(64, 13)
         Me.Label1.TabIndex = 14
@@ -279,22 +280,22 @@ Partial Class Attendances
         '
         'date1
         '
-        Me.date1.Location = New System.Drawing.Point(12, 282)
+        Me.date1.Location = New System.Drawing.Point(53, 255)
         Me.date1.Name = "date1"
-        Me.date1.Size = New System.Drawing.Size(180, 21)
+        Me.date1.Size = New System.Drawing.Size(140, 21)
         Me.date1.TabIndex = 15
         '
         'date2
         '
-        Me.date2.Location = New System.Drawing.Point(12, 328)
+        Me.date2.Location = New System.Drawing.Point(53, 285)
         Me.date2.Name = "date2"
-        Me.date2.Size = New System.Drawing.Size(180, 21)
+        Me.date2.Size = New System.Drawing.Size(139, 21)
         Me.date2.TabIndex = 16
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(11, 262)
+        Me.Label2.Location = New System.Drawing.Point(12, 259)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(31, 13)
         Me.Label2.TabIndex = 17
@@ -303,7 +304,7 @@ Partial Class Attendances
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(9, 308)
+        Me.Label3.Location = New System.Drawing.Point(10, 289)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(19, 13)
         Me.Label3.TabIndex = 18
@@ -314,7 +315,7 @@ Partial Class Attendances
         Me.GridControl2.Location = New System.Drawing.Point(4, 48)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(493, 230)
+        Me.GridControl2.Size = New System.Drawing.Size(493, 205)
         Me.GridControl2.TabIndex = 90
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
         '
@@ -328,7 +329,7 @@ Partial Class Attendances
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(5, 314)
+        Me.Label6.Location = New System.Drawing.Point(5, 295)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(81, 13)
         Me.Label6.TabIndex = 89
@@ -337,7 +338,7 @@ Partial Class Attendances
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(105, 312)
+        Me.Label5.Location = New System.Drawing.Point(105, 295)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(15, 13)
         Me.Label5.TabIndex = 85
@@ -347,7 +348,7 @@ Partial Class Attendances
         '
         Me.lblname.AutoSize = True
         Me.lblname.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblname.Location = New System.Drawing.Point(108, 290)
+        Me.lblname.Location = New System.Drawing.Point(108, 268)
         Me.lblname.Name = "lblname"
         Me.lblname.Size = New System.Drawing.Size(12, 14)
         Me.lblname.TabIndex = 88
@@ -356,7 +357,7 @@ Partial Class Attendances
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(5, 290)
+        Me.Label7.Location = New System.Drawing.Point(5, 270)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(34, 13)
         Me.Label7.TabIndex = 87
@@ -364,22 +365,22 @@ Partial Class Attendances
         '
         'LabelControl10
         '
-        Me.LabelControl10.Location = New System.Drawing.Point(288, 305)
+        Me.LabelControl10.Location = New System.Drawing.Point(288, 293)
         Me.LabelControl10.Name = "LabelControl10"
-        Me.LabelControl10.Size = New System.Drawing.Size(35, 13)
+        Me.LabelControl10.Size = New System.Drawing.Size(20, 13)
         Me.LabelControl10.TabIndex = 85
-        Me.LabelControl10.Text = "Lembar"
+        Me.LabelControl10.Text = "....."
         '
         'txtpages
         '
-        Me.txtpages.Location = New System.Drawing.Point(230, 300)
+        Me.txtpages.Location = New System.Drawing.Point(230, 290)
         Me.txtpages.Name = "txtpages"
         Me.txtpages.Size = New System.Drawing.Size(52, 20)
         Me.txtpages.TabIndex = 82
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(338, 299)
+        Me.btnSave.Location = New System.Drawing.Point(338, 286)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(52, 23)
         Me.btnSave.TabIndex = 84
@@ -387,21 +388,21 @@ Partial Class Attendances
         '
         'LabelControl11
         '
-        Me.LabelControl11.Location = New System.Drawing.Point(228, 283)
+        Me.LabelControl11.Location = New System.Drawing.Point(231, 270)
         Me.LabelControl11.Name = "LabelControl11"
-        Me.LabelControl11.Size = New System.Drawing.Size(98, 13)
+        Me.LabelControl11.Size = New System.Drawing.Size(121, 13)
         Me.LabelControl11.TabIndex = 83
-        Me.LabelControl11.Text = "Today's Work Result"
+        Me.LabelControl11.Text = "Work Result on that date"
         '
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3, Me.BarButtonItem4})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 4
+        Me.RibbonControl1.MaxItemId = 5
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
-        Me.RibbonControl1.Size = New System.Drawing.Size(1026, 144)
+        Me.RibbonControl1.Size = New System.Drawing.Size(810, 144)
         '
         'BarButtonItem1
         '
@@ -430,9 +431,18 @@ Partial Class Attendances
         Me.BarButtonItem3.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
+        'BarButtonItem4
+        '
+        Me.BarButtonItem4.Caption = "Show Attendance Records"
+        Me.BarButtonItem4.Glyph = CType(resources.GetObject("BarButtonItem4.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem4.Id = 4
+        Me.BarButtonItem4.Name = "BarButtonItem4"
+        Me.BarButtonItem4.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup3})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup3, Me.RibbonPageGroup4})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "Menu"
         '
@@ -454,13 +464,11 @@ Partial Class Attendances
         Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
         Me.RibbonPageGroup3.Text = "                                               "
         '
-        'SimpleButton1
+        'RibbonPageGroup4
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(6, 406)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(73, 23)
-        Me.SimpleButton1.TabIndex = 85
-        Me.SimpleButton1.Text = "Choose Date"
+        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonItem4)
+        Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
+        Me.RibbonPageGroup4.Text = "                                               "
         '
         'GroupControl1
         '
@@ -469,7 +477,7 @@ Partial Class Attendances
         Me.GroupControl1.Controls.Add(Me.DateTimePicker2)
         Me.GroupControl1.Controls.Add(Me.SimpleButton4)
         Me.GroupControl1.Controls.Add(Me.SimpleButton5)
-        Me.GroupControl1.Location = New System.Drawing.Point(2, 432)
+        Me.GroupControl1.Location = New System.Drawing.Point(299, 140)
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(302, 108)
         Me.GroupControl1.TabIndex = 87
@@ -526,7 +534,6 @@ Partial Class Attendances
         '
         'GroupControl3
         '
-        Me.GroupControl3.Controls.Add(Me.GroupControl4)
         Me.GroupControl3.Controls.Add(Me.SimpleButton6)
         Me.GroupControl3.Controls.Add(Me.SimpleButton7)
         Me.GroupControl3.Controls.Add(Me.SimpleButton3)
@@ -539,7 +546,7 @@ Partial Class Attendances
         Me.GroupControl3.Controls.Add(Me.Label8)
         Me.GroupControl3.Controls.Add(Me.LabelControl2)
         Me.GroupControl3.Controls.Add(Me.Label10)
-        Me.GroupControl3.Location = New System.Drawing.Point(316, 193)
+        Me.GroupControl3.Location = New System.Drawing.Point(11, 140)
         Me.GroupControl3.Name = "GroupControl3"
         Me.GroupControl3.Size = New System.Drawing.Size(506, 325)
         Me.GroupControl3.TabIndex = 1
@@ -576,9 +583,9 @@ Partial Class Attendances
         Me.GroupControl4.Controls.Add(Me.LabelControl11)
         Me.GroupControl4.Controls.Add(Me.Label7)
         Me.GroupControl4.Controls.Add(Me.lblname)
-        Me.GroupControl4.Location = New System.Drawing.Point(5, 59)
+        Me.GroupControl4.Location = New System.Drawing.Point(112, 140)
         Me.GroupControl4.Name = "GroupControl4"
-        Me.GroupControl4.Size = New System.Drawing.Size(502, 336)
+        Me.GroupControl4.Size = New System.Drawing.Size(502, 325)
         Me.GroupControl4.TabIndex = 89
         Me.GroupControl4.Text = "Borongan"
         Me.GroupControl4.Visible = False
@@ -594,7 +601,7 @@ Partial Class Attendances
         'SimpleButton8
         '
         Me.SimpleButton8.Image = CType(resources.GetObject("SimpleButton8.Image"), System.Drawing.Image)
-        Me.SimpleButton8.Location = New System.Drawing.Point(476, 2)
+        Me.SimpleButton8.Location = New System.Drawing.Point(476, 4)
         Me.SimpleButton8.Name = "SimpleButton8"
         Me.SimpleButton8.Size = New System.Drawing.Size(23, 21)
         Me.SimpleButton8.TabIndex = 103
@@ -610,10 +617,10 @@ Partial Class Attendances
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1026, 647)
+        Me.ClientSize = New System.Drawing.Size(810, 574)
+        Me.Controls.Add(Me.GroupControl4)
         Me.Controls.Add(Me.GroupControl3)
         Me.Controls.Add(Me.GroupControl1)
-        Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.date2)
@@ -627,8 +634,6 @@ Partial Class Attendances
         Me.Controls.Add(Me.btnFind)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.RibbonControl1)
-        Me.MaximumSize = New System.Drawing.Size(1036, 652)
-        Me.MinimumSize = New System.Drawing.Size(1036, 652)
         Me.Name = "Attendances"
         Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -700,7 +705,6 @@ Partial Class Attendances
     Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents RibbonPageGroup3 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GroupControl2 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
@@ -715,4 +719,6 @@ Partial Class Attendances
     Friend WithEvents SimpleButton8 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents DateTimePicker3 As DateTimePicker
     Friend WithEvents SimpleButton9 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents BarButtonItem4 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup4 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
 End Class

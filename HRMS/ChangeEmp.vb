@@ -95,7 +95,7 @@ Public Class ChangeEmp
             SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
-        If datatabl.Rows.Count > 0 Then
+        If datatabl.Rows.Count > -1 Then
             txtnames.Text = datatabl.Rows(0).Item(2).ToString()
             txtempcode.Text = datatabl.Rows(0).Item(0).ToString()
             txtcompcode.Text = datatabl.Rows(0).Item(1).ToString()
@@ -118,7 +118,6 @@ Public Class ChangeEmp
             txtreligion.Text = datatabl.Rows(0).Item(7).ToString()
             txtidcard.Text = datatabl.Rows(0).Item(10).ToString()
             txtstatus.Text = datatabl.Rows(0).Item(15).ToString()
-            txtrains.Text = datatabl.Rows(0).Item(17).ToString
             txtphone.Text = datatabl.Rows(0).Item(13).ToString
         End If
     End Sub
@@ -127,8 +126,6 @@ Public Class ChangeEmp
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         loadinfo()
-        txtrains.Format = DateTimePickerFormat.Custom
-        txtrains.CustomFormat = " "
     End Sub
 
     Private Sub btnPhoto_Click(sender As Object, e As EventArgs) Handles btnPhoto.Click
@@ -144,9 +141,6 @@ Public Class ChangeEmp
         txtworkdate.Format = DateTimePickerFormat.Custom
         txtworkdate.CustomFormat = "yyyy-MM-dd"
         dtb = txtworkdate.Value
-        txtrains.Format = DateTimePickerFormat.Custom
-        txtrains.CustomFormat = "yyyy-MM-dd"
-        dtr = txtrains.Value
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
         Try
@@ -166,7 +160,6 @@ Public Class ChangeEmp
                    ", PhoneNumber = @PhoneNumber" +
                    ", Photo = @Photo" +
                    ", Status = @Status" +
-                   ", TrainingSampai = @TrainingSampai" +
                    ", EmployeeType = @EmployeeType " +
                    ", ChangeDate = @ChangeDate" +
                    " WHERE EmployeeCode = @EmployeeCode"
@@ -193,7 +186,6 @@ Public Class ChangeEmp
                 sqlCommand.Parameters.AddWithValue("@Photo", "")
             End If
             sqlCommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlCommand.Parameters.AddWithValue("@TrainingSampai", dtr.ToString("yyyy-MM-dd"))
             sqlCommand.Parameters.AddWithValue("@EmployeeType", txtemptype.Text)
             sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
             sqlCommand.Connection = SQLConnection
@@ -230,7 +222,6 @@ Public Class ChangeEmp
         txtidcard.Text = ""
         txtstatus.Text = ""
         pictureEdit.Controls.Clear()
-        txtrains.Text = ""
         txtposition.Text = ""
     End Sub
 
@@ -238,27 +229,21 @@ Public Class ChangeEmp
         cleartxt()
     End Sub
 
-    'Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs)
-    '    If e.KeyCode = Keys.Enter Then
-    '        GridControl1.RefreshDataSource()
-    '        Dim table As New DataTable
-    '        Dim sqlcommand As New MySqlCommand
-    '        Try
-    '            sqlcommand.CommandText = "select FullName, EmployeeCode from db_pegawai where FullName or EmployeeCode Like '%" + TextBox1.Text + "%' and status != 'Fired' and status != 'Terminated'"
-    '            sqlcommand.Connection = SQLConnection
-    '            Dim tbl_par As New DataTable
-    '            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-    '            Dim cb As New MySqlCommandBuilder(adapter)
-    '            adapter.Fill(table)
-    '            GridControl1.DataSource = table
-    '        Catch ex As Exception
-    '            MsgBox(ex.Message)
-    '        End Try
-    '    End If
-    'End Sub
+    Private Sub txtstatus_TextChanged(sender As Object, e As EventArgs) Handles txtstatus.TextChanged
+        Dim monthss As Date
+        If txtstatus.Text = "Training" Then
+            Try
+                monthss = CDate(InputBox("Enter a date with format ( 2017-15-01 )"))
+                Dim train As MySqlCommand = SQLConnection.CreateCommand
+                train.CommandText = "update db_pegawai set trainingsampai = @date1 where employeecode = @ec"
+                train.Parameters.AddWithValue("@date1", monthss)
+                train.Parameters.AddWithValue("@ec", txtempcode.Text)
+                train.ExecuteNonQuery()
+                MsgBox("Added")
+            Catch ex As Exception
 
-    Private Sub txtrains_ValueChanged(sender As Object, e As EventArgs) Handles txtrains.ValueChanged
-        txtrains.Format = DateTimePickerFormat.Custom
-        txtrains.CustomFormat = "yyyy-MM-dd"
+            End Try
+
+        End If
     End Sub
 End Class

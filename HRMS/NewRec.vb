@@ -127,7 +127,7 @@ Public Class NewRec
     Dim main As MainApp
 
     Public Function insertreq2() As Boolean
-        Dim dtb, dtr As DateTime
+        Dim dtr As DateTime
         'txtinterviewdate.Format = DateTimePickerFormat.Custom
         'txtinterviewdate.CustomFormat = "yyyy-MM-dd"
         'dtb = txtinterviewdate.Value

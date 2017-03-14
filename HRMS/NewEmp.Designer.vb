@@ -31,7 +31,6 @@ Partial Class NewEmp
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.Employee = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtdob = New System.Windows.Forms.DateTimePicker()
         Me.txtworkdate = New System.Windows.Forms.DateTimePicker()
@@ -77,6 +76,7 @@ Partial Class NewEmp
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
+        Me.btnCapture = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.lcaddress, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtaddress.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,7 +179,7 @@ Partial Class NewEmp
         '
         'Employee
         '
-        Me.Employee.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.Employee.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
         Me.Employee.Name = "Employee"
         Me.Employee.Text = "Employee"
         '
@@ -188,12 +188,6 @@ Partial Class NewEmp
         Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonItem1)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "                                  "
-        '
-        'RibbonPageGroup2
-        '
-        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem2)
-        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
-        Me.RibbonPageGroup2.Text = "                                                        "
         '
         'LayoutControl1
         '
@@ -679,11 +673,21 @@ Partial Class NewEmp
         Me.pictureEdit.TabIndex = 30
         Me.pictureEdit.TabStop = False
         '
+        'btnCapture
+        '
+        Me.btnCapture.Image = CType(resources.GetObject("btnCapture.Image"), System.Drawing.Image)
+        Me.btnCapture.Location = New System.Drawing.Point(325, 328)
+        Me.btnCapture.Name = "btnCapture"
+        Me.btnCapture.Size = New System.Drawing.Size(119, 36)
+        Me.btnCapture.TabIndex = 32
+        Me.btnCapture.Text = "Camera"
+        '
         'NewEmp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(486, 665)
+        Me.Controls.Add(Me.btnCapture)
         Me.Controls.Add(Me.pictureEdit)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.RibbonControl1)
@@ -750,7 +754,6 @@ Partial Class NewEmp
     Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents Employee As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
-    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents txtposition As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents txtrains As DevExpress.XtraEditors.DateEdit
@@ -796,4 +799,5 @@ Partial Class NewEmp
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtdob As DateTimePicker
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents btnCapture As DevExpress.XtraEditors.SimpleButton
 End Class

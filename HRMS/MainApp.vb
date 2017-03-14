@@ -65,7 +65,7 @@ Public Class MainApp
         Dim notify As MySqlCommand = SQLConnection.CreateCommand
         notify.CommandText = "select count(*) from db_recruitment where interviewdate = curdate() and status = 'In Progress'"
         Dim note As Integer = CInt(notify.ExecuteScalar)
-        If note > 0 Then
+        If note > -1 Then
             NotifyIcon1.Visible = True
             NotifyIcon1.Icon = SystemIcons.Information
             NotifyIcon1.BalloonTipTitle = "Reminders"
@@ -330,8 +330,6 @@ Public Class MainApp
 
     Private Sub btnSegarkan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSegarkan.Click
         loadDataReq()
-        'CardView1.Focus()
-        'CardView1.MoveLast()
     End Sub
 
     Private Sub btnHapus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHapus.Click
@@ -425,14 +423,13 @@ Public Class MainApp
                     Dim actualcode As String = ynow & "-" & mnow & "-" & Strings.Right("0000" & tmp, 5)
                     Dim sqlCommand As New MySqlCommand
                     Try
-                        sqlCommand.CommandText = "INSERT INTO db_pegawai (FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, status, CompanyCode, EmployeeCode, OfficeLocation, PhoneNumber, TrainingSampai, WorkDate, ChangeDate)" +
-                                                         "SELECT FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, @status, @CompanyCode, @EmployeeCode, @OfficeLocation, @PhoneNumber, @TrainingSampai, @WorkDate, @ChangeDate FROM db_recruitment WHERE Status='Accepted' AND idrec = @idrec"
+                        sqlCommand.CommandText = "INSERT INTO db_pegawai (FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, status, CompanyCode, EmployeeCode, OfficeLocation, PhoneNumber, WorkDate, ChangeDate)" +
+                                                         "SELECT FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, @status, @CompanyCode, @EmployeeCode, @OfficeLocation, @PhoneNumber, @WorkDate, @ChangeDate FROM db_recruitment WHERE Status='Accepted' AND idrec = @idrec"
                         sqlCommand.Parameters.AddWithValue("@Status", "Active")
                         sqlCommand.Parameters.AddWithValue("@CompanyCode", "<empty>")
                         sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
                         sqlCommand.Parameters.AddWithValue("@OfficeLocation", "<empty>")
                         sqlCommand.Parameters.AddWithValue("@PhoneNumber", employees.txtphone.Text)
-                        sqlCommand.Parameters.AddWithValue("@TrainingSampai", "<empty>")
                         sqlCommand.Parameters.AddWithValue("@WorkDate", Date.Now)
                         sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
                         sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
@@ -450,7 +447,6 @@ Public Class MainApp
     End Sub
 
     'SELECT CONCAT(DATE_FORMAT(Now(),'%y-%m'),"-", LPAD((RIGHT(MAX(EmployeeCode),4)+1),4,'0')) FROM db_pegawai 
-
     Public Sub updatestats()
         Dim sqlcommand As New MySqlCommand
         Try
@@ -471,17 +467,9 @@ Public Class MainApp
         Dim sqlCommand As New MySqlCommand
         Try
             If barJudul.Caption = "Module Recruitment" Then
-                sqlCommand.CommandText = "Select IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, InterviewDate, Status, CreatedDate from db_recruitment where status != 'In Progress'"
+                sqlCommand.CommandText = "Select IdRec as IDRecruitment, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, InterviewDate, Status, CreatedDate from db_recruitment where status != 'In Progress'"
             ElseIf barJudul.Caption = "Module Employee" Then
-                sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, TrainingSampai, EmployeeType FROM db_pegawai where status != 'Fired'"
-            ElseIf barJudul.Caption = "Module Payroll" Then
-                sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, PaymentDate, FullName, BasicRate, Gross, Bpjs, OvertimeSalary, TotalDeductions, NetIncome, JaminanKecelakaanKerja, PremiJaminanKematian, JaminanHariTua, BiayaJabatan, IuranPensiun, PphTerhutang, PajakPphPerTahun, PenghasilanKenaPajak, NettoSetahun, StatusWajibPajak, Rapel FROM db_payroll"
-            ElseIf barJudul.Caption = "Module Attendance" Then
-                sqlCommand.CommandText = "SELECT EmployeeCode, FullName, Tanggal, Shift, JamMulai, JamSelesai FROM db_absensi"
-            ElseIf barJudul.Caption = "Module Payment Details" Then
-                sqlCommand.CommandText = "SELECT EmployeeCode, PaymentDate, FullName, BasicRate, Gross, Bpjs, OvertimeSalary, TotalDeductions, NetIncome, JaminanKecelakaanKerja, PremiJaminanKematian, JaminanHariTua, BiayaJabatan, IuranPensiun, PphTerhutang, PajakPphPerTahun, PenghasilanKenaPajak, NettoSetahun, StatusWajibPajak, Rapel FROM db_payrolldetails"
-            ElseIf barJudul.Caption = "Employee Menus" Then
-                sqlCommand.CommandText = "SELECT EmployeeCode, FullName, Position, SuratPeringatan1, SuratPeringatan2, SuratPeringatan3, Rotasi, Demosi FROM db_sp"
+                sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, TrainingSampai, EmployeeType FROM db_pegawai where status != 'Fired' and status != 'Terminated'"
             End If
             sqlCommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
@@ -1126,13 +1114,13 @@ Public Class MainApp
 
         If barJudul.Caption = "Module Recruitment" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
-                e.Menu.Items.Add(New DXMenuItem("View Recruitment Details", New EventHandler(AddressOf btnLihat_Click)))
-                e.Menu.Items.Add(New DXMenuItem("Abort Recruiter", New EventHandler(AddressOf btnProg_Click)))
+                'e.Menu.Items.Add(New DXMenuItem("View Recruitment Details", New EventHandler(AddressOf btnLihat_Click)))
+                'e.Menu.Items.Add(New DXMenuItem("Abort Recruiter", New EventHandler(AddressOf btnProg_Click)))
             End If
         ElseIf barJudul.Caption = "Module Employee" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
                 e.Menu.Items.Add(New DXMenuItem("Terminate This Employee ?", New EventHandler(AddressOf SimpleButton2_Click_1)))
-                e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf btnNotes_Click)))
+                'e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf btnNotes_Click)))
             End If
         End If
     End Sub
@@ -1153,6 +1141,15 @@ Public Class MainApp
                 up.Parameters.AddWithValue("@stat", "Terminated")
                 up.Parameters.AddWithValue("@tmntdates", Date.Now)
                 up.ExecuteNonQuery()
+
+                Dim delpay As MySqlCommand = SQLConnection.CreateCommand
+                delpay.CommandText = "delete from db_payrolldata where employeecode = '" & SimpleButton2.Text & "'"
+                delpay.ExecuteNonQuery()
+
+                Dim delatt As MySqlCommand = SQLConnection.CreateCommand
+                delatt.CommandText = "delete from db_absensi where employeecode = '" & SimpleButton2.Text & "'"
+                delatt.ExecuteNonQuery()
+
                 MsgBox("Status from " & nama & " Is changed to be 'Terminated'", MsgBoxStyle.Information)
                 Dim delsal As MySqlCommand = SQLConnection.CreateCommand
                 delsal.CommandText = "delete from db_payrolldata where EmployeeCode = '" & SimpleButton2.Text & "'"

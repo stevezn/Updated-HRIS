@@ -232,6 +232,7 @@ Partial Class NewRec
         'txtstatus
         '
         Me.txtstatus.EditValue = ""
+        Me.txtstatus.Enabled = False
         Me.txtstatus.Location = New System.Drawing.Point(91, 304)
         Me.txtstatus.MenuManager = Me.RibbonControl1
         Me.txtstatus.Name = "txtstatus"

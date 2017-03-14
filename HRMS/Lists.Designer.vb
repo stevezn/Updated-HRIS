@@ -22,7 +22,8 @@ Partial Class Lists
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Lists))
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.CardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
@@ -32,12 +33,12 @@ Partial Class Lists
         '
         'GridControl1
         '
-        GridLevelNode1.RelationName = "Level1"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl1.Location = New System.Drawing.Point(-1, -1)
+        GridLevelNode2.RelationName = "Level1"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        Me.GridControl1.Location = New System.Drawing.Point(-9, 2)
         Me.GridControl1.MainView = Me.CardView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1103, 614)
+        Me.GridControl1.Size = New System.Drawing.Size(1528, 859)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.CardView1})
         '
@@ -50,9 +51,10 @@ Partial Class Lists
         '
         'SimpleButton1
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(0, 618)
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(63, 8)
         Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton1.Size = New System.Drawing.Size(75, 22)
         Me.SimpleButton1.TabIndex = 1
         Me.SimpleButton1.Text = "Print Data"
         '
@@ -63,8 +65,6 @@ Partial Class Lists
         Me.ClientSize = New System.Drawing.Size(1104, 641)
         Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.GridControl1)
-        Me.MaximumSize = New System.Drawing.Size(1120, 680)
-        Me.MinimumSize = New System.Drawing.Size(1120, 680)
         Me.Name = "Lists"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Lists"

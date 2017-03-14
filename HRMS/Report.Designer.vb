@@ -42,6 +42,9 @@ Partial Class Report
         Me.RibbonPageGroup6 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.recruitment = New DevExpress.XtraTab.XtraTabPage()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.RadioButton17 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton16 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton9 = New System.Windows.Forms.RadioButton()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -91,8 +94,6 @@ Partial Class Report
         Me.DateTimePicker7 = New System.Windows.Forms.DateTimePicker()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.RadioButton15 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton14 = New System.Windows.Forms.RadioButton()
         Me.RadioButton13 = New System.Windows.Forms.RadioButton()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
@@ -246,6 +247,9 @@ Partial Class Report
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.RadioButton17)
+        Me.GroupControl1.Controls.Add(Me.RadioButton16)
+        Me.GroupControl1.Controls.Add(Me.RadioButton9)
         Me.GroupControl1.Controls.Add(Me.DateTimePicker2)
         Me.GroupControl1.Controls.Add(Me.DateTimePicker1)
         Me.GroupControl1.Controls.Add(Me.Label3)
@@ -260,6 +264,39 @@ Partial Class Report
         Me.GroupControl1.TabIndex = 0
         Me.GroupControl1.Text = "HRM Reports Criteria ------------------------------------------------------------" &
     "-----------------------------------"
+        '
+        'RadioButton17
+        '
+        Me.RadioButton17.AutoSize = True
+        Me.RadioButton17.Location = New System.Drawing.Point(26, 127)
+        Me.RadioButton17.Name = "RadioButton17"
+        Me.RadioButton17.Size = New System.Drawing.Size(110, 17)
+        Me.RadioButton17.TabIndex = 17
+        Me.RadioButton17.TabStop = True
+        Me.RadioButton17.Text = "Pending Recruiter"
+        Me.RadioButton17.UseVisualStyleBackColor = True
+        '
+        'RadioButton16
+        '
+        Me.RadioButton16.AutoSize = True
+        Me.RadioButton16.Location = New System.Drawing.Point(26, 81)
+        Me.RadioButton16.Name = "RadioButton16"
+        Me.RadioButton16.Size = New System.Drawing.Size(117, 17)
+        Me.RadioButton16.TabIndex = 16
+        Me.RadioButton16.TabStop = True
+        Me.RadioButton16.Text = "Accepted Recruiter"
+        Me.RadioButton16.UseVisualStyleBackColor = True
+        '
+        'RadioButton9
+        '
+        Me.RadioButton9.AutoSize = True
+        Me.RadioButton9.Location = New System.Drawing.Point(26, 104)
+        Me.RadioButton9.Name = "RadioButton9"
+        Me.RadioButton9.Size = New System.Drawing.Size(115, 17)
+        Me.RadioButton9.TabIndex = 15
+        Me.RadioButton9.TabStop = True
+        Me.RadioButton9.Text = "Rejected Recruiter"
+        Me.RadioButton9.UseVisualStyleBackColor = True
         '
         'DateTimePicker2
         '
@@ -324,7 +361,7 @@ Partial Class Report
         '
         'SimpleButton2
         '
-        Me.SimpleButton2.Location = New System.Drawing.Point(412, 130)
+        Me.SimpleButton2.Location = New System.Drawing.Point(341, 130)
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton2.TabIndex = 7
@@ -406,7 +443,7 @@ Partial Class Report
         '
         'SimpleButton3
         '
-        Me.SimpleButton3.Location = New System.Drawing.Point(297, 130)
+        Me.SimpleButton3.Location = New System.Drawing.Point(350, 129)
         Me.SimpleButton3.Name = "SimpleButton3"
         Me.SimpleButton3.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton3.TabIndex = 18
@@ -552,7 +589,7 @@ Partial Class Report
         '
         'SimpleButton9
         '
-        Me.SimpleButton9.Location = New System.Drawing.Point(391, 130)
+        Me.SimpleButton9.Location = New System.Drawing.Point(353, 130)
         Me.SimpleButton9.Name = "SimpleButton9"
         Me.SimpleButton9.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton9.TabIndex = 19
@@ -562,7 +599,7 @@ Partial Class Report
         '
         Me.DateTimePicker6.Location = New System.Drawing.Point(295, 98)
         Me.DateTimePicker6.Name = "DateTimePicker6"
-        Me.DateTimePicker6.Size = New System.Drawing.Size(171, 21)
+        Me.DateTimePicker6.Size = New System.Drawing.Size(190, 21)
         Me.DateTimePicker6.TabIndex = 18
         '
         'Label9
@@ -578,7 +615,7 @@ Partial Class Report
         '
         Me.DateTimePicker5.Location = New System.Drawing.Point(295, 72)
         Me.DateTimePicker5.Name = "DateTimePicker5"
-        Me.DateTimePicker5.Size = New System.Drawing.Size(171, 21)
+        Me.DateTimePicker5.Size = New System.Drawing.Size(190, 21)
         Me.DateTimePicker5.TabIndex = 16
         '
         'Label8
@@ -604,10 +641,10 @@ Partial Class Report
         Me.RadioButton12.AutoSize = True
         Me.RadioButton12.Location = New System.Drawing.Point(26, 108)
         Me.RadioButton12.Name = "RadioButton12"
-        Me.RadioButton12.Size = New System.Drawing.Size(76, 17)
+        Me.RadioButton12.Size = New System.Drawing.Size(85, 17)
         Me.RadioButton12.TabIndex = 11
         Me.RadioButton12.TabStop = True
-        Me.RadioButton12.Text = "Daftar Izin"
+        Me.RadioButton12.Text = "Absence List"
         Me.RadioButton12.UseVisualStyleBackColor = True
         '
         'RadioButton11
@@ -615,10 +652,10 @@ Partial Class Report
         Me.RadioButton11.AutoSize = True
         Me.RadioButton11.Location = New System.Drawing.Point(26, 84)
         Me.RadioButton11.Name = "RadioButton11"
-        Me.RadioButton11.Size = New System.Drawing.Size(89, 17)
+        Me.RadioButton11.Size = New System.Drawing.Size(94, 17)
         Me.RadioButton11.TabIndex = 10
         Me.RadioButton11.TabStop = True
-        Me.RadioButton11.Text = "Daftar Absen"
+        Me.RadioButton11.Text = "Permission List"
         Me.RadioButton11.UseVisualStyleBackColor = True
         '
         'RadioButton10
@@ -626,10 +663,10 @@ Partial Class Report
         Me.RadioButton10.AutoSize = True
         Me.RadioButton10.Location = New System.Drawing.Point(26, 60)
         Me.RadioButton10.Name = "RadioButton10"
-        Me.RadioButton10.Size = New System.Drawing.Size(82, 17)
+        Me.RadioButton10.Size = New System.Drawing.Size(62, 17)
         Me.RadioButton10.TabIndex = 7
         Me.RadioButton10.TabStop = True
-        Me.RadioButton10.Text = "Daftar Sakit"
+        Me.RadioButton10.Text = "Sick List"
         Me.RadioButton10.UseVisualStyleBackColor = True
         '
         'LabelControl3
@@ -672,8 +709,6 @@ Partial Class Report
         Me.GroupControl4.Controls.Add(Me.DateTimePicker7)
         Me.GroupControl4.Controls.Add(Me.Label11)
         Me.GroupControl4.Controls.Add(Me.Label10)
-        Me.GroupControl4.Controls.Add(Me.RadioButton15)
-        Me.GroupControl4.Controls.Add(Me.RadioButton14)
         Me.GroupControl4.Controls.Add(Me.RadioButton13)
         Me.GroupControl4.Controls.Add(Me.LabelControl4)
         Me.GroupControl4.Controls.Add(Me.SimpleButton7)
@@ -687,11 +722,11 @@ Partial Class Report
         '
         'SimpleButton10
         '
-        Me.SimpleButton10.Location = New System.Drawing.Point(418, 124)
+        Me.SimpleButton10.Location = New System.Drawing.Point(359, 126)
         Me.SimpleButton10.Name = "SimpleButton10"
         Me.SimpleButton10.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton10.TabIndex = 20
-        Me.SimpleButton10.Text = "hijh"
+        Me.SimpleButton10.Text = "Show Report"
         '
         'DateTimePicker8
         '
@@ -733,28 +768,6 @@ Partial Class Report
         Me.Label10.Size = New System.Drawing.Size(64, 13)
         Me.Label10.TabIndex = 13
         Me.Label10.Text = "Range Date"
-        '
-        'RadioButton15
-        '
-        Me.RadioButton15.AutoSize = True
-        Me.RadioButton15.Location = New System.Drawing.Point(32, 111)
-        Me.RadioButton15.Name = "RadioButton15"
-        Me.RadioButton15.Size = New System.Drawing.Size(96, 17)
-        Me.RadioButton15.TabIndex = 11
-        Me.RadioButton15.TabStop = True
-        Me.RadioButton15.Text = "RadioButton15"
-        Me.RadioButton15.UseVisualStyleBackColor = True
-        '
-        'RadioButton14
-        '
-        Me.RadioButton14.AutoSize = True
-        Me.RadioButton14.Location = New System.Drawing.Point(32, 88)
-        Me.RadioButton14.Name = "RadioButton14"
-        Me.RadioButton14.Size = New System.Drawing.Size(96, 17)
-        Me.RadioButton14.TabIndex = 10
-        Me.RadioButton14.TabStop = True
-        Me.RadioButton14.Text = "RadioButton14"
-        Me.RadioButton14.UseVisualStyleBackColor = True
         '
         'RadioButton13
         '
@@ -890,8 +903,6 @@ Partial Class Report
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents SimpleButton5 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents RadioButton15 As RadioButton
-    Friend WithEvents RadioButton14 As RadioButton
     Friend WithEvents RadioButton13 As RadioButton
     Friend WithEvents DateTimePicker7 As DateTimePicker
     Friend WithEvents Label11 As Label
@@ -902,4 +913,7 @@ Partial Class Report
     Friend WithEvents RadioButton8 As RadioButton
     Friend WithEvents RadioButton3 As RadioButton
     Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents RadioButton17 As RadioButton
+    Friend WithEvents RadioButton16 As RadioButton
+    Friend WithEvents RadioButton9 As RadioButton
 End Class

@@ -54,6 +54,14 @@ Public Class RecProcess
         Return Image.FromStream(pictureBytes)
     End Function
 
+    Sub clearal()
+        txtid.Text = ""
+        txtinterview.Text = ""
+        txtaddress.Text = ""
+        txtphone.Text = ""
+
+    End Sub
+
     Sub cleartxt()
         txtid.Text = ""
         txtinterview.Text = ""
@@ -64,39 +72,52 @@ Public Class RecProcess
         txtinterviewdate.Text = ""
     End Sub
 
-    Public Function skills() As Boolean
+    Public Sub skills()
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
-        Try
-            str_carSql = "INSERT INTO db_skills " +
-                   "(IdRec, FullName, Skill1, Skill2, Skill3, Skill4, Skill5, Position, ExpectedSalary) " +
-                   "values (@Idrec, @fullname, @skill1, @skill2, @skill3, @skill4, @skill5, @position, @expectedsalary)"
-            sqlCommand.Connection = SQLConnection
-            sqlCommand.CommandText = str_carSql
-            sqlCommand.Parameters.AddWithValue("@IdRec", txtidrecc.Text)
-            sqlCommand.Parameters.AddWithValue("@FullName", txtname.Text)
-            sqlCommand.Parameters.AddWithValue("@skill1", skill1.Text)
-            sqlCommand.Parameters.AddWithValue("@skill2", skill2.Text)
-            sqlCommand.Parameters.AddWithValue("@skill3", skill3.Text)
-            sqlCommand.Parameters.AddWithValue("@skill4", skill4.Text)
-            sqlCommand.Parameters.AddWithValue("@skill5", skill5.Text)
-            sqlCommand.Parameters.AddWithValue("@Position", txtpos.Text)
-            sqlCommand.Parameters.AddWithValue("@ExpectedSalary", txtexp.Text)
-            sqlCommand.ExecuteNonQuery()
-            MessageBox.Show("Data Succesfully Added!")
-            skill1.Text = ""
-            skill2.Text = ""
-            skill3.Text = ""
-            skill4.Text = ""
-            skill5.Text = ""
-            txtpos.Text = ""
-            txtexp.Text = ""
-            Return True
-        Catch ex As Exception
-            Return False
-            MsgBox(ex.Message)
-        End Try
-    End Function
+        Dim sk As MySqlCommand = SQLConnection.CreateCommand
+        sk.CommandText = "select idrec from db_skills where idrec = '" & txtidrecc.Text & "'"
+        Dim sk1 As String = CStr(sk.ExecuteScalar)
+
+        If sk1 = "" Then
+            If skill1.Text = "" OrElse skill2.Text = "" OrElse skill3.Text = "" OrElse skill4.Text = "" OrElse skill5.Text = "" OrElse txtpos.Text = "" OrElse txtexp.Text = "" OrElse txtidrecc.Text = "" Then
+                MsgBox("Pleasae fill the required fields")
+            Else
+                Try
+                    str_carSql = "INSERT INTO db_skills " +
+                           "(IdRec, FullName, Skill1, Skill2, Skill3, Skill4, Skill5, Position, ExpectedSalary) " +
+                           "values (@Idrec, @fullname, @skill1, @skill2, @skill3, @skill4, @skill5, @position, @expectedsalary)"
+                    sqlCommand.Connection = SQLConnection
+                    sqlCommand.CommandText = str_carSql
+                    sqlCommand.Parameters.AddWithValue("@IdRec", txtidrecc.Text)
+                    sqlCommand.Parameters.AddWithValue("@FullName", txtname.Text)
+                    sqlCommand.Parameters.AddWithValue("@skill1", skill1.Text)
+                    sqlCommand.Parameters.AddWithValue("@skill2", skill2.Text)
+                    sqlCommand.Parameters.AddWithValue("@skill3", skill3.Text)
+                    sqlCommand.Parameters.AddWithValue("@skill4", skill4.Text)
+                    sqlCommand.Parameters.AddWithValue("@skill5", skill5.Text)
+                    sqlCommand.Parameters.AddWithValue("@Position", txtpos.Text)
+                    sqlCommand.Parameters.AddWithValue("@ExpectedSalary", txtexp.Text)
+                    sqlCommand.ExecuteNonQuery()
+                    MessageBox.Show("Data Succesfully Added!")
+                    txtname.Text = ""
+                    txtidrecc.Text = ""
+                    txtstat.Text = ""
+                    skill1.Text = ""
+                    skill2.Text = ""
+                    skill3.Text = ""
+                    skill4.Text = ""
+                    skill5.Text = ""
+                    txtpos.Text = ""
+                    txtexp.Text = ""
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                End Try
+            End If
+        Else
+            MsgBox("The data already exists")
+        End If
+    End Sub
 
     Public Sub updatechange()
         Dim dtb As DateTime
@@ -277,25 +298,6 @@ Public Class RecProcess
         Next
     End Sub
 
-    'Private Sub loadDataReq()
-    '    GridControl1.RefreshDataSource()
-    '    Dim table As New DataTable
-    '    Dim sqlCommand As New MySqlCommand
-    '    Try
-    '        If barJudul.Caption = "Recruitment Process" Then
-    '            sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PhoneNumber, IdNumber, Status, InterviewDate, Reason FROM db_recruit where status = 'In Progress'"
-    '        End If
-    '        sqlCommand.Connection = SQLConnection
-    '        Dim tbl_par As New DataTable
-    '        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-    '        Dim cb As New MySqlCommandBuilder(adapter)
-    '        adapter.Fill(table)
-    '        GridControl1.DataSource = table
-    '    Catch ex As Exception
-    '        MsgBox(ex.Message)
-    '    End Try
-    'End Sub
-
     Private Sub loadinfo()
         GridControl1.RefreshDataSource()
         Dim table As New DataTable
@@ -318,7 +320,7 @@ Public Class RecProcess
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "select FullName from db_recruitment a where status = 'In Progress' and a.idrec not in(SELECT b.idrec from db_skills b)"
+            sqlcommand.CommandText = "select a.FullName from db_recruitment a where status = 'In Progress' and a.idrec not in(SELECT b.idrec from db_skills b)"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -335,12 +337,6 @@ Public Class RecProcess
         SQLConnection.Open()
         loadinfo()
         loadinfo2()
-    End Sub
-
-    Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        'barJudul.Caption = "Recruitment Process"
-        'GridControl1.RefreshDataSource()
-        'GridView1.Columns.Clear()
     End Sub
 
     Private Sub btnReset_Click(sender As Object, e As EventArgs)
@@ -397,7 +393,6 @@ Public Class RecProcess
     End Sub
 
     Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
-        loadinfo2()
         Dim mess As String
         Dim down As MySqlCommand = SQLConnection.CreateCommand
         Dim dtb As DateTime
@@ -420,6 +415,7 @@ Public Class RecProcess
             MsgBox("Status from " & downres & " Is changed to be In progress")
             GroupControl2.Visible = False
         End If
+        loadinfo2()
     End Sub
 
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
@@ -561,7 +557,7 @@ Public Class RecProcess
             Dim table As New DataTable
             Dim sqlcommand As New MySqlCommand
             Try
-                sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextBox2.Text + "%' and status = 'In Progress'"
+                sqlcommand.CommandText = "select a.FullName from db_recruitment a where a.FullName Like '%" + TextBox2.Text + "%' and a.status = 'In Progress' and a.idrec not in(SELECT b.idrec from db_skills b)"
                 sqlcommand.Connection = SQLConnection
                 Dim tbl_par As New DataTable
                 Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -579,7 +575,7 @@ Public Class RecProcess
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextBox2.Text + "%' and status = 'In Progress'"
+            sqlcommand.CommandText = "select a.FullName from db_recruitment a where a.FullName Like '%" + TextBox2.Text + "%' and a.status = 'In Progress' and a.idrec not in(SELECT b.idrec from db_skills b)"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -595,13 +591,5 @@ Public Class RecProcess
         skills()
         loadinfo2()
         loadinfo()
-    End Sub
-
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
-
-    End Sub
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-
     End Sub
 End Class

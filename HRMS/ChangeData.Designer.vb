@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ChangeData
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class ChangeData
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ChangeData))
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
@@ -64,8 +64,6 @@ Partial Class ChangeData
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,7 +122,7 @@ Partial Class ChangeData
         Me.LayoutControl1.Controls.Add(Me.txtidcard)
         Me.LayoutControl1.Controls.Add(Me.txtid)
         Me.LayoutControl1.Controls.Add(Me.txtnames)
-        Me.LayoutControl1.Location = New System.Drawing.Point(198, 1)
+        Me.LayoutControl1.Location = New System.Drawing.Point(217, 4)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(409, 411, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
@@ -494,10 +492,10 @@ Partial Class ChangeData
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(6, 190)
+        Me.GridControl1.Location = New System.Drawing.Point(6, 160)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(189, 212)
+        Me.GridControl1.Size = New System.Drawing.Size(217, 242)
         Me.GridControl1.TabIndex = 4
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -505,6 +503,7 @@ Partial Class ChangeData
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsFind.AlwaysVisible = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
         '
         'pictureEdit
@@ -517,34 +516,18 @@ Partial Class ChangeData
         Me.pictureEdit.TabIndex = 28
         Me.pictureEdit.TabStop = False
         '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Location = New System.Drawing.Point(115, 161)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(75, 23)
-        Me.SimpleButton1.TabIndex = 30
-        Me.SimpleButton1.Text = "Search"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(8, 163)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 5
-        '
         'ChangeData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(438, 414)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.SimpleButton1)
+        Me.ClientSize = New System.Drawing.Size(462, 414)
         Me.Controls.Add(Me.pictureEdit)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.LayoutControl1)
         Me.MinimizeBox = False
         Me.Name = "ChangeData"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Change Recruitment Data"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.txtcv.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -582,7 +565,6 @@ Partial Class ChangeData
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -627,6 +609,4 @@ Partial Class ChangeData
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtdob As DateTimePicker
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents TextBox1 As TextBox
 End Class

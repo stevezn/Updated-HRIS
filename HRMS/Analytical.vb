@@ -184,7 +184,6 @@ Public Class Analytical
         Try
             param = "and FullName='" + GridView1.GetFocusedRowCellValue("FullName").ToString() + "'"
         Catch ex As Exception
-            MsgBox(ex.Message)
         End Try
         Try
             sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceofBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, PhoneNumber, InterviewDates, CreatedDate, Reason FROM db_recruitment WHERE 1=1 " + param.ToString()

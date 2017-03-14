@@ -26,13 +26,12 @@ Partial Class Login
         Me.teUsername = New DevExpress.XtraEditors.TextEdit()
         Me.tePassword = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnTest = New DevExpress.XtraEditors.SimpleButton()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
-        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnTest = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.teUsername.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tePassword.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -81,23 +80,6 @@ Partial Class Login
         Me.LabelControl4.TabIndex = 70
         Me.LabelControl4.Text = "Sign In To Enter HRIS"
         '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(201, 3)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(22, 23)
-        Me.SimpleButton1.TabIndex = 80
-        '
-        'btnTest
-        '
-        Me.btnTest.Image = CType(resources.GetObject("btnTest.Image"), System.Drawing.Image)
-        Me.btnTest.Location = New System.Drawing.Point(123, 93)
-        Me.btnTest.Name = "btnTest"
-        Me.btnTest.Size = New System.Drawing.Size(100, 26)
-        Me.btnTest.TabIndex = 79
-        Me.btnTest.Text = "Connect.."
-        '
         'Timer1
         '
         Me.Timer1.Interval = 150
@@ -124,23 +106,25 @@ Partial Class Login
         Me.WebBrowser1.Location = New System.Drawing.Point(2, 2)
         Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.Name = "WebBrowser1"
-        Me.WebBrowser1.Size = New System.Drawing.Size(20, 23)
+        Me.WebBrowser1.Size = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.TabIndex = 83
         '
-        'ProgressPanel1
+        'SimpleButton1
         '
-        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
-        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
-        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
-        Me.ProgressPanel1.AppearanceDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.ProgressPanel1.AppearanceDescription.Options.UseFont = True
-        Me.ProgressPanel1.Location = New System.Drawing.Point(0, 93)
-        Me.ProgressPanel1.Name = "ProgressPanel1"
-        Me.ProgressPanel1.Size = New System.Drawing.Size(223, 43)
-        Me.ProgressPanel1.TabIndex = 84
-        Me.ProgressPanel1.Text = "ProgressPanel1"
-        Me.ProgressPanel1.Visible = False
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(201, 3)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(22, 23)
+        Me.SimpleButton1.TabIndex = 80
+        '
+        'btnTest
+        '
+        Me.btnTest.Image = CType(resources.GetObject("btnTest.Image"), System.Drawing.Image)
+        Me.btnTest.Location = New System.Drawing.Point(123, 93)
+        Me.btnTest.Name = "btnTest"
+        Me.btnTest.Size = New System.Drawing.Size(100, 26)
+        Me.btnTest.TabIndex = 79
+        Me.btnTest.Text = "Connect.."
         '
         'Login
         '
@@ -148,7 +132,6 @@ Partial Class Login
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(225, 140)
         Me.ControlBox = False
-        Me.Controls.Add(Me.ProgressPanel1)
         Me.Controls.Add(Me.WebBrowser1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProgressBar1)
@@ -186,5 +169,4 @@ Partial Class Login
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Label1 As Label
     Friend WithEvents WebBrowser1 As WebBrowser
-    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
 End Class
