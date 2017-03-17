@@ -395,9 +395,10 @@ Partial Class RotasiMutasi
         Me.Controls.Add(Me.GroupControl1)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(508, 632)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(508, 632)
         Me.Name = "RotasiMutasi"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "RotasiMutasi"
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()

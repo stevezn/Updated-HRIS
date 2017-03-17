@@ -52,9 +52,10 @@ Partial Class DemosiHistory
         Me.Controls.Add(Me.GridControl1)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(514, 530)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(514, 530)
         Me.Name = "DemosiHistory"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DemosiHistory"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()

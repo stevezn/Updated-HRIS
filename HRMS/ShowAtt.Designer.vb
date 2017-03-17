@@ -70,8 +70,9 @@ Partial Class ShowAtt
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "ShowAtt"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "View Attendance Records"
         Me.ResumeLayout(False)

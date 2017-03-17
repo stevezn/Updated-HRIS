@@ -25,9 +25,9 @@ Partial Class cryrep
         Me.CrystalReport41 = New HRMS.CrystalReport4()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.CrystalReport43 = New HRMS.CrystalReport4()
         Me.CrystalReport42 = New HRMS.CrystalReport4()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.CrystalReport43 = New HRMS.CrystalReport4()
         Me.DataSet1 = New System.Data.DataSet()
         CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -72,6 +72,8 @@ Partial Class cryrep
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Controls.Add(Me.Button1)
         Me.Name = "cryrep"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "cryrep"
         CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).EndInit()

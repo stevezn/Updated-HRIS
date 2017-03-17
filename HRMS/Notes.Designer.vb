@@ -878,9 +878,10 @@ Partial Class Notes
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.RibbonControl1)
         Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "Notes"
         Me.Ribbon = Me.RibbonControl1
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Employee Details"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()

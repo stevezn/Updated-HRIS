@@ -23,7 +23,7 @@ Partial Class Payments
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Payments))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
@@ -34,6 +34,7 @@ Partial Class Payments
         Me.BarButtonItem6 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem7 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem8 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -228,14 +229,13 @@ Partial Class Payments
         Me.Label3 = New System.Windows.Forms.Label()
         Me.date1 = New System.Windows.Forms.DateTimePicker()
         Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.SimpleButton8 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GridControl8 = New DevExpress.XtraGrid.GridControl()
         Me.GridView8 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -501,6 +501,13 @@ Partial Class Payments
         Me.BarButtonItem8.Name = "BarButtonItem8"
         Me.BarButtonItem8.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
+        'BarStaticItem1
+        '
+        Me.BarStaticItem1.Caption = "BarStaticItem1"
+        Me.BarStaticItem1.Id = 10
+        Me.BarStaticItem1.Name = "BarStaticItem1"
+        Me.BarStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup5, Me.RibbonPageGroup6, Me.RibbonPageGroup7, Me.RibbonPageGroup8})
@@ -713,8 +720,8 @@ Partial Class Payments
         '
         'GridControl1
         '
-        GridLevelNode1.RelationName = "Level1"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.RelationName = "Level1"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.GridControl1.Location = New System.Drawing.Point(0, 53)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
@@ -2449,6 +2456,15 @@ Partial Class Payments
         Me.GroupControl6.TabIndex = 18
         Me.GroupControl6.Visible = False
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(603, 187)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(181, 13)
+        Me.Label6.TabIndex = 8
+        Me.Label6.Text = "** Right click to select the employee"
+        '
         'SimpleButton8
         '
         Me.SimpleButton8.Image = CType(resources.GetObject("SimpleButton8.Image"), System.Drawing.Image)
@@ -2502,22 +2518,6 @@ Partial Class Payments
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(603, 187)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(181, 13)
-        Me.Label6.TabIndex = 8
-        Me.Label6.Text = "** Right click to select the employee"
-        '
-        'BarStaticItem1
-        '
-        Me.BarStaticItem1.Caption = "BarStaticItem1"
-        Me.BarStaticItem1.Id = 10
-        Me.BarStaticItem1.Name = "BarStaticItem1"
-        Me.BarStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near
-        '
         'Payments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2528,10 +2528,13 @@ Partial Class Payments
         Me.Controls.Add(Me.GroupControl6)
         Me.Controls.Add(Me.XtraTabControl2)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(881, 506)
         Me.MinimumSize = New System.Drawing.Size(881, 506)
         Me.Name = "Payments"
         Me.Ribbon = Me.RibbonControl1
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Payments"
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()

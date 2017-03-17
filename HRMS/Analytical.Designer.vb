@@ -124,7 +124,6 @@ Partial Class Analytical
         Me.SimpleButton1.Size = New System.Drawing.Size(131, 38)
         Me.SimpleButton1.TabIndex = 6
         Me.SimpleButton1.Text = "Show Comparison"
-        Me.SimpleButton1.Visible = False
         '
         'LayoutControl1
         '
@@ -561,6 +560,8 @@ Partial Class Analytical
         Me.Controls.Add(Me.RibbonControl1)
         Me.Name = "Analytical"
         Me.Ribbon = Me.RibbonControl1
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Statistic"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()

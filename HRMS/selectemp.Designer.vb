@@ -151,6 +151,8 @@ Partial Class selectemp
         Me.MaximumSize = New System.Drawing.Size(1282, 701)
         Me.MinimumSize = New System.Drawing.Size(1282, 701)
         Me.Name = "selectemp"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()

@@ -303,7 +303,6 @@ Partial Class setting
         Me.Controls.Add(Me.XtraTabControl1)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "setting"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -40,8 +40,21 @@ Public Class minirep
     Private Sub minirep_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
-        totalnew()
         totaltmnt()
+    End Sub
+
+
+    Sub newemp()
+        Dim newemp As MySqlCommand = SQLConnection.CreateCommand
+        newemp.CommandText = "select count(*) from db_pegawai where month(from_unixtime(workdate)) = month(curdate())"
+        Dim newe As Integer = CInt(newemp.ExecuteScalar)
+        Label4.Text = newe.ToString
+    End Sub
+
+    Sub emp()
+        Dim emp As MySqlCommand = SQLConnection.CreateCommand
+        emp.CommandText = "select count(*) from db_pegawai where month(workdate()) = month(curdate())"
+        Dim emp1 As Integer = CInt(emp.ExecuteScalar)
     End Sub
 
     Sub totaltmnt()
@@ -49,12 +62,5 @@ Public Class minirep
         terminat.CommandText = "select count(*) from db_pegawai where status = 'Terminated'"
         Dim restmnt As Integer = CInt(terminat.ExecuteScalar)
         Label5.Text = CType(restmnt, String)
-    End Sub
-
-    Sub totalnew()
-        Dim newemp As MySqlCommand = SQLConnection.CreateCommand
-        newemp.CommandText = "select count(*) from db_pegawai where MONTH(FROM_UNIXTIME(workdate)) = MONTH(CURDATE())"
-        Dim resnew As Integer = CInt(newemp.ExecuteScalar)
-        Label4.Text = CType(resnew, String)
     End Sub
 End Class

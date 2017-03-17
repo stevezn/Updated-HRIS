@@ -32,8 +32,10 @@ Partial Class Login
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.btnTest = New DevExpress.XtraEditors.SimpleButton()
+        Me.AutomaticUpdater1 = New wyDay.Controls.AutomaticUpdater()
         CType(Me.teUsername.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tePassword.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AutomaticUpdater1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl1
@@ -86,7 +88,7 @@ Partial Class Login
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(9, 96)
+        Me.ProgressBar1.Location = New System.Drawing.Point(9, 94)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(108, 24)
         Me.ProgressBar1.TabIndex = 81
@@ -103,11 +105,12 @@ Partial Class Login
         'WebBrowser1
         '
         Me.WebBrowser1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.WebBrowser1.Location = New System.Drawing.Point(2, 2)
+        Me.WebBrowser1.Location = New System.Drawing.Point(196, 122)
         Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.Name = "WebBrowser1"
         Me.WebBrowser1.Size = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.TabIndex = 83
+        Me.WebBrowser1.Visible = False
         '
         'SimpleButton1
         '
@@ -126,12 +129,24 @@ Partial Class Login
         Me.btnTest.TabIndex = 79
         Me.btnTest.Text = "Connect.."
         '
+        'AutomaticUpdater1
+        '
+        Me.AutomaticUpdater1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.AutomaticUpdater1.ContainerForm = Me
+        Me.AutomaticUpdater1.GUID = "f59e7ad5-abbf-4a4a-91f5-f37710530bbe"
+        Me.AutomaticUpdater1.Location = New System.Drawing.Point(9, 139)
+        Me.AutomaticUpdater1.Name = "AutomaticUpdater1"
+        Me.AutomaticUpdater1.Size = New System.Drawing.Size(16, 16)
+        Me.AutomaticUpdater1.TabIndex = 84
+        Me.AutomaticUpdater1.wyUpdateCommandline = Nothing
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(225, 140)
+        Me.ClientSize = New System.Drawing.Size(230, 138)
         Me.ControlBox = False
+        Me.Controls.Add(Me.AutomaticUpdater1)
         Me.Controls.Add(Me.WebBrowser1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProgressBar1)
@@ -154,6 +169,7 @@ Partial Class Login
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.teUsername.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tePassword.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AutomaticUpdater1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -169,4 +185,5 @@ Partial Class Login
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Label1 As Label
     Friend WithEvents WebBrowser1 As WebBrowser
+    Friend WithEvents AutomaticUpdater1 As wyDay.Controls.AutomaticUpdater
 End Class

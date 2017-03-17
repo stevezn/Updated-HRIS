@@ -128,9 +128,6 @@ Public Class NewRec
 
     Public Function insertreq2() As Boolean
         Dim dtr As DateTime
-        'txtinterviewdate.Format = DateTimePickerFormat.Custom
-        'txtinterviewdate.CustomFormat = "yyyy-MM-dd"
-        'dtb = txtinterviewdate.Value
         txtdob.Format = DateTimePickerFormat.Custom
         txtdob.CustomFormat = "yyyy-MM-dd"
         dtr = txtdob.Value
@@ -151,7 +148,6 @@ Public Class NewRec
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
         Try
             Dim cmd = SQLConnection.CreateCommand
             cmd.CommandText = "SELECT Idrec FROM db_recruitment ORDER BY IdRec DESC LIMIT 1"

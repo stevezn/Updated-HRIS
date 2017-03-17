@@ -524,8 +524,10 @@ Partial Class ChangeData
         Me.Controls.Add(Me.pictureEdit)
         Me.Controls.Add(Me.GridControl1)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.MinimizeBox = False
+        Me.MaximizeBox = False
         Me.Name = "ChangeData"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Change Recruitment Data"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()

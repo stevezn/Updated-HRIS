@@ -8,7 +8,6 @@ Public Class selectemp
     Dim oDt_sched As New DataTable()
     Dim tbl_par As New DataTable
 
-
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
@@ -75,7 +74,7 @@ Public Class selectemp
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
         Catch ex As Exception
-            SQLConnection.Close()
+            'SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
         If datatabl.Rows.Count > 0 Then

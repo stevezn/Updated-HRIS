@@ -401,10 +401,12 @@ Partial Class PayrollSet
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(306, 388)
         Me.Controls.Add(Me.GroupControl1)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(322, 427)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(322, 427)
         Me.Name = "PayrollSet"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PayrollSet"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()

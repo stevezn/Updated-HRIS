@@ -355,6 +355,8 @@ Partial Class ClosePayroll
         Me.Controls.Add(Me.LayoutControl8)
         Me.MaximizeBox = False
         Me.Name = "ClosePayroll"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Close Payroll"
         CType(Me.LayoutControl8, System.ComponentModel.ISupportInitialize).EndInit()

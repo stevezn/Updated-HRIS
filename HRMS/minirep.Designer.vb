@@ -87,6 +87,8 @@ Partial Class minirep
         Me.Controls.Add(Me.Label1)
         Me.MaximizeBox = False
         Me.Name = "minirep"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
         Me.PerformLayout()

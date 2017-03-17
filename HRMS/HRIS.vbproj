@@ -8,7 +8,7 @@
     <ProjectGuid>{4A60B4F2-BCEA-437A-B2D0-27B544562140}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>HRMS</RootNamespace>
-    <AssemblyName>HRIS</AssemblyName>
+    <AssemblyName>HR SYSTEM</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <StartupObject>HRMS.My.MyApplication</StartupObject>
     <TargetFrameworkProfile>
@@ -100,6 +100,10 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutomaticUpdater">
+      <HintPath>..\..\..\..\..\Program Files (x86)\wyBuild\AutomaticUpdater\AutomaticUpdater.dll</HintPath>
+    </Reference>
+    <Reference Include="AutomaticUpdater.Design, Version=2.6.16.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -281,6 +285,12 @@
     <Compile Include="ChangeEmp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Circle.Designer.vb">
+      <DependentUpon>Circle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Circle.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ClosePayroll.Designer.vb">
       <DependentUpon>ClosePayroll.vb</DependentUpon>
     </Compile>
@@ -402,12 +412,6 @@
     </Compile>
     <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="Rating.Designer.vb">
-      <DependentUpon>Rating.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Rating.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="RecProcess.Designer.vb">
       <DependentUpon>RecProcess.vb</DependentUpon>
     </Compile>
@@ -431,6 +435,9 @@
     </Compile>
     <Compile Include="RotasiMutasi.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoundButton.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="selectemp.Designer.vb">
       <DependentUpon>selectemp.vb</DependentUpon>
@@ -482,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeEmp.resx">
       <DependentUpon>ChangeEmp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Circle.resx">
+      <DependentUpon>Circle.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClosePayroll.resx">
       <DependentUpon>ClosePayroll.vb</DependentUpon>
@@ -549,9 +559,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pdfviewer.resx">
       <DependentUpon>pdfviewer.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rating.resx">
-      <DependentUpon>Rating.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecProcess.resx">
       <DependentUpon>RecProcess.vb</DependentUpon>
@@ -669,6 +676,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\vtimxrajzbuard4hsj78.jpg" />
     <Content Include="Treetog-Junior-Folder-documents.ico" />
   </ItemGroup>
   <ItemGroup>

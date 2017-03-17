@@ -575,8 +575,11 @@ Partial Class NewRec
         Me.Controls.Add(Me.pictureEdit)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.MaximizeBox = False
         Me.Name = "NewRec"
         Me.Ribbon = Me.RibbonControl1
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Recruitment"
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()

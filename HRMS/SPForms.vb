@@ -272,12 +272,6 @@ Public Class SPForms
             sqlcommand.Parameters.AddWithValue("@Sp1", "Sp1")
             sqlcommand.Parameters.AddWithValue("@Sp1Date", Format(Now, "dd-MM-yyyy"))
             sqlcommand.Parameters.AddWithValue("@Sp1Reason", txtreason.Text)
-            'sqlcommand.Parameters.AddWithValue("@Sp2", "")
-            'sqlcommand.Parameters.AddWithValue("@Sp2Date", "")
-            'sqlcommand.Parameters.AddWithValue("@Sp2Reason", txtreason.Text)
-            'sqlcommand.Parameters.AddWithValue("@Sp3", "")
-            'sqlcommand.Parameters.AddWithValue("@Sp3Date", "")
-            'sqlcommand.Parameters.AddWithValue("@Sp3Reason", txtreason.Text)
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             ' SQLConnection.Close()

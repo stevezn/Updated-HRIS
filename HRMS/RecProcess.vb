@@ -78,7 +78,6 @@ Public Class RecProcess
         Dim sk As MySqlCommand = SQLConnection.CreateCommand
         sk.CommandText = "select idrec from db_skills where idrec = '" & txtidrecc.Text & "'"
         Dim sk1 As String = CStr(sk.ExecuteScalar)
-
         If sk1 = "" Then
             If skill1.Text = "" OrElse skill2.Text = "" OrElse skill3.Text = "" OrElse skill4.Text = "" OrElse skill5.Text = "" OrElse txtpos.Text = "" OrElse txtexp.Text = "" OrElse txtidrecc.Text = "" Then
                 MsgBox("Pleasae fill the required fields")
@@ -461,17 +460,6 @@ Public Class RecProcess
         End If
         anly.Show()
     End Sub
-
-    Dim rates As New Rating
-
-    Private Sub BarButtonItem4_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
-        If rates Is Nothing OrElse rates.IsDisposed OrElse rates.MinimizeBox Then
-            rates.Close()
-            rates = New Rating
-        End If
-        rates.Show()
-    End Sub
-
     Dim dt1 As Date
     Dim dt2 As Date
     Dim dt3 As TimeSpan

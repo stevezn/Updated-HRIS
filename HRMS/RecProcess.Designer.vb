@@ -940,10 +940,13 @@ Partial Class RecProcess
         Me.Controls.Add(Me.BackstageViewControl1)
         Me.Controls.Add(Me.BackstageViewControl2)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(412, 528)
         Me.MinimumSize = New System.Drawing.Size(412, 528)
         Me.Name = "RecProcess"
         Me.Ribbon = Me.RibbonControl1
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Recruitment Progress"
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).EndInit()

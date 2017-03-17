@@ -812,11 +812,13 @@ Partial Class Report
         Me.ClientSize = New System.Drawing.Size(498, 327)
         Me.Controls.Add(Me.XtraTabControl1)
         Me.Controls.Add(Me.HRISReports)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(508, 332)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(508, 332)
         Me.Name = "Report"
         Me.Ribbon = Me.HRISReports
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Report"
         CType(Me.HRISReports, System.ComponentModel.ISupportInitialize).EndInit()

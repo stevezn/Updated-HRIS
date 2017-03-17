@@ -26,13 +26,11 @@ Public Class ShowAtt
         Else
             id = "root"
         End If
-
         If File.Exists("settingpass.txt") Then
             password = File.ReadAllText("settingpass.txt")
         Else
             password = ""
         End If
-
         If File.Exists("settingdb.txt") Then
             db = File.ReadAllText("settingdb.txt")
         Else

@@ -587,9 +587,10 @@ Partial Class ChangeEmp
         Me.Controls.Add(Me.pictureEdit)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(522, 529)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(522, 529)
         Me.Name = "ChangeEmp"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Change Employee Data"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()

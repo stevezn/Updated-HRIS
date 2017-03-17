@@ -325,8 +325,9 @@ Partial Class SPForms
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.RibbonControl1)
         Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "SPForms"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SPForms"
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()

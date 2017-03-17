@@ -636,6 +636,8 @@ Partial Class Attendances
         Me.Controls.Add(Me.RibbonControl1)
         Me.Name = "Attendances"
         Me.Ribbon = Me.RibbonControl1
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Attendances"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()

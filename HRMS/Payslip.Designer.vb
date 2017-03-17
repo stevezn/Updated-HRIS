@@ -33,8 +33,8 @@ Partial Class Payslip
         Me.txtto = New System.Windows.Forms.DateTimePicker()
         Me.txtperiod = New System.Windows.Forms.DateTimePicker()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         CType(Me.txtname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtempcode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,6 +133,15 @@ Partial Class Payslip
         Me.LabelControl4.TabIndex = 8
         Me.LabelControl4.Text = "To"
         '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(105, 162)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(100, 38)
+        Me.SimpleButton1.TabIndex = 7
+        Me.SimpleButton1.Text = "Preview"
+        '
         'RadioButton1
         '
         Me.RadioButton1.AutoSize = True
@@ -144,22 +153,16 @@ Partial Class Payslip
         Me.RadioButton1.Text = "Print All Employee Payslip"
         Me.RadioButton1.UseVisualStyleBackColor = True
         '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(105, 162)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(100, 38)
-        Me.SimpleButton1.TabIndex = 7
-        Me.SimpleButton1.Text = "Preview"
-        '
         'Payslip
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(211, 206)
         Me.Controls.Add(Me.GroupControl1)
+        Me.MaximizeBox = False
         Me.Name = "Payslip"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Payslip"
         CType(Me.txtname.Properties, System.ComponentModel.ISupportInitialize).EndInit()

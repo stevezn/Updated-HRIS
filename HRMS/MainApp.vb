@@ -46,8 +46,14 @@ Public Class MainApp
 
 #Region "koneksi "
 
+    Dim cir As New Circle
+
 #End Region
     Private Sub MainApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'If cir Is Nothing OrElse cir.IsDisposed OrElse cir.MinimizeBox Then
+        '    cir = New Circle
+        'End If
+        'cir.Show()
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         Dim lbl As MySqlCommand = SQLConnection.CreateCommand
@@ -87,7 +93,6 @@ Public Class MainApp
     End Sub
 
     Sub resetclear()
-        txtposition.Text = ""
         txtBar1.Text = ""
         txtBar2.Text = ""
         txtBar3.Text = ""
@@ -109,19 +114,10 @@ Public Class MainApp
         txtBar5.Text = ""
         txtbar6.Text = ""
         txtTanggal.Text = ""
-        txtposition.Text = ""
         txtstart.Text = ""
         txtfinish.Text = ""
-        lcproc.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcprogress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcchange.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcbtnnew.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcstart.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcfinish.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcrotasi.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcnotes.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcsp1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcposition.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcphone.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lclocation.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lc3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -136,18 +132,11 @@ Public Class MainApp
 
 #Region "menu bar"
     Private Sub BarButtonItem1_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        btnLihat.Enabled = True
         clearForm()
         reset()
         resetclear()
-        lcprogress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        LayoutControlItem10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcForm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnSimpan.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnHapus.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnReset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcbtnnew.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcchange.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        btnImport.Enabled = False
         barJudul.Caption = "Module Recruitment"
         GridControl1.RefreshDataSource()
         GridView1.Columns.Clear()
@@ -156,20 +145,8 @@ Public Class MainApp
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem2.ItemClick
-        btnLihat.Enabled = False
-        btnImport.Enabled = True
         reset()
         resetclear()
-        lcrotasi.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcsp1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcnotes.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcForm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnSimpan.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnHapus.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnReset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcbtnnew.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcchange.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcprogress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         barJudul.Caption = "Module Employee"
         GridControl1.RefreshDataSource()
         GridView1.Columns.Clear()
@@ -222,91 +199,6 @@ Public Class MainApp
         End If
     End Sub
 
-    'Private Sub btnCari_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    'load data ke grid
-    '    'GridControl1.DataSource = DBNull.Value
-    '    GridControl1.RefreshDataSource()
-    '    Dim table As New DataTable
-
-    '    SQLConnection = New MySqlConnection()
-    '    SQLConnection.ConnectionString = connectionString
-    '    SQLConnection.Open()
-    '    Dim sqlCommand As New MySqlCommand
-    '    Try
-    '        If barJudul.Caption = "Module Recruitment" Then
-    '            sqlCommand.CommandText = "Select IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Gender, Religion, IdNumber, Status FROM db_recruitment" +
-    '                                     " WHERE InterviewTimes Like '%" + tePencarian.Text + "%' or " +
-    '                                     " FullName like'%" + tePencarian.Text + "%' or " +
-    '                                     " PlaceOfBirth like'%" + tePencarian.Text + "%' or " +
-    '                                     " DateOfBirth like'%" + tePencarian.Text + "%' or " +
-    '                                     " Gender like'%" + tePencarian.Text + "%' or " +
-    '                                     " Religion like'%" + tePencarian.Text + "%' or " +
-    '                                     " IdNumber like'%" + tePencarian.Text + "%' or " +
-    '                                     " Status like'%" + tePencarian.Text + "%'"
-    '        ElseIf barJudul.Caption = "Module Employee" Then
-    '            Dim param As Double
-    '            If tePencarian.Text = "" Then
-    '                param = 0
-    '            End If
-    '            sqlCommand.CommandText = "SELECT EmployeeCode, CompanyCode, FullName, PlaceOfBirth, DateOfBirth, Gender, Religion, IdNumber, Status, TrainingSampai, JenisPegawai, StatusWajibPajak from db_pegawai" +
-    '                                     " WHERE CompanyCode like '%" + tePencarian.Text + "%' or " +
-    '                                     " FullName like '%" + tePencarian.Text + "%' or " +
-    '                                     " PlaceOfBirth like '%" + tePencarian.Text + "%' or " +
-    '                                     " DateOfBirth like '%" + tePencarian.Text + "%' or " +
-    '                                     " Gender like '%" + tePencarian.Text + "%' or " +
-    '                                     " Religion like '%" + tePencarian.Text + "%' or " +
-    '                                     " IdNumber like '%" + tePencarian.Text + "%' or " +
-    '                                     " Status like '%" + tePencarian.Text + "%' or " +
-    '                                     " TrainingSampai like '%" + tePencarian.Text + "%' or " +
-    '                                     " JenisPegawai like '%" + tePencarian.Text + "%' or " +
-    '                                     " BasicRate =" + param.ToString() + " or " +
-    '                                     " Allowance =" + param.ToString() + " or " +
-    '                                     " BiayaJabatan = " + param.ToString() + " or " +
-    '                                     " iuran_pensiun = " + param.ToString() + " or " +
-    '                                     " StatusWajibPajak like '%" + tePencarian.Text + "%'  "
-    '        ElseIf barJudul.Caption = "Module Payroll" Then
-    '            sqlCommand.CommandText = "SELECT EmployeeCode, FullName, BasicRate, Allowance, Incentives, MealRate, BiayaJabatan, JaminanKematian from db_payroll" +
-    '                                        " WHERE EmployeeCode like '%" + tePencarian.Text + "%' or " +
-    '                                        " FullName like '%" + tePencarian.Text + "%' or " +
-    '                                        " BasicRate like '%" + tePencarian.Text + "%' or " +
-    '                                        " Allowance like '%" + tePencarian.Text + "%' or " +
-    '                                        " Incentives like '%" + tePencarian.Text + "%' or " +
-    '                                        " MealRate like '%" + tePencarian.Text + "%' or " +
-    '                                        " BiayaJabatan like '%" + tePencarian.Text + "%' or " +
-    '                                        " IuranPensiun like '%" + tePencarian.Text + "%'    "
-    '            Dim param As Double
-    '            If tePencarian.Text = "" Then
-    '                param = 0
-    '            End If
-    '            sqlCommand.CommandText = "SELECT a.EmployeeCode, a.FullName , count(b.FullName) as jml_masuk, a.JenisPegawai, a.BasicRate, IF(a.JenisPegawai ='Full Time', a.BasicRate, (a.BasicRate * count(b.BasicRate))) as jml_gaji, b.tanggal, IF(sum(b.lama_lembur) > 0, ((1.5 *(1/173)) * a.BasicRate * sum(b.lama_lembur)), 0) as jml_lembur, a.Allowance, a.StatusWajibPajak, BiayaJabatan,Iuran_pensiun" +
-    '                                         " from" +
-    '                                         " db_pegawai a, db_absensi b" +
-    '                                         " WHERE a.EmployeeCode = b.EmployeeCode " +
-    '                                         " group by SUBSTRING(b.tanggal, 1,2), SUBSTRING(b.tanggal, 7,10)" +
-    '                                         " having " +
-    '                                         " a.EmployeeCode like'%" + tePencarian.Text + "%' or " +
-    '                                         " a.FullName like'%" + tePencarian.Text + "%' or " +
-    '                                         " count(b.EmployeeCode) =" + param.ToString() + " or " +
-    '                                         " a.JenisPegawai like'%" + tePencarian.Text + "%' or " +
-    '                                         " a.BasicRate like'%" + tePencarian.Text + "%' or " +
-    '                                         " IF(a.JenisPegawai like 'Full Time', a.BasicRate, (a.BasicRate * count(b.EmployeeCode))) =" + param.ToString() + " or " +
-    '                                         " IF(sum(b.lama_lembur) > 0, ((1.5 *(1/173)) * a.BasicRate * sum(b.lama_lembur)), 0) =" + param.ToString() + " or " +
-    '                                         " b.tanggal like'%" + tePencarian.Text + "%'"
-    '        ElseIf barJudul.Caption = "Module Attendance" Then
-    '            sqlCommand.CommandText = "SELECT a.id_absensi, a.EmployeeCode, b.FullName, a.tanggal, a.shift, a.jam_mulai, a.jam_selesai from db_absensi a, db_pegawai b WHERE a.EmployeeCode=b.EmployeeCode"
-    '        End If
-    '        sqlCommand.Connection = SQLConnection
-    '        Dim tbl_par As New DataTable
-    '        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-    '        Dim cb As New MySqlCommandBuilder(adapter)
-    '        adapter.Fill(table)
-    '        SQLConnection.Close()
-    '    Catch ex As Exception
-    '        SQLConnection.Close()
-    '        MsgBox(ex.Message)
-    '    End Try
-    'End Sub
-
     Dim tbl_par As New DataTable
 
     Sub loadDataKaryawan()
@@ -323,18 +215,16 @@ Public Class MainApp
 #End Region
 
 #Region "button fungsional"
-    Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReset.Click
+    Private Sub btnReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         resetclear()
         act = "input"
     End Sub
 
-    Private Sub btnSegarkan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSegarkan.Click
+    Private Sub btnSegarkan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         loadDataReq()
     End Sub
 
-    Private Sub btnHapus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHapus.Click
-        lcProgbar.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        marqueBar.Visible = True
+    Private Sub btnHapus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If barJudul.Caption = "Module Recruitment" Then
             DeleteReq()
         ElseIf barJudul.Caption = "Module Employee" Then
@@ -345,11 +235,9 @@ Public Class MainApp
             DeleteAtt()
         End If
         loadDataReq()
-        marqueBar.Visible = False
-        lcProgbar.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
     End Sub
 
-    Private Sub btnImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImport.Click
+    Private Sub btnImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         importData()
         updatestats()
         'CardView1.Focus()
@@ -358,7 +246,7 @@ Public Class MainApp
 
     Dim infoForm As New infoReq
 
-    Public Sub btnLihat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLihat.Click
+    Public Sub btnLihat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If infoForm Is Nothing OrElse infoForm.IsDisposed OrElse infoForm.MinimizeBox Then
             infoForm.Close()
             infoForm = New infoReq
@@ -520,233 +408,6 @@ Public Class MainApp
     End Function
     ''delete
 
-    'Private Sub GridView1_FocusedRowChanged(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs)
-    '    SQLConnection = New MySqlConnection()
-    '    SQLConnection.ConnectionString = connectionString
-    '    SQLConnection.Open()
-    '    Dim datatabl As New DataTable
-    '    Dim sqlCommand As New MySqlCommand
-    '    datatabl.Clear()
-    '    If barJudul.Caption = "Module Recruitment" Then
-    '        Dim param As String = ""
-    '        Try
-    '            param = "and IdRec='" + GridView1.GetFocusedRowCellValue("IdRec").ToString() + "'"
-    '        Catch ex As Exception
-    '        End Try
-    '        If param > "" Then
-    '            act = "edit"
-    '        Else
-    '            act = "input"
-    '        End If
-    '        Try
-    '            sqlCommand.CommandText = "SELECT IdRec,InterviewTimes FROM db_recruitment WHERE 1 = 1 " + param.ToString()
-    '            sqlCommand.Connection = SQLConnection
-
-    '            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-    '            Dim cb As New MySqlCommandBuilder(adapter)
-    '            adapter.Fill(datatabl)
-    '            SQLConnection.Close()
-    '        Catch ex As Exception
-    '            SQLConnection.Close()
-    '            MsgBox(ex.Message, MsgBoxStyle.Critical)
-    '        End Try
-    '        If datatabl.Rows.Count > 0 Then
-    '            txtBar1.Text = datatabl.Rows(0).Item(0).ToString()
-    '            txtBar2.Text = datatabl.Rows(0).Item(1).ToString()
-    '        End If
-    '    ElseIf barJudul.Caption = "Module Employee" Then
-    '        Dim param2 As String = ""
-    '        Try
-    '            param2 = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
-    '        Catch ex As Exception
-    '            MsgBox(ex.Message, MsgBoxStyle.Critical)
-    '        End Try
-    '        If param2 = "" Then
-    '            act = "input"
-    '        Else
-    '            act = "edit"
-    '        End If
-    '        Try
-    '            sqlCommand.CommandText = "SELECT * FROM db_pegawai WHERE 1 = 1 " + param2.ToString()
-    '            sqlCommand.Connection = SQLConnection
-    '            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-    '            Dim cb As New MySqlCommandBuilder(adapter)
-    '            adapter.Fill(datatabl)
-    '            SQLConnection.Close()
-    '        Catch ex As Exception
-    '            SQLConnection.Close()
-    '            MsgBox(ex.Message, MsgBoxStyle.Critical)
-    '        End Try
-    '        If datatabl.Rows.Count > 0 Then
-    '            txtBar2.Text = datatabl.Rows(0).Item(0).ToString()
-    '            compacode.Text = datatabl.Rows(0).Item(1).ToString()
-    '            txtBar3.Text = datatabl.Rows(0).Item(2).ToString()
-    '            txtposition.Text = datatabl.Rows(0).Item(3).ToString()
-    '            txtBar4.Text = datatabl.Rows(0).Item(4).ToString()
-    '            txtTanggal.Text = datatabl.Rows(0).Item(5).ToString()
-    '            txtbar6.Text = datatabl.Rows(0).Item(6).ToString()
-    '            txtbar7.Text = datatabl.Rows(0).Item(7).ToString()
-    '            txtaddress.Text = datatabl.Rows(0).Item(8).ToString()
-    '            txtemail.Text = datatabl.Rows(0).Item(9).ToString()
-    '            txtBar8.Text = datatabl.Rows(0).Item(10).ToString()
-    '            txtlocation.Text = datatabl.Rows(0).Item(11).ToString()
-    '            txtworkdate.Text = datatabl.Rows(0).Item(12).ToString()
-    '            txtphone.Text = datatabl.Rows(0).Item(13).ToString()
-    '            Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(14), Byte())
-    '            If filefoto.Length > 0 Then
-    '                pictureEdit.Image = ByteToImage(filefoto)
-    '            Else
-    '                pictureEdit.Image = Nothing
-    '                pictureEdit.Refresh()
-    '            End If
-    '            txtStatEmp.Text = datatabl.Rows(0).Item(15).ToString()
-    '            'txtTrainingSampai.Text = datatabl.Rows(0).Item(16).ToString()
-    '        End If
-    '    ElseIf barJudul.Caption = "Module Payroll" Then
-    '        Dim param2 As String = ""
-    '        Try
-    '            param2 = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
-    '        Catch ex As Exception
-    '        End Try
-    '        If param2 = "" Then
-    '            act = "input"
-    '        Else
-    '            act = "edit"
-    '        End If
-    '        Try
-    '            sqlCommand.CommandText = "SELECT * FROM db_payroll WHERE 1 = 1 " + param2.ToString()
-    '            sqlCommand.Connection = SQLConnection
-    '            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-    '            Dim cb As New MySqlCommandBuilder(adapter)
-    '            adapter.Fill(datatabl)
-    '            SQLConnection.Close()
-    '        Catch ex As Exception
-    '            SQLConnection.Close()
-    '            MsgBox(ex.Message, MsgBoxStyle.Critical)
-    '        End Try
-    '        If datatabl.Rows.Count > 0 Then
-    '            txtBar2.Text = datatabl.Rows(0).Item(0).ToString()
-    '            txtNamaKaryawan.Text = datatabl.Rows(0).Item(1).ToString()
-    '            txtpayment.Text = datatabl.Rows(0).Item(2).ToString()
-    '            txtGaji.Text = datatabl.Rows(0).Item(3).ToString()
-    '            txtAllowance.Text = datatabl.Rows(0).Item(4).ToString()
-    '            txtIncentives.Text = datatabl.Rows(0).Item(5).ToString()
-    '            txtMeal.Text = datatabl.Rows(0).Item(6).ToString()
-    '            txtTransport.Text = datatabl.Rows(0).Item(7).ToString()
-    '            txtadddc1.Text = datatabl.Rows(0).Item(8).ToString()
-    '            txtadddc2.Text = datatabl.Rows(0).Item(9).ToString()
-    '            txtadddc3.Text = datatabl.Rows(0).Item(10).ToString()
-    '            txtadddc4.Text = datatabl.Rows(0).Item(11).ToString()
-    '            txtadddc5.Text = datatabl.Rows(0).Item(12).ToString()
-    '            txt1add.Text = datatabl.Rows(0).Item(13).ToString()
-    '            txt2add.Text = datatabl.Rows(0).Item(14).ToString()
-    '            txt3add.Text = datatabl.Rows(0).Item(15).ToString()
-    '            txt4add.Text = datatabl.Rows(0).Item(16).ToString()
-    '            txt5add.Text = datatabl.Rows(0).Item(17).ToString()
-    '            txtothours.Text = datatabl.Rows(0).Item(18).ToString()
-    '            txtottype.Text = datatabl.Rows(0).Item(19).ToString()
-    '            txtbpjspercentage.Text = datatabl.Rows(0).Item(20).ToString()
-    '            txttaxes.Text = datatabl.Rows(0).Item(21).ToString()
-    '            txtloan.Text = datatabl.Rows(0).Item(22).ToString()
-    '            txtlates.Text = datatabl.Rows(0).Item(23).ToString()
-    '            txtdeddc1.Text = datatabl.Rows(0).Item(24).ToString()
-    '            txtdeddc2.Text = datatabl.Rows(0).Item(25).ToString()
-    '            txtdeddc3.Text = datatabl.Rows(0).Item(26).ToString()
-    '            txtdeddc4.Text = datatabl.Rows(0).Item(27).ToString()
-    '            txtdeddc5.Text = datatabl.Rows(0).Item(28).ToString()
-    '            txt1ded.Text = datatabl.Rows(0).Item(29).ToString()
-    '            txt2ded.Text = datatabl.Rows(0).Item(30).ToString()
-    '            txt3ded.Text = datatabl.Rows(0).Item(31).ToString()
-    '            txt4ded.Text = datatabl.Rows(0).Item(32).ToString()
-    '            txt5ded.Text = datatabl.Rows(0).Item(33).ToString()
-    '            cmboxjkk.Text = datatabl.Rows(0).Item(34).ToString()
-    '            cmboxjk.Text = datatabl.Rows(0).Item(35).ToString()
-    '            cmboxjht.Text = datatabl.Rows(0).Item(36).ToString()
-    '            cmboxbj.Text = datatabl.Rows(0).Item(37).ToString()
-    '            cmboxiuranpensiun.Text = datatabl.Rows(0).Item(38).ToString()
-    '            cmboxnpwp.Text = datatabl.Rows(0).Item(44).ToString()
-    '            txtgross.Text = datatabl.Rows(0).Item(45).ToString()
-    '            txtbpjs.Text = datatabl.Rows(0).Item(46).ToString()
-    '            txtotsalary.Text = datatabl.Rows(0).Item(47).ToString()
-    '            txtdeduction.Text = datatabl.Rows(0).Item(48).ToString()
-    '            txtnetincome.Text = datatabl.Rows(0).Item(49).ToString()
-    '            txtpkp.Text = datatabl.Rows(0).Item(50).ToString()
-    '            txtjkk.Text = datatabl.Rows(0).Item(51).ToString()
-    '            txtjk.Text = datatabl.Rows(0).Item(52).ToString()
-    '            txtjht.Text = datatabl.Rows(0).Item(53).ToString()
-    '            txtpphterutang.Text = datatabl.Rows(0).Item(54).ToString()
-    '            txthasilbjabatan.Text = datatabl.Rows(0).Item(55).ToString()
-    '            txthasiliuranpensiun.Text = datatabl.Rows(0).Item(56).ToString()
-    '            lcnettosetahun.Text = datatabl.Rows(0).Item(57).ToString()
-    '            txtStatWp.Text = datatabl.Rows(0).Item(58).ToString()
-    '            frommonth.Text = datatabl.Rows(0).Item(59).ToString()
-    '            tomonth.Text = datatabl.Rows(0).Item(60).ToString()
-    '            txtrapel.Text = datatabl.Rows(0).Item(61).ToString()
-    '            rapel.Text = datatabl.Rows(0).Item(62).ToString()
-    '            txtpajakpph.Text = datatabl.Rows(0).Item(63).ToString()
-    '        End If
-    '    ElseIf barJudul.Caption = "Module Attendance" Then
-    '        Dim param2 As String = ""
-    '        Try
-    '            param2 = "and EmployeeCode ='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
-    '        Catch ex As Exception
-    '            MsgBox(ex.Message, MsgBoxStyle.Critical)
-    '        End Try
-    '        If param2 = "" Then
-    '            act = "input"
-    '        Else
-    '            act = "edit"
-    '        End If
-    '        Try
-    '            sqlCommand.CommandText = "SELECT * FROM db_absensi WHERE 1 = 1 " + param2.ToString()
-    '            sqlCommand.Connection = SQLConnection
-    '            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-    '            Dim cb As New MySqlCommandBuilder(adapter)
-    '            adapter.Fill(datatabl)
-    '            SQLConnection.Close()
-    '        Catch ex As Exception
-    '            SQLConnection.Close()
-    '            MsgBox(ex.Message, MsgBoxStyle.Critical)
-    '        End Try
-    '        If datatabl.Rows.Count > 0 Then
-    '            txtBar2.Text = datatabl.Rows(0).Item(0).ToString()
-    '            txtNamaKaryawan.Text = datatabl.Rows(0).Item(1).ToString()
-    '            txtTanggal.Text = datatabl.Rows(0).Item(2).ToString
-    '            txtJnsShift.Text = datatabl.Rows(0).Item(3).ToString
-    '            txtstart.Text = datatabl.Rows(0).Item(4).ToString
-    '            txtfinish.Text = datatabl.Rows(0).Item(5).ToString
-    '        End If
-    '    ElseIf barJudul.Caption = "Employee Menus" Then
-    '        Dim param2 As String = ""
-    '        Try
-    '            param2 = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
-    '        Catch ex As Exception
-    '        End Try
-    '        If param2 = "" Then
-    '            act = "input"
-    '        Else
-    '            act = "edit"
-    '        End If
-    '        Try
-    '            sqlCommand.CommandText = "SELECT EmployeeCode, CompanyCode, FullName, Position, SuratPeringatan1, SuratPeringatan2, SuratPeringatan3, Rotasi, Demosi from db_sp" + param2.ToString()
-    '            sqlCommand.Connection = SQLConnection
-    '            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-    '            Dim cb As New MySqlCommandBuilder(adapter)
-    '            adapter.Fill(datatabl)
-    '            SQLConnection.Close()
-    '        Catch ex As Exception
-    '            SQLConnection.Close()
-    '            MsgBox(ex.Message)
-    '        End Try
-    '        If datatabl.Rows.Count > 0 Then
-    '            txtBar2.Text = datatabl.Rows(0).Item(0).ToString()
-    '            compcode.Text = datatabl.Rows(0).Item(1).ToString()
-    '            txtNamaKaryawan.Text = datatabl.Rows(0).Item(2).ToString()
-    '            txtposition.Text = datatabl.Rows(0).Item(3).ToString()
-    '        End If
-    '    End If
-    'End Sub
-
     Public Function deletesp() As Boolean
         Dim sqlcommand As New MySqlCommand
         Dim mess As String
@@ -772,7 +433,7 @@ Public Class MainApp
         If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             sqlCommand.Connection = SQLConnection
             sqlCommand.CommandType = CommandType.Text
-            sqlCommand.CommandText = "DELETE FROM db_recruitment WHERE IdRec = " + txtBar1.Text
+            sqlCommand.CommandText = "DELETE FROM db_recruitment WHERE IdRec = " + txtbar1.Text
             sqlCommand.ExecuteNonQuery()
             MsgBox("Data Successfully Removed", MsgBoxStyle.Information, "Success")
             GridControl1.RefreshDataSource()
@@ -791,7 +452,7 @@ Public Class MainApp
             If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
                 sqlCommand.Connection = SQLConnection
                 sqlCommand.CommandType = CommandType.Text
-                sqlCommand.CommandText = "DELETE FROM db_pegawai WHERE EmployeeCode = " + txtBar2.Text
+                sqlCommand.CommandText = "DELETE FROM db_pegawai WHERE EmployeeCode = " + txtbar2.Text
                 sqlCommand.ExecuteNonQuery()
                 MsgBox("Data Succesfully Removed !", MsgBoxStyle.Information, "Success")
                 GridControl1.RefreshDataSource()
@@ -810,7 +471,7 @@ Public Class MainApp
         If CType(messages, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             sqlcommand.Connection = SQLConnection
             sqlcommand.CommandType = CommandType.Text
-            sqlcommand.CommandText = "DELETE FROM db_payroll WHERE EmployeeCode = " + txtBar2.Text
+            sqlcommand.CommandText = "DELETE FROM db_payroll WHERE EmployeeCode = " + txtbar2.Text
             sqlcommand.ExecuteNonQuery()
             MsgBox("Data Succesfully Removed!", MsgBoxStyle.Information, "Success")
             GridControl1.RefreshDataSource()
@@ -908,7 +569,7 @@ Public Class MainApp
         grid.Print()
     End Sub
 
-    Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ShowGridPreview(GridControl1)
     End Sub
 
@@ -936,10 +597,6 @@ Public Class MainApp
         reset()
         resetclear()
         lcForm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnSimpan.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnHapus.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcBtnReset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        btnImport.Enabled = False
         barJudul.Caption = "Module Payment Details"
         GridControl1.RefreshDataSource()
         GridView1.Columns.Clear()
@@ -951,12 +608,6 @@ Public Class MainApp
         reset()
         resetclear()
         lcForm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcBtnSimpan.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcBtnHapus.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcBtnReset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcposition.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcsp1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcrotasi.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         barJudul.Caption = "Employee Menus"
         GridControl1.RefreshDataSource()
         GridView1.Columns.Clear()
@@ -964,7 +615,7 @@ Public Class MainApp
     End Sub
 
     Dim employeenotes As New Notes
-    Private Sub btnNotes_Click(sender As Object, e As EventArgs) Handles btnNotes.Click
+    Private Sub btnNotes_Click(sender As Object, e As EventArgs)
         If employeenotes Is Nothing OrElse employeenotes.IsDisposed OrElse employeenotes.MinimizeBox Then
             employeenotes.Close()
             employeenotes = New Notes
@@ -974,7 +625,7 @@ Public Class MainApp
 
     Dim spforms As New SPForms
 
-    Private Sub sp1_Click(sender As Object, e As EventArgs) Handles sp1.Click
+    Private Sub sp1_Click(sender As Object, e As EventArgs)
         If spforms Is Nothing OrElse spforms.IsDisposed OrElse spforms.MinimizeBox Then
             spform.Close()
             spforms = New SPForms
@@ -994,7 +645,7 @@ Public Class MainApp
     Dim employees As New NewRec
     Dim newemps As New NewEmp
 
-    Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+    Private Sub btnNew_Click(sender As Object, e As EventArgs)
         If barJudul.Caption = "Module Recruitment" Then
             If employees Is Nothing OrElse employees.IsDisposed OrElse employees.MinimizeBox Then
                 employees.Close()
@@ -1016,7 +667,7 @@ Public Class MainApp
     Dim formed As New ChangeData
     Dim changeem As New ChangeEmp
 
-    Private Sub btnChange_Click(sender As Object, e As EventArgs) Handles btnChange.Click
+    Private Sub btnChange_Click(sender As Object, e As EventArgs)
         If barJudul.Caption = "Module Recruitment" Then
             If formed Is Nothing OrElse formed.IsDisposed OrElse formed.MinimizeBox Then
                 formed.Close()
@@ -1032,7 +683,7 @@ Public Class MainApp
         End If
     End Sub
 
-    Private Sub btnProg_Click(sender As Object, e As EventArgs) Handles btnProg.Click
+    Private Sub btnProg_Click(sender As Object, e As EventArgs)
         If proses Is Nothing OrElse proses.IsDisposed OrElse proses.MinimizeBox Then
             proses.Close()
             proses = New RecProcess
@@ -1042,7 +693,7 @@ Public Class MainApp
 
     Dim loan As New Payments
 
-    Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles btnProc.Click
+    Private Sub SimpleButton2_Click(sender As Object, e As EventArgs)
         If loan Is Nothing OrElse loan.IsDisposed OrElse loan.MinimizeBox Then
             loan.Close()
             loan = New Payments
@@ -1078,7 +729,7 @@ Public Class MainApp
         TextEdit1.Text = Format(Now, "dd, MMMM, yyyy hhhh:mm:ss")
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
         If rotasi Is Nothing OrElse rotasi.IsDisposed OrElse rotasi.MinimizeBox Then
             rotasi.Close()
             rotasi = New RotasiMutasi
@@ -1114,13 +765,10 @@ Public Class MainApp
 
         If barJudul.Caption = "Module Recruitment" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
-                'e.Menu.Items.Add(New DXMenuItem("View Recruitment Details", New EventHandler(AddressOf btnLihat_Click)))
-                'e.Menu.Items.Add(New DXMenuItem("Abort Recruiter", New EventHandler(AddressOf btnProg_Click)))
             End If
         ElseIf barJudul.Caption = "Module Employee" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
                 e.Menu.Items.Add(New DXMenuItem("Terminate This Employee ?", New EventHandler(AddressOf SimpleButton2_Click_1)))
-                'e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf btnNotes_Click)))
             End If
         End If
     End Sub
@@ -1182,5 +830,13 @@ Public Class MainApp
         If datatabl.Rows.Count > 0 Then
             SimpleButton2.Text = datatabl.Rows(0).Item(0).ToString
         End If
+    End Sub
+
+    Private Sub SimpleButton3_Click(sender As Object, e As EventArgs)
+        If cir Is Nothing Or cir.IsDisposed OrElse cir.MinimizeBox Then
+            cir.Close()
+            cir = New Circle
+        End If
+        cir.Show()
     End Sub
 End Class

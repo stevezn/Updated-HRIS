@@ -15,8 +15,6 @@ Public Class Login
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
         If File.Exists("settinghost.txt") Then
-            'My.Computer.FileSystem.DeleteFile("settinghost.txt")
-            'File.Create("settinghost.txt").Dispose()
             host = File.ReadAllText("settinghost.txt")
         Else
             host = "localhost"
@@ -42,6 +40,8 @@ Public Class Login
     End Sub
 
     Dim main As New MainApp
+    Dim cir As New Circle
+
 
     Private Sub countButton_Click(sender As Object, e As EventArgs)
         Close()
@@ -61,28 +61,6 @@ Public Class Login
 
     Dim bar As New ProgressBar
 
-    'If File.Exists("settinghost.txt") Then
-    '    My.Computer.FileSystem.DeleteFile("settinghost.txt")
-    '    File.Create("settinghost.txt").Dispose()
-    'End If
-    'If File.Exists("settingid.txt") Then
-    '    My.Computer.FileSystem.DeleteFile("settingid.txt")
-    '    File.Create("settinghost.txt").Dispose()
-    'End If
-    'If File.Exists("settingpass.txt") Then
-    '    My.Computer.FileSystem.DeleteFile("settingpass.txt")
-    '    File.Create("settingpass.txt").Dispose()
-    'End If
-    'If File.Exists("settingdb.txt") Then
-    '    My.Computer.FileSystem.DeleteFile("settingdb.txt")
-    '    File.Create("settingdb.txt").Dispose()
-    'End If
-    'My.Computer.FileSystem.WriteAllText("settinghost.txt", txtserver.Text, True)
-    'My.Computer.FileSystem.WriteAllText("settingid.txt", txtuser.Text, True)
-    'My.Computer.FileSystem.WriteAllText("settingpass.txt", txtpass.Text, True)
-    'My.Computer.FileSystem.WriteAllText("settingdb.txt", txtdb.Text, True)
-    'End Sub
-
     Private Sub btnLogin_Click(sender As Object, e As EventArgs)
         Try
             Dim tbl_par As New DataTable
@@ -93,7 +71,7 @@ Public Class Login
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(tbl_par)
             If tbl_par.Rows.Count > 0 Then
-                main.Show()
+                cir.Show()
                 Hide()
             Else
                 MessageBox.Show("Username and Password Didn't Match!")
@@ -116,31 +94,36 @@ Public Class Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AutomaticUpdater1.Show()
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
     End Sub
 
     Public Sub CheckForUpdates()
-        Timer1.Enabled = False
-        ProgressBar1.Visible = True
-        WebBrowser1.Visible = False
-        Dim request As Net.HttpWebRequest = CType(Net.WebRequest.Create("https://dl.dropbox.com/s/f3hbcpzffkdg5y0/version.txt?dl=0"), Net.HttpWebRequest)
-        Dim response As Net.HttpWebResponse = CType(request.GetResponse(), Net.HttpWebResponse)
-        Dim sr As StreamReader = New StreamReader(response.GetResponseStream())
-        Dim newestversion As String = sr.ReadToEnd()
-        Dim currentversion As String = Application.ProductVersion
-        If newestversion.Contains(currentversion) Then
-            Timer1.Enabled = True
-        Else
-            Dim mess As String
-            mess = CType(MsgBox("There's a new update, Update ?", MsgBoxStyle.YesNo, "Information"), String)
-            If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
-                WebBrowser1.Navigate("https://dl.dropbox.com/s/axtsp9oq8pez6u6/HRIS.exe?dl=0")
-            Else
+        Try
+            Timer1.Enabled = False
+            ProgressBar1.Visible = True
+            WebBrowser1.Visible = False
+            Dim request As Net.HttpWebRequest = CType(Net.WebRequest.Create("https://dl.dropbox.com/s/f3hbcpzffkdg5y0/version.txt?dl=0"), Net.HttpWebRequest)
+            Dim response As Net.HttpWebResponse = CType(request.GetResponse(), Net.HttpWebResponse)
+            Dim sr As StreamReader = New StreamReader(response.GetResponseStream())
+            Dim newestversion As String = sr.ReadToEnd()
+            Dim currentversion As String = Application.ProductVersion
+            If newestversion.Contains(currentversion) Then
                 Timer1.Enabled = True
+            Else
+                Dim mess As String
+                mess = CType(MsgBox("There's a new update, Update ?", MsgBoxStyle.YesNo, "Information"), String)
+                If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+                    WebBrowser1.Navigate("https://dl.dropbox.com/s/axtsp9oq8pez6u6/HRIS.exe?dl=0")
+                Else
+                    Timer1.Enabled = True
+                End If
             End If
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
@@ -188,6 +171,8 @@ Public Class Login
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        teUsername.Enabled = False
+        tePassword.Enabled = False
         If ProgressBar1.Value < 100 Then
             ProgressBar1.Value += 10
         ElseIf ProgressBar1.Value = 100 Then
@@ -200,7 +185,7 @@ Public Class Login
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(tbl_par)
             If tbl_par.Rows.Count > 0 Then
-                main.Show()
+                cir.Show()
                 Hide()
             Else
                 MsgBox("Username and Password Didn't Match!")
@@ -224,5 +209,13 @@ Public Class Login
         ElseIf ProgressBar1.Value = 100 Then
             Label1.Text = "Ready...."
         End If
+    End Sub
+
+    Sub loadsettings()
+
+    End Sub
+
+    Private Sub AutomaticUpdater1_ClosingAborted(sender As Object, e As EventArgs) Handles AutomaticUpdater1.ClosingAborted
+
     End Sub
 End Class

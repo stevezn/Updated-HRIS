@@ -754,17 +754,6 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.RotasiMutasi.reso
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.setting.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.SPForms.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.vbproj.GenerateResource.Cache
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HRIS.exe.config
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.exe.licenses
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HRIS.exe.manifest
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HRIS.application
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HRIS.exe
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HRIS.pdb
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.TrustInfo.xml
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.exe.manifest
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.application
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.exe
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.pdb
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.View.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\CrystalDecisions.ReportSource.dll
@@ -871,7 +860,6 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Attendance.resour
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.selectemp.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Analytical.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.addmenu.resources
-C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Rating.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.comparison.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Form1.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\CrystalDecisions.Windows.Forms.dll
@@ -879,4 +867,19 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\FlashControlV71.dll
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.cryrep.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.ShowAtt.resources
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\AutomaticUpdater.Design.dll
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\AutomaticUpdater.dll
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\AutomaticUpdater.xml
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.vbprojResolveAssemblyReference.cache
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Circle.resources
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HR SYSTEM.exe.config
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HR SYSTEM.exe.manifest
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HR SYSTEM.application
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HR SYSTEM.exe
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\HR SYSTEM.pdb
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HR SYSTEM.exe.licenses
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HR SYSTEM.TrustInfo.xml
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HR SYSTEM.exe.manifest
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HR SYSTEM.application
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HR SYSTEM.exe
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HR SYSTEM.pdb

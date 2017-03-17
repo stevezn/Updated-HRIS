@@ -61,6 +61,8 @@ Partial Class View
         Me.Controls.Add(Me.SimpleButton1)
         Me.Controls.Add(Me.GridControl1)
         Me.Name = "View"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.Text = "View"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CardView1, System.ComponentModel.ISupportInitialize).EndInit()

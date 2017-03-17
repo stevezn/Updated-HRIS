@@ -495,8 +495,9 @@ Partial Class infoReq
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.GroupControl1)
         Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "infoReq"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)

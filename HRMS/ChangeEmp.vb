@@ -221,7 +221,6 @@ Public Class ChangeEmp
         txtphone.Text = ""
         txtidcard.Text = ""
         txtstatus.Text = ""
-        pictureEdit.Controls.Clear()
         txtposition.Text = ""
     End Sub
 
@@ -233,7 +232,7 @@ Public Class ChangeEmp
         Dim monthss As Date
         If txtstatus.Text = "Training" Then
             Try
-                monthss = CDate(InputBox("Enter a date with format ( 2017-15-01 )"))
+                monthss = CDate(InputBox("Enter a date with format ( 2017-02-30 )"))
                 Dim train As MySqlCommand = SQLConnection.CreateCommand
                 train.CommandText = "update db_pegawai set trainingsampai = @date1 where employeecode = @ec"
                 train.Parameters.AddWithValue("@date1", monthss)
@@ -241,9 +240,7 @@ Public Class ChangeEmp
                 train.ExecuteNonQuery()
                 MsgBox("Added")
             Catch ex As Exception
-
             End Try
-
         End If
     End Sub
 End Class

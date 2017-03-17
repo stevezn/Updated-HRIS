@@ -5,11 +5,11 @@ Imports System.Runtime.InteropServices
 ' General Information about an assembly is controlled through the following 
 ' set of attributes. Change these attribute values to modify the information
 ' associated with an assembly.
-<Assembly: AssemblyTitle("HRMS")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyTitle("HRIS")>
+<Assembly: AssemblyDescription("Human Resource Information System")>
 <Assembly: AssemblyConfiguration("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("HRMS")>
+<Assembly: AssemblyCompany("Makmur Group")>
+<Assembly: AssemblyProduct("HRIS")>
 <Assembly: AssemblyCopyright("Copyright ©  2017")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: AssemblyCulture("")>
