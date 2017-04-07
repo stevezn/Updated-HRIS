@@ -72,28 +72,6 @@ Partial Class Notes
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
-        Me.txtsp3date = New DevExpress.XtraEditors.TextEdit()
-        Me.txtsp3 = New DevExpress.XtraEditors.TextEdit()
-        Me.txtsp2date = New DevExpress.XtraEditors.TextEdit()
-        Me.txtsp2 = New DevExpress.XtraEditors.TextEdit()
-        Me.txtsp1date = New DevExpress.XtraEditors.TextEdit()
-        Me.txtsp1 = New DevExpress.XtraEditors.TextEdit()
-        Me.txtrotasidate = New DevExpress.XtraEditors.TextEdit()
-        Me.txtrotasi = New DevExpress.XtraEditors.TextEdit()
-        Me.txtdemosidate = New DevExpress.XtraEditors.TextEdit()
-        Me.txtdemosi = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.lcdemosi = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcdemosidate = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcrotasi = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcrotasidate = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcsp1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcsp1date = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcsp2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcsp2date = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcsp3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcsp3date = New DevExpress.XtraLayout.LayoutControlItem()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.pictureedit = New System.Windows.Forms.PictureBox()
@@ -135,29 +113,6 @@ Partial Class Notes
         CType(Me.lcstat, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lctrain, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl2.SuspendLayout()
-        CType(Me.txtsp3date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtsp3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtsp2date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtsp2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtsp1date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtsp1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtrotasidate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtrotasi.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtdemosidate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtdemosi.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcdemosi, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcdemosidate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcrotasi, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcrotasidate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcsp1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcsp1date, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcsp2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcsp2date, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcsp3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcsp3date, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureedit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -182,10 +137,10 @@ Partial Class Notes
         Me.LayoutControl1.Controls.Add(Me.txtname)
         Me.LayoutControl1.Controls.Add(Me.txtpos)
         Me.LayoutControl1.Controls.Add(Me.txtempcode)
-        Me.LayoutControl1.Location = New System.Drawing.Point(433, 144)
+        Me.LayoutControl1.Location = New System.Drawing.Point(333, 150)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(256, 433)
+        Me.LayoutControl1.Size = New System.Drawing.Size(256, 430)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -206,7 +161,7 @@ Partial Class Notes
         Me.RibbonControl1.MaxItemId = 7
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
-        Me.RibbonControl1.Size = New System.Drawing.Size(903, 144)
+        Me.RibbonControl1.Size = New System.Drawing.Size(857, 144)
         '
         'BarButtonItem1
         '
@@ -433,7 +388,7 @@ Partial Class Notes
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcempcode, Me.lcpos, Me.lcname, Me.lcpob, Me.lcdob, Me.lccompcode, Me.lcgender, Me.lcreligion, Me.lcaddress, Me.lcemail, Me.lcid, Me.lcol, Me.lcwd, Me.lcphone, Me.lcstat, Me.lctrain, Me.LayoutControlItem1})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(256, 433)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(256, 430)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -593,7 +548,7 @@ Partial Class Notes
         Me.lctrain.CustomizationFormText = "Training Until"
         Me.lctrain.Location = New System.Drawing.Point(0, 384)
         Me.lctrain.Name = "lctrain"
-        Me.lctrain.Size = New System.Drawing.Size(236, 29)
+        Me.lctrain.Size = New System.Drawing.Size(236, 26)
         Me.lctrain.Text = "Training Until"
         Me.lctrain.TextSize = New System.Drawing.Size(77, 13)
         '
@@ -619,234 +574,13 @@ Partial Class Notes
         Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
         Me.RibbonPageGroup4.Text = "                                                      "
         '
-        'LayoutControl2
-        '
-        Me.LayoutControl2.Controls.Add(Me.txtsp3date)
-        Me.LayoutControl2.Controls.Add(Me.txtsp3)
-        Me.LayoutControl2.Controls.Add(Me.txtsp2date)
-        Me.LayoutControl2.Controls.Add(Me.txtsp2)
-        Me.LayoutControl2.Controls.Add(Me.txtsp1date)
-        Me.LayoutControl2.Controls.Add(Me.txtsp1)
-        Me.LayoutControl2.Controls.Add(Me.txtrotasidate)
-        Me.LayoutControl2.Controls.Add(Me.txtrotasi)
-        Me.LayoutControl2.Controls.Add(Me.txtdemosidate)
-        Me.LayoutControl2.Controls.Add(Me.txtdemosi)
-        Me.LayoutControl2.Location = New System.Drawing.Point(687, 293)
-        Me.LayoutControl2.Name = "LayoutControl2"
-        Me.LayoutControl2.Root = Me.LayoutControlGroup2
-        Me.LayoutControl2.Size = New System.Drawing.Size(215, 260)
-        Me.LayoutControl2.TabIndex = 2
-        Me.LayoutControl2.Text = "LayoutControl2"
-        '
-        'txtsp3date
-        '
-        Me.txtsp3date.Location = New System.Drawing.Point(75, 228)
-        Me.txtsp3date.MenuManager = Me.RibbonControl1
-        Me.txtsp3date.Name = "txtsp3date"
-        Me.txtsp3date.Size = New System.Drawing.Size(128, 20)
-        Me.txtsp3date.StyleController = Me.LayoutControl2
-        Me.txtsp3date.TabIndex = 13
-        '
-        'txtsp3
-        '
-        Me.txtsp3.Location = New System.Drawing.Point(75, 204)
-        Me.txtsp3.MenuManager = Me.RibbonControl1
-        Me.txtsp3.Name = "txtsp3"
-        Me.txtsp3.Size = New System.Drawing.Size(128, 20)
-        Me.txtsp3.StyleController = Me.LayoutControl2
-        Me.txtsp3.TabIndex = 12
-        '
-        'txtsp2date
-        '
-        Me.txtsp2date.Location = New System.Drawing.Point(75, 180)
-        Me.txtsp2date.MenuManager = Me.RibbonControl1
-        Me.txtsp2date.Name = "txtsp2date"
-        Me.txtsp2date.Size = New System.Drawing.Size(128, 20)
-        Me.txtsp2date.StyleController = Me.LayoutControl2
-        Me.txtsp2date.TabIndex = 11
-        '
-        'txtsp2
-        '
-        Me.txtsp2.Location = New System.Drawing.Point(75, 156)
-        Me.txtsp2.MenuManager = Me.RibbonControl1
-        Me.txtsp2.Name = "txtsp2"
-        Me.txtsp2.Size = New System.Drawing.Size(128, 20)
-        Me.txtsp2.StyleController = Me.LayoutControl2
-        Me.txtsp2.TabIndex = 10
-        '
-        'txtsp1date
-        '
-        Me.txtsp1date.Location = New System.Drawing.Point(75, 132)
-        Me.txtsp1date.MenuManager = Me.RibbonControl1
-        Me.txtsp1date.Name = "txtsp1date"
-        Me.txtsp1date.Size = New System.Drawing.Size(128, 20)
-        Me.txtsp1date.StyleController = Me.LayoutControl2
-        Me.txtsp1date.TabIndex = 9
-        '
-        'txtsp1
-        '
-        Me.txtsp1.Location = New System.Drawing.Point(75, 108)
-        Me.txtsp1.MenuManager = Me.RibbonControl1
-        Me.txtsp1.Name = "txtsp1"
-        Me.txtsp1.Size = New System.Drawing.Size(128, 20)
-        Me.txtsp1.StyleController = Me.LayoutControl2
-        Me.txtsp1.TabIndex = 8
-        '
-        'txtrotasidate
-        '
-        Me.txtrotasidate.Location = New System.Drawing.Point(75, 84)
-        Me.txtrotasidate.MenuManager = Me.RibbonControl1
-        Me.txtrotasidate.Name = "txtrotasidate"
-        Me.txtrotasidate.Size = New System.Drawing.Size(128, 20)
-        Me.txtrotasidate.StyleController = Me.LayoutControl2
-        Me.txtrotasidate.TabIndex = 7
-        '
-        'txtrotasi
-        '
-        Me.txtrotasi.Location = New System.Drawing.Point(75, 60)
-        Me.txtrotasi.MenuManager = Me.RibbonControl1
-        Me.txtrotasi.Name = "txtrotasi"
-        Me.txtrotasi.Size = New System.Drawing.Size(128, 20)
-        Me.txtrotasi.StyleController = Me.LayoutControl2
-        Me.txtrotasi.TabIndex = 6
-        '
-        'txtdemosidate
-        '
-        Me.txtdemosidate.Location = New System.Drawing.Point(75, 36)
-        Me.txtdemosidate.MenuManager = Me.RibbonControl1
-        Me.txtdemosidate.Name = "txtdemosidate"
-        Me.txtdemosidate.Size = New System.Drawing.Size(128, 20)
-        Me.txtdemosidate.StyleController = Me.LayoutControl2
-        Me.txtdemosidate.TabIndex = 5
-        '
-        'txtdemosi
-        '
-        Me.txtdemosi.Location = New System.Drawing.Point(75, 12)
-        Me.txtdemosi.MenuManager = Me.RibbonControl1
-        Me.txtdemosi.Name = "txtdemosi"
-        Me.txtdemosi.Size = New System.Drawing.Size(128, 20)
-        Me.txtdemosi.StyleController = Me.LayoutControl2
-        Me.txtdemosi.TabIndex = 4
-        '
-        'LayoutControlGroup2
-        '
-        Me.LayoutControlGroup2.CustomizationFormText = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlGroup2.GroupBordersVisible = False
-        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcdemosi, Me.lcdemosidate, Me.lcrotasi, Me.lcrotasidate, Me.lcsp1, Me.lcsp1date, Me.lcsp2, Me.lcsp2date, Me.lcsp3, Me.lcsp3date})
-        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(215, 260)
-        Me.LayoutControlGroup2.Text = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.TextVisible = False
-        '
-        'lcdemosi
-        '
-        Me.lcdemosi.Control = Me.txtdemosi
-        Me.lcdemosi.CustomizationFormText = "Last Demosi"
-        Me.lcdemosi.Location = New System.Drawing.Point(0, 0)
-        Me.lcdemosi.Name = "lcdemosi"
-        Me.lcdemosi.Size = New System.Drawing.Size(195, 24)
-        Me.lcdemosi.Text = "Last Demosi"
-        Me.lcdemosi.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcdemosidate
-        '
-        Me.lcdemosidate.Control = Me.txtdemosidate
-        Me.lcdemosidate.CustomizationFormText = "Demosi Date"
-        Me.lcdemosidate.Location = New System.Drawing.Point(0, 24)
-        Me.lcdemosidate.Name = "lcdemosidate"
-        Me.lcdemosidate.Size = New System.Drawing.Size(195, 24)
-        Me.lcdemosidate.Text = "Demosi Date"
-        Me.lcdemosidate.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcrotasi
-        '
-        Me.lcrotasi.Control = Me.txtrotasi
-        Me.lcrotasi.CustomizationFormText = "Rotasi"
-        Me.lcrotasi.Location = New System.Drawing.Point(0, 48)
-        Me.lcrotasi.Name = "lcrotasi"
-        Me.lcrotasi.Size = New System.Drawing.Size(195, 24)
-        Me.lcrotasi.Text = "Rotasi"
-        Me.lcrotasi.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcrotasidate
-        '
-        Me.lcrotasidate.Control = Me.txtrotasidate
-        Me.lcrotasidate.CustomizationFormText = "Rotasi Date"
-        Me.lcrotasidate.Location = New System.Drawing.Point(0, 72)
-        Me.lcrotasidate.Name = "lcrotasidate"
-        Me.lcrotasidate.Size = New System.Drawing.Size(195, 24)
-        Me.lcrotasidate.Text = "Rotasi Date"
-        Me.lcrotasidate.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcsp1
-        '
-        Me.lcsp1.Control = Me.txtsp1
-        Me.lcsp1.CustomizationFormText = "SP 1"
-        Me.lcsp1.Location = New System.Drawing.Point(0, 96)
-        Me.lcsp1.Name = "lcsp1"
-        Me.lcsp1.Size = New System.Drawing.Size(195, 24)
-        Me.lcsp1.Text = "SP 1"
-        Me.lcsp1.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcsp1date
-        '
-        Me.lcsp1date.Control = Me.txtsp1date
-        Me.lcsp1date.CustomizationFormText = "SP 1 Date"
-        Me.lcsp1date.Location = New System.Drawing.Point(0, 120)
-        Me.lcsp1date.Name = "lcsp1date"
-        Me.lcsp1date.Size = New System.Drawing.Size(195, 24)
-        Me.lcsp1date.Text = "SP 1 Date"
-        Me.lcsp1date.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcsp2
-        '
-        Me.lcsp2.Control = Me.txtsp2
-        Me.lcsp2.CustomizationFormText = "SP 2"
-        Me.lcsp2.Location = New System.Drawing.Point(0, 144)
-        Me.lcsp2.Name = "lcsp2"
-        Me.lcsp2.Size = New System.Drawing.Size(195, 24)
-        Me.lcsp2.Text = "SP 2"
-        Me.lcsp2.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcsp2date
-        '
-        Me.lcsp2date.Control = Me.txtsp2date
-        Me.lcsp2date.CustomizationFormText = "SP 2 Date"
-        Me.lcsp2date.Location = New System.Drawing.Point(0, 168)
-        Me.lcsp2date.Name = "lcsp2date"
-        Me.lcsp2date.Size = New System.Drawing.Size(195, 24)
-        Me.lcsp2date.Text = "SP 2 Date"
-        Me.lcsp2date.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcsp3
-        '
-        Me.lcsp3.Control = Me.txtsp3
-        Me.lcsp3.CustomizationFormText = "SP 3"
-        Me.lcsp3.Location = New System.Drawing.Point(0, 192)
-        Me.lcsp3.Name = "lcsp3"
-        Me.lcsp3.Size = New System.Drawing.Size(195, 24)
-        Me.lcsp3.Text = "SP 3"
-        Me.lcsp3.TextSize = New System.Drawing.Size(60, 13)
-        '
-        'lcsp3date
-        '
-        Me.lcsp3date.Control = Me.txtsp3date
-        Me.lcsp3date.CustomizationFormText = "SP 3 Date"
-        Me.lcsp3date.Location = New System.Drawing.Point(0, 216)
-        Me.lcsp3date.Name = "lcsp3date"
-        Me.lcsp3date.Size = New System.Drawing.Size(195, 24)
-        Me.lcsp3date.Text = "SP 3 Date"
-        Me.lcsp3date.TextSize = New System.Drawing.Size(60, 13)
-        '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(4, 150)
+        Me.GridControl1.Location = New System.Drawing.Point(4, 160)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(433, 420)
+        Me.GridControl1.Size = New System.Drawing.Size(323, 410)
         Me.GridControl1.TabIndex = 4
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -860,7 +594,7 @@ Partial Class Notes
         '
         'pictureedit
         '
-        Me.pictureedit.Location = New System.Drawing.Point(718, 159)
+        Me.pictureedit.Location = New System.Drawing.Point(583, 160)
         Me.pictureedit.Name = "pictureedit"
         Me.pictureedit.Size = New System.Drawing.Size(141, 128)
         Me.pictureedit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -871,13 +605,13 @@ Partial Class Notes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(903, 582)
+        Me.ClientSize = New System.Drawing.Size(857, 582)
         Me.Controls.Add(Me.pictureedit)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.LayoutControl2)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.RibbonControl1)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(867, 587)
         Me.Name = "Notes"
         Me.Ribbon = Me.RibbonControl1
         Me.ShowIcon = False
@@ -922,29 +656,6 @@ Partial Class Notes
         CType(Me.lcstat, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lctrain, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.LayoutControl2.ResumeLayout(False)
-        CType(Me.txtsp3date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtsp3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtsp2date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtsp2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtsp1date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtsp1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtrotasidate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtrotasi.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtdemosidate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtdemosi.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcdemosi, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcdemosidate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcrotasi, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcrotasidate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcsp1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcsp1date, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcsp2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcsp2date, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcsp3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcsp3date, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureedit, System.ComponentModel.ISupportInitialize).EndInit()
@@ -994,28 +705,6 @@ Partial Class Notes
     Friend WithEvents lcphone As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcstat As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lctrain As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents txtrotasidate As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtrotasi As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtdemosidate As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtdemosi As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents lcdemosi As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcdemosidate As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcrotasi As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcrotasidate As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents txtsp3date As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtsp3 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtsp2date As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtsp2 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtsp1date As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtsp1 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents lcsp1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcsp1date As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcsp2 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcsp2date As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcsp3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcsp3date As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents BarButtonItem4 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarCheckItem1 As DevExpress.XtraBars.BarCheckItem
     Friend WithEvents BarButtonItem5 As DevExpress.XtraBars.BarButtonItem

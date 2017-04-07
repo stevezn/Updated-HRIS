@@ -22,8 +22,9 @@ Partial Class Payments
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Payments))
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
@@ -35,10 +36,12 @@ Partial Class Payments
         Me.BarButtonItem7 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem8 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarButtonItem9 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup5 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup6 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup7 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -228,14 +231,9 @@ Partial Class Payments
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.date1 = New System.Windows.Forms.DateTimePicker()
-        Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.SimpleButton8 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.GridControl8 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView8 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -413,19 +411,14 @@ Partial Class Payments
         CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl5.SuspendLayout()
-        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl6.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.barJudul, Me.BarButtonItem3, Me.BarButtonItem4, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarStaticItem1})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.barJudul, Me.BarButtonItem3, Me.BarButtonItem4, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarStaticItem1, Me.BarButtonItem9})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 11
+        Me.RibbonControl1.MaxItemId = 12
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
         Me.RibbonControl1.Size = New System.Drawing.Size(871, 144)
@@ -508,9 +501,18 @@ Partial Class Payments
         Me.BarStaticItem1.Name = "BarStaticItem1"
         Me.BarStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near
         '
+        'BarButtonItem9
+        '
+        Me.BarButtonItem9.Caption = "Other Income / Deduction"
+        Me.BarButtonItem9.Glyph = CType(resources.GetObject("BarButtonItem9.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem9.Id = 11
+        Me.BarButtonItem9.Name = "BarButtonItem9"
+        Me.BarButtonItem9.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup5, Me.RibbonPageGroup6, Me.RibbonPageGroup7, Me.RibbonPageGroup8})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup4, Me.RibbonPageGroup5, Me.RibbonPageGroup6, Me.RibbonPageGroup7, Me.RibbonPageGroup8})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "Loan"
         '
@@ -531,6 +533,12 @@ Partial Class Payments
         Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem2, True)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "                                   "
+        '
+        'RibbonPageGroup4
+        '
+        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonItem9)
+        Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
+        Me.RibbonPageGroup4.Text = "                                   "
         '
         'RibbonPageGroup5
         '
@@ -720,8 +728,8 @@ Partial Class Payments
         '
         'GridControl1
         '
-        GridLevelNode2.RelationName = "Level1"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.GridControl1.Location = New System.Drawing.Point(0, 53)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
@@ -1427,7 +1435,7 @@ Partial Class Payments
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
         Me.LayoutControlItem7.Size = New System.Drawing.Size(224, 24)
-        Me.LayoutControlItem7.Text = "Basic Rate"
+        Me.LayoutControlItem7.Text = "Basic Salary"
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(90, 13)
         '
         'LayoutControlItem8
@@ -1457,7 +1465,7 @@ Partial Class Payments
         Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(224, 24)
-        Me.LayoutControlItem11.Text = "Meal Rate"
+        Me.LayoutControlItem11.Text = "Meal Money"
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(90, 13)
         '
         'LayoutControlItem12
@@ -1477,7 +1485,7 @@ Partial Class Payments
         Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
         Me.LayoutControlItem13.Size = New System.Drawing.Size(224, 24)
-        Me.LayoutControlItem13.Text = "Memiliki NPWP"
+        Me.LayoutControlItem13.Text = "NPWP"
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(90, 13)
         '
         'LayoutControlItem14
@@ -1597,6 +1605,9 @@ Partial Class Payments
         Me.GridView4.GridControl = Me.GridControl4
         Me.GridView4.Name = "GridView4"
         Me.GridView4.OptionsFind.AlwaysVisible = True
+        Me.GridView4.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateAllContent
+        Me.GridView4.OptionsView.ColumnAutoWidth = False
+        Me.GridView4.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator
         '
         'LayoutControl9
         '
@@ -1961,7 +1972,7 @@ Partial Class Payments
         Me.LayoutControlItem46.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem46.Name = "LayoutControlItem7"
         Me.LayoutControlItem46.Size = New System.Drawing.Size(223, 24)
-        Me.LayoutControlItem46.Text = "Basic Rate"
+        Me.LayoutControlItem46.Text = "Basic Salary"
         Me.LayoutControlItem46.TextSize = New System.Drawing.Size(90, 13)
         '
         'LayoutControlItem47
@@ -1991,7 +2002,7 @@ Partial Class Payments
         Me.LayoutControlItem49.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem49.Name = "LayoutControlItem11"
         Me.LayoutControlItem49.Size = New System.Drawing.Size(223, 24)
-        Me.LayoutControlItem49.Text = "Meal Rate"
+        Me.LayoutControlItem49.Text = "Meal Money"
         Me.LayoutControlItem49.TextSize = New System.Drawing.Size(90, 13)
         '
         'LayoutControlItem50
@@ -2011,7 +2022,7 @@ Partial Class Payments
         Me.LayoutControlItem51.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem51.Name = "LayoutControlItem13"
         Me.LayoutControlItem51.Size = New System.Drawing.Size(223, 24)
-        Me.LayoutControlItem51.Text = "Memiliki NPWP"
+        Me.LayoutControlItem51.Text = "NPWP"
         Me.LayoutControlItem51.TextSize = New System.Drawing.Size(90, 13)
         '
         'LayoutControlItem52
@@ -2437,77 +2448,6 @@ Partial Class Payments
         Me.date1.Size = New System.Drawing.Size(200, 21)
         Me.date1.TabIndex = 14
         '
-        'GroupControl6
-        '
-        Me.GroupControl6.Appearance.BackColor = System.Drawing.Color.White
-        Me.GroupControl6.Appearance.Options.UseBackColor = True
-        Me.GroupControl6.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupControl6.AppearanceCaption.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.GroupControl6.AppearanceCaption.Options.UseFont = True
-        Me.GroupControl6.AppearanceCaption.Options.UseForeColor = True
-        Me.GroupControl6.Controls.Add(Me.Label6)
-        Me.GroupControl6.Controls.Add(Me.SimpleButton8)
-        Me.GroupControl6.Controls.Add(Me.SimpleButton7)
-        Me.GroupControl6.Controls.Add(Me.PictureBox1)
-        Me.GroupControl6.Controls.Add(Me.GridControl8)
-        Me.GroupControl6.Location = New System.Drawing.Point(49, 26)
-        Me.GroupControl6.Name = "GroupControl6"
-        Me.GroupControl6.Size = New System.Drawing.Size(792, 468)
-        Me.GroupControl6.TabIndex = 18
-        Me.GroupControl6.Visible = False
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(603, 187)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(181, 13)
-        Me.Label6.TabIndex = 8
-        Me.Label6.Text = "** Right click to select the employee"
-        '
-        'SimpleButton8
-        '
-        Me.SimpleButton8.Image = CType(resources.GetObject("SimpleButton8.Image"), System.Drawing.Image)
-        Me.SimpleButton8.Location = New System.Drawing.Point(140, 143)
-        Me.SimpleButton8.Name = "SimpleButton8"
-        Me.SimpleButton8.Size = New System.Drawing.Size(75, 19)
-        Me.SimpleButton8.TabIndex = 7
-        Me.SimpleButton8.Text = "Refresh"
-        '
-        'SimpleButton7
-        '
-        Me.SimpleButton7.Image = CType(resources.GetObject("SimpleButton7.Image"), System.Drawing.Image)
-        Me.SimpleButton7.Location = New System.Drawing.Point(762, 4)
-        Me.SimpleButton7.Name = "SimpleButton7"
-        Me.SimpleButton7.Size = New System.Drawing.Size(25, 23)
-        Me.SimpleButton7.TabIndex = 6
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 24)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(128, 140)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
-        '
-        'GridControl8
-        '
-        Me.GridControl8.Location = New System.Drawing.Point(4, 170)
-        Me.GridControl8.MainView = Me.GridView8
-        Me.GridControl8.MenuManager = Me.RibbonControl1
-        Me.GridControl8.Name = "GridControl8"
-        Me.GridControl8.Size = New System.Drawing.Size(783, 294)
-        Me.GridControl8.TabIndex = 0
-        Me.GridControl8.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView8})
-        '
-        'GridView8
-        '
-        Me.GridView8.GridControl = Me.GridControl8
-        Me.GridView8.Name = "GridView8"
-        Me.GridView8.OptionsFind.AlwaysVisible = True
-        Me.GridView8.OptionsView.ColumnAutoWidth = False
-        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(811, 84)
@@ -2518,6 +2458,12 @@ Partial Class Payments
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '
+        'Timer1
+        '
+        '
+        'Timer2
+        '
+        '
         'Payments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2525,7 +2471,6 @@ Partial Class Payments
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.ClientSize = New System.Drawing.Size(871, 501)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.GroupControl6)
         Me.Controls.Add(Me.XtraTabControl2)
         Me.Controls.Add(Me.RibbonControl1)
         Me.MaximizeBox = False
@@ -2717,12 +2662,6 @@ Partial Class Payments
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl5.ResumeLayout(False)
         Me.GroupControl5.PerformLayout()
-        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupControl6.ResumeLayout(False)
-        Me.GroupControl6.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2920,12 +2859,6 @@ Partial Class Payments
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SimpleButton5 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents GroupControl6 As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents SimpleButton8 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton7 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents GridControl8 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView8 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents Button1 As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents txtmonth As DateTimePicker
@@ -2937,6 +2870,9 @@ Partial Class Payments
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SimpleButton9 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents Label6 As Label
     Friend WithEvents BarStaticItem1 As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents BarButtonItem9 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup4 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents Timer2 As Timer
 End Class

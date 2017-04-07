@@ -39,12 +39,13 @@ Public Class Circle
     End Sub
 
     Private Sub Circle_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.TransparencyKey = Color.White
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
-        Me.Size = New System.Drawing.Size(500, 500)
+        Size = New Size(500, 500)
         Dim path As New Drawing2D.GraphicsPath
-        path.AddEllipse(85, 0, 245, 250)
-        Me.Region = New Region(path)
+        path.AddEllipse(85, 0, 245, 280)
+        Region = New Region(path)
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
@@ -66,23 +67,27 @@ Public Class Circle
         Dim pesan As String
         pesan = CType(MsgBox("Log Off Application?", MsgBoxStyle.YesNo, "Warning"), String)
         If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
-            Dim del As MySqlCommand = SQLConnection.CreateCommand
-            del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
-            del.ExecuteNonQuery()
-            Dim dele As MySqlCommand = SQLConnection.CreateCommand
-            dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
-            dele.ExecuteNonQuery()
-            Dim delet As MySqlCommand = SQLConnection.CreateCommand
-            delet.CommandText = "delete from db_tmpname where EmployeeCode != 'absbahsgedeg'"
-            delet.ExecuteNonQuery()
+            Try
+                Dim del As MySqlCommand = SQLConnection.CreateCommand
+                ' del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
+                del.CommandText = "truncate db_hasil"
+                del.ExecuteNonQuery()
+                Dim dele As MySqlCommand = SQLConnection.CreateCommand
+                'dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
+                dele.CommandText = "truncate db_temp"
+                dele.Parameters.Clear()
+                dele.ExecuteNonQuery()
+
+                dele.CommandText = "truncate db_tmpname"
+                dele.Parameters.Clear()
+                dele.ExecuteNonQuery()
+            Catch ex As Exception
+
+            End Try
             SQLConnection.Close()
             Close()
             Login.Close()
         End If
-    End Sub
-
-    Private Sub SimpleButton10_Click(sender As Object, e As EventArgs)
-        Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Dim table As DataTable
@@ -143,21 +148,63 @@ Public Class Circle
                         Catch ex2 As Exception
                         End Try
                         Dim actualcode As String = ynow & "-" & mnow & "-" & Strings.Right("0000" & tmp, 5)
-                        Dim sqlCommand As New MySqlCommand
+                        Dim sqlCommand As MySqlCommand = SQLConnection.CreateCommand
                         Try
-                            sqlCommand.CommandText = "INSERT INTO db_pegawai (FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, status, CompanyCode, EmployeeCode, OfficeLocation, PhoneNumber, WorkDate, ChangeDate)" +
-                                                             "SELECT FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, @status, @CompanyCode, @EmployeeCode, @OfficeLocation, @PhoneNumber, @WorkDate, @ChangeDate FROM db_recruitment WHERE Status='Accepted' AND idrec = @idrec"
+                            sqlCommand.CommandText = "INSERT INTO db_pegawai (FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, status, CompanyCode, EmployeeCode, OfficeLocation, PhoneNumber, WorkDate, ChangeDate, NickName, Weight, Height, BloodType, RecommendedBy)" +
+                                                             "SELECT FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, @status, @CompanyCode, @EmployeeCode, @OfficeLocation, PhoneNumber, @WorkDate, @ChangeDate, NickName, Weight, Height, BloodType, RecommendedBy FROM db_recruitment WHERE Status='Accepted' AND idrec = @idrec"
                             sqlCommand.Parameters.AddWithValue("@Status", "Active")
                             sqlCommand.Parameters.AddWithValue("@CompanyCode", "<empty>")
                             sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
                             sqlCommand.Parameters.AddWithValue("@OfficeLocation", "<empty>")
-                            sqlCommand.Parameters.AddWithValue("@PhoneNumber", employees.txtphone.Text)
                             sqlCommand.Parameters.AddWithValue("@WorkDate", Date.Now)
                             sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
                             sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
-                            sqlCommand.Connection = SQLConnection
                             sqlCommand.ExecuteNonQuery()
                             MessageBox.Show("Data Succesfully Imported, Please Click Refresh To Load")
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+                        Try
+                            sqlCommand.CommandText = "update db_education set " +
+                                                        " EmployeeCode = @EmployeeCode" +
+                                                        " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+
+                            sqlCommand.CommandText = "update db_certificates set " +
+                                                        " EmployeeCode = @EmployeeCode" +
+                                                        " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+
+                            sqlCommand.CommandText = "update db_empskill set " +
+                                                            " EmployeeCode = @EmployeeCode" +
+                                                            " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+
+                            sqlCommand.CommandText = "update db_exp set " +
+                                                        " EmployeeCode = @EmployeeCode" +
+                                                        " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+
+
+                            sqlCommand.CommandText = "update db_family set " +
+                                                        " EmployeeCode = @EmployeeCode" +
+                                                        " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
                         Catch ex As Exception
                             MsgBox(ex.Message)
                         End Try
@@ -209,25 +256,27 @@ Public Class Circle
     End Sub
 
     Dim spform As New SPForms
+    Dim war As New Warning
 
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
-        If SPForms Is Nothing OrElse SPForms.IsDisposed OrElse SPForms.MinimizeBox Then
-            spform.Close()
-            spform = New SPForms
+        If war Is Nothing OrElse war.IsDisposed OrElse war.MinimizeBox Then
+            war.Close()
+            war = New Warning
         End If
-        spform.Show()
+        war.Show()
     End Sub
 
     Dim rotasi As New RotasiMutasi
 
-    Private Sub SimpleButton8_Click(sender As Object, e As EventArgs) Handles SimpleButton8.Click
-        If rotasi Is Nothing OrElse rotasi.IsDisposed OrElse rotasi.MinimizeBox Then
-            rotasi.Close()
-            rotasi = New RotasiMutasi
-        End If
-        rotasi.Show()
-    End Sub
+    Dim st As New StatusChange
 
+    Private Sub SimpleButton8_Click(sender As Object, e As EventArgs) Handles SimpleButton8.Click
+        If st Is Nothing OrElse st.IsDisposed OrElse st.MinimizeBox Then
+            st.Close()
+            st = New StatusChange
+        End If
+        st.Show()
+    End Sub
 
     Dim proses As New RecProcess
     Dim formed As New ChangeData
@@ -278,6 +327,9 @@ Public Class Circle
     End Sub
 
     Private Sub SimpleButton10_Click_1(sender As Object, e As EventArgs) Handles SimpleButton10.Click
+        If MainApp Is Nothing OrElse MainApp.MinimizeBox Then
+            MainApp.Close()
+        End If
         MainApp.Show()
     End Sub
 
@@ -287,9 +339,9 @@ Public Class Circle
         Dim sqlCommand As New MySqlCommand
         Try
             If MainApp.barJudul.Caption = "Module Recruitment" Then
-                sqlCommand.CommandText = "Select IdRec as IDRecruitment, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, InterviewDate, Status, CreatedDate from db_recruitment where status != 'In Progress'"
+                sqlCommand.CommandText = "select IdRec as IDRecruitment, InterviewTimes as AppliedTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, InterviewDate, Reason, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial as MartialStatus, LastSalary, OtherIncome, ExpSalary as ExpectedSalary, ExpFacilities as ExpectedFacilities, FavoriteJob, Reference, CreatedDate from db_recruitment"
             ElseIf mainapp.barJudul.Caption = "Module Employee" Then
-                sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, TrainingSampai, EmployeeType FROM db_pegawai where status != 'Fired' and status != 'Terminated'"
+                sqlCommand.CommandText = "select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks from db_pegawai"
             End If
             sqlCommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
@@ -298,7 +350,6 @@ Public Class Circle
             adapter.Fill(table)
             MainApp.GridControl1.DataSource = table
         Catch ex As Exception
-            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -309,7 +360,7 @@ Public Class Circle
         Dim table As New DataTable
         Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
         Try
-            sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, DATE_FORMAT(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMat(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType From db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.Tanggal = @date1"
+            sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Date, a.Shift, DATE_FORMAT(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMat(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType From db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.Tanggal = @date1"
             sqlcommand.Parameters.AddWithValue("@date", att.DateTimePicker2.Value.Date)
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -323,5 +374,103 @@ Public Class Circle
     Private Sub SimpleButton11_Click(sender As Object, e As EventArgs) Handles SimpleButton11.Click
         loaded()
         loadattendance()
+        GroupControl1.Visible = False
+        GroupControl2.Visible = False
     End Sub
+
+    Private Sub btnNew_MouseHover(sender As Object, e As EventArgs) Handles btnNew.MouseHover
+        ToolTip1.SetToolTip(btnNew, "Recruitment")
+    End Sub
+
+    Private Sub btnProg_MouseHover(sender As Object, e As EventArgs) Handles btnProg.MouseHover
+        ToolTip1.SetToolTip(btnProg, "Employee")
+    End Sub
+
+    Private Sub SimpleButton2_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton2.MouseHover
+        ToolTip1.SetToolTip(SimpleButton2, "Add New Recruitment")
+    End Sub
+
+    Private Sub btnChange_MouseHover(sender As Object, e As EventArgs) Handles btnChange.MouseHover
+        ToolTip1.SetToolTip(btnChange, "Change Recruitment Data")
+    End Sub
+
+    Private Sub SimpleButton1_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton1.MouseHover
+        ToolTip1.SetToolTip(SimpleButton3, "See Progress")
+    End Sub
+
+    Private Sub SimpleButton4_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton4.MouseHover
+        ToolTip1.SetToolTip(SimpleButton4, "See Candidates Details")
+    End Sub
+
+    Private Sub SimpleButton6_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton6.MouseHover
+        ToolTip1.SetToolTip(SimpleButton6, "Add New Employee")
+    End Sub
+
+    Private Sub SimpleButton7_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton7.MouseHover
+        ToolTip1.SetToolTip(SimpleButton7, "Change Employee Data")
+    End Sub
+
+    Private Sub SimpleButton3_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton3.MouseHover
+        ToolTip1.SetToolTip(SimpleButton3, "Warning Notice")
+    End Sub
+
+    Private Sub SimpleButton5_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton5.MouseHover
+        ToolTip1.SetToolTip(SimpleButton5, "See Employee Details")
+    End Sub
+
+    Private Sub SimpleButton8_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton8.MouseHover
+        ToolTip1.SetToolTip(SimpleButton8, "Status Change")
+    End Sub
+
+    Private Sub SimpleButton9_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton9.MouseHover
+        ToolTip1.SetToolTip(SimpleButton9, "Import recruitment data which already accepted to Employee Module")
+    End Sub
+
+    Private Sub SimpleButton10_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton10.MouseHover
+        ToolTip1.SetToolTip(SimpleButton10, "Go to mainpage")
+    End Sub
+
+    Private Sub btnLihat_MouseHover(sender As Object, e As EventArgs) Handles btnLihat.MouseHover
+        ToolTip1.SetToolTip(btnLihat, "Log Off from application")
+    End Sub
+
+    Private Sub SimpleButton11_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton11.MouseHover
+        ToolTip1.SetToolTip(SimpleButton11, "Refresh Recruitment and Employee Data")
+    End Sub
+
+    Private Sub SimpleButton12_Click(sender As Object, e As EventArgs) Handles SimpleButton12.Click
+        WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub SimpleButton12_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton12.MouseHover
+        ToolTip1.SetToolTip(SimpleButton12, "Minimize")
+    End Sub
+
+    Private Sub SimpleButton13_MouseHover(sender As Object, e As EventArgs) Handles SimpleButton13.MouseHover
+        ToolTip1.SetToolTip(SimpleButton13, "Termination")
+    End Sub
+
+    Dim tmnt As New Termination
+
+    Private Sub SimpleButton13_Click(sender As Object, e As EventArgs) Handles SimpleButton13.Click
+        If tmnt Is Nothing OrElse tmnt.IsDisposed OrElse tmnt.MinimizeBox Then
+            tmnt.Close()
+            tmnt = New Termination
+        End If
+        tmnt.Show()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If emp Is Nothing OrElse emp.IsDisposed OrElse emp.MinimizeBox Then
+            emp.Close()
+            emp = New EmployeeDetails
+        End If
+        emp.Show()
+    End Sub
+
+    Dim emp As New EmployeeDetails
+
+    'Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+
+    'End Sub
 End Class

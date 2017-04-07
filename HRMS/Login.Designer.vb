@@ -90,7 +90,7 @@ Partial Class Login
         '
         Me.ProgressBar1.Location = New System.Drawing.Point(9, 94)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(108, 24)
+        Me.ProgressBar1.Size = New System.Drawing.Size(108, 29)
         Me.ProgressBar1.TabIndex = 81
         Me.ProgressBar1.Visible = False
         '
@@ -105,7 +105,7 @@ Partial Class Login
         'WebBrowser1
         '
         Me.WebBrowser1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.WebBrowser1.Location = New System.Drawing.Point(196, 122)
+        Me.WebBrowser1.Location = New System.Drawing.Point(196, 123)
         Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.Name = "WebBrowser1"
         Me.WebBrowser1.Size = New System.Drawing.Size(20, 20)
@@ -125,7 +125,7 @@ Partial Class Login
         Me.btnTest.Image = CType(resources.GetObject("btnTest.Image"), System.Drawing.Image)
         Me.btnTest.Location = New System.Drawing.Point(123, 93)
         Me.btnTest.Name = "btnTest"
-        Me.btnTest.Size = New System.Drawing.Size(100, 26)
+        Me.btnTest.Size = New System.Drawing.Size(100, 30)
         Me.btnTest.TabIndex = 79
         Me.btnTest.Text = "Connect.."
         '
@@ -144,7 +144,7 @@ Partial Class Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(230, 138)
+        Me.ClientSize = New System.Drawing.Size(230, 141)
         Me.ControlBox = False
         Me.Controls.Add(Me.AutomaticUpdater1)
         Me.Controls.Add(Me.WebBrowser1)

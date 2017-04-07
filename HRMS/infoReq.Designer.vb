@@ -466,9 +466,9 @@ Partial Class infoReq
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 15.0!, System.Drawing.FontStyle.Bold)
         Me.LabelControl1.Location = New System.Drawing.Point(285, 3)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(223, 24)
+        Me.LabelControl1.Size = New System.Drawing.Size(240, 24)
         Me.LabelControl1.TabIndex = 1
-        Me.LabelControl1.Text = "Recruiter Information"
+        Me.LabelControl1.Text = "Candidates Information"
         '
         'GridControl1
         '

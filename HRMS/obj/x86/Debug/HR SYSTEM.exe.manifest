@@ -3133,14 +3133,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HR SYSTEM.exe" size="1968128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HR SYSTEM.exe" size="2441216">
       <assemblyIdentity name="HR SYSTEM" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>20HB1MPJsKZP52zgD2SXjNoqsW8=</dsig:DigestValue>
+        <dsig:DigestValue>nUFoSG/Tq1b0NaCYVT8JrdUKcIE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

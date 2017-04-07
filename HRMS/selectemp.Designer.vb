@@ -33,6 +33,8 @@ Partial Class selectemp
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -40,7 +42,7 @@ Partial Class selectemp
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(12, 3)
+        Me.LabelControl1.Location = New System.Drawing.Point(185, 22)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(75, 13)
         Me.LabelControl1.TabIndex = 0
@@ -48,7 +50,7 @@ Partial Class selectemp
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(12, 22)
+        Me.LabelControl2.Location = New System.Drawing.Point(16, 19)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(38, 13)
         Me.LabelControl2.TabIndex = 1
@@ -56,19 +58,19 @@ Partial Class selectemp
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 41)
+        Me.PictureBox1.Location = New System.Drawing.Point(15, 40)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(127, 159)
+        Me.PictureBox1.Size = New System.Drawing.Size(145, 159)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(145, 41)
+        Me.GridControl1.Location = New System.Drawing.Point(185, 41)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1119, 620)
+        Me.GridControl1.Size = New System.Drawing.Size(1079, 620)
         Me.GridControl1.TabIndex = 3
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -82,7 +84,7 @@ Partial Class selectemp
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 235)
+        Me.Label1.Location = New System.Drawing.Point(10, 235)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(56, 13)
         Me.Label1.TabIndex = 16
@@ -90,7 +92,7 @@ Partial Class selectemp
         '
         'SimpleButton4
         '
-        Me.SimpleButton4.Location = New System.Drawing.Point(10, 255)
+        Me.SimpleButton4.Location = New System.Drawing.Point(12, 255)
         Me.SimpleButton4.Name = "SimpleButton4"
         Me.SimpleButton4.Size = New System.Drawing.Size(63, 23)
         Me.SimpleButton4.TabIndex = 15
@@ -98,7 +100,7 @@ Partial Class selectemp
         '
         'txtrec1
         '
-        Me.txtrec1.Location = New System.Drawing.Point(71, 236)
+        Me.txtrec1.Location = New System.Drawing.Point(73, 236)
         Me.txtrec1.Name = "txtrec1"
         Me.txtrec1.Size = New System.Drawing.Size(4, 13)
         Me.txtrec1.TabIndex = 14
@@ -106,9 +108,9 @@ Partial Class selectemp
         '
         'SimpleButton3
         '
-        Me.SimpleButton3.Location = New System.Drawing.Point(12, 206)
+        Me.SimpleButton3.Location = New System.Drawing.Point(16, 206)
         Me.SimpleButton3.Name = "SimpleButton3"
-        Me.SimpleButton3.Size = New System.Drawing.Size(127, 23)
+        Me.SimpleButton3.Size = New System.Drawing.Size(144, 23)
         Me.SimpleButton3.TabIndex = 10
         Me.SimpleButton3.Text = "Select"
         '
@@ -132,11 +134,33 @@ Partial Class selectemp
         Me.Label3.Text = "Label3"
         Me.Label3.Visible = False
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(36, 327)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(39, 13)
+        Me.Label4.TabIndex = 17
+        Me.Label4.Text = "Label4"
+        Me.Label4.Visible = False
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(38, 351)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(39, 13)
+        Me.Label5.TabIndex = 18
+        Me.Label5.Text = "Label5"
+        Me.Label5.Visible = False
+        '
         'selectemp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1266, 662)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.SimpleButton3)
         Me.Controls.Add(Me.SimpleButton4)
         Me.Controls.Add(Me.Label1)
@@ -154,6 +178,7 @@ Partial Class selectemp
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.TopMost = True
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -173,4 +198,6 @@ Partial Class selectemp
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
 End Class

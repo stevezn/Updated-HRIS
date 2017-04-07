@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports System.Runtime.InteropServices
 Imports word = Microsoft.Office.Interop.Word
 
 Public Class Payslip
@@ -190,7 +189,6 @@ Public Class Payslip
             dt.Load(sqlCommand.ExecuteReader)
             viw.GridControl1.DataSource = dt
         Catch ex As Exception
-            'MsgBox(ex.Message)
         End Try
     End Sub
 

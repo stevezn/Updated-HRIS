@@ -27,9 +27,6 @@ Partial Class RecProcess
         Me.lcphone = New DevExpress.XtraLayout.LayoutControlItem()
         Me.txtphone = New DevExpress.XtraEditors.TextEdit()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
-        Me.BackstageViewControl2 = New DevExpress.XtraBars.Ribbon.BackstageViewControl()
-        Me.BackstageViewClientControl2 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
-        Me.BackstageViewTabItem2 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.Employee = New DevExpress.XtraBars.Ribbon.RibbonPage()
@@ -61,21 +58,22 @@ Partial Class RecProcess
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.lcview = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
+        Me.button1 = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
+        Me.button2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtstat = New DevExpress.XtraEditors.TextEdit()
         Me.txtexp = New DevExpress.XtraEditors.TextEdit()
@@ -98,17 +96,13 @@ Partial Class RecProcess
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
-        Me.BackstageViewControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewControl()
-        Me.BackstageViewClientControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
         Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.BackstageViewControl2.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -136,11 +130,15 @@ Partial Class RecProcess
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl1.SuspendLayout()
         Me.XtraTabPage1.SuspendLayout()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl3.SuspendLayout()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage2.SuspendLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl4.SuspendLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
         CType(Me.txtstat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -166,7 +164,6 @@ Partial Class RecProcess
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.BackstageViewControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lcphone
@@ -175,7 +172,7 @@ Partial Class RecProcess
         Me.lcphone.CustomizationFormText = "Phone Number"
         Me.lcphone.Location = New System.Drawing.Point(0, 120)
         Me.lcphone.Name = "lcphone"
-        Me.lcphone.Size = New System.Drawing.Size(212, 24)
+        Me.lcphone.Size = New System.Drawing.Size(205, 24)
         Me.lcphone.Text = "Phone Number"
         Me.lcphone.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -185,47 +182,20 @@ Partial Class RecProcess
         Me.txtphone.Location = New System.Drawing.Point(91, 132)
         Me.txtphone.MenuManager = Me.RibbonControl1
         Me.txtphone.Name = "txtphone"
-        Me.txtphone.Size = New System.Drawing.Size(129, 20)
+        Me.txtphone.Size = New System.Drawing.Size(122, 20)
         Me.txtphone.StyleController = Me.LayoutControl1
         Me.txtphone.TabIndex = 13
         '
         'RibbonControl1
         '
-        Me.RibbonControl1.ApplicationButtonDropDownControl = Me.BackstageViewControl2
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
         Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem3})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.MaxItemId = 7
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.Employee})
-        Me.RibbonControl1.Size = New System.Drawing.Size(402, 144)
+        Me.RibbonControl1.Size = New System.Drawing.Size(396, 144)
         Me.RibbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above
-        '
-        'BackstageViewControl2
-        '
-        Me.BackstageViewControl2.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow
-        Me.BackstageViewControl2.Controls.Add(Me.BackstageViewClientControl2)
-        Me.BackstageViewControl2.Items.Add(Me.BackstageViewTabItem2)
-        Me.BackstageViewControl2.Location = New System.Drawing.Point(72, 216)
-        Me.BackstageViewControl2.Name = "BackstageViewControl2"
-        Me.BackstageViewControl2.Ribbon = Me.RibbonControl1
-        Me.BackstageViewControl2.SelectedTab = Nothing
-        Me.BackstageViewControl2.Size = New System.Drawing.Size(480, 150)
-        Me.BackstageViewControl2.TabIndex = 38
-        '
-        'BackstageViewClientControl2
-        '
-        Me.BackstageViewClientControl2.Location = New System.Drawing.Point(188, 0)
-        Me.BackstageViewClientControl2.Name = "BackstageViewClientControl2"
-        Me.BackstageViewClientControl2.Size = New System.Drawing.Size(292, 150)
-        Me.BackstageViewClientControl2.TabIndex = 0
-        '
-        'BackstageViewTabItem2
-        '
-        Me.BackstageViewTabItem2.Caption = "BackstageViewTabItem2"
-        Me.BackstageViewTabItem2.ContentControl = Me.BackstageViewClientControl2
-        Me.BackstageViewTabItem2.Name = "BackstageViewTabItem2"
-        Me.BackstageViewTabItem2.Selected = False
         '
         'BarButtonItem1
         '
@@ -275,11 +245,11 @@ Partial Class RecProcess
         Me.LayoutControl1.Controls.Add(Me.txtaddress)
         Me.LayoutControl1.Controls.Add(Me.txtidcard)
         Me.LayoutControl1.Controls.Add(Me.txtid)
-        Me.LayoutControl1.Location = New System.Drawing.Point(169, 16)
+        Me.LayoutControl1.Location = New System.Drawing.Point(158, 31)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(409, 411, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(232, 289)
+        Me.LayoutControl1.Size = New System.Drawing.Size(225, 287)
         Me.LayoutControl1.TabIndex = 29
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -288,7 +258,7 @@ Partial Class RecProcess
         Me.txtstatus.Location = New System.Drawing.Point(91, 228)
         Me.txtstatus.MenuManager = Me.RibbonControl1
         Me.txtstatus.Name = "txtstatus"
-        Me.txtstatus.Size = New System.Drawing.Size(129, 20)
+        Me.txtstatus.Size = New System.Drawing.Size(122, 20)
         Me.txtstatus.StyleController = Me.LayoutControl1
         Me.txtstatus.TabIndex = 42
         '
@@ -297,7 +267,7 @@ Partial Class RecProcess
         Me.txtage.Location = New System.Drawing.Point(91, 180)
         Me.txtage.MenuManager = Me.RibbonControl1
         Me.txtage.Name = "txtage"
-        Me.txtage.Size = New System.Drawing.Size(129, 20)
+        Me.txtage.Size = New System.Drawing.Size(122, 20)
         Me.txtage.StyleController = Me.LayoutControl1
         Me.txtage.TabIndex = 41
         '
@@ -306,7 +276,7 @@ Partial Class RecProcess
         Me.txtgender.Location = New System.Drawing.Point(91, 204)
         Me.txtgender.MenuManager = Me.RibbonControl1
         Me.txtgender.Name = "txtgender"
-        Me.txtgender.Size = New System.Drawing.Size(129, 20)
+        Me.txtgender.Size = New System.Drawing.Size(122, 20)
         Me.txtgender.StyleController = Me.LayoutControl1
         Me.txtgender.TabIndex = 40
         '
@@ -314,7 +284,7 @@ Partial Class RecProcess
         '
         Me.txtdob.Location = New System.Drawing.Point(91, 252)
         Me.txtdob.Name = "txtdob"
-        Me.txtdob.Size = New System.Drawing.Size(129, 21)
+        Me.txtdob.Size = New System.Drawing.Size(122, 21)
         Me.txtdob.TabIndex = 39
         '
         'txtpob
@@ -322,7 +292,7 @@ Partial Class RecProcess
         Me.txtpob.Location = New System.Drawing.Point(91, 156)
         Me.txtpob.MenuManager = Me.RibbonControl1
         Me.txtpob.Name = "txtpob"
-        Me.txtpob.Size = New System.Drawing.Size(129, 20)
+        Me.txtpob.Size = New System.Drawing.Size(122, 20)
         Me.txtpob.StyleController = Me.LayoutControl1
         Me.txtpob.TabIndex = 38
         '
@@ -332,7 +302,7 @@ Partial Class RecProcess
         Me.txtfullname.MenuManager = Me.RibbonControl1
         Me.txtfullname.Name = "txtfullname"
         Me.txtfullname.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtfullname.Size = New System.Drawing.Size(129, 20)
+        Me.txtfullname.Size = New System.Drawing.Size(122, 20)
         Me.txtfullname.StyleController = Me.LayoutControl1
         Me.txtfullname.TabIndex = 31
         '
@@ -341,7 +311,7 @@ Partial Class RecProcess
         Me.txtinterview.Location = New System.Drawing.Point(91, 60)
         Me.txtinterview.MenuManager = Me.RibbonControl1
         Me.txtinterview.Name = "txtinterview"
-        Me.txtinterview.Size = New System.Drawing.Size(129, 20)
+        Me.txtinterview.Size = New System.Drawing.Size(122, 20)
         Me.txtinterview.StyleController = Me.LayoutControl1
         Me.txtinterview.TabIndex = 28
         '
@@ -350,7 +320,7 @@ Partial Class RecProcess
         Me.txtaddress.Location = New System.Drawing.Point(91, 108)
         Me.txtaddress.MenuManager = Me.RibbonControl1
         Me.txtaddress.Name = "txtaddress"
-        Me.txtaddress.Size = New System.Drawing.Size(129, 20)
+        Me.txtaddress.Size = New System.Drawing.Size(122, 20)
         Me.txtaddress.StyleController = Me.LayoutControl1
         Me.txtaddress.TabIndex = 10
         '
@@ -359,7 +329,7 @@ Partial Class RecProcess
         Me.txtidcard.Location = New System.Drawing.Point(91, 84)
         Me.txtidcard.MenuManager = Me.RibbonControl1
         Me.txtidcard.Name = "txtidcard"
-        Me.txtidcard.Size = New System.Drawing.Size(129, 20)
+        Me.txtidcard.Size = New System.Drawing.Size(122, 20)
         Me.txtidcard.StyleController = Me.LayoutControl1
         Me.txtidcard.TabIndex = 7
         '
@@ -368,7 +338,7 @@ Partial Class RecProcess
         Me.txtid.Location = New System.Drawing.Point(91, 36)
         Me.txtid.MenuManager = Me.RibbonControl1
         Me.txtid.Name = "txtid"
-        Me.txtid.Size = New System.Drawing.Size(129, 20)
+        Me.txtid.Size = New System.Drawing.Size(122, 20)
         Me.txtid.StyleController = Me.LayoutControl1
         Me.txtid.TabIndex = 6
         '
@@ -380,7 +350,7 @@ Partial Class RecProcess
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcid, Me.lcidcard, Me.lcaddress, Me.lcphone, Me.lcinterview, Me.lcfullname, Me.LayoutControlItem4, Me.LayoutControlItem2, Me.LayoutControlItem5, Me.LayoutControlItem3, Me.LayoutControlItem6})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(232, 289)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(225, 287)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -390,7 +360,7 @@ Partial Class RecProcess
         Me.lcid.CustomizationFormText = "ID Rec"
         Me.lcid.Location = New System.Drawing.Point(0, 24)
         Me.lcid.Name = "lcid"
-        Me.lcid.Size = New System.Drawing.Size(212, 24)
+        Me.lcid.Size = New System.Drawing.Size(205, 24)
         Me.lcid.Text = "ID Rec"
         Me.lcid.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -400,7 +370,7 @@ Partial Class RecProcess
         Me.lcidcard.CustomizationFormText = "LayoutControlItem4"
         Me.lcidcard.Location = New System.Drawing.Point(0, 72)
         Me.lcidcard.Name = "lcidcard"
-        Me.lcidcard.Size = New System.Drawing.Size(212, 24)
+        Me.lcidcard.Size = New System.Drawing.Size(205, 24)
         Me.lcidcard.Text = "ID Number"
         Me.lcidcard.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -410,7 +380,7 @@ Partial Class RecProcess
         Me.lcaddress.CustomizationFormText = "Address"
         Me.lcaddress.Location = New System.Drawing.Point(0, 96)
         Me.lcaddress.Name = "lcaddress"
-        Me.lcaddress.Size = New System.Drawing.Size(212, 24)
+        Me.lcaddress.Size = New System.Drawing.Size(205, 24)
         Me.lcaddress.Text = "Address"
         Me.lcaddress.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -420,7 +390,7 @@ Partial Class RecProcess
         Me.lcinterview.CustomizationFormText = "Interview Times"
         Me.lcinterview.Location = New System.Drawing.Point(0, 48)
         Me.lcinterview.Name = "lcinterview"
-        Me.lcinterview.Size = New System.Drawing.Size(212, 24)
+        Me.lcinterview.Size = New System.Drawing.Size(205, 24)
         Me.lcinterview.Text = "Interview Times"
         Me.lcinterview.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -430,7 +400,7 @@ Partial Class RecProcess
         Me.lcfullname.CustomizationFormText = "Full Name"
         Me.lcfullname.Location = New System.Drawing.Point(0, 0)
         Me.lcfullname.Name = "lcfullname"
-        Me.lcfullname.Size = New System.Drawing.Size(212, 24)
+        Me.lcfullname.Size = New System.Drawing.Size(205, 24)
         Me.lcfullname.Text = "Full Name"
         Me.lcfullname.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -440,7 +410,7 @@ Partial Class RecProcess
         Me.LayoutControlItem4.CustomizationFormText = "Place Of Birth"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 144)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(212, 24)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(205, 24)
         Me.LayoutControlItem4.Text = "Place Of Birth"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -450,7 +420,7 @@ Partial Class RecProcess
         Me.LayoutControlItem2.CustomizationFormText = "Gender"
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 192)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(212, 24)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(205, 24)
         Me.LayoutControlItem2.Text = "Gender"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -460,7 +430,7 @@ Partial Class RecProcess
         Me.LayoutControlItem5.CustomizationFormText = "Age"
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(212, 24)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(205, 24)
         Me.LayoutControlItem5.Text = "Age"
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -470,7 +440,7 @@ Partial Class RecProcess
         Me.LayoutControlItem3.CustomizationFormText = "Date Of Birth"
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 240)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(212, 29)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(205, 27)
         Me.LayoutControlItem3.Text = "Date Of Birth"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -480,7 +450,7 @@ Partial Class RecProcess
         Me.LayoutControlItem6.CustomizationFormText = "Status"
         Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 216)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(212, 24)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(205, 24)
         Me.LayoutControlItem6.Text = "Status"
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(76, 13)
         '
@@ -504,33 +474,39 @@ Partial Class RecProcess
         Me.XtraTabControl1.Location = New System.Drawing.Point(3, 1)
         Me.XtraTabControl1.Name = "XtraTabControl1"
         Me.XtraTabControl1.SelectedTabPage = Me.XtraTabPage1
-        Me.XtraTabControl1.Size = New System.Drawing.Size(399, 377)
+        Me.XtraTabControl1.Size = New System.Drawing.Size(394, 377)
         Me.XtraTabControl1.TabIndex = 50
         Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage1, Me.XtraTabPage2})
         '
         'XtraTabPage1
         '
-        Me.XtraTabPage1.Controls.Add(Me.lcview)
-        Me.XtraTabPage1.Controls.Add(Me.GroupControl2)
-        Me.XtraTabPage1.Controls.Add(Me.TextBox1)
-        Me.XtraTabPage1.Controls.Add(Me.Button1)
-        Me.XtraTabPage1.Controls.Add(Me.GridControl1)
-        Me.XtraTabPage1.Controls.Add(Me.LayoutControl1)
-        Me.XtraTabPage1.Controls.Add(Me.Label1)
-        Me.XtraTabPage1.Controls.Add(Me.SimpleButton2)
+        Me.XtraTabPage1.Controls.Add(Me.GroupControl3)
         Me.XtraTabPage1.Name = "XtraTabPage1"
-        Me.XtraTabPage1.Size = New System.Drawing.Size(393, 349)
+        Me.XtraTabPage1.Size = New System.Drawing.Size(388, 349)
         Me.XtraTabPage1.Text = "Pending"
         '
-        'lcview
+        'GroupControl3
         '
-        Me.lcview.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lcview.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lcview.Location = New System.Drawing.Point(32, 3)
-        Me.lcview.Name = "lcview"
-        Me.lcview.Size = New System.Drawing.Size(90, 17)
-        Me.lcview.TabIndex = 37
-        Me.lcview.Text = "Pending Lists"
+        Me.GroupControl3.Controls.Add(Me.button1)
+        Me.GroupControl3.Controls.Add(Me.GroupControl2)
+        Me.GroupControl3.Controls.Add(Me.GridControl1)
+        Me.GroupControl3.Controls.Add(Me.TextBox1)
+        Me.GroupControl3.Controls.Add(Me.LayoutControl1)
+        Me.GroupControl3.Controls.Add(Me.Label1)
+        Me.GroupControl3.Controls.Add(Me.SimpleButton2)
+        Me.GroupControl3.Location = New System.Drawing.Point(0, 2)
+        Me.GroupControl3.Name = "GroupControl3"
+        Me.GroupControl3.Size = New System.Drawing.Size(388, 356)
+        Me.GroupControl3.TabIndex = 40
+        Me.GroupControl3.Text = "Pending Lists"
+        '
+        'button1
+        '
+        Me.button1.Image = CType(resources.GetObject("button1.Image"), System.Drawing.Image)
+        Me.button1.Location = New System.Drawing.Point(134, 26)
+        Me.button1.Name = "button1"
+        Me.button1.Size = New System.Drawing.Size(28, 23)
+        Me.button1.TabIndex = 51
         '
         'GroupControl2
         '
@@ -538,9 +514,9 @@ Partial Class RecProcess
         Me.GroupControl2.Controls.Add(Me.LabelControl2)
         Me.GroupControl2.Controls.Add(Me.txtinterviewdate)
         Me.GroupControl2.Controls.Add(Me.SimpleButton4)
-        Me.GroupControl2.Location = New System.Drawing.Point(84, 101)
+        Me.GroupControl2.Location = New System.Drawing.Point(90, 83)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(197, 113)
+        Me.GroupControl2.Size = New System.Drawing.Size(198, 108)
         Me.GroupControl2.TabIndex = 43
         Me.GroupControl2.Visible = False
         '
@@ -568,29 +544,13 @@ Partial Class RecProcess
         Me.SimpleButton4.TabIndex = 38
         Me.SimpleButton4.Text = "Ok"
         '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(16, 26)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(88, 21)
-        Me.TextBox1.TabIndex = 40
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(109, 26)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(54, 23)
-        Me.Button1.TabIndex = 41
-        Me.Button1.Text = "Search"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(14, 53)
+        Me.GridControl1.Location = New System.Drawing.Point(6, 51)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(149, 279)
+        Me.GridControl1.Size = New System.Drawing.Size(157, 279)
         Me.GridControl1.TabIndex = 34
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -600,11 +560,18 @@ Partial Class RecProcess
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsView.ColumnAutoWidth = False
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(6, 26)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(122, 21)
+        Me.TextBox1.TabIndex = 40
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(174, 312)
+        Me.Label1.Location = New System.Drawing.Point(166, 322)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(171, 13)
         Me.Label1.TabIndex = 42
@@ -612,50 +579,54 @@ Partial Class RecProcess
         '
         'SimpleButton2
         '
-        Me.SimpleButton2.Location = New System.Drawing.Point(351, 305)
+        Me.SimpleButton2.Location = New System.Drawing.Point(341, 321)
         Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(36, 27)
+        Me.SimpleButton2.Size = New System.Drawing.Size(36, 22)
         Me.SimpleButton2.TabIndex = 37
         Me.SimpleButton2.Text = "Yes"
         '
         'XtraTabPage2
         '
-        Me.XtraTabPage2.Controls.Add(Me.LabelControl1)
-        Me.XtraTabPage2.Controls.Add(Me.SimpleButton1)
-        Me.XtraTabPage2.Controls.Add(Me.Button2)
-        Me.XtraTabPage2.Controls.Add(Me.LayoutControl2)
-        Me.XtraTabPage2.Controls.Add(Me.TextBox2)
-        Me.XtraTabPage2.Controls.Add(Me.GridControl2)
+        Me.XtraTabPage2.Controls.Add(Me.GroupControl4)
         Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(393, 349)
+        Me.XtraTabPage2.Size = New System.Drawing.Size(388, 349)
         Me.XtraTabPage2.Text = "Progress"
         '
-        'LabelControl1
+        'GroupControl4
         '
-        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl1.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.LabelControl1.Location = New System.Drawing.Point(20, 4)
-        Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(114, 17)
-        Me.LabelControl1.TabIndex = 44
-        Me.LabelControl1.Text = "In Progress Lists"
+        Me.GroupControl4.Controls.Add(Me.button2)
+        Me.GroupControl4.Controls.Add(Me.TextBox2)
+        Me.GroupControl4.Controls.Add(Me.SimpleButton1)
+        Me.GroupControl4.Controls.Add(Me.LayoutControl2)
+        Me.GroupControl4.Controls.Add(Me.GridControl2)
+        Me.GroupControl4.Location = New System.Drawing.Point(-2, 1)
+        Me.GroupControl4.Name = "GroupControl4"
+        Me.GroupControl4.Size = New System.Drawing.Size(390, 347)
+        Me.GroupControl4.TabIndex = 2
+        Me.GroupControl4.Text = "In Progress Lists"
+        '
+        'button2
+        '
+        Me.button2.Image = CType(resources.GetObject("button2.Image"), System.Drawing.Image)
+        Me.button2.Location = New System.Drawing.Point(134, 29)
+        Me.button2.Name = "button2"
+        Me.button2.Size = New System.Drawing.Size(28, 23)
+        Me.button2.TabIndex = 50
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(6, 29)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(122, 21)
+        Me.TextBox2.TabIndex = 48
         '
         'SimpleButton1
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(309, 280)
+        Me.SimpleButton1.Location = New System.Drawing.Point(300, 307)
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton1.TabIndex = 47
         Me.SimpleButton1.Text = "Submit"
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(112, 27)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(54, 23)
-        Me.Button2.TabIndex = 49
-        Me.Button2.Text = "Search"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'LayoutControl2
         '
@@ -669,7 +640,7 @@ Partial Class RecProcess
         Me.LayoutControl2.Controls.Add(Me.skill1)
         Me.LayoutControl2.Controls.Add(Me.txtname)
         Me.LayoutControl2.Controls.Add(Me.txtidrecc)
-        Me.LayoutControl2.Location = New System.Drawing.Point(172, 18)
+        Me.LayoutControl2.Location = New System.Drawing.Point(163, 42)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.Root = Me.LayoutControlGroup2
         Me.LayoutControl2.Size = New System.Drawing.Size(223, 263)
@@ -805,7 +776,7 @@ Partial Class RecProcess
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
         Me.LayoutControlItem8.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem8.Text = "Skill 1"
+        Me.LayoutControlItem8.Text = "Leadership"
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(72, 13)
         '
         'LayoutControlItem9
@@ -815,7 +786,7 @@ Partial Class RecProcess
         Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
         Me.LayoutControlItem9.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem9.Text = "Skill 2"
+        Me.LayoutControlItem9.Text = "Knowledge"
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(72, 13)
         '
         'LayoutControlItem10
@@ -825,7 +796,7 @@ Partial Class RecProcess
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
         Me.LayoutControlItem10.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem10.Text = "Skill 3"
+        Me.LayoutControlItem10.Text = "Confidence"
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(72, 13)
         '
         'LayoutControlItem11
@@ -835,7 +806,7 @@ Partial Class RecProcess
         Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 144)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem11.Text = "Skill 4"
+        Me.LayoutControlItem11.Text = "Teamwork"
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(72, 13)
         '
         'LayoutControlItem12
@@ -845,7 +816,7 @@ Partial Class RecProcess
         Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
         Me.LayoutControlItem12.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem12.Text = "Skill 5"
+        Me.LayoutControlItem12.Text = "Individual"
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(72, 13)
         '
         'LayoutControlItem13
@@ -878,16 +849,9 @@ Partial Class RecProcess
         Me.LayoutControlItem15.Text = "Status"
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(72, 13)
         '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(10, 28)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(96, 21)
-        Me.TextBox2.TabIndex = 48
-        '
         'GridControl2
         '
-        Me.GridControl2.Location = New System.Drawing.Point(9, 55)
+        Me.GridControl2.Location = New System.Drawing.Point(5, 54)
         Me.GridControl2.MainView = Me.GridView2
         Me.GridControl2.MenuManager = Me.RibbonControl1
         Me.GridControl2.Name = "GridControl2"
@@ -906,28 +870,9 @@ Partial Class RecProcess
         Me.NotifyIcon1.Text = "NotifyIcon1"
         Me.NotifyIcon1.Visible = True
         '
-        'BackstageViewControl1
-        '
-        Me.BackstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow
-        Me.BackstageViewControl1.Controls.Add(Me.BackstageViewClientControl1)
-        Me.BackstageViewControl1.Items.Add(Me.BackstageViewTabItem1)
-        Me.BackstageViewControl1.Location = New System.Drawing.Point(72, 216)
-        Me.BackstageViewControl1.Name = "BackstageViewControl1"
-        Me.BackstageViewControl1.SelectedTab = Nothing
-        Me.BackstageViewControl1.Size = New System.Drawing.Size(480, 150)
-        Me.BackstageViewControl1.TabIndex = 37
-        '
-        'BackstageViewClientControl1
-        '
-        Me.BackstageViewClientControl1.Location = New System.Drawing.Point(188, 0)
-        Me.BackstageViewClientControl1.Name = "BackstageViewClientControl1"
-        Me.BackstageViewClientControl1.Size = New System.Drawing.Size(292, 150)
-        Me.BackstageViewClientControl1.TabIndex = 0
-        '
         'BackstageViewTabItem1
         '
         Me.BackstageViewTabItem1.Caption = "BackstageViewTabItem1"
-        Me.BackstageViewTabItem1.ContentControl = Me.BackstageViewClientControl1
         Me.BackstageViewTabItem1.Name = "BackstageViewTabItem1"
         Me.BackstageViewTabItem1.Selected = False
         '
@@ -935,14 +880,10 @@ Partial Class RecProcess
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(402, 523)
+        Me.ClientSize = New System.Drawing.Size(396, 522)
         Me.Controls.Add(Me.GroupControl1)
-        Me.Controls.Add(Me.BackstageViewControl1)
-        Me.Controls.Add(Me.BackstageViewControl2)
         Me.Controls.Add(Me.RibbonControl1)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(412, 528)
-        Me.MinimumSize = New System.Drawing.Size(412, 528)
         Me.Name = "RecProcess"
         Me.Ribbon = Me.RibbonControl1
         Me.ShowIcon = False
@@ -952,7 +893,6 @@ Partial Class RecProcess
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.BackstageViewControl2.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -980,14 +920,18 @@ Partial Class RecProcess
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControl1.ResumeLayout(False)
         Me.XtraTabPage1.ResumeLayout(False)
-        Me.XtraTabPage1.PerformLayout()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl3.ResumeLayout(False)
+        Me.GroupControl3.PerformLayout()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
         Me.GroupControl2.PerformLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage2.ResumeLayout(False)
-        Me.XtraTabPage2.PerformLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl4.ResumeLayout(False)
+        Me.GroupControl4.PerformLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
         CType(Me.txtstat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1013,7 +957,6 @@ Partial Class RecProcess
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.BackstageViewControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1041,7 +984,6 @@ Partial Class RecProcess
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents SimpleButton4 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents lcview As DevExpress.XtraEditors.LabelControl
     Friend WithEvents txtinterviewdate As DateTimePicker
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
@@ -1056,7 +998,6 @@ Partial Class RecProcess
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtstatus As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents Button1 As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents GroupControl2 As DevExpress.XtraEditors.GroupControl
@@ -1064,7 +1005,6 @@ Partial Class RecProcess
     Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents skill5 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents skill4 As DevExpress.XtraEditors.TextEdit
@@ -1088,15 +1028,13 @@ Partial Class RecProcess
     Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtstat As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents Button2 As Button
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents XtraTabPage1 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPage2 As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents BackstageViewControl2 As DevExpress.XtraBars.Ribbon.BackstageViewControl
-    Friend WithEvents BackstageViewClientControl2 As DevExpress.XtraBars.Ribbon.BackstageViewClientControl
-    Friend WithEvents BackstageViewTabItem2 As DevExpress.XtraBars.Ribbon.BackstageViewTabItem
-    Friend WithEvents BackstageViewControl1 As DevExpress.XtraBars.Ribbon.BackstageViewControl
-    Friend WithEvents BackstageViewClientControl1 As DevExpress.XtraBars.Ribbon.BackstageViewClientControl
     Friend WithEvents BackstageViewTabItem1 As DevExpress.XtraBars.Ribbon.BackstageViewTabItem
+    Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents button2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents button1 As DevExpress.XtraEditors.SimpleButton
 End Class

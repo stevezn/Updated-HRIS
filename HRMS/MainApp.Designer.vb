@@ -73,7 +73,7 @@ Partial Class MainApp
         Me.txtBar4 = New DevExpress.XtraEditors.TextEdit()
         Me.txtBar3 = New DevExpress.XtraEditors.TextEdit()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.CardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
         Me.txtTanggal = New DevExpress.XtraEditors.DateEdit()
         Me.txtJnsShift = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -148,7 +148,7 @@ Partial Class MainApp
         CType(Me.txtBar4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtBar3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTanggal.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtTanggal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtJnsShift.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -583,21 +583,26 @@ Partial Class MainApp
         GridLevelNode7.RelationName = "Level7"
         Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1, GridLevelNode2, GridLevelNode3, GridLevelNode4, GridLevelNode5, GridLevelNode6, GridLevelNode7})
         Me.GridControl1.Location = New System.Drawing.Point(262, 23)
-        Me.GridControl1.MainView = Me.GridView1
+        Me.GridControl1.MainView = Me.CardView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.GridControl1.MenuManager = RibbonControl1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(570, 424)
         Me.GridControl1.TabIndex = 4
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.CardView1})
         '
-        'GridView1
+        'CardView1
         '
-        Me.GridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsFind.AlwaysVisible = True
-        Me.GridView1.OptionsView.ColumnAutoWidth = False
+        Me.CardView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
+        Me.CardView1.FocusedCardTopFieldIndex = 0
+        Me.CardView1.GridControl = Me.GridControl1
+        Me.CardView1.Name = "CardView1"
+        Me.CardView1.OptionsBehavior.Editable = False
+        Me.CardView1.OptionsFind.AlwaysVisible = True
+        Me.CardView1.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateFocusedItem
+        Me.CardView1.OptionsView.ShowQuickCustomizeButton = False
+        Me.CardView1.PaintStyleName = "Office2003"
+        Me.CardView1.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow
         '
         'txtTanggal
         '
@@ -1104,7 +1109,7 @@ Partial Class MainApp
         CType(Me.txtBar4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtBar3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTanggal.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtTanggal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtJnsShift.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1229,7 +1234,6 @@ Partial Class MainApp
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents compacode As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Label1 As Label
     Friend WithEvents DataSet1BindingSource As BindingSource
@@ -1244,4 +1248,5 @@ Partial Class MainApp
     Friend WithEvents txtposition As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents lcposition As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents CardView1 As DevExpress.XtraGrid.Views.Card.CardView
 End Class

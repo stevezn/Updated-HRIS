@@ -43,7 +43,7 @@ Public Class ShowAtt
 
     Private Sub loadabsensi()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Dates, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p1.Value = DateTimePicker1.Value.Date

@@ -367,9 +367,9 @@ Partial Class Attendances
         '
         Me.LabelControl10.Location = New System.Drawing.Point(288, 293)
         Me.LabelControl10.Name = "LabelControl10"
-        Me.LabelControl10.Size = New System.Drawing.Size(20, 13)
+        Me.LabelControl10.Size = New System.Drawing.Size(42, 13)
         Me.LabelControl10.TabIndex = 85
-        Me.LabelControl10.Text = "....."
+        Me.LabelControl10.Text = "Quantity"
         '
         'txtpages
         '
@@ -424,7 +424,7 @@ Partial Class Attendances
         '
         'BarButtonItem3
         '
-        Me.BarButtonItem3.Caption = "Menu"
+        Me.BarButtonItem3.Caption = "Leave Request"
         Me.BarButtonItem3.Glyph = CType(resources.GetObject("BarButtonItem3.Glyph"), System.Drawing.Image)
         Me.BarButtonItem3.Id = 3
         Me.BarButtonItem3.Name = "BarButtonItem3"

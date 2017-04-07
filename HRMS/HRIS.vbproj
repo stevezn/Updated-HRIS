@@ -327,6 +327,12 @@
     <Compile Include="DemosiHistory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EmployeeDetails.Designer.vb">
+      <DependentUpon>EmployeeDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
     </Compile>
@@ -337,6 +343,12 @@
       <DependentUpon>infoReq.vb</DependentUpon>
     </Compile>
     <Compile Include="infoReq.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveRequest.Designer.vb">
+      <DependentUpon>LeaveRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveRequest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lists.Designer.vb">
@@ -390,6 +402,12 @@
       <DependentUpon>Notes.vb</DependentUpon>
     </Compile>
     <Compile Include="Notes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OtherIncome.Designer.vb">
+      <DependentUpon>OtherIncome.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OtherIncome.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PayrollSet.Designer.vb">
@@ -463,10 +481,28 @@
     <Compile Include="SPForms.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="StatusChange.Designer.vb">
+      <DependentUpon>StatusChange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StatusChange.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Termination.Designer.vb">
+      <DependentUpon>Termination.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Termination.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View.Designer.vb">
       <DependentUpon>View.vb</DependentUpon>
     </Compile>
     <Compile Include="View.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Warning.Designer.vb">
+      <DependentUpon>Warning.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Warning.vb">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Additional.resx">
@@ -509,11 +545,17 @@
     <EmbeddedResource Include="DemosiHistory.resx">
       <DependentUpon>DemosiHistory.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeDetails.resx">
+      <DependentUpon>EmployeeDetails.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="infoReq.resx">
       <DependentUpon>infoReq.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveRequest.resx">
+      <DependentUpon>LeaveRequest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lists.resx">
       <DependentUpon>Lists.vb</DependentUpon>
@@ -551,6 +593,9 @@
     <EmbeddedResource Include="Notes.resx">
       <DependentUpon>Notes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OtherIncome.resx">
+      <DependentUpon>OtherIncome.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PayrollSet.resx">
       <DependentUpon>PayrollSet.vb</DependentUpon>
     </EmbeddedResource>
@@ -584,8 +629,17 @@
     <EmbeddedResource Include="SPForms.resx">
       <DependentUpon>SPForms.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StatusChange.resx">
+      <DependentUpon>StatusChange.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Termination.resx">
+      <DependentUpon>Termination.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View.resx">
       <DependentUpon>View.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Warning.resx">
+      <DependentUpon>Warning.vb</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="DataSet11.xsc">
@@ -677,6 +731,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\vtimxrajzbuard4hsj78.jpg" />
+    <None Include="Resources\Insert-Photo-Here.jpg" />
     <Content Include="Treetog-Junior-Folder-documents.ico" />
   </ItemGroup>
   <ItemGroup>

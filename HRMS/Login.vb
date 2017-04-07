@@ -71,6 +71,7 @@ Public Class Login
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(tbl_par)
             If tbl_par.Rows.Count > 0 Then
+                main.Show()
                 cir.Show()
                 Hide()
             Else
@@ -94,10 +95,10 @@ Public Class Login
     End Sub
 
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AutomaticUpdater1.Show()
-        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
+        AutomaticUpdater1.Show()
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
     End Sub
 
     Public Sub CheckForUpdates()
@@ -171,44 +172,49 @@ Public Class Login
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        teUsername.Enabled = False
-        tePassword.Enabled = False
-        If ProgressBar1.Value < 100 Then
-            ProgressBar1.Value += 10
-        ElseIf ProgressBar1.Value = 100 Then
-            Timer1.Stop()
-            Dim tbl_par As New DataTable
-            Dim sqlCommand As New MySqlCommand
-            sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
-            sqlCommand.Connection = SQLConnection
-            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(tbl_par)
-            If tbl_par.Rows.Count > 0 Then
-                cir.Show()
-                Hide()
-            Else
-                MsgBox("Username and Password Didn't Match!")
+        Try
+            teUsername.Enabled = False
+            tePassword.Enabled = False
+            If ProgressBar1.Value < 100 Then
+                ProgressBar1.Value += 10
+            ElseIf ProgressBar1.Value = 100 Then
+                Timer1.Stop()
+                Dim tbl_par As New DataTable
+                Dim sqlCommand As New MySqlCommand
+                sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
+                sqlCommand.Connection = SQLConnection
+                Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(tbl_par)
+                If tbl_par.Rows.Count > 0 Then
+                    main.Show()
+                    cir.Show()
+                    Hide()
+                Else
+                    MsgBox("Username and Password Didn't Match!")
+                End If
+                Timer1.Stop()
             End If
-            Timer1.Stop()
-        End If
-        If ProgressBar1.Value = 10 Then
-            Label1.Text = "Preparing"
-        ElseIf ProgressBar1.Value = 50 Then
-            Label1.Text = "Check For Updates...."
-        ElseIf ProgressBar1.Value = 60 Then
-            CheckForUpdates()
-        ElseIf ProgressBar1.Value = 96 Then
-            Label1.Text = "Ready"
-        ElseIf ProgressBar1.Value = 97 Then
-            Label1.Text = "Ready."
-        ElseIf ProgressBar1.Value = 98 Then
-            Label1.Text = "Ready.."
-        ElseIf ProgressBar1.Value = 99 Then
-            Label1.Text = "Ready..."
-        ElseIf ProgressBar1.Value = 100 Then
-            Label1.Text = "Ready...."
-        End If
+            If ProgressBar1.Value = 10 Then
+                Label1.Text = "Preparing"
+            ElseIf ProgressBar1.Value = 50 Then
+                Label1.Text = "Check For Updates...."
+            ElseIf ProgressBar1.Value = 60 Then
+                CheckForUpdates()
+            ElseIf ProgressBar1.Value = 96 Then
+                Label1.Text = "Ready"
+            ElseIf ProgressBar1.Value = 97 Then
+                Label1.Text = "Ready."
+            ElseIf ProgressBar1.Value = 98 Then
+                Label1.Text = "Ready.."
+            ElseIf ProgressBar1.Value = 99 Then
+                Label1.Text = "Ready..."
+            ElseIf ProgressBar1.Value = 100 Then
+                Label1.Text = "Ready...."
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Sub loadsettings()

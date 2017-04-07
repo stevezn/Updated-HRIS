@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HRIS", "HRMS\HRIS.vbproj", "{4A60B4F2-BCEA-437A-B2D0-27B544562140}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HRIS ( Developing )", "..\HRIS ( Developing )\HRIS ( Developing ).vdproj", "{7E5CA52E-8704-4C34-9B3E-B6FB30548E97}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HR Programs", "HR Programs\HR Programs.vdproj", "{0CD86A1F-FD30-4AC3-ABB9-30388B69A086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +23,10 @@ Global
 		{4A60B4F2-BCEA-437A-B2D0-27B544562140}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4A60B4F2-BCEA-437A-B2D0-27B544562140}.Release|x86.ActiveCfg = Release|x86
 		{4A60B4F2-BCEA-437A-B2D0-27B544562140}.Release|x86.Build.0 = Release|x86
-		{7E5CA52E-8704-4C34-9B3E-B6FB30548E97}.Debug|Any CPU.ActiveCfg = Debug
-		{7E5CA52E-8704-4C34-9B3E-B6FB30548E97}.Debug|Any CPU.Build.0 = Debug
-		{7E5CA52E-8704-4C34-9B3E-B6FB30548E97}.Debug|x86.ActiveCfg = Debug
-		{7E5CA52E-8704-4C34-9B3E-B6FB30548E97}.Release|Any CPU.ActiveCfg = Release
-		{7E5CA52E-8704-4C34-9B3E-B6FB30548E97}.Release|Any CPU.Build.0 = Release
-		{7E5CA52E-8704-4C34-9B3E-B6FB30548E97}.Release|x86.ActiveCfg = Release
+		{0CD86A1F-FD30-4AC3-ABB9-30388B69A086}.Debug|Any CPU.ActiveCfg = Debug
+		{0CD86A1F-FD30-4AC3-ABB9-30388B69A086}.Debug|x86.ActiveCfg = Debug
+		{0CD86A1F-FD30-4AC3-ABB9-30388B69A086}.Release|Any CPU.ActiveCfg = Release
+		{0CD86A1F-FD30-4AC3-ABB9-30388B69A086}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

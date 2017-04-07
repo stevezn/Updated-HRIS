@@ -93,11 +93,11 @@ Public Class Analytical
     End Sub
 
     'Private Sub drawchart()
-    '    'draw the chart
+    '    draw the chart
     '    Chart1.Series.Clear()
     '    Chart1.Series.Add("Recruitment Statistical")
     '    With Chart1.Series(0)
-    '        '.ChartType = DataVisualization.Charting.SeriesChartType.Line
+    '        .ChartType = DataVisualization.Charting.SeriesChartType.Line
     '        .BorderWidth = 1
     '        .Color = Color.Red
     '        .BorderDashStyle = ChartDashStyle.Dash
@@ -273,35 +273,43 @@ Public Class Analytical
     End Sub
 
     Private Sub btnYes_Click(sender As Object, e As EventArgs) Handles btnYes.Click
-        Dim mess As String
-        Dim down As MySqlCommand = SQLConnection.CreateCommand
-        down.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"
-        Dim downres As String = CStr(down.ExecuteScalar)
-        mess = CType(MsgBox("Are you sure to change " & downres & " status to be accepted ?", MsgBoxStyle.YesNo, "Warning"), String)
-        If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
-            Dim up As MySqlCommand = SQLConnection.CreateCommand
-            up.CommandText = "update db_recruitment set status = 'Accepted' where idrec = @ic"
-            up.Parameters.AddWithValue("@ic", txtid.Text)
-            up.ExecuteNonQuery()
-            MsgBox("Status from " & downres & " is changed to be accepted")
+        If txtnames.Text = "" OrElse txtid.Text = "" Then
+            MsgBox("There's no candidates selected")
+        Else
+            Dim mess As String
+            Dim down As MySqlCommand = SQLConnection.CreateCommand
+            down.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"
+            Dim downres As String = CStr(down.ExecuteScalar)
+            mess = CType(MsgBox("Are you sure to change " & downres & " status to be accepted ?", MsgBoxStyle.YesNo, "Warning"), String)
+            If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+                Dim up As MySqlCommand = SQLConnection.CreateCommand
+                up.CommandText = "update db_recruitment set status = 'Accepted' where idrec = @ic"
+                up.Parameters.AddWithValue("@ic", txtid.Text)
+                up.ExecuteNonQuery()
+                MsgBox("Status from " & downres & " is changed to be accepted")
+            End If
+            loadinfo()
         End If
-        loadinfo()
     End Sub
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
-        Dim mess As String
-        Dim down As MySqlCommand = SQLConnection.CreateCommand
-        down.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"
-        Dim downres As String = CStr(down.ExecuteScalar)
-        mess = CType(MsgBox("Are you sure to change " & downres & " status to be rejected ?", MsgBoxStyle.YesNo, "Warning"), String)
-        If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
-            Dim up As MySqlCommand = SQLConnection.CreateCommand
-            up.CommandText = "update db_recruitment set status = 'Rejected' where idrec = @ic"
-            up.Parameters.AddWithValue("@ic", txtid.Text)
-            up.ExecuteNonQuery()
-            MsgBox("Status from " & downres & " is changed to be rejected")
+        If txtnames.Text = "" OrElse txtid.Text = "" Then
+            MsgBox("There's no candidates selected")
+        Else
+            Dim mess As String
+            Dim down As MySqlCommand = SQLConnection.CreateCommand
+            down.CommandText = "select fullname from db_recruitment where idrec = '" & txtid.Text & "'"
+            Dim downres As String = CStr(down.ExecuteScalar)
+            mess = CType(MsgBox("Are you sure to change " & downres & " status to be rejected ?", MsgBoxStyle.YesNo, "Warning"), String)
+            If CType(mess, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+                Dim up As MySqlCommand = SQLConnection.CreateCommand
+                up.CommandText = "update db_recruitment set status = 'Rejected' where idrec = @ic"
+                up.Parameters.AddWithValue("@ic", txtid.Text)
+                up.ExecuteNonQuery()
+                MsgBox("Status from " & downres & " is changed to be rejected")
+            End If
+            loadinfo()
         End If
-        loadinfo()
     End Sub
 
     Private Sub txtposition_EditValueChanged(sender As Object, e As EventArgs) Handles txtposition.EditValueChanged

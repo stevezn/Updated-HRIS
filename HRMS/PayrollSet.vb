@@ -1,22 +1,6 @@
 ﻿Imports System.IO
 
 Public Class PayrollSet
-    Dim connectionString As String
-    Dim SQLConnection As MySqlConnection = New MySqlConnection
-    Dim oDt_sched As New DataTable()
-    Dim tbl_par As New DataTable
-
-    Sub loaddata()
-        Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "SELECT Bpjs, JamKecelakaanKerja, JaminanKesehatan, IuranPensiun, JaminanHariTua, BiayaJabatan, Lates, JaminanKematian From db_setpayroll"
-        sqlcommand.Connection = SQLConnection
-        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-        Dim cb As New MySqlCommandBuilder(adapter)
-        adapter.Fill(tbl_par)
-        For index As Integer = 0 To tbl_par.Rows.Count - 1
-        Next
-    End Sub
-
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
@@ -47,6 +31,22 @@ Public Class PayrollSet
             db = "db_hris"
         End If
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
+    End Sub
+
+    Dim connectionString As String
+    Dim SQLConnection As MySqlConnection = New MySqlConnection
+    Dim oDt_sched As New DataTable()
+    Dim tbl_par As New DataTable
+
+    Sub loaddata()
+        Dim sqlcommand As New MySqlCommand
+        sqlcommand.CommandText = "SELECT Bpjs, JamKecelakaanKerja, JaminanKesehatan, IuranPensiun, JaminanHariTua, BiayaJabatan, Lates, JaminanKematian, TK0, TK1, TK2, TK3, K0, K1, K2, K3, KI0, KI1, KI2 From db_setpayroll"
+        sqlcommand.Connection = SQLConnection
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par)
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+        Next
     End Sub
 
     Sub reset()
@@ -215,6 +215,105 @@ Public Class PayrollSet
         End Try
     End Sub
 
+    Public Sub updatetk0()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " TK0 = @tk0"
+        cmmd.Parameters.AddWithValue("@tk0", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updatetk1()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                           " TK1 = @tk1"
+        cmmd.Parameters.AddWithValue("@tk1", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updatetk2()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " TK2 = @tk2"
+        cmmd.Parameters.AddWithValue("@tk2", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updatetk3()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " TK3 = @tk3"
+        cmmd.Parameters.AddWithValue("@tk3", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updatek0()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " K0 = @k0"
+        cmmd.Parameters.AddWithValue("@k0", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updatek1()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " K1 = @k1"
+        cmmd.Parameters.AddWithValue("@K1", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updatek2()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                           " k2 = @k2"
+        cmmd.Parameters.AddWithValue("@k2", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updatek3()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " K3 = @K3"
+        cmmd.Parameters.AddWithValue("@K3", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updateki0()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " KI0 = @KI0"
+        cmmd.Parameters.AddWithValue("@KI0", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updateki1()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " KI1 = @KI1"
+        cmmd.Parameters.AddWithValue("@KI1", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
+    Public Sub updateKi2()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "update db_setpayroll set" +
+                            " KI2 = @KI2"
+        cmmd.Parameters.AddWithValue("@KI2", txtnew.Text)
+        cmmd.ExecuteNonQuery()
+        MsgBox("Changed")
+    End Sub
+
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         If radiobpjs.Checked = True Then
             If txtnew.Text = "" Then
@@ -263,6 +362,72 @@ Public Class PayrollSet
                 MsgBox("Please input the new value!")
             Else
                 updatejamkem()
+            End If
+        ElseIf tk0.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updatetk0()
+            End If
+        ElseIf tk1.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updatetk1()
+            End If
+        ElseIf tk2.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updatetk2()
+            End If
+        ElseIf tk3.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updatetk3()
+            End If
+        ElseIf k0.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updatek0()
+            End If
+        ElseIf k1.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updatek1()
+            End If
+        ElseIf k2.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updatek2()
+            End If
+        ElseIf k3.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updatek3()
+            End If
+        ElseIf ki0.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updateki0()
+            End If
+        ElseIf ki1.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updateki1()
+            End If
+        ElseIf ki2.Checked = True Then
+            If txtnew.Text = "" Then
+                MsgBox("Please input the new value")
+            Else
+                updateki2()
             End If
         End If
     End Sub
@@ -332,6 +497,93 @@ Public Class PayrollSet
         reset()
         For index As Integer = 0 To tbl_par.Rows.Count - 1
             txtcurrent.Text = tbl_par.Rows(index).Item(7).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub tk0_CheckedChanged(sender As Object, e As EventArgs) Handles tk0.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(8).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub tk1_CheckedChanged(sender As Object, e As EventArgs) Handles tk1.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(9).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub tk2_CheckedChanged(sender As Object, e As EventArgs) Handles tk2.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(10).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub tk3_CheckedChanged(sender As Object, e As EventArgs) Handles tk3.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(11).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub k0_CheckedChanged(sender As Object, e As EventArgs) Handles k0.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(12).ToString
+        Next
+    End Sub
+
+    Private Sub k1_CheckedChanged(sender As Object, e As EventArgs) Handles k1.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(13).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub k2_CheckedChanged(sender As Object, e As EventArgs) Handles k2.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(14).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub k3_CheckedChanged(sender As Object, e As EventArgs) Handles k3.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(15).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub ki0_CheckedChanged(sender As Object, e As EventArgs) Handles ki0.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(16).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub ki1_CheckedChanged(sender As Object, e As EventArgs) Handles ki1.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(17).ToString
+        Next
+        loaddata()
+    End Sub
+
+    Private Sub ki2_CheckedChanged(sender As Object, e As EventArgs) Handles ki2.CheckedChanged
+        reset()
+        For index As Integer = 0 To tbl_par.Rows.Count - 1
+            txtcurrent.Text = tbl_par.Rows(index).Item(18).ToString
         Next
         loaddata()
     End Sub

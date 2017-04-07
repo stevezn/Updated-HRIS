@@ -80,7 +80,7 @@ Public Class RecProcess
         Dim sk1 As String = CStr(sk.ExecuteScalar)
         If sk1 = "" Then
             If skill1.Text = "" OrElse skill2.Text = "" OrElse skill3.Text = "" OrElse skill4.Text = "" OrElse skill5.Text = "" OrElse txtpos.Text = "" OrElse txtexp.Text = "" OrElse txtidrecc.Text = "" Then
-                MsgBox("Pleasae fill the required fields")
+                MsgBox("Please fill the required fields")
             Else
                 Try
                     str_carSql = "INSERT INTO db_skills " +
@@ -388,7 +388,11 @@ Public Class RecProcess
     End Sub
 
     Private Sub SimpleButton2_Click_1(sender As Object, e As EventArgs) Handles SimpleButton2.Click
-        GroupControl2.Visible = True
+        If txtfullname.Text = "" OrElse txtid.Text = "" Then
+            MsgBox("there's no candidate selected")
+        Else
+            GroupControl2.Visible = True
+        End If
     End Sub
 
     Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
@@ -473,23 +477,6 @@ Public Class RecProcess
         txtage.Text = Str(Int(diff / 365))
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        GridControl1.RefreshDataSource()
-        Dim table As New DataTable
-        Dim sqlcommand As New MySqlCommand
-        Try
-            sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextBox1.Text + "%' and status = 'Pending'"
-            sqlcommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl1.DataSource = table
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
     Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
         If e.KeyCode = Keys.Enter Then
             GridControl1.RefreshDataSource()
@@ -558,7 +545,13 @@ Public Class RecProcess
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        skills()
+        loadinfo2()
+        loadinfo()
+    End Sub
+
+    Private Sub button2_Click_1(sender As Object, e As EventArgs) Handles button2.Click
         GridControl2.RefreshDataSource()
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
@@ -575,9 +568,20 @@ Public Class RecProcess
         End Try
     End Sub
 
-    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        skills()
-        loadinfo2()
-        loadinfo()
+    Private Sub button1_Click_1(sender As Object, e As EventArgs) Handles button1.Click
+        GridControl1.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select FullName from db_recruitment where FullName Like '%" + TextBox1.Text + "%' and status = 'Pending'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl1.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

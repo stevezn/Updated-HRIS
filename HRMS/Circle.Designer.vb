@@ -22,65 +22,34 @@ Partial Class Circle
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Circle))
-        Me.btnProg = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnNew = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnChange = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnLihat = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnChange = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton13 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton9 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton7 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton8 = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton10 = New DevExpress.XtraEditors.SimpleButton()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.SimpleButton12 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton11 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton10 = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnLihat = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnNew = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnProg = New DevExpress.XtraEditors.SimpleButton()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnProg
-        '
-        Me.btnProg.Image = CType(resources.GetObject("btnProg.Image"), System.Drawing.Image)
-        Me.btnProg.Location = New System.Drawing.Point(174, 3)
-        Me.btnProg.Name = "btnProg"
-        Me.btnProg.Size = New System.Drawing.Size(41, 38)
-        Me.btnProg.TabIndex = 104
-        Me.btnProg.Tag = "Employee"
-        Me.btnProg.Text = "Employee"
-        '
-        'btnNew
-        '
-        Me.btnNew.Image = CType(resources.GetObject("btnNew.Image"), System.Drawing.Image)
-        Me.btnNew.Location = New System.Drawing.Point(126, 4)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(41, 38)
-        Me.btnNew.TabIndex = 105
-        Me.btnNew.Tag = "Recruitment"
-        Me.btnNew.Text = "Recruitment"
-        '
-        'btnChange
-        '
-        Me.btnChange.Image = CType(resources.GetObject("btnChange.Image"), System.Drawing.Image)
-        Me.btnChange.Location = New System.Drawing.Point(2, 26)
-        Me.btnChange.Name = "btnChange"
-        Me.btnChange.Size = New System.Drawing.Size(27, 24)
-        Me.btnChange.TabIndex = 106
-        '
-        'btnLihat
-        '
-        Me.btnLihat.Image = CType(resources.GetObject("btnLihat.Image"), System.Drawing.Image)
-        Me.btnLihat.Location = New System.Drawing.Point(247, 4)
-        Me.btnLihat.Name = "btnLihat"
-        Me.btnLihat.Size = New System.Drawing.Size(26, 22)
-        Me.btnLihat.TabIndex = 107
         '
         'GroupControl1
         '
@@ -88,9 +57,9 @@ Partial Class Circle
         Me.GroupControl1.Controls.Add(Me.SimpleButton2)
         Me.GroupControl1.Controls.Add(Me.btnChange)
         Me.GroupControl1.Controls.Add(Me.SimpleButton1)
-        Me.GroupControl1.Location = New System.Drawing.Point(131, 46)
+        Me.GroupControl1.Location = New System.Drawing.Point(125, 48)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(31, 109)
+        Me.GroupControl1.Size = New System.Drawing.Size(31, 105)
         Me.GroupControl1.TabIndex = 108
         Me.GroupControl1.Visible = False
         '
@@ -100,15 +69,23 @@ Partial Class Circle
         Me.SimpleButton4.Location = New System.Drawing.Point(2, 79)
         Me.SimpleButton4.Name = "SimpleButton4"
         Me.SimpleButton4.Size = New System.Drawing.Size(27, 24)
-        Me.SimpleButton4.TabIndex = 110
+        Me.SimpleButton4.TabIndex = 109
         '
         'SimpleButton2
         '
         Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
-        Me.SimpleButton2.Location = New System.Drawing.Point(1, 2)
+        Me.SimpleButton2.Location = New System.Drawing.Point(2, 2)
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(27, 24)
         Me.SimpleButton2.TabIndex = 109
+        '
+        'btnChange
+        '
+        Me.btnChange.Image = CType(resources.GetObject("btnChange.Image"), System.Drawing.Image)
+        Me.btnChange.Location = New System.Drawing.Point(2, 26)
+        Me.btnChange.Name = "btnChange"
+        Me.btnChange.Size = New System.Drawing.Size(27, 24)
+        Me.btnChange.TabIndex = 109
         '
         'SimpleButton1
         '
@@ -120,17 +97,26 @@ Partial Class Circle
         '
         'GroupControl2
         '
+        Me.GroupControl2.Controls.Add(Me.SimpleButton13)
         Me.GroupControl2.Controls.Add(Me.SimpleButton9)
         Me.GroupControl2.Controls.Add(Me.SimpleButton3)
         Me.GroupControl2.Controls.Add(Me.SimpleButton5)
         Me.GroupControl2.Controls.Add(Me.SimpleButton6)
         Me.GroupControl2.Controls.Add(Me.SimpleButton7)
         Me.GroupControl2.Controls.Add(Me.SimpleButton8)
-        Me.GroupControl2.Location = New System.Drawing.Point(178, 45)
+        Me.GroupControl2.Location = New System.Drawing.Point(171, 46)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(31, 164)
+        Me.GroupControl2.Size = New System.Drawing.Size(31, 184)
         Me.GroupControl2.TabIndex = 110
         Me.GroupControl2.Visible = False
+        '
+        'SimpleButton13
+        '
+        Me.SimpleButton13.Image = CType(resources.GetObject("SimpleButton13.Image"), System.Drawing.Image)
+        Me.SimpleButton13.Location = New System.Drawing.Point(2, 156)
+        Me.SimpleButton13.Name = "SimpleButton13"
+        Me.SimpleButton13.Size = New System.Drawing.Size(27, 24)
+        Me.SimpleButton13.TabIndex = 111
         '
         'SimpleButton9
         '
@@ -138,7 +124,7 @@ Partial Class Circle
         Me.SimpleButton9.Location = New System.Drawing.Point(2, 131)
         Me.SimpleButton9.Name = "SimpleButton9"
         Me.SimpleButton9.Size = New System.Drawing.Size(27, 24)
-        Me.SimpleButton9.TabIndex = 111
+        Me.SimpleButton9.TabIndex = 109
         '
         'SimpleButton3
         '
@@ -146,7 +132,7 @@ Partial Class Circle
         Me.SimpleButton3.Location = New System.Drawing.Point(2, 53)
         Me.SimpleButton3.Name = "SimpleButton3"
         Me.SimpleButton3.Size = New System.Drawing.Size(27, 24)
-        Me.SimpleButton3.TabIndex = 111
+        Me.SimpleButton3.TabIndex = 109
         '
         'SimpleButton5
         '
@@ -154,7 +140,7 @@ Partial Class Circle
         Me.SimpleButton5.Location = New System.Drawing.Point(2, 79)
         Me.SimpleButton5.Name = "SimpleButton5"
         Me.SimpleButton5.Size = New System.Drawing.Size(27, 24)
-        Me.SimpleButton5.TabIndex = 110
+        Me.SimpleButton5.TabIndex = 109
         '
         'SimpleButton6
         '
@@ -170,7 +156,7 @@ Partial Class Circle
         Me.SimpleButton7.Location = New System.Drawing.Point(2, 27)
         Me.SimpleButton7.Name = "SimpleButton7"
         Me.SimpleButton7.Size = New System.Drawing.Size(27, 24)
-        Me.SimpleButton7.TabIndex = 106
+        Me.SimpleButton7.TabIndex = 109
         '
         'SimpleButton8
         '
@@ -180,30 +166,78 @@ Partial Class Circle
         Me.SimpleButton8.Size = New System.Drawing.Size(27, 24)
         Me.SimpleButton8.TabIndex = 109
         '
-        'SimpleButton10
+        'SimpleButton12
         '
-        Me.SimpleButton10.Image = CType(resources.GetObject("SimpleButton10.Image"), System.Drawing.Image)
-        Me.SimpleButton10.Location = New System.Drawing.Point(218, 4)
-        Me.SimpleButton10.Name = "SimpleButton10"
-        Me.SimpleButton10.Size = New System.Drawing.Size(26, 22)
-        Me.SimpleButton10.TabIndex = 117
+        Me.SimpleButton12.Image = CType(resources.GetObject("SimpleButton12.Image"), System.Drawing.Image)
+        Me.SimpleButton12.Location = New System.Drawing.Point(213, 4)
+        Me.SimpleButton12.Name = "SimpleButton12"
+        Me.SimpleButton12.Size = New System.Drawing.Size(26, 22)
+        Me.SimpleButton12.TabIndex = 107
+        Me.SimpleButton12.Text = "SimpleButton12"
         '
         'SimpleButton11
         '
         Me.SimpleButton11.Image = CType(resources.GetObject("SimpleButton11.Image"), System.Drawing.Image)
-        Me.SimpleButton11.Location = New System.Drawing.Point(247, 30)
+        Me.SimpleButton11.Location = New System.Drawing.Point(244, 30)
         Me.SimpleButton11.Name = "SimpleButton11"
-        Me.SimpleButton11.Size = New System.Drawing.Size(23, 23)
-        Me.SimpleButton11.TabIndex = 118
+        Me.SimpleButton11.Size = New System.Drawing.Size(26, 22)
+        Me.SimpleButton11.TabIndex = 107
         Me.SimpleButton11.Text = "SimpleButton11"
+        '
+        'SimpleButton10
+        '
+        Me.SimpleButton10.Image = CType(resources.GetObject("SimpleButton10.Image"), System.Drawing.Image)
+        Me.SimpleButton10.Location = New System.Drawing.Point(213, 31)
+        Me.SimpleButton10.Name = "SimpleButton10"
+        Me.SimpleButton10.Size = New System.Drawing.Size(26, 22)
+        Me.SimpleButton10.TabIndex = 107
+        '
+        'btnLihat
+        '
+        Me.btnLihat.Image = CType(resources.GetObject("btnLihat.Image"), System.Drawing.Image)
+        Me.btnLihat.Location = New System.Drawing.Point(244, 4)
+        Me.btnLihat.Name = "btnLihat"
+        Me.btnLihat.Size = New System.Drawing.Size(26, 22)
+        Me.btnLihat.TabIndex = 107
+        '
+        'btnNew
+        '
+        Me.btnNew.Image = CType(resources.GetObject("btnNew.Image"), System.Drawing.Image)
+        Me.btnNew.Location = New System.Drawing.Point(120, 3)
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(41, 38)
+        Me.btnNew.TabIndex = 105
+        Me.btnNew.Tag = "Recruitment"
+        Me.btnNew.Text = "Recruitment"
+        '
+        'btnProg
+        '
+        Me.btnProg.Image = CType(resources.GetObject("btnProg.Image"), System.Drawing.Image)
+        Me.btnProg.Location = New System.Drawing.Point(166, 3)
+        Me.btnProg.Name = "btnProg"
+        Me.btnProg.Size = New System.Drawing.Size(41, 38)
+        Me.btnProg.TabIndex = 105
+        Me.btnProg.Tag = "Employee"
+        Me.btnProg.Text = "Employee"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(208, 58)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 111
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Circle
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.BackgroundImage = Global.HRMS.My.Resources.Resources.vtimxrajzbuard4hsj78
-        Me.ClientSize = New System.Drawing.Size(276, 305)
+        Me.ClientSize = New System.Drawing.Size(484, 461)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.SimpleButton12)
         Me.Controls.Add(Me.SimpleButton11)
         Me.Controls.Add(Me.SimpleButton10)
         Me.Controls.Add(Me.GroupControl2)
@@ -211,6 +245,7 @@ Partial Class Circle
         Me.Controls.Add(Me.btnLihat)
         Me.Controls.Add(Me.btnNew)
         Me.Controls.Add(Me.btnProg)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "Circle"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -241,4 +276,8 @@ Partial Class Circle
     Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton10 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents SimpleButton11 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents SimpleButton12 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton13 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Button1 As Button
 End Class

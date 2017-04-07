@@ -6,7 +6,6 @@ Public Class Attendance
     Dim oDt_sched As New DataTable()
     Dim tbl_par As New DataTable
 
-
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()

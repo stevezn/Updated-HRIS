@@ -124,6 +124,7 @@ Partial Class Analytical
         Me.SimpleButton1.Size = New System.Drawing.Size(131, 38)
         Me.SimpleButton1.TabIndex = 6
         Me.SimpleButton1.Text = "Show Comparison"
+        Me.SimpleButton1.Visible = False
         '
         'LayoutControl1
         '
@@ -439,17 +440,17 @@ Partial Class Analytical
         '
         'btnFind
         '
-        Me.btnFind.Location = New System.Drawing.Point(119, 54)
+        Me.btnFind.Image = CType(resources.GetObject("btnFind.Image"), System.Drawing.Image)
+        Me.btnFind.Location = New System.Drawing.Point(157, 58)
         Me.btnFind.Name = "btnFind"
-        Me.btnFind.Size = New System.Drawing.Size(62, 23)
+        Me.btnFind.Size = New System.Drawing.Size(25, 23)
         Me.btnFind.TabIndex = 37
-        Me.btnFind.Text = "Search"
         '
         'TextEdit1
         '
-        Me.TextEdit1.Location = New System.Drawing.Point(7, 55)
+        Me.TextEdit1.Location = New System.Drawing.Point(7, 59)
         Me.TextEdit1.Name = "TextEdit1"
-        Me.TextEdit1.Size = New System.Drawing.Size(105, 20)
+        Me.TextEdit1.Size = New System.Drawing.Size(144, 20)
         Me.TextEdit1.TabIndex = 38
         '
         'RibbonControl1
@@ -563,7 +564,7 @@ Partial Class Analytical
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Statistic"
+        Me.Text = "Statistical"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.txtposition.Properties, System.ComponentModel.ISupportInitialize).EndInit()

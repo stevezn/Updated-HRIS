@@ -36,21 +36,6 @@ Public Class NewRec
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
-    Sub reset()
-        lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcCv.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcbtncv.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcidcard.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcaddress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcphone.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcstats.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcbtnsave.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        lcbtnreset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-    End Sub
-
     Function ImageToByte(ByVal pbImg As PictureBox) As Byte()
         If pbImg Is Nothing Then
             Return Nothing
@@ -65,77 +50,155 @@ Public Class NewRec
         Return Image.FromStream(pictureBytes)
     End Function
 
-    Public Sub updatechange2()
-        Dim sqlcommand As New MySqlCommand
+    Sub insertion()
+        Dim dtr, dtb As DateTime
+        txtbod.Format = DateTimePickerFormat.Custom
+        txtbod.CustomFormat = "yyyy-MM-dd"
+        dtr = txtbod.Value
+        txtapplieddate.Format = DateTimePickerFormat.Custom
+        txtapplieddate.CustomFormat = "yyyy-MM-dd"
+        dtb = txtapplieddate.Value
+        Dim hasil, lastres As Integer
         Try
-            sqlcommand.CommandText = "UPDATE db_recruitment SET" +
-                                     " InterviewTimes = @InterviewTimes" +
-                                     ", FullName = @FullName" +
-                                     ", PlaceOfBirth = @PlaceOfBirth" +
-                                     ", DateOfBirth = @DateOfBirth" +
-                                     ", Address = @Address" +
-                                     ", Gender  = @Gender" +
-                                     ", Religion = @Religion" +
-                                     ", PhoneNumber = @PhoneNumber" +
-                                     ", IdNumber = @IdNumber" +
-                                     ", Photo = @Photo" +
-                                     ", Status = @Status" +
-                                     ", Cv = @Cv" +
-                                     " WHERE IdRec = @Idrec"
-            sqlcommand.Connection = SQLConnection
-            sqlcommand.Parameters.AddWithValue("@IdRec", txtid.Text)
-            sqlcommand.Parameters.AddWithValue("@InterviewTimes", txtinterview.Text)
-            sqlcommand.Parameters.AddWithValue("@PlaceOfBirth", txtpob.Text)
-            sqlcommand.Parameters.AddWithValue("@DateOfBirth", txtdob.Text)
-            sqlcommand.Parameters.AddWithValue("@Address", txtaddress.Text)
-            sqlcommand.Parameters.AddWithValue("@Gender", txtgender.Text)
-            sqlcommand.Parameters.AddWithValue("@Religion", txtreligion.Text)
-            sqlcommand.Parameters.AddWithValue("@PhoneNumber", txtphone.Text)
-            sqlcommand.Parameters.AddWithValue("@IdNumber", txtidcard.Text)
-            If Not txtbrowse.Text Is Nothing Then
-                Dim param As New MySqlParameter("@Photo", ImageToByte(pictureEdit))
-                sqlcommand.Parameters.Add(param)
-            Else
-                sqlcommand.Parameters.AddWithValue("@Photo", "")
+            Dim cmd = SQLConnection.CreateCommand
+            cmd.CommandText = "Select count(*) from db_recruitment where IdNumber = '" & txtidno.Text & "'"
+            hasil = CInt(cmd.ExecuteScalar)
+            If hasil = 0 Then
+                lastres = 1
+            ElseIf hasil = 1 OrElse hasil > 1 Then
+                lastres = hasil + 1
             End If
-            sqlcommand.Parameters.AddWithValue("@Status", "Pending")
-            sqlcommand.Parameters.AddWithValue("@Cv", txtcv.Text)
-            sqlcommand.Connection = SQLConnection
-            sqlcommand.ExecuteNonQuery()
-            MessageBox.Show("Data Successfully Changed!")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        TextEdit1.Text = lastres.ToString
+        If lastres = 1 OrElse lastres = 2 Then
+            txtofloc.Text = "Pending"
+        ElseIf lastres > 2 Then
+            txtofloc.Text = "Blocked"
+        End If
+        Try
+            Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+            cmmd.CommandText = "insert into db_recruitment " +
+                            " (IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, Interviewdates, CV, Reason, CreatedDate, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial, LastSalary, OtherIncome, ExpSalary, ExpFacilities, FavoriteJob, FWhy, AppliedHere, AWhy, Family, Who, Strenghts, Weakness, Suitable, CarrierObject, Reference, PrivateEmail)" +
+                            " values (@IdRec, @InterviewTimes, @FullName, @PlaceOfBirth, @DateOfBirth, @Address, @Gender, @Religion, @PhoneNumber, @IdNumber, @Photo, @Status, @InterviewDate, @Interviewdates, @CV, @Reason, @CreatedDate, @Position, @ExpectedSalary, @NickName, @ApplicationDate, @Weight, @Height, @BloodType, @City, @ZIP, @HomeNumber, @RecommendedBy, @Martial, @LastSalary, @OtherIncome, @ExpSalary, @ExpFacilities, @FavoriteJob, @FWhy, @AppliedHere, @AWhy, @Family, @Who, @Strenghts, @Weakness, @Suitable, @CarrierObject, @Reference, @PrivateEmail)"
+            cmmd.Parameters.AddWithValue("@IdRec", txtidrec.Text)
+            cmmd.Parameters.AddWithValue("@Interviewtimes", TextEdit1.Text)
+            cmmd.Parameters.AddWithValue("@FullName", txtcandname.Text)
+            cmmd.Parameters.AddWithValue("@PlaceOfBirth", txtbp.Text)
+            cmmd.Parameters.AddWithValue("@DateOfBirth", dtr.ToString("yyyy-MM-dd"))
+            cmmd.Parameters.AddWithValue("@Address", txtadd.Text)
+            cmmd.Parameters.AddWithValue("@Gender", txtgend.Text)
+            cmmd.Parameters.AddWithValue("@Religion", txtrel.Text)
+            cmmd.Parameters.AddWithValue("@PhoneNumber", txtphoneno.Text)
+            cmmd.Parameters.AddWithValue("@IdNumber", txtidno.Text)
+            If Not ImageEdit1.Text Is Nothing Then
+                Dim param As New MySqlParameter("@Photo", ImageToByte(pictureEdit))
+                cmmd.Parameters.Add(param)
+            Else
+                cmmd.Parameters.AddWithValue("@Photo", "")
+            End If
+            cmmd.Parameters.AddWithValue("@Status", txtofloc.Text)
+            cmmd.Parameters.AddWithValue("@InterviewDate", DateTimePicker2.Value)
+            cmmd.Parameters.AddWithValue("@InterviewDates", Nothing)
+
+            Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
+            Dim finfo As New FileInfo(Label38.Text)
+            Dim numBytes As Long = finfo.Length
+            Dim fstream As New FileStream(Label38.Text, FileMode.Open, FileAccess.Read)
+            Dim br As New BinaryReader(fstream)
+            Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+            br.Close()
+            fstream.Close()
+
+            cmmd.Parameters.AddWithValue("@cv", data)
+            cmmd.Parameters.AddWithValue("@Reason", txtcandreason.Text)
+            cmmd.Parameters.AddWithValue("@CreatedDate", Date.Now)
+            cmmd.Parameters.AddWithValue("@Position", TextEdit7.Text)
+            cmmd.Parameters.AddWithValue("@ExpectedSalary", TextBox5.Text)
+            cmmd.Parameters.AddWithValue("@NickName", txtnick.Text)
+            cmmd.Parameters.AddWithValue("@ApplicationDate", dtb.ToString("yyyy-MM-dd"))
+            cmmd.Parameters.AddWithValue("@Weight", txtkg.Text)
+            cmmd.Parameters.AddWithValue("@Height", txtcm.Text)
+            cmmd.Parameters.AddWithValue("@BloodType", txtblood.Text)
+            cmmd.Parameters.AddWithValue("@City", txtcity.Text)
+            cmmd.Parameters.AddWithValue("@Zip", txtzip.Text)
+            cmmd.Parameters.AddWithValue("@HomeNumber", txthome.Text)
+            cmmd.Parameters.AddWithValue("@RecommendedBy", txtrecby.Text)
+            cmmd.Parameters.AddWithValue("@Martial", ComboBoxEdit4.Text)
+            cmmd.Parameters.AddWithValue("@LastSalary", TextBox3.Text)
+            cmmd.Parameters.AddWithValue("@otherIncome", TextBox4.Text)
+            cmmd.Parameters.AddWithValue("@ExpSalary", TextBox5.Text)
+            cmmd.Parameters.AddWithValue("@ExpFacilities", RichTextBox1.Text)
+            cmmd.Parameters.AddWithValue("@FavoriteJob", TextBox6.Text)
+            cmmd.Parameters.AddWithValue("@FWhy", RichTextBox2.Text)
+            cmmd.Parameters.AddWithValue("@AppliedHere", CheckEdit1.Checked)
+            cmmd.Parameters.AddWithValue("@AWhy", RichTextBox3.Text)
+            cmmd.Parameters.AddWithValue("@Family", CheckEdit2.Checked)
+            cmmd.Parameters.AddWithValue("@Who", RichTextBox4.Text)
+            cmmd.Parameters.AddWithValue("@Strenghts", RichTextBox5.Text)
+            cmmd.Parameters.AddWithValue("@Weakness", RichTextBox6.Text)
+            cmmd.Parameters.AddWithValue("@Suitable", RichTextBox7.Text)
+            cmmd.Parameters.AddWithValue("@CarrierObject", RichTextBox8.Text)
+            cmmd.Parameters.AddWithValue("@Reference", RichTextBox9.Text)
+            cmmd.Parameters.AddWithValue("@PrivateEmail", txtwemail.Text)
+            ' SavePdf()
+            cmmd.ExecuteNonQuery()
+            MsgBox("Saved")
+            cleartxt()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Sub cleartxt()
-        txtid.Text = ""
-        txtinterview.Text = ""
-        txtnames.Text = ""
-        txtpob.Text = ""
-        txtdob.Text = ""
-        txtaddress.Text = ""
-        txtgender.Text = ""
-        txtreligion.Text = ""
-        txtphone.Text = ""
-        txtidcard.Text = ""
-        txtstatus.Text = ""
+        txtcandname.Text = ""
+        txtbp.Text = ""
+        txtadd.Text = ""
+        txtgend.Text = ""
+        txtrel.Text = ""
+        txtphoneno.Text = ""
+        txtidno.Text = ""
+        txtcandreason.Text = ""
+        TextEdit7.Text = ""
+        TextBox5.Text = ""
+        txtnick.Text = ""
+        txtkg.Text = ""
+        txtcm.Text = ""
+        txtblood.Text = ""
+        txtcity.Text = ""
+        txtzip.Text = ""
+        txthome.Text = ""
+        txtrecby.Text = ""
+        ComboBoxEdit4.Text = ""
+        txtwemail.Text = ""
+        TextBox3.Text = ""
+        TextBox4.Text = ""
+        TextBox5.Text = ""
+        RichTextBox1.Text = ""
+        TextBox6.Text = ""
+        RichTextBox2.Text = ""
+        CheckEdit1.Checked = False
+        RichTextBox3.Text = ""
+        CheckEdit2.Checked = False
+        RichTextBox4.Text = ""
+        RichTextBox5.Text = ""
+        RichTextBox6.Text = ""
+        RichTextBox7.Text = ""
+        RichTextBox8.Text = ""
+        RichTextBox9.Text = ""
         pictureEdit.Controls.Clear()
-        txtcv.Text = ""
+        pictureEdit.Image = Nothing
     End Sub
 
     Dim main As MainApp
 
-    Public Function insertreq2() As Boolean
-        Dim dtr As DateTime
-        txtdob.Format = DateTimePickerFormat.Custom
-        txtdob.CustomFormat = "yyyy-MM-dd"
-        dtr = txtdob.Value
+    Dim tbl_par As New DataTable
+
+    Sub changer()
         Dim ynow As String = Format(Now, "yy").ToString
         Dim mnow As String = Month(Now).ToString
         Dim lastn As Integer
-        Dim hasil As Integer
-        Dim lastres As Integer
         Dim maxid As Integer
         Dim newid As Integer = maxid + 1
         Dim updmon As String
@@ -146,14 +209,14 @@ Public Class NewRec
             cmd.CommandText = "SELECT IdRec FROM id_last_num"
             lastn = DirectCast(cmd.ExecuteScalar(), Integer)
         Catch ex As Exception
-            MsgBox(ex.Message)
+            'MsgBox(ex.Message)
         End Try
         Try
             Dim cmd = SQLConnection.CreateCommand
             cmd.CommandText = "SELECT Idrec FROM db_recruitment ORDER BY IdRec DESC LIMIT 1"
             lastcode = DirectCast(cmd.ExecuteScalar(), String)
         Catch ex As Exception
-            MsgBox(ex.Message)
+            ' MsgBox(ex.Message)
         End Try
         Try
             Dim cmd = SQLConnection.CreateCommand
@@ -165,113 +228,37 @@ Public Class NewRec
                 tmp = lastn + 1
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            ' MsgBox(ex.Message)
         End Try
         Dim actualcode As String = "REQ" & "-" & ynow & "-" & mnow & "-" & Strings.Right("0000" & tmp, 5)
-        Try
-            Dim cmd = SQLConnection.CreateCommand
-            cmd.CommandText = "Select count(*) from db_recruitment where IdNumber = '" & txtidcard.Text & "'"
-            hasil = CInt(cmd.ExecuteScalar)
-            If hasil = 0 Then
-                lastres = 1
-            ElseIf hasil = 1 OrElse hasil > 1 Then
-                lastres = hasil + 1
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-        txtinterview.Text = lastres.ToString
-        If lastres = 1 OrElse lastres = 2 Then
-            txtstatus.Text = "Pending"
-        ElseIf lastres > 2 Then
-            txtstatus.Text = "Blocked"
-        End If
-        Dim sqlCommand As New MySqlCommand
-        Dim str_carSql As String
-        Try
-            str_carSql = "INSERT INTO db_recruitment " +
-                   "(IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, Cv,CreatedDate) " +
-                   "values (@IdRec,@InterviewTimes,@FullName,@PlaceOfBirth,@DateOfBirth,@Address,@Gender,@Religion, @PhoneNumber, @IdNumber,@Photo,@Status,@Cv,@CreatedDate)"
-            sqlCommand.Connection = SQLConnection
-            sqlCommand.CommandText = str_carSql
-            sqlCommand.Parameters.AddWithValue("@IdRec", actualcode)
-            sqlCommand.Parameters.AddWithValue("@InterviewTimes", txtinterview.Text)
-            sqlCommand.Parameters.AddWithValue("@FullName", txtnames.Text)
-            sqlCommand.Parameters.AddWithValue("@PlaceOfBirth", txtpob.Text)
-            sqlCommand.Parameters.AddWithValue("@DateOfBirth", dtr.ToString("yyyy-MM-dd"))
-            sqlCommand.Parameters.AddWithValue("@Address", txtaddress.Text)
-            sqlCommand.Parameters.AddWithValue("@Gender", txtgender.Text)
-            sqlCommand.Parameters.AddWithValue("@Religion", txtreligion.Text)
-            sqlCommand.Parameters.AddWithValue("@PhoneNumber", txtphone.Text)
-            sqlCommand.Parameters.AddWithValue("@IdNumber", txtidcard.Text)
-            If Not txtbrowse.Text Is Nothing Then
-                Dim param As New MySqlParameter("@Photo", ImageToByte(pictureEdit))
-                sqlCommand.Parameters.Add(param)
-            Else
-                sqlCommand.Parameters.AddWithValue("@Photo", "")
-            End If
-            sqlCommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlCommand.Parameters.AddWithValue("@Cv", txtcv.Text)
-            sqlCommand.Parameters.AddWithValue("@CreatedDate", Date.Now)
-            sqlCommand.ExecuteNonQuery()
-            MessageBox.Show("Data Succesfully Added!")
-            Return True
-        Catch ex As Exception
-            Return False
-            MsgBox(ex.Message)
-        End Try
-    End Function
-
-    Dim tbl_par As New DataTable
+        txtidrec.Text = actualcode.ToString
+    End Sub
 
     Private Sub NewEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
+        DateTimePicker2.Format = DateTimePickerFormat.Custom
+        DateTimePicker2.CustomFormat = " "
+        changer()
     End Sub
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        cleartxt()
+        ' cleartxt()
         reset()
         barJudul.Caption = "Add Recruitment"
-        lcName.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcidcard.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcaddress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcphone.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcstats.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcbtnsave.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcbtnreset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        BarButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
     End Sub
 
     Private Sub NewEmployee_Move(sender As Object, e As EventArgs) Handles MyBase.Move
         'Location = New Point(500, 200)
     End Sub
 
-    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+    Private Sub btnReset_Click(sender As Object, e As EventArgs)
         cleartxt()
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If barJudul.Caption = "Add Recruitment" Then
-            If txtnames.Text = "" Then
-                MsgBox("Please Insert The Required Fields")
-            Else
-                insertreq2()
-            End If
-        ElseIf barJudul.Caption = "Change Data" Then
-            updatechange2()
-        End If
-    End Sub
-
-    Private Sub btnPhoto_Click(sender As Object, e As EventArgs) Handles btnPhoto.Click
+    Private Sub btnPhoto_Click(sender As Object, e As EventArgs)
         Using dialog As New OpenFileDialog
             If dialog.ShowDialog() <> DialogResult.OK Then Return
-            txtbrowse.Image = Image.FromFile(dialog.FileName)
             pictureEdit.Image = Image.FromFile(dialog.FileName)
         End Using
     End Sub
@@ -280,24 +267,11 @@ Public Class NewRec
         cleartxt()
         barJudul.Caption = "Change Data"
         reset()
-        lcid.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcpob.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcbrowse.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcgender.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcreligion.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcidcard.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcaddress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcphone.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcstats.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        lcbtnsave.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        btnSave.Text = "Change"
-        lcbtnreset.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        RibbonPageGroup1.Visible = False
-    End Sub    
+    End Sub
 
     Dim openfd As New OpenFileDialog
 
-    Private Sub btnCV_Click(sender As Object, e As EventArgs) Handles btnCV.Click
+    Private Sub btnCV_Click(sender As Object, e As EventArgs)
         'Try
         '    Dim fs As FileStream
         '    fs = New FileStream(sfile, FileMode.Open, FileAccess.Read)
@@ -322,12 +296,11 @@ Public Class NewRec
         '    MsgBox("Data Saved Successfully")
         'Catch ex As Exception
         'End Try
-
         openfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer)
         openfd.Title = "Open a CV File"
         openfd.Filter = "Word Files|*.docx|Text Files|*.txt"
         openfd.ShowDialog()
-        txtcv.Text = openfd.FileName
+        'txtcv.Text = openfd.FileName
     End Sub
 
     Private Sub OpenPreviewWindows()
@@ -363,8 +336,8 @@ Public Class NewRec
                 Dim Bmap As Image
                 SendMessage(hHwnd, WM_Cap_EDIT_COPY, 0, 0)
                 data = Clipboard.GetDataObject()
-                If data.GetDataPresent(GetType(System.Drawing.Bitmap)) Then
-                    Bmap = CType(data.GetData(GetType(System.Drawing.Bitmap)), Drawing.Image)
+                If data.GetDataPresent(GetType(Bitmap)) Then
+                    Bmap = CType(data.GetData(GetType(Bitmap)), Image)
                     pictureEdit.Image = Bmap
                     ClosePreviewWindow()
                 End If
@@ -376,5 +349,468 @@ Public Class NewRec
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub SavePdf()
+        Try
+            Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
+            Dim finfo As New FileInfo(Label38.Text)
+            Dim numBytes As Long = finfo.Length
+            Dim fstream As New FileStream(Label38.Text, FileMode.Open, FileAccess.Read)
+            Dim br As New BinaryReader(fstream)
+            Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+            br.Close()
+            fstream.Close()
+            sqlquery.CommandText = "insert into db_recruitment(cv) values (@cv)"
+            sqlquery.Parameters.AddWithValue("@cv", data)
+            sqlquery.ExecuteNonQuery()
+            MsgBox("Saved")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub SimpleButton10_Click(sender As Object, e As EventArgs) Handles SimpleButton10.Click
+        openfd.InitialDirectory = "C:\"
+        openfd.Title = "Open a CV FIle"
+        openfd.Filter = "PDF Files|*.pdf|Text Files|*.txt|Word FIles|*.docx"
+        openfd.ShowDialog()
+        Label38.Text = openfd.FileName
+    End Sub
+
+    Private Sub SimpleButton12_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
+        Using dialog As New OpenFileDialog
+            If dialog.ShowDialog() <> DialogResult.OK Then Return
+            pictureEdit.Image = Image.FromFile(dialog.FileName)
+        End Using
+    End Sub
+
+    Private Sub SimpleButton9_Click(sender As Object, e As EventArgs) Handles SimpleButton9.Click
+        If txtcandname.Text = "" OrElse TextEdit7.Text = "" OrElse txtidno.Text = "" Then
+            MsgBox("Please fill the required fields")
+        Else
+            insertion()
+            changer()
+        End If
+    End Sub
+
+    Private Sub CheckEdit1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit1.CheckedChanged
+        If CheckEdit1.Checked = True Then
+            RichTextBox3.Enabled = True
+        Else
+            RichTextBox3.Enabled = False
+        End If
+    End Sub
+
+    Private Sub CheckEdit2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit2.CheckedChanged
+        If CheckEdit1.Checked = True Then
+            RichTextBox4.Enabled = True
+        Else
+            RichTextBox4.Enabled = False
+        End If
+    End Sub
+
+    Dim dt1 As Date
+    Dim dt2 As Date
+    Dim dt3 As TimeSpan
+    Dim diff As Double
+
+    Private Sub txtbod_ValueChanged(sender As Object, e As EventArgs) Handles txtbod.ValueChanged
+        dt1 = CDate(txtbod.Value.ToShortDateString)
+        dt2 = Date.Now
+        dt3 = (dt2 - dt1)
+        diff = dt3.Days
+        txtage.Text = Str(Int(diff / 365))
+    End Sub
+
+    Sub loadschool()
+        GridControl1.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlCommand As New MySqlCommand
+        Try
+            sqlCommand.CommandText = "select Idrec as IdRecruitment, School, GraduatedYear, StudyField from db_education where idrec = '" & txtidrec.Text & "'"
+            sqlCommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl1.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Sub school()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "insert into db_education " +
+                           "(IdRec, School, GraduatedYear, StudyField)" +
+                            "values (@IdRec, @School, @GraduatedYear, @StudyField)"
+        cmmd.Parameters.AddWithValue("@Idrec", txtidrec.Text)
+        cmmd.Parameters.AddWithValue("@School", txtschoolname.Text)
+        cmmd.Parameters.AddWithValue("@GraduatedYear", txtyears.Text)
+        cmmd.Parameters.AddWithValue("@StudyField", txtmajor.Text)
+        cmmd.ExecuteNonQuery()
+        loadschool()
+        txtschoolname.Text = ""
+        txtyears.Text = ""
+        txtmajor.Text = ""
+    End Sub
+
+    Sub loadcertification()
+        GridControl2.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select Idrec as IdRecruitment, Certificates, Years, Reasons from db_certificates where idrec = '" & txtidrec.Text & "'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl2.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Sub certificates()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "insert into db_certificates " +
+                            "(idrec, certificates, years, reasons)" +
+                            "values(@idrec, @certificates, @years, @reasons)"
+        cmmd.Parameters.AddWithValue("@idrec", txtidrec.Text)
+        cmmd.Parameters.AddWithValue("@certificates", txtcertificate.Text)
+        cmmd.Parameters.AddWithValue("@years", txtyear.Text)
+        cmmd.Parameters.AddWithValue("@reasons", txtreason.Text)
+        cmmd.ExecuteNonQuery()
+        loadcertification()
+        txtcertificate.Text = ""
+        txtyear.Text = ""
+        txtreason.Text = ""
+    End Sub
+
+    Sub loadfamily()
+        GridControl3.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select Idrec, MemberName, Gender, Address, occupation, PhoneNo from db_family where idrec = '" & txtidrec.Text & "'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl3.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Sub family()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "insert into db_family " +
+                            " (idrec, MemberName, Gender, Address, Occupation, PhoneNo)" +
+                            "values (@idrec, @MemberName, @Gender, @Address, @Occupation, @PhoneNo)"
+        cmmd.Parameters.AddWithValue("@idrec", txtidrec.Text)
+        cmmd.Parameters.AddWithValue("@MemberName", txtmember.Text)
+        cmmd.Parameters.AddWithValue("@Gender", txtmemgender.Text)
+        cmmd.Parameters.AddWithValue("@Address", txtmemadd.Text)
+        cmmd.Parameters.AddWithValue("@Occupation", txtocc.Text)
+        cmmd.Parameters.AddWithValue("@PhoneNo", txtmemph.Text)
+        cmmd.ExecuteNonQuery()
+        loadfamily()
+        txtmember.Text = ""
+        txtmemgender.Text = ""
+        txtmemadd.Text = ""
+        txtocc.Text = ""
+        txtmemph.Text = ""
+    End Sub
+
+    Sub loadexp()
+        GridControl4.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select Idrec, Company, Manager, Address, Period, Until, BasicSalary, AdditionalSalary, TotalSalary, QuitReason from db_exp where idrec = '" & txtidrec.Text & "'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl4.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Sub exp()
+        Dim dtr, dtb As DateTime
+        txtperiod.Format = DateTimePickerFormat.Custom
+        txtperiod.CustomFormat = "yyyy-MM-dd"
+        dtr = txtperiod.Value
+        txtuntil.Format = DateTimePickerFormat.Custom
+        txtuntil.CustomFormat = "yyyy-MM-dd"
+        dtb = txtuntil.Value
+
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "insert into db_exp " +
+                            "(idrec, Company, Manager, Address, Period, Until, BasicSalary, AdditionalSalary, TotalSalary, QuitReason) " +
+                            "values(@idrec, @Company, @Manager, @Address, @Period, @Until, @BasicSalary, @AdditionalSalary, @TotalSalary, @QuitReason)"
+        cmmd.Parameters.AddWithValue("@idrec", txtidrec.Text)
+        cmmd.Parameters.AddWithValue("@company", txtcompanyname.Text)
+        cmmd.Parameters.AddWithValue("@Manager", txtmanagername.Text)
+        cmmd.Parameters.AddWithValue("@Address", txtcompadd.Text)
+        cmmd.Parameters.AddWithValue("@Period", dtr.ToString("yyyy-MM-dd"))
+        cmmd.Parameters.AddWithValue("@Until", dtb.ToString("yyyy-MM-dd"))
+        cmmd.Parameters.AddWithValue("@BasicSalary", txtbasic.Text)
+        cmmd.Parameters.AddWithValue("@AdditionalSalary", txtaddi.Text)
+        cmmd.Parameters.AddWithValue("@Totalsalary", txttotalsa.Text)
+        cmmd.Parameters.AddWithValue("@QuitReason", txtreasonquit.Text)
+        cmmd.ExecuteNonQuery()
+        loadexp()
+        txtcompanyname.Text = ""
+        txtmanagername.Text = ""
+        txtcompadd.Text = ""
+        txtbasic.Text = ""
+        txtaddi.Text = ""
+        txttotalsa.Text = ""
+        txtreasonquit.Text = ""
+    End Sub
+
+    Sub loadskill()
+        GridControl5.RefreshDataSource()
+        Dim table As New DataTable
+        Dim sqlcommand As New MySqlCommand
+        Try
+            sqlcommand.CommandText = "select Idrec as IdRecruitment, SkillName, SkillLevel, SkillDescription from db_empskill where idrec = '" & txtidrec.Text & "'"
+            sqlcommand.Connection = SQLConnection
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl5.DataSource = table
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Sub skill()
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        cmmd.CommandText = "insert into db_empskill " +
+                            "(idrec, skillname, skilllevel, skilldescription)" +
+                            "values(@idrec, @skillname, @skilllevel, @skilldescription)"
+        cmmd.Parameters.AddWithValue("@idrec", txtidrec.Text)
+        cmmd.Parameters.AddWithValue("@skillname", skillname.Text)
+        cmmd.Parameters.AddWithValue("@skilllevel", skilllevel.Text)
+        cmmd.Parameters.AddWithValue("@skilldescription", skilldesc.Text)
+        cmmd.ExecuteNonQuery()
+        loadskill()
+        skillname.Text = ""
+        skilllevel.Text = ""
+        skilldesc.Text = ""
+    End Sub
+
+    Private Sub txtbasic_EditValueChanged(sender As Object, e As EventArgs) Handles txtbasic.EditValueChanged
+        Try
+            Dim a, b, c As Integer
+            a = Convert.ToInt32(txtaddi.Text)
+            b = Convert.ToInt32(txtbasic.Text)
+            c = a + b
+            txttotalsa.Text = c.ToString
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub txtaddi_EditValueChanged(sender As Object, e As EventArgs) Handles txtaddi.EditValueChanged
+        Try
+            Dim a, b, c As Integer
+            a = Convert.ToInt32(txtaddi.Text)
+            b = Convert.ToInt32(txtbasic.Text)
+            c = a + b
+            txttotalsa.Text = c.ToString
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub SimpleButton7_Click(sender As Object, e As EventArgs) Handles SimpleButton7.Click
+        school()
+    End Sub
+
+    Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
+        certificates()
+    End Sub
+
+    Private Sub SimpleButton6_Click(sender As Object, e As EventArgs) Handles SimpleButton6.Click
+        family()
+    End Sub
+
+    Private Sub SimpleButton8_Click(sender As Object, e As EventArgs) Handles SimpleButton8.Click
+        exp()
+    End Sub
+
+    Private Sub SimpleButton13_Click(sender As Object, e As EventArgs) Handles SimpleButton13.Click
+        skill()
+    End Sub
+
+    Private Sub CheckEdit3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit3.CheckedChanged
+        If CheckEdit3.Checked = True Then
+            DateTimePicker2.Enabled = True
+            Dim dtr As DateTime
+            DateTimePicker2.Format = DateTimePickerFormat.Custom
+            DateTimePicker2.CustomFormat = "yyyy-MM-dd"
+            dtr = DateTimePicker2.Value
+        ElseIf CheckEdit3.Checked = False Then
+            DateTimePicker2.Enabled = False
+            Dim dtr As DateTime
+            DateTimePicker2.Format = DateTimePickerFormat.Custom
+            DateTimePicker2.CustomFormat = "Not Set"
+            dtr = DateTimePicker2.Value
+        End If
+    End Sub
+
+    Private Sub txtidno_EditValueChanged(sender As Object, e As EventArgs) Handles txtidno.EditValueChanged
+        Dim hasil, lastres, hsl As Integer
+        Try
+            Dim cmd = SQLConnection.CreateCommand
+            cmd.CommandText = "Select count(*) from db_recruitment where IdNumber = '" & txtidno.Text & "'"
+            hasil = CInt(cmd.ExecuteScalar)
+            If hasil = 0 Then
+                lastres = 1
+            ElseIf hasil = 1 OrElse hasil > 1 Then
+                lastres = hasil + 1
+            End If
+        Catch ex As Exception
+            ' MsgBox(ex.Message)
+        End Try
+        Dim cmd2 As MySqlCommand = SQLConnection.CreateCommand
+        cmd2.CommandText = "select count(blacklist) from db_recruitment where IdNumber = '" & txtidno.Text & "'"
+        hsl = CInt(cmd2.ExecuteScalar)
+        If hsl = 1 Then
+            MsgBox("This Candidates already on BLACKLIST lists for infraction", MsgBoxStyle.Exclamation
+                   )
+            Label39.Text = "BLACKLISTED"
+        End If
+        TextEdit1.Text = lastres.ToString
+        If lastres = 1 OrElse lastres = 2 Then
+            txtofloc.Text = "Pending"
+        ElseIf lastres > 2 Then
+            txtofloc.Text = "Blocked"
+        End If
+    End Sub
+
+    Private Sub txtcandname_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtcandname.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsDigit(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtnick_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtnick.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsDigit(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtgend_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtgend.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsDigit(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtidno_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtidno.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtkg_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtkg.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtcm_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtcm.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtrel_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtrel.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsDigit(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtblood_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtblood.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsDigit(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtphoneno_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtphoneno.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txthome_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txthome.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox3.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox4_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox4.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TextBox5_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox5.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtmemph_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtmemph.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtbasic_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtbasic.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub txtaddi_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtaddi.KeyPress
+        Dim ch As Char = e.KeyChar
+        If Char.IsLetter(ch) Then
+            e.Handled = True
+        End If
     End Sub
 End Class

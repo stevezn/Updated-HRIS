@@ -50,10 +50,6 @@ Public Class MainApp
 
 #End Region
     Private Sub MainApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'If cir Is Nothing OrElse cir.IsDisposed OrElse cir.MinimizeBox Then
-        '    cir = New Circle
-        'End If
-        'cir.Show()
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         Dim lbl As MySqlCommand = SQLConnection.CreateCommand
@@ -139,7 +135,7 @@ Public Class MainApp
         lcForm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         barJudul.Caption = "Module Recruitment"
         GridControl1.RefreshDataSource()
-        GridView1.Columns.Clear()
+        CardView1.Columns.Clear()
         loadDataReq()
         RibbonPageGroup7.Visible = False
     End Sub
@@ -149,7 +145,7 @@ Public Class MainApp
         resetclear()
         barJudul.Caption = "Module Employee"
         GridControl1.RefreshDataSource()
-        GridView1.Columns.Clear()
+        CardView1.Columns.Clear()
         loadDataReq()
         RibbonPageGroup7.Visible = False
     End Sub
@@ -179,15 +175,21 @@ Public Class MainApp
         pesan = CType(MsgBox("Log Off Application?", MsgBoxStyle.YesNo, "Warning"), String)
         If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             Dim del As MySqlCommand = SQLConnection.CreateCommand
-            del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
+            ' del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
+            del.CommandText = "truncate db_hasil"
             del.ExecuteNonQuery()
-            Dim dele As MySqlCommand = SQLConnection.CreateCommand
-            dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
-            dele.ExecuteNonQuery()
 
-            Dim delet As MySqlCommand = SQLConnection.CreateCommand
-            delet.CommandText = "delete from db_tmpname where EmployeeCode != 'absbahsgedeg'"
-            delet.ExecuteNonQuery()
+            del.CommandText = "truncate db_tmpname"
+            del.ExecuteNonQuery()
+
+            'Dim dele As MySqlCommand = SQLConnection.CreateCommand
+            'dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
+            'dele.ExecuteNonQuery()
+            'Dim delet As MySqlCommand = SQLConnection.CreateCommand
+            'delet.CommandText = "delete from db_tmpname where EmployeeCode != 'absbahsgedeg'"
+            'delet.ExecuteNonQuery()
+            'dele.CommandText = "truncate db_tmpname"
+            'dele.ExecuteNonQuery()
 
             SQLConnection.Close()
             Close()
@@ -196,6 +198,7 @@ Public Class MainApp
             employeenotes.Close()
             loan.Close()
             Login.Close()
+            Application.Exit()
         End If
     End Sub
 
@@ -317,7 +320,7 @@ Public Class MainApp
                         sqlCommand.Parameters.AddWithValue("@CompanyCode", "<empty>")
                         sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
                         sqlCommand.Parameters.AddWithValue("@OfficeLocation", "<empty>")
-                        sqlCommand.Parameters.AddWithValue("@PhoneNumber", employees.txtphone.Text)
+                        sqlCommand.Parameters.AddWithValue("@PhoneNumber", employees.txtphoneno.Text)
                         sqlCommand.Parameters.AddWithValue("@WorkDate", Date.Now)
                         sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
                         sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
@@ -355,9 +358,11 @@ Public Class MainApp
         Dim sqlCommand As New MySqlCommand
         Try
             If barJudul.Caption = "Module Recruitment" Then
-                sqlCommand.CommandText = "Select IdRec as IDRecruitment, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, InterviewDate, Status, CreatedDate from db_recruitment where status != 'In Progress'"
+                sqlCommand.CommandText = "select IdRec as IDRecruitment, InterviewTimes as AppliedTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, InterviewDate, Reason, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial as MartialStatus, LastSalary, OtherIncome, ExpSalary as ExpectedSalary, ExpFacilities as ExpectedFacilities, FavoriteJob, Reference, CreatedDate from db_recruitment"
+                'sqlCommand.CommandText = "Select IdRec as IDRecruitment, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, InterviewDate, Status, CreatedDate from db_recruitment where status != 'In Progress'"
             ElseIf barJudul.Caption = "Module Employee" Then
-                sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, TrainingSampai, EmployeeType FROM db_pegawai where status != 'Fired' and status != 'Terminated'"
+                'sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, TrainingSampai, EmployeeType FROM db_pegawai where status != 'Fired' and status != 'Terminated'"
+                sqlCommand.CommandText = "select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks from db_pegawai"
             End If
             sqlCommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
@@ -581,7 +586,6 @@ Public Class MainApp
     End Sub
 
     Dim nilai As Double
-
     Dim value As Long
     Dim value2 As Long
 
@@ -599,7 +603,7 @@ Public Class MainApp
         lcForm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         barJudul.Caption = "Module Payment Details"
         GridControl1.RefreshDataSource()
-        GridView1.Columns.Clear()
+        ' GridView1.Columns.Clear()
         loadDataReq()
     End Sub
 
@@ -610,7 +614,7 @@ Public Class MainApp
         lcForm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         barJudul.Caption = "Employee Menus"
         GridControl1.RefreshDataSource()
-        GridView1.Columns.Clear()
+        '  GridView1.Columns.Clear()
         loadDataReq()
     End Sub
 
@@ -747,13 +751,10 @@ Public Class MainApp
         att2.Show()
     End Sub
 
-    Private Sub MainApp_Closed(sender As Object, e As EventArgs) Handles Me.Closed
-    End Sub
-
     Dim info As infoReq
     Dim note As New Notes
 
-    Private Sub GridView1_PopupMenuShowing_2(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+    Private Sub GridView1_PopupMenuShowing_2(sender As Object, e As PopupMenuShowingEventArgs)
         Dim view As GridView = CType(sender, GridView)
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
             Dim rowHandle As Integer = e.HitInfo.RowHandle
@@ -762,7 +763,6 @@ Public Class MainApp
             item.BeginGroup = True
             e.Menu.Items.Add(item)
         End If
-
         If barJudul.Caption = "Module Recruitment" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
             End If
@@ -772,6 +772,7 @@ Public Class MainApp
             End If
         End If
     End Sub
+
     Private Sub SimpleButton2_Click_1(sender As Object, e As EventArgs) Handles SimpleButton2.Click
         Dim mess As String
         Dim nam As MySqlCommand = SQLConnection.CreateCommand
@@ -808,13 +809,13 @@ Public Class MainApp
         End If
     End Sub
 
-    Private Sub GridView1_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
+    Private Sub GridView1_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs)
         Dim datatabl As New DataTable
         Dim sqlCommand As New MySqlCommand
         datatabl.Clear()
         Dim param As String = ""
         Try
-            param = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
+            'param = "and EmployeeCode='" + Griddiew1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
         Catch ex As Exception
         End Try
         Try
@@ -838,5 +839,13 @@ Public Class MainApp
             cir = New Circle
         End If
         cir.Show()
+    End Sub
+
+    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs)
+        WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub MainApp_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        'Application.Exit()
     End Sub
 End Class

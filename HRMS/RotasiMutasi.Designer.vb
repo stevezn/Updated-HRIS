@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class RotasiMutasi
-    Inherits System.Windows.Forms.Form
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -137,7 +137,7 @@ Partial Class RotasiMutasi
         Me.RibbonControl1.MaxItemId = 13
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
-        Me.RibbonControl1.Size = New System.Drawing.Size(492, 147)
+        Me.RibbonControl1.Size = New System.Drawing.Size(492, 174)
         Me.RibbonControl1.Toolbar.ItemLinks.Add(Me.barJudul)
         Me.RibbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Below
         '
@@ -391,12 +391,11 @@ Partial Class RotasiMutasi
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(492, 593)
         Me.Controls.Add(Me.GridControl1)
-        Me.Controls.Add(Me.RibbonControl1)
         Me.Controls.Add(Me.GroupControl1)
+        Me.Controls.Add(Me.RibbonControl1)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(508, 632)
-        Me.MinimumSize = New System.Drawing.Size(508, 632)
         Me.Name = "RotasiMutasi"
+        Me.Ribbon = Me.RibbonControl1
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

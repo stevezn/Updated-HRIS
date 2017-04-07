@@ -67,26 +67,27 @@ Public Class selectemp
         Catch ex As Exception
         End Try
         Try
-            sqlCommand.CommandText = "SELECT * FROM db_pegawai WHERE 1=1 " + param.ToString()
+            sqlCommand.CommandText = "SELECT FUllName, EmployeeCode, Photo, Position, Status FROM db_pegawai WHERE 1=1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
 
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
         Catch ex As Exception
-            'SQLConnection.Close()
             MsgBox(ex.Message)
         End Try
         If datatabl.Rows.Count > 0 Then
-            Label2.Text = datatabl.Rows(0).Item(2).ToString()
-            Label3.Text = datatabl.Rows(0).Item(0).ToString
-            Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(14), Byte())
+            Label2.Text = datatabl.Rows(0).Item(0).ToString()
+            Label3.Text = datatabl.Rows(0).Item(1).ToString
+            Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(2), Byte())
             If filefoto.Length > 0 Then
                 PictureBox1.Image = ByteToImage(filefoto)
             Else
                 PictureBox1.Image = Nothing
                 PictureBox1.Refresh()
             End If
+            Label4.Text = datatabl.Rows(0).Item(3).ToString
+            Label5.Text = datatabl.Rows(0).Item(4).ToString
         End If
     End Sub
 
@@ -101,7 +102,7 @@ Public Class selectemp
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType from db_pegawai where status != 'Fired'"
+            sqlcommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType from db_pegawai where status != 'Fired' and status != 'Terminate'"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -126,24 +127,24 @@ Public Class selectemp
 
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
         Dim del As MySqlCommand = SQLConnection.CreateCommand
-        del.CommandText = "delete from db_tmpname where name <> '1sd0'"
+        del.CommandText = "truncate db_tmpname"
         del.ExecuteNonQuery()
 
         Dim name As MySqlCommand = SQLConnection.CreateCommand
         name.CommandText = "insert into db_tmpname" +
-                            "(name, employeecode)" +
-                            "Values(@name, @employeecode)"
+                            "(name, employeecode, jobtitle, status)" +
+                            "Values(@name, @employeecode, @jobtitle, @status)"
         name.Parameters.AddWithValue("@name", Label2.Text)
         name.Parameters.AddWithValue("@Employeecode", Label3.Text)
+        name.Parameters.AddWithValue("@jobtitle", Label4.Text)
+        name.Parameters.AddWithValue("@status", Label5.Text)
         name.ExecuteNonQuery()
         Close()
-        att.Show()
     End Sub
 
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
             e.Menu.Items.Add(New DXMenuItem("Select Employee", New EventHandler(AddressOf SimpleButton3_Click)))
-            'e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf btnNotes_Click)))
         End If
     End Sub
 End Class
