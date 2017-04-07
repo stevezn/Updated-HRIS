@@ -42,7 +42,6 @@ Public Class Login
     Dim main As New MainApp
     Dim cir As New Circle
 
-
     Private Sub countButton_Click(sender As Object, e As EventArgs)
         Close()
     End Sub
@@ -215,13 +214,5 @@ Public Class Login
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-    End Sub
-
-    Sub loadsettings()
-
-    End Sub
-
-    Private Sub AutomaticUpdater1_ClosingAborted(sender As Object, e As EventArgs) Handles AutomaticUpdater1.ClosingAborted
-
     End Sub
 End Class

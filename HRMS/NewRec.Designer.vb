@@ -22,6 +22,7 @@ Partial Class NewRec
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewRec))
         Me.Employee = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -153,6 +154,7 @@ Partial Class NewRec
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.Label39 = New System.Windows.Forms.Label()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
@@ -216,7 +218,10 @@ Partial Class NewRec
         Me.txtidrec = New System.Windows.Forms.TextBox()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.txtapplieddate = New System.Windows.Forms.DateTimePicker()
-        Me.Label39 = New System.Windows.Forms.Label()
+        Me.ApplicationMenu1 = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
+        Me.BackstageViewControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewControl()
+        Me.BackstageViewClientControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
+        Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -296,6 +301,8 @@ Partial Class NewRec
         CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl7.SuspendLayout()
         CType(Me.txtgend.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BackstageViewControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Employee
@@ -329,6 +336,7 @@ Partial Class NewRec
         '
         'RibbonControl1
         '
+        Me.RibbonControl1.ApplicationButtonDropDownControl = Me.BackstageViewControl1
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
         Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.barJudul, Me.BarButtonItem2, Me.BarButtonItem3})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
@@ -1458,6 +1466,15 @@ Partial Class NewRec
         Me.GroupControl2.TabIndex = 17
         Me.GroupControl2.Text = "Auto"
         '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label39.Location = New System.Drawing.Point(744, 240)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(0, 19)
+        Me.Label39.TabIndex = 98
+        '
         'Label38
         '
         Me.Label38.AutoSize = True
@@ -2030,14 +2047,36 @@ Partial Class NewRec
         Me.txtapplieddate.Size = New System.Drawing.Size(153, 21)
         Me.txtapplieddate.TabIndex = 87
         '
-        'Label39
+        'ApplicationMenu1
         '
-        Me.Label39.AutoSize = True
-        Me.Label39.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label39.Location = New System.Drawing.Point(744, 240)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(0, 19)
-        Me.Label39.TabIndex = 98
+        Me.ApplicationMenu1.Name = "ApplicationMenu1"
+        Me.ApplicationMenu1.Ribbon = Me.RibbonControl1
+        '
+        'BackstageViewControl1
+        '
+        Me.BackstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow
+        Me.BackstageViewControl1.Controls.Add(Me.BackstageViewClientControl1)
+        Me.BackstageViewControl1.Items.Add(Me.BackstageViewTabItem1)
+        Me.BackstageViewControl1.Location = New System.Drawing.Point(72, 216)
+        Me.BackstageViewControl1.Name = "BackstageViewControl1"
+        Me.BackstageViewControl1.Ribbon = Me.RibbonControl1
+        Me.BackstageViewControl1.SelectedTab = Nothing
+        Me.BackstageViewControl1.Size = New System.Drawing.Size(480, 150)
+        Me.BackstageViewControl1.TabIndex = 89
+        '
+        'BackstageViewClientControl1
+        '
+        Me.BackstageViewClientControl1.Location = New System.Drawing.Point(0, 0)
+        Me.BackstageViewClientControl1.Name = "BackstageViewClientControl1"
+        Me.BackstageViewClientControl1.Size = New System.Drawing.Size(150, 150)
+        Me.BackstageViewClientControl1.TabIndex = 0
+        '
+        'BackstageViewTabItem1
+        '
+        Me.BackstageViewTabItem1.Caption = "BackstageViewTabItem1"
+        Me.BackstageViewTabItem1.ContentControl = Me.BackstageViewClientControl1
+        Me.BackstageViewTabItem1.Name = "BackstageViewTabItem1"
+        Me.BackstageViewTabItem1.Selected = False
         '
         'NewRec
         '
@@ -2065,6 +2104,7 @@ Partial Class NewRec
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtidrec)
         Me.Controls.Add(Me.LabelControl1)
+        Me.Controls.Add(Me.BackstageViewControl1)
         Me.Controls.Add(Me.RibbonControl1)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(925, 636)
@@ -2162,6 +2202,8 @@ Partial Class NewRec
         Me.GroupControl7.ResumeLayout(False)
         Me.GroupControl7.PerformLayout()
         CType(Me.txtgend.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BackstageViewControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2361,4 +2403,8 @@ Partial Class NewRec
     Friend WithEvents Label9 As Label
     Friend WithEvents Label38 As Label
     Friend WithEvents Label39 As Label
+    Friend WithEvents BackstageViewControl1 As DevExpress.XtraBars.Ribbon.BackstageViewControl
+    Friend WithEvents BackstageViewClientControl1 As DevExpress.XtraBars.Ribbon.BackstageViewClientControl
+    Friend WithEvents BackstageViewTabItem1 As DevExpress.XtraBars.Ribbon.BackstageViewTabItem
+    Friend WithEvents ApplicationMenu1 As DevExpress.XtraBars.Ribbon.ApplicationMenu
 End Class
