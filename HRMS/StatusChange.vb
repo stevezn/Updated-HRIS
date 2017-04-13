@@ -97,10 +97,44 @@ Public Class StatusChange
         End Try
     End Sub
 
+    Dim tbl_par2, tbl_par1 As New DataTable
+
+    Sub loaddata1()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "SELECT departmentname from db_departmentmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par2)
+        For index As Integer = 0 To tbl_par2.Rows.Count - 1
+            ComboBoxEdit5.Properties.Items.Add(tbl_par2.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loaddata()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select groupname from db_groupmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par1)
+        For index As Integer = 0 To tbl_par1.Rows.Count - 1
+            ComboBoxEdit4.Properties.Items.Add(tbl_par1.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
     Private Sub StatusChange_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionstring
         SQLConnection.Open()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "select employeecode from db_tmpname where 1 = 1"
+        Dim quer As String = CType(query.ExecuteScalar, String)
+        TextBox2.Text = quer.ToString
+
+        query.CommandText = "select Name from db_tmpname where 1 =1"
+        Dim quer1 As String = CType(query.ExecuteScalar, String)
+        TextEdit1.Text = quer1.ToString
         changer()
+        loaddata1()
+        loaddata()
     End Sub
 
     Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
@@ -163,8 +197,11 @@ Public Class StatusChange
         dta = DateTimePicker2.Value
         Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
         Try
-            cmmd.CommandText = "update db_pegawai set MaritalStatus = @MaritalStatus, PphStatus = @PphStatus, IsExpiry = @IsExpiry, ExpiryDates = @ExpiryDates, ApprovedBy = @ApprovedBy, ExcludePayroll = @ExcludePayroll, PayCash = @PayCash, ProcessTax = @ProcessTax, ExcludeThr = @ExcludeThr, ExcludeBonus = @ExcludeBonus, PrintSlip = @PrintSlip, PayrollInterval = @PayrollInterval, JobDesks = @JobDesks where EmployeeCode = @ec"
-            cmmd.Parameters.AddWithValue("@ec", TextEdit1.Text)
+            cmmd.CommandText = "update db_pegawai set Grouping = @grp, Department = @dept, Position = @pos, MaritalStatus = @MaritalStatus, PphStatus = @PphStatus, IsExpiry = @IsExpiry, ExpiryDates = @ExpiryDates, ApprovedBy = @ApprovedBy, ExcludePayroll = @ExcludePayroll, PayCash = @PayCash, ProcessTax = @ProcessTax, ExcludeThr = @ExcludeThr, ExcludeBonus = @ExcludeBonus, PrintSlip = @PrintSlip, PayrollInterval = @PayrollInterval, JobDesks = @JobDesks where EmployeeCode = @ec"
+            cmmd.Parameters.AddWithValue("@grp", ComboBoxEdit4.Text)
+            cmmd.Parameters.AddWithValue("@dept", ComboBoxEdit5.Text)
+            cmmd.Parameters.AddWithValue("@pos", ComboBoxEdit2.Text)
+            cmmd.Parameters.AddWithValue("@ec", TextBox2.Text)
             cmmd.Parameters.AddWithValue("@MaritalStatus", ComboBoxEdit6.Text)
             cmmd.Parameters.AddWithValue("@PphStatus", ComboBoxEdit7.Text)
             cmmd.Parameters.AddWithValue("@IsExpiry", CheckEdit1.Checked)

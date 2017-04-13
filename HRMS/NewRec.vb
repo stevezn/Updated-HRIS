@@ -80,8 +80,8 @@ Public Class NewRec
         Try
             Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
             cmmd.CommandText = "insert into db_recruitment " +
-                            " (IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, Interviewdates, CV, Reason, CreatedDate, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial, LastSalary, OtherIncome, ExpSalary, ExpFacilities, FavoriteJob, FWhy, AppliedHere, AWhy, Family, Who, Strenghts, Weakness, Suitable, CarrierObject, Reference, PrivateEmail)" +
-                            " values (@IdRec, @InterviewTimes, @FullName, @PlaceOfBirth, @DateOfBirth, @Address, @Gender, @Religion, @PhoneNumber, @IdNumber, @Photo, @Status, @InterviewDate, @Interviewdates, @CV, @Reason, @CreatedDate, @Position, @ExpectedSalary, @NickName, @ApplicationDate, @Weight, @Height, @BloodType, @City, @ZIP, @HomeNumber, @RecommendedBy, @Martial, @LastSalary, @OtherIncome, @ExpSalary, @ExpFacilities, @FavoriteJob, @FWhy, @AppliedHere, @AWhy, @Family, @Who, @Strenghts, @Weakness, @Suitable, @CarrierObject, @Reference, @PrivateEmail)"
+                            " (IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, Interviewdates, CV, Reason, CreatedDate, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial, LastSalary, OtherIncome, ExpFacilities, FavoriteJob, FWhy, AppliedHere, AWhy, Family, Who, Strenghts, Weakness, Suitable, CarrierObject, Reference, PrivateEmail)" +
+                            " values (@IdRec, @InterviewTimes, @FullName, @PlaceOfBirth, @DateOfBirth, @Address, @Gender, @Religion, @PhoneNumber, @IdNumber, @Photo, @Status, @InterviewDate, @Interviewdates, @CV, @Reason, @CreatedDate, @Position, @ExpectedSalary, @NickName, @ApplicationDate, @Weight, @Height, @BloodType, @City, @ZIP, @HomeNumber, @RecommendedBy, @Martial, @LastSalary, @OtherIncome, @ExpFacilities, @FavoriteJob, @FWhy, @AppliedHere, @AWhy, @Family, @Who, @Strenghts, @Weakness, @Suitable, @CarrierObject, @Reference, @PrivateEmail)"
             cmmd.Parameters.AddWithValue("@IdRec", txtidrec.Text)
             cmmd.Parameters.AddWithValue("@Interviewtimes", TextEdit1.Text)
             cmmd.Parameters.AddWithValue("@FullName", txtcandname.Text)
@@ -128,7 +128,6 @@ Public Class NewRec
             cmmd.Parameters.AddWithValue("@Martial", ComboBoxEdit4.Text)
             cmmd.Parameters.AddWithValue("@LastSalary", TextBox3.Text)
             cmmd.Parameters.AddWithValue("@otherIncome", TextBox4.Text)
-            cmmd.Parameters.AddWithValue("@ExpSalary", TextBox5.Text)
             cmmd.Parameters.AddWithValue("@ExpFacilities", RichTextBox1.Text)
             cmmd.Parameters.AddWithValue("@FavoriteJob", TextBox6.Text)
             cmmd.Parameters.AddWithValue("@FWhy", RichTextBox2.Text)

@@ -56,6 +56,7 @@ Public Class Notes
         Return Image.FromStream(pictureBytes)
     End Function
 
+
     Private Sub Notes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()

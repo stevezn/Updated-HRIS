@@ -113,6 +113,14 @@ Public Class Warning
     Private Sub Warning_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionstring
         SQLConnection.Open()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "select employeecode from db_tmpname where 1 = 1"
+        Dim quer As String = CType(query.ExecuteScalar, String)
+        TextBox2.Text = quer.ToString
+
+        query.CommandText = "select Name from db_tmpname where 1 =1"
+        Dim quer1 As String = CType(query.ExecuteScalar, String)
+        TextBox3.Text = quer1.ToString
         changer()
     End Sub
 

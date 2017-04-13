@@ -1606,6 +1606,10 @@ Public Class Payments
         End Try
     End Sub
 
+    Private Sub GridControl7_Click(sender As Object, e As EventArgs) Handles GridControl7.Click
+
+    End Sub
+
     Sub complete()
         Dim count As MySqlCommand = SQLConnection.CreateCommand
         count.CommandText = "select count(*) from db_loanlist where realisasi = curdate()"

@@ -889,3 +889,6 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.StatusChange.reso
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Warning.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.LeaveRequest.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.EmployeeDetails.resources
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.CandidatesDetails.resources
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.selectcand.resources
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\bin\Debug\DevExpress.Images.v13.1.dll

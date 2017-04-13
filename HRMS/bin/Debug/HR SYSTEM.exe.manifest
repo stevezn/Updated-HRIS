@@ -925,6 +925,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DevExpress.Images.v13.1.dll" size="1481216">
+      <assemblyIdentity name="DevExpress.Images.v13.1" version="13.1.5.0" publicKeyToken="B88D1754D700E49A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>sX8BQz8AI6gKEmssKEXQ52k+xPM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DevExpress.Office.v13.1.Core.dll" size="577528">
       <assemblyIdentity name="DevExpress.Office.v13.1.Core" version="13.1.5.0" publicKeyToken="B88D1754D700E49A" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -3133,14 +3145,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HR SYSTEM.exe" size="2442752">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HR SYSTEM.exe" size="2556416">
       <assemblyIdentity name="HR SYSTEM" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>vedfOe0XFOA4l3Kcx8hKq/f9b1Y=</dsig:DigestValue>
+        <dsig:DigestValue>EFXZgBQRTMBkpD8RoFWt0DwCJw0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -128,6 +128,7 @@
     <Reference Include="DevExpress.ExpressApp.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.ExpressApp.Win.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.ExpressApp.Xpo.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.PivotGrid.v13.1.Core, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -271,6 +272,12 @@
       <DependentUpon>Attendances.vb</DependentUpon>
     </Compile>
     <Compile Include="Attendances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CandidatesDetails.Designer.vb">
+      <DependentUpon>CandidatesDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CandidatesDetails.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChangeData.Designer.vb">
@@ -457,6 +464,12 @@
     <Compile Include="RoundButton.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="selectcand.Designer.vb">
+      <DependentUpon>selectcand.vb</DependentUpon>
+    </Compile>
+    <Compile Include="selectcand.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="selectemp.Designer.vb">
       <DependentUpon>selectemp.vb</DependentUpon>
     </Compile>
@@ -519,6 +532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Attendances.resx">
       <DependentUpon>Attendances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CandidatesDetails.resx">
+      <DependentUpon>CandidatesDetails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeData.resx">
       <DependentUpon>ChangeData.vb</DependentUpon>
@@ -616,6 +632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RotasiMutasi.resx">
       <DependentUpon>RotasiMutasi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="selectcand.resx">
+      <DependentUpon>selectcand.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="selectemp.resx">
       <DependentUpon>selectemp.vb</DependentUpon>

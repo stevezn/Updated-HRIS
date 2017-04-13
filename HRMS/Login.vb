@@ -187,7 +187,7 @@ Public Class Login
                 adapter.Fill(tbl_par)
                 If tbl_par.Rows.Count > 0 Then
                     main.Show()
-                    cir.Show()
+                    ' cir.Show()
                     Hide()
                 Else
                     MsgBox("Username and Password Didn't Match!")

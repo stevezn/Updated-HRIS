@@ -284,7 +284,7 @@ Public Class NewEmp
     End Sub
 
     Public Sub insertion()
-        Dim dtb, dtr, dts, dtu As DateTime
+        Dim dtb, dtr, dtu As DateTime
         txtbod.Format = DateTimePickerFormat.Custom
         txtbod.CustomFormat = "yyyy-MM-dd"
         dtb = txtbod.Value
@@ -385,6 +385,32 @@ Public Class NewEmp
         SQLConnection.Open()
         changer()
         Reset()
+        loaddata1()
+        loaddata()
+    End Sub
+
+    Dim tbl_par2, tbl_par1 As New DataTable
+
+    Sub loaddata1()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "SELECT departmentname from db_departmentmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par2)
+        For index As Integer = 0 To tbl_par2.Rows.Count - 1
+            txtdept.Properties.Items.Add(tbl_par2.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loaddata()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select groupname from db_groupmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par1)
+        For index As Integer = 0 To tbl_par1.Rows.Count - 1
+            txtgroup.Properties.Items.Add(tbl_par1.Rows(index).Item(0).ToString())
+        Next
     End Sub
 
     Private Sub btnPhoto_Click(sender As Object, e As EventArgs)
@@ -637,5 +663,9 @@ Public Class NewEmp
         Else
             DateTimePicker2.Enabled = False
         End If
+    End Sub
+
+    Private Sub txtdept_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtdept.SelectedIndexChanged
+
     End Sub
 End Class

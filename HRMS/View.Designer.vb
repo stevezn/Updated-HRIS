@@ -51,7 +51,6 @@ Partial Class View
         Me.CardView1.FocusedCardTopFieldIndex = 0
         Me.CardView1.GridControl = Me.GridControl1
         Me.CardView1.Name = "CardView1"
-        Me.CardView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.[Auto]
         '
         'View
         '

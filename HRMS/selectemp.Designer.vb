@@ -22,6 +22,7 @@ Partial Class selectemp
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(selectemp))
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -50,9 +51,10 @@ Partial Class selectemp
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(16, 19)
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl2.Location = New System.Drawing.Point(16, 18)
         Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(38, 13)
+        Me.LabelControl2.Size = New System.Drawing.Size(45, 16)
         Me.LabelControl2.TabIndex = 1
         Me.LabelControl2.Text = "Preview"
         '
@@ -80,11 +82,12 @@ Partial Class selectemp
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
+        Me.GridView1.PaintStyleName = "Office2003"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(10, 235)
+        Me.Label1.Location = New System.Drawing.Point(1165, 21)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(56, 13)
         Me.Label1.TabIndex = 16
@@ -97,10 +100,11 @@ Partial Class selectemp
         Me.SimpleButton4.Size = New System.Drawing.Size(63, 23)
         Me.SimpleButton4.TabIndex = 15
         Me.SimpleButton4.Text = "Refresh"
+        Me.SimpleButton4.Visible = False
         '
         'txtrec1
         '
-        Me.txtrec1.Location = New System.Drawing.Point(73, 236)
+        Me.txtrec1.Location = New System.Drawing.Point(1235, 20)
         Me.txtrec1.Name = "txtrec1"
         Me.txtrec1.Size = New System.Drawing.Size(4, 13)
         Me.txtrec1.TabIndex = 14
@@ -108,21 +112,21 @@ Partial Class selectemp
         '
         'SimpleButton3
         '
-        Me.SimpleButton3.Location = New System.Drawing.Point(16, 206)
+        Me.SimpleButton3.Image = CType(resources.GetObject("SimpleButton3.Image"), System.Drawing.Image)
+        Me.SimpleButton3.Location = New System.Drawing.Point(55, 205)
         Me.SimpleButton3.Name = "SimpleButton3"
-        Me.SimpleButton3.Size = New System.Drawing.Size(144, 23)
+        Me.SimpleButton3.Size = New System.Drawing.Size(61, 24)
         Me.SimpleButton3.TabIndex = 10
         Me.SimpleButton3.Text = "Select"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(82, 402)
+        Me.Label2.Location = New System.Drawing.Point(265, 23)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Label2"
-        Me.Label2.Visible = False
         '
         'Label3
         '
@@ -178,6 +182,7 @@ Partial Class selectemp
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "View Browser : Employee"
         Me.TopMost = True
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()

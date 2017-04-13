@@ -48,7 +48,8 @@ Public Class ChangeData
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "Select IdRec as IdRecruitment, FullName from db_recruitment where status = 'Pending' or status = 'In Progress'"
+            'sqlcommand.CommandText = "Select IdRec as IdRecruitment, FullName from db_recruitment where status = 'Pending' or status = 'In Progress'"
+            sqlcommand.CommandText = "select idrec as IdRecruitment, FullName from db_recruitment"
             sqlcommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
@@ -547,20 +548,20 @@ Public Class ChangeData
             ComboBoxEdit4.Text = datatabl.Rows(0).Item(28).ToString
             TextBox3.Text = datatabl.Rows(0).Item(29).ToString
             TextBox4.Text = datatabl.Rows(0).Item(30).ToString
-            TextBox5.Text = datatabl.Rows(0).Item(31).ToString
-            RichTextBox1.Text = datatabl.Rows(0).Item(32).ToString
-            TextBox6.Text = datatabl.Rows(0).Item(33).ToString
-            RichTextBox2.Text = datatabl.Rows(0).Item(34).ToString
-            CheckEdit1.Checked = CBool(datatabl.Rows(0).Item(35).ToString)
-            RichTextBox3.Text = datatabl.Rows(0).Item(36).ToString
-            CheckEdit2.Checked = CBool(datatabl.Rows(0).Item(37).ToString)
-            RichTextBox4.Text = datatabl.Rows(0).Item(38).ToString
-            RichTextBox5.Text = datatabl.Rows(0).Item(39).ToString
-            RichTextBox6.Text = datatabl.Rows(0).Item(40).ToString
-            RichTextBox7.Text = datatabl.Rows(0).Item(41).ToString
-            RichTextBox8.Text = datatabl.Rows(0).Item(42).ToString
-            RichTextBox9.Text = datatabl.Rows(0).Item(43).ToString
-            txtwemail.Text = datatabl.Rows(0).Item(44).ToString
+            TextBox5.Text = datatabl.Rows(0).Item(18).ToString
+            RichTextBox1.Text = datatabl.Rows(0).Item(31).ToString
+            TextBox6.Text = datatabl.Rows(0).Item(32).ToString
+            RichTextBox2.Text = datatabl.Rows(0).Item(33).ToString
+            CheckEdit1.Checked = CBool(datatabl.Rows(0).Item(34).ToString)
+            RichTextBox3.Text = datatabl.Rows(0).Item(35).ToString
+            CheckEdit2.Checked = CBool(datatabl.Rows(0).Item(36).ToString)
+            RichTextBox4.Text = datatabl.Rows(0).Item(37).ToString
+            RichTextBox5.Text = datatabl.Rows(0).Item(38).ToString
+            RichTextBox6.Text = datatabl.Rows(0).Item(39).ToString
+            RichTextBox7.Text = datatabl.Rows(0).Item(40).ToString
+            RichTextBox8.Text = datatabl.Rows(0).Item(41).ToString
+            RichTextBox9.Text = datatabl.Rows(0).Item(42).ToString
+            txtwemail.Text = datatabl.Rows(0).Item(43).ToString
             edu()
             cert()
             skill()
@@ -573,6 +574,12 @@ Public Class ChangeData
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         loadinfo()
+        GridView1.BestFitColumns()
+        GridView2.BestFitColumns()
+        GridView3.BestFitColumns()
+        GridView4.BestFitColumns()
+        GridView5.BestFitColumns()
+        GridView6.BestFitColumns()
         act = "input"
     End Sub
 

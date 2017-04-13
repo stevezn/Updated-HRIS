@@ -52,6 +52,7 @@ Public Class MainApp
     Private Sub MainApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
+        GridView1.BestFitColumns()
         Dim lbl As MySqlCommand = SQLConnection.CreateCommand
         lbl.CommandText = "select user from db_temp"
         Dim name As String = CStr(lbl.ExecuteScalar)
@@ -131,23 +132,29 @@ Public Class MainApp
         clearForm()
         reset()
         resetclear()
+        GridView1.BestFitColumns()
         LayoutControlItem10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         lcForm.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         barJudul.Caption = "Module Recruitment"
         GridControl1.RefreshDataSource()
-        CardView1.Columns.Clear()
+        GridView1.Columns.Clear()
+        'CardView1.Columns.Clear()
         loadDataReq()
         RibbonPageGroup7.Visible = False
+        GridView1.MoveLast()
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem2.ItemClick
         reset()
         resetclear()
+        GridView1.BestFitColumns()
         barJudul.Caption = "Module Employee"
         GridControl1.RefreshDataSource()
-        CardView1.Columns.Clear()
+        GridView1.Columns.Clear()
+        'CardView1.Columns.Clear()
         loadDataReq()
         RibbonPageGroup7.Visible = False
+        GridView1.MoveLast()
     End Sub
 
     Private Sub BarButtonItem3_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem3.ItemClick
@@ -174,32 +181,57 @@ Public Class MainApp
         Dim pesan As String
         pesan = CType(MsgBox("Log Off Application?", MsgBoxStyle.YesNo, "Warning"), String)
         If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
-            Dim del As MySqlCommand = SQLConnection.CreateCommand
-            ' del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
-            del.CommandText = "truncate db_hasil"
-            del.ExecuteNonQuery()
+            Try
+                Dim del As MySqlCommand = SQLConnection.CreateCommand
+                ' del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
+                del.CommandText = "truncate db_hasil"
+                del.ExecuteNonQuery()
+                Dim dele As MySqlCommand = SQLConnection.CreateCommand
+                'dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
+                dele.CommandText = "truncate db_temp"
+                dele.Parameters.Clear()
+                dele.ExecuteNonQuery()
 
-            del.CommandText = "truncate db_tmpname"
-            del.ExecuteNonQuery()
+                dele.CommandText = "truncate db_tmpname"
+                dele.Parameters.Clear()
+                dele.ExecuteNonQuery()
+            Catch ex As Exception
 
-            'Dim dele As MySqlCommand = SQLConnection.CreateCommand
-            'dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
-            'dele.ExecuteNonQuery()
-            'Dim delet As MySqlCommand = SQLConnection.CreateCommand
-            'delet.CommandText = "delete from db_tmpname where EmployeeCode != 'absbahsgedeg'"
-            'delet.ExecuteNonQuery()
-            'dele.CommandText = "truncate db_tmpname"
-            'dele.ExecuteNonQuery()
-
+            End Try
             SQLConnection.Close()
             Close()
-            setting.Close()
-            rotasi.Close()
-            employeenotes.Close()
-            loan.Close()
             Login.Close()
             Application.Exit()
         End If
+        'Dim pesan As String
+        'pesan = CType(MsgBox("Log Off Application?", MsgBoxStyle.YesNo, "Warning"), String)
+        'If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+        '    Dim del As MySqlCommand = SQLConnection.CreateCommand
+        '    ' del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
+        '    del.CommandText = "truncate db_hasil"
+        '    del.ExecuteNonQuery()
+
+        '    del.CommandText = "truncate db_tmpname"
+        '    del.ExecuteNonQuery()
+
+        '    'Dim dele As MySqlCommand = SQLConnection.CreateCommand
+        '    'dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
+        '    'dele.ExecuteNonQuery()
+        '    'Dim delet As MySqlCommand = SQLConnection.CreateCommand
+        '    'delet.CommandText = "delete from db_tmpname where EmployeeCode != 'absbahsgedeg'"
+        '    'delet.ExecuteNonQuery()
+        '    'dele.CommandText = "truncate db_tmpname"
+        '    'dele.ExecuteNonQuery()
+
+        '    SQLConnection.Close()
+        '    Close()
+        '    setting.Close()
+        '    rotasi.Close()
+        '    employeenotes.Close()
+        '    loan.Close()
+        '    Login.Close()
+        '    Application.Exit()
+        'End If
     End Sub
 
     Dim tbl_par As New DataTable
@@ -263,7 +295,7 @@ Public Class MainApp
     'import to employee
     Dim table As DataTable
 
-    Private Sub importData()
+    Private Sub importData1()
         Dim maxid As Integer
         Dim newid As Integer = maxid + 1
         Dim ynow As String = Format(Now, "yy").ToString
@@ -316,7 +348,8 @@ Public Class MainApp
                     Try
                         sqlCommand.CommandText = "INSERT INTO db_pegawai (FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, status, CompanyCode, EmployeeCode, OfficeLocation, PhoneNumber, WorkDate, ChangeDate)" +
                                                          "SELECT FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, @status, @CompanyCode, @EmployeeCode, @OfficeLocation, @PhoneNumber, @WorkDate, @ChangeDate FROM db_recruitment WHERE Status='Accepted' AND idrec = @idrec"
-                        sqlCommand.Parameters.AddWithValue("@Status", "Active")
+                        sqlCommand.Parameters.AddWithValue("@Status", "<empty>
+")
                         sqlCommand.Parameters.AddWithValue("@CompanyCode", "<empty>")
                         sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
                         sqlCommand.Parameters.AddWithValue("@OfficeLocation", "<empty>")
@@ -335,6 +368,129 @@ Public Class MainApp
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub importData()
+        Dim maxid As Integer
+        Dim newid As Integer = maxid + 1
+        Dim ynow As String = Format(Now, "yy").ToString
+        Dim mnow As String = Month(Now).ToString
+        Dim lastn As Integer
+        Dim updmon As String
+        Dim lastcode As String = ""
+        Dim tmp As Integer
+        Dim numstat As Integer
+        Dim cd As MySqlCommand = SQLConnection.CreateCommand
+        cd.CommandText = "select count(*) from db_recruitment where status = 'Accepted'"
+        Dim cdres As Integer = CInt(cd.ExecuteScalar)
+        If cdres = 0 Then
+            MsgBox("There's no data to be imported")
+        Else
+            Try
+                Dim cmd1 = SQLConnection.CreateCommand
+                cmd1.CommandText = "select idrec from db_recruitment where status = 'Accepted'"
+                Dim adp1 As New MySqlDataAdapter(cmd1)
+                Dim ds1 As New DataSet
+                adp1.Fill(ds1)
+                For Each dt As DataTable In ds1.Tables
+                    For Each row As DataRow In dt.Rows
+                        Try
+                            Dim cmd = SQLConnection.CreateCommand
+                            cmd.CommandText = "select count(*) from db_recruitment where status = 'Accepted'"
+                            numstat = CInt(cmd.ExecuteScalar)
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+                        Try
+                            Dim cmd = SQLConnection.CreateCommand()
+                            cmd.CommandText = "SELECT last_num FROM view_emp_last_code"
+                            lastn = DirectCast(cmd.ExecuteScalar(), Integer)
+                        Catch ex As Exception
+                        End Try
+                        Try
+                            Dim cmd = SQLConnection.CreateCommand
+                            cmd.CommandText = "SELECT EmployeeCode FROM db_pegawai ORDER BY EmployeeCode DESC LIMIT 1"
+                            lastcode = DirectCast(cmd.ExecuteScalar(), String)
+                        Catch ex As Exception
+                        End Try
+                        Try
+                            Dim cmd = SQLConnection.CreateCommand
+                            cmd.CommandText = "SELECT MID(EmployeeCode, 4, 1) FROM db_pegawai where EmployeeCode = '" & lastcode & "'"
+                            updmon = DirectCast(cmd.ExecuteScalar(), String)
+                            If CInt(updmon) <> CInt(mnow) Then
+                                tmp = 1
+                            Else
+                                tmp = lastn + 1
+                            End If
+                        Catch ex2 As Exception
+                        End Try
+                        Dim actualcode As String = ynow & "-" & mnow & "-" & Strings.Right("0000" & tmp, 5)
+                        Dim sqlCommand As MySqlCommand = SQLConnection.CreateCommand
+                        Try
+                            sqlCommand.CommandText = "INSERT INTO db_pegawai (FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, status, CompanyCode, EmployeeCode, OfficeLocation, PhoneNumber, WorkDate, ChangeDate, NickName, Weight, Height, BloodType, RecommendedBy)" +
+                                                             "SELECT FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, @status, @CompanyCode, @EmployeeCode, @OfficeLocation, PhoneNumber, @WorkDate, @ChangeDate, NickName, Weight, Height, BloodType, RecommendedBy FROM db_recruitment WHERE Status='Accepted' AND idrec = @idrec"
+                            sqlCommand.Parameters.AddWithValue("@Status", "Active")
+                            sqlCommand.Parameters.AddWithValue("@CompanyCode", "<empty>")
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@OfficeLocation", "<empty>")
+                            sqlCommand.Parameters.AddWithValue("@WorkDate", Date.Now)
+                            sqlCommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+                            MessageBox.Show("Data Succesfully Imported, Please Click Refresh To Load")
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+                        Try
+                            sqlCommand.CommandText = "update db_education set " +
+                                                        " EmployeeCode = @EmployeeCode" +
+                                                        " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+
+                            sqlCommand.CommandText = "update db_certificates set " +
+                                                        " EmployeeCode = @EmployeeCode" +
+                                                        " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+
+                            sqlCommand.CommandText = "update db_empskill set " +
+                                                            " EmployeeCode = @EmployeeCode" +
+                                                            " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+
+                            sqlCommand.CommandText = "update db_exp set " +
+                                                        " EmployeeCode = @EmployeeCode" +
+                                                        " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+
+
+                            sqlCommand.CommandText = "update db_family set " +
+                                                        " EmployeeCode = @EmployeeCode" +
+                                                        " where idrec = @idrec"
+                            sqlCommand.Parameters.Clear()
+                            sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
+                            sqlCommand.Parameters.AddWithValue("@idrec", row.Item("idrec"))
+                            sqlCommand.ExecuteNonQuery()
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+                    Next
+                Next
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
     End Sub
 
     'SELECT CONCAT(DATE_FORMAT(Now(),'%y-%m'),"-", LPAD((RIGHT(MAX(EmployeeCode),4)+1),4,'0')) FROM db_pegawai 
@@ -358,11 +514,11 @@ Public Class MainApp
         Dim sqlCommand As New MySqlCommand
         Try
             If barJudul.Caption = "Module Recruitment" Then
-                sqlCommand.CommandText = "select IdRec as IDRecruitment, InterviewTimes as AppliedTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, InterviewDate, Reason, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial as MartialStatus, LastSalary, OtherIncome, ExpSalary as ExpectedSalary, ExpFacilities as ExpectedFacilities, FavoriteJob, Reference, CreatedDate from db_recruitment"
+                sqlCommand.CommandText = "select IdRec, InterviewTimes as AppliedTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, InterviewDate, Reason, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial as MartialStatus, LastSalary, OtherIncome, ExpFacilities as ExpectedFacilities, FavoriteJob, Reference, CreatedDate from db_recruitment"
                 'sqlCommand.CommandText = "Select IdRec as IDRecruitment, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, InterviewDate, Status, CreatedDate from db_recruitment where status != 'In Progress'"
             ElseIf barJudul.Caption = "Module Employee" Then
                 'sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, TrainingSampai, EmployeeType FROM db_pegawai where status != 'Fired' and status != 'Terminated'"
-                sqlCommand.CommandText = "select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks from db_pegawai"
+                sqlCommand.CommandText = "select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks from db_pegawai where status <> 'Terminated'"
             End If
             sqlCommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
@@ -373,6 +529,7 @@ Public Class MainApp
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        GridView1.BestFitColumns()
     End Sub
 
     Public Function InsertAtt() As Boolean
@@ -809,30 +966,6 @@ Public Class MainApp
         End If
     End Sub
 
-    Private Sub GridView1_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs)
-        Dim datatabl As New DataTable
-        Dim sqlCommand As New MySqlCommand
-        datatabl.Clear()
-        Dim param As String = ""
-        Try
-            'param = "and EmployeeCode='" + Griddiew1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
-        Catch ex As Exception
-        End Try
-        Try
-            sqlCommand.CommandText = "SELECT EmployeeCode FROM db_pegawai WHERE 1=1 " + param.ToString()
-            sqlCommand.Connection = SQLConnection
-            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(datatabl)
-        Catch ex As Exception
-            SQLConnection.Close()
-            MsgBox(ex.Message)
-        End Try
-        If datatabl.Rows.Count > 0 Then
-            SimpleButton2.Text = datatabl.Rows(0).Item(0).ToString
-        End If
-    End Sub
-
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs)
         If cir Is Nothing Or cir.IsDisposed OrElse cir.MinimizeBox Then
             cir.Close()
@@ -847,5 +980,326 @@ Public Class MainApp
 
     Private Sub MainApp_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         'Application.Exit()
+    End Sub
+
+    Private Function GetImage() As System.Drawing.Image
+        Return ImageCollection1.Images(0)
+    End Function
+
+    Private Function GetImage1() As Image
+        Return ImageCollection1.Images(1)
+    End Function
+
+    Public Function GetImage2() As Image
+        Return ImageCollection1.Images(2)
+    End Function
+
+    Private Function GetImage3() As Image
+        Return ImageCollection1.Images(3)
+    End Function
+
+    Private Function GetImage4() As Image
+        Return ImageCollection1.Images(4)
+    End Function
+
+    Private Function GetImage5() As Image
+        Return ImageCollection1.Images(5)
+    End Function
+
+    Private Function GetImage6() As Image
+        Return ImageCollection1.Images(6)
+    End Function
+
+    Private Function GetImage7() As Image
+        Return ImageCollection1.Images(7)
+    End Function
+
+    Private Function GetImage8() As Image
+        Return ImageCollection1.Images(8)
+    End Function
+
+    Private Function GetImage9() As Image
+        Return ImageCollection1.Images(9)
+    End Function
+
+    Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
+        Dim view As GridView = CType(sender, GridView)
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            Dim rowHandle As Integer = e.HitInfo.RowHandle
+            e.Menu.Items.Clear()
+            Dim item As DXMenuItem = CreateMergingEnabledMenuItem(view, rowHandle)
+            item.BeginGroup = True
+            e.Menu.Items.Add(item)
+        End If
+
+        If barJudul.Caption = "Module Recruitment" Then
+            If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+                e.Menu.Items.Add(New DXMenuItem("Add", New EventHandler(AddressOf Button4_Click), GetImage1))
+                e.Menu.Items.Add(New DXMenuItem("View Candidates", New EventHandler(AddressOf Button6_Click), GetImage2))
+                e.Menu.Items.Add(New DXMenuItem("View Progress", New EventHandler(AddressOf Button7_Click), GetImage3()))
+                e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button9_Click), GetImage8))
+                e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
+            End If
+        ElseIf barJudul.Caption = "Module Employee" Then
+            If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+                Dim submenu As New DXSubMenuItem("rows")
+                e.Menu.Items.Add(New DXMenuItem("Import Accepted Candidates From Recruitment", New EventHandler(AddressOf btnImport_Click), GetImage5))
+                e.Menu.Items.Add(New DXMenuItem("Add", New EventHandler(AddressOf Button3_Click), GetImage1))
+                e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf Button1_Click), GetImage2))
+                e.Menu.Items.Add(New DXMenuItem("Status Change", New EventHandler(AddressOf SimpleButton5_Click), GetImage6))
+                e.Menu.Items.Add(New DXMenuItem("Termination", New EventHandler(AddressOf SimpleButton6_Click), GetImage7))
+                e.Menu.Items.Add(New DXMenuItem("Warning Notice", New EventHandler(AddressOf SimpleButton4_Click), GetImage4))
+                e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button8_Click), GetImage8))
+                e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
+                e.Menu.Items.Add(New DXMenuItem("Terminate This Employee ?", New EventHandler(AddressOf SimpleButton2_Click_1), GetImage))
+                'e.Menu.Items.Add(New DXMenuItem)
+            End If
+        End If
+    End Sub
+
+    Private Sub GridView1_FocusedRowChanged_1(sender As Object, e As FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
+        If barJudul.Caption = "Module Employee" Then
+            Dim datatabl As New DataTable
+            Dim sqlCommand As New MySqlCommand
+            datatabl.Clear()
+            Dim param As String = ""
+            Try
+                param = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
+            Catch ex As Exception
+            End Try
+            Try
+                sqlCommand.CommandText = "SELECT EmployeeCode, FullName FROM db_pegawai WHERE 1=1 " + param.ToString()
+                sqlCommand.Connection = SQLConnection
+                Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(datatabl)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+            If datatabl.Rows.Count > 0 Then
+                SimpleButton2.Text = datatabl.Rows(0).Item(0).ToString
+                Button5.Text = datatabl.Rows(0).Item(1).ToString
+
+            End If
+
+        ElseIf barJudul.Caption = "Module Recruitment" Then
+            Dim datatabl As New DataTable
+            Dim sqlCommand As New MySqlCommand
+            datatabl.Clear()
+            Dim param As String = ""
+            Try
+                param = "and IdRec='" + GridView1.GetFocusedRowCellValue("IdRec").ToString() + "'"
+            Catch ex As Exception
+            End Try
+            Try
+                sqlCommand.CommandText = "SELECT IdRec FROM db_recruitment WHERE 1=1 " + param.ToString()
+                sqlCommand.Connection = SQLConnection
+                Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(datatabl)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+            If datatabl.Rows.Count > 0 Then
+                SimpleButton2.Text = datatabl.Rows(0).Item(0).ToString
+            End If
+        End If
+    End Sub
+
+    Dim emp As New EmployeeDetails
+
+    Public Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, Name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
+        If emp Is Nothing OrElse emp.IsDisposed OrElse emp.MinimizeBox Then
+            emp.Close()
+            emp = New EmployeeDetails
+        End If
+        emp.Show()
+    End Sub
+
+    Dim modify As New ChangeEmp
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, Name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
+        If modify Is Nothing OrElse modify.IsDisposed OrElse modify.MinimizeBox Then
+            modify.Close()
+            modify = New ChangeEmp
+        End If
+        modify.Show()
+    End Sub
+
+    Dim add As New NewEmp
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If add Is Nothing OrElse add.IsDisposed OrElse add.MinimizeBox Then
+            add.Close()
+            add = New NewEmp
+        End If
+        add.Show()
+    End Sub
+
+    Dim add2 As New NewRec
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        If add2 Is Nothing OrElse add2.IsDisposed OrElse add2.MinimizeBox Then
+            add2.Close()
+            add2 = New NewRec
+        End If
+        add2.Show()
+    End Sub
+
+    Dim change As New ChangeData
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
+        If change Is Nothing OrElse change.IsDisposed OrElse change.MinimizeBox Then
+            change.Close()
+            change = New ChangeData
+        End If
+        change.Show()
+    End Sub
+
+    Dim cand As New CandidatesDetails
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(idrec)" +
+                            "values (@idrec)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@idrec", SimpleButton2.Text)
+        query.ExecuteNonQuery()
+        If cand Is Nothing OrElse cand.IsDisposed OrElse cand.MinimizeBox Then
+            cand.Close()
+            cand = New CandidatesDetails
+        End If
+        cand.Show()
+    End Sub
+
+    Dim pro As New RecProcess
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, Name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
+        If pro Is Nothing OrElse pro.IsDisposed OrElse pro.MinimizeBox Then
+            pro.Close()
+            pro = New RecProcess
+        End If
+        pro.Show()
+    End Sub
+
+    Dim warn As New Warning
+
+    Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, name)" +
+                            "values (@employeecode, @name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
+        If warn Is Nothing OrElse warn.IsDisposed OrElse warn.MinimizeBox Then
+            warn.Close()
+            warn = New Warning
+        End If
+        warn.Show()
+    End Sub
+
+    Dim status As New StatusChange
+
+    Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, Name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
+        If status Is Nothing OrElse status.IsDisposed OrElse status.MinimizeBox Then
+            status.Close()
+            status = New StatusChange
+        End If
+        status.Show()
+    End Sub
+
+    Dim term As New Termination
+
+    Private Sub SimpleButton6_Click(sender As Object, e As EventArgs) Handles SimpleButton6.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, Name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
+        If term Is Nothing OrElse term.IsDisposed OrElse term.MinimizeBox Then
+            term.Close()
+            term = New Termination
+        End If
+        term.Show()
+    End Sub
+
+    Dim chx As New ChangeEmp
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        If chx Is Nothing OrElse chx.IsDisposed OrElse chx.MinimizeBox Then
+            chx.Close()
+            chx = New ChangeEmp
+        End If
+        chx.Show()
+    End Sub
+    Dim chxx As New ChangeData
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        If chxx Is Nothing OrElse chxx.IsDisposed OrElse chxx.MinimizeBox Then
+            chxx.Close()
+            chxx = New ChangeData
+        End If
+        chxx.Show()
     End Sub
 End Class

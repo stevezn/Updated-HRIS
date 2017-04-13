@@ -29,6 +29,9 @@ Partial Class NewRec
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.BackstageViewControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewControl()
+        Me.BackstageViewClientControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
+        Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         Me.barJudul = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
@@ -219,10 +222,8 @@ Partial Class NewRec
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.txtapplieddate = New System.Windows.Forms.DateTimePicker()
         Me.ApplicationMenu1 = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
-        Me.BackstageViewControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewControl()
-        Me.BackstageViewClientControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
-        Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BackstageViewControl1.SuspendLayout()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtadd.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -302,7 +303,6 @@ Partial Class NewRec
         Me.GroupControl7.SuspendLayout()
         CType(Me.txtgend.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.BackstageViewControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Employee
@@ -346,6 +346,32 @@ Partial Class NewRec
         Me.RibbonControl1.Size = New System.Drawing.Size(915, 144)
         Me.RibbonControl1.Toolbar.ItemLinks.Add(Me.barJudul)
         Me.RibbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above
+        '
+        'BackstageViewControl1
+        '
+        Me.BackstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow
+        Me.BackstageViewControl1.Controls.Add(Me.BackstageViewClientControl1)
+        Me.BackstageViewControl1.Items.Add(Me.BackstageViewTabItem1)
+        Me.BackstageViewControl1.Location = New System.Drawing.Point(72, 216)
+        Me.BackstageViewControl1.Name = "BackstageViewControl1"
+        Me.BackstageViewControl1.Ribbon = Me.RibbonControl1
+        Me.BackstageViewControl1.SelectedTab = Nothing
+        Me.BackstageViewControl1.Size = New System.Drawing.Size(480, 150)
+        Me.BackstageViewControl1.TabIndex = 89
+        '
+        'BackstageViewClientControl1
+        '
+        Me.BackstageViewClientControl1.Location = New System.Drawing.Point(188, 0)
+        Me.BackstageViewClientControl1.Name = "BackstageViewClientControl1"
+        Me.BackstageViewClientControl1.Size = New System.Drawing.Size(292, 150)
+        Me.BackstageViewClientControl1.TabIndex = 0
+        '
+        'BackstageViewTabItem1
+        '
+        Me.BackstageViewTabItem1.Caption = "BackstageViewTabItem1"
+        Me.BackstageViewTabItem1.ContentControl = Me.BackstageViewClientControl1
+        Me.BackstageViewTabItem1.Name = "BackstageViewTabItem1"
+        Me.BackstageViewTabItem1.Selected = False
         '
         'barJudul
         '
@@ -2052,32 +2078,6 @@ Partial Class NewRec
         Me.ApplicationMenu1.Name = "ApplicationMenu1"
         Me.ApplicationMenu1.Ribbon = Me.RibbonControl1
         '
-        'BackstageViewControl1
-        '
-        Me.BackstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow
-        Me.BackstageViewControl1.Controls.Add(Me.BackstageViewClientControl1)
-        Me.BackstageViewControl1.Items.Add(Me.BackstageViewTabItem1)
-        Me.BackstageViewControl1.Location = New System.Drawing.Point(72, 216)
-        Me.BackstageViewControl1.Name = "BackstageViewControl1"
-        Me.BackstageViewControl1.Ribbon = Me.RibbonControl1
-        Me.BackstageViewControl1.SelectedTab = Nothing
-        Me.BackstageViewControl1.Size = New System.Drawing.Size(480, 150)
-        Me.BackstageViewControl1.TabIndex = 89
-        '
-        'BackstageViewClientControl1
-        '
-        Me.BackstageViewClientControl1.Location = New System.Drawing.Point(0, 0)
-        Me.BackstageViewClientControl1.Name = "BackstageViewClientControl1"
-        Me.BackstageViewClientControl1.Size = New System.Drawing.Size(150, 150)
-        Me.BackstageViewClientControl1.TabIndex = 0
-        '
-        'BackstageViewTabItem1
-        '
-        Me.BackstageViewTabItem1.Caption = "BackstageViewTabItem1"
-        Me.BackstageViewTabItem1.ContentControl = Me.BackstageViewClientControl1
-        Me.BackstageViewTabItem1.Name = "BackstageViewTabItem1"
-        Me.BackstageViewTabItem1.Selected = False
-        '
         'NewRec
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2117,6 +2117,7 @@ Partial Class NewRec
         Me.Text = "Recruitment"
         Me.TopMost = True
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BackstageViewControl1.ResumeLayout(False)
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtadd.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2203,7 +2204,6 @@ Partial Class NewRec
         Me.GroupControl7.PerformLayout()
         CType(Me.txtgend.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.BackstageViewControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

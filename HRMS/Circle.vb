@@ -460,15 +460,6 @@ Public Class Circle
         tmnt.Show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If emp Is Nothing OrElse emp.IsDisposed OrElse emp.MinimizeBox Then
-            emp.Close()
-            emp = New EmployeeDetails
-        End If
-        emp.Show()
-    End Sub
-
-    Dim emp As New EmployeeDetails
 
     'Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
 

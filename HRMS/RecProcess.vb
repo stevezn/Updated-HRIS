@@ -59,7 +59,6 @@ Public Class RecProcess
         txtinterview.Text = ""
         txtaddress.Text = ""
         txtphone.Text = ""
-
     End Sub
 
     Sub cleartxt()
@@ -79,13 +78,13 @@ Public Class RecProcess
         sk.CommandText = "select idrec from db_skills where idrec = '" & txtidrecc.Text & "'"
         Dim sk1 As String = CStr(sk.ExecuteScalar)
         If sk1 = "" Then
-            If skill1.Text = "" OrElse skill2.Text = "" OrElse skill3.Text = "" OrElse skill4.Text = "" OrElse skill5.Text = "" OrElse txtpos.Text = "" OrElse txtexp.Text = "" OrElse txtidrecc.Text = "" Then
+            If skill1.Text = "" OrElse skill2.Text = "" OrElse skill3.Text = "" OrElse skill4.Text = "" OrElse skill5.Text = "" OrElse txtidrecc.Text = "" Then
                 MsgBox("Please fill the required fields")
             Else
                 Try
                     str_carSql = "INSERT INTO db_skills " +
-                           "(IdRec, FullName, Skill1, Skill2, Skill3, Skill4, Skill5, Position, ExpectedSalary) " +
-                           "values (@Idrec, @fullname, @skill1, @skill2, @skill3, @skill4, @skill5, @position, @expectedsalary)"
+                           "(IdRec, FullName, Skill1, Skill2, Skill3, Skill4, Skill5) " +
+                           "values (@Idrec, @fullname, @skill1, @skill2, @skill3, @skill4, @skill5)"
                     sqlCommand.Connection = SQLConnection
                     sqlCommand.CommandText = str_carSql
                     sqlCommand.Parameters.AddWithValue("@IdRec", txtidrecc.Text)
@@ -95,8 +94,6 @@ Public Class RecProcess
                     sqlCommand.Parameters.AddWithValue("@skill3", skill3.Text)
                     sqlCommand.Parameters.AddWithValue("@skill4", skill4.Text)
                     sqlCommand.Parameters.AddWithValue("@skill5", skill5.Text)
-                    sqlCommand.Parameters.AddWithValue("@Position", txtpos.Text)
-                    sqlCommand.Parameters.AddWithValue("@ExpectedSalary", txtexp.Text)
                     sqlCommand.ExecuteNonQuery()
                     MessageBox.Show("Data Succesfully Added!")
                     txtname.Text = ""
@@ -107,8 +104,6 @@ Public Class RecProcess
                     skill3.Text = ""
                     skill4.Text = ""
                     skill5.Text = ""
-                    txtpos.Text = ""
-                    txtexp.Text = ""
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try

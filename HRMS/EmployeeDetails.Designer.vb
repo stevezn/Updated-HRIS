@@ -127,29 +127,29 @@ Partial Class EmployeeDetails
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.TabControl3 = New System.Windows.Forms.TabControl()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
+        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridControl3 = New DevExpress.XtraGrid.GridControl()
+        Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.TabPage9 = New System.Windows.Forms.TabPage()
-        Me.TabPage10 = New System.Windows.Forms.TabPage()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.LabelControl21 = New DevExpress.XtraEditors.LabelControl()
-        Me.GridControl3 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
-        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.ComboBoxEdit14 = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.ComboBoxEdit13 = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.ComboBoxEdit12 = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.Label42 = New System.Windows.Forms.Label()
-        Me.ComboBoxEdit11 = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
-        Me.ComboBoxEdit10 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.CardView1 = New DevExpress.XtraGrid.Views.Card.CardView()
+        Me.TabPage10 = New System.Windows.Forms.TabPage()
         Me.GroupControl7 = New DevExpress.XtraEditors.GroupControl()
+        Me.ComboBoxEdit10 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.ComboBoxEdit11 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.ComboBoxEdit12 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.ComboBoxEdit13 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.ComboBoxEdit14 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         GroupControl5.SuspendLayout()
@@ -207,25 +207,25 @@ Partial Class EmployeeDetails
         Me.TabPage4.SuspendLayout()
         Me.TabControl3.SuspendLayout()
         Me.TabPage5.SuspendLayout()
-        Me.TabPage6.SuspendLayout()
-        Me.TabPage9.SuspendLayout()
-        Me.TabPage10.SuspendLayout()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
-        CType(Me.ComboBoxEdit14.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ComboBoxEdit13.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ComboBoxEdit12.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ComboBoxEdit11.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ComboBoxEdit10.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage6.SuspendLayout()
+        Me.TabPage9.SuspendLayout()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage10.SuspendLayout()
         CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl7.SuspendLayout()
+        CType(Me.ComboBoxEdit10.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ComboBoxEdit11.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ComboBoxEdit12.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ComboBoxEdit13.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ComboBoxEdit14.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupControl5
@@ -478,6 +478,7 @@ Partial Class EmployeeDetails
         Me.GridView6.Name = "GridView6"
         Me.GridView6.OptionsFind.AlwaysVisible = True
         Me.GridView6.OptionsView.ColumnAutoWidth = False
+        Me.GridView6.PaintStyleName = "Office2003"
         '
         'GroupControl3
         '
@@ -501,6 +502,7 @@ Partial Class EmployeeDetails
         Me.GridView4.GridControl = Me.GridControl4
         Me.GridView4.Name = "GridView4"
         Me.GridView4.OptionsView.ColumnAutoWidth = False
+        Me.GridView4.PaintStyleName = "Office2003"
         '
         'TabPage7
         '
@@ -535,9 +537,7 @@ Partial Class EmployeeDetails
         Me.GridView5.GridControl = Me.GridControl5
         Me.GridView5.Name = "GridView5"
         Me.GridView5.OptionsView.ColumnAutoWidth = False
-        '
-        'Timer1
-        '
+        Me.GridView5.PaintStyleName = "Office2003"
         '
         'txtwork
         '
@@ -1176,6 +1176,60 @@ Partial Class EmployeeDetails
         Me.TabPage5.Text = "Education"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
+        'GroupControl1
+        '
+        Me.GroupControl1.Controls.Add(Me.GridControl2)
+        Me.GroupControl1.Controls.Add(Me.GridControl3)
+        Me.GroupControl1.Controls.Add(Me.LabelControl21)
+        Me.GroupControl1.Location = New System.Drawing.Point(3, 4)
+        Me.GroupControl1.Name = "GroupControl1"
+        Me.GroupControl1.Size = New System.Drawing.Size(879, 405)
+        Me.GroupControl1.TabIndex = 49
+        '
+        'GridControl2
+        '
+        Me.GridControl2.Location = New System.Drawing.Point(5, 211)
+        Me.GridControl2.MainView = Me.GridView2
+        Me.GridControl2.Name = "GridControl2"
+        Me.GridControl2.Size = New System.Drawing.Size(869, 189)
+        Me.GridControl2.TabIndex = 53
+        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2, Me.GridView7})
+        '
+        'GridView2
+        '
+        Me.GridView2.GridControl = Me.GridControl2
+        Me.GridView2.Name = "GridView2"
+        Me.GridView2.PaintStyleName = "Office2003"
+        '
+        'GridView7
+        '
+        Me.GridView7.GridControl = Me.GridControl2
+        Me.GridView7.Name = "GridView7"
+        '
+        'GridControl3
+        '
+        Me.GridControl3.Location = New System.Drawing.Point(5, 43)
+        Me.GridControl3.MainView = Me.GridView3
+        Me.GridControl3.Name = "GridControl3"
+        Me.GridControl3.Size = New System.Drawing.Size(869, 162)
+        Me.GridControl3.TabIndex = 0
+        Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
+        '
+        'GridView3
+        '
+        Me.GridView3.GridControl = Me.GridControl3
+        Me.GridView3.Name = "GridView3"
+        Me.GridView3.PaintStyleName = "Office2003"
+        '
+        'LabelControl21
+        '
+        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl21.Location = New System.Drawing.Point(333, 24)
+        Me.LabelControl21.Name = "LabelControl21"
+        Me.LabelControl21.Size = New System.Drawing.Size(157, 13)
+        Me.LabelControl21.TabIndex = 54
+        Me.LabelControl21.Text = "Education and Certifications"
+        '
         'TabPage6
         '
         Me.TabPage6.Controls.Add(Me.GroupControl3)
@@ -1198,6 +1252,24 @@ Partial Class EmployeeDetails
         Me.TabPage9.Text = "Warning Notice"
         Me.TabPage9.UseVisualStyleBackColor = True
         '
+        'GridControl1
+        '
+        Me.GridControl1.Location = New System.Drawing.Point(3, 3)
+        Me.GridControl1.MainView = Me.CardView1
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.Size = New System.Drawing.Size(895, 431)
+        Me.GridControl1.TabIndex = 76
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.CardView1})
+        '
+        'CardView1
+        '
+        Me.CardView1.FocusedCardTopFieldIndex = 0
+        Me.CardView1.GridControl = Me.GridControl1
+        Me.CardView1.Name = "CardView1"
+        Me.CardView1.OptionsFind.AlwaysVisible = True
+        Me.CardView1.PaintStyleName = "Style3D"
+        Me.CardView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.[Auto]
+        '
         'TabPage10
         '
         Me.TabPage10.Controls.Add(Me.GroupControl7)
@@ -1208,160 +1280,6 @@ Partial Class EmployeeDetails
         Me.TabPage10.TabIndex = 4
         Me.TabPage10.Text = "Status Change"
         Me.TabPage10.UseVisualStyleBackColor = True
-        '
-        'GridControl1
-        '
-        Me.GridControl1.Location = New System.Drawing.Point(3, 3)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(895, 431)
-        Me.GridControl1.TabIndex = 76
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        '
-        'LabelControl21
-        '
-        Me.LabelControl21.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl21.Location = New System.Drawing.Point(333, 24)
-        Me.LabelControl21.Name = "LabelControl21"
-        Me.LabelControl21.Size = New System.Drawing.Size(157, 13)
-        Me.LabelControl21.TabIndex = 54
-        Me.LabelControl21.Text = "Education and Certifications"
-        '
-        'GridControl3
-        '
-        Me.GridControl3.Location = New System.Drawing.Point(5, 43)
-        Me.GridControl3.MainView = Me.GridView3
-        Me.GridControl3.Name = "GridControl3"
-        Me.GridControl3.Size = New System.Drawing.Size(869, 162)
-        Me.GridControl3.TabIndex = 0
-        Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
-        '
-        'GridView2
-        '
-        Me.GridView2.GridControl = Me.GridControl2
-        Me.GridView2.Name = "GridView2"
-        '
-        'GridView3
-        '
-        Me.GridView3.GridControl = Me.GridControl3
-        Me.GridView3.Name = "GridView3"
-        '
-        'GridControl2
-        '
-        Me.GridControl2.Location = New System.Drawing.Point(5, 211)
-        Me.GridControl2.MainView = Me.GridView2
-        Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(869, 189)
-        Me.GridControl2.TabIndex = 53
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
-        '
-        'GridView7
-        '
-        Me.GridView7.GridControl = Me.GridControl2
-        Me.GridView7.Name = "GridView7"
-        '
-        'GroupControl1
-        '
-        Me.GroupControl1.Controls.Add(Me.GridControl2)
-        Me.GroupControl1.Controls.Add(Me.GridControl3)
-        Me.GroupControl1.Controls.Add(Me.LabelControl21)
-        Me.GroupControl1.Location = New System.Drawing.Point(3, 4)
-        Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(879, 405)
-        Me.GroupControl1.TabIndex = 49
-        '
-        'LabelControl4
-        '
-        Me.LabelControl4.Location = New System.Drawing.Point(15, 34)
-        Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(69, 13)
-        Me.LabelControl4.TabIndex = 10
-        Me.LabelControl4.Text = "Change type :"
-        '
-        'ComboBoxEdit14
-        '
-        Me.ComboBoxEdit14.Location = New System.Drawing.Point(101, 32)
-        Me.ComboBoxEdit14.Name = "ComboBoxEdit14"
-        Me.ComboBoxEdit14.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit14.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation"})
-        Me.ComboBoxEdit14.Size = New System.Drawing.Size(159, 20)
-        Me.ComboBoxEdit14.TabIndex = 11
-        '
-        'Label44
-        '
-        Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(12, 61)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(49, 13)
-        Me.Label44.TabIndex = 10
-        Me.Label44.Text = "Job title :"
-        '
-        'ComboBoxEdit13
-        '
-        Me.ComboBoxEdit13.Location = New System.Drawing.Point(101, 58)
-        Me.ComboBoxEdit13.Name = "ComboBoxEdit13"
-        Me.ComboBoxEdit13.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit13.Properties.Items.AddRange(New Object() {"V-A.Leader", "V-Chief", "V-Head", "V-Leader", "V-Manager", "V-Operator", "V-SPV", "v-Staff"})
-        Me.ComboBoxEdit13.Size = New System.Drawing.Size(159, 20)
-        Me.ComboBoxEdit13.TabIndex = 12
-        '
-        'Label43
-        '
-        Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(11, 88)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(87, 13)
-        Me.Label43.TabIndex = 13
-        Me.Label43.Text = "Office/Location :"
-        '
-        'ComboBoxEdit12
-        '
-        Me.ComboBoxEdit12.Location = New System.Drawing.Point(101, 85)
-        Me.ComboBoxEdit12.Name = "ComboBoxEdit12"
-        Me.ComboBoxEdit12.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit12.Properties.Items.AddRange(New Object() {"PT.MAKMUR BINTANG PLASTINDO", "V-PLABU", "V-PT.MAKMUR BINTANG PLASTINDO", "V-PT.MAKMUR BINTANG ROLLINDO"})
-        Me.ComboBoxEdit12.Size = New System.Drawing.Size(159, 20)
-        Me.ComboBoxEdit12.TabIndex = 14
-        '
-        'Label42
-        '
-        Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(295, 61)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(42, 13)
-        Me.Label42.TabIndex = 15
-        Me.Label42.Text = "Group :"
-        '
-        'ComboBoxEdit11
-        '
-        Me.ComboBoxEdit11.Location = New System.Drawing.Point(368, 58)
-        Me.ComboBoxEdit11.Name = "ComboBoxEdit11"
-        Me.ComboBoxEdit11.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit11.Properties.Items.AddRange(New Object() {"V-DB", "V-KMP-KIM-3", "V-KMP-KIM-4", "V-MG", "V-PLABU"})
-        Me.ComboBoxEdit11.Size = New System.Drawing.Size(188, 20)
-        Me.ComboBoxEdit11.TabIndex = 16
-        '
-        'LabelControl3
-        '
-        Me.LabelControl3.Location = New System.Drawing.Point(298, 35)
-        Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(64, 13)
-        Me.LabelControl3.TabIndex = 17
-        Me.LabelControl3.Text = "Department :"
-        '
-        'ComboBoxEdit10
-        '
-        Me.ComboBoxEdit10.Location = New System.Drawing.Point(368, 32)
-        Me.ComboBoxEdit10.Name = "ComboBoxEdit10"
-        Me.ComboBoxEdit10.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit10.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation"})
-        Me.ComboBoxEdit10.Size = New System.Drawing.Size(188, 20)
-        Me.ComboBoxEdit10.TabIndex = 18
         '
         'GroupControl7
         '
@@ -1382,6 +1300,94 @@ Partial Class EmployeeDetails
         Me.GroupControl7.TabIndex = 10
         Me.GroupControl7.Text = "Job"
         '
+        'ComboBoxEdit10
+        '
+        Me.ComboBoxEdit10.Location = New System.Drawing.Point(368, 32)
+        Me.ComboBoxEdit10.Name = "ComboBoxEdit10"
+        Me.ComboBoxEdit10.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ComboBoxEdit10.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation"})
+        Me.ComboBoxEdit10.Size = New System.Drawing.Size(188, 20)
+        Me.ComboBoxEdit10.TabIndex = 18
+        '
+        'LabelControl3
+        '
+        Me.LabelControl3.Location = New System.Drawing.Point(298, 35)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(64, 13)
+        Me.LabelControl3.TabIndex = 17
+        Me.LabelControl3.Text = "Department :"
+        '
+        'ComboBoxEdit11
+        '
+        Me.ComboBoxEdit11.Location = New System.Drawing.Point(368, 58)
+        Me.ComboBoxEdit11.Name = "ComboBoxEdit11"
+        Me.ComboBoxEdit11.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ComboBoxEdit11.Properties.Items.AddRange(New Object() {"V-DB", "V-KMP-KIM-3", "V-KMP-KIM-4", "V-MG", "V-PLABU"})
+        Me.ComboBoxEdit11.Size = New System.Drawing.Size(188, 20)
+        Me.ComboBoxEdit11.TabIndex = 16
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(295, 61)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(42, 13)
+        Me.Label42.TabIndex = 15
+        Me.Label42.Text = "Group :"
+        '
+        'ComboBoxEdit12
+        '
+        Me.ComboBoxEdit12.Location = New System.Drawing.Point(101, 85)
+        Me.ComboBoxEdit12.Name = "ComboBoxEdit12"
+        Me.ComboBoxEdit12.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ComboBoxEdit12.Properties.Items.AddRange(New Object() {"PT.MAKMUR BINTANG PLASTINDO", "V-PLABU", "V-PT.MAKMUR BINTANG PLASTINDO", "V-PT.MAKMUR BINTANG ROLLINDO"})
+        Me.ComboBoxEdit12.Size = New System.Drawing.Size(159, 20)
+        Me.ComboBoxEdit12.TabIndex = 14
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(11, 88)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(87, 13)
+        Me.Label43.TabIndex = 13
+        Me.Label43.Text = "Office/Location :"
+        '
+        'ComboBoxEdit13
+        '
+        Me.ComboBoxEdit13.Location = New System.Drawing.Point(101, 58)
+        Me.ComboBoxEdit13.Name = "ComboBoxEdit13"
+        Me.ComboBoxEdit13.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ComboBoxEdit13.Properties.Items.AddRange(New Object() {"V-A.Leader", "V-Chief", "V-Head", "V-Leader", "V-Manager", "V-Operator", "V-SPV", "v-Staff"})
+        Me.ComboBoxEdit13.Size = New System.Drawing.Size(159, 20)
+        Me.ComboBoxEdit13.TabIndex = 12
+        '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Location = New System.Drawing.Point(12, 61)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(49, 13)
+        Me.Label44.TabIndex = 10
+        Me.Label44.Text = "Job title :"
+        '
+        'ComboBoxEdit14
+        '
+        Me.ComboBoxEdit14.Location = New System.Drawing.Point(101, 32)
+        Me.ComboBoxEdit14.Name = "ComboBoxEdit14"
+        Me.ComboBoxEdit14.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ComboBoxEdit14.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation"})
+        Me.ComboBoxEdit14.Size = New System.Drawing.Size(159, 20)
+        Me.ComboBoxEdit14.TabIndex = 11
+        '
+        'LabelControl4
+        '
+        Me.LabelControl4.Location = New System.Drawing.Point(15, 34)
+        Me.LabelControl4.Name = "LabelControl4"
+        Me.LabelControl4.Size = New System.Drawing.Size(69, 13)
+        Me.LabelControl4.TabIndex = 10
+        Me.LabelControl4.Text = "Change type :"
+        '
         'EmployeeDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1400,7 +1406,12 @@ Partial Class EmployeeDetails
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.TabControl2)
+        Me.MaximumSize = New System.Drawing.Size(922, 551)
+        Me.MinimumSize = New System.Drawing.Size(922, 551)
         Me.Name = "EmployeeDetails"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         GroupControl5.ResumeLayout(False)
         GroupControl5.PerformLayout()
@@ -1460,27 +1471,27 @@ Partial Class EmployeeDetails
         Me.TabPage4.ResumeLayout(False)
         Me.TabControl3.ResumeLayout(False)
         Me.TabPage5.ResumeLayout(False)
-        Me.TabPage6.ResumeLayout(False)
-        Me.TabPage9.ResumeLayout(False)
-        Me.TabPage10.ResumeLayout(False)
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()
-        CType(Me.ComboBoxEdit14.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ComboBoxEdit13.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ComboBoxEdit12.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ComboBoxEdit11.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ComboBoxEdit10.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage6.ResumeLayout(False)
+        Me.TabPage9.ResumeLayout(False)
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CardView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage10.ResumeLayout(False)
         CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl7.ResumeLayout(False)
         Me.GroupControl7.PerformLayout()
+        CType(Me.ComboBoxEdit10.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ComboBoxEdit11.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ComboBoxEdit12.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ComboBoxEdit13.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ComboBoxEdit14.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1591,7 +1602,6 @@ Partial Class EmployeeDetails
     Friend WithEvents TabPage6 As TabPage
     Friend WithEvents TabPage9 As TabPage
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents TabPage10 As TabPage
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
@@ -1611,4 +1621,5 @@ Partial Class EmployeeDetails
     Friend WithEvents Label44 As Label
     Friend WithEvents ComboBoxEdit14 As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents CardView1 As DevExpress.XtraGrid.Views.Card.CardView
 End Class

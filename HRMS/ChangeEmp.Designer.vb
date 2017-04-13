@@ -515,6 +515,7 @@ Partial Class ChangeEmp
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsFind.AlwaysVisible = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
+        Me.GridView1.PaintStyleName = "Office2003"
         '
         'GridControl1
         '
@@ -1145,6 +1146,7 @@ Partial Class ChangeEmp
         '
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
+        Me.GridView2.PaintStyleName = "Office2003"
         '
         'GridControl3
         '
@@ -1159,6 +1161,7 @@ Partial Class ChangeEmp
         '
         Me.GridView3.GridControl = Me.GridControl3
         Me.GridView3.Name = "GridView3"
+        Me.GridView3.PaintStyleName = "Office2003"
         '
         'txtreason
         '
@@ -1332,6 +1335,7 @@ Partial Class ChangeEmp
         Me.GridView4.GridControl = Me.GridControl4
         Me.GridView4.Name = "GridView4"
         Me.GridView4.OptionsView.ColumnAutoWidth = False
+        Me.GridView4.PaintStyleName = "Office2003"
         '
         'txtmemph
         '
@@ -1593,6 +1597,7 @@ Partial Class ChangeEmp
         Me.GridView5.GridControl = Me.GridControl5
         Me.GridView5.Name = "GridView5"
         Me.GridView5.OptionsView.ColumnAutoWidth = False
+        Me.GridView5.PaintStyleName = "Office2003"
         '
         'txtcompadd
         '
@@ -1761,6 +1766,7 @@ Partial Class ChangeEmp
         Me.GridView6.Name = "GridView6"
         Me.GridView6.OptionsFind.AlwaysVisible = True
         Me.GridView6.OptionsView.ColumnAutoWidth = False
+        Me.GridView6.PaintStyleName = "Office2003"
         '
         'TabPage1
         '

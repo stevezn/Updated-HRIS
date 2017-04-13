@@ -512,7 +512,7 @@ Partial Class Payments
         '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup4, Me.RibbonPageGroup5, Me.RibbonPageGroup6, Me.RibbonPageGroup7, Me.RibbonPageGroup8})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup5, Me.RibbonPageGroup4, Me.RibbonPageGroup6, Me.RibbonPageGroup7, Me.RibbonPageGroup8})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "Loan"
         '
@@ -744,6 +744,7 @@ Partial Class Payments
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsSelection.MultiSelect = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
+        Me.GridView1.PaintStyleName = "Office2003"
         '
         'XtraTabPage11
         '
@@ -796,6 +797,7 @@ Partial Class Payments
         Me.GridView7.Name = "GridView7"
         Me.GridView7.OptionsFind.AlwaysVisible = True
         Me.GridView7.OptionsView.ColumnAutoWidth = False
+        Me.GridView7.PaintStyleName = "Office2003"
         '
         'txtreason
         '
@@ -809,6 +811,7 @@ Partial Class Payments
         '
         Me.XtraTabControl2.Location = New System.Drawing.Point(0, 141)
         Me.XtraTabControl2.Name = "XtraTabControl2"
+        Me.XtraTabControl2.PaintStyleName = "PropertyView"
         Me.XtraTabControl2.SelectedTabPage = Me.XtraTabPage3
         Me.XtraTabControl2.Size = New System.Drawing.Size(871, 358)
         Me.XtraTabControl2.TabIndex = 14
@@ -819,7 +822,7 @@ Partial Class Payments
         Me.XtraTabPage3.Controls.Add(Me.XtraTabControl1)
         Me.XtraTabPage3.Controls.Add(Me.GroupControl3)
         Me.XtraTabPage3.Name = "XtraTabPage3"
-        Me.XtraTabPage3.Size = New System.Drawing.Size(865, 330)
+        Me.XtraTabPage3.Size = New System.Drawing.Size(869, 337)
         Me.XtraTabPage3.Text = "Loan"
         '
         'GroupControl3
@@ -1033,13 +1036,14 @@ Partial Class Payments
         '
         Me.XtraTabPage5.Controls.Add(Me.XtraTabControl3)
         Me.XtraTabPage5.Name = "XtraTabPage5"
-        Me.XtraTabPage5.Size = New System.Drawing.Size(865, 330)
+        Me.XtraTabPage5.Size = New System.Drawing.Size(869, 337)
         Me.XtraTabPage5.Text = "Salary Adjustments"
         '
         'XtraTabControl3
         '
         Me.XtraTabControl3.Location = New System.Drawing.Point(3, 3)
         Me.XtraTabControl3.Name = "XtraTabControl3"
+        Me.XtraTabControl3.PaintStyleName = "PropertyView"
         Me.XtraTabControl3.SelectedTabPage = Me.XtraTabPage7
         Me.XtraTabControl3.Size = New System.Drawing.Size(862, 335)
         Me.XtraTabControl3.TabIndex = 16
@@ -1049,7 +1053,7 @@ Partial Class Payments
         '
         Me.XtraTabPage7.Controls.Add(Me.GroupControl1)
         Me.XtraTabPage7.Name = "XtraTabPage7"
-        Me.XtraTabPage7.Size = New System.Drawing.Size(856, 307)
+        Me.XtraTabPage7.Size = New System.Drawing.Size(860, 314)
         Me.XtraTabPage7.Text = "New Salary"
         '
         'GroupControl1
@@ -1080,6 +1084,7 @@ Partial Class Payments
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
         Me.GridView2.OptionsFind.AlwaysVisible = True
+        Me.GridView2.PaintStyleName = "Office2003"
         '
         'LayoutControl5
         '
@@ -1574,7 +1579,7 @@ Partial Class Payments
         '
         Me.XtraTabPage10.Controls.Add(Me.GroupControl2)
         Me.XtraTabPage10.Name = "XtraTabPage10"
-        Me.XtraTabPage10.Size = New System.Drawing.Size(856, 307)
+        Me.XtraTabPage10.Size = New System.Drawing.Size(860, 314)
         Me.XtraTabPage10.Text = "Adjust Salary"
         '
         'GroupControl2
@@ -1608,6 +1613,7 @@ Partial Class Payments
         Me.GridView4.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateAllContent
         Me.GridView4.OptionsView.ColumnAutoWidth = False
         Me.GridView4.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator
+        Me.GridView4.PaintStyleName = "Office2003"
         '
         'LayoutControl9
         '
@@ -2103,7 +2109,7 @@ Partial Class Payments
         Me.XtraTabPage4.Controls.Add(Me.GridControl5)
         Me.XtraTabPage4.Controls.Add(Me.GroupControl4)
         Me.XtraTabPage4.Name = "XtraTabPage4"
-        Me.XtraTabPage4.Size = New System.Drawing.Size(865, 330)
+        Me.XtraTabPage4.Size = New System.Drawing.Size(869, 337)
         Me.XtraTabPage4.Text = "Rapel"
         '
         'GridControl5
@@ -2122,6 +2128,7 @@ Partial Class Payments
         Me.GridView5.Name = "GridView5"
         Me.GridView5.OptionsFind.AlwaysVisible = True
         Me.GridView5.OptionsView.ColumnAutoWidth = False
+        Me.GridView5.PaintStyleName = "Office2003"
         '
         'GroupControl4
         '
@@ -2321,7 +2328,7 @@ Partial Class Payments
         Me.XtraTabPage6.Controls.Add(Me.GridControl6)
         Me.XtraTabPage6.Controls.Add(Me.GroupControl5)
         Me.XtraTabPage6.Name = "XtraTabPage6"
-        Me.XtraTabPage6.Size = New System.Drawing.Size(865, 330)
+        Me.XtraTabPage6.Size = New System.Drawing.Size(869, 337)
         Me.XtraTabPage6.Text = "Holiday"
         '
         'GridControl6
@@ -2339,6 +2346,7 @@ Partial Class Payments
         Me.GridView6.Name = "GridView6"
         Me.GridView6.OptionsFind.AlwaysVisible = True
         Me.GridView6.OptionsView.ColumnAutoWidth = False
+        Me.GridView6.PaintStyleName = "Office2003"
         '
         'GroupControl5
         '

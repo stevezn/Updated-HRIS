@@ -119,6 +119,7 @@ Public Class selectemp
         SQLConnection.Open()
         loaddata()
         recordss()
+        GridView1.BestFitColumns()
     End Sub
 
     Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click

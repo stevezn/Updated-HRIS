@@ -232,6 +232,7 @@ Public Class Attendances
     Private Sub Attendances_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
+        GridView1.BestFitColumns()
     End Sub
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs)
@@ -312,6 +313,7 @@ Public Class Attendances
             item.BeginGroup = True
             e.Menu.Items.Add(item)
         End If
+        e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf MainApp.Button1_Click), MainApp.GetImage2))
     End Sub
 
     Dim att As New Attendance
@@ -417,5 +419,40 @@ Public Class Attendances
         GroupControl1.Visible = True
         GroupControl3.Visible = False
         GroupControl4.Visible = False
+    End Sub
+
+    Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
+        Dim datatabl As New DataTable
+        Dim sqlCommand As New MySqlCommand
+        datatabl.Clear()
+        Dim param As String = ""
+        Try
+            param = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
+        Catch ex As Exception
+        End Try
+        Try
+            sqlCommand.CommandText = "SELECT EmployeeCode, FullName FROM db_pegawai WHERE 1=1 " + param.ToString()
+            sqlCommand.Connection = SQLConnection
+            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(datatabl)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        If datatabl.Rows.Count > 0 Then
+            Label12.Text = datatabl.Rows(0).Item(0).ToString
+            Label13.Text = datatabl.Rows(0).Item(1).ToString
+        End If
+    End Sub
+
+    Dim main As MainApp
+
+    Private Sub BarButtonItem5_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem5.ItemClick
+        Me.Close()
+        If main Is Nothing OrElse main.IsDisposed OrElse main.MinimizeBox Then
+            'main.Close()
+            main = New MainApp
+        End If
+        main.Show()
     End Sub
 End Class

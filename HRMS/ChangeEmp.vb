@@ -148,10 +148,43 @@ Public Class ChangeEmp
         exp()
     End Sub
 
+    Dim tbl_par1, tbl_par2 As New DataTable
+
+    Sub loaddata1()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "SELECT departmentname from db_departmentmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par2)
+        For index As Integer = 0 To tbl_par2.Rows.Count - 1
+            txtdept.Properties.Items.Add(tbl_par2.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loaddata()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select groupname from db_groupmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par1)
+        For index As Integer = 0 To tbl_par1.Rows.Count - 1
+            txtgroup.Properties.Items.Add(tbl_par1.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
     Private Sub ChangeEmp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         loadinfo()
+        loaddata()
+        loaddata1()
+        GridView1.BestFitColumns()
+        GridView2.BestFitColumns()
+        GridView3.BestFitColumns()
+        GridView4.BestFitColumns()
+        GridView5.BestFitColumns()
+        GridView6.BestFitColumns()
+        act = "input"
     End Sub
 
     Public Sub UpdateEmp()
@@ -634,6 +667,7 @@ Public Class ChangeEmp
         txtmemadd.Text = ""
         txtocc.Text = ""
         txtmemph.Text = ""
+        txtrelation.Text = ""
     End Sub
 
     Public Sub edu()
@@ -742,22 +776,22 @@ Public Class ChangeEmp
 
     Private Sub SimpleButton6_Click(sender As Object, e As EventArgs) Handles SimpleButton6.Click
         school()
-        SimpleButton11.PerformClick()
+        act = "input"
     End Sub
 
     Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
         certificates()
-        SimpleButton12.PerformClick()
+        act = "input"
     End Sub
 
     Private Sub SimpleButton7_Click(sender As Object, e As EventArgs) Handles SimpleButton7.Click
         family()
-        SimpleButton13.PerformClick()
+        act = "input"
     End Sub
 
     Private Sub SimpleButton8_Click(sender As Object, e As EventArgs) Handles SimpleButton8.Click
         insertexp()
-        SimpleButton14.PerformClick()
+        act = "input"
     End Sub
 
     Sub insertskill()
@@ -806,7 +840,7 @@ Public Class ChangeEmp
 
     Private Sub SimpleButton9_Click(sender As Object, e As EventArgs) Handles SimpleButton9.Click
         insertskill()
-        SimpleButton15.PerformClick()
+        act = "input"
     End Sub
 
     Private Sub txtbasic_EditValueChanged(sender As Object, e As EventArgs) Handles txtbasic.EditValueChanged
@@ -919,5 +953,4 @@ Public Class ChangeEmp
     Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
         Timer1.Stop()
     End Sub
-
 End Class

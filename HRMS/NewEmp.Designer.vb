@@ -25,11 +25,6 @@ Partial Class NewEmp
         Me.components = New System.ComponentModel.Container()
         Dim GroupControl5 As DevExpress.XtraEditors.GroupControl
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewEmp))
-        Me.txtempstat = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.SimpleButton10 = New DevExpress.XtraEditors.SimpleButton()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
         Me.GroupControl8 = New DevExpress.XtraEditors.GroupControl()
         Me.ComboBoxEdit9 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.Label30 = New System.Windows.Forms.Label()
@@ -39,6 +34,11 @@ Partial Class NewEmp
         Me.CheckEdit4 = New DevExpress.XtraEditors.CheckEdit()
         Me.CheckEdit3 = New DevExpress.XtraEditors.CheckEdit()
         Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
+        Me.txtempstat = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.SimpleButton10 = New DevExpress.XtraEditors.SimpleButton()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
         Me.Label31 = New System.Windows.Forms.Label()
@@ -216,7 +216,6 @@ Partial Class NewEmp
         GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         GroupControl5.SuspendLayout()
-        CType(Me.txtempstat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl8.SuspendLayout()
         CType(Me.ComboBoxEdit9.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -226,6 +225,7 @@ Partial Class NewEmp
         CType(Me.CheckEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CheckEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtempstat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit7.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit6.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -330,48 +330,6 @@ Partial Class NewEmp
         GroupControl5.TabIndex = 1
         GroupControl5.Text = "Status"
         '
-        'txtempstat
-        '
-        Me.txtempstat.Location = New System.Drawing.Point(112, 117)
-        Me.txtempstat.Name = "txtempstat"
-        Me.txtempstat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtempstat.Properties.Items.AddRange(New Object() {"Permanent", "Probation", "Trainee", "Daily Worker", "Contract", "Outsource", "Borongan"})
-        Me.txtempstat.Size = New System.Drawing.Size(188, 20)
-        Me.txtempstat.TabIndex = 42
-        '
-        'SimpleButton10
-        '
-        Me.SimpleButton10.Image = CType(resources.GetObject("SimpleButton10.Image"), System.Drawing.Image)
-        Me.SimpleButton10.Location = New System.Drawing.Point(271, 229)
-        Me.SimpleButton10.Name = "SimpleButton10"
-        Me.SimpleButton10.Size = New System.Drawing.Size(26, 20)
-        Me.SimpleButton10.TabIndex = 26
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(112, 230)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(153, 21)
-        Me.TextBox3.TabIndex = 25
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(35, 230)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(76, 13)
-        Me.Label28.TabIndex = 10
-        Me.Label28.Text = "Approved by :"
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(18, 201)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(50, 13)
-        Me.Label29.TabIndex = 10
-        Me.Label29.Text = "Approval"
-        '
         'GroupControl8
         '
         Me.GroupControl8.Controls.Add(Me.ComboBoxEdit9)
@@ -453,6 +411,48 @@ Partial Class NewEmp
         Me.CheckEdit2.Properties.Caption = "Do not include this employee in payroll process"
         Me.CheckEdit2.Size = New System.Drawing.Size(253, 19)
         Me.CheckEdit2.TabIndex = 10
+        '
+        'txtempstat
+        '
+        Me.txtempstat.Location = New System.Drawing.Point(112, 117)
+        Me.txtempstat.Name = "txtempstat"
+        Me.txtempstat.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtempstat.Properties.Items.AddRange(New Object() {"Permanent", "Probation", "Trainee", "Daily Worker", "Contract", "Outsource", "Borongan"})
+        Me.txtempstat.Size = New System.Drawing.Size(188, 20)
+        Me.txtempstat.TabIndex = 42
+        '
+        'SimpleButton10
+        '
+        Me.SimpleButton10.Image = CType(resources.GetObject("SimpleButton10.Image"), System.Drawing.Image)
+        Me.SimpleButton10.Location = New System.Drawing.Point(271, 229)
+        Me.SimpleButton10.Name = "SimpleButton10"
+        Me.SimpleButton10.Size = New System.Drawing.Size(26, 20)
+        Me.SimpleButton10.TabIndex = 26
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(112, 230)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(153, 21)
+        Me.TextBox3.TabIndex = 25
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(35, 230)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(76, 13)
+        Me.Label28.TabIndex = 10
+        Me.Label28.Text = "Approved by :"
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(18, 201)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(50, 13)
+        Me.Label29.TabIndex = 10
+        Me.Label29.Text = "Approval"
         '
         'DateTimePicker2
         '
@@ -863,7 +863,7 @@ Partial Class NewEmp
         Me.txtdept.Location = New System.Drawing.Point(481, 297)
         Me.txtdept.Name = "txtdept"
         Me.txtdept.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtdept.Properties.Items.AddRange(New Object() {"V-A.Leader", "V-Chief", "V-Head", "V-Leader", "V-Manager", "V-Operator", "V-SPV", "V-Staff"})
+        Me.txtdept.Properties.Items.AddRange(New Object() {""})
         Me.txtdept.Size = New System.Drawing.Size(202, 20)
         Me.txtdept.TabIndex = 39
         '
@@ -2043,7 +2043,6 @@ Partial Class NewEmp
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         GroupControl5.ResumeLayout(False)
         GroupControl5.PerformLayout()
-        CType(Me.txtempstat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl8.ResumeLayout(False)
         Me.GroupControl8.PerformLayout()
@@ -2054,6 +2053,7 @@ Partial Class NewEmp
         CType(Me.CheckEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CheckEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtempstat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit7.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit6.Properties, System.ComponentModel.ISupportInitialize).EndInit()

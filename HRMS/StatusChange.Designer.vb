@@ -25,6 +25,15 @@ Partial Class StatusChange
         Me.components = New System.ComponentModel.Container()
         Dim GroupControl3 As DevExpress.XtraEditors.GroupControl
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StatusChange))
+        Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
+        Me.ComboBoxEdit9 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.CheckEdit7 = New DevExpress.XtraEditors.CheckEdit()
+        Me.CheckEdit6 = New DevExpress.XtraEditors.CheckEdit()
+        Me.CheckEdit5 = New DevExpress.XtraEditors.CheckEdit()
+        Me.CheckEdit4 = New DevExpress.XtraEditors.CheckEdit()
+        Me.CheckEdit3 = New DevExpress.XtraEditors.CheckEdit()
+        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -64,18 +73,18 @@ Partial Class StatusChange
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
-        Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
-        Me.CheckEdit3 = New DevExpress.XtraEditors.CheckEdit()
-        Me.CheckEdit4 = New DevExpress.XtraEditors.CheckEdit()
-        Me.CheckEdit5 = New DevExpress.XtraEditors.CheckEdit()
-        Me.CheckEdit6 = New DevExpress.XtraEditors.CheckEdit()
-        Me.CheckEdit7 = New DevExpress.XtraEditors.CheckEdit()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.ComboBoxEdit9 = New DevExpress.XtraEditors.ComboBoxEdit()
         GroupControl3 = New DevExpress.XtraEditors.GroupControl()
         CType(GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         GroupControl3.SuspendLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl4.SuspendLayout()
+        CType(Me.ComboBoxEdit9.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit7.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit6.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit8.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit7.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,15 +100,6 @@ Partial Class StatusChange
         CType(Me.ComboBoxEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl4.SuspendLayout()
-        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CheckEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CheckEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CheckEdit5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CheckEdit6.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CheckEdit7.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ComboBoxEdit9.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupControl3
@@ -123,6 +123,88 @@ Partial Class StatusChange
         GroupControl3.Size = New System.Drawing.Size(860, 277)
         GroupControl3.TabIndex = 1
         GroupControl3.Text = "Status"
+        '
+        'GroupControl4
+        '
+        Me.GroupControl4.Controls.Add(Me.ComboBoxEdit9)
+        Me.GroupControl4.Controls.Add(Me.Label13)
+        Me.GroupControl4.Controls.Add(Me.CheckEdit7)
+        Me.GroupControl4.Controls.Add(Me.CheckEdit6)
+        Me.GroupControl4.Controls.Add(Me.CheckEdit5)
+        Me.GroupControl4.Controls.Add(Me.CheckEdit4)
+        Me.GroupControl4.Controls.Add(Me.CheckEdit3)
+        Me.GroupControl4.Controls.Add(Me.CheckEdit2)
+        Me.GroupControl4.Location = New System.Drawing.Point(318, 0)
+        Me.GroupControl4.Name = "GroupControl4"
+        Me.GroupControl4.Size = New System.Drawing.Size(537, 277)
+        Me.GroupControl4.TabIndex = 10
+        Me.GroupControl4.Text = "Details"
+        '
+        'ComboBoxEdit9
+        '
+        Me.ComboBoxEdit9.Location = New System.Drawing.Point(148, 177)
+        Me.ComboBoxEdit9.Name = "ComboBoxEdit9"
+        Me.ComboBoxEdit9.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ComboBoxEdit9.Properties.Items.AddRange(New Object() {"Monthly", "Biweekly", "Weekly"})
+        Me.ComboBoxEdit9.Size = New System.Drawing.Size(135, 20)
+        Me.ComboBoxEdit9.TabIndex = 17
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(28, 180)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(113, 13)
+        Me.Label13.TabIndex = 15
+        Me.Label13.Text = "Payroll period interval :"
+        '
+        'CheckEdit7
+        '
+        Me.CheckEdit7.Location = New System.Drawing.Point(40, 149)
+        Me.CheckEdit7.Name = "CheckEdit7"
+        Me.CheckEdit7.Properties.Caption = "Print payroll slip"
+        Me.CheckEdit7.Size = New System.Drawing.Size(138, 19)
+        Me.CheckEdit7.TabIndex = 14
+        '
+        'CheckEdit6
+        '
+        Me.CheckEdit6.Location = New System.Drawing.Point(40, 124)
+        Me.CheckEdit6.Name = "CheckEdit6"
+        Me.CheckEdit6.Properties.Caption = "Don't process Bonus"
+        Me.CheckEdit6.Size = New System.Drawing.Size(138, 19)
+        Me.CheckEdit6.TabIndex = 13
+        '
+        'CheckEdit5
+        '
+        Me.CheckEdit5.Location = New System.Drawing.Point(40, 99)
+        Me.CheckEdit5.Name = "CheckEdit5"
+        Me.CheckEdit5.Properties.Caption = "Don't process THR"
+        Me.CheckEdit5.Size = New System.Drawing.Size(138, 19)
+        Me.CheckEdit5.TabIndex = 12
+        '
+        'CheckEdit4
+        '
+        Me.CheckEdit4.Location = New System.Drawing.Point(40, 74)
+        Me.CheckEdit4.Name = "CheckEdit4"
+        Me.CheckEdit4.Properties.Caption = "Process tax"
+        Me.CheckEdit4.Size = New System.Drawing.Size(138, 19)
+        Me.CheckEdit4.TabIndex = 11
+        '
+        'CheckEdit3
+        '
+        Me.CheckEdit3.Location = New System.Drawing.Point(40, 49)
+        Me.CheckEdit3.Name = "CheckEdit3"
+        Me.CheckEdit3.Properties.Caption = "Salary payment in cash"
+        Me.CheckEdit3.Size = New System.Drawing.Size(138, 19)
+        Me.CheckEdit3.TabIndex = 10
+        '
+        'CheckEdit2
+        '
+        Me.CheckEdit2.Location = New System.Drawing.Point(25, 24)
+        Me.CheckEdit2.Name = "CheckEdit2"
+        Me.CheckEdit2.Properties.Caption = "Do not include this employee in payroll process"
+        Me.CheckEdit2.Size = New System.Drawing.Size(253, 19)
+        Me.CheckEdit2.TabIndex = 10
         '
         'SimpleButton2
         '
@@ -357,7 +439,6 @@ Partial Class StatusChange
         Me.ComboBoxEdit5.Location = New System.Drawing.Point(368, 32)
         Me.ComboBoxEdit5.Name = "ComboBoxEdit5"
         Me.ComboBoxEdit5.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit5.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation"})
         Me.ComboBoxEdit5.Size = New System.Drawing.Size(188, 20)
         Me.ComboBoxEdit5.TabIndex = 18
         '
@@ -463,88 +544,6 @@ Partial Class StatusChange
         'Timer2
         '
         '
-        'GroupControl4
-        '
-        Me.GroupControl4.Controls.Add(Me.ComboBoxEdit9)
-        Me.GroupControl4.Controls.Add(Me.Label13)
-        Me.GroupControl4.Controls.Add(Me.CheckEdit7)
-        Me.GroupControl4.Controls.Add(Me.CheckEdit6)
-        Me.GroupControl4.Controls.Add(Me.CheckEdit5)
-        Me.GroupControl4.Controls.Add(Me.CheckEdit4)
-        Me.GroupControl4.Controls.Add(Me.CheckEdit3)
-        Me.GroupControl4.Controls.Add(Me.CheckEdit2)
-        Me.GroupControl4.Location = New System.Drawing.Point(318, 0)
-        Me.GroupControl4.Name = "GroupControl4"
-        Me.GroupControl4.Size = New System.Drawing.Size(537, 277)
-        Me.GroupControl4.TabIndex = 10
-        Me.GroupControl4.Text = "Details"
-        '
-        'CheckEdit2
-        '
-        Me.CheckEdit2.Location = New System.Drawing.Point(25, 24)
-        Me.CheckEdit2.Name = "CheckEdit2"
-        Me.CheckEdit2.Properties.Caption = "Do not include this employee in payroll process"
-        Me.CheckEdit2.Size = New System.Drawing.Size(253, 19)
-        Me.CheckEdit2.TabIndex = 10
-        '
-        'CheckEdit3
-        '
-        Me.CheckEdit3.Location = New System.Drawing.Point(40, 49)
-        Me.CheckEdit3.Name = "CheckEdit3"
-        Me.CheckEdit3.Properties.Caption = "Salary payment in cash"
-        Me.CheckEdit3.Size = New System.Drawing.Size(138, 19)
-        Me.CheckEdit3.TabIndex = 10
-        '
-        'CheckEdit4
-        '
-        Me.CheckEdit4.Location = New System.Drawing.Point(40, 74)
-        Me.CheckEdit4.Name = "CheckEdit4"
-        Me.CheckEdit4.Properties.Caption = "Process tax"
-        Me.CheckEdit4.Size = New System.Drawing.Size(138, 19)
-        Me.CheckEdit4.TabIndex = 11
-        '
-        'CheckEdit5
-        '
-        Me.CheckEdit5.Location = New System.Drawing.Point(40, 99)
-        Me.CheckEdit5.Name = "CheckEdit5"
-        Me.CheckEdit5.Properties.Caption = "Don't process THR"
-        Me.CheckEdit5.Size = New System.Drawing.Size(138, 19)
-        Me.CheckEdit5.TabIndex = 12
-        '
-        'CheckEdit6
-        '
-        Me.CheckEdit6.Location = New System.Drawing.Point(40, 124)
-        Me.CheckEdit6.Name = "CheckEdit6"
-        Me.CheckEdit6.Properties.Caption = "Don't process Bonus"
-        Me.CheckEdit6.Size = New System.Drawing.Size(138, 19)
-        Me.CheckEdit6.TabIndex = 13
-        '
-        'CheckEdit7
-        '
-        Me.CheckEdit7.Location = New System.Drawing.Point(40, 149)
-        Me.CheckEdit7.Name = "CheckEdit7"
-        Me.CheckEdit7.Properties.Caption = "Print payroll slip"
-        Me.CheckEdit7.Size = New System.Drawing.Size(138, 19)
-        Me.CheckEdit7.TabIndex = 14
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(28, 180)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(113, 13)
-        Me.Label13.TabIndex = 15
-        Me.Label13.Text = "Payroll period interval :"
-        '
-        'ComboBoxEdit9
-        '
-        Me.ComboBoxEdit9.Location = New System.Drawing.Point(148, 177)
-        Me.ComboBoxEdit9.Name = "ComboBoxEdit9"
-        Me.ComboBoxEdit9.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit9.Properties.Items.AddRange(New Object() {"Monthly", "Biweekly", "Weekly"})
-        Me.ComboBoxEdit9.Size = New System.Drawing.Size(135, 20)
-        Me.ComboBoxEdit9.TabIndex = 17
-        '
         'StatusChange
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -569,6 +568,16 @@ Partial Class StatusChange
         CType(GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         GroupControl3.ResumeLayout(False)
         GroupControl3.PerformLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl4.ResumeLayout(False)
+        Me.GroupControl4.PerformLayout()
+        CType(Me.ComboBoxEdit9.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit7.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit6.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit8.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit7.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -585,16 +594,6 @@ Partial Class StatusChange
         CType(Me.ComboBoxEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupControl4.ResumeLayout(False)
-        Me.GroupControl4.PerformLayout()
-        CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CheckEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CheckEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CheckEdit5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CheckEdit6.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CheckEdit7.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ComboBoxEdit9.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
