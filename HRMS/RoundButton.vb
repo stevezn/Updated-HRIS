@@ -1,5 +1,4 @@
 ﻿Imports System.Drawing.Drawing2D
-
 Public Class RoundButton
     Inherits Button
     Protected Overrides Sub OnPaint(ByVal e As System.Windows.Forms.PaintEventArgs)

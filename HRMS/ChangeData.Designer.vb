@@ -108,9 +108,15 @@ Partial Class ChangeData
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.GroupControl8 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton19 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton18 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton17 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton16 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.Label38 = New System.Windows.Forms.Label()
+        Me.SimpleButton15 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -248,6 +254,8 @@ Partial Class ChangeData
         Me.TabPage4.SuspendLayout()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
+        CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl8.SuspendLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -413,6 +421,7 @@ Partial Class ChangeData
         Me.SimpleButton14.Size = New System.Drawing.Size(103, 38)
         Me.SimpleButton14.TabIndex = 44
         Me.SimpleButton14.Text = "Display CV"
+        Me.SimpleButton14.Visible = False
         '
         'Label37
         '
@@ -636,6 +645,7 @@ Partial Class ChangeData
         Me.txtofloc.Name = "txtofloc"
         Me.txtofloc.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtofloc.Properties.Items.AddRange(New Object() {"In Process", "Pending", "Accepted", "Rejected"})
+        Me.txtofloc.Properties.ReadOnly = True
         Me.txtofloc.Size = New System.Drawing.Size(183, 20)
         Me.txtofloc.TabIndex = 39
         '
@@ -713,6 +723,7 @@ Partial Class ChangeData
         Me.txtblood.Name = "txtblood"
         Me.txtblood.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtblood.Properties.Items.AddRange(New Object() {"A", "B", "AB", "O"})
+        Me.txtblood.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.txtblood.Size = New System.Drawing.Size(203, 20)
         Me.txtblood.TabIndex = 28
         '
@@ -731,6 +742,7 @@ Partial Class ChangeData
         Me.txtrel.Name = "txtrel"
         Me.txtrel.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtrel.Properties.Items.AddRange(New Object() {"KRISTEN", "BUDDHA", "ISLAM", "HINDU"})
+        Me.txtrel.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.txtrel.Size = New System.Drawing.Size(203, 20)
         Me.txtrel.TabIndex = 27
         '
@@ -1094,9 +1106,11 @@ Partial Class ChangeData
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.GroupControl8)
         Me.GroupControl1.Controls.Add(Me.SimpleButton2)
         Me.GroupControl1.Controls.Add(Me.SimpleButton1)
         Me.GroupControl1.Controls.Add(Me.Label38)
+        Me.GroupControl1.Controls.Add(Me.SimpleButton15)
         Me.GroupControl1.Controls.Add(Me.SimpleButton5)
         Me.GroupControl1.Controls.Add(Me.GridControl2)
         Me.GroupControl1.Controls.Add(Me.GridControl3)
@@ -1119,6 +1133,51 @@ Partial Class ChangeData
         Me.GroupControl1.Size = New System.Drawing.Size(898, 388)
         Me.GroupControl1.TabIndex = 49
         '
+        'GroupControl8
+        '
+        Me.GroupControl8.Controls.Add(Me.SimpleButton19)
+        Me.GroupControl8.Controls.Add(Me.SimpleButton18)
+        Me.GroupControl8.Controls.Add(Me.SimpleButton17)
+        Me.GroupControl8.Controls.Add(Me.SimpleButton16)
+        Me.GroupControl8.Location = New System.Drawing.Point(196, 3)
+        Me.GroupControl8.Name = "GroupControl8"
+        Me.GroupControl8.Size = New System.Drawing.Size(60, 23)
+        Me.GroupControl8.TabIndex = 92
+        Me.GroupControl8.Text = "GroupControl8"
+        Me.GroupControl8.Visible = False
+        '
+        'SimpleButton19
+        '
+        Me.SimpleButton19.Location = New System.Drawing.Point(38, 72)
+        Me.SimpleButton19.Name = "SimpleButton19"
+        Me.SimpleButton19.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton19.TabIndex = 95
+        Me.SimpleButton19.Text = "delexp"
+        '
+        'SimpleButton18
+        '
+        Me.SimpleButton18.Location = New System.Drawing.Point(89, 53)
+        Me.SimpleButton18.Name = "SimpleButton18"
+        Me.SimpleButton18.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton18.TabIndex = 94
+        Me.SimpleButton18.Text = "delskill"
+        '
+        'SimpleButton17
+        '
+        Me.SimpleButton17.Location = New System.Drawing.Point(86, 25)
+        Me.SimpleButton17.Name = "SimpleButton17"
+        Me.SimpleButton17.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton17.TabIndex = 93
+        Me.SimpleButton17.Text = "delfam"
+        '
+        'SimpleButton16
+        '
+        Me.SimpleButton16.Location = New System.Drawing.Point(5, 53)
+        Me.SimpleButton16.Name = "SimpleButton16"
+        Me.SimpleButton16.Size = New System.Drawing.Size(75, 23)
+        Me.SimpleButton16.TabIndex = 92
+        Me.SimpleButton16.Text = "delcert"
+        '
         'SimpleButton2
         '
         Me.SimpleButton2.Location = New System.Drawing.Point(61, 359)
@@ -1126,7 +1185,6 @@ Partial Class ChangeData
         Me.SimpleButton2.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton2.TabIndex = 91
         Me.SimpleButton2.Text = "Reset to add"
-        Me.SimpleButton2.Visible = False
         '
         'SimpleButton1
         '
@@ -1144,6 +1202,15 @@ Partial Class ChangeData
         Me.Label38.Size = New System.Drawing.Size(45, 13)
         Me.Label38.TabIndex = 63
         Me.Label38.Text = "Label38"
+        Me.Label38.Visible = False
+        '
+        'SimpleButton15
+        '
+        Me.SimpleButton15.Location = New System.Drawing.Point(335, 8)
+        Me.SimpleButton15.Name = "SimpleButton15"
+        Me.SimpleButton15.Size = New System.Drawing.Size(75, 10)
+        Me.SimpleButton15.TabIndex = 91
+        Me.SimpleButton15.Text = "delsch"
         '
         'SimpleButton5
         '
@@ -1333,7 +1400,6 @@ Partial Class ChangeData
         Me.SimpleButton3.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton3.TabIndex = 92
         Me.SimpleButton3.Text = "Reset to add"
-        Me.SimpleButton3.Visible = False
         '
         'SimpleButton6
         '
@@ -1499,7 +1565,6 @@ Partial Class ChangeData
         Me.SimpleButton11.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton11.TabIndex = 93
         Me.SimpleButton11.Text = "Reset to add"
-        Me.SimpleButton11.Visible = False
         '
         'SimpleButton8
         '
@@ -1715,7 +1780,6 @@ Partial Class ChangeData
         Me.SimpleButton12.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton12.TabIndex = 93
         Me.SimpleButton12.Text = "Reset to add"
-        Me.SimpleButton12.Visible = False
         '
         'skilllevel
         '
@@ -2039,7 +2103,6 @@ Partial Class ChangeData
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " "
-        Me.TopMost = True
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl3.ResumeLayout(False)
@@ -2079,6 +2142,8 @@ Partial Class ChangeData
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()
+        CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl8.ResumeLayout(False)
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2319,4 +2384,10 @@ Partial Class ChangeData
     Friend WithEvents SimpleButton14 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Label39 As Label
+    Friend WithEvents GroupControl8 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents SimpleButton19 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton18 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton17 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton16 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton15 As DevExpress.XtraEditors.SimpleButton
 End Class

@@ -55,7 +55,7 @@ Public Class selectemp
         Return Image.FromStream(pictureBytes)
     End Function
 
-    Dim att As New Attendance
+    'Dim att As New Attendance
 
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
         Dim datatabl As New DataTable
@@ -130,15 +130,14 @@ Public Class selectemp
         Dim del As MySqlCommand = SQLConnection.CreateCommand
         del.CommandText = "truncate db_tmpname"
         del.ExecuteNonQuery()
-
         Dim name As MySqlCommand = SQLConnection.CreateCommand
         name.CommandText = "insert into db_tmpname" +
                             "(name, employeecode, jobtitle, status)" +
-                            "Values(@name, @employeecode, @jobtitle, @status)"
+                            "Values(@name, @employeecode, @jobs, @stats)"
         name.Parameters.AddWithValue("@name", Label2.Text)
         name.Parameters.AddWithValue("@Employeecode", Label3.Text)
-        name.Parameters.AddWithValue("@jobtitle", Label4.Text)
-        name.Parameters.AddWithValue("@status", Label5.Text)
+        name.Parameters.AddWithValue("@jobs", Label4.Text)
+        name.Parameters.AddWithValue("@stats", Label5.Text)
         name.ExecuteNonQuery()
         Close()
     End Sub

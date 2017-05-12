@@ -30,12 +30,10 @@ Partial Class Warning
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
@@ -50,11 +48,16 @@ Partial Class Warning
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ComboBox2 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ComboBox2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -107,14 +110,6 @@ Partial Class Warning
         Me.TextBox2.Size = New System.Drawing.Size(202, 20)
         Me.TextBox2.TabIndex = 6
         '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(309, 34)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(26, 20)
-        Me.SimpleButton1.TabIndex = 8
-        '
         'TextBox3
         '
         Me.TextBox3.Location = New System.Drawing.Point(341, 34)
@@ -148,14 +143,6 @@ Partial Class Warning
         Me.Label5.Size = New System.Drawing.Size(87, 13)
         Me.Label5.TabIndex = 12
         Me.Label5.Text = "Type of offense :"
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(101, 89)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(202, 21)
-        Me.ComboBox2.TabIndex = 13
         '
         'TabControl1
         '
@@ -279,11 +266,46 @@ Partial Class Warning
         'Timer1
         '
         '
+        'ComboBox2
+        '
+        Me.ComboBox2.Location = New System.Drawing.Point(101, 91)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ComboBox2.Size = New System.Drawing.Size(202, 20)
+        Me.ComboBox2.TabIndex = 22
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(309, 34)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(26, 20)
+        Me.SimpleButton1.TabIndex = 8
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.Location = New System.Drawing.Point(145, 457)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(116, 23)
+        Me.SimpleButton2.TabIndex = 23
+        Me.SimpleButton2.Text = "View Warning Letter.."
+        '
+        'SimpleButton3
+        '
+        Me.SimpleButton3.Location = New System.Drawing.Point(6, 457)
+        Me.SimpleButton3.Name = "SimpleButton3"
+        Me.SimpleButton3.Size = New System.Drawing.Size(131, 23)
+        Me.SimpleButton3.TabIndex = 24
+        Me.SimpleButton3.Text = "View Reprimand Letter.."
+        '
         'Warning
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(578, 483)
+        Me.Controls.Add(Me.SimpleButton3)
+        Me.Controls.Add(Me.SimpleButton2)
+        Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.DateTimePicker2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox4)
@@ -291,7 +313,6 @@ Partial Class Warning
         Me.Controls.Add(Me.CheckEdit1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label4)
@@ -306,12 +327,12 @@ Partial Class Warning
         Me.Name = "Warning"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Warning Notice"
-        Me.TopMost = True
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ComboBox2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -328,7 +349,6 @@ Partial Class Warning
     Friend WithEvents Label4 As Label
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
@@ -343,4 +363,7 @@ Partial Class Warning
     Friend WithEvents RichTextBox2 As RichTextBox
     Friend WithEvents RichTextBox3 As RichTextBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents ComboBox2 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
 End Class

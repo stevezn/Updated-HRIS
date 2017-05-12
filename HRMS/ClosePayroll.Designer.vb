@@ -102,7 +102,7 @@ Partial Class ClosePayroll
         Me.LayoutControl8.Controls.Add(Me.thrcheck)
         Me.LayoutControl8.Controls.Add(Me.payrollcheck)
         Me.LayoutControl8.Controls.Add(Me.LabelControl2)
-        Me.LayoutControl8.Location = New System.Drawing.Point(2, 49)
+        Me.LayoutControl8.Location = New System.Drawing.Point(0, -6)
         Me.LayoutControl8.Name = "LayoutControl8"
         Me.LayoutControl8.Root = Me.LayoutControlGroup8
         Me.LayoutControl8.Size = New System.Drawing.Size(229, 193)
@@ -314,41 +314,41 @@ Partial Class ClosePayroll
         '
         'date1
         '
-        Me.date1.Location = New System.Drawing.Point(304, 157)
+        Me.date1.Location = New System.Drawing.Point(316, 55)
         Me.date1.Name = "date1"
-        Me.date1.Size = New System.Drawing.Size(172, 20)
+        Me.date1.Size = New System.Drawing.Size(204, 20)
         Me.date1.TabIndex = 4
         Me.date1.Value = New Date(2017, 2, 13, 9, 15, 0, 0)
         '
         'date2
         '
-        Me.date2.Location = New System.Drawing.Point(304, 184)
+        Me.date2.Location = New System.Drawing.Point(316, 81)
         Me.date2.Name = "date2"
-        Me.date2.Size = New System.Drawing.Size(172, 20)
+        Me.date2.Size = New System.Drawing.Size(204, 20)
         Me.date2.TabIndex = 5
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(233, 159)
+        Me.Label1.Location = New System.Drawing.Point(233, 58)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.Size = New System.Drawing.Size(75, 13)
         Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Salary Period"
+        Me.Label1.Text = "Salary Period :"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(278, 186)
+        Me.Label2.Location = New System.Drawing.Point(280, 84)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(20, 13)
+        Me.Label2.Size = New System.Drawing.Size(26, 13)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "To"
+        Me.Label2.Text = "To :"
         '
         'LabelControl1
         '
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl1.Location = New System.Drawing.Point(16, 6)
+        Me.LabelControl1.Location = New System.Drawing.Point(231, 3)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(41, 16)
         Me.LabelControl1.StyleController = Me.LayoutControl8
@@ -358,7 +358,7 @@ Partial Class ClosePayroll
         'btnProcess
         '
         Me.btnProcess.Image = CType(resources.GetObject("btnProcess.Image"), System.Drawing.Image)
-        Me.btnProcess.Location = New System.Drawing.Point(339, 209)
+        Me.btnProcess.Location = New System.Drawing.Point(383, 111)
         Me.btnProcess.Name = "btnProcess"
         Me.btnProcess.Size = New System.Drawing.Size(137, 33)
         Me.btnProcess.TabIndex = 3
@@ -380,10 +380,10 @@ Partial Class ClosePayroll
         Me.LayoutControl1.Controls.Add(Me.CheckEdit3)
         Me.LayoutControl1.Controls.Add(Me.CheckEdit2)
         Me.LayoutControl1.Controls.Add(Me.CheckEdit1)
-        Me.LayoutControl1.Location = New System.Drawing.Point(222, 49)
+        Me.LayoutControl1.Location = New System.Drawing.Point(237, 156)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(264, 108)
+        Me.LayoutControl1.Size = New System.Drawing.Size(99, 31)
         Me.LayoutControl1.TabIndex = 12
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -392,7 +392,7 @@ Partial Class ClosePayroll
         Me.CheckEdit3.Location = New System.Drawing.Point(12, 76)
         Me.CheckEdit3.Name = "CheckEdit3"
         Me.CheckEdit3.Properties.Caption = "Borongan"
-        Me.CheckEdit3.Size = New System.Drawing.Size(240, 19)
+        Me.CheckEdit3.Size = New System.Drawing.Size(69, 19)
         Me.CheckEdit3.StyleController = Me.LayoutControl1
         Me.CheckEdit3.TabIndex = 15
         '
@@ -401,7 +401,7 @@ Partial Class ClosePayroll
         Me.CheckEdit2.Location = New System.Drawing.Point(12, 53)
         Me.CheckEdit2.Name = "CheckEdit2"
         Me.CheckEdit2.Properties.Caption = "Harian"
-        Me.CheckEdit2.Size = New System.Drawing.Size(240, 19)
+        Me.CheckEdit2.Size = New System.Drawing.Size(69, 19)
         Me.CheckEdit2.StyleController = Me.LayoutControl1
         Me.CheckEdit2.TabIndex = 14
         '
@@ -410,7 +410,7 @@ Partial Class ClosePayroll
         Me.CheckEdit1.Location = New System.Drawing.Point(12, 30)
         Me.CheckEdit1.Name = "CheckEdit1"
         Me.CheckEdit1.Properties.Caption = "Bulanan"
-        Me.CheckEdit1.Size = New System.Drawing.Size(240, 19)
+        Me.CheckEdit1.Size = New System.Drawing.Size(69, 19)
         Me.CheckEdit1.StyleController = Me.LayoutControl1
         Me.CheckEdit1.TabIndex = 13
         '
@@ -422,9 +422,10 @@ Partial Class ClosePayroll
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem7, Me.LayoutControlItem8, Me.LayoutControlItem9})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(264, 108)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(93, 107)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
+        Me.LayoutControlGroup1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem6
         '
@@ -432,7 +433,7 @@ Partial Class ClosePayroll
         Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem6"
         Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 18)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(244, 23)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(73, 23)
         Me.LayoutControlItem6.Text = "LayoutControlItem6"
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextToControlDistance = 0
@@ -444,7 +445,7 @@ Partial Class ClosePayroll
         Me.LayoutControlItem7.CustomizationFormText = "LayoutControlItem7"
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 41)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(244, 23)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(73, 23)
         Me.LayoutControlItem7.Text = "LayoutControlItem7"
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextToControlDistance = 0
@@ -456,7 +457,7 @@ Partial Class ClosePayroll
         Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem8"
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 64)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(244, 24)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(73, 23)
         Me.LayoutControlItem8.Text = "LayoutControlItem8"
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextToControlDistance = 0
@@ -468,7 +469,7 @@ Partial Class ClosePayroll
         Me.LayoutControlItem9.CustomizationFormText = "LayoutControlItem9"
         Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(244, 18)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(73, 18)
         Me.LayoutControlItem9.Text = "LayoutControlItem9"
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem9.TextToControlDistance = 0
@@ -476,7 +477,7 @@ Partial Class ClosePayroll
         '
         'LabelControl4
         '
-        Me.LabelControl4.Location = New System.Drawing.Point(16, 30)
+        Me.LabelControl4.Location = New System.Drawing.Point(232, 28)
         Me.LabelControl4.Name = "LabelControl4"
         Me.LabelControl4.Size = New System.Drawing.Size(75, 13)
         Me.LabelControl4.TabIndex = 13
@@ -484,7 +485,7 @@ Partial Class ClosePayroll
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(111, 28)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(316, 26)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(204, 20)
         Me.DateTimePicker1.TabIndex = 14
@@ -494,7 +495,7 @@ Partial Class ClosePayroll
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(478, 243)
+        Me.ClientSize = New System.Drawing.Size(524, 187)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.LabelControl4)
         Me.Controls.Add(Me.LayoutControl1)
@@ -506,8 +507,6 @@ Partial Class ClosePayroll
         Me.Controls.Add(Me.btnProcess)
         Me.Controls.Add(Me.LayoutControl8)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(494, 282)
-        Me.MinimumSize = New System.Drawing.Size(494, 282)
         Me.Name = "ClosePayroll"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False

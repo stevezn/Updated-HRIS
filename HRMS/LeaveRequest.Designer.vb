@@ -30,7 +30,6 @@ Partial Class LeaveRequest
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
@@ -38,6 +37,7 @@ Partial Class LeaveRequest
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -46,9 +46,9 @@ Partial Class LeaveRequest
         Me.Label5 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         Me.SuspendLayout()
@@ -103,14 +103,6 @@ Partial Class LeaveRequest
         Me.TextBox2.Size = New System.Drawing.Size(173, 20)
         Me.TextBox2.TabIndex = 5
         '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(273, 81)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(26, 20)
-        Me.SimpleButton1.TabIndex = 7
-        '
         'TextBox3
         '
         Me.TextBox3.Location = New System.Drawing.Point(288, 33)
@@ -159,6 +151,7 @@ Partial Class LeaveRequest
         '
         'TextBox6
         '
+        Me.TextBox6.Enabled = False
         Me.TextBox6.Location = New System.Drawing.Point(305, 81)
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.Size = New System.Drawing.Size(387, 20)
@@ -166,6 +159,7 @@ Partial Class LeaveRequest
         '
         'TextBox5
         '
+        Me.TextBox5.Enabled = False
         Me.TextBox5.Location = New System.Drawing.Point(94, 81)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(173, 20)
@@ -179,6 +173,15 @@ Partial Class LeaveRequest
         Me.Label8.Size = New System.Drawing.Size(68, 13)
         Me.Label8.TabIndex = 16
         Me.Label8.Text = "Delegate to :"
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Enabled = False
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(273, 81)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(26, 20)
+        Me.SimpleButton1.TabIndex = 7
         '
         'ComboBox1
         '
@@ -246,6 +249,18 @@ Partial Class LeaveRequest
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "From :"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(630, 32)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "Request"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Timer1
+        '
+        '
         'SimpleButton2
         '
         Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
@@ -253,18 +268,6 @@ Partial Class LeaveRequest
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(26, 20)
         Me.SimpleButton2.TabIndex = 10
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(631, 31)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 11
-        Me.Button1.Text = "Approve"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Timer1
-        '
         '
         'LeaveRequest
         '
@@ -281,12 +284,12 @@ Partial Class LeaveRequest
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtmemo)
         Me.Controls.Add(Me.Label1)
+        Me.MaximizeBox = False
         Me.Name = "LeaveRequest"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Leave Request"
-        Me.TopMost = True
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         Me.GroupControl1.PerformLayout()

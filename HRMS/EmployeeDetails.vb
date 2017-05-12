@@ -213,6 +213,9 @@ Public Class EmployeeDetails
                 PictureBox1.Image = Nothing
                 PictureBox1.Refresh()
             End If
+            npwp.Text = tbl_par2.Rows(index).Item(41).ToString
+            TextEdit1.Text = tbl_par2.Rows(index).Item(44).ToString
+            TextEdit2.Text = tbl_par2.Rows(index).Item(43).ToString
         Next
     End Sub
 
@@ -240,5 +243,37 @@ Public Class EmployeeDetails
         bulan = CStr(Int(CInt(tmpmonth) / 30))
         Dim tmpdays As String = CStr(Int(CInt(tmpmonth) Mod 30))
         txtwork.Text = tahun & " Y" & " " & bulan & " M" & " " & tmpdays & " D"
+    End Sub
+
+
+    Sub download()
+        Dim sFilePath As String
+        Dim buffer As Byte()
+        Using cmd As New MySqlCommand("select jobdesk from db_pegawai where employeecode = '" & TextBox1.Text & "'", SQLConnection)
+            'Using cmd As New MySqlCommand("Select Top 1 PDF From PDF", SQLConnection)
+            buffer = CType(cmd.ExecuteScalar(), Byte())
+        End Using
+        sFilePath = System.IO.Path.GetTempFileName()
+        System.IO.File.Move(sFilePath, System.IO.Path.ChangeExtension(sFilePath, ".pdf"))
+        sFilePath = System.IO.Path.ChangeExtension(sFilePath, ".pdf")
+        System.IO.File.WriteAllBytes(sFilePath, buffer)
+        Dim act As Action(Of String) = New Action(Of String)(AddressOf OpenPDFFile)
+        act.BeginInvoke(sFilePath, Nothing, Nothing)
+    End Sub
+
+    Private Shared Sub OpenPDFFile(ByVal sFilePath)
+        Using p As New System.Diagnostics.Process
+            p.StartInfo = New System.Diagnostics.ProcessStartInfo(CType(sFilePath, String))
+            p.Start()
+            p.WaitForExit()
+            Try
+                System.IO.File.Delete(CType(sFilePath, String))
+            Catch
+            End Try
+        End Using
+    End Sub
+
+    Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
+        download()
     End Sub
 End Class

@@ -55,6 +55,7 @@ Partial Class StatusChange
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
@@ -70,9 +71,9 @@ Partial Class StatusChange
         Me.ComboBoxEdit1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         GroupControl3 = New DevExpress.XtraEditors.GroupControl()
         CType(GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         GroupControl3.SuspendLayout()
@@ -148,6 +149,7 @@ Partial Class StatusChange
         Me.ComboBoxEdit9.Properties.Items.AddRange(New Object() {"Monthly", "Biweekly", "Weekly"})
         Me.ComboBoxEdit9.Size = New System.Drawing.Size(135, 20)
         Me.ComboBoxEdit9.TabIndex = 17
+        Me.ComboBoxEdit9.Visible = False
         '
         'Label13
         '
@@ -157,6 +159,7 @@ Partial Class StatusChange
         Me.Label13.Size = New System.Drawing.Size(113, 13)
         Me.Label13.TabIndex = 15
         Me.Label13.Text = "Payroll period interval :"
+        Me.Label13.Visible = False
         '
         'CheckEdit7
         '
@@ -213,6 +216,7 @@ Partial Class StatusChange
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(26, 20)
         Me.SimpleButton2.TabIndex = 26
+        Me.SimpleButton2.Visible = False
         '
         'TextBox3
         '
@@ -377,6 +381,7 @@ Partial Class StatusChange
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.Label14)
         Me.GroupControl1.Controls.Add(Me.TabControl1)
         Me.GroupControl1.Controls.Add(Me.ComboBoxEdit5)
         Me.GroupControl1.Controls.Add(Me.LabelControl2)
@@ -393,6 +398,16 @@ Partial Class StatusChange
         Me.GroupControl1.Size = New System.Drawing.Size(874, 416)
         Me.GroupControl1.TabIndex = 9
         Me.GroupControl1.Text = "Job"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(655, 39)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(45, 13)
+        Me.Label14.TabIndex = 12
+        Me.Label14.Text = "Label14"
+        Me.Label14.Visible = False
         '
         'TabControl1
         '
@@ -455,7 +470,6 @@ Partial Class StatusChange
         Me.ComboBoxEdit4.Location = New System.Drawing.Point(368, 58)
         Me.ComboBoxEdit4.Name = "ComboBoxEdit4"
         Me.ComboBoxEdit4.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit4.Properties.Items.AddRange(New Object() {"V-DB", "V-KMP-KIM-3", "V-KMP-KIM-4", "V-MG", "V-PLABU"})
         Me.ComboBoxEdit4.Size = New System.Drawing.Size(188, 20)
         Me.ComboBoxEdit4.TabIndex = 16
         '
@@ -473,7 +487,6 @@ Partial Class StatusChange
         Me.ComboBoxEdit3.Location = New System.Drawing.Point(101, 85)
         Me.ComboBoxEdit3.Name = "ComboBoxEdit3"
         Me.ComboBoxEdit3.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit3.Properties.Items.AddRange(New Object() {"PT.MAKMUR BINTANG PLASTINDO", "V-PLABU", "V-PT.MAKMUR BINTANG PLASTINDO", "V-PT.MAKMUR BINTANG ROLLINDO"})
         Me.ComboBoxEdit3.Size = New System.Drawing.Size(159, 20)
         Me.ComboBoxEdit3.TabIndex = 14
         '
@@ -491,7 +504,6 @@ Partial Class StatusChange
         Me.ComboBoxEdit2.Location = New System.Drawing.Point(101, 58)
         Me.ComboBoxEdit2.Name = "ComboBoxEdit2"
         Me.ComboBoxEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit2.Properties.Items.AddRange(New Object() {"V-A.Leader", "V-Chief", "V-Head", "V-Leader", "V-Manager", "V-Operator", "V-SPV", "v-Staff"})
         Me.ComboBoxEdit2.Size = New System.Drawing.Size(159, 20)
         Me.ComboBoxEdit2.TabIndex = 12
         '
@@ -509,7 +521,7 @@ Partial Class StatusChange
         Me.ComboBoxEdit1.Location = New System.Drawing.Point(101, 32)
         Me.ComboBoxEdit1.Name = "ComboBoxEdit1"
         Me.ComboBoxEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit1.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation"})
+        Me.ComboBoxEdit1.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation", "Rotation"})
         Me.ComboBoxEdit1.Size = New System.Drawing.Size(159, 20)
         Me.ComboBoxEdit1.TabIndex = 11
         '
@@ -527,8 +539,14 @@ Partial Class StatusChange
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 11
-        Me.Button2.Text = "Appove"
+        Me.Button2.Text = "Request"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Timer1
+        '
+        '
+        'Timer2
+        '
         '
         'SimpleButton1
         '
@@ -537,12 +555,6 @@ Partial Class StatusChange
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(26, 20)
         Me.SimpleButton1.TabIndex = 7
-        '
-        'Timer1
-        '
-        '
-        'Timer2
-        '
         '
         'StatusChange
         '
@@ -647,4 +659,5 @@ Partial Class StatusChange
     Friend WithEvents CheckEdit4 As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents CheckEdit3 As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents CheckEdit2 As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents Label14 As Label
 End Class

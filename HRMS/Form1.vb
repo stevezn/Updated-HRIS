@@ -57,15 +57,37 @@ Public Class Form1
         sqlcommand.Connection = SQLConnection
     End Sub
 
-    Dim crys As New cryrep
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
     End Sub
 
+    Sub insertion()
+        Dim d1 As Date = date1.Value.Date
+        Dim d2 As Date = date2.Value.Date
+        For j As Integer = 1 To DateDiff("D", d1, d2)
+            d1 = d1.AddDays(1)
+            Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+            sqlcommand.CommandText = "insert into db_absensi" +
+                                        "(FullName, EmployeeCode, Tanggal, Shift, JamMulai, JamSelesai, OvertimeType, OvertimeHours, isHoliday, Remarks)" +
+                                        " Values (@FullName, @EmployeeCode, @tanggal, @shift, @JamMulai, @jamselesai, @overtimetype, @overtimehours, @isholiday, @remarks)"
+            sqlcommand.Parameters.AddWithValue("@FullName", "Steven")
+            sqlcommand.Parameters.AddWithValue("@EmployeeCode", "17-4-00001")
+            sqlcommand.Parameters.AddWithValue("@tanggal", d1.ToString("yyyy-MM-dd"))
+            sqlcommand.Parameters.AddWithValue("@Shift", "1")
+            sqlcommand.Parameters.AddWithValue("@JamMulai", d1.ToString("yyyy-MM-dd") & "08:00:00")
+            sqlcommand.Parameters.AddWithValue("@jamselesai", d1.ToString("yyyy-MM-dd") & "17:00:00")
+            sqlcommand.Parameters.AddWithValue("@overtimetype", "")
+            sqlcommand.Parameters.AddWithValue("@overtimehours", "")
+            sqlcommand.Parameters.AddWithValue("@isHoliday", "")
+            sqlcommand.Parameters.AddWithValue("@remarks", "")
+            sqlcommand.ExecuteNonQuery()
+            MsgBox("added")
+        Next
+    End Sub
+
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        hol()
+        insertion()
         'Dim Report1 As New CrystalReport4
         'Dim TextObject1 As TextObject = CType(Report1.Section1.ReportObjects("Text29"), TextObject)
         'TextObject1.Text = "xxxxxx"

@@ -1,8 +1,10 @@
 ﻿Imports System.IO
+Imports System.Reflection
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.Utils.Menu
+Imports word = Microsoft.Office.Interop.Word
 
 Public Class MainApp
     'recruitment
@@ -48,16 +50,65 @@ Public Class MainApp
 
     Dim cir As New Circle
 
+    Sub reprimand()
+        Dim bs As MySqlCommand = SQLConnection.CreateCommand
+        bs.CommandText = "select Employeecode from db_pegawai where EmployeeCode = '" & SimpleButton2.Text & "'"
+        Dim employeecode As String = CStr(bs.ExecuteScalar)
+
+        Dim pos As MySqlCommand = SQLConnection.CreateCommand
+        pos.CommandText = "select FullName from db_pegawai where EmployeeCode = '" & SimpleButton2.Text & "'"
+        Dim fullname As String = CStr(pos.ExecuteScalar)
+
+        Dim objword As word.Application = Nothing
+        Try
+            objword = New word.Application
+            objword.Documents.Open(Application.StartupPath + "\\reprimand.docx")
+            Dim findobject As word.Find = objword.Selection.Find
+            With findobject
+                .ClearFormatting()
+                .Text = "<Name>"
+                .Replacement.ClearFormatting()
+                .Replacement.Text = fullname.ToString
+                .Execute(Replace:=word.WdReplace.wdReplaceAll)
+            End With
+            With findobject
+                .ClearFormatting()
+                .Text = "<EmployeeCode>"
+                .Replacement.ClearFormatting()
+                .Replacement.Text = employeecode.ToString
+                .Execute(Replace:=word.WdReplace.wdReplaceAll)
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+    End Sub
+
 #End Region
     Private Sub MainApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         GridView1.BestFitColumns()
+
+        'Dim query As MySqlCommand = SQLConnection.CreateCommand
+        'query.CommandText = "select leveluser from db_user where username = @user"
+        'query.Parameters.AddWithValue("@user", Label1.Text)
+        'Dim quer As String = CStr(query.ExecuteScalar)
         Dim lbl As MySqlCommand = SQLConnection.CreateCommand
         lbl.CommandText = "select user from db_temp"
         Dim name As String = CStr(lbl.ExecuteScalar)
         Label1.Text = name
-        RibbonPageGroup7.Visible = False
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select leveluser from db_user where binary username = @user"
+            query.Parameters.AddWithValue("@user", Label1.Text)
+            Dim quer As String = CStr(query.ExecuteScalar)
+            If quer = "3" Then
+                RibbonPageGroup7.Visible = False
+            Else
+                RibbonPageGroup7.Visible = True
+            End If
+        Catch ex As Exception
+        End Try
         Timer1.Enabled = True
         BarButtonItem1.PerformClick()
         act = "input"
@@ -140,7 +191,6 @@ Public Class MainApp
         GridView1.Columns.Clear()
         'CardView1.Columns.Clear()
         loadDataReq()
-        RibbonPageGroup7.Visible = False
         GridView1.MoveLast()
     End Sub
 
@@ -153,7 +203,6 @@ Public Class MainApp
         GridView1.Columns.Clear()
         'CardView1.Columns.Clear()
         loadDataReq()
-        RibbonPageGroup7.Visible = False
         GridView1.MoveLast()
     End Sub
 
@@ -165,7 +214,6 @@ Public Class MainApp
         loan.Show()
         loan.BarButtonItem1.PerformClick()
         loan.XtraTabPage5.Show()
-        RibbonPageGroup7.Visible = False
     End Sub
     Dim showatt As New ShowAtt
 
@@ -279,15 +327,15 @@ Public Class MainApp
         'CardView1.MoveLast()
     End Sub
 
-    Dim infoForm As New infoReq
+    'Dim infoForm As New infoReq
 
-    Public Sub btnLihat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If infoForm Is Nothing OrElse infoForm.IsDisposed OrElse infoForm.MinimizeBox Then
-            infoForm.Close()
-            infoForm = New infoReq
-        End If
-        infoForm.Show()
-    End Sub
+    'Public Sub btnLihat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    If infoForm Is Nothing OrElse infoForm.IsDisposed OrElse infoForm.MinimizeBox Then
+    '        infoForm.Close()
+    '        infoForm = New infoReq
+    '    End If
+    '    infoForm.Show()
+    'End Sub
 
 #End Region
 
@@ -348,8 +396,7 @@ Public Class MainApp
                     Try
                         sqlCommand.CommandText = "INSERT INTO db_pegawai (FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, status, CompanyCode, EmployeeCode, OfficeLocation, PhoneNumber, WorkDate, ChangeDate)" +
                                                          "SELECT FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, IdNumber, Photo, @status, @CompanyCode, @EmployeeCode, @OfficeLocation, @PhoneNumber, @WorkDate, @ChangeDate FROM db_recruitment WHERE Status='Accepted' AND idrec = @idrec"
-                        sqlCommand.Parameters.AddWithValue("@Status", "<empty>
-")
+                        sqlCommand.Parameters.AddWithValue("@Status", "<empty>")
                         sqlCommand.Parameters.AddWithValue("@CompanyCode", "<empty>")
                         sqlCommand.Parameters.AddWithValue("@EmployeeCode", actualcode)
                         sqlCommand.Parameters.AddWithValue("@OfficeLocation", "<empty>")
@@ -514,11 +561,11 @@ Public Class MainApp
         Dim sqlCommand As New MySqlCommand
         Try
             If barJudul.Caption = "Module Recruitment" Then
-                sqlCommand.CommandText = "select IdRec, InterviewTimes as AppliedTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, InterviewDate, Reason, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial as MartialStatus, LastSalary, OtherIncome, ExpFacilities as ExpectedFacilities, FavoriteJob, Reference, CreatedDate from db_recruitment"
+                sqlCommand.CommandText = "select  IdRec, InterviewTimes as AppliedTimes, FullName, Blacklist,  PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, InterviewDate, Reason, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial as MartialStatus, LastSalary, OtherIncome, ExpFacilities as ExpectedFacilities, FavoriteJob, Reference, CreatedDate from db_recruitment"
                 'sqlCommand.CommandText = "Select IdRec as IDRecruitment, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, InterviewDate, Status, CreatedDate from db_recruitment where status != 'In Progress'"
             ElseIf barJudul.Caption = "Module Employee" Then
                 'sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, TrainingSampai, EmployeeType FROM db_pegawai where status != 'Fired' and status != 'Terminated'"
-                sqlCommand.CommandText = "select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks from db_pegawai where status <> 'Terminated'"
+                sqlCommand.CommandText = "select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks from db_pegawai where status <> 'Terminate'"
             End If
             sqlCommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
@@ -595,7 +642,7 @@ Public Class MainApp
         If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             sqlCommand.Connection = SQLConnection
             sqlCommand.CommandType = CommandType.Text
-            sqlCommand.CommandText = "DELETE FROM db_recruitment WHERE IdRec = " + txtbar1.Text
+            sqlCommand.CommandText = "DELETE FROM db_recruitment WHERE IdRec = '" & SimpleButton2.Text & "'"
             sqlCommand.ExecuteNonQuery()
             MsgBox("Data Successfully Removed", MsgBoxStyle.Information, "Success")
             GridControl1.RefreshDataSource()
@@ -689,7 +736,7 @@ Public Class MainApp
     End Function
 
     Dim act As String = ""
-    Dim spform As New SPForms
+    'Dim spform As New SPForms
 
     Private Sub txtJnsShift_SelectedValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtJnsShift.SelectedValueChanged
         If txtJnsShift.SelectedIndex = 0 Then
@@ -775,26 +822,26 @@ Public Class MainApp
         loadDataReq()
     End Sub
 
-    Dim employeenotes As New Notes
-    Private Sub btnNotes_Click(sender As Object, e As EventArgs)
-        If employeenotes Is Nothing OrElse employeenotes.IsDisposed OrElse employeenotes.MinimizeBox Then
-            employeenotes.Close()
-            employeenotes = New Notes
-        End If
-        employeenotes.Show()
-    End Sub
+    'Dim employeenotes As New Notes
+    'Private Sub btnNotes_Click(sender As Object, e As EventArgs)
+    '    If employeenotes Is Nothing OrElse employeenotes.IsDisposed OrElse employeenotes.MinimizeBox Then
+    '        employeenotes.Close()
+    '        employeenotes = New Notes
+    '    End If
+    '    employeenotes.Show()
+    'End Sub
 
-    Dim spforms As New SPForms
+    'Dim spforms As New SPForms
 
-    Private Sub sp1_Click(sender As Object, e As EventArgs)
-        If spforms Is Nothing OrElse spforms.IsDisposed OrElse spforms.MinimizeBox Then
-            spform.Close()
-            spforms = New SPForms
-        End If
-        spforms.Show()
-    End Sub
+    'Private Sub sp1_Click(sender As Object, e As EventArgs)
+    '    If spforms Is Nothing OrElse spforms.IsDisposed OrElse spforms.MinimizeBox Then
+    '        spform.Close()
+    '        spforms = New SPForms
+    '    End If
+    '    spforms.Show()
+    'End Sub
 
-    Dim rotasi As New RotasiMutasi
+    'Dim rotasi As New RotasiMutasi
 
     Private Sub GridView1_RowLoaded(sender As Object, e As Views.Base.RowEventArgs)
         Dim view As ColumnView = TryCast(sender, ColumnView)
@@ -875,28 +922,28 @@ Public Class MainApp
         End If
     End Sub
 
-    Dim repot As New Report
+    'Dim repot As New Report
+    Dim rep As New Reports
 
     Private Sub BarButtonItem11_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem11.ItemClick
-        If repot Is Nothing OrElse repot.IsDisposed OrElse repot.MinimizeBox Then
-            repot.Close()
-            repot = New Report
+        If rep Is Nothing OrElse rep.IsDisposed OrElse rep.MinimizeBox Then
+            rep.Close()
+            rep = New Reports
         End If
-        repot.Show()
-        RibbonPageGroup7.Visible = False
+        rep.Show()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         TextEdit1.Text = Format(Now, "dd, MMMM, yyyy hhhh:mm:ss")
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
-        If rotasi Is Nothing OrElse rotasi.IsDisposed OrElse rotasi.MinimizeBox Then
-            rotasi.Close()
-            rotasi = New RotasiMutasi
-        End If
-        rotasi.Show()
-    End Sub
+    'Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
+    '    If rotasi Is Nothing OrElse rotasi.IsDisposed OrElse rotasi.MinimizeBox Then
+    '        rotasi.Close()
+    '        rotasi = New RotasiMutasi
+    '    End If
+    '    rotasi.Show()
+    'End Sub
 
     Dim att2 As New Attendances
 
@@ -908,8 +955,8 @@ Public Class MainApp
         att2.Show()
     End Sub
 
-    Dim info As infoReq
-    Dim note As New Notes
+    'Dim info As infoReq
+    'Dim note As New Notes
 
     Private Sub GridView1_PopupMenuShowing_2(sender As Object, e As PopupMenuShowingEventArgs)
         Dim view As GridView = CType(sender, GridView)
@@ -979,6 +1026,8 @@ Public Class MainApp
     End Sub
 
     Private Sub MainApp_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Tile_Control.Close()
+        Tile_Control.Show()
         'Application.Exit()
     End Sub
 
@@ -1022,6 +1071,14 @@ Public Class MainApp
         Return ImageCollection1.Images(9)
     End Function
 
+    Private Function GetImage10() As Image
+        Return ImageCollection1.Images(10)
+    End Function
+
+    Private Function GetImage11() As Image
+        Return ImageCollection1.Images(11)
+    End Function
+
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         Dim view As GridView = CType(sender, GridView)
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
@@ -1032,13 +1089,22 @@ Public Class MainApp
             e.Menu.Items.Add(item)
         End If
 
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "select status from db_recruitment where idrec = '" & SimpleButton2.Text & "'"
+        Dim quer As String = CStr(query.ExecuteScalar)
+
+        query.CommandText = "select fullname from db_pegawai where EmployeeCode = '" & SimpleButton2.Text & "'"
+        Dim quer2 As String = CStr(query.ExecuteScalar)
+
         If barJudul.Caption = "Module Recruitment" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+                e.Menu.Items.Add(New DXMenuItem("Status : " & quer & ""))
                 e.Menu.Items.Add(New DXMenuItem("Add", New EventHandler(AddressOf Button4_Click), GetImage1))
                 e.Menu.Items.Add(New DXMenuItem("View Candidates", New EventHandler(AddressOf Button6_Click), GetImage2))
                 e.Menu.Items.Add(New DXMenuItem("View Progress", New EventHandler(AddressOf Button7_Click), GetImage3()))
                 e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button9_Click), GetImage8))
                 e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
+                e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf btnHapus_Click)))
             End If
         ElseIf barJudul.Caption = "Module Employee" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
@@ -1048,11 +1114,11 @@ Public Class MainApp
                 e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf Button1_Click), GetImage2))
                 e.Menu.Items.Add(New DXMenuItem("Status Change", New EventHandler(AddressOf SimpleButton5_Click), GetImage6))
                 e.Menu.Items.Add(New DXMenuItem("Termination", New EventHandler(AddressOf SimpleButton6_Click), GetImage7))
+                'e.Menu.Items.Add(New DXMenuItem("Give A Reprimand Letter To " & quer2 & "", New EventHandler(AddressOf Button10_Click), GetImage11))
                 e.Menu.Items.Add(New DXMenuItem("Warning Notice", New EventHandler(AddressOf SimpleButton4_Click), GetImage4))
                 e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button8_Click), GetImage8))
                 e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
                 e.Menu.Items.Add(New DXMenuItem("Terminate This Employee ?", New EventHandler(AddressOf SimpleButton2_Click_1), GetImage))
-                'e.Menu.Items.Add(New DXMenuItem)
             End If
         End If
     End Sub
@@ -1294,12 +1360,122 @@ Public Class MainApp
         End If
         chx.Show()
     End Sub
+
     Dim chxx As New ChangeData
+
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         If chxx Is Nothing OrElse chxx.IsDisposed OrElse chxx.MinimizeBox Then
             chxx.Close()
             chxx = New ChangeData
         End If
         chxx.Show()
+    End Sub
+
+    Private Sub SimpleButton1_Click_2(sender As Object, e As EventArgs)
+        Me.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub SimpleButton7_Click(sender As Object, e As EventArgs)
+        Me.WindowState = FormWindowState.Maximized
+    End Sub
+
+    Dim tile As New Tile_Control
+
+    Private Sub BarButtonItem13_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem13.ItemClick
+        If tile Is Nothing OrElse tile.IsDisposed OrElse tile.MinimizeBox Then
+            tile.Close()
+            tile = New Tile_Control
+        End If
+        tile.Show()
+    End Sub
+
+    Private Sub SimpleButton8_Click(sender As Object, e As EventArgs)
+        Close()
+        If tile Is Nothing OrElse tile.IsDisposed OrElse tile.MinimizeBox Then
+            tile.Close()
+            tile = New Tile_Control
+        End If
+        tile.Show()
+    End Sub
+
+    Dim appro As New Approvement
+
+    Private Sub BarButtonItem15_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem15.ItemClick
+        If appro Is Nothing OrElse appro.IsDisposed OrElse appro.MinimizeBox Then
+            appro.Close()
+            appro = New Approvement
+        End If
+        appro.Show()
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        reprimand()
+    End Sub
+    Dim dtb As New DataTable
+    Dim rowint As Integer
+    Dim rowfound As Boolean
+
+    Private Function IsShipToUSCanada(ByVal view As GridView, ByVal row As Integer) As Boolean
+        Try
+            Dim val As String = Convert.ToString(view.GetRowCellValue(row, "Status"))
+            Return (val = "Processed")
+        Catch
+            Return False
+        End Try
+    End Function
+
+    Private Function pending(ByVal view As GridView, ByVal row As Integer) As Boolean
+        Try
+            Dim val As String = Convert.ToString(view.GetRowCellValue(row, "Status"))
+            Return (val = "Pending")
+        Catch
+            Return False
+        End Try
+    End Function
+
+    Private Function inprogress(ByVal view As GridView, ByVal row As Integer) As Boolean
+        Try
+            Dim val As String = Convert.ToString(view.GetRowCellValue(row, "Status"))
+            Return (val = "In Progress")
+        Catch
+            Return False
+        End Try
+    End Function
+
+    Private Function rejected(ByVal view As GridView, ByVal row As Integer) As Boolean
+        Try
+            Dim val As String = Convert.ToString(view.GetRowCellValue(row, "Status"))
+            Return (val = "Rejected")
+        Catch
+            Return False
+        End Try
+    End Function
+    Private Sub GridView1_RowStyle(sender As Object, e As RowStyleEventArgs) Handles GridView1.RowStyle
+        Dim view As GridView = TryCast(sender, GridView)
+        'If CBool(view.GetRowCellValue(e.RowHandle, "FullName")) AndAlso e.RowHandle = view.FocusedRowHandle Then
+        '    e.Appearance.BackColor = Color.Green
+        '    e.Appearance.ForeColor = Color.White
+        'End If
+        'Dim view As GridView = CType(sender, GridView)
+        'If view.Columns.ColumnByFieldName("Processed") Is Nothing Then
+        e.Appearance.BackColor = Color.FloralWhite
+        'Else
+        '    If (e.RowHandle >= 0) Then
+        '        e.Appearance.BackColor = Color.HotPink
+        '    End If
+        'End If
+    End Sub
+
+    Private Sub GridView1_RowCellStyle(sender As Object, e As RowCellStyleEventArgs) Handles GridView1.RowCellStyle
+        If IsShipToUSCanada(GridView1, e.RowHandle) Then
+            e.Appearance.BackColor = Color.FloralWhite
+            e.Appearance.ForeColor = Color.Black
+        ElseIf rejected(GridView1, e.RowHandle) Then
+            e.Appearance.BackColor = Color.PaleVioletRed
+        ElseIf inprogress(GridView1, e.RowHandle) Then
+            e.Appearance.BackColor = Color.LightCyan
+        ElseIf pending(gridview1, e.rowhandle) Then
+            e.Appearance.BackColor = Color.AntiqueWhite
+        End If
     End Sub
 End Class

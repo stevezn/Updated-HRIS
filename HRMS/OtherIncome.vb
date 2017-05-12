@@ -100,6 +100,18 @@ Public Class OtherIncome
         txtmemo.Text = actualcode.ToString
     End Sub
 
+    Sub autofill()
+        Dim dt As New DataTable
+        Dim ds As New DataSet
+        Dim da As New MySqlDataAdapter("select EmployeeCode from db_pegawai", SQLConnection)
+        da.Fill(dt)
+        Dim r As DataRow
+        txtemployeecode.AutoCompleteCustomSource.Clear()
+        For Each r In dt.Rows
+            txtemployeecode.AutoCompleteCustomSource.Add(r.Item(0).ToString)
+        Next
+    End Sub
+
     Private Sub OtherIncome_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionstring
         SQLConnection.Open()
@@ -108,6 +120,8 @@ Public Class OtherIncome
         txtperiod.CustomFormat = "MMMM yyyy"
         txtuntil.Format = DateTimePickerFormat.Custom
         txtuntil.CustomFormat = "MMMM yyyy"
+        loadaddi()
+        autofill()
     End Sub
 
     Sub loads()
@@ -124,6 +138,22 @@ Public Class OtherIncome
         End Try
     End Sub
 
+    Sub loadaddi()
+        GridControl1.RefreshDataSource()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        Dim table As New DataTable
+        Try
+            query.CommandText = "select * from db_addition"
+            Dim tbl_par As New DataTable
+            Dim adapter As New MySqlDataAdapter(query.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(table)
+            GridControl1.DataSource = table
+        Catch ex As Exception
+        End Try
+        GridView1.BestFitColumns()
+    End Sub
+
     Sub insertion()
         Dim dta, dtb, dtc As Date
         DateTimePicker1.Format = DateTimePickerFormat.Custom
@@ -138,8 +168,8 @@ Public Class OtherIncome
         Dim query As MySqlCommand = SQLConnection.CreateCommand
         query.CommandText = "select last_num from lastmemo"
         query.CommandText = "insert into db_addition " +
-                                "(Memono, EmployeeCode, Period, Until, Amount, As1, Reason, Tanggal) " +
-                                 " values (@Memono, @EmployeeCode, @Period, @Until, @Amount, @As1, @Reason, @Date1)"
+                                "(Memono, EmployeeCode, Period, Until, Amount, As1, Reason, Tanggal, ApprovedBy, Status) " +
+                                 " values (@Memono, @EmployeeCode, @Period, @Until, @Amount, @As1, @Reason, @Date1, @appr, @status)"
         query.Parameters.AddWithValue("@Memono", txtmemo.Text)
         query.Parameters.AddWithValue("@EmployeeCode", txtemployeecode.Text)
         query.Parameters.AddWithValue("@Period", txtperiod.Text)
@@ -148,7 +178,10 @@ Public Class OtherIncome
         query.Parameters.AddWithValue("@As1", txtas.Text)
         query.Parameters.AddWithValue("@Reason", txtreason.Text)
         query.Parameters.AddWithValue("@Date1", dtb.ToString("yyyy-MM-dd"))
+        query.Parameters.AddWithValue("@appr", "")
+        query.Parameters.AddWithValue("@status", "Requested")
         query.ExecuteNonQuery()
+        MsgBox("Requested")
         changer()
         txtemployeecode.Text = ""
         txtperiod.Text = ""
@@ -156,17 +189,18 @@ Public Class OtherIncome
         txtamount.Text = ""
         txtas.Text = ""
         txtreason.Text = ""
-        GridControl1.RefreshDataSource()
-        Dim table As New DataTable
-        Try
-            query.CommandText = "select * from db_addition"
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(query.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl1.DataSource = table
-        Catch ex As Exception
-        End Try
+        loadaddi()
+        'GridControl1.RefreshDataSource()
+        'Dim table As New DataTable
+        'Try
+        '    query.CommandText = "select * from db_addition"
+        '    Dim tbl_par As New DataTable
+        '    Dim adapter As New MySqlDataAdapter(query.CommandText, SQLConnection)
+        '    Dim cb As New MySqlCommandBuilder(adapter)
+        '    adapter.Fill(table)
+        '    GridControl1.DataSource = table
+        'Catch ex As Exception
+        'End Try
     End Sub
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
@@ -174,6 +208,7 @@ Public Class OtherIncome
             MsgBox("The required data is still empty, please fill the rest")
         Else
             insertion()
+            GridView1.BestFitColumns()
         End If
     End Sub
 
@@ -242,5 +277,12 @@ Public Class OtherIncome
 
     Private Sub txtemployeecode_TextChanged(sender As Object, e As EventArgs) Handles txtemployeecode.TextChanged
         Timer1.Stop()
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select fullname from db_pegawai where employeecode = '" & txtemployeecode.Text & "'"
+            Dim quer As String = CStr(query.ExecuteScalar)
+            TextBox1.Text = quer.ToString
+        Catch ex As Exception
+        End Try
     End Sub
 End Class

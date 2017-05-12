@@ -1,6 +1,11 @@
 ﻿Imports System.IO
+Imports DevExpress.Utils.Menu
 
 Public Class ChangeData
+    Private Declare Function ShellEx Lib "shell32.dll" Alias "ShellExecuteA" (
+   ByVal hWnd As Integer, ByVal lpOperation As String,
+   ByVal lpFile As String, ByVal lpParameters As String,
+   ByVal lpDirectory As String, ByVal nShowCmd As Integer) As Integer
     Dim connectionString As String
     Dim SQLConnection As MySqlConnection = New MySqlConnection
     Dim oDt_sched As New DataTable()
@@ -8,6 +13,7 @@ Public Class ChangeData
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
+        Application.EnableVisualStyles()
 
         ' Add any initialization after the InitializeComponent() call.
         Try
@@ -42,6 +48,24 @@ Public Class ChangeData
             MsgBox(ex.Message)
         End Try
     End Sub
+
+
+    Private Function GetOpenFileDialog() As OpenFileDialog
+        Dim openFileDialog As New OpenFileDialog
+
+        openFileDialog.CheckPathExists = True
+        openFileDialog.CheckFileExists = True
+
+        openFileDialog.Filter = "Any Files(*.txt)|*.txt"
+
+        openFileDialog.Multiselect = False
+        openFileDialog.AddExtension = True
+        openFileDialog.ValidateNames = True
+        openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+
+        Return openFileDialog
+    End Function
+
 
     Private Sub loadinfo()
         GridControl1.RefreshDataSource()
@@ -244,6 +268,53 @@ Public Class ChangeData
         edu()
     End Sub
 
+    Sub delschool()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_education where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label38.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        edu()
+    End Sub
+
+    Sub delcer()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_certificates where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label38.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        certificates()
+    End Sub
+
+    Sub delfam()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_family where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label38.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        family()
+    End Sub
+
+    Sub delexp()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_exp where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label38.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        exp()
+    End Sub
+
+    Sub delskill()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_skill where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label38.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        skill()
+    End Sub
+
+    Dim datatable As New DataTable
+
     Public Sub edu()
         GridControl3.Refresh()
         Dim table As New DataTable
@@ -251,11 +322,13 @@ Public Class ChangeData
         Try
             sqlcommand.CommandText = "select NoId, Idrec as IdRecruitment, School as SchoolOrUniversity, GraduatedYear, StudyField from db_education where idrec = '" & txtidrec.Text & "'"
             sqlcommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
+            DataTable.Load(sqlcommand.ExecuteReader)
+
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
-            GridControl3.DataSource = table
+            GridControl3.DataSource = datatable
+            'GridControl3.DataMember = DataTable.TableName
         Catch ex As Exception
         End Try
         txtschoolname.Text = ""
@@ -277,10 +350,10 @@ Public Class ChangeData
             adapter.Fill(table)
             GridControl2.DataSource = table
         Catch ex As Exception
-            ' MsgBox(ex.Message)
+            MsgBox("1" & ex.Message & "'")
         End Try
         txtcertificate.Text = ""
-        txtyears.Text = ""
+        txtyear.Text = ""
         txtreason.Text = ""
     End Sub
 
@@ -364,20 +437,52 @@ Public Class ChangeData
         Return Image.FromStream(pictureBytes)
     End Function
 
-    Sub retrieved()
-        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
-        cmmd.CommandText = "select cv from db_recruitment where idrec = '" & txtidrec.Text & "'"
-        Dim dr As MySqlDataReader
-        dr = cmmd.ExecuteReader
-        dr.Read()
-        Dim filebytes() As Byte = CType(dr(0), Byte())
-        Dim fstream As New FileStream(dr(0).ToString, FileMode.Create, FileAccess.Write)
-        fstream.Write(filebytes, 0, filebytes.Length)
-        fstream.Close()
+    'Sub retrieved()
+    '    Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+    '    cmmd.CommandText = "select cv from db_recruitment where idrec = '" & txtidrec.Text & "'"
+    '    Dim dr As MySqlDataReader
+    '    dr = cmmd.ExecuteReader
+    '    dr.Read()
+    '    Dim filebytes() As Byte = CType(dr(0), Byte())
+    '    Dim fstream As New FileStream(dr(0).ToString, FileMode.Create, FileAccess.Write)
+    '    fstream.Write(filebytes, 0, filebytes.Length)
+    '    File.WriteAllBytes("C:\testpdf.pdf", fstream)
+    '    fstream.Close()
+    'End Sub
+
+    Sub download()
+        Dim sFilePath As String
+        Dim buffer As Byte()
+        Using cmd As New MySqlCommand("select cv from db_recruitment where idrec = '" & txtidrec.Text & "'", SQLConnection)
+            'Using cmd As New MySqlCommand("Select Top 1 PDF From PDF", SQLConnection)
+            buffer = CType(cmd.ExecuteScalar(), Byte())
+        End Using
+        sFilePath = System.IO.Path.GetTempFileName()
+        System.IO.File.Move(sFilePath, System.IO.Path.ChangeExtension(sFilePath, ".pdf"))
+        sFilePath = System.IO.Path.ChangeExtension(sFilePath, ".pdf")
+        System.IO.File.WriteAllBytes(sFilePath, buffer)
+        Dim act As Action(Of String) = New Action(Of String)(AddressOf OpenPDFFile)
+        act.BeginInvoke(sFilePath, Nothing, Nothing)
+    End Sub
+
+    Private Shared Sub OpenPDFFile(ByVal sFilePath)
+        Using p As New System.Diagnostics.Process
+            p.StartInfo = New System.Diagnostics.ProcessStartInfo(CType(sFilePath, String))
+            p.Start()
+            p.WaitForExit()
+            Try
+                System.IO.File.Delete(CType(sFilePath, String))
+            Catch
+            End Try
+        End Using
     End Sub
 
     Public Sub updatechange2()
         Dim dta, dtb, dtr As Date
+        txtapplieddate.Format = DateTimePickerFormat.Custom
+        txtapplieddate.CustomFormat = "yyyy-MM-dd"
+        dta = txtapplieddate.Value
+
         txtbod.Format = DateTimePickerFormat.Custom
         txtbod.CustomFormat = "yyyy-MM-dd"
         dtb = txtbod.Value
@@ -409,7 +514,7 @@ Public Class ChangeData
                                      ", Martial = @Martial " +
                                      ", LastSalary = @LastSalary " +
                                      ", OtherIncome = @OtherIncome " +
-                                     ", ExpSalary = @ExpSalary" +
+                                     ", ExpectedSalary = @ExpectedSalary" +
                                      ", ExpFacilities = @ExpFacilities" +
                                      ", FavoriteJob = @FavoriteJob" +
                                      ", Fwhy = @Fwhy" +
@@ -442,24 +547,6 @@ Public Class ChangeData
             End If
             sqlcommand.Parameters.AddWithValue("@Status", txtofloc.Text)
             sqlcommand.Parameters.AddWithValue("@InterviewDate", dtr.ToString("yyyy-MM-dd"))
-            'Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
-            'Dim finfo As New FileInfo(TextEdit2.Text)
-            'Dim numBytes As Long = finfo.Length
-            'Dim fstream As New FileStream(TextEdit2.Text, FileMode.Open, FileAccess.Read)
-            'Dim br As New BinaryReader(fstream)
-            'Dim data As Byte() = br.ReadBytes(CInt(numBytes))
-            'br.Close()
-            'fstream.Close() 
-            'Dim FullFileName() As String = OpenFileDialog1.FileName.Split("\")
-            'Dim fname As String = FullFileName.Last.ToString
-            'Dim filecontent() As Byte
-            'Dim fstream As New FileStream(OpenFileDialog1.FileName, FileMode.Open)
-            'Dim breader As New BinaryReader(fstream)
-            'filecontent = breader.ReadBytes(fstream.Length)
-            'fstream.Close()
-            'breader.Close()
-            'sqlcommand.Parameters.AddWithValue("@Cv", filecontent)
-            'sqlcommand.Parameters.AddWithValue("@Cvname", fname)
             sqlcommand.Parameters.AddWithValue("@Reason", txtcandreason.Text)
             sqlcommand.Parameters.AddWithValue("@Position", TextEdit7.Text)
             sqlcommand.Parameters.AddWithValue("@NickName", txtnick.Text)
@@ -474,7 +561,7 @@ Public Class ChangeData
             sqlcommand.Parameters.AddWithValue("@Martial", ComboBoxEdit4.Text)
             sqlcommand.Parameters.AddWithValue("@LastSalary", TextBox3.Text)
             sqlcommand.Parameters.AddWithValue("@OtherIncome", TextBox4.Text)
-            sqlcommand.Parameters.AddWithValue("@ExpSalary", TextBox5.Text)
+            sqlcommand.Parameters.AddWithValue("@ExpectedSalary", TextBox5.Text)
             sqlcommand.Parameters.AddWithValue("@ExpFacilities", RichTextBox1.Text)
             sqlcommand.Parameters.AddWithValue("@FavoriteJob", TextBox6.Text)
             sqlcommand.Parameters.AddWithValue("@Fwhy", RichTextBox2.Text)
@@ -488,11 +575,24 @@ Public Class ChangeData
             sqlcommand.Parameters.AddWithValue("@CarrierObject", RichTextBox8.Text)
             sqlcommand.Parameters.AddWithValue("@Reference", RichTextBox9.Text)
             sqlcommand.Parameters.AddWithValue("@private", txtwemail.Text)
+            'Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
+            'Dim finfo As New FileInfo(Label39.Text)
+            'Dim numBytes As Long = finfo.Length
+            'Dim fstream As New FileStream(Label39.Text, FileMode.Open, FileAccess.Read)
+            'Dim br As New BinaryReader(fstream)
+            'Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+            'br.Close()
+            'fstream.Close()
+            'If Not data Is Nothing Then
+            '    sqlcommand.Parameters.AddWithValue("@cv", data)
+            'Else
+            '    sqlcommand.Parameters.AddWithValue("@cv", "")
+            'End If
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MsgBox("Data succesfully changed")
         Catch ex As Exception
-            'MsgBox(ex.Message)
+            MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -526,7 +626,7 @@ Public Class ChangeData
             txtphoneno.Text = datatabl.Rows(0).Item(8).ToString
             txtidno.Text = datatabl.Rows(0).Item(9).ToString()
             txtofloc.Text = datatabl.Rows(0).Item(11).ToString()
-            DateTimePicker2.Text = datatabl.Rows(0).Item(12).ToString()
+            ' DateTimePicker2.Value = CDate(datatabl.Rows(0).Item(12).ToString())
             txtcandreason.Text = datatabl.Rows(0).Item(15).ToString()
             Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(10), Byte())
             If filefoto.Length > 0 Then
@@ -581,6 +681,8 @@ Public Class ChangeData
         GridView5.BestFitColumns()
         GridView6.BestFitColumns()
         act = "input"
+        Label39.Text = "C:\pdffile\file.pdf"
+        edu()
     End Sub
 
     Dim openfd As New OpenFileDialog
@@ -714,18 +816,53 @@ Public Class ChangeData
     End Sub
 
 
+    Private Sub SavePdf()
+        'Try
+        openfd.InitialDirectory = "C:\pdffile"
+        openfd.Title = "Open a CV FIle"
+        openfd.Filter = "PDF Files|*.pdf|Text Files|*.txt|Word FIles|*.docx"
+        openfd.Filter = "PDF Files|*.pdf"
+        openfd.ShowDialog()
+        Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
+        Dim finfo As New FileInfo(Label38.Text)
+        Dim numBytes As Long = finfo.Length
+        Dim fstream As New FileStream(Label38.Text, FileMode.Open, FileAccess.Read)
+        Dim br As New BinaryReader(fstream)
+        Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+        br.Close()
+        fstream.Close()
+        sqlquery.CommandText = "update db_recruitment set (cv) = (@cv) where idrec = '" & txtidrec.Text & "'"
+        sqlquery.Parameters.AddWithValue("@cv", data)
+        sqlquery.ExecuteNonQuery()
+        MsgBox("Saved")
+    End Sub
+
     Private Sub SimpleButton10_Click(sender As Object, e As EventArgs) Handles SimpleButton10.Click
-        'openfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer)
-        'openfd.Title = "Open a CV File"
-        'openfd.Filter = "Word Files|*.docx|Text Files|*.txt"
-        'openfd.ShowDialog()
-        'openfd.InitialDirectory = "C:\"
-        'openfd.Title = "Open a CV FIle"
-        'openfd.Filter = "PDF Files|*.pdf|Text Files|*.txt|Word FIles|*.docx"
-        'openfd.ShowDialog()
-        'TextEdit2.Text = openfd.FileName
-        OpenFileDialog1.ShowDialog()
-        Label39.Text = OpenFileDialog1.FileName
+        Try
+            openfd.InitialDirectory = "C:\"
+            openfd.Title = "Open a CV FIle"
+            openfd.Filter = "PDF Files|*.pdf|Text Files|*.txt|Word FIles|*.docx"
+            openfd.ShowDialog()
+            Label39.Text = openfd.FileName
+            Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+            Dim finfo As New FileInfo(Label39.Text)
+            Dim numBytes As Long = finfo.Length
+            Dim fstream As New FileStream(Label39.Text, FileMode.Open, FileAccess.Read)
+            Dim br As New BinaryReader(fstream)
+            Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+            br.Close()
+            fstream.Close()
+            sqlcommand.CommandText = "update db_recruitment set cv = @cv where idrec = @emp"
+            sqlcommand.Parameters.AddWithValue("@emp", txtidrec.Text)
+            If Not data Is Nothing Then
+                sqlcommand.Parameters.AddWithValue("@cv", data)
+            Else
+                sqlcommand.Parameters.AddWithValue("@cv", "")
+            End If
+            sqlcommand.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox("CV" & ex.Message)
+        End Try
     End Sub
 
     Dim act As String = ""
@@ -936,7 +1073,8 @@ Public Class ChangeData
 
 
     Private Sub SimpleButton14_Click(sender As Object, e As EventArgs) Handles SimpleButton14.Click
-        retrieved()
+        download()
+        ' retrieved()
         'Dim quer As MySqlCommand = SQLConnection.CreateCommand
         'quer.CommandText = "select cv from db_recruitment where "
     End Sub
@@ -1050,6 +1188,77 @@ Public Class ChangeData
         Dim ch As Char = e.KeyChar
         If Char.IsDigit(ch) Then
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub CheckEdit3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit3.CheckedChanged
+        If CheckEdit3.Checked = True Then
+            DateTimePicker2.Enabled = True
+            Dim dtr As DateTime
+            DateTimePicker2.Format = DateTimePickerFormat.Custom
+            DateTimePicker2.CustomFormat = "yyyy-MM-dd"
+            dtr = DateTimePicker2.Value
+        ElseIf CheckEdit3.Checked = False Then
+            DateTimePicker2.Enabled = False
+            Dim dtr As DateTime
+            DateTimePicker2.Format = DateTimePickerFormat.Custom
+            DateTimePicker2.CustomFormat = "----"
+            dtr = DateTimePicker2.Value
+        End If
+    End Sub
+
+    Private Sub SimpleButton15_Click(sender As Object, e As EventArgs) Handles SimpleButton15.Click
+        delschool()
+        edu()
+    End Sub
+
+    Private Sub SimpleButton16_Click(sender As Object, e As EventArgs) Handles SimpleButton16.Click
+        delcer()
+        cert()
+    End Sub
+
+    Private Sub SimpleButton17_Click(sender As Object, e As EventArgs) Handles SimpleButton17.Click
+        delfam()
+        fam()
+    End Sub
+
+    Private Sub SimpleButton18_Click(sender As Object, e As EventArgs) Handles SimpleButton18.Click
+        delskill()
+        skill()
+    End Sub
+
+    Private Sub SimpleButton19_Click(sender As Object, e As EventArgs) Handles SimpleButton19.Click
+        delexp()
+        exp()
+    End Sub
+
+    Private Sub GridView3_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf SimpleButton15_Click)))
+        End If
+    End Sub
+
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf SimpleButton16_Click)))
+        End If
+    End Sub
+
+    Private Sub GridView4_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView4.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf SimpleButton17_Click)))
+        End If
+    End Sub
+
+    Private Sub GridView5_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf SimpleButton18_Click)))
+        End If
+    End Sub
+
+    Private Sub GridView6_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView6.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf SimpleButton19_Click)))
         End If
     End Sub
 End Class

@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports DevExpress.Utils.Menu
 
 Public Class ChangeEmp
 
@@ -63,13 +64,13 @@ Public Class ChangeEmp
         Dim table As New DataTable
         Dim sqlcommand As New MySqlCommand
         'Try
-            sqlcommand.CommandText = "Select EmployeeCode, FullName from db_pegawai where status != 'Fired' and status != 'Terminated'"
-            sqlcommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl1.DataSource = table
+        sqlcommand.CommandText = "Select EmployeeCode, FullName from db_pegawai where status != 'Fired' and status != 'Terminated'"
+        sqlcommand.Connection = SQLConnection
+        Dim tbl_par As New DataTable
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(table)
+        GridControl1.DataSource = table
         'Catch ex As Exception
         '    MsgBox(ex.Message)
         'End Try
@@ -86,15 +87,15 @@ Public Class ChangeEmp
         End Try
         'Try
         sqlCommand.CommandText = "SELECT * FROM db_pegawai WHERE 1=1 " + param.ToString()
-            sqlCommand.Connection = SQLConnection
+        sqlCommand.Connection = SQLConnection
 
-            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(datatabl)
-            'Catch ex As Exception
-            '    MsgBox(ex.Message)
-            'End Try
-            If datatabl.Rows.Count > -1 Then
+        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(datatabl)
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        If datatabl.Rows.Count > -1 Then
             TextBox1.Text = datatabl.Rows(0).Item(0).ToString()
             TextBox2.Text = datatabl.Rows(0).Item(2).ToString()
             txtnick.Text = datatabl.Rows(0).Item(18).ToString()
@@ -126,7 +127,7 @@ Public Class ChangeEmp
             txtdept.Text = datatabl.Rows(0).Item(26).ToString
             txttype.Text = datatabl.Rows(0).Item(15).ToString
             ComboBoxEdit1.Text = datatabl.Rows(0).Item(14).ToString
-            txtjobdesk.Text = datatabl.Rows(0).Item(28).ToString
+            txtjobdesk.Text = datatabl.Rows(0).Item(27).ToString
             ComboBoxEdit2.Text = datatabl.Rows(0).Item(28).ToString
             ComboBoxEdit7.Text = datatabl.Rows(0).Item(29).ToString
             ComboBoxEdit1.Text = datatabl.Rows(0).Item(14).ToString
@@ -140,6 +141,7 @@ Public Class ChangeEmp
             CheckEdit7.Checked = CType(datatabl.Rows(0).Item(38).ToString, Boolean)
             ComboBoxEdit9.Text = datatabl.Rows(0).Item(39).ToString
             DateTimePicker2.Text = datatabl.Rows(0).Item(31).ToString
+            npwp.Text = datatabl.Rows(0).Item(41).ToString
         End If
         edu()
         cert()
@@ -171,6 +173,63 @@ Public Class ChangeEmp
             txtgroup.Properties.Items.Add(tbl_par1.Rows(index).Item(0).ToString())
         Next
     End Sub
+    Dim tbl_par6, tbl_par3, tbl_par4, tbl_par5, tbl_par7 As New DataTable
+
+    Sub loadjob()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select JobTitle from db_jobtitle"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par6)
+        For index As Integer = 0 To tbl_par6.Rows.Count - 1
+            txtjob.Properties.Items.Add(tbl_par6.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loadcomp()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select CompanyCode from db_companycode"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par3)
+        For index As Integer = 0 To tbl_par3.Rows.Count - 1
+            txtcompany.Properties.Items.Add(tbl_par3.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+
+    Sub loadofloc()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select OfficeLocation from db_officelocation"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par4)
+        For index As Integer = 0 To tbl_par4.Rows.Count - 1
+            txtofloc.Properties.Items.Add(tbl_par4.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loadgroup()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select groupname from db_groupmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par5)
+        For index As Integer = 0 To tbl_par5.Rows.Count - 1
+            txtgroup.Properties.Items.Add(tbl_par5.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loaddept()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select DepartmentName from db_departmentmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par7)
+        For index As Integer = 0 To tbl_par7.Rows.Count - 1
+            txtdept.Properties.Items.Add(tbl_par7.Rows(index).Item(0).ToString())
+        Next
+    End Sub
 
     Private Sub ChangeEmp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
@@ -178,23 +237,132 @@ Public Class ChangeEmp
         loadinfo()
         loaddata()
         loaddata1()
+        loadjob()
+        loadgroup()
+        loadofloc()
+        loaddept()
+        loadcomp()
         GridView1.BestFitColumns()
         GridView2.BestFitColumns()
         GridView3.BestFitColumns()
         GridView4.BestFitColumns()
         GridView5.BestFitColumns()
         GridView6.BestFitColumns()
+        GridView1.MoveLast()
         act = "input"
+        DateTimePicker2.Format = DateTimePickerFormat.Custom
+        DateTimePicker2.CustomFormat = " "
+        Label23.Text = "file.pdf"
+    End Sub
+
+    Public Sub empbackup()
+        Dim use As MySqlCommand = SQLConnection.CreateCommand
+        use.CommandText = "select user from db_temp"
+        Dim user As String = CStr(use.ExecuteScalar)
+
+        Dim dtb, dtr, dtu, dta As DateTime
+        txtbod.Format = DateTimePickerFormat.Custom
+        txtbod.CustomFormat = "yyyy-MM-dd"
+        dtb = txtbod.Value
+        txtjoin.Format = DateTimePickerFormat.Custom
+        txtjoin.CustomFormat = "yyyy-MM-dd"
+        dtr = txtjoin.Value
+        DateTimePicker2.Format = DateTimePickerFormat.Custom
+        DateTimePicker2.CustomFormat = "yyyy-MM-dd"
+        dtu = DateTimePicker2.Value
+        txtbod.Format = DateTimePickerFormat.Custom
+        txtbod.CustomFormat = "yyyy-MM-dd"
+        dta = txtbod.Value
+        Dim lastn As Integer
+        Dim ynow As String = Format(Now, "yy").ToString
+        Dim mnow As String = Month(Now).ToString
+        Try
+            Dim cmd = SQLConnection.CreateCommand()
+            cmd.CommandText = "SELECT last_num FROM view_emp_last_code"
+            lastn = DirectCast(cmd.ExecuteScalar(), Integer) + 1
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Dim rescode As String = ynow & "-" & mnow & "-" & Strings.Right("00000" & lastn, 5)
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        Try
+            sqlcommand.CommandText = "insert into db_historyemp " +
+                            "(EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Photo, Status, EmployeeType, TerminateDate, ChangeDate, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks, MaritalStatus, PphStatus, IsExpiry, ExpiryDates, ApprovedBy, ExcludePayroll, PayCash, ProcessTax, ExcludeThr, ExcludeBonus, PrintSlip, PayrollInterval, ChangeBy, MemilikiNpwp, NoBpjs, NoNpwp) " +
+                            "values (@EmployeeCode, @CompanyCode, @FullName, @Position, @PlaceOfBirth, @DateOfBirth, @Gender, @Religion, @Address, @IdNumber, @OfficeLocation, @WorkDate, @PhoneNumber, @Photo, @Status, @EmployeeType, @TerminateDate, @ChangeDate, @NickName, @Weight, @Height, @BloodType, @WorkEmail, @PrivateEmail, @RecommendedBy, @Grouping, @Department, @Jobdesks, @MaritalStatus, @PphStatus, @IsExpiry, @ExpiryDates, @ApprovedBy, @ExcludePayroll, @PayCash, @ProcessTax, @ExcludeThr, @ExcludeBonus, @PrintSlip, @PayrollInterval, @ChangeBy, @npwp, @nobpjs, @nonpwp)"
+            sqlcommand.Parameters.AddWithValue("@EmployeeCode", TextBox1.Text)
+            sqlcommand.Parameters.AddWithValue("@CompanyCode", txtcompany.Text)
+            sqlcommand.Parameters.AddWithValue("@FullName", TextBox2.Text)
+            sqlcommand.Parameters.AddWithValue("@Position", txtjob.Text)
+            sqlcommand.Parameters.AddWithValue("@PlaceOfBirth", txtbp.Text)
+            sqlcommand.Parameters.AddWithValue("@DateOfBirth", dta.ToString("yyyy-MM-dd"))
+            sqlcommand.Parameters.AddWithValue("@Gender", ComboBoxEdit6.Text)
+            sqlcommand.Parameters.AddWithValue("@Religion", txtrel.Text)
+            sqlcommand.Parameters.AddWithValue("@Address", txtadd.Text)
+            sqlcommand.Parameters.AddWithValue("@IdNumber", txtidno.Text)
+            sqlcommand.Parameters.AddWithValue("@OfficeLocation", txtofloc.Text)
+            sqlcommand.Parameters.AddWithValue("@WorkDate", txtjoin.Value.Date)
+            sqlcommand.Parameters.AddWithValue("@PhoneNumber", txtphoneno.Text)
+            If Not ImageEdit1.Text Is Nothing Then
+                Dim param As New MySqlParameter("@Photo", ImageToByte(PictureBox1))
+                sqlcommand.Parameters.Add(param)
+            Else
+                sqlcommand.Parameters.AddWithValue("@Photo", "")
+            End If
+            sqlcommand.Parameters.AddWithValue("@Status", ComboBoxEdit1.Text)
+            sqlcommand.Parameters.AddWithValue("@EmployeeType", txttype.Text)
+            sqlcommand.Parameters.AddWithValue("@TerminateDate", Nothing)
+            sqlcommand.Parameters.AddWithValue("@ChangeDate", Date.Now)
+            sqlcommand.Parameters.AddWithValue("@NickName", txtnick.Text)
+            sqlcommand.Parameters.AddWithValue("@Weight", txtkg.Text)
+            sqlcommand.Parameters.AddWithValue("@Height", txtcm.Text)
+            sqlcommand.Parameters.AddWithValue("@BloodType", txtblood.Text)
+            sqlcommand.Parameters.AddWithValue("@WorkEmail", txtwemail.Text)
+            sqlcommand.Parameters.AddWithValue("@PrivateEmail", txtpemail.Text)
+            sqlcommand.Parameters.AddWithValue("@RecommendedBy", txtrecby.Text)
+            sqlcommand.Parameters.AddWithValue("@Grouping", txtgroup.Text)
+            sqlcommand.Parameters.AddWithValue("@Department", txtdept.Text)
+            sqlcommand.Parameters.AddWithValue("@Jobdesks", txtjobdesk.Text)
+            sqlcommand.Parameters.AddWithValue("@MaritalStatus", ComboBoxEdit2.Text)
+            sqlcommand.Parameters.AddWithValue("@pphStatus", ComboBoxEdit7.Text)
+            sqlcommand.Parameters.AddWithValue("@IsExpiry", CheckEdit1.Checked)
+            sqlcommand.Parameters.AddWithValue("@ExpiryDates", "")
+            sqlcommand.Parameters.AddWithValue("@ApprovedBy", TextBox3.Text)
+            sqlcommand.Parameters.AddWithValue("@ExcludePayroll", CheckEdit2.Checked)
+            sqlcommand.Parameters.AddWithValue("@PayCash", CheckEdit3.Checked)
+            sqlcommand.Parameters.AddWithValue("@ProcessTax", CheckEdit4.Checked)
+            sqlcommand.Parameters.AddWithValue("@ExcludeThr", CheckEdit5.Checked)
+            sqlcommand.Parameters.AddWithValue("@ExcludeBonus", CheckEdit6.Checked)
+            sqlcommand.Parameters.AddWithValue("@PrintSlip", CheckEdit7.Checked)
+            sqlcommand.Parameters.AddWithValue("@PayrollInterval", ComboBoxEdit9.Text)
+            sqlcommand.Parameters.AddWithValue("@ChangeBy", user)
+            sqlcommand.Parameters.AddWithValue("@npwp", npwp.Text)
+            sqlcommand.Parameters.AddWithValue("@nobpjs", TextEdit3.Text)
+            sqlcommand.Parameters.AddWithValue("@nonpwp", TextEdit1.Text)
+            sqlcommand.ExecuteNonQuery()
+            MsgBox("Added")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Public Sub UpdateEmp()
-        Dim dtb, dtr As DateTime
+        Dim dtb, dta As Date
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.CustomFormat = "yyyy-MM-dd"
         dtb = DateTimePicker2.Value
+
+        txtbod.Format = DateTimePickerFormat.Custom
+        txtbod.CustomFormat = "yyyy-MM-dd"
+        dta = txtbod.Value
         Dim sqlCommand As New MySqlCommand
         Dim str_carSql As String
         ' Try
+        Dim hasil As Date
+        If CheckEdit1.Checked = True Then
+            hasil = CDate(dtb.ToString("yyyy-MM-dd"))
+        Else
+            hasil = CDate(Nothing)
+        End If
         str_carSql = "UPDATE db_pegawai SET" +
                    " CompanyCode = @CompanyCode" +
                    ", FullName = @FullName" +
@@ -222,7 +390,7 @@ Public Class ChangeEmp
                    ", RecommendedBy = @RecommendedBy" +
                    ", Grouping = @Grouping" +
                    ", Department = @Department" +
-                   ", JobDesks = @Jobdesks" +
+                   ", Jobdesks = @Jobdesks" +
                    ", MaritalStatus = @maritalStatus" +
                    ", PphStatus = @PphStatus" +
                    ", IsExpiry = @IsExpiry" +
@@ -235,6 +403,9 @@ Public Class ChangeEmp
                    ", ExcludeBonus = @ExcludeBonus " +
                    ", PrintSlip = @Printslip" +
                    ", PayrollInterval = @payrollInterval " +
+                   ", MemilikiNpwp = @npwp" +
+                   ", Nobpjs = @nobpjs" +
+                   ", Nonpwp = @nonpwp" +
                    " WHERE EmployeeCode = @EmployeeCode"
         sqlCommand.Connection = SQLConnection
         sqlCommand.CommandText = str_carSql
@@ -243,7 +414,7 @@ Public Class ChangeEmp
         sqlCommand.Parameters.AddWithValue("@FullName", TextBox2.Text)
         sqlCommand.Parameters.AddWithValue("@Position", txtjob.Text)
         sqlCommand.Parameters.AddWithValue("@PlaceOfBirth", txtbp.Text)
-        sqlCommand.Parameters.AddWithValue("@DateOfBirth", txtbod.Value.Date)
+        sqlCommand.Parameters.AddWithValue("@DateOfBirth", dta.ToString("yyyy-MM-dd"))
         sqlCommand.Parameters.AddWithValue("@Gender", ComboBoxEdit6.Text)
         sqlCommand.Parameters.AddWithValue("@Religion", txtrel.Text)
         sqlCommand.Parameters.AddWithValue("@Address", txtadd.Text)
@@ -283,12 +454,73 @@ Public Class ChangeEmp
         sqlCommand.Parameters.AddWithValue("@ExcludeBonus", CheckEdit6.Checked)
         sqlCommand.Parameters.AddWithValue("@PrintSlip", CheckEdit7.Checked)
         sqlCommand.Parameters.AddWithValue("@PayrollInterval", ComboBoxEdit9.Text)
+        sqlCommand.Parameters.AddWithValue("@npwp", npwp.Text)
+        'Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
+        'Dim finfo As New FileInfo(Label23.Text)
+        'Dim numBytes As Long = finfo.Length
+        'Dim fstream As New FileStream(Label23.Text, FileMode.Open, FileAccess.Read)
+        'Dim br As New BinaryReader(fstream)
+        'Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+        'br.Close()
+        'fstream.Close()
+        'If Not data Is Nothing Then
+        '    sqlCommand.Parameters.AddWithValue("@Jobdesk", data)
+        'Else
+        '    sqlCommand.Parameters.AddWithValue("@Jobdesk", "")
+        'End If
+        sqlCommand.Parameters.AddWithValue("@nobpjs", TextEdit3.Text)
+        sqlCommand.Parameters.AddWithValue("@nonpwp", TextEdit1.Text)
         sqlCommand.Connection = SQLConnection
         sqlCommand.ExecuteNonQuery()
         MsgBox("Data Successfully Changed")
         'Catch ex As Exception
         '    MessageBox.Show(ex.Message)
         'End Try
+    End Sub
+
+    Sub delschool()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_education where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label29.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        edu()
+    End Sub
+
+    Sub delcer()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_certificates where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label29.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        certificates()
+    End Sub
+
+    Sub delfam()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_family where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label29.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        family()
+    End Sub
+
+    Sub delexp()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_exp where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label29.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        exp()
+    End Sub
+
+    Sub delskill()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "delete from db_skill where NoId = @noid"
+        query.Parameters.AddWithValue("@noid", Label29.Text)
+        query.ExecuteNonQuery()
+        MsgBox("Deleted")
+        skill()
     End Sub
 
     Dim dt1 As Date
@@ -319,6 +551,7 @@ Public Class ChangeEmp
 
     Private Sub SimpleButton10_Click(sender As Object, e As EventArgs) Handles SimpleButton10.Click
         UpdateEmp()
+        empbackup()
     End Sub
 
     Dim act As String = ""
@@ -777,6 +1010,7 @@ Public Class ChangeEmp
     Private Sub SimpleButton6_Click(sender As Object, e As EventArgs) Handles SimpleButton6.Click
         school()
         act = "input"
+
     End Sub
 
     Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
@@ -915,6 +1149,166 @@ Public Class ChangeEmp
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub CheckEdit1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit1.CheckedChanged
+        If CheckEdit1.Checked = True Then
+            DateTimePicker2.Enabled = True
+            Dim dtr As DateTime
+            DateTimePicker2.Format = DateTimePickerFormat.Custom
+            DateTimePicker2.CustomFormat = "yyyy-MM-dd"
+            dtr = DateTimePicker2.Value
+        ElseIf CheckEdit1.Checked = False Then
+            DateTimePicker2.Enabled = False
+            Dim dtr As DateTime
+            DateTimePicker2.Format = DateTimePickerFormat.Custom
+            DateTimePicker2.CustomFormat = "----"
+            dtr = DateTimePicker2.Value
+        End If
+    End Sub
+
+    Private Sub DateTimePicker2_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker2.ValueChanged
+
+    End Sub
+
+    Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
+        delschool()
+    End Sub
+
+    Private Sub SimpleButton17_Click(sender As Object, e As EventArgs) Handles SimpleButton17.Click
+        delfam()
+    End Sub
+
+    Private Sub SimpleButton16_Click(sender As Object, e As EventArgs) Handles SimpleButton16.Click
+        delcer()
+    End Sub
+
+    Private Sub SimpleButton18_Click(sender As Object, e As EventArgs) Handles SimpleButton18.Click
+        delskill()
+    End Sub
+
+    Private Sub SimpleButton19_Click(sender As Object, e As EventArgs) Handles SimpleButton19.Click
+        delexp()
+    End Sub
+
+    Private Sub GridView3_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView3.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf Button1_Click)))
+        End If
+    End Sub
+
+    Private Sub GridView2_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView2.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf Button2_Click)))
+        End If
+    End Sub
+
+    Private Sub GridView4_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView4.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf Button3_Click)))
+        End If
+    End Sub
+
+    Private Sub GridView5_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView5.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf Button4_Click)))
+        End If
+    End Sub
+
+    Private Sub GridView6_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridView6.PopupMenuShowing
+        If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
+            e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf Button5_Click)))
+        End If
+    End Sub
+
+    Dim openfd As New OpenFileDialog
+
+    Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
+        Try
+            openfd.InitialDirectory = "C:\"
+            openfd.Title = "Open a CV FIle"
+            openfd.Filter = "PDF Files|*.pdf|Text Files|*.txt|Word FIles|*.docx"
+            openfd.ShowDialog()
+            Label23.Text = openfd.FileName
+            Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+            Dim finfo As New FileInfo(Label23.Text)
+            Dim numBytes As Long = finfo.Length
+            Dim fstream As New FileStream(Label23.Text, FileMode.Open, FileAccess.Read)
+            Dim br As New BinaryReader(fstream)
+            Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+            br.Close()
+            fstream.Close()
+            sqlcommand.CommandText = "update db_pegawai set jobdesk = @jobdesk where employeecode = @emp"
+            sqlcommand.Parameters.AddWithValue("@emp", TextBox1.Text)
+            If Not data Is Nothing Then
+                sqlcommand.Parameters.AddWithValue("@Jobdesk", data)
+            Else
+                sqlcommand.Parameters.AddWithValue("@Jobdesk", "")
+            End If
+            sqlcommand.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox("Jobdesk" & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "delete from db_education where noid = '" & Label29.Text & "'"
+            query.ExecuteNonQuery()
+            MsgBox("Deleted")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        edu()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "delete from db_certificates where noid = '" & Label29.Text & "'"
+            query.ExecuteNonQuery()
+            MsgBox("Deleted")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        cert()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "delete from db_family where noid =  '" & Label29.Text & "'"
+            query.ExecuteNonQuery()
+            MsgBox("Deleted")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        fam()
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "delete from db_exp where noid = '" & Label29.Text & "'"
+            query.ExecuteNonQuery()
+            MsgBox("Deleted")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        exp()
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "delete from db_skills where noid = '" & Label29.Text & "'"
+            query.ExecuteNonQuery()
+            MsgBox("Deleted")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        skill()
     End Sub
 
     Private Sub CheckEdit2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit2.CheckedChanged

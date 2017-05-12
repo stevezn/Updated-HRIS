@@ -83,8 +83,8 @@ Public Class RecProcess
             Else
                 Try
                     str_carSql = "INSERT INTO db_skills " +
-                           "(IdRec, FullName, Skill1, Skill2, Skill3, Skill4, Skill5) " +
-                           "values (@Idrec, @fullname, @skill1, @skill2, @skill3, @skill4, @skill5)"
+                           "(IdRec, FullName, Skill1, Skill2, Skill3, Skill4, Skill5, Interviewer) " +
+                           "values (@Idrec, @fullname, @skill1, @skill2, @skill3, @skill4, @skill5, @interviewer)"
                     sqlCommand.Connection = SQLConnection
                     sqlCommand.CommandText = str_carSql
                     sqlCommand.Parameters.AddWithValue("@IdRec", txtidrecc.Text)
@@ -94,6 +94,7 @@ Public Class RecProcess
                     sqlCommand.Parameters.AddWithValue("@skill3", skill3.Text)
                     sqlCommand.Parameters.AddWithValue("@skill4", skill4.Text)
                     sqlCommand.Parameters.AddWithValue("@skill5", skill5.Text)
+                    sqlCommand.Parameters.AddWithValue("@interviewer", TextEdit1.Text)
                     sqlCommand.ExecuteNonQuery()
                     MessageBox.Show("Data Succesfully Added!")
                     txtname.Text = ""
@@ -160,7 +161,7 @@ Public Class RecProcess
             sqlcommand.Parameters.AddWithValue("@PhoneNumber", txtphone.Text)
             sqlcommand.Parameters.AddWithValue("@IdNumber", txtidcard.Text)
             sqlcommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlcommand.Parameters.AddWithValue("@InterviewDates", dtb.ToString("yyyy-MM-dd"))
+            sqlcommand.Parameters.AddWithValue("@InterviewDate", dtb.ToString("yyyy-MM-dd"))
             sqlcommand.Connection = SQLConnection
             sqlcommand.ExecuteNonQuery()
             MessageBox.Show("Data Successfully Changed!")
@@ -168,88 +169,6 @@ Public Class RecProcess
             MsgBox(ex.Message)
         End Try
     End Sub
-
-    Public Function insertreq2() As Boolean
-        Dim ynow As String = Format(Now, "yy").ToString
-        Dim mnow As String = Month(Now).ToString
-        Dim lastn As Integer
-        Dim hasil As Integer
-        Dim lastres As Integer
-        Dim maxid As Integer
-        Dim newid As Integer = maxid + 1
-        Dim updmon As String
-        Dim lastcode As String = ""
-        Dim tmp As Integer
-        Try
-            Dim cmd = SQLConnection.CreateCommand()
-            cmd.CommandText = "SELECT IdRec FROM id_last_num"
-            lastn = DirectCast(cmd.ExecuteScalar(), Integer)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-        Try
-            Dim cmd = SQLConnection.CreateCommand
-            cmd.CommandText = "SELECT Idrec FROM db_recruitment ORDER BY IdRec DESC LIMIT 1"
-            lastcode = DirectCast(cmd.ExecuteScalar(), String)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try        
-        Try
-            Dim cmd = SQLConnection.CreateCommand
-            cmd.CommandText = "SELECT MID(Idrec, 8, 1) FROM db_recruitment where idrec = '" & lastcode & "'"
-            updmon = DirectCast(cmd.ExecuteScalar(), String)
-            If CInt(updmon) <> CInt(mnow) Then
-                tmp = 1
-            Else
-                tmp = lastn + 1
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-        Dim actualcode As String = "REQ" & "-" & ynow & "-" & mnow & "-" & Strings.Right("0000" & tmp, 5)
-        Try
-            Dim cmd = SQLConnection.CreateCommand
-            cmd.CommandText = "Select count(*) from db_recruitment where IdNumber = '" & txtidcard.Text & "'"
-            hasil = CInt(cmd.ExecuteScalar)
-            If hasil = 0 Then
-                lastres = 1
-            ElseIf hasil = 1 OrElse hasil < 1 Then
-                lastres = hasil + 1
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-        txtinterview.Text = lastres.ToString
-        Dim sqlCommand As New MySqlCommand
-        Dim str_carSql As String
-        Try
-            str_carSql = "INSERT INTO db_recruitment " +
-                   "(IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, Cv, Reason, CreatedDate) " +
-                   "values (@IdRec,@InterviewTimes,@FullName,@PlaceOfBirth,@DateOfBirth,@Address,@Gender,@Religion, @PhoneNumber, @IdNumber,@Photo,@Status,@InterviewDate,@Cv,@Reason, @CreatedDate)"
-            sqlCommand.Connection = SQLConnection
-            sqlCommand.CommandText = str_carSql
-            sqlCommand.Parameters.AddWithValue("@IdRec", actualcode)
-            sqlCommand.Parameters.AddWithValue("@InterviewTimes", txtinterview.Text)
-            sqlCommand.Parameters.AddWithValue("@PlaceOfBirth", "")
-            sqlCommand.Parameters.AddWithValue("@DateOfBirth", "")
-            sqlCommand.Parameters.AddWithValue("@Address", txtaddress.Text)
-            sqlCommand.Parameters.AddWithValue("@Gender", "")
-            sqlCommand.Parameters.AddWithValue("@Religion", "")
-            sqlCommand.Parameters.AddWithValue("@PhoneNumber", txtphone.Text)
-            sqlCommand.Parameters.AddWithValue("@IdNumber", txtidcard.Text)
-            sqlCommand.Parameters.AddWithValue("@Photo", "")
-            sqlCommand.Parameters.AddWithValue("@Status", txtstatus.Text)
-            sqlCommand.Parameters.AddWithValue("@InterviewDate", txtinterviewdate.Text)
-            sqlCommand.Parameters.AddWithValue("@Cv", "")
-            sqlCommand.Parameters.AddWithValue("@Reason", "")
-            sqlCommand.Parameters.AddWithValue("@CreatedDate", Date.Now)
-            sqlCommand.ExecuteNonQuery()
-            Return True
-        Catch ex As Exception
-            Return False
-            MsgBox(ex.Message)
-        End Try
-    End Function
 
     Dim tbl_par As New DataTable
 
@@ -267,17 +186,6 @@ Public Class RecProcess
 
     Dim tbl_par12 As New DataTable
 
-    Sub loadDataKaryawan2()
-        Dim sqlCommand As New MySqlCommand
-        sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PhoneNumber, IdNumber, status, InterviewDate, Reason FROM db_recruit where status = 'In Progress'"
-        sqlCommand.Connection = SQLConnection
-        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-        Dim cb As New MySqlCommandBuilder(adapter)
-        adapter.Fill(tbl_par12)
-        For index As Integer = 0 To tbl_par12.Rows.Count - 1
-        Next
-    End Sub
-
     Private Sub txtfullname_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtfullname.SelectedIndexChanged
         For indexing As Integer = 0 To tbl_par.Rows.Count - 1
             If txtfullname.SelectedItem Is tbl_par.Rows(indexing).Item(2).ToString() Then
@@ -287,7 +195,7 @@ Public Class RecProcess
                 txtphone.Text = tbl_par.Rows(indexing).Item(8).ToString()
                 txtidcard.Text = tbl_par.Rows(indexing).Item(9).ToString()
                 txtstatus.Text = tbl_par.Rows(indexing).Item(11).ToString
-                txtinterviewdate.Text = tbl_par.Rows(indexing).Item(12).ToString
+                ' txtinterviewdate.Text = tbl_par.Rows(indexing).Item(12).ToString
             End If
         Next
     End Sub
@@ -305,7 +213,7 @@ Public Class RecProcess
             adapter.Fill(table)
             GridControl1.DataSource = table
         Catch ex As Exception
-            MsgBox(ex.Message)
+            'MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -342,11 +250,7 @@ Public Class RecProcess
     End Sub
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
-        If txtid.Text = "" Then
-            MsgBox("Please insert an employee name or employee codes")
-        Else
-            updatechange()
-        End If
+
     End Sub
 
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As Views.Grid.PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
@@ -377,7 +281,6 @@ Public Class RecProcess
                 txtphone.Text = tbl_par12.Rows(indexing).Item(3).ToString()
                 txtidcard.Text = tbl_par12.Rows(indexing).Item(4).ToString()
                 txtstatus.Text = tbl_par12.Rows(indexing).Item(5).ToString
-                txtinterviewdate.Text = tbl_par12.Rows(indexing).Item(6).ToString
             End If
         Next
     End Sub
@@ -412,8 +315,23 @@ Public Class RecProcess
             up.ExecuteNonQuery()
             MsgBox("Status from " & downres & " Is changed to be In progress")
             GroupControl2.Visible = False
+            clear()
         End If
+        loadinfo()
         loadinfo2()
+    End Sub
+
+    Sub clear()
+        txtfullname.Text = ""
+        txtid.Text = ""
+        txtidcard.Text = ""
+        txtinterview.Text = ""
+        txtaddress.Text = ""
+        txtphone.Text = ""
+        txtpob.Text = ""
+        txtage.Text = ""
+        txtgender.Text = ""
+        txtstatus.Text = ""
     End Sub
 
     Private Sub GridView1_FocusedRowChanged(sender As Object, e As Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
@@ -426,7 +344,7 @@ Public Class RecProcess
         Catch ex As Exception
         End Try
         Try
-            sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceofBirth, DateOfBirth, Address,Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, PhoneNumber, InterviewDate, Reason FROM db_recruitment WHERE 1=1 " + param.ToString()
+            sqlCommand.CommandText = "SELECT IdRec, InterviewTimes, FullName, PlaceofBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, PhoneNumber, Reason FROM db_recruitment WHERE 1=1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
 
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
@@ -512,7 +430,7 @@ Public Class RecProcess
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(datatabl)
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("4" & ex.Message & "'")
         End Try
         If datatabl.Rows.Count > 0 Then
             txtname.Text = datatabl.Rows(0).Item(0).ToString()
@@ -535,7 +453,8 @@ Public Class RecProcess
                 adapter.Fill(table)
                 GridControl2.DataSource = table
             Catch ex As Exception
-                MsgBox(ex.Message)
+                MsgBox("5")
+                'MsgBox(ex.Message)
             End Try
         End If
     End Sub
@@ -559,7 +478,8 @@ Public Class RecProcess
             adapter.Fill(table)
             GridControl2.DataSource = table
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("6")
+            'MsgBox(ex.Message)
         End Try
     End Sub
 
@@ -576,7 +496,33 @@ Public Class RecProcess
             adapter.Fill(table)
             GridControl1.DataSource = table
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("7")
+            'MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Dim sel As New selectemp
+
+    Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
+        Timer1.Start()
+        If sel Is Nothing OrElse sel.IsDisposed OrElse sel.MinimizeBox Then
+            sel.Close()
+            sel = New selectemp
+        End If
+        sel.Show()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select name from db_tmpname"
+            Dim quer1 As String = CType(query.ExecuteScalar, String)
+            TextEdit1.Text = quer1.ToString
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub TextEdit1_EditValueChanged(sender As Object, e As EventArgs) Handles TextEdit1.EditValueChanged
+        Timer1.Stop()
     End Sub
 End Class

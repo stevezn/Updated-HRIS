@@ -25,6 +25,8 @@ Partial Class EmployeeDetails
         Me.components = New System.ComponentModel.Container()
         Dim GroupControl5 As DevExpress.XtraEditors.GroupControl
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployeeDetails))
+        Me.npwp = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.GroupControl8 = New DevExpress.XtraEditors.GroupControl()
         Me.ComboBoxEdit9 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.Label30 = New System.Windows.Forms.Label()
@@ -113,6 +115,7 @@ Partial Class EmployeeDetails
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.txtidno = New DevExpress.XtraEditors.TextEdit()
         Me.txtkg = New DevExpress.XtraEditors.TextEdit()
         Me.txtbod = New System.Windows.Forms.DateTimePicker()
@@ -150,9 +153,14 @@ Partial Class EmployeeDetails
         Me.Label44 = New System.Windows.Forms.Label()
         Me.ComboBoxEdit14 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         GroupControl5.SuspendLayout()
+        CType(Me.npwp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl8.SuspendLayout()
         CType(Me.ComboBoxEdit9.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -226,16 +234,20 @@ Partial Class EmployeeDetails
         CType(Me.ComboBoxEdit12.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit13.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit14.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupControl5
         '
+        GroupControl5.Controls.Add(Me.TextEdit2)
+        GroupControl5.Controls.Add(Me.Label24)
+        GroupControl5.Controls.Add(Me.TextEdit1)
+        GroupControl5.Controls.Add(Me.Label23)
+        GroupControl5.Controls.Add(Me.npwp)
+        GroupControl5.Controls.Add(Me.Label21)
         GroupControl5.Controls.Add(Me.GroupControl8)
         GroupControl5.Controls.Add(Me.ComboBoxEdit1)
-        GroupControl5.Controls.Add(Me.SimpleButton1)
-        GroupControl5.Controls.Add(Me.TextBox3)
-        GroupControl5.Controls.Add(Me.Label31)
-        GroupControl5.Controls.Add(Me.Label32)
         GroupControl5.Controls.Add(Me.DateTimePicker2)
         GroupControl5.Controls.Add(Me.CheckEdit1)
         GroupControl5.Controls.Add(Me.Label33)
@@ -250,6 +262,24 @@ Partial Class EmployeeDetails
         GroupControl5.TabIndex = 1
         GroupControl5.Text = "Status"
         '
+        'npwp
+        '
+        Me.npwp.Location = New System.Drawing.Point(111, 81)
+        Me.npwp.Name = "npwp"
+        Me.npwp.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.npwp.Properties.Items.AddRange(New Object() {"TK-0", "Tk-1", "TK-2", "TK-3", "K-0", "K-1", "K-2", "K-3", "K-4"})
+        Me.npwp.Size = New System.Drawing.Size(189, 20)
+        Me.npwp.TabIndex = 44
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(18, 84)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(87, 13)
+        Me.Label21.TabIndex = 43
+        Me.Label21.Text = "Have a NPWP ?"
+        '
         'GroupControl8
         '
         Me.GroupControl8.Controls.Add(Me.ComboBoxEdit9)
@@ -260,6 +290,10 @@ Partial Class EmployeeDetails
         Me.GroupControl8.Controls.Add(Me.CheckEdit4)
         Me.GroupControl8.Controls.Add(Me.CheckEdit3)
         Me.GroupControl8.Controls.Add(Me.CheckEdit2)
+        Me.GroupControl8.Controls.Add(Me.Label32)
+        Me.GroupControl8.Controls.Add(Me.Label31)
+        Me.GroupControl8.Controls.Add(Me.SimpleButton1)
+        Me.GroupControl8.Controls.Add(Me.TextBox3)
         Me.GroupControl8.Location = New System.Drawing.Point(320, 0)
         Me.GroupControl8.Name = "GroupControl8"
         Me.GroupControl8.Size = New System.Drawing.Size(578, 317)
@@ -334,7 +368,7 @@ Partial Class EmployeeDetails
         '
         'ComboBoxEdit1
         '
-        Me.ComboBoxEdit1.Location = New System.Drawing.Point(112, 117)
+        Me.ComboBoxEdit1.Location = New System.Drawing.Point(111, 183)
         Me.ComboBoxEdit1.Name = "ComboBoxEdit1"
         Me.ComboBoxEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit1.Properties.Items.AddRange(New Object() {"Permanent", "Probation", "Trainee", "Daily Worker", "Contract", "Outsource", "Borongan"})
@@ -344,47 +378,51 @@ Partial Class EmployeeDetails
         'SimpleButton1
         '
         Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(271, 229)
+        Me.SimpleButton1.Location = New System.Drawing.Point(252, 241)
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(26, 20)
         Me.SimpleButton1.TabIndex = 26
+        Me.SimpleButton1.Visible = False
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(112, 230)
+        Me.TextBox3.Location = New System.Drawing.Point(46, 270)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(153, 20)
         Me.TextBox3.TabIndex = 25
+        Me.TextBox3.Visible = False
         '
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(35, 230)
+        Me.Label31.Location = New System.Drawing.Point(5, 235)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(73, 13)
         Me.Label31.TabIndex = 10
         Me.Label31.Text = "Approved by :"
+        Me.Label31.Visible = False
         '
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(18, 201)
+        Me.Label32.Location = New System.Drawing.Point(97, 248)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(49, 13)
         Me.Label32.TabIndex = 10
         Me.Label32.Text = "Approval"
+        Me.Label32.Visible = False
         '
         'DateTimePicker2
         '
         Me.DateTimePicker2.Enabled = False
-        Me.DateTimePicker2.Location = New System.Drawing.Point(112, 168)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(111, 234)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(188, 20)
         Me.DateTimePicker2.TabIndex = 23
         '
         'CheckEdit1
         '
-        Me.CheckEdit1.Location = New System.Drawing.Point(110, 143)
+        Me.CheckEdit1.Location = New System.Drawing.Point(112, 209)
         Me.CheckEdit1.Name = "CheckEdit1"
         Me.CheckEdit1.Properties.Caption = "Expiry Dates :"
         Me.CheckEdit1.Size = New System.Drawing.Size(88, 19)
@@ -393,7 +431,7 @@ Partial Class EmployeeDetails
         'Label33
         '
         Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(35, 119)
+        Me.Label33.Location = New System.Drawing.Point(32, 184)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(63, 13)
         Me.Label33.TabIndex = 21
@@ -402,7 +440,7 @@ Partial Class EmployeeDetails
         'Label34
         '
         Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(18, 92)
+        Me.Label34.Location = New System.Drawing.Point(18, 161)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(146, 13)
         Me.Label34.TabIndex = 20
@@ -420,7 +458,7 @@ Partial Class EmployeeDetails
         'Label35
         '
         Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(18, 55)
+        Me.Label35.Location = New System.Drawing.Point(18, 56)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(88, 13)
         Me.Label35.TabIndex = 18
@@ -438,7 +476,7 @@ Partial Class EmployeeDetails
         'Label36
         '
         Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(18, 30)
+        Me.Label36.Location = New System.Drawing.Point(18, 29)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(77, 13)
         Me.Label36.TabIndex = 2
@@ -648,6 +686,7 @@ Partial Class EmployeeDetails
         Me.txtjobdesk.Size = New System.Drawing.Size(153, 99)
         Me.txtjobdesk.TabIndex = 43
         Me.txtjobdesk.Text = ""
+        Me.txtjobdesk.Visible = False
         '
         'LabelControl15
         '
@@ -656,6 +695,7 @@ Partial Class EmployeeDetails
         Me.LabelControl15.Size = New System.Drawing.Size(147, 13)
         Me.LabelControl15.TabIndex = 49
         Me.LabelControl15.Text = "Jobdesks and Responsibilities :"
+        Me.LabelControl15.Visible = False
         '
         'LabelControl2
         '
@@ -696,7 +736,6 @@ Partial Class EmployeeDetails
         Me.txttype.Location = New System.Drawing.Point(481, 322)
         Me.txttype.Name = "txttype"
         Me.txttype.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txttype.Properties.Items.AddRange(New Object() {"Harian", "Bulanan", "Borongan"})
         Me.txttype.Size = New System.Drawing.Size(202, 20)
         Me.txttype.TabIndex = 40
         '
@@ -731,7 +770,6 @@ Partial Class EmployeeDetails
         Me.txtdept.Location = New System.Drawing.Point(481, 297)
         Me.txtdept.Name = "txtdept"
         Me.txtdept.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtdept.Properties.Items.AddRange(New Object() {"V-A.Leader", "V-Chief", "V-Head", "V-Leader", "V-Manager", "V-Operator", "V-SPV", "V-Staff"})
         Me.txtdept.Size = New System.Drawing.Size(202, 20)
         Me.txtdept.TabIndex = 39
         '
@@ -787,7 +825,6 @@ Partial Class EmployeeDetails
         Me.txtofloc.Location = New System.Drawing.Point(123, 350)
         Me.txtofloc.Name = "txtofloc"
         Me.txtofloc.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtofloc.Properties.Items.AddRange(New Object() {"MAKMUR BINTANG PLASTINDO", "MAKMUR BINTANG ROLLINGDO", "KIM 3", "KIM 4"})
         Me.txtofloc.Size = New System.Drawing.Size(195, 20)
         Me.txtofloc.TabIndex = 37
         '
@@ -816,6 +853,7 @@ Partial Class EmployeeDetails
         Me.SimpleButton4.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton4.TabIndex = 29
         Me.SimpleButton4.Text = "Browse"
+        Me.SimpleButton4.Visible = False
         '
         'txtcompany
         '
@@ -855,7 +893,6 @@ Partial Class EmployeeDetails
         Me.txtjob.Location = New System.Drawing.Point(123, 298)
         Me.txtjob.Name = "txtjob"
         Me.txtjob.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtjob.Properties.Items.AddRange(New Object() {"V-A.Leader", "V-Chief", "V-Head", "V-Leader", "V-Manager", "V-Operator", "V-SPV", "V-Staff"})
         Me.txtjob.Size = New System.Drawing.Size(195, 20)
         Me.txtjob.TabIndex = 35
         '
@@ -880,11 +917,12 @@ Partial Class EmployeeDetails
         'btnCapture
         '
         Me.btnCapture.Image = CType(resources.GetObject("btnCapture.Image"), System.Drawing.Image)
-        Me.btnCapture.Location = New System.Drawing.Point(725, 195)
+        Me.btnCapture.Location = New System.Drawing.Point(558, 377)
         Me.btnCapture.Name = "btnCapture"
         Me.btnCapture.Size = New System.Drawing.Size(119, 36)
         Me.btnCapture.TabIndex = 44
         Me.btnCapture.Text = "Camera"
+        Me.btnCapture.Visible = False
         '
         'txtphoneno
         '
@@ -896,7 +934,7 @@ Partial Class EmployeeDetails
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.HRMS.My.Resources.Resources.Insert_Photo_Here
-        Me.PictureBox1.Location = New System.Drawing.Point(710, 34)
+        Me.PictureBox1.Location = New System.Drawing.Point(714, 34)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(148, 150)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -993,6 +1031,7 @@ Partial Class EmployeeDetails
         '
         'GroupControl2
         '
+        Me.GroupControl2.Controls.Add(Me.SimpleButton2)
         Me.GroupControl2.Controls.Add(Me.txtjobdesk)
         Me.GroupControl2.Controls.Add(Me.LabelControl15)
         Me.GroupControl2.Controls.Add(Me.LabelControl2)
@@ -1047,6 +1086,15 @@ Partial Class EmployeeDetails
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(903, 431)
         Me.GroupControl2.TabIndex = 17
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
+        Me.SimpleButton2.Location = New System.Drawing.Point(694, 193)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(192, 43)
+        Me.SimpleButton2.TabIndex = 76
+        Me.SimpleButton2.Text = "View Jobdesk and responsibilities"
         '
         'txtidno
         '
@@ -1388,6 +1436,38 @@ Partial Class EmployeeDetails
         Me.LabelControl4.TabIndex = 10
         Me.LabelControl4.Text = "Change type :"
         '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(18, 109)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(63, 13)
+        Me.Label23.TabIndex = 45
+        Me.Label23.Text = "No NPWP :"
+        '
+        'TextEdit1
+        '
+        Me.TextEdit1.Location = New System.Drawing.Point(111, 107)
+        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Size = New System.Drawing.Size(189, 20)
+        Me.TextEdit1.TabIndex = 46
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(19, 134)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(56, 13)
+        Me.Label24.TabIndex = 47
+        Me.Label24.Text = "No BPJS :"
+        '
+        'TextEdit2
+        '
+        Me.TextEdit2.Location = New System.Drawing.Point(111, 131)
+        Me.TextEdit2.Name = "TextEdit2"
+        Me.TextEdit2.Size = New System.Drawing.Size(189, 20)
+        Me.TextEdit2.TabIndex = 48
+        '
         'EmployeeDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1415,6 +1495,7 @@ Partial Class EmployeeDetails
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         GroupControl5.ResumeLayout(False)
         GroupControl5.PerformLayout()
+        CType(Me.npwp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl8.ResumeLayout(False)
         Me.GroupControl8.PerformLayout()
@@ -1492,6 +1573,8 @@ Partial Class EmployeeDetails
         CType(Me.ComboBoxEdit12.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit13.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit14.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1622,4 +1705,11 @@ Partial Class EmployeeDetails
     Friend WithEvents ComboBoxEdit14 As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents CardView1 As DevExpress.XtraGrid.Views.Card.CardView
+    Friend WithEvents npwp As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents Label21 As Label
+    Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents TextEdit2 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents Label24 As Label
+    Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents Label23 As Label
 End Class

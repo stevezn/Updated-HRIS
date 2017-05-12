@@ -98,8 +98,6 @@ Public Class ClosePayroll
         Dim as3 As MySqlCommand = SQLConnection.CreateCommand
         as3.CommandText = "select overtimetype from db_overtime where employeecode = '" & emp & "'"
         Dim as33 As String = CStr(as3.ExecuteScalar)
-
-
     End Sub
 
     Private Sub txtname_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtname.SelectedIndexChanged
@@ -209,290 +207,192 @@ Public Class ClosePayroll
 
         Select Case LCase(emptype)
             Case "bulanan"
-                query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'gapok', basicrate from db_payrolldata where EmployeeCode = @emp"
+                query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Gapok', basicrate from db_payrolldata where EmployeeCode = @emp"
                 query.Parameters.Clear()
+                query.Parameters.AddWithValue("@types", "Bulanan")
                 query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
                 query.Parameters.AddWithValue("@emp", emp)
                 query.ExecuteNonQuery()
 
-                query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'overtime', sum(calc_overtime(pd.basicrate, a.OvertimeHours, a.isHoliday)) from db_payrolldata pd join db_absensi a on a.EmployeeCode = pd.EmployeeCode where a.EmployeeCode = @emp and a.OvertimeHours > 0 and a.Tanggal between @d1 and @d2"
+                query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Overtime', sum(calc_overtime(pd.basicrate, a.OvertimeHours, a.isHoliday)) from db_payrolldata pd join db_absensi a on a.EmployeeCode = pd.EmployeeCode where a.EmployeeCode = @emp and a.OvertimeHours > 0 and a.Tanggal between @d1 and @d2"
                 query.Parameters.Clear()
+                query.Parameters.AddWithValue("@types", "Bulanan")
                 query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
                 query.Parameters.AddWithValue("@emp", emp)
                 query.Parameters.AddWithValue("@d1", date1.Value.Date)
                 query.Parameters.AddWithValue("@d2", date2.Value.Date)
                 query.ExecuteNonQuery()
 
+                'query.CommandText = "select as1 from db_addition where employeecode = @emp"
+                'query.Parameters.Clear()
+                'query.Parameters.AddWithValue("@emp", emp)
+                'Dim quers As String = CStr(query.ExecuteScalar)
+
+                'query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, @types2, calc_addsubx(a.amount, a.as1, b.basicrate) from db_addition a, db_payrolldata b where a.EmployeeCode = @emp and a.period between @d1 and a.until"
+                'query.Parameters.Clear()
+                'query.Parameters.AddWithValue("@types", "Bulanan")
+                'query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+                'query.Parameters.AddWithValue("@emp", emp)
+                'query.Parameters.AddWithValue("@d1", date1.Value.Date)
+                'query.Parameters.AddWithValue("@types2", quers)
+                'query.ExecuteNonQuery()
+
+                'query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Warning Fine', b.basicrate - a.amount from db_warning a, db_payrolldata b where a.employeecode = @emp and a.paymentdate = @d1"
+                'query.Parameters.Clear()
+                'query.Parameters.AddWithValue("@types", "Bulanan")
+                'query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+                'query.Parameters.AddWithValue("@emp", emp)
+                'query.Parameters.AddWithValue("@d1", date1.Value.Date)
+                'query.ExecuteNonQuery()
+
+                'query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Loans', a.basicrate - b.paymentpermonth from db_payrolldata a, db_loan b where a.EmployeeCode = @emp and b.frommonths between @d1 and @d2"
+                'query.Parameters.Clear()
+                'query.Parameters.AddWithValue("@types", "Bulanan")
+                'query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+                'query.Parameters.AddWithValue("@emp", emp)
+                'query.Parameters.AddWithValue("@d1", date1.Value.Date)
+                'query.Parameters.AddWithValue("@d2", date2.Value.Date)
+                'query.ExecuteNonQuery()
+
             Case "harian"
-                query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'gapok', @hk * basicrate / 30 from db_payrolldata where EmployeeCode = @emp"
+                query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Gapok', @hk * basicrate / 30 from db_payrolldata where EmployeeCode = @emp"
                 query.Parameters.Clear()
+                query.Parameters.AddWithValue("@types", "Harian")
                 query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
                 query.Parameters.AddWithValue("@hk", hk)
                 query.Parameters.AddWithValue("@emp", emp)
                 query.ExecuteNonQuery()
 
-                query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'overtime', sum(calc_overtime(pd.basicrate, a.OvertimeHours, a.isHoliday)) from db_payrolldata pd join db_absensi a on a.EmployeeCode = pd.EmployeeCode where a.EmployeeCode = @emp and a.OvertimeHours > 0 and a.Tanggal between @d1 and @d2"
+                query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Overtime', sum(calc_overtime(pd.basicrate, a.OvertimeHours, a.isHoliday)) from db_payrolldata pd join db_absensi a on a.EmployeeCode = pd.EmployeeCode where a.EmployeeCode = @emp and a.OvertimeHours > 0 and a.Tanggal between @d1 and @d2"
                 query.Parameters.Clear()
+                query.Parameters.AddWithValue("@types", "Harian")
                 query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
                 query.Parameters.AddWithValue("@emp", emp)
                 query.Parameters.AddWithValue("@d1", date1.Value.Date)
                 query.Parameters.AddWithValue("@d2", date2.Value.Date)
                 query.ExecuteNonQuery()
-
             Case "borongan"
-                query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'gapok', sum(bayaran) from db_borongan where EmployeeCode = @emp and tanggal between @d1 and @d2"
+                query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Borong', calc_borongan(Quantity, Target, Target1, Target2, Target3, Amount, Amount1, Amount2, Amount3) from db_borongan where Employeecode = @emp and tanggal between @d1 and @d2"
                 query.Parameters.Clear()
+                query.Parameters.AddWithValue("@types", "Borongan")
                 query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
                 query.Parameters.AddWithValue("@emp", emp)
                 query.Parameters.AddWithValue("@d1", date1.Value.Date)
                 query.Parameters.AddWithValue("@d2", date2.Value.Date)
                 query.ExecuteNonQuery()
         End Select
+        Try
+            query.CommandText = "select employeetype from db_pegawai where employeecode = @emp"
+            Dim quer As String = CStr(query.ExecuteScalar)
 
-        query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'tunjangan', allowance from db_payrolldata where EmployeeCode = @emp"
-        query.Parameters.Clear()
-        query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
-        query.Parameters.AddWithValue("@emp", emp)
-        query.ExecuteNonQuery()
+            query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Tunjangan', allowance from db_payrolldata where EmployeeCode = @emp"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@types", quer)
+            query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@emp", emp)
+            query.ExecuteNonQuery()
 
-        query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'uang makan', mealrate from db_payrolldata where EmployeeCode = @emp"
-        query.Parameters.Clear()
-        query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
-        query.Parameters.AddWithValue("@emp", emp)
-        query.ExecuteNonQuery()
+            query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Uang Makan', mealrate from db_payrolldata where EmployeeCode = @emp"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@types", quer)
+            query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@emp", emp)
+            query.ExecuteNonQuery()
 
-        query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'transportasi', transport from db_payrolldata where EmployeeCode = @emp"
-        query.Parameters.Clear()
-        query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
-        query.Parameters.AddWithValue("@emp", emp)
-        query.ExecuteNonQuery()
+            query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Transportasi', transport from db_payrolldata where EmployeeCode = @emp"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@types", quer)
+            query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@emp", emp)
+            query.ExecuteNonQuery()
 
-        query.CommandText = "insert into payroll2(pay_date, employee_code, salary_component, salary_value) select @date, @emp, 'Others', amount from db_addition where EmployeeCode = @emp"
-        query.Parameters.Clear()
-        query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
-        query.Parameters.AddWithValue("@emp", emp)
-        query.ExecuteNonQuery()
+            query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Others', amount from db_addition where EmployeeCode = @emp"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@types", quer)
+            query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@emp", emp)
+            query.ExecuteNonQuery()
 
-        Dim sqlCommand As New MySqlCommand
-        sqlCommand.CommandText = "Select employee_code, salary_component, salary_value from payroll2"
-        sqlCommand.Connection = SQLConnection
-        Dim dt As New DataTable
-        dt.Load(sqlCommand.ExecuteReader)
-        lis.GridControl1.DataSource = dt
+            query.CommandText = "select as1 from db_addition where employeecode = @emp"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@emp", emp)
+            Dim quers As String = CStr(query.ExecuteScalar)
 
-        'Dim subtract As MySqlCommand = SQLConnection.CreateCommand
-        'subtract.CommandText = "select a.basicrate + a.allowance + a.incentives + a.mealrate + a.transport - (a.basicrate * b.bpjs / 100) - (a.basicrate * b.JamKecelakaanKerja/100) - (a.basicrate * b.JaminanKesehatan / 100) - (a.basicrate * b.iuranpensiun / 100) - (a.basicrate * b.JaminanHariTua / 100) - (a.basicrate * b.BiayaJabatan / 100) -( a.basicrate * b.lates / 100) - (a.basicrate * b.JaminanKematian / 100) as hasil from db_payrolldata a, db_setpayroll b where a.EmployeeCode = '" & emp & "'"
-        'Dim subx As Integer = CInt(subtract.ExecuteScalar)
+            query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, @types2, calc_addsubx(a.amount, a.as1, b.basicrate) from db_addition a, db_payrolldata b where a.EmployeeCode = @emp and a.period between @d1 and a.until"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@types", quer)
+            query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@emp", emp)
+            query.Parameters.AddWithValue("@d1", date1.Value.Date)
+            query.Parameters.AddWithValue("@types2", quers)
+            query.ExecuteNonQuery()
 
-        ''Dim empcode As MySqlCommand = SQLConnection.CreateCommand
-        ''empcode.CommandText = "select employeecode from db_payrolldata"
-        ''Dim ec As String = CStr(empcode.ExecuteScalar)
+            query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Warning Fine', b.basicrate - a.amount from db_warning a, db_payrolldata b where a.employeecode = @emp and a.paymentdate = @date"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@types", quer)
+            query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@emp", emp)
+            ' query.Parameters.AddWithValue("@d1", date1.Value.Date)
+            query.ExecuteNonQuery()
 
-        ''pajak
-        'Dim basrate As MySqlCommand = SQLConnection.CreateCommand
-        'basrate.CommandText = "select basicrate from db_payrolldata where EmployeeCode = '" & emp & "'"
-        'Dim basicrate As Integer = CInt(basrate.ExecuteScalar)
-        'Dim salaryperyear As Integer = basicrate * 12
+            query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Loans', a.basicrate - b.paymentpermonth from db_payrolldata a, db_loan b where a.EmployeeCode = @emp and b.frommonths = @date"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@types", quer)
+            query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@emp", emp)
+            'query.Parameters.AddWithValue("@d1", date1.Value.Date)
+            'query.Parameters.AddWithValue("@d2", date2.Value.Date)
+            query.ExecuteNonQuery()
 
-        'Dim netto As MySqlCommand = SQLConnection.CreateCommand
-        'netto.CommandText = "select basicrate + allowance + incentives + mealrate + transport as netto from db_payrolldata where EmployeeCode = '" & emp & "'"
-        'Dim net As Integer = CInt(netto.ExecuteScalar)
-        'Dim realnetto As Integer = net * 12
-
-        'Dim deduct As MySqlCommand = SQLConnection.CreateCommand
-        'deduct.CommandText = "select a.basicrate - a.basicrate * b.bpjs / 100 - a.basicrate * b.JamKecelakaanKerja / 100 - a.basicrate * b.JaminanKesehatan / 100 - a.basicrate * b.IuranPensiun / 100 - a.basicrate * b.JaminanHariTua / 100 - a.basicrate * b.BiayaJabatan / 100 - a.basicrate * lates/ 100 - a.basicrate * b.JaminanKematian/100 from db_payrolldata a, db_setpayroll b where a.EmployeeCode = '" & emp & "'"
-
-        'Dim gross As Integer = CInt(deduct.ExecuteScalar)
-        'Dim ptkp As MySqlCommand = SQLConnection.CreateCommand
-        'ptkp.CommandText = "select StatusWajibPajak from db_payrolldata where EmployeeCode = '" & emp & "'"
-        'Dim wajibpajak As String = CStr(ptkp.ExecuteScalar)
-        'Dim hasilptkp As Integer
-        'If wajibpajak = "Tidak Kawin, Tanpa Tanggungan" Then
-        '    hasilptkp = 54000000
-        'ElseIf wajibpajak = "Tidak Kawin, Tanggungan 1" Then
-        '    hasilptkp = 58500000
-        'ElseIf wajibpajak = "Tidak Kawin, Tanggungan 2" Then
-        '    hasilptkp = 63000000
-        'ElseIf wajibpajak = "Tidak Kawin, Tanggungan 3" Then
-        '    hasilptkp = 67500000
-        'ElseIf wajibpajak = "Kawin, Tanpa Tanggungan" Then
-        '    hasilptkp = 58500000
-        'ElseIf wajibpajak = "Kawin, Tanggungan 1" Then
-        '    hasilptkp = 63000000
-        'ElseIf wajibpajak = "Kawin, Tanggungan 2" Then
-        '    hasilptkp = 67500000
-        'ElseIf wajibpajak = "Kawin, Tanggungan 3" Then
-        '    hasilptkp = 112500000
-        'ElseIf wajibpajak = "Kawin, Penghasilan Istri Dan Suami Digabung" Then
-        '    hasilptkp = 117000000
-        'ElseIf wajibpajak = "Kawin, Penghasilan Digabung Tanggungan 1" Then
-        '    hasilptkp = 121500000
-        'ElseIf wajibpajak = "Kawin, Penghasilan Digabung Tanggungan 2" Then
-        '    hasilptkp = 126000000
-        'End If
-
-        'Dim pkpajak As Decimal = realnetto - hasilptkp
-        'Dim tmp As Decimal
-
-        'Dim npwp As MySqlCommand = SQLConnection.CreateCommand
-        'npwp.CommandText = "select memilikinpwp from db_payrolldata where EmployeeCode = '" & emp & "'"
-        'Dim hasilnpwp As String = CStr(npwp.ExecuteScalar)
-        'If hasilnpwp = "Yes" Then
-        '    If salaryperyear < 50000000 Then
-        '        pphutang = pkpajak * 5 / 100
-        '    ElseIf salaryperyear > 50000000 Then
-        '        pphutang = pkpajak * 15 / 100
-        '    ElseIf salaryperyear > 250000000 Then
-        '        pphutang = pkpajak * 25 / 100
-        '    Else
-        '        pphutang = pkpajak * 30 / 100
-        '    End If
-        'ElseIf hasilnpwp = "No" Then
-        '    If salaryperyear < 5000000 Then
-        '        tmp = pkpajak * 5 / 100
-        '        pphutang = tmp * 120 / 100
-        '    ElseIf salaryperyear > 50000000 Then
-        '        tmp = pkpajak * 15 / 100
-        '        pphutang = tmp * 120 / 100
-        '    ElseIf salaryperyear > 250000000 Then
-        '        tmp = pkpajak * 25 / 100
-        '        pphutang = tmp * 120 / 100
-        '    Else
-        '        tmp = pkpajak * 30 / 100
-        '        pphutang = tmp * 120 / 100
-        '    End If
-        'End If
-        ''pajak
-
-        'Dim adp As New MySqlDataAdapter(q)
-        'Dim ds As New DataSet
-        'Dim income As Integer
-        'adp.Fill(ds)
-        'If ds.Tables.Count = 1 Then
-        '    If ds.Tables(0).Rows.Count = 1 Then
-        '        Dim calc = ds.Tables(0).Rows(0).Item("calculation")
-        '        If calc IsNot Nothing Then
-        '            calc = calc.replace("[hk]", hk)
-        '            calc = calc.Replace("[output]", "30")
-        '            calc = calc.replace("[salarypermonth]", subx)
-        '            Dim q2 As MySqlCommand = SQLConnection.CreateCommand()
-        '            q2.CommandText = CType("select " & calc, String)
-        '            income = CInt(q2.ExecuteScalar)
-        '        End If
-        '    End If
-        'End If
-
-        'Dim ottype As MySqlCommand = SQLConnection.CreateCommand
-        'ottype.CommandText = "select overtimeType from db_absensi where employeecode = '" & emp & "'"
-        'Dim ot As String = CStr(ottype.ExecuteScalar)
-
-        'Dim othours As MySqlCommand = SQLConnection.CreateCommand
-        'othours.CommandText = "select overtimehours from db_absensi where EmployeeCode = '" & emp & "'"
-        'Dim hours As Integer = CInt(othours.ExecuteScalar)
-
-        'Dim type As MySqlCommand = SQLConnection.CreateCommand
-        'type.CommandText = "select OvertimeType from db_absensi where EmployeeCode = '" & emp & "'"
-        'Dim realtype As String = CStr(type.ExecuteScalar)
-
-        'Dim salary As MySqlCommand = SQLConnection.CreateCommand
-        'salary.CommandText = "select basicrate from db_payrolldata where EmployeeCode = '" & emp & "'"
-        'Dim realsalary As Integer = CInt(salary.ExecuteScalar)
-
-        'Dim tgl As MySqlCommand = SQLConnection.CreateCommand
-        'tgl.CommandText = "select tanggal from db_absensi where overtimehours != 0 and employeecode = '" & emp & "'"
-        'Dim tanggal As String = CStr(tgl.ExecuteScalar)
-
-        'Dim absen As MySqlCommand = SQLConnection.CreateCommand
-        'absen.CommandText = "select tanggal from db_absensi where tanggal between @date1 and @date2 and employeecode = '" & emp & "'"
-        'absen.Parameters.AddWithValue("@date1", date1.Value.Date)
-        'absen.Parameters.AddWithValue("@date2", date2.Value)
-        'Dim hasil As String = CStr(absen.ExecuteScalar)
-
-        'Dim hol As MySqlCommand = SQLConnection.CreateCommand
-        'hol.CommandText = "select startdate from db_holiday where startdate between @date1 and @date2"
-        'hol.Parameters.AddWithValue("@date1", date1.Value.Date)
-        'hol.Parameters.AddWithValue("@date2", date2.Value)
-        'Dim holiday As String = CStr(hol.ExecuteScalar)
-
-        'Dim otout, otin As Integer
-
-        ''If rangedate <> tggl Then
-        ''    Dim pay, temp, totot, tempo, value1, value2, pay2 As Integer
-        ''    pay = CInt(realsalary / 173)
-        ''    pay2 = CInt(pay * 1.5)
-        ''    If hours = 1 Then
-        ''        tempo = CInt(pay * 1.5)
-        ''        value1 = tempo
-        ''        totot = value1
-        ''    ElseIf hours > 1 Then
-        ''        temp = pay * 2
-        ''        tempo = temp * hours - pay * 2
-        ''        value2 = tempo
-        ''        totot = value2 + pay2
-        ''    End If
-        ''    otin = totot
-        ''Else
-        ''    Dim pay, temp, totot2, tempo, value1, value2, pay2, value3 As Integer
-        ''    pay = CInt(realsalary / 173)
-        ''    pay2 = pay * 3
-        ''    If hours > 0 And hours < 8 Then
-        ''        tempo = pay * hours * 2
-        ''        value1 = tempo
-        ''        totot2 = value1
-        ''    ElseIf hours = 8 Then
-        ''        temp = pay * 3
-        ''        tempo = temp * hours - pay * 3
-        ''        value2 = tempo
-        ''        totot2 = value2 - pay2 - pay
-        ''    ElseIf hours > 8 Then
-        ''        temp = pay * 4
-        ''        tempo = temp * hours - pay * 4
-        ''        value3 = tempo
-        ''        totot2 = value3 - value2 - value1
-        ''    End If
-        ''    otout = totot2
-        ''End If
-        'Dim realot As Integer = otout + otin
-        'Dim collect As MySqlCommand = SQLConnection.CreateCommand
-        'collect.CommandText = "INSERT INTO db_hasil " +
-        '                        "(EmployeeCode, SalaryPerYear, Netto, Gross, WajibPajak, pkpn, pphutang, income, Overtime) " +
-        '                        " Values (@EmployeeCode, @SalaryPerYear, @Netto, @Gross, @WajibPajak, @pkpn, @pphutang, @income, @Overtime)"
-        'collect.Parameters.AddWithValue("@EmployeeCode", emp)
-        'collect.Parameters.AddWithValue("@SalaryPerYear", salaryperyear)
-        'collect.Parameters.AddWithValue("@Netto", net)
-        'collect.Parameters.AddWithValue("@Gross", gross)
-        'collect.Parameters.AddWithValue("@WajibPajak", wajibpajak)
-        'collect.Parameters.AddWithValue("@pkpn", pkpajak)
-        'collect.Parameters.AddWithValue("@pphutang", pphutang)
-        'collect.Parameters.AddWithValue("@income", income)
-        'collect.Parameters.AddWithValue("@Overtime", realot)
-        'collect.ExecuteNonQuery()
-        'Dim table As New DataTable
-        'Dim sqlCommand As New MySqlCommand
-        'sqlCommand.CommandText = "Select a.EmployeeCode, b.FullName, a.SalaryPerYear, a.Netto, a.Gross, a.WajibPajak as StatusWajibPajak, a.pkpn as PenghasilanKenaPajak, a.pphutang as PphHutang, a.income as IncomePerMonth , a.Overtime FROM db_hasil a, db_payrolldata b where a.Employeecode = b.Employeecode"
-        'sqlCommand.Connection = SQLConnection
-        'Dim dt As New DataTable
-        'dt.Load(sqlCommand.ExecuteReader)
-        'lis.GridControl1.DataSource = dt
+            Dim sqlCommand As New MySqlCommand
+            sqlCommand.CommandText = "Select employee_code, salary_component, salary_value, employee_type from payroll2"
+            sqlCommand.Connection = SQLConnection
+            Dim dt As New DataTable
+            dt.Load(sqlCommand.ExecuteReader)
+            lis.GridControl1.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
-    Sub monthly(emp As String)
-
+    Sub checkloan()
+        Try
+            Dim dtb As Date
+            DateTimePicker1.Format = DateTimePickerFormat.Custom
+            DateTimePicker1.CustomFormat = "yyyy-MM-dd"
+            dtb = DateTimePicker1.Value
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select monthx from db_loanlist where monthx = @date1"
+            query.Parameters.AddWithValue("@date1", dtb.ToString("yyyy-MM-dd"))
+            Dim quer As Date = CDate(query.ExecuteScalar)
+            If CDate(dtb.ToString("yyyy-MM-dd")) = quer.Date Then
+                Dim cmd As MySqlCommand = SQLConnection.CreateCommand
+                cmd.CommandText = "update db_loanlist set Realisasi = 'PAID' where monthx = '" & dtb.ToString("yyyy-MM-dd") & "'"
+                cmd.ExecuteNonQuery()
+                MsgBox("Loan subtracted for this month")
+            End If
+        Catch ex As Exception
+            MsgBox("loan" & ex.Message)
+        End Try
     End Sub
 
     Private Sub processpayroll()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate payroll2"
+        query.ExecuteNonQuery()
+
         If payrollcheck.Checked = True Then
             If radiochoose.Checked = True Then
                 computingsalary(txtempcode.Text)
             Else
                 Dim cmd As MySqlCommand = SQLConnection.CreateCommand()
-                cmd.CommandText = "select employeecode from db_pegawai where status = 'Active'"
+                cmd.CommandText = "select employeecode from db_payrolldata"
                 Dim adp As New MySqlDataAdapter(cmd)
                 Dim ds As New DataSet
                 adp.Fill(ds)
                 For Each tbl As DataTable In ds.Tables
                     For Each row As DataRow In tbl.Rows
-                        computingsalary(row.Item("EmployeeCode"))
+                        computingsalary(CType(row.Item("EmployeeCode"), String))
                     Next
                 Next
             End If
@@ -521,6 +421,8 @@ Public Class ClosePayroll
                 lis.Close()
                 lis = New Lists
             End If
+            Close()
+            checkloan()
             processpayroll()
             lis.Show()
         End If
@@ -540,9 +442,5 @@ Public Class ClosePayroll
             txtname.Text = ""
             txtempcode.Text = ""
         End If
-    End Sub
-
-    Private Sub CheckEdit1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit1.CheckedChanged
-
     End Sub
 End Class

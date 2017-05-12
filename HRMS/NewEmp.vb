@@ -283,7 +283,7 @@ Public Class NewEmp
         ComboBoxEdit9.Text = ""
     End Sub
 
-    Public Sub insertion()
+    Public Sub empbackup()
         Dim dtb, dtr, dtu As DateTime
         txtbod.Format = DateTimePickerFormat.Custom
         txtbod.CustomFormat = "yyyy-MM-dd"
@@ -306,10 +306,13 @@ Public Class NewEmp
         End Try
         Dim rescode As String = ynow & "-" & mnow & "-" & Strings.Right("00000" & lastn, 5)
         Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        Dim use As MySqlCommand = SQLConnection.CreateCommand
+        use.CommandText = "select user from db_temp"
+        Dim user As String = CStr(use.ExecuteScalar)
         Try
-            cmmd.CommandText = "insert into db_pegawai " +
-                            "(EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Photo, Status, EmployeeType, TerminateDate, ChangeDate, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks, MaritalStatus, PphStatus, IsExpiry, ExpiryDates, ApprovedBy, ExcludePayroll, PayCash, ProcessTax, ExcludeThr, ExcludeBonus, PrintSlip, PayrollInterval) " +
-                            "values (@EmployeeCode, @CompanyCode, @FullName, @Position, @PlaceOfBirth, @DateOfBirth, @Gender, @Religion, @Address, @IdNumber, @OfficeLocation, @WorkDate, @PhoneNumber, @Photo, @Status, @EmployeeType, @TerminateDate, @ChangeDate, @NickName, @Weight, @Height, @BloodType, @WorkEmail, @PrivateEmail, @RecommendedBy, @Grouping, @Department, @Jobdesks, @MaritalStatus, @PphStatus, @IsExpiry, @ExpiryDates, @ApprovedBy, @ExcludePayroll, @PayCash, @ProcessTax, @ExcludeThr, @ExcludeBonus, @PrintSlip, @PayrollInterval)"
+            cmmd.CommandText = "insert into db_historyemp " +
+                            "(EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Photo, Status, EmployeeType, TerminateDate, ChangeDate, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks, MaritalStatus, PphStatus, IsExpiry, ExpiryDates, ApprovedBy, ExcludePayroll, PayCash, ProcessTax, ExcludeThr, ExcludeBonus, PrintSlip, PayrollInterval, MemilikiNpwp, Jobdesk, NoBpjs, NoNpwp) " +
+                            "values (@EmployeeCode, @CompanyCode, @FullName, @Position, @PlaceOfBirth, @DateOfBirth, @Gender, @Religion, @Address, @IdNumber, @OfficeLocation, @WorkDate, @PhoneNumber, @Photo, @Status, @EmployeeType, @TerminateDate, @ChangeDate, @NickName, @Weight, @Height, @BloodType, @WorkEmail, @PrivateEmail, @RecommendedBy, @Grouping, @Department, @Jobdesks, @MaritalStatus, @PphStatus, @IsExpiry, @ExpiryDates, @ApprovedBy, @ExcludePayroll, @PayCash, @ProcessTax, @ExcludeThr, @ExcludeBonus, @PrintSlip, @PayrollInterval, @npwp, @Jobdesk, @NoBpjs, @NoNpwp)"
             cmmd.Parameters.AddWithValue("@EmployeeCode", txtempcode.Text)
             cmmd.Parameters.AddWithValue("@CompanyCode", txtcompcode.Text)
             cmmd.Parameters.AddWithValue("@FullName", txtnames.Text)
@@ -355,8 +358,125 @@ Public Class NewEmp
             cmmd.Parameters.AddWithValue("@ExcludeBonus", CheckEdit6.Checked)
             cmmd.Parameters.AddWithValue("@PrintSlip", CheckEdit7.Checked)
             cmmd.Parameters.AddWithValue("@PayrollInterval", ComboBoxEdit9.Text)
+            cmmd.Parameters.AddWithValue("@ChangeBy", user)
+            cmmd.Parameters.AddWithValue("@ChangeDate", Date.Now)
+            cmmd.Parameters.AddWithValue("@npwp", npwp.Text)
+            Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
+            Dim finfo As New FileInfo(Label23.Text)
+            Dim numBytes As Long = finfo.Length
+            Dim fstream As New FileStream(Label23.Text, FileMode.Open, FileAccess.Read)
+            Dim br As New BinaryReader(fstream)
+            Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+            br.Close()
+            fstream.Close()
+            If Not data Is Nothing Then
+                cmmd.Parameters.AddWithValue("@Jobdesk", data)
+            Else
+                cmmd.Parameters.AddWithValue("@Jobdesk", "")
+            End If
+            cmmd.Parameters.AddWithValue("@NoBpjs", TextEdit4.Text)
+            cmmd.Parameters.AddWithValue("@NoNpwp", TextEdit3.Text)
             cmmd.ExecuteNonQuery()
-            MsgBox("Added")
+            '            MsgBox("Added")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        cleartxt1()
+    End Sub
+
+    Public Sub insertion()
+        Dim dtb, dtr, dtu As DateTime
+        txtbod.Format = DateTimePickerFormat.Custom
+        txtbod.CustomFormat = "yyyy-MM-dd"
+        dtb = txtbod.Value
+        txtjoin.Format = DateTimePickerFormat.Custom
+        txtjoin.CustomFormat = "yyyy-MM-dd"
+        dtr = txtjoin.Value
+        DateTimePicker2.Format = DateTimePickerFormat.Custom
+        DateTimePicker2.CustomFormat = "yyyy-MM-dd"
+        dtu = DateTimePicker2.Value
+        Dim use As MySqlCommand = SQLConnection.CreateCommand
+        use.CommandText = "select user from db_temp"
+        Dim user As String = CStr(use.ExecuteScalar)
+        Dim lastn As Integer
+        Dim ynow As String = Format(Now, "yy").ToString
+        Dim mnow As String = Month(Now).ToString
+        Try
+            Dim cmd = SQLConnection.CreateCommand()
+            cmd.CommandText = "SELECT last_num FROM view_emp_last_code"
+            lastn = DirectCast(cmd.ExecuteScalar(), Integer) + 1
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Dim rescode As String = ynow & "-" & mnow & "-" & Strings.Right("00000" & lastn, 5)
+        Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
+        Try
+            cmmd.CommandText = "insert into db_pegawai " +
+                            "(EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Photo, Status, EmployeeType, TerminateDate, ChangeDate, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks, MaritalStatus, PphStatus, IsExpiry, ExpiryDates, ApprovedBy, ExcludePayroll, PayCash, ProcessTax, ExcludeThr, ExcludeBonus, PrintSlip, PayrollInterval, CreatedBy, MemilikiNpwp, jobdesk, NoBpjs, NoNpwp) " +
+                            "values (@EmployeeCode, @CompanyCode, @FullName, @Position, @PlaceOfBirth, @DateOfBirth, @Gender, @Religion, @Address, @IdNumber, @OfficeLocation, @WorkDate, @PhoneNumber, @Photo, @Status, @EmployeeType, @TerminateDate, @ChangeDate, @NickName, @Weight, @Height, @BloodType, @WorkEmail, @PrivateEmail, @RecommendedBy, @Grouping, @Department, @Jobdesks, @MaritalStatus, @PphStatus, @IsExpiry, @ExpiryDates, @ApprovedBy, @ExcludePayroll, @PayCash, @ProcessTax, @ExcludeThr, @ExcludeBonus, @PrintSlip, @PayrollInterval, @CreatedBy, @npwp, @jobdesk, @NoBpjs, @NoNpwp)"
+            cmmd.Parameters.AddWithValue("@EmployeeCode", txtempcode.Text)
+            cmmd.Parameters.AddWithValue("@CompanyCode", txtcompcode.Text)
+            cmmd.Parameters.AddWithValue("@FullName", txtnames.Text)
+            cmmd.Parameters.AddWithValue("@Position", txtposition.Text)
+            cmmd.Parameters.AddWithValue("@PlaceOfBirth", txtbp.Text)
+            cmmd.Parameters.AddWithValue("@DateOfBirth", dtb.ToString("yyyy-MM-dd"))
+            cmmd.Parameters.AddWithValue("@Gender", txtgender.Text)
+            cmmd.Parameters.AddWithValue("@Religion", txtrel.Text)
+            cmmd.Parameters.AddWithValue("@Address", txtadd.Text)
+            cmmd.Parameters.AddWithValue("@IdNumber", txtidno.Text)
+            cmmd.Parameters.AddWithValue("@OfficeLocation", txtoffloc.Text)
+            cmmd.Parameters.AddWithValue("@WorkDate", dtr.ToString("yyyy-MM-dd"))
+            cmmd.Parameters.AddWithValue("@PhoneNumber", txtphoneno.Text)
+            If Not txtfoto.Text Is Nothing Then
+                Dim param As New MySqlParameter("@Photo", ImageToByte(pictureEdit))
+                cmmd.Parameters.Add(param)
+            Else
+                cmmd.Parameters.AddWithValue("@Photo", "")
+            End If
+            cmmd.Parameters.AddWithValue("@Status", txtempstat.Text)
+            cmmd.Parameters.AddWithValue("@EmployeeType", txttype.Text)
+            cmmd.Parameters.AddWithValue("@TerminateDate", Nothing)
+            cmmd.Parameters.AddWithValue("@ChangeDate", Date.Now)
+            cmmd.Parameters.AddWithValue("@NickName", txtnick.Text)
+            cmmd.Parameters.AddWithValue("@Weight", txtkg.Text)
+            cmmd.Parameters.AddWithValue("@Height", txtcm.Text)
+            cmmd.Parameters.AddWithValue("@BloodType", txtblood.Text)
+            cmmd.Parameters.AddWithValue("@WorkEmail", txtwemail.Text)
+            cmmd.Parameters.AddWithValue("@PrivateEmail", txtpemail.Text)
+            cmmd.Parameters.AddWithValue("@RecommendedBy", txtrecby.Text)
+            cmmd.Parameters.AddWithValue("@Grouping", txtgroup.Text)
+            cmmd.Parameters.AddWithValue("@Department", txtdept.Text)
+            cmmd.Parameters.AddWithValue("@Jobdesks", txtjobdesk.Text)
+            cmmd.Parameters.AddWithValue("@MaritalStatus", ComboBoxEdit6.Text)
+            cmmd.Parameters.AddWithValue("@PphStatus", ComboBoxEdit7.Text)
+            cmmd.Parameters.AddWithValue("@IsExpiry", CheckEdit1.Checked)
+            cmmd.Parameters.AddWithValue("@ExpiryDates", dtu.ToString("yyyy-MM-dd"))
+            cmmd.Parameters.AddWithValue("@ApprovedBy", TextBox3.Text)
+            cmmd.Parameters.AddWithValue("@ExcludePayroll", CheckEdit2.Checked)
+            cmmd.Parameters.AddWithValue("@PayCash", CheckEdit3.Checked)
+            cmmd.Parameters.AddWithValue("@ProcessTax", CheckEdit4.Checked)
+            cmmd.Parameters.AddWithValue("@ExcludeThr", CheckEdit5.Checked)
+            cmmd.Parameters.AddWithValue("@ExcludeBonus", CheckEdit6.Checked)
+            cmmd.Parameters.AddWithValue("@PrintSlip", CheckEdit7.Checked)
+            cmmd.Parameters.AddWithValue("@PayrollInterval", ComboBoxEdit9.Text)
+            cmmd.Parameters.AddWithValue("@CreatedBy", user)
+            cmmd.Parameters.AddWithValue("@npwp", npwp.Text)
+            Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
+            Dim finfo As New FileInfo(Label23.Text)
+            Dim numBytes As Long = finfo.Length
+            Dim fstream As New FileStream(Label23.Text, FileMode.Open, FileAccess.Read)
+            Dim br As New BinaryReader(fstream)
+            Dim data As Byte() = br.ReadBytes(CInt(numBytes))
+            br.Close()
+            fstream.Close()
+            If Not data Is Nothing Then
+                cmmd.Parameters.AddWithValue("@Jobdesk", data)
+            Else
+                cmmd.Parameters.AddWithValue("@Jobdesk", "")
+            End If
+            cmmd.Parameters.AddWithValue("@NoBpjs", TextEdit4.Text)
+            cmmd.Parameters.AddWithValue("@NoNpwp", TextEdit3.Text)
+            cmmd.ExecuteNonQuery()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -380,6 +500,64 @@ Public Class NewEmp
         txtempcode.Text = rescode.ToString
     End Sub
 
+    Dim tbl_par6, tbl_par3, tbl_par4, tbl_par5, tbl_par7 As New DataTable
+
+    Sub loadjob()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select JobTitle from db_jobtitle"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par6)
+        For index As Integer = 0 To tbl_par6.Rows.Count - 1
+            txtposition.Properties.Items.Add(tbl_par6.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loadcomp()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select CompanyCode from db_companycode"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par3)
+        For index As Integer = 0 To tbl_par3.Rows.Count - 1
+            txtcompcode.Properties.Items.Add(tbl_par3.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+
+    Sub loadofloc()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select OfficeLocation from db_officelocation"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par4)
+        For index As Integer = 0 To tbl_par4.Rows.Count - 1
+            txtoffloc.Properties.Items.Add(tbl_par4.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loadgroup()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select groupname from db_groupmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par5)
+        For index As Integer = 0 To tbl_par5.Rows.Count - 1
+            txtgroup.Properties.Items.Add(tbl_par5.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loaddept()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select DepartmentName from db_departmentmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par7)
+        For index As Integer = 0 To tbl_par7.Rows.Count - 1
+            txtdept.Properties.Items.Add(tbl_par7.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
     Private Sub NewEmp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
@@ -387,6 +565,14 @@ Public Class NewEmp
         Reset()
         loaddata1()
         loaddata()
+        loadjob()
+        loadcomp()
+        loadofloc()
+        loadgroup()
+        loaddept()
+        DateTimePicker2.Format = DateTimePickerFormat.Custom
+        DateTimePicker2.CustomFormat = " "
+        Label23.Text = "C:\pdffile\file.pdf"
     End Sub
 
     Dim tbl_par2, tbl_par1 As New DataTable
@@ -478,6 +664,7 @@ Public Class NewEmp
             MsgBox("Please fill the required blank fields")
         Else
             insertion()
+            empbackup()
             changer()
         End If
     End Sub
@@ -634,6 +821,16 @@ Public Class NewEmp
     End Sub
     Dim sel As New selectemp
 
+    Dim openfd As New OpenFileDialog
+
+    Private Sub SimpleButton11_Click(sender As Object, e As EventArgs) Handles SimpleButton11.Click
+        openfd.InitialDirectory = "C:\"
+        openfd.Title = "Open a CV FIle"
+        openfd.Filter = "PDF Files|*.pdf|Text Files|*.txt|Word FIles|*.docx"
+        openfd.ShowDialog()
+        Label23.Text = openfd.FileName
+    End Sub
+
     Private Sub SimpleButton10_Click(sender As Object, e As EventArgs) Handles SimpleButton10.Click
         Timer1.Start()
         If sel Is Nothing OrElse sel.IsDisposed OrElse sel.MinimizeBox Then
@@ -660,8 +857,16 @@ Public Class NewEmp
     Private Sub CheckEdit1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEdit1.CheckedChanged
         If CheckEdit1.Checked = True Then
             DateTimePicker2.Enabled = True
-        Else
+            Dim dtr As DateTime
+            DateTimePicker2.Format = DateTimePickerFormat.Custom
+            DateTimePicker2.CustomFormat = "yyyy-MM-dd"
+            dtr = DateTimePicker2.Value
+        ElseIf CheckEdit1.Checked = False Then
             DateTimePicker2.Enabled = False
+            Dim dtr As DateTime
+            DateTimePicker2.Format = DateTimePickerFormat.Custom
+            DateTimePicker2.CustomFormat = "----"
+            dtr = DateTimePicker2.Value
         End If
     End Sub
 

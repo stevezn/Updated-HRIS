@@ -39,6 +39,25 @@ Public Class Analytical
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
+    Sub clea()
+        txtnames.Text = ""
+        txtid.Text = ""
+        txtinterview.Text = ""
+        txtpob.Text = ""
+        txtage.Text = ""
+        txtgender.Text = ""
+        txtreligion.Text = ""
+        txtidcard.Text = ""
+        txtaddress.Text = ""
+        txtphone.Text = ""
+        txtstatus.Text = ""
+        txtposition.Text = ""
+        txtexpsal.Text = ""
+        label2.Text = ""
+        label3.Text = ""
+        PictureBox1.Image = Nothing
+    End Sub
+
     Private Sub grafik3()
         ChartControl2.Series.Clear()
         ' Add a radar series to it.
@@ -59,11 +78,11 @@ Public Class Analytical
         e.CommandText = "select skill5 from db_skills where idrec = '" & txtid.Text & "'"
         Dim hasile As Integer = CInt(e.ExecuteScalar)
         ' Populate the series with points.
-        series1.Points.Add(New SeriesPoint("SKill1", hasila))
-        series1.Points.Add(New SeriesPoint("SKill2", hasilb))
-        series1.Points.Add(New SeriesPoint("SKill3", hasilc))
-        series1.Points.Add(New SeriesPoint("SKill4", hasild))
-        series1.Points.Add(New SeriesPoint("SKill5", hasile))
+        series1.Points.Add(New SeriesPoint("Leadership", hasila))
+        series1.Points.Add(New SeriesPoint("Knowledge", hasilb))
+        series1.Points.Add(New SeriesPoint("Confidence", hasilc))
+        series1.Points.Add(New SeriesPoint("Teamwork", hasild))
+        series1.Points.Add(New SeriesPoint("Individual", hasile))
         ' Add the series to the chart.
         ChartControl2.Series.Add(series1)
         ' Flip the diagram (if necessary).
@@ -82,15 +101,15 @@ Public Class Analytical
         'Me.Controls.Add(ChartControl2)
     End Sub
 
-    Dim comp As New Comparison
+    'Dim comp As New Comparison
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        If comp Is Nothing OrElse comp.IsDisposed OrElse comp.MinimizeBox Then
-            comp.Close()
-            comp = New Comparison
-        End If
-        comp.Show()
-    End Sub
+    'Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+    '    If comp Is Nothing OrElse comp.IsDisposed OrElse comp.MinimizeBox Then
+    '        comp.Close()
+    '        comp = New Comparison
+    '    End If
+    '    comp.Show()
+    'End Sub
 
     'Private Sub drawchart()
     '    draw the chart
@@ -131,17 +150,22 @@ Public Class Analytical
     End Function
 
     Private Sub loadinfo()
-        GridControl1.RefreshDataSource()
-        Dim table As New DataTable
-        Dim sqlcommand As New MySqlCommand
         Try
-            sqlcommand.CommandText = "Select a.FullName from db_skills a, db_recruitment b where b.status = 'In Progress' and a.idrec = b.idrec"
-            sqlcommand.Connection = SQLConnection
+            GridControl1.RefreshDataSource()
+            Dim table As New DataTable
+            Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+            sqlcommand.CommandText = "select count(a.FullName) from db_skills a, db_recruitment b where a.idrec = b.idrec and b.Status = 'In Progress'"
+            Dim hasil As Integer = CInt(sqlcommand.ExecuteScalar)
+            If hasil = 0 Then
+                clea()
+            End If
+            sqlcommand.CommandText = "select a.FullName, a.IdRec from db_skills a, db_recruitment b where a.idrec = b.idrec and b.Status = 'In Progress'"
             Dim tbl_par As New DataTable
             Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(table)
             GridControl1.DataSource = table
+            GridView1.MoveLast()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -182,7 +206,7 @@ Public Class Analytical
         datatabl.Clear()
         Dim param As String = ""
         Try
-            param = "and FullName='" + GridView1.GetFocusedRowCellValue("FullName").ToString() + "'"
+            param = "and IdRec='" + GridView1.GetFocusedRowCellValue("IdRec").ToString() + "'"
         Catch ex As Exception
         End Try
         Try
@@ -287,8 +311,12 @@ Public Class Analytical
                 up.Parameters.AddWithValue("@ic", txtid.Text)
                 up.ExecuteNonQuery()
                 MsgBox("Status from " & downres & " is changed to be accepted")
+                clea()
+                loadinfo()
             End If
             loadinfo()
+            'clea()
+            ' fillit()
         End If
     End Sub
 
@@ -307,8 +335,12 @@ Public Class Analytical
                 up.Parameters.AddWithValue("@ic", txtid.Text)
                 up.ExecuteNonQuery()
                 MsgBox("Status from " & downres & " is changed to be rejected")
+                clea()
+                loadinfo()
             End If
             loadinfo()
+            'clea()
+            ' fillit()
         End If
     End Sub
 

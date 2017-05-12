@@ -14,6 +14,11 @@ Public Class Login
         ' This call is required by the designer.
         InitializeComponent()
         ' Add any initialization after the InitializeComponent() call.
+        'If Not AutomaticUpdater1.ClosingForInstall Then
+        '    ' load important files, etc.
+        '    ' LoadFilesEtc()
+        'End If
+
         If File.Exists("settinghost.txt") Then
             host = File.ReadAllText("settinghost.txt")
         Else
@@ -59,19 +64,19 @@ Public Class Login
     End Sub
 
     Dim bar As New ProgressBar
+    Dim tile As New Tile_Control
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs)
         Try
             Dim tbl_par As New DataTable
             Dim sqlCommand As New MySqlCommand
-            sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
+            sqlCommand.CommandText = "Select * FROM db_user WHERE Binary username ='" + teUsername.Text + "' and Binary password='" + tePassword.Text + "'"
             sqlCommand.Connection = SQLConnection
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
             adapter.Fill(tbl_par)
             If tbl_par.Rows.Count > 0 Then
-                main.Show()
-                cir.Show()
+                tile.Show()
                 Hide()
             Else
                 MessageBox.Show("Username and Password Didn't Match!")
@@ -89,7 +94,7 @@ Public Class Login
         use.ExecuteNonQuery()
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs)
         Close()
     End Sub
 
@@ -97,7 +102,8 @@ Public Class Login
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         AutomaticUpdater1.Show()
-        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        CheckForUpdatesToolStripMenuItem.PerformClick()
     End Sub
 
     Public Sub CheckForUpdates()
@@ -130,7 +136,7 @@ Public Class Login
         Try
             Dim tbl_par As New DataTable
             Dim sqlCommand As New MySqlCommand
-            sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
+            sqlCommand.CommandText = "Select * FROM db_user WHERE BINARY username ='" + teUsername.Text + "' and BINARY password='" + tePassword.Text + "'"
             sqlCommand.Connection = SQLConnection
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
             Dim cb As New MySqlCommandBuilder(adapter)
@@ -152,7 +158,7 @@ Public Class Login
             Try
                 Dim tbl_par As New DataTable
                 Dim sqlCommand As New MySqlCommand
-                sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
+                sqlCommand.CommandText = "Select * FROM db_user WHERE BINARY username ='" + teUsername.Text + "' and BINARY password='" + tePassword.Text + "'"
                 sqlCommand.Connection = SQLConnection
                 Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
                 Dim cb As New MySqlCommandBuilder(adapter)
@@ -180,14 +186,13 @@ Public Class Login
                 Timer1.Stop()
                 Dim tbl_par As New DataTable
                 Dim sqlCommand As New MySqlCommand
-                sqlCommand.CommandText = "Select * FROM db_user WHERE username ='" + teUsername.Text + "' and password='" + tePassword.Text + "'"
+                sqlCommand.CommandText = "Select * FROM db_user WHERE BINARY username ='" + teUsername.Text + "' and BINARY password='" + tePassword.Text + "'"
                 sqlCommand.Connection = SQLConnection
                 Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
                 Dim cb As New MySqlCommandBuilder(adapter)
                 adapter.Fill(tbl_par)
                 If tbl_par.Rows.Count > 0 Then
-                    main.Show()
-                    ' cir.Show()
+                    tile.Show()
                     Hide()
                 Else
                     MsgBox("Username and Password Didn't Match!")
@@ -197,7 +202,7 @@ Public Class Login
             If ProgressBar1.Value = 10 Then
                 Label1.Text = "Preparing"
             ElseIf ProgressBar1.Value = 50 Then
-                Label1.Text = "Check For Updates...."
+                Label1.Text = "Initializing"
             ElseIf ProgressBar1.Value = 60 Then
                 CheckForUpdates()
             ElseIf ProgressBar1.Value = 96 Then
@@ -214,5 +219,46 @@ Public Class Login
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub AutomaticUpdater1_ClosingAborted(sender As Object, e As EventArgs) Handles AutomaticUpdater1.ClosingAborted
+        'your app was preparing to close
+        ' however the update wasn't ready so your app is going to show itself
+        'LoadFilesEtc()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Close()
+    End Sub
+
+    Private Sub teUsername_KeyDown(sender As Object, e As KeyEventArgs) Handles teUsername.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Try
+                Dim tbl_par As New DataTable
+                Dim sqlCommand As New MySqlCommand
+                sqlCommand.CommandText = "Select * FROM db_user WHERE BINARY username ='" + teUsername.Text + "' and BINARY password='" + tePassword.Text + "'"
+                sqlCommand.Connection = SQLConnection
+                Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+                Dim cb As New MySqlCommandBuilder(adapter)
+                adapter.Fill(tbl_par)
+                If tbl_par.Rows.Count > 0 Then
+                    ProgressBar1.Visible = True
+                    Timer1.Enabled = True
+                    user()
+                Else
+                    MessageBox.Show("Username and Password Didn't Match!")
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        Close()
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
     End Sub
 End Class

@@ -62,11 +62,15 @@ Partial Class Attendances
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem5 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem6 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup5 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup6 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
@@ -83,8 +87,6 @@ Partial Class Attendances
         Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.RibbonPageGroup5 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.BarButtonItem5 = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtsav.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -403,11 +405,12 @@ Partial Class Attendances
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3, Me.BarButtonItem4, Me.BarButtonItem5})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3, Me.BarButtonItem4, Me.BarButtonItem5, Me.BarButtonItem6})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 6
+        Me.RibbonControl1.MaxItemId = 7
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
         Me.RibbonControl1.Size = New System.Drawing.Size(808, 144)
         '
         'BarButtonItem1
@@ -446,23 +449,43 @@ Partial Class Attendances
         Me.BarButtonItem4.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
+        'BarButtonItem5
+        '
+        Me.BarButtonItem5.Caption = "Go to main"
+        Me.BarButtonItem5.Glyph = CType(resources.GetObject("BarButtonItem5.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem5.Id = 5
+        Me.BarButtonItem5.Name = "BarButtonItem5"
+        Me.BarButtonItem5.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'BarButtonItem6
+        '
+        Me.BarButtonItem6.Caption = "Aspek Kerja"
+        Me.BarButtonItem6.Glyph = CType(resources.GetObject("BarButtonItem6.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem6.Id = 6
+        Me.BarButtonItem6.Name = "BarButtonItem6"
+        Me.BarButtonItem6.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup5, Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup3, Me.RibbonPageGroup4})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup4, Me.RibbonPageGroup5, Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup6})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "Menu"
+        '
+        'RibbonPageGroup5
+        '
+        Me.RibbonPageGroup5.ItemLinks.Add(Me.BarButtonItem5)
+        Me.RibbonPageGroup5.Name = "RibbonPageGroup5"
+        Me.RibbonPageGroup5.Text = "                                               "
+        Me.RibbonPageGroup5.Visible = False
         '
         'RibbonPageGroup1
         '
         Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonItem1)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "                                               "
-        '
-        'RibbonPageGroup2
-        '
-        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem2)
-        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
-        Me.RibbonPageGroup2.Text = "                                               "
+        Me.RibbonPageGroup1.Visible = False
         '
         'RibbonPageGroup3
         '
@@ -476,6 +499,20 @@ Partial Class Attendances
         Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
         Me.RibbonPageGroup4.Text = "                                               "
         '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem2)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "                                               "
+        Me.RibbonPageGroup2.Visible = False
+        '
+        'RibbonPageGroup6
+        '
+        Me.RibbonPageGroup6.ItemLinks.Add(Me.BarButtonItem6)
+        Me.RibbonPageGroup6.Name = "RibbonPageGroup6"
+        Me.RibbonPageGroup6.Text = "                                               "
+        Me.RibbonPageGroup6.Visible = False
+        '
         'GroupControl1
         '
         Me.GroupControl1.Controls.Add(Me.GroupControl2)
@@ -483,7 +520,7 @@ Partial Class Attendances
         Me.GroupControl1.Controls.Add(Me.DateTimePicker2)
         Me.GroupControl1.Controls.Add(Me.SimpleButton4)
         Me.GroupControl1.Controls.Add(Me.SimpleButton5)
-        Me.GroupControl1.Location = New System.Drawing.Point(299, 140)
+        Me.GroupControl1.Location = New System.Drawing.Point(99, 140)
         Me.GroupControl1.Name = "GroupControl1"
         Me.GroupControl1.Size = New System.Drawing.Size(302, 108)
         Me.GroupControl1.TabIndex = 87
@@ -492,7 +529,7 @@ Partial Class Attendances
         'GroupControl2
         '
         Me.GroupControl2.Controls.Add(Me.SimpleButton2)
-        Me.GroupControl2.Location = New System.Drawing.Point(4, 6)
+        Me.GroupControl2.Location = New System.Drawing.Point(1, 6)
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(298, 26)
         Me.GroupControl2.TabIndex = 7
@@ -552,9 +589,9 @@ Partial Class Attendances
         Me.GroupControl3.Controls.Add(Me.Label8)
         Me.GroupControl3.Controls.Add(Me.LabelControl2)
         Me.GroupControl3.Controls.Add(Me.Label10)
-        Me.GroupControl3.Location = New System.Drawing.Point(11, 140)
+        Me.GroupControl3.Location = New System.Drawing.Point(695, 84)
         Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(506, 325)
+        Me.GroupControl3.Size = New System.Drawing.Size(59, 46)
         Me.GroupControl3.TabIndex = 1
         Me.GroupControl3.Text = "Overtime"
         Me.GroupControl3.Visible = False
@@ -589,9 +626,9 @@ Partial Class Attendances
         Me.GroupControl4.Controls.Add(Me.LabelControl11)
         Me.GroupControl4.Controls.Add(Me.Label7)
         Me.GroupControl4.Controls.Add(Me.lblname)
-        Me.GroupControl4.Location = New System.Drawing.Point(112, 140)
+        Me.GroupControl4.Location = New System.Drawing.Point(760, 107)
         Me.GroupControl4.Name = "GroupControl4"
-        Me.GroupControl4.Size = New System.Drawing.Size(502, 325)
+        Me.GroupControl4.Size = New System.Drawing.Size(36, 28)
         Me.GroupControl4.TabIndex = 89
         Me.GroupControl4.Text = "Borongan"
         Me.GroupControl4.Visible = False
@@ -622,7 +659,7 @@ Partial Class Attendances
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(520, 66)
+        Me.Label12.Location = New System.Drawing.Point(654, 65)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(44, 13)
         Me.Label12.TabIndex = 91
@@ -632,27 +669,12 @@ Partial Class Attendances
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(520, 88)
+        Me.Label13.Location = New System.Drawing.Point(645, 93)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(44, 13)
         Me.Label13.TabIndex = 92
         Me.Label13.Text = "Label13"
         Me.Label13.Visible = False
-        '
-        'RibbonPageGroup5
-        '
-        Me.RibbonPageGroup5.ItemLinks.Add(Me.BarButtonItem5)
-        Me.RibbonPageGroup5.Name = "RibbonPageGroup5"
-        Me.RibbonPageGroup5.Text = "                                               "
-        '
-        'BarButtonItem5
-        '
-        Me.BarButtonItem5.Caption = "Go to main"
-        Me.BarButtonItem5.Glyph = CType(resources.GetObject("BarButtonItem5.Glyph"), System.Drawing.Image)
-        Me.BarButtonItem5.Id = 5
-        Me.BarButtonItem5.Name = "BarButtonItem5"
-        Me.BarButtonItem5.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
-            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
         'Attendances
         '
@@ -770,4 +792,6 @@ Partial Class Attendances
     Friend WithEvents Label13 As Label
     Friend WithEvents BarButtonItem5 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup5 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents BarButtonItem6 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup6 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
 End Class

@@ -25,6 +25,7 @@ Partial Class OtherIncome
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OtherIncome))
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.txtreason = New System.Windows.Forms.RichTextBox()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
@@ -45,7 +46,6 @@ Partial Class OtherIncome
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.txtmemo = New System.Windows.Forms.TextBox()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
@@ -79,8 +79,15 @@ Partial Class OtherIncome
         Me.GroupControl1.Controls.Add(Me.LabelControl1)
         Me.GroupControl1.Location = New System.Drawing.Point(2, 0)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(673, 592)
+        Me.GroupControl1.Size = New System.Drawing.Size(673, 497)
         Me.GroupControl1.TabIndex = 0
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(421, 33)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(247, 20)
+        Me.TextBox1.TabIndex = 1
         '
         'SimpleButton2
         '
@@ -89,7 +96,7 @@ Partial Class OtherIncome
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton2.TabIndex = 1
-        Me.SimpleButton2.Text = "Approve"
+        Me.SimpleButton2.Text = "Request"
         '
         'txtreason
         '
@@ -104,7 +111,7 @@ Partial Class OtherIncome
         Me.GridControl1.Location = New System.Drawing.Point(3, 277)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(658, 301)
+        Me.GridControl1.Size = New System.Drawing.Size(658, 209)
         Me.GridControl1.TabIndex = 1
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -112,6 +119,8 @@ Partial Class OtherIncome
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsFind.AlwaysVisible = True
+        Me.GridView1.OptionsView.ColumnAutoWidth = False
         '
         'LabelControl6
         '
@@ -221,7 +230,7 @@ Partial Class OtherIncome
         '
         Me.DateTimePicker1.Location = New System.Drawing.Point(473, 7)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(197, 20)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(195, 20)
         Me.DateTimePicker1.TabIndex = 1
         '
         'txtmemo
@@ -242,13 +251,6 @@ Partial Class OtherIncome
         Me.LabelControl1.TabIndex = 1
         Me.LabelControl1.Text = "Memo No :"
         '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(421, 33)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(252, 20)
-        Me.TextBox1.TabIndex = 1
-        '
         'Timer1
         '
         '
@@ -256,10 +258,8 @@ Partial Class OtherIncome
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(674, 580)
+        Me.ClientSize = New System.Drawing.Size(674, 496)
         Me.Controls.Add(Me.GroupControl1)
-        Me.MaximumSize = New System.Drawing.Size(690, 619)
-        Me.MinimumSize = New System.Drawing.Size(690, 619)
         Me.Name = "OtherIncome"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False

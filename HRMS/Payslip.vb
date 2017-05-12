@@ -141,9 +141,14 @@ Public Class Payslip
             a.Parameters.AddWithValue("@date2", txtto.Value)
             Dim hk As Integer = CInt(a.ExecuteScalar)
 
+            'Dim b As MySqlCommand = SQLConnection.CreateCommand
+            'b.CommandText = "select (a.basicrate * b.bpjs / 100) + (a.basicrate * b.JamKecelakaanKerja / 100 ) + (a.basicrate * b.JaminanKesehatan/ 100) + (a.basicrate * b.IuranPensiun/100) + (a.basicrate * b.JaminanHariTua / 100) + (a.basicrate * b.biayajabatan / 100) + (a.basicrate * b.lates / 100) + (a.basicrate * b.JaminanKematian / 100) from db_payrolldata a, db_setpayroll b where employeecode = '" & emp & "'"
+            'Dim deduc As Integer = CInt(b.ExecuteScalar)
             Dim b As MySqlCommand = SQLConnection.CreateCommand
-            b.CommandText = "select (a.basicrate * b.bpjs / 100) + (a.basicrate * b.JamKecelakaanKerja / 100 ) + (a.basicrate * b.JaminanKesehatan/ 100) + (a.basicrate * b.IuranPensiun/100) + (a.basicrate * b.JaminanHariTua / 100) + (a.basicrate * b.biayajabatan / 100) + (a.basicrate * b.lates / 100) + (a.basicrate * b.JaminanKematian / 100) from db_payrolldata a, db_setpayroll b where employeecode = '" & emp & "'"
+            b.CommandText = "select (calc_deductions(a.basicrate, a.Bpjs, b.Bpjs, a.JaminanKecelakaanKerja, b.JamKecelakaanKerja, a.JaminanKematian, b.JaminanKematian, a.JaminanHariTua, b.JaminanHariTua, a.IuranPensiun, b.IuranPensiun, a.BiayaJabatan, b.BiayaJabatan)) from db_payrolldata a join db_setpayroll b  where a.EmployeeCode = @emp"
+            b.Parameters.AddWithValue("@emp", emp)
             Dim deduc As Integer = CInt(b.ExecuteScalar)
+            MsgBox(deduc)
 
             Dim salary As MySqlCommand = SQLConnection.CreateCommand
             salary.CommandText = "select basicrate from db_payrolldata where EmployeeCode = '" & emp & "'"
@@ -166,6 +171,7 @@ Public Class Payslip
                     End If
                 End If
             End If
+
             Dim fix As Integer = income - deduc
             Dim ovt As MySqlCommand = SQLConnection.CreateCommand
             ovt.CommandText = "select sum(overtimehours) from db_absensi where employeecode = '" & emp & "'"
@@ -183,12 +189,13 @@ Public Class Payslip
             collect.ExecuteNonQuery()
             Dim table As New DataTable
             Dim sqlCommand As New MySqlCommand
-            sqlCommand.CommandText = "Select b.Dated as Tanggal, a.EmployeeCode, b.HK as JumlahHariKerja, a.FullName, a.BasicRate as Salary, a.MealRate, a.Allowance, a.Incentives, b.Overtime, b.Deductions, b.FixedSalary FROM db_payrolldata a, db_temp b where a.Employeecode = b.Employeecode"
+            sqlCommand.CommandText = "Select b.Dated as Dates, a.EmployeeCode, b.HK as JumlahHariKerja, a.FullName, a.BasicRate as Salary, a.MealRate, a.Allowance, a.Incentives, b.Overtime as OvertimeHours, b.Deductions, b.FixedSalary FROM db_payrolldata a, db_temp b where a.Employeecode = b.Employeecode"
             sqlCommand.Connection = SQLConnection
             Dim dt As New DataTable
             dt.Load(sqlCommand.ExecuteReader)
             viw.GridControl1.DataSource = dt
         Catch ex As Exception
+            MsgBox("Payslip" & ex.Message)
         End Try
     End Sub
 
@@ -204,6 +211,10 @@ Public Class Payslip
         If viw Is Nothing OrElse viw.IsDisposed Or viw.MinimizeBox Then
             viw = New View
         End If
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_temp"
+        query.ExecuteNonQuery()
+
         If RadioButton1.Checked = True Then
             Dim cmd As MySqlCommand = SQLConnection.CreateCommand()
             cmd.CommandText = "select employeecode from db_payrolldata"
@@ -212,7 +223,7 @@ Public Class Payslip
             adp.Fill(ds)
             For Each tbl As DataTable In ds.Tables
                 For Each row As DataRow In tbl.Rows
-                    hasilslip(row.Item("EmployeeCode"))
+                    hasilslip(CType(row.Item("EmployeeCode"), String))
                 Next
             Next
             viw.Show()

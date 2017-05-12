@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports DevExpress.Utils.Menu
+Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class Attendances
@@ -39,10 +40,9 @@ Public Class Attendances
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
-
     Sub loadhari()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Date, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Harian'"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Dates, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Harian'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
@@ -58,7 +58,7 @@ Public Class Attendances
 
     Sub loadbulan()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Date, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Bulanan'"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Dates, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Bulanan'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
@@ -74,7 +74,7 @@ Public Class Attendances
 
     Private Sub loadborongan()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Date, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Borongan'"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Dates, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.tanggal between @date1 and @date2 and a.EmployeeCode = b.EmployeeCode and b.EmployeeType = 'Borongan'"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
@@ -90,7 +90,7 @@ Public Class Attendances
 
     Private Sub loadall()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Date, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal between @date1 and @date2"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Dates, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal between @date1 and @date2"
         Dim p1, p2 As New MySqlParameter
         p1.ParameterName = "@date1"
         p2.ParameterName = "@date2"
@@ -233,6 +233,9 @@ Public Class Attendances
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         GridView1.BestFitColumns()
+        Dim gridView As GridView = CType(GridControl1.FocusedView, GridView)
+        gridView.SortInfo.ClearAndAddRange(New GridColumnSortInfo() {
+   New GridColumnSortInfo(gridView.Columns("EmployeeType"), DevExpress.Data.ColumnSortOrder.Ascending)}, 1)
     End Sub
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs)
@@ -289,7 +292,7 @@ Public Class Attendances
         Catch ex As Exception
         End Try
         Try
-            sqlCommand.CommandText = "SELECT EmployeeCode, FullName, EmployeeType from db_pegawai WHERE 1=1 " + param.ToString()
+            sqlCommand.CommandText = "SELECT EmployeeCode, FullName, EmployeeType from db_pegawai WHERE 1 = 1 " + param.ToString()
             sqlCommand.Connection = SQLConnection
 
             Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
@@ -313,18 +316,18 @@ Public Class Attendances
             item.BeginGroup = True
             e.Menu.Items.Add(item)
         End If
-        e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf MainApp.Button1_Click), MainApp.GetImage2))
+        ' e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf MainApp.Button1_Click), MainApp.GetImage2))
     End Sub
 
-    Dim att As New Attendance
+    'Dim att As New Attendance
 
-    Private Sub SimpleButton4_Click(sender As Object, e As EventArgs)
-        If att Is Nothing OrElse att.IsDisposed OrElse att.MinimizeBox Then
-            att.Close()
-            att = New Attendance
-        End If
-        att.Show()
-    End Sub
+    'Private Sub SimpleButton4_Click(sender As Object, e As EventArgs)
+    '    If att Is Nothing OrElse att.IsDisposed OrElse att.MinimizeBox Then
+    '        att.Close()
+    '        att = New Attendance
+    '    End If
+    '    att.Show()
+    'End Sub
 
     Dim leaved As New LeaveRequest
 
@@ -336,18 +339,23 @@ Public Class Attendances
         leaved.Show()
     End Sub
 
-    Dim addmen As New addmenu
+    Dim bor As New Borongan
+    Dim ot As New Overtime_Hours
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        GroupControl3.Visible = True
-        GroupControl4.Visible = False
-        GroupControl1.Visible = False
+        If ot Is Nothing OrElse ot.IsDisposed OrElse ot.MinimizeBox Then
+            ot.Close()
+            ot = New Overtime_Hours
+        End If
+        ot.Show()
     End Sub
 
     Private Sub BarButtonItem2_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem2.ItemClick
-        GroupControl4.Visible = True
-        GroupControl3.Visible = False
-        GroupControl1.Visible = False
+        If bor Is Nothing OrElse bor.IsDisposed OrElse bor.MinimizeBox Then
+            bor.Close()
+            bor = New Borongan
+        End If
+        bor.Show()
     End Sub
 
     Private Sub SimpleButton1_Click_1(sender As Object, e As EventArgs)
@@ -364,7 +372,7 @@ Public Class Attendances
 
     Private Sub loadabsensi()
         Dim sqlcommand As New MySqlCommand
-        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Date, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
+        sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Dates, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
         Dim p1 As New MySqlParameter
         p1.ParameterName = "@date1"
         p1.Value = DateTimePicker2.Value.Date
@@ -421,38 +429,51 @@ Public Class Attendances
         GroupControl4.Visible = False
     End Sub
 
-    Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
-        Dim datatabl As New DataTable
-        Dim sqlCommand As New MySqlCommand
-        datatabl.Clear()
-        Dim param As String = ""
-        Try
-            param = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
-        Catch ex As Exception
-        End Try
-        Try
-            sqlCommand.CommandText = "SELECT EmployeeCode, FullName FROM db_pegawai WHERE 1=1 " + param.ToString()
-            sqlCommand.Connection = SQLConnection
-            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(datatabl)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-        If datatabl.Rows.Count > 0 Then
-            Label12.Text = datatabl.Rows(0).Item(0).ToString
-            Label13.Text = datatabl.Rows(0).Item(1).ToString
-        End If
-    End Sub
+    'Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
+    '    Dim datatabl As New DataTable
+    '    Dim sqlCommand As MySqlCommand = SQLConnection.CreateCommand
+    '    datatabl.Clear()
+    '    Dim param As String = ""
+    '    Try
+    '        param = "and EmployeeCode='" + GridView1.GetFocusedRowCellValue("EmployeeCode").ToString() + "'"
+    '    Catch ex As Exception
+    '    End Try
+    '    Try
+    '        sqlCommand.CommandText = "SELECT EmployeeCode, FullName FROM db_pegawai WHERE 1=1 " + param.ToString()
+    '        Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+    '        Dim cb As New MySqlCommandBuilder(adapter)
+    '        adapter.Fill(datatabl)
+    '    Catch ex As Exception
+    '    MsgBox(ex.Message)
+    '    End Try
+    '    If datatabl.Rows.Count > 0 Then
+    '        Label12.Text = datatabl.Rows(0).Item(0).ToString
+    '        Label13.Text = datatabl.Rows(0).Item(1).ToString
+    '    End If
+    'End Sub
 
     Dim main As MainApp
 
     Private Sub BarButtonItem5_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem5.ItemClick
         Me.Close()
         If main Is Nothing OrElse main.IsDisposed OrElse main.MinimizeBox Then
-            'main.Close()
             main = New MainApp
         End If
         main.Show()
+    End Sub
+
+    Dim aspek As New AspekKerja
+
+    Private Sub BarButtonItem6_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem6.ItemClick
+        If aspek Is Nothing OrElse aspek.IsDisposed OrElse aspek.MinimizeBox Then
+            aspek.Close()
+            aspek = New AspekKerja
+        End If
+        aspek.Show()
+    End Sub
+
+    Private Sub Attendances_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        'Tile_Control.Close()
+        'Tile_Control.Show()
     End Sub
 End Class

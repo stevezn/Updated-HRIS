@@ -48,13 +48,16 @@ Public Class Termination
             query.CommandText = "select name from db_tmpname"
             Dim quer1 As String = CType(query.ExecuteScalar, String)
             TextBox2.Text = quer1.ToString
+
             query.CommandText = "select employeecode from db_tmpname"
             Dim quer2 As String = CType(query.ExecuteScalar, String)
             TextEdit1.Text = quer2.ToString
-            query.CommandText = "select jobtitle from db_tmpname"
+
+            query.CommandText = "select Jobtitle from db_tmpname"
             Dim quer3 As String = CType(query.ExecuteScalar, String)
             TextBox6.Text = quer3.ToString
-            query.CommandText = "select status from db_tmpname"
+
+            query.CommandText = "select Status from db_tmpname"
             Dim quer4 As String = CType(query.ExecuteScalar, String)
             TextBox7.Text = quer4.ToString
         Catch ex As Exception
@@ -108,13 +111,13 @@ Public Class Termination
         dtb = DateTimePicker1.Value
         Dim cmd As MySqlCommand = SQLConnection.CreateCommand
         cmd.CommandText = "insert into db_terminate" +
-                          "(Memono, tgl, FullName, Employeecode, ApprovedBy, AppEmployeeCode, Blacklist, Reason, JobTitle, Status, Allowance, AllowanceTax, IsPay, PaymentDate, Explanation)" +
-                          "values(@Memono, @tgl, @names, @ec, @ApprovedBy, @AppEmployeeCode, @Blacklist, @Reason, @JobTitle, @Status, @Allowance, @AllowanceTax, @IsPay, @PaymentDate, @Explanation)"
+                          "(Memono, tgl, FullName, Employeecode, ApprovedBy, AppEmployeeCode, Blacklist, Reason, JobTitle, Status, Allowance, AllowanceTax, IsPay, PaymentDate, Explanation, ApprovedStatus, AllowanceResult)" +
+                          "values(@Memono, @tgl, @names, @ec, @ApprovedBy, @AppEmployeeCode, @Blacklist, @Reason, @JobTitle, @Status, @Allowance, @AllowanceTax, @IsPay, @PaymentDate, @Explanation, @apps, @AllowanceResult)"
         cmd.Parameters.AddWithValue("@Memono", txtmemo.Text)
         cmd.Parameters.AddWithValue("@tgl", dtb.ToString("yyyy-MM-dd"))
-        cmd.Parameters.AddWithValue("@names", TextBox2.Text)
-        cmd.Parameters.AddWithValue("@ec", TextEdit1.Text)
-        cmd.Parameters.AddWithValue("@ApprovedBy", TextBox3.Text)
+        cmd.Parameters.AddWithValue("@names", TextEdit1.Text)
+        cmd.Parameters.AddWithValue("@ec", TextBox2.Text)
+        cmd.Parameters.AddWithValue("@ApprovedBy", "")
         cmd.Parameters.AddWithValue("@AppEmployeeCode", TextEdit2.Text)
         cmd.Parameters.AddWithValue("@Blacklist", CheckEdit2.Checked)
         cmd.Parameters.AddWithValue("@Reason", ComboBoxEdit1.Text)
@@ -125,20 +128,22 @@ Public Class Termination
         cmd.Parameters.AddWithValue("@Ispay", CheckEdit1.Checked)
         cmd.Parameters.AddWithValue("@PaymentDate", dtr.ToString("yyyy-MM-dd"))
         cmd.Parameters.AddWithValue("@Explanation", RichTextBox1.Text)
+        cmd.Parameters.AddWithValue("@apps", "Requested")
+        cmd.Parameters.AddWithValue("@AllowanceResult", TextBox1.Text)
         cmd.ExecuteNonQuery()
-        cmd.CommandText = "update db_pegawai set status = 'Terminate' where employeecode = @emp"
-        cmd.Parameters.Clear()
-        cmd.Parameters.AddWithValue("@emp", TextEdit1.Text)
-        cmd.ExecuteNonQuery()
-        Dim query As MySqlCommand = SQLConnection.CreateCommand
-        query.CommandText = "select idnumber from db_pegawai where employeecode = @emp"
-        query.Parameters.AddWithValue("@emp", TextEdit1.Text)
-        Dim hsl As String = CStr(query.ExecuteScalar)
-        query.CommandText = "update db_recruitment set blacklist = @check where idnumber = @id"
-        query.Parameters.Clear()
-        query.Parameters.AddWithValue("@check", CheckEdit2.Checked)
-        query.Parameters.AddWithValue("@id", hsl)
-        query.ExecuteNonQuery()
+        'cmd.CommandText = "update db_pegawai set status = 'Terminate' where employeecode = @emp"
+        'cmd.Parameters.Clear()
+        'cmd.Parameters.AddWithValue("@emp", TextEdit1.Text)
+        'cmd.ExecuteNonQuery()
+        'Dim query As MySqlCommand = SQLConnection.CreateCommand
+        'query.CommandText = "select idnumber from db_pegawai where employeecode = @emp"
+        'query.Parameters.AddWithValue("@emp", TextEdit1.Text)
+        'Dim hsl As String = CStr(query.ExecuteScalar)
+        'query.CommandText = "update db_recruitment set blacklist = @check where idnumber = @id"
+        'query.Parameters.Clear()
+        'query.Parameters.AddWithValue("@check", CheckEdit2.Checked)
+        'query.Parameters.AddWithValue("@id", hsl)
+        'query.ExecuteNonQuery()
         TextBox3.Text = ""
         TextBox2.Text = ""
         TextEdit1.Text = ""
@@ -150,8 +155,9 @@ Public Class Termination
         ComboBoxEdit1.Text = ""
         TextBox4.Text = ""
         RichTextBox1.Text = ""
+        TextBox1.Text = ""
         changer()
-        MsgBox("Proccessed")
+        MsgBox("Requested")
     End Sub
 
     Private Sub Termination_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -162,14 +168,50 @@ Public Class Termination
         Dim quer As String = CType(query.ExecuteScalar, String)
         TextBox2.Text = quer.ToString
 
-        query.CommandText = "select Name from db_tmpname where 1 =1"
+        query.CommandText = "select Name from db_tmpname where 1 = 1"
         Dim quer1 As String = CType(query.ExecuteScalar, String)
         TextEdit1.Text = quer1.ToString
+        Try
+            query.CommandText = "select position from db_pegawai where employeecode = '" & TextBox2.Text & "'"
+            TextBox6.Text = CStr(query.ExecuteScalar)
+            query.CommandText = "select status from db_pegawai where employeecode = '" & TextBox2.Text & "'"
+            TextBox7.Text = CStr(query.ExecuteScalar)
+        Catch ex As Exception
+        End Try
+
+        ''query.CommandText = "select Jobtitle from db_tmpname where 1 = 1"
+        ''Dim quer2 As String = CType(query.ExecuteScalar, String)
+        ''TextBox6.Text = quer2.ToString
+
+        ''query.CommandText = "select Status from db_tmpname where 1 = 1"
+        ''Dim quer3 As String = CType(query.ExecuteScalar, String)
+        ''TextBox7.Text = quer3.ToString
         changer()
+        autofill()
+    End Sub
+
+    Sub autofill()
+        Dim dt As New DataTable
+        Dim ds As New DataSet
+        Dim da As New MySqlDataAdapter("select EmployeeCode from db_pegawai", SQLConnection)
+        da.Fill(dt)
+        Dim r As DataRow
+        TextBox2.AutoCompleteCustomSource.Clear()
+        For Each r In dt.Rows
+            TextBox2.AutoCompleteCustomSource.Add(r.Item(0).ToString)
+        Next
     End Sub
 
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
         Timer1.Stop()
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select position from db_pegawai where employeecode = '" & TextBox2.Text & "'"
+            TextBox6.Text = CStr(query.ExecuteScalar)
+            query.CommandText = "select status from db_pegawai where employeecode = '" & TextBox2.Text & "'"
+            TextBox7.Text = CStr(query.ExecuteScalar)
+        Catch ex As Exception
+        End Try
     End Sub
 
     Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
@@ -201,17 +243,17 @@ Public Class Termination
             Dim query As MySqlCommand = SQLConnection.CreateCommand
             query.CommandText = "select name from db_tmpname"
             Dim quer1 As String = CType(query.ExecuteScalar, String)
-            TextBox3.Text = quer1.ToString
+            TextEdit2.Text = quer1.ToString
 
             query.CommandText = "select employeecode from db_tmpname"
             Dim quer2 As String = CType(query.ExecuteScalar, String)
-            TextEdit2.Text = quer2.ToString
+            TextBox3.Text = quer2.ToString
         Catch ex As Exception
         End Try
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If TextBox2.Text = "" OrElse TextBox3.Text = "" OrElse ComboBoxEdit1.Text = "" OrElse RichTextBox1.Text = "" Then
+        If ComboBoxEdit1.Text = "" OrElse RichTextBox1.Text = "" Then
             MsgBox("Please fill the empty fields")
         ElseIf TextEdit1.Text = TextEdit2.Text Then
             MsgBox("The identity can't be same!")
@@ -232,5 +274,29 @@ Public Class Termination
         If Char.IsLetter(ch) Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
+        Try
+            Dim a, b, c, d As Integer
+            a = Convert.ToInt32(TextBox4.Text)
+            b = Convert.ToInt32(TextBox5.Text)
+            c = CInt(a * b / 100)
+            d = a - c
+            TextBox1.Text = d.ToString
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
+        Try
+            Dim a, b, c, d As Integer
+            a = Convert.ToInt32(TextBox4.Text)
+            b = Convert.ToInt32(TextBox5.Text)
+            c = CInt(a * b / 100)
+            d = a - c
+            TextBox1.Text = d.ToString
+        Catch ex As Exception
+        End Try
     End Sub
 End Class

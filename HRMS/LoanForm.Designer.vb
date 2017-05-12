@@ -24,7 +24,7 @@ Partial Class Payments
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Payments))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
@@ -37,23 +37,25 @@ Partial Class Payments
         Me.BarButtonItem8 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
         Me.BarButtonItem9 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem10 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup5 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup9 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup6 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonPageGroup7 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup8 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup7 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.txtname = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.txtempcode = New System.Windows.Forms.TextBox()
+        Me.txtname = New System.Windows.Forms.TextBox()
         Me.txtapproved = New DevExpress.XtraEditors.TextEdit()
-        Me.txtempcode = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.lcempcode = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcapproved = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcname = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         Me.btnClear = New DevExpress.XtraEditors.SimpleButton()
@@ -74,24 +76,29 @@ Partial Class Payments
         Me.XtraTabControl2 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage3 = New DevExpress.XtraTab.XtraTabPage()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
         Me.btnApp = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControl7 = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtdates = New System.Windows.Forms.DateTimePicker()
         Me.txtcompletedon1 = New System.Windows.Forms.DateTimePicker()
         Me.txtmonth = New System.Windows.Forms.DateTimePicker()
         Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
         Me.txtrangemon = New DevExpress.XtraEditors.TextEdit()
         Me.lcpayment = New DevExpress.XtraEditors.TextEdit()
-        Me.txtdates = New DevExpress.XtraEditors.DateEdit()
         Me.txtloan = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup7 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem22 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcpaymonth = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem24 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcmon = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem26 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabControl3 = New DevExpress.XtraTab.XtraTabControl()
@@ -122,6 +129,7 @@ Partial Class Payments
         Me.LayoutControlItem34 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem35 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtgol = New DevExpress.XtraEditors.TextEdit()
         Me.txtwajibpajak = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtnpwp = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txttransport = New DevExpress.XtraEditors.TextEdit()
@@ -137,6 +145,7 @@ Partial Class Payments
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.btnapp1 = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControl4 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtname1 = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -172,6 +181,7 @@ Partial Class Payments
         Me.LayoutControlItem45 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControl10 = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtgol1 = New DevExpress.XtraEditors.TextEdit()
         Me.txtwp1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtnpwp1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txttransport1 = New DevExpress.XtraEditors.TextEdit()
@@ -187,35 +197,13 @@ Partial Class Payments
         Me.LayoutControlItem50 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem51 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem52 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControl11 = New DevExpress.XtraLayout.LayoutControl()
         Me.txtname2 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtempcode2 = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup11 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem53 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem55 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.XtraTabPage4 = New DevExpress.XtraTab.XtraTabPage()
-        Me.GridControl5 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
-        Me.SimpleButton9 = New DevExpress.XtraEditors.SimpleButton()
-        Me.LayoutControl3 = New DevExpress.XtraLayout.LayoutControl()
-        Me.txtuntil = New System.Windows.Forms.DateTimePicker()
-        Me.txteffective = New System.Windows.Forms.DateTimePicker()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
-        Me.txtname3 = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.txtrapel = New DevExpress.XtraEditors.TextEdit()
-        Me.txtempcode3 = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcrapel = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.XtraTabControl4 = New DevExpress.XtraTab.XtraTabControl()
-        Me.XtraTabPage9 = New DevExpress.XtraTab.XtraTabPage()
-        Me.GridControl3 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.XtraTabPage6 = New DevExpress.XtraTab.XtraTabPage()
         Me.GridControl6 = New DevExpress.XtraGrid.GridControl()
         Me.GridView6 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -234,16 +222,30 @@ Partial Class Payments
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
+        Me.TextBox12 = New System.Windows.Forms.TextBox()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.txtname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtapproved.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtempcode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcempcode, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcapproved, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcname, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl1.SuspendLayout()
         Me.XtraTabPage2.SuspendLayout()
@@ -263,21 +265,20 @@ Partial Class Payments
         Me.XtraTabPage3.SuspendLayout()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl3.SuspendLayout()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl7.SuspendLayout()
         CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtrangemon.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcpayment.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtdates.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtdates.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtloan.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcpaymonth, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcmon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage5.SuspendLayout()
         CType(Me.XtraTabControl3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -311,6 +312,7 @@ Partial Class Payments
         CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
+        CType(Me.txtgol.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtwajibpajak.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtnpwp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txttransport.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -326,6 +328,7 @@ Partial Class Payments
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl4.SuspendLayout()
         CType(Me.txtname1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -362,6 +365,7 @@ Partial Class Payments
         CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl10.SuspendLayout()
+        CType(Me.txtgol1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtwp1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtnpwp1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txttransport1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -377,6 +381,7 @@ Partial Class Payments
         CType(Me.LayoutControlItem50, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem51, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl11, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl11.SuspendLayout()
         CType(Me.txtname2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -384,43 +389,27 @@ Partial Class Payments
         CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.XtraTabPage4.SuspendLayout()
-        CType(Me.GridControl5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl4.SuspendLayout()
-        CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl3.SuspendLayout()
-        CType(Me.txtname3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtrapel.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtempcode3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcrapel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XtraTabControl4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.XtraTabControl4.SuspendLayout()
-        Me.XtraTabPage9.SuspendLayout()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage6.SuspendLayout()
         CType(Me.GridControl6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl5.SuspendLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl4.SuspendLayout()
+        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl6.SuspendLayout()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.barJudul, Me.BarButtonItem3, Me.BarButtonItem4, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarStaticItem1, Me.BarButtonItem9})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.BarButtonItem2, Me.barJudul, Me.BarButtonItem3, Me.BarButtonItem4, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarStaticItem1, Me.BarButtonItem9, Me.BarButtonItem10})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 12
+        Me.RibbonControl1.MaxItemId = 13
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
         Me.RibbonControl1.Size = New System.Drawing.Size(871, 144)
         Me.RibbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above
         '
@@ -464,7 +453,7 @@ Partial Class Payments
         '
         'BarButtonItem5
         '
-        Me.BarButtonItem5.Caption = "Holiday"
+        Me.BarButtonItem5.Caption = "Overtime"
         Me.BarButtonItem5.Glyph = CType(resources.GetObject("BarButtonItem5.Glyph"), System.Drawing.Image)
         Me.BarButtonItem5.Id = 6
         Me.BarButtonItem5.Name = "BarButtonItem5"
@@ -510,9 +499,18 @@ Partial Class Payments
         Me.BarButtonItem9.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
+        'BarButtonItem10
+        '
+        Me.BarButtonItem10.Caption = "Borongan"
+        Me.BarButtonItem10.Glyph = CType(resources.GetObject("BarButtonItem10.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem10.Id = 12
+        Me.BarButtonItem10.Name = "BarButtonItem10"
+        Me.BarButtonItem10.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
         'RibbonPage1
         '
-        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup2, Me.RibbonPageGroup5, Me.RibbonPageGroup4, Me.RibbonPageGroup6, Me.RibbonPageGroup7, Me.RibbonPageGroup8})
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup5, Me.RibbonPageGroup9, Me.RibbonPageGroup4, Me.RibbonPageGroup6, Me.RibbonPageGroup8, Me.RibbonPageGroup2, Me.RibbonPageGroup7})
         Me.RibbonPage1.Name = "RibbonPage1"
         Me.RibbonPage1.Text = "Loan"
         '
@@ -521,24 +519,14 @@ Partial Class Payments
         Me.RibbonPageGroup3.ItemLinks.Add(Me.BarButtonItem3)
         Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
         Me.RibbonPageGroup3.Text = "                                   "
+        Me.RibbonPageGroup3.Visible = False
         '
         'RibbonPageGroup1
         '
         Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonItem1)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "                                   "
-        '
-        'RibbonPageGroup2
-        '
-        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem2, True)
-        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
-        Me.RibbonPageGroup2.Text = "                                   "
-        '
-        'RibbonPageGroup4
-        '
-        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonItem9)
-        Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
-        Me.RibbonPageGroup4.Text = "                                   "
+        Me.RibbonPageGroup1.Visible = False
         '
         'RibbonPageGroup5
         '
@@ -546,17 +534,23 @@ Partial Class Payments
         Me.RibbonPageGroup5.Name = "RibbonPageGroup5"
         Me.RibbonPageGroup5.Text = "                                   "
         '
+        'RibbonPageGroup9
+        '
+        Me.RibbonPageGroup9.ItemLinks.Add(Me.BarButtonItem10)
+        Me.RibbonPageGroup9.Name = "RibbonPageGroup9"
+        Me.RibbonPageGroup9.Text = "                                              "
+        '
+        'RibbonPageGroup4
+        '
+        Me.RibbonPageGroup4.ItemLinks.Add(Me.BarButtonItem9)
+        Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
+        Me.RibbonPageGroup4.Text = "                                   "
+        '
         'RibbonPageGroup6
         '
         Me.RibbonPageGroup6.ItemLinks.Add(Me.BarButtonItem6)
         Me.RibbonPageGroup6.Name = "RibbonPageGroup6"
         Me.RibbonPageGroup6.Text = "                                              "
-        '
-        'RibbonPageGroup7
-        '
-        Me.RibbonPageGroup7.ItemLinks.Add(Me.BarButtonItem7)
-        Me.RibbonPageGroup7.Name = "RibbonPageGroup7"
-        Me.RibbonPageGroup7.Text = "                                              "
         '
         'RibbonPageGroup8
         '
@@ -564,68 +558,69 @@ Partial Class Payments
         Me.RibbonPageGroup8.Name = "RibbonPageGroup8"
         Me.RibbonPageGroup8.Text = "                                              "
         '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem2, True)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "                                   "
+        Me.RibbonPageGroup2.Visible = False
+        '
+        'RibbonPageGroup7
+        '
+        Me.RibbonPageGroup7.ItemLinks.Add(Me.BarButtonItem7)
+        Me.RibbonPageGroup7.Name = "RibbonPageGroup7"
+        Me.RibbonPageGroup7.Text = "                                              "
+        Me.RibbonPageGroup7.Visible = False
+        '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.txtempcode)
         Me.LayoutControl1.Controls.Add(Me.txtname)
         Me.LayoutControl1.Controls.Add(Me.txtapproved)
-        Me.LayoutControl1.Controls.Add(Me.txtempcode)
         Me.LayoutControl1.Location = New System.Drawing.Point(5, 15)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(242, 100)
+        Me.LayoutControl1.Size = New System.Drawing.Size(242, 97)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'txtempcode
+        '
+        Me.txtempcode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.txtempcode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.txtempcode.Location = New System.Drawing.Point(89, 36)
+        Me.txtempcode.Name = "txtempcode"
+        Me.txtempcode.Size = New System.Drawing.Size(141, 20)
+        Me.txtempcode.TabIndex = 8
+        '
         'txtname
         '
-        Me.txtname.Location = New System.Drawing.Point(98, 12)
-        Me.txtname.MenuManager = Me.RibbonControl1
+        Me.txtname.Location = New System.Drawing.Point(89, 12)
         Me.txtname.Name = "txtname"
-        Me.txtname.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtname.Size = New System.Drawing.Size(132, 20)
-        Me.txtname.StyleController = Me.LayoutControl1
+        Me.txtname.Size = New System.Drawing.Size(141, 20)
         Me.txtname.TabIndex = 7
         '
         'txtapproved
         '
-        Me.txtapproved.Location = New System.Drawing.Point(98, 60)
+        Me.txtapproved.Location = New System.Drawing.Point(89, 60)
         Me.txtapproved.MenuManager = Me.RibbonControl1
         Me.txtapproved.Name = "txtapproved"
-        Me.txtapproved.Size = New System.Drawing.Size(132, 20)
+        Me.txtapproved.Properties.ReadOnly = True
+        Me.txtapproved.Size = New System.Drawing.Size(141, 20)
         Me.txtapproved.StyleController = Me.LayoutControl1
         Me.txtapproved.TabIndex = 6
-        '
-        'txtempcode
-        '
-        Me.txtempcode.Location = New System.Drawing.Point(98, 36)
-        Me.txtempcode.MenuManager = Me.RibbonControl1
-        Me.txtempcode.Name = "txtempcode"
-        Me.txtempcode.Properties.ReadOnly = True
-        Me.txtempcode.Size = New System.Drawing.Size(132, 20)
-        Me.txtempcode.StyleController = Me.LayoutControl1
-        Me.txtempcode.TabIndex = 5
         '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.CustomizationFormText = "LayoutControlGroup1"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcempcode, Me.lcapproved, Me.lcname})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcapproved, Me.LayoutControlItem2, Me.LayoutControlItem4})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(242, 100)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(242, 97)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'lcempcode
-        '
-        Me.lcempcode.Control = Me.txtempcode
-        Me.lcempcode.CustomizationFormText = "Employee Code :"
-        Me.lcempcode.Location = New System.Drawing.Point(0, 24)
-        Me.lcempcode.Name = "lcempcode"
-        Me.lcempcode.Size = New System.Drawing.Size(222, 24)
-        Me.lcempcode.Text = "Employee Code :"
-        Me.lcempcode.TextSize = New System.Drawing.Size(83, 13)
         '
         'lcapproved
         '
@@ -633,26 +628,37 @@ Partial Class Payments
         Me.lcapproved.CustomizationFormText = "Approved by :"
         Me.lcapproved.Location = New System.Drawing.Point(0, 48)
         Me.lcapproved.Name = "lcapproved"
-        Me.lcapproved.Size = New System.Drawing.Size(222, 32)
+        Me.lcapproved.Size = New System.Drawing.Size(222, 29)
         Me.lcapproved.Text = "Approved by :"
-        Me.lcapproved.TextSize = New System.Drawing.Size(83, 13)
+        Me.lcapproved.TextSize = New System.Drawing.Size(74, 13)
         '
-        'lcname
+        'LayoutControlItem2
         '
-        Me.lcname.Control = Me.txtname
-        Me.lcname.CustomizationFormText = "Employee Name :"
-        Me.lcname.Location = New System.Drawing.Point(0, 0)
-        Me.lcname.Name = "lcname"
-        Me.lcname.Size = New System.Drawing.Size(222, 24)
-        Me.lcname.Text = "Employee Name :"
-        Me.lcname.TextSize = New System.Drawing.Size(83, 13)
+        Me.LayoutControlItem2.Control = Me.txtname
+        Me.LayoutControlItem2.CustomizationFormText = "Name"
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem2.Name = "LayoutControlItem2"
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(222, 24)
+        Me.LayoutControlItem2.Text = "Name"
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(74, 13)
+        '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.Control = Me.txtempcode
+        Me.LayoutControlItem4.CustomizationFormText = "Employee Code"
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 24)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(222, 24)
+        Me.LayoutControlItem4.Text = "Employee Code"
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(74, 13)
         '
         'XtraTabControl1
         '
-        Me.XtraTabControl1.Location = New System.Drawing.Point(413, 0)
+        Me.XtraTabControl1.Location = New System.Drawing.Point(409, 0)
         Me.XtraTabControl1.Name = "XtraTabControl1"
+        Me.XtraTabControl1.PaintStyleName = "PropertyView"
         Me.XtraTabControl1.SelectedTabPage = Me.XtraTabPage2
-        Me.XtraTabControl1.Size = New System.Drawing.Size(447, 330)
+        Me.XtraTabControl1.Size = New System.Drawing.Size(457, 330)
         Me.XtraTabControl1.TabIndex = 12
         Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage2, Me.XtraTabPage11})
         '
@@ -663,7 +669,7 @@ Partial Class Payments
         Me.XtraTabPage2.Controls.Add(Me.LayoutControl14)
         Me.XtraTabPage2.Controls.Add(Me.GridControl1)
         Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(441, 302)
+        Me.XtraTabPage2.Size = New System.Drawing.Size(455, 309)
         Me.XtraTabPage2.Text = "Payment History"
         '
         'btnClear
@@ -682,7 +688,7 @@ Partial Class Payments
         Me.btnLookup.Name = "btnLookup"
         Me.btnLookup.Size = New System.Drawing.Size(96, 35)
         Me.btnLookup.TabIndex = 2
-        Me.btnLookup.Text = "Look Up !"
+        Me.btnLookup.Text = "View"
         '
         'LayoutControl14
         '
@@ -728,8 +734,8 @@ Partial Class Payments
         '
         'GridControl1
         '
-        GridLevelNode1.RelationName = "Level1"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.RelationName = "Level1"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.GridControl1.Location = New System.Drawing.Point(0, 53)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
@@ -753,7 +759,7 @@ Partial Class Payments
         Me.XtraTabPage11.Controls.Add(Me.LabelControl2)
         Me.XtraTabPage11.Controls.Add(Me.GridControl7)
         Me.XtraTabPage11.Name = "XtraTabPage11"
-        Me.XtraTabPage11.Size = New System.Drawing.Size(441, 302)
+        Me.XtraTabPage11.Size = New System.Drawing.Size(455, 309)
         Me.XtraTabPage11.Text = "List of employee"
         '
         'SimpleButton3
@@ -801,9 +807,9 @@ Partial Class Payments
         '
         'txtreason
         '
-        Me.txtreason.Location = New System.Drawing.Point(274, 26)
+        Me.txtreason.Location = New System.Drawing.Point(275, 26)
         Me.txtreason.Name = "txtreason"
-        Me.txtreason.Size = New System.Drawing.Size(112, 79)
+        Me.txtreason.Size = New System.Drawing.Size(124, 79)
         Me.txtreason.TabIndex = 0
         Me.txtreason.Text = "Reason / Purpose"
         '
@@ -815,7 +821,7 @@ Partial Class Payments
         Me.XtraTabControl2.SelectedTabPage = Me.XtraTabPage3
         Me.XtraTabControl2.Size = New System.Drawing.Size(871, 358)
         Me.XtraTabControl2.TabIndex = 14
-        Me.XtraTabControl2.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage5, Me.XtraTabPage3, Me.XtraTabPage4, Me.XtraTabPage6})
+        Me.XtraTabControl2.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage5, Me.XtraTabPage3, Me.XtraTabPage6})
         '
         'XtraTabPage3
         '
@@ -827,6 +833,11 @@ Partial Class Payments
         '
         'GroupControl3
         '
+        Me.GroupControl3.Controls.Add(Me.Label6)
+        Me.GroupControl3.Controls.Add(Me.LabelControl6)
+        Me.GroupControl3.Controls.Add(Me.SimpleButton1)
+        Me.GroupControl3.Controls.Add(Me.TextEdit1)
+        Me.GroupControl3.Controls.Add(Me.LabelControl5)
         Me.GroupControl3.Controls.Add(Me.Label5)
         Me.GroupControl3.Controls.Add(Me.SimpleButton5)
         Me.GroupControl3.Controls.Add(Me.btnApp)
@@ -835,13 +846,59 @@ Partial Class Payments
         Me.GroupControl3.Controls.Add(Me.txtreason)
         Me.GroupControl3.Location = New System.Drawing.Point(0, 3)
         Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(411, 332)
+        Me.GroupControl3.Size = New System.Drawing.Size(408, 332)
         Me.GroupControl3.TabIndex = 16
+        Me.GroupControl3.Text = " "
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(315, 10)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(38, 13)
+        Me.Label6.TabIndex = 7
+        Me.Label6.Text = "Label6"
+        Me.Label6.Visible = False
+        '
+        'LabelControl6
+        '
+        Me.LabelControl6.Location = New System.Drawing.Point(212, 312)
+        Me.LabelControl6.Name = "LabelControl6"
+        Me.LabelControl6.Size = New System.Drawing.Size(66, 13)
+        Me.LabelControl6.TabIndex = 21
+        Me.LabelControl6.Text = "LabelControl6"
+        Me.LabelControl6.Visible = False
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(109, 290)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(97, 23)
+        Me.SimpleButton1.TabIndex = 21
+        Me.SimpleButton1.Text = "Upload Doc..."
+        '
+        'TextEdit1
+        '
+        Me.TextEdit1.Location = New System.Drawing.Point(19, 306)
+        Me.TextEdit1.MenuManager = Me.RibbonControl1
+        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Size = New System.Drawing.Size(44, 20)
+        Me.TextEdit1.TabIndex = 16
+        Me.TextEdit1.Visible = False
+        '
+        'LabelControl5
+        '
+        Me.LabelControl5.Location = New System.Drawing.Point(15, 294)
+        Me.LabelControl5.Name = "LabelControl5"
+        Me.LabelControl5.Size = New System.Drawing.Size(79, 13)
+        Me.LabelControl5.TabIndex = 16
+        Me.LabelControl5.Text = "Guarantee Doc :"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(199, 305)
+        Me.Label5.Location = New System.Drawing.Point(187, 317)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(38, 13)
         Me.Label5.TabIndex = 15
@@ -859,33 +916,40 @@ Partial Class Payments
         'btnApp
         '
         Me.btnApp.Image = CType(resources.GetObject("btnApp.Image"), System.Drawing.Image)
-        Me.btnApp.Location = New System.Drawing.Point(277, 292)
+        Me.btnApp.Location = New System.Drawing.Point(287, 291)
         Me.btnApp.Name = "btnApp"
         Me.btnApp.Size = New System.Drawing.Size(112, 30)
         Me.btnApp.TabIndex = 13
-        Me.btnApp.Text = "Approve"
+        Me.btnApp.Text = "Request"
         '
         'LayoutControl7
         '
+        Me.LayoutControl7.Controls.Add(Me.txtdates)
         Me.LayoutControl7.Controls.Add(Me.txtcompletedon1)
         Me.LayoutControl7.Controls.Add(Me.txtmonth)
         Me.LayoutControl7.Controls.Add(Me.CheckEdit2)
         Me.LayoutControl7.Controls.Add(Me.txtrangemon)
         Me.LayoutControl7.Controls.Add(Me.lcpayment)
-        Me.LayoutControl7.Controls.Add(Me.txtdates)
         Me.LayoutControl7.Controls.Add(Me.txtloan)
         Me.LayoutControl7.Location = New System.Drawing.Point(5, 111)
         Me.LayoutControl7.Name = "LayoutControl7"
         Me.LayoutControl7.Root = Me.LayoutControlGroup7
-        Me.LayoutControl7.Size = New System.Drawing.Size(393, 187)
+        Me.LayoutControl7.Size = New System.Drawing.Size(405, 187)
         Me.LayoutControl7.TabIndex = 14
         Me.LayoutControl7.Text = "LayoutControl7"
         '
+        'txtdates
+        '
+        Me.txtdates.Location = New System.Drawing.Point(104, 12)
+        Me.txtdates.Name = "txtdates"
+        Me.txtdates.Size = New System.Drawing.Size(289, 21)
+        Me.txtdates.TabIndex = 18
+        '
         'txtcompletedon1
         '
-        Me.txtcompletedon1.Location = New System.Drawing.Point(104, 155)
+        Me.txtcompletedon1.Location = New System.Drawing.Point(104, 131)
         Me.txtcompletedon1.Name = "txtcompletedon1"
-        Me.txtcompletedon1.Size = New System.Drawing.Size(277, 21)
+        Me.txtcompletedon1.Size = New System.Drawing.Size(289, 21)
         Me.txtcompletedon1.TabIndex = 17
         '
         'txtmonth
@@ -893,7 +957,7 @@ Partial Class Payments
         Me.txtmonth.Enabled = False
         Me.txtmonth.Location = New System.Drawing.Point(104, 107)
         Me.txtmonth.Name = "txtmonth"
-        Me.txtmonth.Size = New System.Drawing.Size(277, 21)
+        Me.txtmonth.Size = New System.Drawing.Size(289, 21)
         Me.txtmonth.TabIndex = 16
         '
         'CheckEdit2
@@ -902,7 +966,7 @@ Partial Class Payments
         Me.CheckEdit2.MenuManager = Me.RibbonControl1
         Me.CheckEdit2.Name = "CheckEdit2"
         Me.CheckEdit2.Properties.Caption = "Include in salary payments from :"
-        Me.CheckEdit2.Size = New System.Drawing.Size(369, 19)
+        Me.CheckEdit2.Size = New System.Drawing.Size(381, 19)
         Me.CheckEdit2.StyleController = Me.LayoutControl7
         Me.CheckEdit2.TabIndex = 15
         '
@@ -911,40 +975,26 @@ Partial Class Payments
         Me.txtrangemon.Location = New System.Drawing.Point(104, 60)
         Me.txtrangemon.MenuManager = Me.RibbonControl1
         Me.txtrangemon.Name = "txtrangemon"
-        Me.txtrangemon.Size = New System.Drawing.Size(277, 20)
+        Me.txtrangemon.Size = New System.Drawing.Size(289, 20)
         Me.txtrangemon.StyleController = Me.LayoutControl7
         Me.txtrangemon.TabIndex = 14
         '
         'lcpayment
         '
-        Me.lcpayment.Location = New System.Drawing.Point(104, 131)
+        Me.lcpayment.Location = New System.Drawing.Point(104, 155)
         Me.lcpayment.MenuManager = Me.RibbonControl1
         Me.lcpayment.Name = "lcpayment"
         Me.lcpayment.Properties.ReadOnly = True
-        Me.lcpayment.Size = New System.Drawing.Size(277, 20)
+        Me.lcpayment.Size = New System.Drawing.Size(289, 20)
         Me.lcpayment.StyleController = Me.LayoutControl7
         Me.lcpayment.TabIndex = 9
-        '
-        'txtdates
-        '
-        Me.txtdates.EditValue = Nothing
-        Me.txtdates.Location = New System.Drawing.Point(104, 12)
-        Me.txtdates.MenuManager = Me.RibbonControl1
-        Me.txtdates.Name = "txtdates"
-        Me.txtdates.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtdates.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtdates.Properties.CalendarTimeProperties.CloseUpKey = New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F4)
-        Me.txtdates.Properties.CalendarTimeProperties.PopupBorderStyle = DevExpress.XtraEditors.Controls.PopupBorderStyles.[Default]
-        Me.txtdates.Size = New System.Drawing.Size(277, 20)
-        Me.txtdates.StyleController = Me.LayoutControl7
-        Me.txtdates.TabIndex = 9
         '
         'txtloan
         '
         Me.txtloan.Location = New System.Drawing.Point(104, 36)
         Me.txtloan.MenuManager = Me.RibbonControl1
         Me.txtloan.Name = "txtloan"
-        Me.txtloan.Size = New System.Drawing.Size(277, 20)
+        Me.txtloan.Size = New System.Drawing.Size(289, 20)
         Me.txtloan.StyleController = Me.LayoutControl7
         Me.txtloan.TabIndex = 4
         '
@@ -953,10 +1003,10 @@ Partial Class Payments
         Me.LayoutControlGroup7.CustomizationFormText = "LayoutControlGroup2"
         Me.LayoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup7.GroupBordersVisible = False
-        Me.LayoutControlGroup7.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem22, Me.lcpaymonth, Me.LayoutControlItem24, Me.lcmon, Me.LayoutControlItem26, Me.LayoutControlItem10, Me.LayoutControlItem18})
+        Me.LayoutControlGroup7.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem22, Me.lcpaymonth, Me.lcmon, Me.LayoutControlItem26, Me.LayoutControlItem10, Me.LayoutControlItem1, Me.LayoutControlItem18})
         Me.LayoutControlGroup7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup7.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup7.Size = New System.Drawing.Size(393, 187)
+        Me.LayoutControlGroup7.Size = New System.Drawing.Size(405, 187)
         Me.LayoutControlGroup7.Text = "LayoutControlGroup2"
         Me.LayoutControlGroup7.TextVisible = False
         '
@@ -966,7 +1016,7 @@ Partial Class Payments
         Me.LayoutControlItem22.CustomizationFormText = "Amount of loan :"
         Me.LayoutControlItem22.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem22.Name = "lcamount"
-        Me.LayoutControlItem22.Size = New System.Drawing.Size(373, 24)
+        Me.LayoutControlItem22.Size = New System.Drawing.Size(385, 24)
         Me.LayoutControlItem22.Text = "Amount of loan :"
         Me.LayoutControlItem22.TextSize = New System.Drawing.Size(89, 13)
         '
@@ -974,21 +1024,11 @@ Partial Class Payments
         '
         Me.lcpaymonth.Control = Me.lcpayment
         Me.lcpaymonth.CustomizationFormText = "Completed on :"
-        Me.lcpaymonth.Location = New System.Drawing.Point(0, 119)
+        Me.lcpaymonth.Location = New System.Drawing.Point(0, 143)
         Me.lcpaymonth.Name = "lcpaymonth"
-        Me.lcpaymonth.Size = New System.Drawing.Size(373, 24)
+        Me.lcpaymonth.Size = New System.Drawing.Size(385, 24)
         Me.lcpaymonth.Text = "Payment / Month :"
         Me.lcpaymonth.TextSize = New System.Drawing.Size(89, 13)
-        '
-        'LayoutControlItem24
-        '
-        Me.LayoutControlItem24.Control = Me.txtdates
-        Me.LayoutControlItem24.CustomizationFormText = "Date :"
-        Me.LayoutControlItem24.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem24.Name = "lcdates"
-        Me.LayoutControlItem24.Size = New System.Drawing.Size(373, 24)
-        Me.LayoutControlItem24.Text = "Dates"
-        Me.LayoutControlItem24.TextSize = New System.Drawing.Size(89, 13)
         '
         'lcmon
         '
@@ -996,7 +1036,7 @@ Partial Class Payments
         Me.lcmon.CustomizationFormText = "LayoutControlItem26"
         Me.lcmon.Location = New System.Drawing.Point(0, 48)
         Me.lcmon.Name = "lcmon"
-        Me.lcmon.Size = New System.Drawing.Size(373, 24)
+        Me.lcmon.Size = New System.Drawing.Size(385, 24)
         Me.lcmon.Text = "Months"
         Me.lcmon.TextSize = New System.Drawing.Size(89, 13)
         '
@@ -1006,7 +1046,7 @@ Partial Class Payments
         Me.LayoutControlItem26.CustomizationFormText = "LayoutControlItem26"
         Me.LayoutControlItem26.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem26.Name = "LayoutControlItem26"
-        Me.LayoutControlItem26.Size = New System.Drawing.Size(373, 23)
+        Me.LayoutControlItem26.Size = New System.Drawing.Size(385, 23)
         Me.LayoutControlItem26.Text = "LayoutControlItem26"
         Me.LayoutControlItem26.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem26.TextToControlDistance = 0
@@ -1018,18 +1058,28 @@ Partial Class Payments
         Me.LayoutControlItem10.CustomizationFormText = "Month"
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 95)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(373, 24)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(385, 24)
         Me.LayoutControlItem10.Text = "Month"
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(89, 13)
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.txtdates
+        Me.LayoutControlItem1.CustomizationFormText = "Dates"
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(385, 24)
+        Me.LayoutControlItem1.Text = "Dates"
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(89, 13)
         '
         'LayoutControlItem18
         '
         Me.LayoutControlItem18.Control = Me.txtcompletedon1
         Me.LayoutControlItem18.CustomizationFormText = "Completed On"
-        Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 143)
+        Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 119)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(373, 24)
-        Me.LayoutControlItem18.Text = "Completed On"
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(385, 24)
+        Me.LayoutControlItem18.Text = "Completed"
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(89, 13)
         '
         'XtraTabPage5
@@ -1340,6 +1390,7 @@ Partial Class Payments
         '
         'LayoutControl2
         '
+        Me.LayoutControl2.Controls.Add(Me.txtgol)
         Me.LayoutControl2.Controls.Add(Me.txtwajibpajak)
         Me.LayoutControl2.Controls.Add(Me.txtnpwp)
         Me.LayoutControl2.Controls.Add(Me.txttransport)
@@ -1350,13 +1401,22 @@ Partial Class Payments
         Me.LayoutControl2.Location = New System.Drawing.Point(2, 81)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.Root = Me.LayoutControlGroup2
-        Me.LayoutControl2.Size = New System.Drawing.Size(244, 190)
+        Me.LayoutControl2.Size = New System.Drawing.Size(244, 216)
         Me.LayoutControl2.TabIndex = 16
         Me.LayoutControl2.Text = "LayoutControl2"
         '
+        'txtgol
+        '
+        Me.txtgol.Location = New System.Drawing.Point(105, 12)
+        Me.txtgol.MenuManager = Me.RibbonControl1
+        Me.txtgol.Name = "txtgol"
+        Me.txtgol.Size = New System.Drawing.Size(127, 20)
+        Me.txtgol.StyleController = Me.LayoutControl2
+        Me.txtgol.TabIndex = 17
+        '
         'txtwajibpajak
         '
-        Me.txtwajibpajak.Location = New System.Drawing.Point(105, 12)
+        Me.txtwajibpajak.Location = New System.Drawing.Point(105, 36)
         Me.txtwajibpajak.MenuManager = Me.RibbonControl1
         Me.txtwajibpajak.Name = "txtwajibpajak"
         Me.txtwajibpajak.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -1367,7 +1427,7 @@ Partial Class Payments
         '
         'txtnpwp
         '
-        Me.txtnpwp.Location = New System.Drawing.Point(105, 36)
+        Me.txtnpwp.Location = New System.Drawing.Point(105, 60)
         Me.txtnpwp.MenuManager = Me.RibbonControl1
         Me.txtnpwp.Name = "txtnpwp"
         Me.txtnpwp.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -1378,7 +1438,7 @@ Partial Class Payments
         '
         'txttransport
         '
-        Me.txttransport.Location = New System.Drawing.Point(105, 156)
+        Me.txttransport.Location = New System.Drawing.Point(105, 180)
         Me.txttransport.MenuManager = Me.RibbonControl1
         Me.txttransport.Name = "txttransport"
         Me.txttransport.Size = New System.Drawing.Size(127, 20)
@@ -1387,7 +1447,7 @@ Partial Class Payments
         '
         'txtmealrate
         '
-        Me.txtmealrate.Location = New System.Drawing.Point(105, 132)
+        Me.txtmealrate.Location = New System.Drawing.Point(105, 156)
         Me.txtmealrate.MenuManager = Me.RibbonControl1
         Me.txtmealrate.Name = "txtmealrate"
         Me.txtmealrate.Size = New System.Drawing.Size(127, 20)
@@ -1396,7 +1456,7 @@ Partial Class Payments
         '
         'txtincentives
         '
-        Me.txtincentives.Location = New System.Drawing.Point(105, 108)
+        Me.txtincentives.Location = New System.Drawing.Point(105, 132)
         Me.txtincentives.MenuManager = Me.RibbonControl1
         Me.txtincentives.Name = "txtincentives"
         Me.txtincentives.Size = New System.Drawing.Size(127, 20)
@@ -1405,7 +1465,7 @@ Partial Class Payments
         '
         'txtallowance
         '
-        Me.txtallowance.Location = New System.Drawing.Point(105, 84)
+        Me.txtallowance.Location = New System.Drawing.Point(105, 108)
         Me.txtallowance.MenuManager = Me.RibbonControl1
         Me.txtallowance.Name = "txtallowance"
         Me.txtallowance.Size = New System.Drawing.Size(127, 20)
@@ -1414,7 +1474,7 @@ Partial Class Payments
         '
         'txtbasicrate
         '
-        Me.txtbasicrate.Location = New System.Drawing.Point(105, 60)
+        Me.txtbasicrate.Location = New System.Drawing.Point(105, 84)
         Me.txtbasicrate.MenuManager = Me.RibbonControl1
         Me.txtbasicrate.Name = "txtbasicrate"
         Me.txtbasicrate.Size = New System.Drawing.Size(127, 20)
@@ -1426,10 +1486,10 @@ Partial Class Payments
         Me.LayoutControlGroup2.CustomizationFormText = "LayoutControlGroup2"
         Me.LayoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup2.GroupBordersVisible = False
-        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.LayoutControlItem13, Me.LayoutControlItem14})
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.LayoutControlItem13, Me.LayoutControlItem14, Me.LayoutControlItem15})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(244, 190)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(244, 216)
         Me.LayoutControlGroup2.Text = "LayoutControlGroup2"
         Me.LayoutControlGroup2.TextVisible = False
         '
@@ -1437,7 +1497,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem7.Control = Me.txtbasicrate
         Me.LayoutControlItem7.CustomizationFormText = "Basic Rate"
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 48)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
         Me.LayoutControlItem7.Size = New System.Drawing.Size(224, 24)
         Me.LayoutControlItem7.Text = "Basic Salary"
@@ -1447,7 +1507,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem8.Control = Me.txtallowance
         Me.LayoutControlItem8.CustomizationFormText = "Allowance"
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 72)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
         Me.LayoutControlItem8.Size = New System.Drawing.Size(224, 24)
         Me.LayoutControlItem8.Text = "Allowance"
@@ -1457,7 +1517,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem9.Control = Me.txtincentives
         Me.LayoutControlItem9.CustomizationFormText = "Incentives"
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 96)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
         Me.LayoutControlItem9.Size = New System.Drawing.Size(224, 24)
         Me.LayoutControlItem9.Text = "Incentives"
@@ -1467,7 +1527,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem11.Control = Me.txtmealrate
         Me.LayoutControlItem11.CustomizationFormText = "Meal Rate"
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 120)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 144)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
         Me.LayoutControlItem11.Size = New System.Drawing.Size(224, 24)
         Me.LayoutControlItem11.Text = "Meal Money"
@@ -1477,9 +1537,9 @@ Partial Class Payments
         '
         Me.LayoutControlItem12.Control = Me.txttransport
         Me.LayoutControlItem12.CustomizationFormText = "Transport"
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 144)
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(224, 26)
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(224, 28)
         Me.LayoutControlItem12.Text = "Transport"
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(90, 13)
         '
@@ -1487,21 +1547,33 @@ Partial Class Payments
         '
         Me.LayoutControlItem13.Control = Me.txtnpwp
         Me.LayoutControlItem13.CustomizationFormText = "Memiliki NPWP"
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 24)
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
         Me.LayoutControlItem13.Size = New System.Drawing.Size(224, 24)
         Me.LayoutControlItem13.Text = "NPWP"
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(90, 13)
+        Me.LayoutControlItem13.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem14
         '
         Me.LayoutControlItem14.Control = Me.txtwajibpajak
         Me.LayoutControlItem14.CustomizationFormText = "Status Wajib Pajak"
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
         Me.LayoutControlItem14.Size = New System.Drawing.Size(224, 24)
         Me.LayoutControlItem14.Text = "Status Wajib Pajak"
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(90, 13)
+        Me.LayoutControlItem14.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
+        'LayoutControlItem15
+        '
+        Me.LayoutControlItem15.Control = Me.txtgol
+        Me.LayoutControlItem15.CustomizationFormText = "Golongan"
+        Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem15.Name = "LayoutControlItem15"
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(224, 24)
+        Me.LayoutControlItem15.Text = "Golongan"
+        Me.LayoutControlItem15.TextSize = New System.Drawing.Size(90, 13)
         '
         'btnapp1
         '
@@ -1878,6 +1950,7 @@ Partial Class Payments
         '
         'LayoutControl10
         '
+        Me.LayoutControl10.Controls.Add(Me.txtgol1)
         Me.LayoutControl10.Controls.Add(Me.txtwp1)
         Me.LayoutControl10.Controls.Add(Me.txtnpwp1)
         Me.LayoutControl10.Controls.Add(Me.txttransport1)
@@ -1888,9 +1961,18 @@ Partial Class Payments
         Me.LayoutControl10.Location = New System.Drawing.Point(4, 83)
         Me.LayoutControl10.Name = "LayoutControl10"
         Me.LayoutControl10.Root = Me.LayoutControlGroup10
-        Me.LayoutControl10.Size = New System.Drawing.Size(243, 191)
+        Me.LayoutControl10.Size = New System.Drawing.Size(243, 215)
         Me.LayoutControl10.TabIndex = 16
         Me.LayoutControl10.Text = "LayoutControl10"
+        '
+        'txtgol1
+        '
+        Me.txtgol1.Location = New System.Drawing.Point(105, 60)
+        Me.txtgol1.MenuManager = Me.RibbonControl1
+        Me.txtgol1.Name = "txtgol1"
+        Me.txtgol1.Size = New System.Drawing.Size(126, 20)
+        Me.txtgol1.StyleController = Me.LayoutControl10
+        Me.txtgol1.TabIndex = 16
         '
         'txtwp1
         '
@@ -1916,7 +1998,7 @@ Partial Class Payments
         '
         'txttransport1
         '
-        Me.txttransport1.Location = New System.Drawing.Point(105, 156)
+        Me.txttransport1.Location = New System.Drawing.Point(105, 180)
         Me.txttransport1.MenuManager = Me.RibbonControl1
         Me.txttransport1.Name = "txttransport1"
         Me.txttransport1.Size = New System.Drawing.Size(126, 20)
@@ -1925,7 +2007,7 @@ Partial Class Payments
         '
         'txtmealrate1
         '
-        Me.txtmealrate1.Location = New System.Drawing.Point(105, 132)
+        Me.txtmealrate1.Location = New System.Drawing.Point(105, 156)
         Me.txtmealrate1.MenuManager = Me.RibbonControl1
         Me.txtmealrate1.Name = "txtmealrate1"
         Me.txtmealrate1.Size = New System.Drawing.Size(126, 20)
@@ -1934,7 +2016,7 @@ Partial Class Payments
         '
         'txtincentives1
         '
-        Me.txtincentives1.Location = New System.Drawing.Point(105, 108)
+        Me.txtincentives1.Location = New System.Drawing.Point(105, 132)
         Me.txtincentives1.MenuManager = Me.RibbonControl1
         Me.txtincentives1.Name = "txtincentives1"
         Me.txtincentives1.Size = New System.Drawing.Size(126, 20)
@@ -1943,7 +2025,7 @@ Partial Class Payments
         '
         'txtallowance1
         '
-        Me.txtallowance1.Location = New System.Drawing.Point(105, 84)
+        Me.txtallowance1.Location = New System.Drawing.Point(105, 108)
         Me.txtallowance1.MenuManager = Me.RibbonControl1
         Me.txtallowance1.Name = "txtallowance1"
         Me.txtallowance1.Size = New System.Drawing.Size(126, 20)
@@ -1952,7 +2034,7 @@ Partial Class Payments
         '
         'txtbasicrate1
         '
-        Me.txtbasicrate1.Location = New System.Drawing.Point(105, 60)
+        Me.txtbasicrate1.Location = New System.Drawing.Point(105, 84)
         Me.txtbasicrate1.MenuManager = Me.RibbonControl1
         Me.txtbasicrate1.Name = "txtbasicrate1"
         Me.txtbasicrate1.Size = New System.Drawing.Size(126, 20)
@@ -1964,10 +2046,10 @@ Partial Class Payments
         Me.LayoutControlGroup10.CustomizationFormText = "LayoutControlGroup2"
         Me.LayoutControlGroup10.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup10.GroupBordersVisible = False
-        Me.LayoutControlGroup10.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem46, Me.LayoutControlItem47, Me.LayoutControlItem48, Me.LayoutControlItem49, Me.LayoutControlItem50, Me.LayoutControlItem51, Me.LayoutControlItem52})
+        Me.LayoutControlGroup10.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem46, Me.LayoutControlItem47, Me.LayoutControlItem48, Me.LayoutControlItem49, Me.LayoutControlItem50, Me.LayoutControlItem51, Me.LayoutControlItem52, Me.LayoutControlItem16})
         Me.LayoutControlGroup10.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup10.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup10.Size = New System.Drawing.Size(243, 191)
+        Me.LayoutControlGroup10.Size = New System.Drawing.Size(243, 215)
         Me.LayoutControlGroup10.Text = "LayoutControlGroup2"
         Me.LayoutControlGroup10.TextVisible = False
         '
@@ -1975,7 +2057,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem46.Control = Me.txtbasicrate1
         Me.LayoutControlItem46.CustomizationFormText = "Basic Rate"
-        Me.LayoutControlItem46.Location = New System.Drawing.Point(0, 48)
+        Me.LayoutControlItem46.Location = New System.Drawing.Point(0, 72)
         Me.LayoutControlItem46.Name = "LayoutControlItem7"
         Me.LayoutControlItem46.Size = New System.Drawing.Size(223, 24)
         Me.LayoutControlItem46.Text = "Basic Salary"
@@ -1985,7 +2067,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem47.Control = Me.txtallowance1
         Me.LayoutControlItem47.CustomizationFormText = "Allowance"
-        Me.LayoutControlItem47.Location = New System.Drawing.Point(0, 72)
+        Me.LayoutControlItem47.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem47.Name = "LayoutControlItem8"
         Me.LayoutControlItem47.Size = New System.Drawing.Size(223, 24)
         Me.LayoutControlItem47.Text = "Allowance"
@@ -1995,7 +2077,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem48.Control = Me.txtincentives1
         Me.LayoutControlItem48.CustomizationFormText = "Incentives"
-        Me.LayoutControlItem48.Location = New System.Drawing.Point(0, 96)
+        Me.LayoutControlItem48.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem48.Name = "LayoutControlItem9"
         Me.LayoutControlItem48.Size = New System.Drawing.Size(223, 24)
         Me.LayoutControlItem48.Text = "Incentives"
@@ -2005,7 +2087,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem49.Control = Me.txtmealrate1
         Me.LayoutControlItem49.CustomizationFormText = "Meal Rate"
-        Me.LayoutControlItem49.Location = New System.Drawing.Point(0, 120)
+        Me.LayoutControlItem49.Location = New System.Drawing.Point(0, 144)
         Me.LayoutControlItem49.Name = "LayoutControlItem11"
         Me.LayoutControlItem49.Size = New System.Drawing.Size(223, 24)
         Me.LayoutControlItem49.Text = "Meal Money"
@@ -2015,7 +2097,7 @@ Partial Class Payments
         '
         Me.LayoutControlItem50.Control = Me.txttransport1
         Me.LayoutControlItem50.CustomizationFormText = "Transport"
-        Me.LayoutControlItem50.Location = New System.Drawing.Point(0, 144)
+        Me.LayoutControlItem50.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem50.Name = "LayoutControlItem12"
         Me.LayoutControlItem50.Size = New System.Drawing.Size(223, 27)
         Me.LayoutControlItem50.Text = "Transport"
@@ -2030,6 +2112,7 @@ Partial Class Payments
         Me.LayoutControlItem51.Size = New System.Drawing.Size(223, 24)
         Me.LayoutControlItem51.Text = "NPWP"
         Me.LayoutControlItem51.TextSize = New System.Drawing.Size(90, 13)
+        Me.LayoutControlItem51.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem52
         '
@@ -2040,6 +2123,17 @@ Partial Class Payments
         Me.LayoutControlItem52.Size = New System.Drawing.Size(223, 24)
         Me.LayoutControlItem52.Text = "Status Wajib Pajak"
         Me.LayoutControlItem52.TextSize = New System.Drawing.Size(90, 13)
+        Me.LayoutControlItem52.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
+        'LayoutControlItem16
+        '
+        Me.LayoutControlItem16.Control = Me.txtgol1
+        Me.LayoutControlItem16.CustomizationFormText = "Golongan"
+        Me.LayoutControlItem16.Location = New System.Drawing.Point(0, 48)
+        Me.LayoutControlItem16.Name = "LayoutControlItem16"
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem16.Text = "Golongan"
+        Me.LayoutControlItem16.TextSize = New System.Drawing.Size(90, 13)
         '
         'LayoutControl11
         '
@@ -2103,225 +2197,6 @@ Partial Class Payments
         Me.LayoutControlItem55.Size = New System.Drawing.Size(222, 24)
         Me.LayoutControlItem55.Text = "Employee Name :"
         Me.LayoutControlItem55.TextSize = New System.Drawing.Size(83, 13)
-        '
-        'XtraTabPage4
-        '
-        Me.XtraTabPage4.Controls.Add(Me.GridControl5)
-        Me.XtraTabPage4.Controls.Add(Me.GroupControl4)
-        Me.XtraTabPage4.Name = "XtraTabPage4"
-        Me.XtraTabPage4.Size = New System.Drawing.Size(869, 337)
-        Me.XtraTabPage4.Text = "Rapel"
-        '
-        'GridControl5
-        '
-        Me.GridControl5.Location = New System.Drawing.Point(243, 0)
-        Me.GridControl5.MainView = Me.GridView5
-        Me.GridControl5.MenuManager = Me.RibbonControl1
-        Me.GridControl5.Name = "GridControl5"
-        Me.GridControl5.Size = New System.Drawing.Size(622, 330)
-        Me.GridControl5.TabIndex = 20
-        Me.GridControl5.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView5})
-        '
-        'GridView5
-        '
-        Me.GridView5.GridControl = Me.GridControl5
-        Me.GridView5.Name = "GridView5"
-        Me.GridView5.OptionsFind.AlwaysVisible = True
-        Me.GridView5.OptionsView.ColumnAutoWidth = False
-        Me.GridView5.PaintStyleName = "Office2003"
-        '
-        'GroupControl4
-        '
-        Me.GroupControl4.Controls.Add(Me.SimpleButton9)
-        Me.GroupControl4.Controls.Add(Me.LayoutControl3)
-        Me.GroupControl4.Controls.Add(Me.XtraTabControl4)
-        Me.GroupControl4.Location = New System.Drawing.Point(2, 3)
-        Me.GroupControl4.Name = "GroupControl4"
-        Me.GroupControl4.Size = New System.Drawing.Size(244, 324)
-        Me.GroupControl4.TabIndex = 16
-        Me.GroupControl4.Text = "Rapel"
-        '
-        'SimpleButton9
-        '
-        Me.SimpleButton9.Image = CType(resources.GetObject("SimpleButton9.Image"), System.Drawing.Image)
-        Me.SimpleButton9.Location = New System.Drawing.Point(218, 34)
-        Me.SimpleButton9.Name = "SimpleButton9"
-        Me.SimpleButton9.Size = New System.Drawing.Size(23, 23)
-        Me.SimpleButton9.TabIndex = 15
-        '
-        'LayoutControl3
-        '
-        Me.LayoutControl3.Controls.Add(Me.txtuntil)
-        Me.LayoutControl3.Controls.Add(Me.txteffective)
-        Me.LayoutControl3.Controls.Add(Me.SimpleButton1)
-        Me.LayoutControl3.Controls.Add(Me.txtname3)
-        Me.LayoutControl3.Controls.Add(Me.txtrapel)
-        Me.LayoutControl3.Controls.Add(Me.txtempcode3)
-        Me.LayoutControl3.Location = New System.Drawing.Point(2, 24)
-        Me.LayoutControl3.Name = "LayoutControl3"
-        Me.LayoutControl3.Root = Me.LayoutControlGroup3
-        Me.LayoutControl3.Size = New System.Drawing.Size(226, 185)
-        Me.LayoutControl3.TabIndex = 14
-        Me.LayoutControl3.Text = "LayoutControl3"
-        '
-        'txtuntil
-        '
-        Me.txtuntil.Location = New System.Drawing.Point(98, 108)
-        Me.txtuntil.Name = "txtuntil"
-        Me.txtuntil.Size = New System.Drawing.Size(116, 21)
-        Me.txtuntil.TabIndex = 16
-        '
-        'txteffective
-        '
-        Me.txteffective.Location = New System.Drawing.Point(98, 84)
-        Me.txteffective.Name = "txteffective"
-        Me.txteffective.Size = New System.Drawing.Size(116, 21)
-        Me.txteffective.TabIndex = 15
-        '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(12, 132)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(202, 38)
-        Me.SimpleButton1.StyleController = Me.LayoutControl3
-        Me.SimpleButton1.TabIndex = 14
-        Me.SimpleButton1.Text = "Proccess Now"
-        '
-        'txtname3
-        '
-        Me.txtname3.Location = New System.Drawing.Point(98, 12)
-        Me.txtname3.MenuManager = Me.RibbonControl1
-        Me.txtname3.Name = "txtname3"
-        Me.txtname3.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtname3.Size = New System.Drawing.Size(116, 20)
-        Me.txtname3.StyleController = Me.LayoutControl3
-        Me.txtname3.TabIndex = 7
-        '
-        'txtrapel
-        '
-        Me.txtrapel.Location = New System.Drawing.Point(98, 60)
-        Me.txtrapel.MenuManager = Me.RibbonControl1
-        Me.txtrapel.Name = "txtrapel"
-        Me.txtrapel.Size = New System.Drawing.Size(116, 20)
-        Me.txtrapel.StyleController = Me.LayoutControl3
-        Me.txtrapel.TabIndex = 6
-        '
-        'txtempcode3
-        '
-        Me.txtempcode3.Location = New System.Drawing.Point(98, 36)
-        Me.txtempcode3.MenuManager = Me.RibbonControl1
-        Me.txtempcode3.Name = "txtempcode3"
-        Me.txtempcode3.Properties.ReadOnly = True
-        Me.txtempcode3.Size = New System.Drawing.Size(116, 20)
-        Me.txtempcode3.StyleController = Me.LayoutControl3
-        Me.txtempcode3.TabIndex = 5
-        '
-        'LayoutControlGroup3
-        '
-        Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup1"
-        Me.LayoutControlGroup3.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
-        Me.LayoutControlGroup3.GroupBordersVisible = False
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.lcrapel, Me.LayoutControlItem4, Me.LayoutControlItem15, Me.LayoutControlItem1, Me.LayoutControlItem16})
-        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlGroup3.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(226, 185)
-        Me.LayoutControlGroup3.Text = "LayoutControlGroup1"
-        Me.LayoutControlGroup3.TextVisible = False
-        '
-        'LayoutControlItem2
-        '
-        Me.LayoutControlItem2.Control = Me.txtempcode3
-        Me.LayoutControlItem2.CustomizationFormText = "Employee Code :"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 24)
-        Me.LayoutControlItem2.Name = "lcempcode"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(206, 24)
-        Me.LayoutControlItem2.Text = "Employee Code :"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(83, 13)
-        '
-        'lcrapel
-        '
-        Me.lcrapel.Control = Me.txtrapel
-        Me.lcrapel.CustomizationFormText = "Approved by :"
-        Me.lcrapel.Location = New System.Drawing.Point(0, 48)
-        Me.lcrapel.Name = "lcrapel"
-        Me.lcrapel.Size = New System.Drawing.Size(206, 24)
-        Me.lcrapel.Text = "Amount :"
-        Me.lcrapel.TextSize = New System.Drawing.Size(83, 13)
-        '
-        'LayoutControlItem4
-        '
-        Me.LayoutControlItem4.Control = Me.txtname3
-        Me.LayoutControlItem4.CustomizationFormText = "Employee Name :"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem4.Name = "lcname"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(206, 24)
-        Me.LayoutControlItem4.Text = "Employee Name :"
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(83, 13)
-        '
-        'LayoutControlItem15
-        '
-        Me.LayoutControlItem15.Control = Me.SimpleButton1
-        Me.LayoutControlItem15.CustomizationFormText = "LayoutControlItem15"
-        Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 120)
-        Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(206, 45)
-        Me.LayoutControlItem15.Text = "LayoutControlItem15"
-        Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem15.TextToControlDistance = 0
-        Me.LayoutControlItem15.TextVisible = False
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.txteffective
-        Me.LayoutControlItem1.CustomizationFormText = "Effective Since :"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 72)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(206, 24)
-        Me.LayoutControlItem1.Text = "Effective Since :"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(83, 13)
-        '
-        'LayoutControlItem16
-        '
-        Me.LayoutControlItem16.Control = Me.txtuntil
-        Me.LayoutControlItem16.CustomizationFormText = "Until :"
-        Me.LayoutControlItem16.Location = New System.Drawing.Point(0, 96)
-        Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(206, 24)
-        Me.LayoutControlItem16.Text = "Until :"
-        Me.LayoutControlItem16.TextSize = New System.Drawing.Size(83, 13)
-        '
-        'XtraTabControl4
-        '
-        Me.XtraTabControl4.Location = New System.Drawing.Point(241, 1)
-        Me.XtraTabControl4.Name = "XtraTabControl4"
-        Me.XtraTabControl4.SelectedTabPage = Me.XtraTabPage9
-        Me.XtraTabControl4.Size = New System.Drawing.Size(606, 320)
-        Me.XtraTabControl4.TabIndex = 13
-        Me.XtraTabControl4.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage9})
-        '
-        'XtraTabPage9
-        '
-        Me.XtraTabPage9.Controls.Add(Me.GridControl3)
-        Me.XtraTabPage9.Name = "XtraTabPage9"
-        Me.XtraTabPage9.Size = New System.Drawing.Size(600, 292)
-        Me.XtraTabPage9.Text = "Rapel History"
-        '
-        'GridControl3
-        '
-        Me.GridControl3.Location = New System.Drawing.Point(9, 3)
-        Me.GridControl3.MainView = Me.GridView3
-        Me.GridControl3.MenuManager = Me.RibbonControl1
-        Me.GridControl3.Name = "GridControl3"
-        Me.GridControl3.Size = New System.Drawing.Size(464, 275)
-        Me.GridControl3.TabIndex = 0
-        Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView3})
-        '
-        'GridView3
-        '
-        Me.GridView3.GridControl = Me.GridControl3
-        Me.GridView3.Name = "GridView3"
-        Me.GridView3.OptionsFind.AlwaysVisible = True
         '
         'XtraTabPage6
         '
@@ -2469,8 +2344,134 @@ Partial Class Payments
         'Timer1
         '
         '
-        'Timer2
+        'GroupControl4
         '
+        Me.GroupControl4.Controls.Add(Me.TextBox5)
+        Me.GroupControl4.Controls.Add(Me.TextBox4)
+        Me.GroupControl4.Controls.Add(Me.TextBox3)
+        Me.GroupControl4.Controls.Add(Me.TextBox2)
+        Me.GroupControl4.Controls.Add(Me.TextBox1)
+        Me.GroupControl4.Location = New System.Drawing.Point(792, 44)
+        Me.GroupControl4.Name = "GroupControl4"
+        Me.GroupControl4.Size = New System.Drawing.Size(27, 100)
+        Me.GroupControl4.TabIndex = 16
+        Me.GroupControl4.Text = "GroupControl4"
+        Me.GroupControl4.Visible = False
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(24, 65)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox5.TabIndex = 4
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(8, 43)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox4.TabIndex = 3
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(130, 43)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox3.TabIndex = 2
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(130, 16)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox2.TabIndex = 1
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(8, 16)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox1.TabIndex = 0
+        '
+        'GroupControl6
+        '
+        Me.GroupControl6.Controls.Add(Me.TextBox12)
+        Me.GroupControl6.Controls.Add(Me.TextBox11)
+        Me.GroupControl6.Controls.Add(Me.TextBox10)
+        Me.GroupControl6.Controls.Add(Me.TextBox9)
+        Me.GroupControl6.Controls.Add(Me.TextBox8)
+        Me.GroupControl6.Controls.Add(Me.TextBox7)
+        Me.GroupControl6.Controls.Add(Me.TextBox6)
+        Me.GroupControl6.Location = New System.Drawing.Point(739, 12)
+        Me.GroupControl6.Name = "GroupControl6"
+        Me.GroupControl6.Size = New System.Drawing.Size(75, 103)
+        Me.GroupControl6.TabIndex = 17
+        Me.GroupControl6.Text = "GroupControl6"
+        '
+        'TextBox12
+        '
+        Me.TextBox12.Location = New System.Drawing.Point(88, 40)
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox12.TabIndex = 6
+        '
+        'TextBox11
+        '
+        Me.TextBox11.Location = New System.Drawing.Point(13, 40)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox11.TabIndex = 5
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Location = New System.Drawing.Point(24, 57)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox10.TabIndex = 4
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(24, 42)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox9.TabIndex = 3
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New System.Drawing.Point(74, 15)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox8.TabIndex = 2
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(74, 75)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox7.TabIndex = 1
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(0, 0)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(100, 21)
+        Me.TextBox6.TabIndex = 0
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(540, 25)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 19
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
+        '
+        'ImageCollection1
+        '
+        Me.ImageCollection1.ImageStream = CType(resources.GetObject("ImageCollection1.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
+        Me.ImageCollection1.InsertGalleryImage("groupfooter_16x16.png", "images/reports/groupfooter_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/reports/groupfooter_16x16.png"), 0)
+        Me.ImageCollection1.Images.SetKeyName(0, "groupfooter_16x16.png")
         '
         'Payments
         '
@@ -2478,6 +2479,9 @@ Partial Class Payments
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.ClientSize = New System.Drawing.Size(871, 501)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.GroupControl6)
+        Me.Controls.Add(Me.GroupControl4)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.XtraTabControl2)
         Me.Controls.Add(Me.RibbonControl1)
@@ -2493,13 +2497,11 @@ Partial Class Payments
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.txtname.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtapproved.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtempcode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcempcode, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcapproved, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcname, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControl1.ResumeLayout(False)
         Me.XtraTabPage2.ResumeLayout(False)
@@ -2521,21 +2523,20 @@ Partial Class Payments
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl3.ResumeLayout(False)
         Me.GroupControl3.PerformLayout()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl7.ResumeLayout(False)
         CType(Me.CheckEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtrangemon.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcpayment.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtdates.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtdates.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtloan.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcpaymonth, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcmon, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage5.ResumeLayout(False)
         CType(Me.XtraTabControl3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2569,6 +2570,7 @@ Partial Class Payments
         CType(Me.LayoutControlItem35, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
+        CType(Me.txtgol.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtwajibpajak.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtnpwp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txttransport.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2584,6 +2586,7 @@ Partial Class Payments
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl4.ResumeLayout(False)
         CType(Me.txtname1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2620,6 +2623,7 @@ Partial Class Payments
         CType(Me.LayoutControlItem45, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl10.ResumeLayout(False)
+        CType(Me.txtgol1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtwp1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtnpwp1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txttransport1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2635,6 +2639,7 @@ Partial Class Payments
         CType(Me.LayoutControlItem50, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem51, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem52, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl11, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl11.ResumeLayout(False)
         CType(Me.txtname2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2642,34 +2647,19 @@ Partial Class Payments
         CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem53, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem55, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.XtraTabPage4.ResumeLayout(False)
-        CType(Me.GridControl5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupControl4.ResumeLayout(False)
-        CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.LayoutControl3.ResumeLayout(False)
-        CType(Me.txtname3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtrapel.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtempcode3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcrapel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XtraTabControl4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.XtraTabControl4.ResumeLayout(False)
-        Me.XtraTabPage9.ResumeLayout(False)
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage6.ResumeLayout(False)
         CType(Me.GridControl6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl5.ResumeLayout(False)
         Me.GroupControl5.PerformLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl4.ResumeLayout(False)
+        Me.GroupControl4.PerformLayout()
+        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl6.ResumeLayout(False)
+        Me.GroupControl6.PerformLayout()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2681,13 +2671,9 @@ Partial Class Payments
     Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents txtname As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents txtapproved As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtempcode As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents lcempcode As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcapproved As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcname As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents XtraTabPage2 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
@@ -2695,7 +2681,6 @@ Partial Class Payments
     Friend WithEvents XtraTabControl2 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents XtraTabPage3 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents btnApp As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents XtraTabPage4 As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents barJudul As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup3 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
@@ -2704,22 +2689,16 @@ Partial Class Payments
     Friend WithEvents btnapp1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControl7 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents lcpayment As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtdates As DevExpress.XtraEditors.DateEdit
     Friend WithEvents txtloan As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlGroup7 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem22 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcpaymonth As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem24 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControl4 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents txtname1 As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents txtempcode1 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlGroup4 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents XtraTabControl4 As DevExpress.XtraTab.XtraTabControl
-    Friend WithEvents XtraTabPage9 As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents GridControl3 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView3 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents BarButtonItem4 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup5 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents BarButtonItem5 As DevExpress.XtraBars.BarButtonItem
@@ -2821,13 +2800,10 @@ Partial Class Payments
     Friend WithEvents LayoutControlItem53 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem55 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridControl4 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView4 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridControl5 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView5 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents btnLookup As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControl14 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents txtloanname As DevExpress.XtraEditors.ComboBoxEdit
@@ -2856,16 +2832,6 @@ Partial Class Payments
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents date1 As DateTimePicker
-    Friend WithEvents LayoutControl3 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents txtname3 As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents txtrapel As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents txtempcode3 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcrapel As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SimpleButton5 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Button1 As Button
     Friend WithEvents Label5 As Label
@@ -2873,14 +2839,42 @@ Partial Class Payments
     Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents txtcompletedon1 As DateTimePicker
     Friend WithEvents LayoutControlItem18 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents txtuntil As DateTimePicker
-    Friend WithEvents txteffective As DateTimePicker
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SimpleButton9 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BarStaticItem1 As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents BarButtonItem9 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup4 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer2 As Timer
+    Friend WithEvents txtdates As DateTimePicker
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtname As TextBox
+    Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtempcode As TextBox
+    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtgol As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtgol1 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents BarButtonItem10 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup9 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents GroupControl6 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents TextBox10 As TextBox
+    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TextBox12 As TextBox
+    Friend WithEvents TextBox11 As TextBox
+    Friend WithEvents Button2 As Button
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
+    Friend WithEvents Label6 As Label
 End Class

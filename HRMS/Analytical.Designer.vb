@@ -65,6 +65,9 @@ Partial Class Analytical
         Me.btnFind = New DevExpress.XtraEditors.SimpleButton()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.BackstageViewControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewControl()
+        Me.BackstageViewClientControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
+        Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
         Me.ChartControl2 = New DevExpress.XtraCharts.ChartControl()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.label2 = New DevExpress.XtraEditors.LabelControl()
@@ -108,6 +111,7 @@ Partial Class Analytical
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BackstageViewControl1.SuspendLayout()
         CType(Me.ChartControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(RadarDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,11 +146,11 @@ Partial Class Analytical
         Me.LayoutControl1.Controls.Add(Me.txtidcard)
         Me.LayoutControl1.Controls.Add(Me.txtid)
         Me.LayoutControl1.Controls.Add(Me.txtnames)
-        Me.LayoutControl1.Location = New System.Drawing.Point(178, 239)
+        Me.LayoutControl1.Location = New System.Drawing.Point(206, 239)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(409, 411, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(243, 360)
+        Me.LayoutControl1.Size = New System.Drawing.Size(215, 360)
         Me.LayoutControl1.TabIndex = 13
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -154,7 +158,7 @@ Partial Class Analytical
         '
         Me.txtposition.Location = New System.Drawing.Point(93, 300)
         Me.txtposition.Name = "txtposition"
-        Me.txtposition.Size = New System.Drawing.Size(138, 20)
+        Me.txtposition.Size = New System.Drawing.Size(110, 20)
         Me.txtposition.StyleController = Me.LayoutControl1
         Me.txtposition.TabIndex = 40
         '
@@ -162,7 +166,7 @@ Partial Class Analytical
         '
         Me.txtexpsal.Location = New System.Drawing.Point(93, 324)
         Me.txtexpsal.Name = "txtexpsal"
-        Me.txtexpsal.Size = New System.Drawing.Size(138, 20)
+        Me.txtexpsal.Size = New System.Drawing.Size(110, 20)
         Me.txtexpsal.StyleController = Me.LayoutControl1
         Me.txtexpsal.TabIndex = 42
         '
@@ -170,7 +174,7 @@ Partial Class Analytical
         '
         Me.txtdob.Location = New System.Drawing.Point(93, 108)
         Me.txtdob.Name = "txtdob"
-        Me.txtdob.Size = New System.Drawing.Size(138, 21)
+        Me.txtdob.Size = New System.Drawing.Size(110, 21)
         Me.txtdob.TabIndex = 38
         '
         'txtage
@@ -178,7 +182,7 @@ Partial Class Analytical
         Me.txtage.EditValue = ""
         Me.txtage.Location = New System.Drawing.Point(93, 132)
         Me.txtage.Name = "txtage"
-        Me.txtage.Size = New System.Drawing.Size(138, 20)
+        Me.txtage.Size = New System.Drawing.Size(110, 20)
         Me.txtage.StyleController = Me.LayoutControl1
         Me.txtage.TabIndex = 37
         '
@@ -186,7 +190,7 @@ Partial Class Analytical
         '
         Me.txtgender.Location = New System.Drawing.Point(93, 156)
         Me.txtgender.Name = "txtgender"
-        Me.txtgender.Size = New System.Drawing.Size(138, 20)
+        Me.txtgender.Size = New System.Drawing.Size(110, 20)
         Me.txtgender.StyleController = Me.LayoutControl1
         Me.txtgender.TabIndex = 36
         '
@@ -194,7 +198,7 @@ Partial Class Analytical
         '
         Me.txtreligion.Location = New System.Drawing.Point(93, 180)
         Me.txtreligion.Name = "txtreligion"
-        Me.txtreligion.Size = New System.Drawing.Size(138, 20)
+        Me.txtreligion.Size = New System.Drawing.Size(110, 20)
         Me.txtreligion.StyleController = Me.LayoutControl1
         Me.txtreligion.TabIndex = 35
         '
@@ -202,7 +206,7 @@ Partial Class Analytical
         '
         Me.txtstatus.Location = New System.Drawing.Point(93, 276)
         Me.txtstatus.Name = "txtstatus"
-        Me.txtstatus.Size = New System.Drawing.Size(138, 20)
+        Me.txtstatus.Size = New System.Drawing.Size(110, 20)
         Me.txtstatus.StyleController = Me.LayoutControl1
         Me.txtstatus.TabIndex = 34
         '
@@ -210,7 +214,7 @@ Partial Class Analytical
         '
         Me.txtinterview.Location = New System.Drawing.Point(93, 60)
         Me.txtinterview.Name = "txtinterview"
-        Me.txtinterview.Size = New System.Drawing.Size(138, 20)
+        Me.txtinterview.Size = New System.Drawing.Size(110, 20)
         Me.txtinterview.StyleController = Me.LayoutControl1
         Me.txtinterview.TabIndex = 28
         '
@@ -219,7 +223,7 @@ Partial Class Analytical
         Me.txtphone.EditValue = ""
         Me.txtphone.Location = New System.Drawing.Point(93, 252)
         Me.txtphone.Name = "txtphone"
-        Me.txtphone.Size = New System.Drawing.Size(138, 20)
+        Me.txtphone.Size = New System.Drawing.Size(110, 20)
         Me.txtphone.StyleController = Me.LayoutControl1
         Me.txtphone.TabIndex = 13
         '
@@ -227,7 +231,7 @@ Partial Class Analytical
         '
         Me.txtaddress.Location = New System.Drawing.Point(93, 228)
         Me.txtaddress.Name = "txtaddress"
-        Me.txtaddress.Size = New System.Drawing.Size(138, 20)
+        Me.txtaddress.Size = New System.Drawing.Size(110, 20)
         Me.txtaddress.StyleController = Me.LayoutControl1
         Me.txtaddress.TabIndex = 10
         '
@@ -235,7 +239,7 @@ Partial Class Analytical
         '
         Me.txtpob.Location = New System.Drawing.Point(93, 84)
         Me.txtpob.Name = "txtpob"
-        Me.txtpob.Size = New System.Drawing.Size(138, 20)
+        Me.txtpob.Size = New System.Drawing.Size(110, 20)
         Me.txtpob.StyleController = Me.LayoutControl1
         Me.txtpob.TabIndex = 9
         '
@@ -243,7 +247,7 @@ Partial Class Analytical
         '
         Me.txtidcard.Location = New System.Drawing.Point(93, 204)
         Me.txtidcard.Name = "txtidcard"
-        Me.txtidcard.Size = New System.Drawing.Size(138, 20)
+        Me.txtidcard.Size = New System.Drawing.Size(110, 20)
         Me.txtidcard.StyleController = Me.LayoutControl1
         Me.txtidcard.TabIndex = 7
         '
@@ -251,7 +255,7 @@ Partial Class Analytical
         '
         Me.txtid.Location = New System.Drawing.Point(93, 36)
         Me.txtid.Name = "txtid"
-        Me.txtid.Size = New System.Drawing.Size(138, 20)
+        Me.txtid.Size = New System.Drawing.Size(110, 20)
         Me.txtid.StyleController = Me.LayoutControl1
         Me.txtid.TabIndex = 6
         '
@@ -259,7 +263,7 @@ Partial Class Analytical
         '
         Me.txtnames.Location = New System.Drawing.Point(93, 12)
         Me.txtnames.Name = "txtnames"
-        Me.txtnames.Size = New System.Drawing.Size(138, 20)
+        Me.txtnames.Size = New System.Drawing.Size(110, 20)
         Me.txtnames.StyleController = Me.LayoutControl1
         Me.txtnames.TabIndex = 5
         '
@@ -271,7 +275,7 @@ Partial Class Analytical
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcName, Me.lcid, Me.lcpob, Me.lcidcard, Me.lcaddress, Me.lcphone, Me.lcinterview, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.LayoutControlItem1, Me.LayoutControlItem7})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(243, 360)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(215, 360)
         Me.LayoutControlGroup1.Text = "LayoutControlGroup1"
         Me.LayoutControlGroup1.TextVisible = False
         '
@@ -281,7 +285,7 @@ Partial Class Analytical
         Me.lcName.CustomizationFormText = "Full Name"
         Me.lcName.Location = New System.Drawing.Point(0, 0)
         Me.lcName.Name = "lcName"
-        Me.lcName.Size = New System.Drawing.Size(223, 24)
+        Me.lcName.Size = New System.Drawing.Size(195, 24)
         Me.lcName.Text = "Full Name"
         Me.lcName.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -291,7 +295,7 @@ Partial Class Analytical
         Me.lcid.CustomizationFormText = "ID Rec"
         Me.lcid.Location = New System.Drawing.Point(0, 24)
         Me.lcid.Name = "lcid"
-        Me.lcid.Size = New System.Drawing.Size(223, 24)
+        Me.lcid.Size = New System.Drawing.Size(195, 24)
         Me.lcid.Text = "ID Rec"
         Me.lcid.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -301,7 +305,7 @@ Partial Class Analytical
         Me.lcpob.CustomizationFormText = "Place Of Birth"
         Me.lcpob.Location = New System.Drawing.Point(0, 72)
         Me.lcpob.Name = "lcpob"
-        Me.lcpob.Size = New System.Drawing.Size(223, 24)
+        Me.lcpob.Size = New System.Drawing.Size(195, 24)
         Me.lcpob.Text = "Place Of Birth"
         Me.lcpob.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -311,7 +315,7 @@ Partial Class Analytical
         Me.lcidcard.CustomizationFormText = "LayoutControlItem4"
         Me.lcidcard.Location = New System.Drawing.Point(0, 192)
         Me.lcidcard.Name = "lcidcard"
-        Me.lcidcard.Size = New System.Drawing.Size(223, 24)
+        Me.lcidcard.Size = New System.Drawing.Size(195, 24)
         Me.lcidcard.Text = "ID Number"
         Me.lcidcard.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -321,7 +325,7 @@ Partial Class Analytical
         Me.lcaddress.CustomizationFormText = "Address"
         Me.lcaddress.Location = New System.Drawing.Point(0, 216)
         Me.lcaddress.Name = "lcaddress"
-        Me.lcaddress.Size = New System.Drawing.Size(223, 24)
+        Me.lcaddress.Size = New System.Drawing.Size(195, 24)
         Me.lcaddress.Text = "Address"
         Me.lcaddress.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -331,7 +335,7 @@ Partial Class Analytical
         Me.lcphone.CustomizationFormText = "Phone Number"
         Me.lcphone.Location = New System.Drawing.Point(0, 240)
         Me.lcphone.Name = "lcphone"
-        Me.lcphone.Size = New System.Drawing.Size(223, 24)
+        Me.lcphone.Size = New System.Drawing.Size(195, 24)
         Me.lcphone.Text = "Phone Number"
         Me.lcphone.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -341,7 +345,7 @@ Partial Class Analytical
         Me.lcinterview.CustomizationFormText = "Interview Times"
         Me.lcinterview.Location = New System.Drawing.Point(0, 48)
         Me.lcinterview.Name = "lcinterview"
-        Me.lcinterview.Size = New System.Drawing.Size(223, 24)
+        Me.lcinterview.Size = New System.Drawing.Size(195, 24)
         Me.lcinterview.Text = "Interview Times"
         Me.lcinterview.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -351,7 +355,7 @@ Partial Class Analytical
         Me.LayoutControlItem2.CustomizationFormText = "Status"
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 264)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(195, 24)
         Me.LayoutControlItem2.Text = "Status"
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -361,7 +365,7 @@ Partial Class Analytical
         Me.LayoutControlItem3.CustomizationFormText = "Religion"
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 168)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(195, 24)
         Me.LayoutControlItem3.Text = "Religion"
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -371,7 +375,7 @@ Partial Class Analytical
         Me.LayoutControlItem4.CustomizationFormText = "Gender"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 144)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(195, 24)
         Me.LayoutControlItem4.Text = "Gender"
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -381,7 +385,7 @@ Partial Class Analytical
         Me.LayoutControlItem5.CustomizationFormText = "Age"
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 120)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(195, 24)
         Me.LayoutControlItem5.Text = "Age"
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -391,7 +395,7 @@ Partial Class Analytical
         Me.LayoutControlItem6.CustomizationFormText = "Date Of Birth"
         Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 96)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(195, 24)
         Me.LayoutControlItem6.Text = "Date Of Birth"
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(78, 13)
         '
@@ -401,9 +405,10 @@ Partial Class Analytical
         Me.LayoutControlItem1.CustomizationFormText = "Position"
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 288)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(223, 24)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(195, 24)
         Me.LayoutControlItem1.Text = "Position"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(78, 13)
+        Me.LayoutControlItem1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem7
         '
@@ -411,13 +416,14 @@ Partial Class Analytical
         Me.LayoutControlItem7.CustomizationFormText = "Expected Salary"
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 312)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(223, 28)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(195, 28)
         Me.LayoutControlItem7.Text = "Expected Salary"
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(78, 13)
+        Me.LayoutControlItem7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(219, 54)
+        Me.PictureBox1.Location = New System.Drawing.Point(233, 55)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(161, 184)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -429,7 +435,7 @@ Partial Class Analytical
         Me.GridControl1.Location = New System.Drawing.Point(4, 86)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(178, 506)
+        Me.GridControl1.Size = New System.Drawing.Size(209, 506)
         Me.GridControl1.TabIndex = 36
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -441,7 +447,7 @@ Partial Class Analytical
         'btnFind
         '
         Me.btnFind.Image = CType(resources.GetObject("btnFind.Image"), System.Drawing.Image)
-        Me.btnFind.Location = New System.Drawing.Point(157, 58)
+        Me.btnFind.Location = New System.Drawing.Point(184, 58)
         Me.btnFind.Name = "btnFind"
         Me.btnFind.Size = New System.Drawing.Size(25, 23)
         Me.btnFind.TabIndex = 37
@@ -450,17 +456,45 @@ Partial Class Analytical
         '
         Me.TextEdit1.Location = New System.Drawing.Point(7, 59)
         Me.TextEdit1.Name = "TextEdit1"
-        Me.TextEdit1.Size = New System.Drawing.Size(144, 20)
+        Me.TextEdit1.Size = New System.Drawing.Size(171, 20)
         Me.TextEdit1.TabIndex = 38
         '
         'RibbonControl1
         '
+        Me.RibbonControl1.ApplicationButtonDropDownControl = Me.BackstageViewControl1
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
         Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
         Me.RibbonControl1.MaxItemId = 1
         Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013
         Me.RibbonControl1.Size = New System.Drawing.Size(937, 49)
+        '
+        'BackstageViewControl1
+        '
+        Me.BackstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Yellow
+        Me.BackstageViewControl1.Controls.Add(Me.BackstageViewClientControl1)
+        Me.BackstageViewControl1.Items.Add(Me.BackstageViewTabItem1)
+        Me.BackstageViewControl1.Location = New System.Drawing.Point(24, 73)
+        Me.BackstageViewControl1.Name = "BackstageViewControl1"
+        Me.BackstageViewControl1.Ribbon = Me.RibbonControl1
+        Me.BackstageViewControl1.SelectedTab = Nothing
+        Me.BackstageViewControl1.Size = New System.Drawing.Size(480, 150)
+        Me.BackstageViewControl1.TabIndex = 56
+        '
+        'BackstageViewClientControl1
+        '
+        Me.BackstageViewClientControl1.Location = New System.Drawing.Point(189, 63)
+        Me.BackstageViewClientControl1.Name = "BackstageViewClientControl1"
+        Me.BackstageViewClientControl1.Size = New System.Drawing.Size(290, 86)
+        Me.BackstageViewClientControl1.TabIndex = 0
+        '
+        'BackstageViewTabItem1
+        '
+        Me.BackstageViewTabItem1.Caption = "BackstageViewTabItem1"
+        Me.BackstageViewTabItem1.ContentControl = Me.BackstageViewClientControl1
+        Me.BackstageViewTabItem1.Name = "BackstageViewTabItem1"
+        Me.BackstageViewTabItem1.Selected = False
         '
         'ChartControl2
         '
@@ -558,7 +592,9 @@ Partial Class Analytical
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.SimpleButton1)
+        Me.Controls.Add(Me.BackstageViewControl1)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.MaximizeBox = False
         Me.Name = "Analytical"
         Me.Ribbon = Me.RibbonControl1
         Me.ShowIcon = False
@@ -600,6 +636,7 @@ Partial Class Analytical
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BackstageViewControl1.ResumeLayout(False)
         CType(RadarDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(RadarPointSeriesLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(RadarLineSeriesView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -655,4 +692,7 @@ Partial Class Analytical
     Friend WithEvents Label1 As Label
     Friend WithEvents SimpleButton2 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents label3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents BackstageViewControl1 As DevExpress.XtraBars.Ribbon.BackstageViewControl
+    Friend WithEvents BackstageViewClientControl1 As DevExpress.XtraBars.Ribbon.BackstageViewClientControl
+    Friend WithEvents BackstageViewTabItem1 As DevExpress.XtraBars.Ribbon.BackstageViewTabItem
 End Class

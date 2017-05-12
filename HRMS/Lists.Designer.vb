@@ -25,9 +25,9 @@ Partial Class Lists
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Lists))
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutView1 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -44,15 +44,6 @@ Partial Class Lists
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.LayoutView1})
         '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(500, 12)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(75, 22)
-        Me.SimpleButton1.TabIndex = 1
-        Me.SimpleButton1.Text = "Print Data"
-        '
         'LayoutView1
         '
         Me.LayoutView1.GridControl = Me.GridControl1
@@ -65,6 +56,15 @@ Partial Class Lists
         '
         Me.LayoutViewCard1.ExpandButtonLocation = DevExpress.Utils.GroupElementLocation.AfterText
         Me.LayoutViewCard1.Name = "LayoutViewCard1"
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(500, 12)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(75, 22)
+        Me.SimpleButton1.TabIndex = 1
+        Me.SimpleButton1.Text = "Print Data"
         '
         'Lists
         '

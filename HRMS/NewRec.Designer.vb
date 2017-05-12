@@ -157,6 +157,7 @@ Partial Class NewRec
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.Label39 = New System.Windows.Forms.Label()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
@@ -222,6 +223,7 @@ Partial Class NewRec
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.txtapplieddate = New System.Windows.Forms.DateTimePicker()
         Me.ApplicationMenu1 = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BackstageViewControl1.SuspendLayout()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -343,6 +345,7 @@ Partial Class NewRec
         Me.RibbonControl1.MaxItemId = 6
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.Employee})
+        Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
         Me.RibbonControl1.Size = New System.Drawing.Size(915, 144)
         Me.RibbonControl1.Toolbar.ItemLinks.Add(Me.barJudul)
         Me.RibbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above
@@ -377,6 +380,7 @@ Partial Class NewRec
         '
         Me.barJudul.Caption = "barJudul"
         Me.barJudul.Id = 3
+        Me.barJudul.LargeGlyph = CType(resources.GetObject("barJudul.LargeGlyph"), System.Drawing.Image)
         Me.barJudul.Name = "barJudul"
         '
         'BarButtonItem3
@@ -501,6 +505,7 @@ Partial Class NewRec
         Me.txtofloc.Name = "txtofloc"
         Me.txtofloc.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtofloc.Properties.Items.AddRange(New Object() {"In Process", "Pending", "Accepted", "Rejected"})
+        Me.txtofloc.Properties.ReadOnly = True
         Me.txtofloc.Size = New System.Drawing.Size(183, 20)
         Me.txtofloc.TabIndex = 39
         '
@@ -863,6 +868,7 @@ Partial Class NewRec
         Me.txtblood.Name = "txtblood"
         Me.txtblood.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtblood.Properties.Items.AddRange(New Object() {"A", "B", "AB", "O"})
+        Me.txtblood.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.txtblood.Size = New System.Drawing.Size(203, 20)
         Me.txtblood.TabIndex = 28
         '
@@ -881,6 +887,7 @@ Partial Class NewRec
         Me.txtrel.Name = "txtrel"
         Me.txtrel.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtrel.Properties.Items.AddRange(New Object() {"KRISTEN", "BUDDHA", "ISLAM", "HINDU"})
+        Me.txtrel.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.txtrel.Size = New System.Drawing.Size(203, 20)
         Me.txtrel.TabIndex = 27
         '
@@ -1432,6 +1439,7 @@ Partial Class NewRec
         '
         'GroupControl2
         '
+        Me.GroupControl2.Controls.Add(Me.SimpleButton1)
         Me.GroupControl2.Controls.Add(Me.Label39)
         Me.GroupControl2.Controls.Add(Me.Label38)
         Me.GroupControl2.Controls.Add(Me.Label37)
@@ -1491,6 +1499,14 @@ Partial Class NewRec
         Me.GroupControl2.Size = New System.Drawing.Size(910, 410)
         Me.GroupControl2.TabIndex = 17
         Me.GroupControl2.Text = "Auto"
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(659, 242)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(23, 21)
+        Me.SimpleButton1.TabIndex = 99
         '
         'Label39
         '
@@ -1567,7 +1583,7 @@ Partial Class NewRec
         '
         Me.txtrecby.Location = New System.Drawing.Point(475, 243)
         Me.txtrecby.Name = "txtrecby"
-        Me.txtrecby.Size = New System.Drawing.Size(208, 20)
+        Me.txtrecby.Size = New System.Drawing.Size(178, 20)
         Me.txtrecby.TabIndex = 36
         '
         'Label21
@@ -1710,9 +1726,9 @@ Partial Class NewRec
         Me.Label35.AutoSize = True
         Me.Label35.Location = New System.Drawing.Point(37, 293)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(37, 13)
+        Me.Label35.Size = New System.Drawing.Size(41, 13)
         Me.Label35.TabIndex = 100
-        Me.Label35.Text = "Why ?"
+        Me.Label35.Text = "What ?"
         '
         'CheckEdit1
         '
@@ -2078,6 +2094,9 @@ Partial Class NewRec
         Me.ApplicationMenu1.Name = "ApplicationMenu1"
         Me.ApplicationMenu1.Ribbon = Me.RibbonControl1
         '
+        'Timer1
+        '
+        '
         'NewRec
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2114,7 +2133,7 @@ Partial Class NewRec
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Recruitment"
+        Me.Text = " "
         Me.TopMost = True
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BackstageViewControl1.ResumeLayout(False)
@@ -2407,4 +2426,6 @@ Partial Class NewRec
     Friend WithEvents BackstageViewClientControl1 As DevExpress.XtraBars.Ribbon.BackstageViewClientControl
     Friend WithEvents BackstageViewTabItem1 As DevExpress.XtraBars.Ribbon.BackstageViewTabItem
     Friend WithEvents ApplicationMenu1 As DevExpress.XtraBars.Ribbon.ApplicationMenu
+    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Timer1 As Timer
 End Class

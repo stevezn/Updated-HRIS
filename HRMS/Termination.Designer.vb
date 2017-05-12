@@ -30,15 +30,15 @@ Partial Class Termination
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ComboBoxEdit1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
@@ -55,6 +55,8 @@ Partial Class Termination
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,14 +116,6 @@ Partial Class Termination
         Me.TextBox2.Size = New System.Drawing.Size(175, 20)
         Me.TextBox2.TabIndex = 5
         '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(280, 35)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(26, 20)
-        Me.SimpleButton1.TabIndex = 6
-        '
         'TextEdit1
         '
         Me.TextEdit1.Location = New System.Drawing.Point(315, 35)
@@ -136,6 +130,7 @@ Partial Class Termination
         Me.LabelControl1.Size = New System.Drawing.Size(69, 13)
         Me.LabelControl1.TabIndex = 8
         Me.LabelControl1.Text = "Approved By :"
+        Me.LabelControl1.Visible = False
         '
         'TextBox3
         '
@@ -143,14 +138,7 @@ Partial Class Termination
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(175, 20)
         Me.TextBox3.TabIndex = 9
-        '
-        'SimpleButton2
-        '
-        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
-        Me.SimpleButton2.Location = New System.Drawing.Point(280, 64)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(26, 20)
-        Me.SimpleButton2.TabIndex = 10
+        Me.TextBox3.Visible = False
         '
         'TextEdit2
         '
@@ -158,6 +146,7 @@ Partial Class Termination
         Me.TextEdit2.Name = "TextEdit2"
         Me.TextEdit2.Size = New System.Drawing.Size(306, 20)
         Me.TextEdit2.TabIndex = 11
+        Me.TextEdit2.Visible = False
         '
         'Label4
         '
@@ -179,6 +168,8 @@ Partial Class Termination
         '
         'GroupControl1
         '
+        Me.GroupControl1.Controls.Add(Me.TextBox1)
+        Me.GroupControl1.Controls.Add(Me.Label9)
         Me.GroupControl1.Controls.Add(Me.TextBox7)
         Me.GroupControl1.Controls.Add(Me.Label8)
         Me.GroupControl1.Controls.Add(Me.TextBox6)
@@ -197,11 +188,27 @@ Partial Class Termination
         Me.GroupControl1.TabIndex = 14
         Me.GroupControl1.Text = "Details"
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(647, 80)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(132, 20)
+        Me.TextBox1.TabIndex = 21
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(644, 62)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(89, 13)
+        Me.Label9.TabIndex = 19
+        Me.Label9.Text = "Allowance Result"
+        '
         'TextBox7
         '
         Me.TextBox7.Location = New System.Drawing.Point(357, 30)
         Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.ReadOnly = True
         Me.TextBox7.Size = New System.Drawing.Size(175, 20)
         Me.TextBox7.TabIndex = 20
         '
@@ -218,7 +225,6 @@ Partial Class Termination
         '
         Me.TextBox6.Location = New System.Drawing.Point(97, 29)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.ReadOnly = True
         Me.TextBox6.Size = New System.Drawing.Size(175, 20)
         Me.TextBox6.TabIndex = 18
         '
@@ -270,6 +276,7 @@ Partial Class Termination
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(132, 20)
         Me.TextBox5.TabIndex = 16
+        Me.TextBox5.Text = "0"
         '
         'Label5
         '
@@ -286,6 +293,7 @@ Partial Class Termination
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(132, 20)
         Me.TextBox4.TabIndex = 15
+        Me.TextBox4.Text = "0"
         '
         'LabelControl2
         '
@@ -305,11 +313,11 @@ Partial Class Termination
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(628, 64)
+        Me.Button1.Location = New System.Drawing.Point(751, 88)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 18
-        Me.Button1.Text = "Approve"
+        Me.Button1.Text = "Request"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Timer1
@@ -317,6 +325,23 @@ Partial Class Termination
         '
         'Timer2
         '
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
+        Me.SimpleButton2.Location = New System.Drawing.Point(280, 64)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(26, 20)
+        Me.SimpleButton2.TabIndex = 10
+        Me.SimpleButton2.Visible = False
+        '
+        'SimpleButton1
+        '
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(280, 35)
+        Me.SimpleButton1.Name = "SimpleButton1"
+        Me.SimpleButton1.Size = New System.Drawing.Size(26, 20)
+        Me.SimpleButton1.TabIndex = 6
         '
         'Termination
         '
@@ -376,9 +401,7 @@ Partial Class Termination
     Friend WithEvents Label4 As Label
     Friend WithEvents ComboBoxEdit1 As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents TextBox7 As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox6 As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents Label6 As Label
@@ -392,4 +415,8 @@ Partial Class Termination
     Friend WithEvents Button1 As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Timer2 As Timer
+    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label9 As Label
 End Class

@@ -51,7 +51,7 @@ Public Class NewRec
     End Function
 
     Sub insertion()
-        Dim dtr, dtb As DateTime
+        Dim dtr, dtb, dta As DateTime
         txtbod.Format = DateTimePickerFormat.Custom
         txtbod.CustomFormat = "yyyy-MM-dd"
         dtr = txtbod.Value
@@ -74,14 +74,18 @@ Public Class NewRec
         TextEdit1.Text = lastres.ToString
         If lastres = 1 OrElse lastres = 2 Then
             txtofloc.Text = "Pending"
-        ElseIf lastres > 2 Then
+        ElseIf lastres > 3 Then
             txtofloc.Text = "Blocked"
         End If
         Try
+
+            Dim use As MySqlCommand = SQLConnection.CreateCommand
+            use.CommandText = "select user from db_temp"
+            Dim user As String = CStr(use.ExecuteScalar)
             Dim cmmd As MySqlCommand = SQLConnection.CreateCommand
             cmmd.CommandText = "insert into db_recruitment " +
-                            " (IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, Interviewdates, CV, Reason, CreatedDate, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial, LastSalary, OtherIncome, ExpFacilities, FavoriteJob, FWhy, AppliedHere, AWhy, Family, Who, Strenghts, Weakness, Suitable, CarrierObject, Reference, PrivateEmail)" +
-                            " values (@IdRec, @InterviewTimes, @FullName, @PlaceOfBirth, @DateOfBirth, @Address, @Gender, @Religion, @PhoneNumber, @IdNumber, @Photo, @Status, @InterviewDate, @Interviewdates, @CV, @Reason, @CreatedDate, @Position, @ExpectedSalary, @NickName, @ApplicationDate, @Weight, @Height, @BloodType, @City, @ZIP, @HomeNumber, @RecommendedBy, @Martial, @LastSalary, @OtherIncome, @ExpFacilities, @FavoriteJob, @FWhy, @AppliedHere, @AWhy, @Family, @Who, @Strenghts, @Weakness, @Suitable, @CarrierObject, @Reference, @PrivateEmail)"
+                            " (IdRec, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Photo, Status, InterviewDate, Interviewdates, CV, Reason, CreatedDate, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial, LastSalary, OtherIncome, ExpFacilities, FavoriteJob, FWhy, AppliedHere, AWhy, Family, Who, Strenghts, Weakness, Suitable, CarrierObject, Reference, PrivateEmail, ChangeBy, ChangeDates)" +
+                            " values (@IdRec, @InterviewTimes, @FullName, @PlaceOfBirth, @DateOfBirth, @Address, @Gender, @Religion, @PhoneNumber, @IdNumber, @Photo, @Status, @InterviewDate, @Interviewdates, @CV, @Reason, @CreatedDate, @Position, @ExpectedSalary, @NickName, @ApplicationDate, @Weight, @Height, @BloodType, @City, @ZIP, @HomeNumber, @RecommendedBy, @Martial, @LastSalary, @OtherIncome, @ExpFacilities, @FavoriteJob, @FWhy, @AppliedHere, @AWhy, @Family, @Who, @Strenghts, @Weakness, @Suitable, @CarrierObject, @Reference, @PrivateEmail, @ChangeBy, @ChangeDates)"
             cmmd.Parameters.AddWithValue("@IdRec", txtidrec.Text)
             cmmd.Parameters.AddWithValue("@Interviewtimes", TextEdit1.Text)
             cmmd.Parameters.AddWithValue("@FullName", txtcandname.Text)
@@ -99,7 +103,16 @@ Public Class NewRec
                 cmmd.Parameters.AddWithValue("@Photo", "")
             End If
             cmmd.Parameters.AddWithValue("@Status", txtofloc.Text)
-            cmmd.Parameters.AddWithValue("@InterviewDate", DateTimePicker2.Value)
+            If CheckEdit3.Checked = True Then
+                DateTimePicker2.Format = DateTimePickerFormat.Custom
+                DateTimePicker2.CustomFormat = "yyyy-MM-dd"
+                dta = DateTimePicker2.Value
+                dta = CDate(dta.ToString("yyyy-MM-dd"))
+                cmmd.Parameters.AddWithValue("@interviewdate", dta.ToString("yyyy-MM-dd"))
+            ElseIf CheckEdit3.Checked = False Then
+                cmmd.Parameters.AddWithValue("@interviewdate", Nothing)
+            End If
+            'cmmd.Parameters.AddWithValue("@InterviewDate", dta)
             cmmd.Parameters.AddWithValue("@InterviewDates", Nothing)
 
             Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
@@ -110,8 +123,11 @@ Public Class NewRec
             Dim data As Byte() = br.ReadBytes(CInt(numBytes))
             br.Close()
             fstream.Close()
-
-            cmmd.Parameters.AddWithValue("@cv", data)
+            If Not data Is Nothing Then
+                cmmd.Parameters.AddWithValue("@cv", data)
+            Else
+                cmmd.Parameters.AddWithValue("@cv", "")
+            End If
             cmmd.Parameters.AddWithValue("@Reason", txtcandreason.Text)
             cmmd.Parameters.AddWithValue("@CreatedDate", Date.Now)
             cmmd.Parameters.AddWithValue("@Position", TextEdit7.Text)
@@ -141,6 +157,8 @@ Public Class NewRec
             cmmd.Parameters.AddWithValue("@CarrierObject", RichTextBox8.Text)
             cmmd.Parameters.AddWithValue("@Reference", RichTextBox9.Text)
             cmmd.Parameters.AddWithValue("@PrivateEmail", txtwemail.Text)
+            cmmd.Parameters.AddWithValue("@ChangeBy", user)
+            cmmd.Parameters.AddWithValue("@ChangeDates", Date.Now)
             ' SavePdf()
             cmmd.ExecuteNonQuery()
             MsgBox("Saved")
@@ -148,6 +166,81 @@ Public Class NewRec
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Sub enable2d()
+        txtcandname.Enabled = True
+        txtbp.Enabled = True
+        txtadd.Enabled = True
+        txtgend.Enabled = True
+        txtrel.Enabled = True
+        txtphoneno.Enabled = True
+        'txtidno.Enabled = False
+        txtcandreason.Enabled = True
+        TextEdit7.Enabled = True
+        TextBox5.Enabled = True
+        txtnick.Enabled = True
+        txtkg.Enabled = True
+        txtcm.Enabled = True
+        txtblood.Enabled = True
+        txtcity.Enabled = True
+        txtzip.Enabled = True
+        txthome.Enabled = True
+        txtrecby.Enabled = True
+        ComboBoxEdit4.Enabled = True
+        txtwemail.Enabled = True
+        TextBox3.Enabled = True
+        TextBox4.Enabled = True
+        TextBox5.Enabled = True
+        RichTextBox1.Enabled = True
+        TextBox6.Enabled = True
+        RichTextBox2.Enabled = True
+        CheckEdit1.Checked = True
+        RichTextBox3.Enabled = True
+        CheckEdit2.Checked = True
+        RichTextBox4.Enabled = True
+        RichTextBox5.Enabled = True
+        RichTextBox6.Enabled = True
+        RichTextBox7.Enabled = True
+        RichTextBox8.Enabled = True
+        RichTextBox9.Enabled = True
+    End Sub
+
+    Sub enable()
+        txtcandname.Enabled = False
+        txtbp.Enabled = False
+        txtadd.Enabled = False
+        txtgend.Enabled = False
+        txtrel.Enabled = False
+        txtphoneno.Enabled = False
+        txtcandreason.Enabled = False
+        TextEdit7.Enabled = False
+        TextBox5.Enabled = False
+        txtnick.Enabled = False
+        txtkg.Enabled = False
+        txtcm.Enabled = False
+        txtblood.Enabled = False
+        txtcity.Enabled = False
+        txtzip.Enabled = False
+        txthome.Enabled = False
+        txtrecby.Enabled = False
+        ComboBoxEdit4.Enabled = False
+        txtwemail.Enabled = False
+        TextBox3.Enabled = False
+        TextBox4.Enabled = False
+        TextBox5.Enabled = False
+        RichTextBox1.Enabled = False
+        TextBox6.Enabled = False
+        RichTextBox2.Enabled = False
+        CheckEdit1.Checked = False
+        RichTextBox3.Enabled = False
+        CheckEdit2.Checked = False
+        RichTextBox4.Enabled = False
+        RichTextBox5.Enabled = False
+        RichTextBox6.Enabled = False
+        RichTextBox7.Enabled = False
+        RichTextBox8.Enabled = False
+        RichTextBox9.Enabled = False
     End Sub
 
     Sub cleartxt()
@@ -186,8 +279,8 @@ Public Class NewRec
         RichTextBox7.Text = ""
         RichTextBox8.Text = ""
         RichTextBox9.Text = ""
-        pictureEdit.Controls.Clear()
-        pictureEdit.Image = Nothing
+        'pictureEdit.Controls.Clear()
+        'pictureEdit.Image = Nothing
     End Sub
 
     Dim main As MainApp
@@ -236,9 +329,12 @@ Public Class NewRec
     Private Sub NewEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
+        txtapplieddate.Format = DateTimePickerFormat.Custom
+        txtapplieddate.CustomFormat = "yyyy-MM-dd"
         DateTimePicker2.Format = DateTimePickerFormat.Custom
-        DateTimePicker2.CustomFormat = " "
+        DateTimePicker2.CustomFormat = Nothing
         changer()
+        Label38.Text = "file.pdf"
     End Sub
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
@@ -350,25 +446,6 @@ Public Class NewRec
         End Try
     End Sub
 
-    Private Sub SavePdf()
-        Try
-            Dim sqlquery As MySqlCommand = SQLConnection.CreateCommand
-            Dim finfo As New FileInfo(Label38.Text)
-            Dim numBytes As Long = finfo.Length
-            Dim fstream As New FileStream(Label38.Text, FileMode.Open, FileAccess.Read)
-            Dim br As New BinaryReader(fstream)
-            Dim data As Byte() = br.ReadBytes(CInt(numBytes))
-            br.Close()
-            fstream.Close()
-            sqlquery.CommandText = "insert into db_recruitment(cv) values (@cv)"
-            sqlquery.Parameters.AddWithValue("@cv", data)
-            sqlquery.ExecuteNonQuery()
-            MsgBox("Saved")
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
     Private Sub SimpleButton10_Click(sender As Object, e As EventArgs) Handles SimpleButton10.Click
         openfd.InitialDirectory = "C:\"
         openfd.Title = "Open a CV FIle"
@@ -390,7 +467,7 @@ Public Class NewRec
 
     Private Sub SimpleButton9_Click(sender As Object, e As EventArgs) Handles SimpleButton9.Click
         If txtcandname.Text = "" OrElse TextEdit7.Text = "" OrElse txtidno.Text = "" Then
-            MsgBox("Please fill the required fields")
+            MsgBox("Please fill the empty fields", MsgBoxStyle.Information)
         Else
             insertion()
             changer()
@@ -666,7 +743,7 @@ Public Class NewRec
             DateTimePicker2.Enabled = False
             Dim dtr As DateTime
             DateTimePicker2.Format = DateTimePickerFormat.Custom
-            DateTimePicker2.CustomFormat = "Not Set"
+            DateTimePicker2.CustomFormat = "----"
             dtr = DateTimePicker2.Value
         End If
     End Sub
@@ -682,16 +759,28 @@ Public Class NewRec
             ElseIf hasil = 1 OrElse hasil > 1 Then
                 lastres = hasil + 1
             End If
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select applicationdate from db_recruitment where idnumber = '" & txtidno.Text & "'"
+            Dim quer11 As Date = CDate(query.ExecuteScalar)
+            dt1 = CDate(quer11.ToShortDateString)
+            dt2 = Date.Now
+            dt3 = dt2 - dt1
+            diff = dt3.Days
+            Dim hasilx As String = CType(Int(diff / 365), String)
+            If CInt(hasil) > 2 Then
+                lastres = 1
+            End If
         Catch ex As Exception
-            ' MsgBox(ex.Message)
+            'MsgBox(ex.Message)
         End Try
         Dim cmd2 As MySqlCommand = SQLConnection.CreateCommand
-        cmd2.CommandText = "select count(blacklist) from db_recruitment where IdNumber = '" & txtidno.Text & "'"
+        cmd2.CommandText = "select count(blacklist) from db_recruitment where IdNumber = '" & txtidno.Text & "' and blacklist = '1'"
         hsl = CInt(cmd2.ExecuteScalar)
         If hsl = 1 Then
-            MsgBox("This Candidates already on BLACKLIST lists for infraction", MsgBoxStyle.Exclamation
-                   )
+            MsgBox("This Candidates is already on the 'BLACKLISTS ' list for infraction", MsgBoxStyle.Exclamation)
             Label39.Text = "BLACKLISTED"
+        ElseIf hsl <> 1 Then
+            Label39.Text = ""
         End If
         TextEdit1.Text = lastres.ToString
         If lastres = 1 OrElse lastres = 2 Then
@@ -810,6 +899,49 @@ Public Class NewRec
         Dim ch As Char = e.KeyChar
         If Char.IsLetter(ch) Then
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub RibbonControl1_Click(sender As Object, e As EventArgs) Handles RibbonControl1.Click
+
+    End Sub
+
+    Dim sel As New selectemp
+
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        Timer1.Start()
+        If sel Is Nothing OrElse sel.IsDisposed OrElse sel.MinimizeBox Then
+            sel.Close()
+            sel = New selectemp
+        End If
+        sel.Show()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select name from db_tmpname"
+            Dim quer1 As String = CType(query.ExecuteScalar, String)
+            txtrecby.Text = quer1.ToString
+        Catch ex As exception
+        End Try
+    End Sub
+
+    Private Sub txtrecby_EditValueChanged(sender As Object, e As EventArgs) Handles txtrecby.EditValueChanged
+        Timer1.Stop()
+    End Sub
+
+    Private Sub txtofloc_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtofloc.SelectedIndexChanged
+        'If txtofloc.Text = "Blocked" Then
+        '    enable()
+        'End If
+    End Sub
+
+    Private Sub TextEdit1_EditValueChanged(sender As Object, e As EventArgs) Handles TextEdit1.EditValueChanged
+        If TextEdit1.Text <> "4" Then
+            enable2d()
+        Else
+            enable()
         End If
     End Sub
 End Class

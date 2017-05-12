@@ -69,11 +69,9 @@ Public Class Circle
         If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             Try
                 Dim del As MySqlCommand = SQLConnection.CreateCommand
-                ' del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
                 del.CommandText = "truncate db_hasil"
                 del.ExecuteNonQuery()
                 Dim dele As MySqlCommand = SQLConnection.CreateCommand
-                'dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
                 dele.CommandText = "truncate db_temp"
                 dele.Parameters.Clear()
                 dele.ExecuteNonQuery()
@@ -82,7 +80,6 @@ Public Class Circle
                 dele.Parameters.Clear()
                 dele.ExecuteNonQuery()
             Catch ex As Exception
-
             End Try
             SQLConnection.Close()
             Close()
@@ -235,27 +232,27 @@ Public Class Circle
         updatestats()
     End Sub
 
-    Dim infoForm As New infoReq
+    'Dim infoForm As New infoReq
 
-    Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
-        If infoForm Is Nothing OrElse infoForm.IsDisposed OrElse infoForm.MinimizeBox Then
-            infoForm.Close()
-            infoForm = New infoReq
-        End If
-        infoForm.Show()
-    End Sub
+    'Private Sub SimpleButton4_Click(sender As Object, e As EventArgs) Handles SimpleButton4.Click
+    '    If infoForm Is Nothing OrElse infoForm.IsDisposed OrElse infoForm.MinimizeBox Then
+    '        infoForm.Close()
+    '        infoForm = New infoReq
+    '    End If
+    '    infoForm.Show()
+    'End Sub
 
-    Dim employeenotes As New Notes
+    'Dim employeenotes As New Notes
 
-    Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
-        If employeenotes Is Nothing OrElse employeenotes.IsDisposed OrElse employeenotes.MinimizeBox Then
-            employeenotes.Close()
-            employeenotes = New Notes
-        End If
-        employeenotes.Show()
-    End Sub
+    'Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
+    '    If employeenotes Is Nothing OrElse employeenotes.IsDisposed OrElse employeenotes.MinimizeBox Then
+    '        employeenotes.Close()
+    '        employeenotes = New Notes
+    '    End If
+    '    employeenotes.Show()
+    'End Sub
 
-    Dim spform As New SPForms
+    'Dim spform As New SPForms
     Dim war As New Warning
 
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
@@ -266,7 +263,7 @@ Public Class Circle
         war.Show()
     End Sub
 
-    Dim rotasi As New RotasiMutasi
+    'Dim rotasi As New RotasiMutasi
 
     Dim st As New StatusChange
 

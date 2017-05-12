@@ -74,11 +74,11 @@ Public Class StatusChange
             Dim query As MySqlCommand = SQLConnection.CreateCommand
             query.CommandText = "select name from db_tmpname"
             Dim quer1 As String = CType(query.ExecuteScalar, String)
-            TextBox2.Text = quer1.ToString
+            TextEdit1.Text = quer1.ToString
 
             query.CommandText = "select employeecode from db_tmpname"
             Dim quer2 As String = CType(query.ExecuteScalar, String)
-            TextEdit1.Text = quer2.ToString
+            TextBox2.Text = quer2.ToString
         Catch ex As Exception
         End Try
     End Sub
@@ -121,20 +121,106 @@ Public Class StatusChange
         Next
     End Sub
 
+    Sub calledx()
+        If Label14.Text = "1" Then
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select * from db_statuschange where MemoNo = '" & txtmemo.Text & "'"
+            Dim adapter As New MySqlDataAdapter(query.CommandText, SQLConnection)
+            Dim cb As New MySqlCommandBuilder(adapter)
+            adapter.Fill(tbl_par3)
+            For index As Integer = 0 To tbl_par3.Rows.Count - 1
+            Next
+        Else
+            changer()
+        End If
+    End Sub
+
+    Sub chng()
+        For index As Integer = 0 To tbl_par3.Rows.Count - 1
+            TextBox2.Text = tbl_par3.Rows(index).Item(2).ToString
+            ComboBoxEdit1.Text = tbl_par3.Rows(index).Item(4).ToString
+            ComboBoxEdit2.Text = tbl_par3.Rows(index).Item(5).ToString
+            ComboBoxEdit3.Text = tbl_par3.Rows(index).Item(6).ToString
+            ComboBoxEdit4.Text = tbl_par3.Rows(index).Item(8).ToString
+            ComboBoxEdit5.Text = tbl_par3.Rows(index).Item(7).ToString
+            TextBox3.Text = tbl_par3.Rows(index).Item(9).ToString
+        Next
+    End Sub
+
+    Dim tbl_par3 As New DataTable
+
+    Dim tbl_par6, tbl_par33, tbl_par4, tbl_par5, tbl_par7 As New DataTable
+
+    Sub loadjob()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select JobTitle from db_jobtitle"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par6)
+        For index As Integer = 0 To tbl_par6.Rows.Count - 1
+            ComboBoxEdit2.Properties.Items.Add(tbl_par6.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loadofloc()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select OfficeLocation from db_officelocation"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par4)
+        For index As Integer = 0 To tbl_par4.Rows.Count - 1
+            ComboBoxEdit3.Properties.Items.Add(tbl_par4.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loadgroup()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select groupname from db_groupmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par5)
+        For index As Integer = 0 To tbl_par5.Rows.Count - 1
+            ComboBoxEdit4.Properties.Items.Add(tbl_par5.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
+    Sub loaddept()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "select DepartmentName from db_departmentmbp"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par7)
+        For index As Integer = 0 To tbl_par7.Rows.Count - 1
+            ComboBoxEdit5.Properties.Items.Add(tbl_par7.Rows(index).Item(0).ToString())
+        Next
+    End Sub
+
     Private Sub StatusChange_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionstring
         SQLConnection.Open()
         Dim query As MySqlCommand = SQLConnection.CreateCommand
         query.CommandText = "select employeecode from db_tmpname where 1 = 1"
         Dim quer As String = CType(query.ExecuteScalar, String)
+        txtmemo.Text = quer.ToString
         TextBox2.Text = quer.ToString
 
-        query.CommandText = "select Name from db_tmpname where 1 =1"
+        query.CommandText = "select Name from db_tmpname where 1 = 1"
         Dim quer1 As String = CType(query.ExecuteScalar, String)
         TextEdit1.Text = quer1.ToString
-        changer()
+
+        query.CommandText = "select initial from db_tmpname"
+        Dim quer3 As String = CStr(query.ExecuteScalar)
+        Label14.Text = quer3.ToString
+
+        'changer()
+        loadjob()
+        loadofloc()
+        loaddept()
+        loadgroup()
         loaddata1()
         loaddata()
+        calledx()
+        chng()
     End Sub
 
     Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
@@ -230,8 +316,8 @@ Public Class StatusChange
         Dim query As MySqlCommand = SQLConnection.CreateCommand
         Try
             query.CommandText = "insert into db_statuschange" +
-                     "(MemoNo, FullName, EmployeeCode, tgl, ChangeType, JobTitle, OfficeLocation, Department, Grouping)" +
-                     "values (@MemoNo, @FullName, @EmployeeCode, @tgl, @ChangeType, @JobTitle, @OfficeLocation, @Department, @Grouped)"
+                     "(MemoNo, FullName, EmployeeCode, tgl, ChangeType, JobTitle, OfficeLocation, Department, Grouping, Status)" +
+                     "values (@MemoNo, @FullName, @EmployeeCode, @tgl, @ChangeType, @JobTitle, @OfficeLocation, @Department, @Grouped, @stats)"
             query.Parameters.AddWithValue("@MemoNo", txtmemo.Text)
             query.Parameters.AddWithValue("@FullName", TextBox2.Text)
             query.Parameters.AddWithValue("@EmployeeCode", TextEdit1.Text)
@@ -241,7 +327,9 @@ Public Class StatusChange
             query.Parameters.AddWithValue("@OfficeLocation", ComboBoxEdit3.Text)
             query.Parameters.AddWithValue("@Department", ComboBoxEdit5.Text)
             query.Parameters.AddWithValue("@Grouped", ComboBoxEdit4.Text)
+            query.Parameters.AddWithValue("@stats", "Requested")
             query.ExecuteNonQuery()
+            MsgBox("Requested!")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -249,6 +337,6 @@ Public Class StatusChange
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         insertion()
-        updation()
+        'updation()
     End Sub
 End Class

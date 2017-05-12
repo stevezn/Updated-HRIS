@@ -156,6 +156,7 @@
     <Reference Include="DevExpress.XtraPivotGrid.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v13.1.Extensions, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraRichEdit.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v13.1.Design, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -198,7 +199,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
@@ -243,18 +246,6 @@
     <Import Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Additional.Designer.vb">
-      <DependentUpon>Additional.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Additional.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="addmenu.Designer.vb">
-      <DependentUpon>addmenu.vb</DependentUpon>
-    </Compile>
-    <Compile Include="addmenu.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Analytical.Designer.vb">
       <DependentUpon>Analytical.vb</DependentUpon>
     </Compile>
@@ -262,16 +253,28 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Attendance.Designer.vb">
-      <DependentUpon>Attendance.vb</DependentUpon>
+    <Compile Include="Approvement.Designer.vb">
+      <DependentUpon>Approvement.vb</DependentUpon>
     </Compile>
-    <Compile Include="Attendance.vb">
+    <Compile Include="Approvement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AspekKerja.Designer.vb">
+      <DependentUpon>AspekKerja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AspekKerja.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Attendances.Designer.vb">
       <DependentUpon>Attendances.vb</DependentUpon>
     </Compile>
     <Compile Include="Attendances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borongan.Designer.vb">
+      <DependentUpon>Borongan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Borongan.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CandidatesDetails.Designer.vb">
@@ -304,16 +307,10 @@
     <Compile Include="ClosePayroll.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="comparison.Designer.vb">
-      <DependentUpon>comparison.vb</DependentUpon>
+    <Compile Include="Criteria.Designer.vb">
+      <DependentUpon>Criteria.vb</DependentUpon>
     </Compile>
-    <Compile Include="comparison.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="cryrep.Designer.vb">
-      <DependentUpon>cryrep.vb</DependentUpon>
-    </Compile>
-    <Compile Include="cryrep.vb">
+    <Compile Include="Criteria.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CrystalReport4.vb">
@@ -322,17 +319,17 @@
       <DependentUpon>CrystalReport4.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Customize.Designer.vb">
+      <DependentUpon>Customize.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Customize.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataGrid.vb" />
     <Compile Include="DataSet11.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet11.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DemosiHistory.Designer.vb">
-      <DependentUpon>DemosiHistory.vb</DependentUpon>
-    </Compile>
-    <Compile Include="DemosiHistory.vb">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="EmployeeDetails.Designer.vb">
       <DependentUpon>EmployeeDetails.vb</DependentUpon>
@@ -346,10 +343,10 @@
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="infoReq.Designer.vb">
-      <DependentUpon>infoReq.vb</DependentUpon>
+    <Compile Include="Form2.Designer.vb">
+      <DependentUpon>Form2.vb</DependentUpon>
     </Compile>
-    <Compile Include="infoReq.vb">
+    <Compile Include="Form2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LeaveRequest.Designer.vb">
@@ -382,10 +379,16 @@
     <Compile Include="MainApp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="minirep.Designer.vb">
-      <DependentUpon>minirep.vb</DependentUpon>
+    <Compile Include="ModAK.Designer.vb">
+      <DependentUpon>ModAK.vb</DependentUpon>
     </Compile>
-    <Compile Include="minirep.vb">
+    <Compile Include="ModAK.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModAKS.Designer.vb">
+      <DependentUpon>ModAKS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ModAKS.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModCamera.vb" />
@@ -405,16 +408,16 @@
     <Compile Include="NewRec.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Notes.Designer.vb">
-      <DependentUpon>Notes.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Notes.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="OtherIncome.Designer.vb">
       <DependentUpon>OtherIncome.vb</DependentUpon>
     </Compile>
     <Compile Include="OtherIncome.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Overtime Hours.Designer.vb">
+      <DependentUpon>Overtime Hours.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Overtime Hours.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PayrollSet.Designer.vb">
@@ -443,22 +446,10 @@
     <Compile Include="RecProcess.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Report.Designer.vb">
-      <DependentUpon>Report.vb</DependentUpon>
+    <Compile Include="Reports.Designer.vb">
+      <DependentUpon>Reports.vb</DependentUpon>
     </Compile>
-    <Compile Include="Report.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RotasiHistory.Designer.vb">
-      <DependentUpon>RotasiHistory.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RotasiHistory.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RotasiMutasi.Designer.vb">
-      <DependentUpon>RotasiMutasi.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RotasiMutasi.vb">
+    <Compile Include="Reports.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RoundButton.vb">
@@ -488,12 +479,6 @@
     <Compile Include="ShowAtt.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SPForms.Designer.vb">
-      <DependentUpon>SPForms.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SPForms.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="StatusChange.Designer.vb">
       <DependentUpon>StatusChange.vb</DependentUpon>
     </Compile>
@@ -504,6 +489,12 @@
       <DependentUpon>Termination.vb</DependentUpon>
     </Compile>
     <Compile Include="Termination.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tile Control.Designer.vb">
+      <DependentUpon>Tile Control.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tile Control.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View.Designer.vb">
@@ -518,20 +509,20 @@
     <Compile Include="Warning.vb">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="Additional.resx">
-      <DependentUpon>Additional.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="addmenu.resx">
-      <DependentUpon>addmenu.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Analytical.resx">
       <DependentUpon>Analytical.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attendance.resx">
-      <DependentUpon>Attendance.vb</DependentUpon>
+    <EmbeddedResource Include="Approvement.resx">
+      <DependentUpon>Approvement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspekKerja.resx">
+      <DependentUpon>AspekKerja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Attendances.resx">
       <DependentUpon>Attendances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borongan.resx">
+      <DependentUpon>Borongan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CandidatesDetails.resx">
       <DependentUpon>CandidatesDetails.vb</DependentUpon>
@@ -548,18 +539,15 @@
     <EmbeddedResource Include="ClosePayroll.resx">
       <DependentUpon>ClosePayroll.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="comparison.resx">
-      <DependentUpon>comparison.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cryrep.resx">
-      <DependentUpon>cryrep.vb</DependentUpon>
+    <EmbeddedResource Include="Criteria.resx">
+      <DependentUpon>Criteria.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReport4.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport4.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="DemosiHistory.resx">
-      <DependentUpon>DemosiHistory.vb</DependentUpon>
+    <EmbeddedResource Include="Customize.resx">
+      <DependentUpon>Customize.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeDetails.resx">
       <DependentUpon>EmployeeDetails.vb</DependentUpon>
@@ -567,8 +555,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="infoReq.resx">
-      <DependentUpon>infoReq.vb</DependentUpon>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LeaveRequest.resx">
       <DependentUpon>LeaveRequest.vb</DependentUpon>
@@ -585,8 +573,11 @@
     <EmbeddedResource Include="MainApp.resx">
       <DependentUpon>MainApp.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="minirep.resx">
-      <DependentUpon>minirep.vb</DependentUpon>
+    <EmbeddedResource Include="ModAK.resx">
+      <DependentUpon>ModAK.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModAKS.resx">
+      <DependentUpon>ModAKS.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -606,11 +597,11 @@
     <EmbeddedResource Include="NewRec.resx">
       <DependentUpon>NewRec.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Notes.resx">
-      <DependentUpon>Notes.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="OtherIncome.resx">
       <DependentUpon>OtherIncome.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Overtime Hours.resx">
+      <DependentUpon>Overtime Hours.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PayrollSet.resx">
       <DependentUpon>PayrollSet.vb</DependentUpon>
@@ -624,14 +615,8 @@
     <EmbeddedResource Include="RecProcess.resx">
       <DependentUpon>RecProcess.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report.resx">
-      <DependentUpon>Report.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RotasiHistory.resx">
-      <DependentUpon>RotasiHistory.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RotasiMutasi.resx">
-      <DependentUpon>RotasiMutasi.vb</DependentUpon>
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="selectcand.resx">
       <DependentUpon>selectcand.vb</DependentUpon>
@@ -645,14 +630,14 @@
     <EmbeddedResource Include="ShowAtt.resx">
       <DependentUpon>ShowAtt.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SPForms.resx">
-      <DependentUpon>SPForms.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="StatusChange.resx">
       <DependentUpon>StatusChange.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Termination.resx">
       <DependentUpon>Termination.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tile Control.resx">
+      <DependentUpon>Tile Control.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View.resx">
       <DependentUpon>View.vb</DependentUpon>
@@ -685,6 +670,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\" />
     <Folder Include="Layout\" />
   </ItemGroup>
   <ItemGroup>
@@ -751,6 +737,7 @@
   <ItemGroup>
     <None Include="Resources\vtimxrajzbuard4hsj78.jpg" />
     <None Include="Resources\Insert-Photo-Here.jpg" />
+    <None Include="Resources\1491905404_attention1_16x16.gif" />
     <Content Include="Treetog-Junior-Folder-documents.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -42,17 +42,13 @@ Public Class ShowAtt
     Dim att As New Attendances
 
     Private Sub loadabsensi()
-        Dim sqlcommand As New MySqlCommand
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
         sqlcommand.CommandText = "select a.EmployeeCode, a.FullName, a.Tanggal as Dates, a.Shift, Date_Format(a.JamMulai, '%H:%i:%s') as SignIn, DATE_FORMAT(a.JamSelesai, '%H:%i:%s') as SignOut, b.EmployeeType from db_absensi a, db_pegawai b where a.EmployeeCode = b.EmployeeCode and a.tanggal = @date1"
-        Dim p1, p2 As New MySqlParameter
-        p1.ParameterName = "@date1"
-        p1.Value = DateTimePicker1.Value.Date
-        sqlcommand.Parameters.Add(p1)
-        sqlcommand.Connection = SQLConnection
+        sqlcommand.Parameters.AddWithValue("@date1", DateTimePicker1.Value.Date)
         Dim dt As New DataTable
         dt.Load(sqlcommand.ExecuteReader)
         att.GridControl1.DataSource = dt
-        Close()
+        'Close()
     End Sub
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
@@ -62,6 +58,7 @@ Public Class ShowAtt
         End If
         loadabsensi()
         att.Show()
+        Close()
     End Sub
 
     Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
@@ -85,6 +82,7 @@ Public Class ShowAtt
             End If
             loadabsensi()
             att.Show()
+            Close()
         End If
     End Sub
 End Class

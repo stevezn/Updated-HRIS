@@ -8,6 +8,7 @@ Public Class View
     Dim SQLConnection As MySqlConnection = New MySqlConnection
     Dim oDt_sched As New DataTable()
     Dim tbl_par As New DataTable
+    Public Property CardCaptionFormat As String
 
     Public Sub New()
         ' This call is required by the designer.
@@ -71,5 +72,12 @@ Public Class View
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
         ShowGridPreview(GridControl1)
+    End Sub
+
+    Private Sub View_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Dim n As Integer = 5
+        'For i As Integer = 0 To n Step 1
+        CardView1.CardCaptionFormat = "PaySlip"
+        'Next
     End Sub
 End Class

@@ -67,6 +67,44 @@ Public Class CandidatesDetails
         GridView8.BestFitColumns()
     End Sub
 
+    Private Sub grafik3()
+        ' ChartControl2.Series.Clear()
+        ' Add a radar series to it.
+        Dim series1 As New DevExpress.XtraCharts.Series("Series 1", ViewType.RadarArea)
+        Dim a As MySqlCommand = SQLConnection.CreateCommand
+        a.CommandText = "select skill1 from db_skills where idrec = '" & txtidrec.Text & "'"
+        Dim hasila As Integer = CInt(a.ExecuteScalar)
+        Dim b As MySqlCommand = SQLConnection.CreateCommand
+        b.CommandText = "select skill2 from db_skills where idrec = '" & txtidrec.Text & "'"
+        Dim hasilb As Integer = CInt(b.ExecuteScalar)
+        Dim c As MySqlCommand = SQLConnection.CreateCommand
+        c.CommandText = "select skill3 from db_skills where idrec = '" & txtidrec.Text & "'"
+        Dim hasilc As Integer = CInt(c.ExecuteScalar)
+        Dim d As MySqlCommand = SQLConnection.CreateCommand
+        d.CommandText = "select skill4 from db_skills where idrec = '" & txtidrec.Text & "'"
+        Dim hasild As Integer = CInt(d.ExecuteScalar)
+        Dim e As MySqlCommand = SQLConnection.CreateCommand
+        e.CommandText = "select skill5 from db_skills where idrec = '" & txtidrec.Text & "'"
+        Dim hasile As Integer = CInt(e.ExecuteScalar)
+        ' Populate the series with points.
+        series1.Points.Add(New SeriesPoint("Leadership", hasila))
+        series1.Points.Add(New SeriesPoint("Knowledge", hasilb))
+        series1.Points.Add(New SeriesPoint("Confidence", hasilc))
+        series1.Points.Add(New SeriesPoint("Teamwork", hasild))
+        series1.Points.Add(New SeriesPoint("Individual", hasile))
+        ' Add the series to the chart.
+        ChartControl2.Series.Add(series1)
+        ' Flip the diagram (if necessary).
+        CType(ChartControl2.Diagram, RadarDiagram).StartAngleInDegrees = 180
+        CType(ChartControl2.Diagram, RadarDiagram).RotationDirection =
+            RadarDiagramRotationDirection.Counterclockwise
+        ' Add a title to the chart and hide the legend.
+        Dim chartTitle1 As New ChartTitle()
+        chartTitle1.Text = "Radar Area Chart"
+        'ChartControl2.Titles.Add(chartTitle1)
+        ChartControl2.Legend.Visible = False
+    End Sub
+
     Private Sub grafik2()
         ' ChartControl2.Series.Clear()
         ' Add a radar series to it.
@@ -98,7 +136,6 @@ Public Class CandidatesDetails
         CType(ChartControl2.Diagram, RadarDiagram).StartAngleInDegrees = 180
         CType(ChartControl2.Diagram, RadarDiagram).RotationDirection =
             RadarDiagramRotationDirection.Counterclockwise
-
         ' Add a title to the chart and hide the legend.
         Dim chartTitle1 As New ChartTitle()
         chartTitle1.Text = "Radar Area Chart"
@@ -194,6 +231,7 @@ Public Class CandidatesDetails
             TextBox7.Text = tbl_par3.Rows(index).Item(4).ToString
             TextBox8.Text = tbl_par3.Rows(index).Item(5).ToString
             TextBox9.Text = tbl_par3.Rows(index).Item(6).ToString
+            TextEdit2.Text = tbl_par3.Rows(index).Item(9).ToString
         Next
     End Sub
 
@@ -226,9 +264,67 @@ Public Class CandidatesDetails
     End Sub
 
     Private Sub SimpleButton2_Click(sender As Object, e As EventArgs) Handles SimpleButton2.Click
-        grafik2()
-        Label27.Text = TextBox10.Text.ToString
-        Label27.Visible = True
+        If TextBox10.Text = "" Then
+            MsgBox("Insert the name to compare with")
+        Else
+            grafik2()
+            Label27.Text = TextBox10.Text.ToString
+            Label27.Visible = True
+            SimpleButton2.Enabled = False
+        End If
+    End Sub
+
+    Private Sub SimpleButton3_Click(sender As Object, e As EventArgs) Handles SimpleButton3.Click
+        ChartControl2.Series.Clear()
+        SimpleButton2.Enabled = True
+        grafik3()
+        'Label26.Visible = False
+        'Label27.Visible = False
+    End Sub
+
+    Dim dt1 As Date
+    Dim dt2 As Date
+    Dim dt3 As TimeSpan
+    Dim diff As Double
+
+    Private Sub txtbod_ValueChanged(sender As Object, e As EventArgs) Handles txtbod.ValueChanged
+        dt1 = CDate(txtbod.Value.ToShortDateString)
+        dt2 = Date.Now
+        dt3 = (dt2 - dt1)
+        diff = dt3.Days
+        txtage.Text = Str(Int(diff / 365))
+    End Sub
+
+    Sub download()
+        Dim sFilePath As String
+        Dim buffer As Byte()
+        Using cmd As New MySqlCommand("select cv from db_recruitment where idrec = '" & txtidrec.Text & "'", SQLConnection)
+            'Using cmd As New MySqlCommand("Select Top 1 PDF From PDF", SQLConnection)
+            buffer = CType(cmd.ExecuteScalar(), Byte())
+        End Using
+        sFilePath = System.IO.Path.GetTempFileName()
+        System.IO.File.Move(sFilePath, System.IO.Path.ChangeExtension(sFilePath, ".pdf"))
+        sFilePath = System.IO.Path.ChangeExtension(sFilePath, ".pdf")
+        System.IO.File.WriteAllBytes(sFilePath, buffer)
+        Dim act As Action(Of String) = New Action(Of String)(AddressOf OpenPDFFile)
+        act.BeginInvoke(sFilePath, Nothing, Nothing)
+    End Sub
+
+    Private Shared Sub OpenPDFFile(ByVal sFilePath)
+        Using p As New System.Diagnostics.Process
+            p.StartInfo = New System.Diagnostics.ProcessStartInfo(CType(sFilePath, String))
+            p.Start()
+            p.WaitForExit()
+            Try
+                System.IO.File.Delete(CType(sFilePath, String))
+            Catch
+            End Try
+        End Using
+    End Sub
+
+
+    Private Sub SimpleButton14_Click(sender As Object, e As EventArgs) Handles SimpleButton14.Click
+        download()
     End Sub
 
     Sub autochange()
@@ -272,6 +368,13 @@ Public Class CandidatesDetails
             RichTextBox7.Text = tbl_par2.Rows(index).Item(40).ToString
             RichTextBox8.Text = tbl_par2.Rows(index).Item(41).ToString
             RichTextBox9.Text = tbl_par2.Rows(index).Item(42).ToString
+            Dim filefoto As Byte() = CType(tbl_par2.Rows(0).Item(10), Byte())
+            If filefoto.Length > 0 Then
+                pictureEdit.Image = ByteToImage(filefoto)
+            Else
+                pictureEdit.Image = Nothing
+                pictureEdit.Refresh()
+            End If
         Next
     End Sub
 End Class

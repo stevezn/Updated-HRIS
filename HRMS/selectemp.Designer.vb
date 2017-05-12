@@ -45,9 +45,9 @@ Partial Class selectemp
         '
         Me.LabelControl1.Location = New System.Drawing.Point(185, 22)
         Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(75, 13)
+        Me.LabelControl1.Size = New System.Drawing.Size(87, 13)
         Me.LabelControl1.TabIndex = 0
-        Me.LabelControl1.Text = "Select records :"
+        Me.LabelControl1.Text = "Selected records :"
         '
         'LabelControl2
         '
@@ -122,7 +122,7 @@ Partial Class selectemp
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(265, 23)
+        Me.Label2.Location = New System.Drawing.Point(273, 23)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 5

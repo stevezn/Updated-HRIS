@@ -33,13 +33,13 @@ Partial Class RecProcess
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.txtinterview = New DevExpress.XtraEditors.TextEdit()
         Me.txtstatus = New DevExpress.XtraEditors.TextEdit()
         Me.txtage = New DevExpress.XtraEditors.TextEdit()
         Me.txtgender = New DevExpress.XtraEditors.TextEdit()
         Me.txtdob = New System.Windows.Forms.DateTimePicker()
         Me.txtpob = New DevExpress.XtraEditors.TextEdit()
         Me.txtfullname = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.txtinterview = New DevExpress.XtraEditors.TextEdit()
         Me.txtaddress = New DevExpress.XtraEditors.TextEdit()
         Me.txtidcard = New DevExpress.XtraEditors.TextEdit()
         Me.txtid = New DevExpress.XtraEditors.TextEdit()
@@ -47,13 +47,13 @@ Partial Class RecProcess
         Me.lcid = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcidcard = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcaddress = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.lcinterview = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcfullname = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.txtinterviewdate = New System.Windows.Forms.DateTimePicker()
         Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
@@ -75,38 +75,42 @@ Partial Class RecProcess
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
+        Me.skill5 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.skill4 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.skill3 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.skill2 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.skill1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.txtstat = New DevExpress.XtraEditors.TextEdit()
-        Me.skill5 = New DevExpress.XtraEditors.TextEdit()
-        Me.skill4 = New DevExpress.XtraEditors.TextEdit()
-        Me.skill3 = New DevExpress.XtraEditors.TextEdit()
-        Me.skill2 = New DevExpress.XtraEditors.TextEdit()
-        Me.skill1 = New DevExpress.XtraEditors.TextEdit()
         Me.txtname = New DevExpress.XtraEditors.TextEdit()
         Me.txtidrecc = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
+        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtage.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtgender.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtpob.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtfullname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtaddress.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtidcard.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtid.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,13 +118,13 @@ Partial Class RecProcess
         CType(Me.lcid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcidcard, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcaddress, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lcinterview, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcfullname, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,25 +141,26 @@ Partial Class RecProcess
         Me.GroupControl4.SuspendLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
-        CType(Me.txtstat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.skill5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.skill4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.skill3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.skill2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.skill1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtstat.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtname.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtidrecc.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lcphone
@@ -166,15 +171,15 @@ Partial Class RecProcess
         Me.lcphone.Name = "lcphone"
         Me.lcphone.Size = New System.Drawing.Size(205, 24)
         Me.lcphone.Text = "Phone Number"
-        Me.lcphone.TextSize = New System.Drawing.Size(76, 13)
+        Me.lcphone.TextSize = New System.Drawing.Size(70, 13)
         '
         'txtphone
         '
         Me.txtphone.EditValue = ""
-        Me.txtphone.Location = New System.Drawing.Point(91, 132)
+        Me.txtphone.Location = New System.Drawing.Point(85, 132)
         Me.txtphone.MenuManager = Me.RibbonControl1
         Me.txtphone.Name = "txtphone"
-        Me.txtphone.Size = New System.Drawing.Size(122, 20)
+        Me.txtphone.Size = New System.Drawing.Size(128, 20)
         Me.txtphone.StyleController = Me.LayoutControl1
         Me.txtphone.TabIndex = 13
         '
@@ -186,6 +191,7 @@ Partial Class RecProcess
         Me.RibbonControl1.MaxItemId = 7
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.Employee})
+        Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
         Me.RibbonControl1.Size = New System.Drawing.Size(396, 144)
         Me.RibbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above
         '
@@ -226,13 +232,13 @@ Partial Class RecProcess
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.txtinterview)
         Me.LayoutControl1.Controls.Add(Me.txtstatus)
         Me.LayoutControl1.Controls.Add(Me.txtage)
         Me.LayoutControl1.Controls.Add(Me.txtgender)
         Me.LayoutControl1.Controls.Add(Me.txtdob)
         Me.LayoutControl1.Controls.Add(Me.txtpob)
         Me.LayoutControl1.Controls.Add(Me.txtfullname)
-        Me.LayoutControl1.Controls.Add(Me.txtinterview)
         Me.LayoutControl1.Controls.Add(Me.txtphone)
         Me.LayoutControl1.Controls.Add(Me.txtaddress)
         Me.LayoutControl1.Controls.Add(Me.txtidcard)
@@ -245,92 +251,92 @@ Partial Class RecProcess
         Me.LayoutControl1.TabIndex = 29
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'txtinterview
+        '
+        Me.txtinterview.Location = New System.Drawing.Point(85, 84)
+        Me.txtinterview.MenuManager = Me.RibbonControl1
+        Me.txtinterview.Name = "txtinterview"
+        Me.txtinterview.Size = New System.Drawing.Size(128, 20)
+        Me.txtinterview.StyleController = Me.LayoutControl1
+        Me.txtinterview.TabIndex = 52
+        '
         'txtstatus
         '
-        Me.txtstatus.Location = New System.Drawing.Point(91, 228)
+        Me.txtstatus.Location = New System.Drawing.Point(85, 228)
         Me.txtstatus.MenuManager = Me.RibbonControl1
         Me.txtstatus.Name = "txtstatus"
-        Me.txtstatus.Size = New System.Drawing.Size(122, 20)
+        Me.txtstatus.Size = New System.Drawing.Size(128, 20)
         Me.txtstatus.StyleController = Me.LayoutControl1
         Me.txtstatus.TabIndex = 42
         '
         'txtage
         '
-        Me.txtage.Location = New System.Drawing.Point(91, 180)
+        Me.txtage.Location = New System.Drawing.Point(85, 180)
         Me.txtage.MenuManager = Me.RibbonControl1
         Me.txtage.Name = "txtage"
-        Me.txtage.Size = New System.Drawing.Size(122, 20)
+        Me.txtage.Size = New System.Drawing.Size(128, 20)
         Me.txtage.StyleController = Me.LayoutControl1
         Me.txtage.TabIndex = 41
         '
         'txtgender
         '
-        Me.txtgender.Location = New System.Drawing.Point(91, 204)
+        Me.txtgender.Location = New System.Drawing.Point(85, 204)
         Me.txtgender.MenuManager = Me.RibbonControl1
         Me.txtgender.Name = "txtgender"
-        Me.txtgender.Size = New System.Drawing.Size(122, 20)
+        Me.txtgender.Size = New System.Drawing.Size(128, 20)
         Me.txtgender.StyleController = Me.LayoutControl1
         Me.txtgender.TabIndex = 40
         '
         'txtdob
         '
-        Me.txtdob.Location = New System.Drawing.Point(91, 252)
+        Me.txtdob.Location = New System.Drawing.Point(85, 252)
         Me.txtdob.Name = "txtdob"
-        Me.txtdob.Size = New System.Drawing.Size(122, 21)
+        Me.txtdob.Size = New System.Drawing.Size(128, 21)
         Me.txtdob.TabIndex = 39
         '
         'txtpob
         '
-        Me.txtpob.Location = New System.Drawing.Point(91, 156)
+        Me.txtpob.Location = New System.Drawing.Point(85, 156)
         Me.txtpob.MenuManager = Me.RibbonControl1
         Me.txtpob.Name = "txtpob"
-        Me.txtpob.Size = New System.Drawing.Size(122, 20)
+        Me.txtpob.Size = New System.Drawing.Size(128, 20)
         Me.txtpob.StyleController = Me.LayoutControl1
         Me.txtpob.TabIndex = 38
         '
         'txtfullname
         '
-        Me.txtfullname.Location = New System.Drawing.Point(91, 12)
+        Me.txtfullname.Location = New System.Drawing.Point(85, 12)
         Me.txtfullname.MenuManager = Me.RibbonControl1
         Me.txtfullname.Name = "txtfullname"
         Me.txtfullname.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.txtfullname.Size = New System.Drawing.Size(122, 20)
+        Me.txtfullname.Size = New System.Drawing.Size(128, 20)
         Me.txtfullname.StyleController = Me.LayoutControl1
         Me.txtfullname.TabIndex = 31
         '
-        'txtinterview
-        '
-        Me.txtinterview.Location = New System.Drawing.Point(91, 60)
-        Me.txtinterview.MenuManager = Me.RibbonControl1
-        Me.txtinterview.Name = "txtinterview"
-        Me.txtinterview.Size = New System.Drawing.Size(122, 20)
-        Me.txtinterview.StyleController = Me.LayoutControl1
-        Me.txtinterview.TabIndex = 28
-        '
         'txtaddress
         '
-        Me.txtaddress.Location = New System.Drawing.Point(91, 108)
+        Me.txtaddress.Location = New System.Drawing.Point(85, 108)
         Me.txtaddress.MenuManager = Me.RibbonControl1
         Me.txtaddress.Name = "txtaddress"
-        Me.txtaddress.Size = New System.Drawing.Size(122, 20)
+        Me.txtaddress.Size = New System.Drawing.Size(128, 20)
         Me.txtaddress.StyleController = Me.LayoutControl1
         Me.txtaddress.TabIndex = 10
         '
         'txtidcard
         '
-        Me.txtidcard.Location = New System.Drawing.Point(91, 84)
+        Me.txtidcard.Location = New System.Drawing.Point(85, 60)
         Me.txtidcard.MenuManager = Me.RibbonControl1
         Me.txtidcard.Name = "txtidcard"
-        Me.txtidcard.Size = New System.Drawing.Size(122, 20)
+        Me.txtidcard.Size = New System.Drawing.Size(128, 20)
         Me.txtidcard.StyleController = Me.LayoutControl1
         Me.txtidcard.TabIndex = 7
         '
         'txtid
         '
-        Me.txtid.Location = New System.Drawing.Point(91, 36)
+        Me.txtid.Location = New System.Drawing.Point(85, 36)
         Me.txtid.MenuManager = Me.RibbonControl1
         Me.txtid.Name = "txtid"
-        Me.txtid.Size = New System.Drawing.Size(122, 20)
+        Me.txtid.Size = New System.Drawing.Size(128, 20)
         Me.txtid.StyleController = Me.LayoutControl1
         Me.txtid.TabIndex = 6
         '
@@ -339,7 +345,7 @@ Partial Class RecProcess
         Me.LayoutControlGroup1.CustomizationFormText = "LayoutControlGroup1"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcid, Me.lcidcard, Me.lcaddress, Me.lcphone, Me.lcinterview, Me.lcfullname, Me.LayoutControlItem4, Me.LayoutControlItem2, Me.LayoutControlItem5, Me.LayoutControlItem3, Me.LayoutControlItem6})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.lcid, Me.lcidcard, Me.lcaddress, Me.lcphone, Me.lcfullname, Me.LayoutControlItem4, Me.LayoutControlItem2, Me.LayoutControlItem5, Me.LayoutControlItem3, Me.LayoutControlItem6, Me.LayoutControlItem13})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(225, 287)
@@ -354,17 +360,17 @@ Partial Class RecProcess
         Me.lcid.Name = "lcid"
         Me.lcid.Size = New System.Drawing.Size(205, 24)
         Me.lcid.Text = "ID Rec"
-        Me.lcid.TextSize = New System.Drawing.Size(76, 13)
+        Me.lcid.TextSize = New System.Drawing.Size(70, 13)
         '
         'lcidcard
         '
         Me.lcidcard.Control = Me.txtidcard
         Me.lcidcard.CustomizationFormText = "LayoutControlItem4"
-        Me.lcidcard.Location = New System.Drawing.Point(0, 72)
+        Me.lcidcard.Location = New System.Drawing.Point(0, 48)
         Me.lcidcard.Name = "lcidcard"
         Me.lcidcard.Size = New System.Drawing.Size(205, 24)
         Me.lcidcard.Text = "ID Number"
-        Me.lcidcard.TextSize = New System.Drawing.Size(76, 13)
+        Me.lcidcard.TextSize = New System.Drawing.Size(70, 13)
         '
         'lcaddress
         '
@@ -374,17 +380,7 @@ Partial Class RecProcess
         Me.lcaddress.Name = "lcaddress"
         Me.lcaddress.Size = New System.Drawing.Size(205, 24)
         Me.lcaddress.Text = "Address"
-        Me.lcaddress.TextSize = New System.Drawing.Size(76, 13)
-        '
-        'lcinterview
-        '
-        Me.lcinterview.Control = Me.txtinterview
-        Me.lcinterview.CustomizationFormText = "Interview Times"
-        Me.lcinterview.Location = New System.Drawing.Point(0, 48)
-        Me.lcinterview.Name = "lcinterview"
-        Me.lcinterview.Size = New System.Drawing.Size(205, 24)
-        Me.lcinterview.Text = "Interview Times"
-        Me.lcinterview.TextSize = New System.Drawing.Size(76, 13)
+        Me.lcaddress.TextSize = New System.Drawing.Size(70, 13)
         '
         'lcfullname
         '
@@ -394,7 +390,7 @@ Partial Class RecProcess
         Me.lcfullname.Name = "lcfullname"
         Me.lcfullname.Size = New System.Drawing.Size(205, 24)
         Me.lcfullname.Text = "Full Name"
-        Me.lcfullname.TextSize = New System.Drawing.Size(76, 13)
+        Me.lcfullname.TextSize = New System.Drawing.Size(70, 13)
         '
         'LayoutControlItem4
         '
@@ -404,7 +400,7 @@ Partial Class RecProcess
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
         Me.LayoutControlItem4.Size = New System.Drawing.Size(205, 24)
         Me.LayoutControlItem4.Text = "Place Of Birth"
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(76, 13)
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(70, 13)
         '
         'LayoutControlItem2
         '
@@ -414,7 +410,7 @@ Partial Class RecProcess
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(205, 24)
         Me.LayoutControlItem2.Text = "Gender"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(76, 13)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(70, 13)
         '
         'LayoutControlItem5
         '
@@ -424,7 +420,7 @@ Partial Class RecProcess
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
         Me.LayoutControlItem5.Size = New System.Drawing.Size(205, 24)
         Me.LayoutControlItem5.Text = "Age"
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(76, 13)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(70, 13)
         '
         'LayoutControlItem3
         '
@@ -434,7 +430,7 @@ Partial Class RecProcess
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(205, 27)
         Me.LayoutControlItem3.Text = "Date Of Birth"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(76, 13)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(70, 13)
         '
         'LayoutControlItem6
         '
@@ -444,7 +440,17 @@ Partial Class RecProcess
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
         Me.LayoutControlItem6.Size = New System.Drawing.Size(205, 24)
         Me.LayoutControlItem6.Text = "Status"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(76, 13)
+        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(70, 13)
+        '
+        'LayoutControlItem13
+        '
+        Me.LayoutControlItem13.Control = Me.txtinterview
+        Me.LayoutControlItem13.CustomizationFormText = "Applied Times"
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 72)
+        Me.LayoutControlItem13.Name = "LayoutControlItem13"
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(205, 24)
+        Me.LayoutControlItem13.Text = "Applied Times"
+        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(70, 13)
         '
         'txtinterviewdate
         '
@@ -495,7 +501,7 @@ Partial Class RecProcess
         'button1
         '
         Me.button1.Image = CType(resources.GetObject("button1.Image"), System.Drawing.Image)
-        Me.button1.Location = New System.Drawing.Point(134, 26)
+        Me.button1.Location = New System.Drawing.Point(135, 26)
         Me.button1.Name = "button1"
         Me.button1.Size = New System.Drawing.Size(28, 23)
         Me.button1.TabIndex = 51
@@ -506,7 +512,7 @@ Partial Class RecProcess
         Me.GroupControl2.Controls.Add(Me.LabelControl2)
         Me.GroupControl2.Controls.Add(Me.txtinterviewdate)
         Me.GroupControl2.Controls.Add(Me.SimpleButton4)
-        Me.GroupControl2.Location = New System.Drawing.Point(90, 83)
+        Me.GroupControl2.Location = New System.Drawing.Point(90, 31)
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(198, 108)
         Me.GroupControl2.TabIndex = 43
@@ -542,7 +548,7 @@ Partial Class RecProcess
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(157, 279)
+        Me.GridControl1.Size = New System.Drawing.Size(157, 284)
         Me.GridControl1.TabIndex = 34
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -556,7 +562,7 @@ Partial Class RecProcess
         '
         Me.TextBox1.Location = New System.Drawing.Point(6, 26)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(122, 21)
+        Me.TextBox1.Size = New System.Drawing.Size(123, 21)
         Me.TextBox1.TabIndex = 40
         '
         'Label1
@@ -571,7 +577,7 @@ Partial Class RecProcess
         '
         'SimpleButton2
         '
-        Me.SimpleButton2.Location = New System.Drawing.Point(341, 321)
+        Me.SimpleButton2.Location = New System.Drawing.Point(340, 319)
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(36, 22)
         Me.SimpleButton2.TabIndex = 37
@@ -586,6 +592,9 @@ Partial Class RecProcess
         '
         'GroupControl4
         '
+        Me.GroupControl4.Controls.Add(Me.SimpleButton5)
+        Me.GroupControl4.Controls.Add(Me.LabelControl1)
+        Me.GroupControl4.Controls.Add(Me.TextEdit1)
         Me.GroupControl4.Controls.Add(Me.button2)
         Me.GroupControl4.Controls.Add(Me.TextBox2)
         Me.GroupControl4.Controls.Add(Me.SimpleButton1)
@@ -607,14 +616,15 @@ Partial Class RecProcess
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(6, 29)
+        Me.TextBox2.Location = New System.Drawing.Point(5, 29)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(122, 21)
+        Me.TextBox2.Size = New System.Drawing.Size(123, 21)
         Me.TextBox2.TabIndex = 48
         '
         'SimpleButton1
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(302, 253)
+        Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
+        Me.SimpleButton1.Location = New System.Drawing.Point(304, 276)
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton1.TabIndex = 47
@@ -622,81 +632,91 @@ Partial Class RecProcess
         '
         'LayoutControl2
         '
-        Me.LayoutControl2.Controls.Add(Me.txtstat)
         Me.LayoutControl2.Controls.Add(Me.skill5)
         Me.LayoutControl2.Controls.Add(Me.skill4)
         Me.LayoutControl2.Controls.Add(Me.skill3)
         Me.LayoutControl2.Controls.Add(Me.skill2)
         Me.LayoutControl2.Controls.Add(Me.skill1)
+        Me.LayoutControl2.Controls.Add(Me.txtstat)
         Me.LayoutControl2.Controls.Add(Me.txtname)
         Me.LayoutControl2.Controls.Add(Me.txtidrecc)
-        Me.LayoutControl2.Location = New System.Drawing.Point(163, 42)
+        Me.LayoutControl2.Location = New System.Drawing.Point(162, 43)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.Root = Me.LayoutControlGroup2
-        Me.LayoutControl2.Size = New System.Drawing.Size(223, 218)
+        Me.LayoutControl2.Size = New System.Drawing.Size(227, 215)
         Me.LayoutControl2.TabIndex = 46
         Me.LayoutControl2.Text = "LayoutControl2"
-        '
-        'txtstat
-        '
-        Me.txtstat.Location = New System.Drawing.Point(87, 60)
-        Me.txtstat.MenuManager = Me.RibbonControl1
-        Me.txtstat.Name = "txtstat"
-        Me.txtstat.Size = New System.Drawing.Size(124, 20)
-        Me.txtstat.StyleController = Me.LayoutControl2
-        Me.txtstat.TabIndex = 13
         '
         'skill5
         '
         Me.skill5.Location = New System.Drawing.Point(87, 180)
         Me.skill5.MenuManager = Me.RibbonControl1
         Me.skill5.Name = "skill5"
-        Me.skill5.Size = New System.Drawing.Size(124, 20)
+        Me.skill5.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.skill5.Properties.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5"})
+        Me.skill5.Size = New System.Drawing.Size(128, 20)
         Me.skill5.StyleController = Me.LayoutControl2
-        Me.skill5.TabIndex = 10
+        Me.skill5.TabIndex = 51
         '
         'skill4
         '
         Me.skill4.Location = New System.Drawing.Point(87, 156)
         Me.skill4.MenuManager = Me.RibbonControl1
         Me.skill4.Name = "skill4"
-        Me.skill4.Size = New System.Drawing.Size(124, 20)
+        Me.skill4.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.skill4.Properties.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5"})
+        Me.skill4.Size = New System.Drawing.Size(128, 20)
         Me.skill4.StyleController = Me.LayoutControl2
-        Me.skill4.TabIndex = 9
+        Me.skill4.TabIndex = 51
         '
         'skill3
         '
         Me.skill3.Location = New System.Drawing.Point(87, 132)
         Me.skill3.MenuManager = Me.RibbonControl1
         Me.skill3.Name = "skill3"
-        Me.skill3.Size = New System.Drawing.Size(124, 20)
+        Me.skill3.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.skill3.Properties.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5"})
+        Me.skill3.Size = New System.Drawing.Size(128, 20)
         Me.skill3.StyleController = Me.LayoutControl2
-        Me.skill3.TabIndex = 8
+        Me.skill3.TabIndex = 39
         '
         'skill2
         '
         Me.skill2.Location = New System.Drawing.Point(87, 108)
         Me.skill2.MenuManager = Me.RibbonControl1
         Me.skill2.Name = "skill2"
-        Me.skill2.Size = New System.Drawing.Size(124, 20)
+        Me.skill2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.skill2.Properties.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5"})
+        Me.skill2.Size = New System.Drawing.Size(128, 20)
         Me.skill2.StyleController = Me.LayoutControl2
-        Me.skill2.TabIndex = 7
+        Me.skill2.TabIndex = 38
         '
         'skill1
         '
         Me.skill1.Location = New System.Drawing.Point(87, 84)
         Me.skill1.MenuManager = Me.RibbonControl1
         Me.skill1.Name = "skill1"
-        Me.skill1.Size = New System.Drawing.Size(124, 20)
+        Me.skill1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.skill1.Properties.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5"})
+        Me.skill1.Size = New System.Drawing.Size(128, 20)
         Me.skill1.StyleController = Me.LayoutControl2
-        Me.skill1.TabIndex = 6
+        Me.skill1.TabIndex = 37
+        '
+        'txtstat
+        '
+        Me.txtstat.Location = New System.Drawing.Point(87, 60)
+        Me.txtstat.MenuManager = Me.RibbonControl1
+        Me.txtstat.Name = "txtstat"
+        Me.txtstat.Size = New System.Drawing.Size(128, 20)
+        Me.txtstat.StyleController = Me.LayoutControl2
+        Me.txtstat.TabIndex = 13
         '
         'txtname
         '
         Me.txtname.Location = New System.Drawing.Point(87, 12)
         Me.txtname.MenuManager = Me.RibbonControl1
         Me.txtname.Name = "txtname"
-        Me.txtname.Size = New System.Drawing.Size(124, 20)
+        Me.txtname.Size = New System.Drawing.Size(128, 20)
         Me.txtname.StyleController = Me.LayoutControl2
         Me.txtname.TabIndex = 5
         '
@@ -705,7 +725,7 @@ Partial Class RecProcess
         Me.txtidrecc.Location = New System.Drawing.Point(87, 36)
         Me.txtidrecc.MenuManager = Me.RibbonControl1
         Me.txtidrecc.Name = "txtidrecc"
-        Me.txtidrecc.Size = New System.Drawing.Size(124, 20)
+        Me.txtidrecc.Size = New System.Drawing.Size(128, 20)
         Me.txtidrecc.StyleController = Me.LayoutControl2
         Me.txtidrecc.TabIndex = 4
         '
@@ -714,10 +734,10 @@ Partial Class RecProcess
         Me.LayoutControlGroup2.CustomizationFormText = "LayoutControlGroup2"
         Me.LayoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup2.GroupBordersVisible = False
-        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.LayoutControlItem1, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem10, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.LayoutControlItem15})
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.LayoutControlItem1, Me.LayoutControlItem15, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.LayoutControlItem10, Me.LayoutControlItem11, Me.LayoutControlItem12})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(223, 218)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(227, 215)
         Me.LayoutControlGroup2.Text = "LayoutControlGroup2"
         Me.LayoutControlGroup2.TextVisible = False
         '
@@ -727,7 +747,7 @@ Partial Class RecProcess
         Me.LayoutControlItem7.CustomizationFormText = "Full Name"
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(203, 24)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(207, 24)
         Me.LayoutControlItem7.Text = "Full Name"
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(72, 13)
         '
@@ -737,59 +757,9 @@ Partial Class RecProcess
         Me.LayoutControlItem1.CustomizationFormText = "ID Recruitment"
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 24)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(203, 24)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(207, 24)
         Me.LayoutControlItem1.Text = "ID Recruitment"
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(72, 13)
-        '
-        'LayoutControlItem8
-        '
-        Me.LayoutControlItem8.Control = Me.skill1
-        Me.LayoutControlItem8.CustomizationFormText = "Skill 1"
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 72)
-        Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem8.Text = "Leadership"
-        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(72, 13)
-        '
-        'LayoutControlItem9
-        '
-        Me.LayoutControlItem9.Control = Me.skill2
-        Me.LayoutControlItem9.CustomizationFormText = "Skill 2"
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 96)
-        Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem9.Text = "Knowledge"
-        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(72, 13)
-        '
-        'LayoutControlItem10
-        '
-        Me.LayoutControlItem10.Control = Me.skill3
-        Me.LayoutControlItem10.CustomizationFormText = "Skill 3"
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 120)
-        Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem10.Text = "Confidence"
-        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(72, 13)
-        '
-        'LayoutControlItem11
-        '
-        Me.LayoutControlItem11.Control = Me.skill4
-        Me.LayoutControlItem11.CustomizationFormText = "Skill 4"
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 144)
-        Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(203, 24)
-        Me.LayoutControlItem11.Text = "Teamwork"
-        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(72, 13)
-        '
-        'LayoutControlItem12
-        '
-        Me.LayoutControlItem12.Control = Me.skill5
-        Me.LayoutControlItem12.CustomizationFormText = "Skill 5"
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 168)
-        Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(203, 30)
-        Me.LayoutControlItem12.Text = "Individual"
-        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(72, 13)
         '
         'LayoutControlItem15
         '
@@ -797,9 +767,59 @@ Partial Class RecProcess
         Me.LayoutControlItem15.CustomizationFormText = "Status"
         Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 48)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(203, 24)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(207, 24)
         Me.LayoutControlItem15.Text = "Status"
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(72, 13)
+        '
+        'LayoutControlItem8
+        '
+        Me.LayoutControlItem8.Control = Me.skill1
+        Me.LayoutControlItem8.CustomizationFormText = "Leadership"
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 72)
+        Me.LayoutControlItem8.Name = "LayoutControlItem8"
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(207, 24)
+        Me.LayoutControlItem8.Text = "Leadership"
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(72, 13)
+        '
+        'LayoutControlItem9
+        '
+        Me.LayoutControlItem9.Control = Me.skill2
+        Me.LayoutControlItem9.CustomizationFormText = "Knowledge"
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 96)
+        Me.LayoutControlItem9.Name = "LayoutControlItem9"
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(207, 24)
+        Me.LayoutControlItem9.Text = "Knowledge"
+        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(72, 13)
+        '
+        'LayoutControlItem10
+        '
+        Me.LayoutControlItem10.Control = Me.skill3
+        Me.LayoutControlItem10.CustomizationFormText = "Confidence"
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 120)
+        Me.LayoutControlItem10.Name = "LayoutControlItem10"
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(207, 24)
+        Me.LayoutControlItem10.Text = "Confidence"
+        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(72, 13)
+        '
+        'LayoutControlItem11
+        '
+        Me.LayoutControlItem11.Control = Me.skill4
+        Me.LayoutControlItem11.CustomizationFormText = "Teamwork"
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 144)
+        Me.LayoutControlItem11.Name = "LayoutControlItem11"
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(207, 24)
+        Me.LayoutControlItem11.Text = "Teamwork"
+        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(72, 13)
+        '
+        'LayoutControlItem12
+        '
+        Me.LayoutControlItem12.Control = Me.skill5
+        Me.LayoutControlItem12.CustomizationFormText = "Individual"
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 168)
+        Me.LayoutControlItem12.Name = "LayoutControlItem12"
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(207, 27)
+        Me.LayoutControlItem12.Text = "Individual"
+        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(72, 13)
         '
         'GridControl2
         '
@@ -828,6 +848,33 @@ Partial Class RecProcess
         Me.BackstageViewTabItem1.Name = "BackstageViewTabItem1"
         Me.BackstageViewTabItem1.Selected = False
         '
+        'TextEdit1
+        '
+        Me.TextEdit1.Location = New System.Drawing.Point(249, 249)
+        Me.TextEdit1.MenuManager = Me.RibbonControl1
+        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Size = New System.Drawing.Size(105, 20)
+        Me.TextEdit1.TabIndex = 37
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Location = New System.Drawing.Point(174, 251)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(56, 13)
+        Me.LabelControl1.TabIndex = 51
+        Me.LabelControl1.Text = "Interviewer"
+        '
+        'SimpleButton5
+        '
+        Me.SimpleButton5.Image = CType(resources.GetObject("SimpleButton5.Image"), System.Drawing.Image)
+        Me.SimpleButton5.Location = New System.Drawing.Point(356, 249)
+        Me.SimpleButton5.Name = "SimpleButton5"
+        Me.SimpleButton5.Size = New System.Drawing.Size(23, 21)
+        Me.SimpleButton5.TabIndex = 100
+        '
+        'Timer1
+        '
+        '
         'RecProcess
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -847,12 +894,12 @@ Partial Class RecProcess
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtstatus.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtage.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtgender.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtpob.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtfullname.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.txtinterview.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtaddress.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtidcard.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtid.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -860,13 +907,13 @@ Partial Class RecProcess
         CType(Me.lcid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcidcard, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcaddress, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lcinterview, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcfullname, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.XtraTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -886,25 +933,26 @@ Partial Class RecProcess
         Me.GroupControl4.PerformLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
-        CType(Me.txtstat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.skill5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.skill4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.skill3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.skill2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.skill1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtstat.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtname.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtidrecc.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -917,7 +965,6 @@ Partial Class RecProcess
     Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents txtfullname As DevExpress.XtraEditors.ComboBoxEdit
-    Friend WithEvents txtinterview As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtaddress As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtidcard As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtid As DevExpress.XtraEditors.TextEdit
@@ -925,7 +972,6 @@ Partial Class RecProcess
     Friend WithEvents lcid As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcidcard As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcaddress As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents lcinterview As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents lcfullname As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
@@ -954,21 +1000,11 @@ Partial Class RecProcess
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents skill5 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents skill4 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents skill3 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents skill2 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents skill1 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtname As DevExpress.XtraEditors.TextEdit
     Friend WithEvents txtidrecc As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents txtstat As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
@@ -981,4 +1017,20 @@ Partial Class RecProcess
     Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents button2 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents button1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents txtinterview As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem13 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents skill5 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents skill4 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents skill3 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents skill2 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents skill1 As DevExpress.XtraEditors.ComboBoxEdit
+    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents SimpleButton5 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents Timer1 As Timer
 End Class
