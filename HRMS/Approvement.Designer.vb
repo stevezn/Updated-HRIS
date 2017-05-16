@@ -112,7 +112,7 @@ Partial Class Approvement
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(0, 0)
+        Me.GridControl1.Location = New System.Drawing.Point(0, -6)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.Size = New System.Drawing.Size(859, 444)
@@ -123,49 +123,54 @@ Partial Class Approvement
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.ReadOnly = True
         Me.GridView1.OptionsFind.AlwaysVisible = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
-        Me.GridView1.PaintStyleName = "UltraFlat"
+        Me.GridView1.PaintStyleName = "MixedXP"
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(73, 180)
+        Me.LabelControl1.Location = New System.Drawing.Point(101, 24)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(49, 13)
         Me.LabelControl1.TabIndex = 2
         Me.LabelControl1.Text = "Approving"
+        Me.LabelControl1.Visible = False
         '
         'TextBox1
         '
         Me.TextBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.TextBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.TextBox1.Location = New System.Drawing.Point(6, 199)
+        Me.TextBox1.Location = New System.Drawing.Point(128, 4)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(170, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(22, 20)
         Me.TextBox1.TabIndex = 3
+        Me.TextBox1.Visible = False
         '
         'SimpleButton4
         '
         Me.SimpleButton4.Image = CType(resources.GetObject("SimpleButton4.Image"), System.Drawing.Image)
-        Me.SimpleButton4.Location = New System.Drawing.Point(181, 198)
+        Me.SimpleButton4.Location = New System.Drawing.Point(156, 14)
         Me.SimpleButton4.Name = "SimpleButton4"
         Me.SimpleButton4.Size = New System.Drawing.Size(26, 20)
         Me.SimpleButton4.TabIndex = 9
+        Me.SimpleButton4.Visible = False
         '
         'TextBox2
         '
         Me.TextBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.TextBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.TextBox2.Location = New System.Drawing.Point(6, 225)
+        Me.TextBox2.Location = New System.Drawing.Point(100, 4)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(170, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(22, 20)
         Me.TextBox2.TabIndex = 10
+        Me.TextBox2.Visible = False
         '
         'SimpleButton5
         '
-        Me.SimpleButton5.Location = New System.Drawing.Point(6, 251)
+        Me.SimpleButton5.Location = New System.Drawing.Point(54, 179)
         Me.SimpleButton5.Name = "SimpleButton5"
-        Me.SimpleButton5.Size = New System.Drawing.Size(82, 23)
+        Me.SimpleButton5.Size = New System.Drawing.Size(128, 30)
         Me.SimpleButton5.TabIndex = 11
         Me.SimpleButton5.Text = "Approve"
         '
@@ -204,9 +209,9 @@ Partial Class Approvement
         '
         'SimpleButton7
         '
-        Me.SimpleButton7.Location = New System.Drawing.Point(94, 251)
+        Me.SimpleButton7.Location = New System.Drawing.Point(54, 215)
         Me.SimpleButton7.Name = "SimpleButton7"
-        Me.SimpleButton7.Size = New System.Drawing.Size(82, 23)
+        Me.SimpleButton7.Size = New System.Drawing.Size(128, 33)
         Me.SimpleButton7.TabIndex = 14
         Me.SimpleButton7.Text = "Reject"
         '
@@ -239,6 +244,7 @@ Partial Class Approvement
         '
         Me.TextBox4.Location = New System.Drawing.Point(90, 70)
         Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.ReadOnly = True
         Me.TextBox4.Size = New System.Drawing.Size(117, 20)
         Me.TextBox4.TabIndex = 12
         '
@@ -246,6 +252,7 @@ Partial Class Approvement
         '
         Me.TextBox3.Location = New System.Drawing.Point(90, 40)
         Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(117, 20)
         Me.TextBox3.TabIndex = 11
         '
@@ -286,7 +293,6 @@ Partial Class Approvement
         Me.Controls.Add(Me.GroupControl1)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1093, 489)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(1093, 489)
         Me.Name = "Approvement"
         Me.ShowIcon = False

@@ -2,8 +2,9 @@
 Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Grid
-Public Class View
+Imports DevExpress
 
+Public Class View
     Dim connectionString As String
     Dim SQLConnection As MySqlConnection = New MySqlConnection
     Dim oDt_sched As New DataTable()
@@ -75,9 +76,13 @@ Public Class View
     End Sub
 
     Private Sub View_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Dim n As Integer = 5
-        'For i As Integer = 0 To n Step 1
-        CardView1.CardCaptionFormat = "PaySlip"
-        'Next
+        CardView1.CardCaptionFormat = "PaySlip Period" & Date.Now & ""
+    End Sub
+
+    Private Sub CardView1_CustomColumnDisplayText(sender As Object, e As Views.Base.CustomColumnDisplayTextEventArgs) Handles CardView1.CustomColumnDisplayText
+        If e.Column.FieldName = "Salary" OrElse e.Column.FieldName = "Deductions" OrElse e.Column.FieldName = "FixedSalary" OrElse e.Column.FieldName = "MealRate" OrElse e.Column.FieldName = "Transport" OrElse e.Column.FieldName = "FixedSalary" OrElse e.Column.FieldName = "Allowance" OrElse e.Column.FieldName = "Incentives" Then
+            e.Column.DisplayFormat.FormatType = Utils.FormatType.Numeric
+            e.Column.DisplayFormat.FormatString = "n2"
+        End If
     End Sub
 End Class

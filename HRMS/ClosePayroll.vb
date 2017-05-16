@@ -270,7 +270,8 @@ Public Class ClosePayroll
                 query.Parameters.AddWithValue("@emp", emp)
                 query.Parameters.AddWithValue("@d1", date1.Value.Date)
                 query.Parameters.AddWithValue("@d2", date2.Value.Date)
-                query.ExecuteNonQuery()
+                query.ExecuteNonQuery()                
+
             Case "borongan"
                 query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Borong', calc_borongan(Quantity, Target, Target1, Target2, Target3, Amount, Amount1, Amount2, Amount3) from db_borongan where Employeecode = @emp and tanggal between @d1 and @d2"
                 query.Parameters.Clear()
@@ -332,7 +333,6 @@ Public Class ClosePayroll
             query.Parameters.AddWithValue("@types", quer)
             query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
             query.Parameters.AddWithValue("@emp", emp)
-            ' query.Parameters.AddWithValue("@d1", date1.Value.Date)
             query.ExecuteNonQuery()
 
             query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Loans', a.basicrate - b.paymentpermonth from db_payrolldata a, db_loan b where a.EmployeeCode = @emp and b.frommonths = @date"
@@ -340,8 +340,14 @@ Public Class ClosePayroll
             query.Parameters.AddWithValue("@types", quer)
             query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
             query.Parameters.AddWithValue("@emp", emp)
-            'query.Parameters.AddWithValue("@d1", date1.Value.Date)
-            'query.Parameters.AddWithValue("@d2", date2.Value.Date)
+            query.ExecuteNonQuery()
+
+            query.CommandText = "insert into payroll2(pay_date, employee_code, employee_type, salary_component, salary_value) select @date, @emp, @types, 'Warning Fine', calc_fine(IsPenalty, Amount, PaymentDate, @date1) from db_warning where EmployeeCode = @emp"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@date", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@date1", DateTimePicker1.Value.Date)
+            query.Parameters.AddWithValue("@types", "Bulanan")
+            query.Parameters.AddWithValue("@emp", emp)
             query.ExecuteNonQuery()
 
             Dim sqlCommand As New MySqlCommand

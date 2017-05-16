@@ -468,6 +468,7 @@ Partial Class Borongan
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.ReadOnly = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
         Me.GridView1.PaintStyleName = "Office2003"
         '

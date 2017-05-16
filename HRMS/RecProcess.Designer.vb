@@ -71,6 +71,9 @@ Partial Class RecProcess
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.button2 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
@@ -96,9 +99,6 @@ Partial Class RecProcess
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.BackstageViewTabItem1 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
-        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.lcphone, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtphone.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -139,6 +139,7 @@ Partial Class RecProcess
         Me.XtraTabPage2.SuspendLayout()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl4.SuspendLayout()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
         CType(Me.skill5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -160,7 +161,6 @@ Partial Class RecProcess
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lcphone
@@ -179,6 +179,7 @@ Partial Class RecProcess
         Me.txtphone.Location = New System.Drawing.Point(85, 132)
         Me.txtphone.MenuManager = Me.RibbonControl1
         Me.txtphone.Name = "txtphone"
+        Me.txtphone.Properties.ReadOnly = True
         Me.txtphone.Size = New System.Drawing.Size(128, 20)
         Me.txtphone.StyleController = Me.LayoutControl1
         Me.txtphone.TabIndex = 13
@@ -229,6 +230,7 @@ Partial Class RecProcess
         Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem3)
         Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
         Me.RibbonPageGroup2.Text = "                                                 "
+        Me.RibbonPageGroup2.Visible = False
         '
         'LayoutControl1
         '
@@ -256,6 +258,7 @@ Partial Class RecProcess
         Me.txtinterview.Location = New System.Drawing.Point(85, 84)
         Me.txtinterview.MenuManager = Me.RibbonControl1
         Me.txtinterview.Name = "txtinterview"
+        Me.txtinterview.Properties.ReadOnly = True
         Me.txtinterview.Size = New System.Drawing.Size(128, 20)
         Me.txtinterview.StyleController = Me.LayoutControl1
         Me.txtinterview.TabIndex = 52
@@ -265,6 +268,7 @@ Partial Class RecProcess
         Me.txtstatus.Location = New System.Drawing.Point(85, 228)
         Me.txtstatus.MenuManager = Me.RibbonControl1
         Me.txtstatus.Name = "txtstatus"
+        Me.txtstatus.Properties.ReadOnly = True
         Me.txtstatus.Size = New System.Drawing.Size(128, 20)
         Me.txtstatus.StyleController = Me.LayoutControl1
         Me.txtstatus.TabIndex = 42
@@ -274,6 +278,7 @@ Partial Class RecProcess
         Me.txtage.Location = New System.Drawing.Point(85, 180)
         Me.txtage.MenuManager = Me.RibbonControl1
         Me.txtage.Name = "txtage"
+        Me.txtage.Properties.ReadOnly = True
         Me.txtage.Size = New System.Drawing.Size(128, 20)
         Me.txtage.StyleController = Me.LayoutControl1
         Me.txtage.TabIndex = 41
@@ -283,6 +288,7 @@ Partial Class RecProcess
         Me.txtgender.Location = New System.Drawing.Point(85, 204)
         Me.txtgender.MenuManager = Me.RibbonControl1
         Me.txtgender.Name = "txtgender"
+        Me.txtgender.Properties.ReadOnly = True
         Me.txtgender.Size = New System.Drawing.Size(128, 20)
         Me.txtgender.StyleController = Me.LayoutControl1
         Me.txtgender.TabIndex = 40
@@ -299,6 +305,7 @@ Partial Class RecProcess
         Me.txtpob.Location = New System.Drawing.Point(85, 156)
         Me.txtpob.MenuManager = Me.RibbonControl1
         Me.txtpob.Name = "txtpob"
+        Me.txtpob.Properties.ReadOnly = True
         Me.txtpob.Size = New System.Drawing.Size(128, 20)
         Me.txtpob.StyleController = Me.LayoutControl1
         Me.txtpob.TabIndex = 38
@@ -309,6 +316,7 @@ Partial Class RecProcess
         Me.txtfullname.MenuManager = Me.RibbonControl1
         Me.txtfullname.Name = "txtfullname"
         Me.txtfullname.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtfullname.Properties.ReadOnly = True
         Me.txtfullname.Size = New System.Drawing.Size(128, 20)
         Me.txtfullname.StyleController = Me.LayoutControl1
         Me.txtfullname.TabIndex = 31
@@ -318,6 +326,7 @@ Partial Class RecProcess
         Me.txtaddress.Location = New System.Drawing.Point(85, 108)
         Me.txtaddress.MenuManager = Me.RibbonControl1
         Me.txtaddress.Name = "txtaddress"
+        Me.txtaddress.Properties.ReadOnly = True
         Me.txtaddress.Size = New System.Drawing.Size(128, 20)
         Me.txtaddress.StyleController = Me.LayoutControl1
         Me.txtaddress.TabIndex = 10
@@ -327,6 +336,7 @@ Partial Class RecProcess
         Me.txtidcard.Location = New System.Drawing.Point(85, 60)
         Me.txtidcard.MenuManager = Me.RibbonControl1
         Me.txtidcard.Name = "txtidcard"
+        Me.txtidcard.Properties.ReadOnly = True
         Me.txtidcard.Size = New System.Drawing.Size(128, 20)
         Me.txtidcard.StyleController = Me.LayoutControl1
         Me.txtidcard.TabIndex = 7
@@ -336,6 +346,7 @@ Partial Class RecProcess
         Me.txtid.Location = New System.Drawing.Point(85, 36)
         Me.txtid.MenuManager = Me.RibbonControl1
         Me.txtid.Name = "txtid"
+        Me.txtid.Properties.ReadOnly = True
         Me.txtid.Size = New System.Drawing.Size(128, 20)
         Me.txtid.StyleController = Me.LayoutControl1
         Me.txtid.TabIndex = 6
@@ -606,6 +617,30 @@ Partial Class RecProcess
         Me.GroupControl4.TabIndex = 2
         Me.GroupControl4.Text = "In Progress Lists"
         '
+        'SimpleButton5
+        '
+        Me.SimpleButton5.Image = CType(resources.GetObject("SimpleButton5.Image"), System.Drawing.Image)
+        Me.SimpleButton5.Location = New System.Drawing.Point(356, 249)
+        Me.SimpleButton5.Name = "SimpleButton5"
+        Me.SimpleButton5.Size = New System.Drawing.Size(23, 21)
+        Me.SimpleButton5.TabIndex = 100
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Location = New System.Drawing.Point(174, 251)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(56, 13)
+        Me.LabelControl1.TabIndex = 51
+        Me.LabelControl1.Text = "Interviewer"
+        '
+        'TextEdit1
+        '
+        Me.TextEdit1.Location = New System.Drawing.Point(249, 249)
+        Me.TextEdit1.MenuManager = Me.RibbonControl1
+        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Size = New System.Drawing.Size(105, 20)
+        Me.TextEdit1.TabIndex = 37
+        '
         'button2
         '
         Me.button2.Image = CType(resources.GetObject("button2.Image"), System.Drawing.Image)
@@ -707,6 +742,7 @@ Partial Class RecProcess
         Me.txtstat.Location = New System.Drawing.Point(87, 60)
         Me.txtstat.MenuManager = Me.RibbonControl1
         Me.txtstat.Name = "txtstat"
+        Me.txtstat.Properties.ReadOnly = True
         Me.txtstat.Size = New System.Drawing.Size(128, 20)
         Me.txtstat.StyleController = Me.LayoutControl2
         Me.txtstat.TabIndex = 13
@@ -716,6 +752,7 @@ Partial Class RecProcess
         Me.txtname.Location = New System.Drawing.Point(87, 12)
         Me.txtname.MenuManager = Me.RibbonControl1
         Me.txtname.Name = "txtname"
+        Me.txtname.Properties.ReadOnly = True
         Me.txtname.Size = New System.Drawing.Size(128, 20)
         Me.txtname.StyleController = Me.LayoutControl2
         Me.txtname.TabIndex = 5
@@ -725,6 +762,7 @@ Partial Class RecProcess
         Me.txtidrecc.Location = New System.Drawing.Point(87, 36)
         Me.txtidrecc.MenuManager = Me.RibbonControl1
         Me.txtidrecc.Name = "txtidrecc"
+        Me.txtidrecc.Properties.ReadOnly = True
         Me.txtidrecc.Size = New System.Drawing.Size(128, 20)
         Me.txtidrecc.StyleController = Me.LayoutControl2
         Me.txtidrecc.TabIndex = 4
@@ -848,30 +886,6 @@ Partial Class RecProcess
         Me.BackstageViewTabItem1.Name = "BackstageViewTabItem1"
         Me.BackstageViewTabItem1.Selected = False
         '
-        'TextEdit1
-        '
-        Me.TextEdit1.Location = New System.Drawing.Point(249, 249)
-        Me.TextEdit1.MenuManager = Me.RibbonControl1
-        Me.TextEdit1.Name = "TextEdit1"
-        Me.TextEdit1.Size = New System.Drawing.Size(105, 20)
-        Me.TextEdit1.TabIndex = 37
-        '
-        'LabelControl1
-        '
-        Me.LabelControl1.Location = New System.Drawing.Point(174, 251)
-        Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(56, 13)
-        Me.LabelControl1.TabIndex = 51
-        Me.LabelControl1.Text = "Interviewer"
-        '
-        'SimpleButton5
-        '
-        Me.SimpleButton5.Image = CType(resources.GetObject("SimpleButton5.Image"), System.Drawing.Image)
-        Me.SimpleButton5.Location = New System.Drawing.Point(356, 249)
-        Me.SimpleButton5.Name = "SimpleButton5"
-        Me.SimpleButton5.Size = New System.Drawing.Size(23, 21)
-        Me.SimpleButton5.TabIndex = 100
-        '
         'Timer1
         '
         '
@@ -931,6 +945,7 @@ Partial Class RecProcess
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl4.ResumeLayout(False)
         Me.GroupControl4.PerformLayout()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
         CType(Me.skill5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -952,7 +967,6 @@ Partial Class RecProcess
         CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

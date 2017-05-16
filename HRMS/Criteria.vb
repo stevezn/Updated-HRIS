@@ -338,7 +338,7 @@ Public Class Criteria
         query.CommandText = "select PphStatus from db_pegawai where employeecode = '" & emp & "'"
         Dim quer2 As String = CStr(query.ExecuteScalar)
 
-        query.CommandText = "select " & quer2 & " from db_setpayroll"
+        query.CommandText = "select " + quer2 + " from db_setpayroll"
         Dim quer3 As String = CStr(query.ExecuteScalar)
 
         query.CommandText = "select a.Basicrate * b.jamkecelakaankerja / 100 from db_payrolldata a, db_setpayroll b where Employeecode = @emp"

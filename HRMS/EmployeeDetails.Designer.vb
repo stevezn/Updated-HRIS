@@ -25,6 +25,10 @@ Partial Class EmployeeDetails
         Me.components = New System.ComponentModel.Container()
         Dim GroupControl5 As DevExpress.XtraEditors.GroupControl
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EmployeeDetails))
+        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
+        Me.Label23 = New System.Windows.Forms.Label()
         Me.npwp = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.GroupControl8 = New DevExpress.XtraEditors.GroupControl()
@@ -36,11 +40,11 @@ Partial Class EmployeeDetails
         Me.CheckEdit4 = New DevExpress.XtraEditors.CheckEdit()
         Me.CheckEdit3 = New DevExpress.XtraEditors.CheckEdit()
         Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
-        Me.ComboBoxEdit1 = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
+        Me.ComboBoxEdit1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
         Me.Label33 = New System.Windows.Forms.Label()
@@ -153,13 +157,11 @@ Partial Class EmployeeDetails
         Me.Label44 = New System.Windows.Forms.Label()
         Me.ComboBoxEdit14 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         GroupControl5.SuspendLayout()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npwp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl8.SuspendLayout()
@@ -234,8 +236,6 @@ Partial Class EmployeeDetails
         CType(Me.ComboBoxEdit12.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit13.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit14.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupControl5
@@ -262,12 +262,47 @@ Partial Class EmployeeDetails
         GroupControl5.TabIndex = 1
         GroupControl5.Text = "Status"
         '
+        'TextEdit2
+        '
+        Me.TextEdit2.Location = New System.Drawing.Point(111, 131)
+        Me.TextEdit2.Name = "TextEdit2"
+        Me.TextEdit2.Properties.ReadOnly = True
+        Me.TextEdit2.Size = New System.Drawing.Size(189, 20)
+        Me.TextEdit2.TabIndex = 48
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(19, 134)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(56, 13)
+        Me.Label24.TabIndex = 47
+        Me.Label24.Text = "No BPJS :"
+        '
+        'TextEdit1
+        '
+        Me.TextEdit1.Location = New System.Drawing.Point(111, 107)
+        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Properties.ReadOnly = True
+        Me.TextEdit1.Size = New System.Drawing.Size(189, 20)
+        Me.TextEdit1.TabIndex = 46
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(18, 109)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(63, 13)
+        Me.Label23.TabIndex = 45
+        Me.Label23.Text = "No NPWP :"
+        '
         'npwp
         '
         Me.npwp.Location = New System.Drawing.Point(111, 81)
         Me.npwp.Name = "npwp"
         Me.npwp.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.npwp.Properties.Items.AddRange(New Object() {"TK-0", "Tk-1", "TK-2", "TK-3", "K-0", "K-1", "K-2", "K-3", "K-4"})
+        Me.npwp.Properties.ReadOnly = True
         Me.npwp.Size = New System.Drawing.Size(189, 20)
         Me.npwp.TabIndex = 44
         '
@@ -366,14 +401,25 @@ Partial Class EmployeeDetails
         Me.CheckEdit2.Size = New System.Drawing.Size(253, 19)
         Me.CheckEdit2.TabIndex = 10
         '
-        'ComboBoxEdit1
+        'Label32
         '
-        Me.ComboBoxEdit1.Location = New System.Drawing.Point(111, 183)
-        Me.ComboBoxEdit1.Name = "ComboBoxEdit1"
-        Me.ComboBoxEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit1.Properties.Items.AddRange(New Object() {"Permanent", "Probation", "Trainee", "Daily Worker", "Contract", "Outsource", "Borongan"})
-        Me.ComboBoxEdit1.Size = New System.Drawing.Size(188, 20)
-        Me.ComboBoxEdit1.TabIndex = 42
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(97, 248)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(49, 13)
+        Me.Label32.TabIndex = 10
+        Me.Label32.Text = "Approval"
+        Me.Label32.Visible = False
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(5, 235)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(73, 13)
+        Me.Label31.TabIndex = 10
+        Me.Label31.Text = "Approved by :"
+        Me.Label31.Visible = False
         '
         'SimpleButton1
         '
@@ -392,25 +438,15 @@ Partial Class EmployeeDetails
         Me.TextBox3.TabIndex = 25
         Me.TextBox3.Visible = False
         '
-        'Label31
+        'ComboBoxEdit1
         '
-        Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(5, 235)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(73, 13)
-        Me.Label31.TabIndex = 10
-        Me.Label31.Text = "Approved by :"
-        Me.Label31.Visible = False
-        '
-        'Label32
-        '
-        Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(97, 248)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(49, 13)
-        Me.Label32.TabIndex = 10
-        Me.Label32.Text = "Approval"
-        Me.Label32.Visible = False
+        Me.ComboBoxEdit1.Location = New System.Drawing.Point(111, 183)
+        Me.ComboBoxEdit1.Name = "ComboBoxEdit1"
+        Me.ComboBoxEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ComboBoxEdit1.Properties.Items.AddRange(New Object() {"Permanent", "Probation", "Trainee", "Daily Worker", "Contract", "Outsource", "Borongan"})
+        Me.ComboBoxEdit1.Properties.ReadOnly = True
+        Me.ComboBoxEdit1.Size = New System.Drawing.Size(188, 20)
+        Me.ComboBoxEdit1.TabIndex = 42
         '
         'DateTimePicker2
         '
@@ -452,6 +488,7 @@ Partial Class EmployeeDetails
         Me.ComboBoxEdit7.Name = "ComboBoxEdit7"
         Me.ComboBoxEdit7.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit7.Properties.Items.AddRange(New Object() {"TK-0", "Tk-1", "TK-2", "TK-3", "K-0", "K-1", "K-2", "K-3", "K-4"})
+        Me.ComboBoxEdit7.Properties.ReadOnly = True
         Me.ComboBoxEdit7.Size = New System.Drawing.Size(188, 20)
         Me.ComboBoxEdit7.TabIndex = 19
         '
@@ -470,6 +507,7 @@ Partial Class EmployeeDetails
         Me.ComboBoxEdit2.Name = "ComboBoxEdit2"
         Me.ComboBoxEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit2.Properties.Items.AddRange(New Object() {"Single", "Married"})
+        Me.ComboBoxEdit2.Properties.ReadOnly = True
         Me.ComboBoxEdit2.Size = New System.Drawing.Size(188, 20)
         Me.ComboBoxEdit2.TabIndex = 17
         '
@@ -619,6 +657,7 @@ Partial Class EmployeeDetails
         Me.ComboBoxEdit6.Name = "ComboBoxEdit6"
         Me.ComboBoxEdit6.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit6.Properties.Items.AddRange(New Object() {"Male", "Female"})
+        Me.ComboBoxEdit6.Properties.ReadOnly = True
         Me.ComboBoxEdit6.Size = New System.Drawing.Size(100, 20)
         Me.ComboBoxEdit6.TabIndex = 71
         '
@@ -635,6 +674,7 @@ Partial Class EmployeeDetails
         '
         Me.txtnick.Location = New System.Drawing.Point(369, 27)
         Me.txtnick.Name = "txtnick"
+        Me.txtnick.ReadOnly = True
         Me.txtnick.Size = New System.Drawing.Size(199, 20)
         Me.txtnick.TabIndex = 69
         '
@@ -651,6 +691,7 @@ Partial Class EmployeeDetails
         '
         Me.TextBox2.Location = New System.Drawing.Point(151, 27)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(199, 20)
         Me.TextBox2.TabIndex = 67
         '
@@ -683,6 +724,7 @@ Partial Class EmployeeDetails
         '
         Me.txtjobdesk.Location = New System.Drawing.Point(706, 296)
         Me.txtjobdesk.Name = "txtjobdesk"
+        Me.txtjobdesk.ReadOnly = True
         Me.txtjobdesk.Size = New System.Drawing.Size(153, 99)
         Me.txtjobdesk.TabIndex = 43
         Me.txtjobdesk.Text = ""
@@ -721,6 +763,7 @@ Partial Class EmployeeDetails
         '
         Me.txtrecby.Location = New System.Drawing.Point(475, 215)
         Me.txtrecby.Name = "txtrecby"
+        Me.txtrecby.Properties.ReadOnly = True
         Me.txtrecby.Size = New System.Drawing.Size(208, 20)
         Me.txtrecby.TabIndex = 34
         '
@@ -728,6 +771,7 @@ Partial Class EmployeeDetails
         '
         Me.txtadd.Location = New System.Drawing.Point(475, 189)
         Me.txtadd.Name = "txtadd"
+        Me.txtadd.Properties.ReadOnly = True
         Me.txtadd.Size = New System.Drawing.Size(208, 20)
         Me.txtadd.TabIndex = 33
         '
@@ -736,6 +780,7 @@ Partial Class EmployeeDetails
         Me.txttype.Location = New System.Drawing.Point(481, 322)
         Me.txttype.Name = "txttype"
         Me.txttype.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txttype.Properties.ReadOnly = True
         Me.txttype.Size = New System.Drawing.Size(202, 20)
         Me.txttype.TabIndex = 40
         '
@@ -770,6 +815,7 @@ Partial Class EmployeeDetails
         Me.txtdept.Location = New System.Drawing.Point(481, 297)
         Me.txtdept.Name = "txtdept"
         Me.txtdept.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtdept.Properties.ReadOnly = True
         Me.txtdept.Size = New System.Drawing.Size(202, 20)
         Me.txtdept.TabIndex = 39
         '
@@ -777,6 +823,7 @@ Partial Class EmployeeDetails
         '
         Me.txtpemail.Location = New System.Drawing.Point(119, 242)
         Me.txtpemail.Name = "txtpemail"
+        Me.txtpemail.Properties.ReadOnly = True
         Me.txtpemail.Size = New System.Drawing.Size(199, 20)
         Me.txtpemail.TabIndex = 32
         '
@@ -793,6 +840,7 @@ Partial Class EmployeeDetails
         Me.txtgroup.Location = New System.Drawing.Point(123, 374)
         Me.txtgroup.Name = "txtgroup"
         Me.txtgroup.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtgroup.Properties.ReadOnly = True
         Me.txtgroup.Size = New System.Drawing.Size(195, 20)
         Me.txtgroup.TabIndex = 38
         '
@@ -800,6 +848,7 @@ Partial Class EmployeeDetails
         '
         Me.txtwemail.Location = New System.Drawing.Point(119, 216)
         Me.txtwemail.Name = "txtwemail"
+        Me.txtwemail.Properties.ReadOnly = True
         Me.txtwemail.Size = New System.Drawing.Size(199, 20)
         Me.txtwemail.TabIndex = 31
         '
@@ -825,6 +874,7 @@ Partial Class EmployeeDetails
         Me.txtofloc.Location = New System.Drawing.Point(123, 350)
         Me.txtofloc.Name = "txtofloc"
         Me.txtofloc.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtofloc.Properties.ReadOnly = True
         Me.txtofloc.Size = New System.Drawing.Size(195, 20)
         Me.txtofloc.TabIndex = 37
         '
@@ -860,6 +910,7 @@ Partial Class EmployeeDetails
         Me.txtcompany.Location = New System.Drawing.Point(123, 324)
         Me.txtcompany.Name = "txtcompany"
         Me.txtcompany.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtcompany.Properties.ReadOnly = True
         Me.txtcompany.Size = New System.Drawing.Size(195, 20)
         Me.txtcompany.TabIndex = 36
         '
@@ -893,6 +944,7 @@ Partial Class EmployeeDetails
         Me.txtjob.Location = New System.Drawing.Point(123, 298)
         Me.txtjob.Name = "txtjob"
         Me.txtjob.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.txtjob.Properties.ReadOnly = True
         Me.txtjob.Size = New System.Drawing.Size(195, 20)
         Me.txtjob.TabIndex = 35
         '
@@ -928,6 +980,7 @@ Partial Class EmployeeDetails
         '
         Me.txtphoneno.Location = New System.Drawing.Point(119, 190)
         Me.txtphoneno.Name = "txtphoneno"
+        Me.txtphoneno.Properties.ReadOnly = True
         Me.txtphoneno.Size = New System.Drawing.Size(199, 20)
         Me.txtphoneno.TabIndex = 30
         '
@@ -947,6 +1000,7 @@ Partial Class EmployeeDetails
         Me.txtblood.Name = "txtblood"
         Me.txtblood.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtblood.Properties.Items.AddRange(New Object() {"A", "B", "AB", "O"})
+        Me.txtblood.Properties.ReadOnly = True
         Me.txtblood.Size = New System.Drawing.Size(203, 20)
         Me.txtblood.TabIndex = 27
         '
@@ -965,6 +1019,7 @@ Partial Class EmployeeDetails
         Me.txtrel.Name = "txtrel"
         Me.txtrel.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtrel.Properties.Items.AddRange(New Object() {"KRISTEN", "BUDDHA", "ISLAM", "HINDU"})
+        Me.txtrel.Properties.ReadOnly = True
         Me.txtrel.Size = New System.Drawing.Size(203, 20)
         Me.txtrel.TabIndex = 26
         '
@@ -1006,6 +1061,7 @@ Partial Class EmployeeDetails
         '
         Me.txtcm.Location = New System.Drawing.Point(245, 127)
         Me.txtcm.Name = "txtcm"
+        Me.txtcm.Properties.ReadOnly = True
         Me.txtcm.Size = New System.Drawing.Size(40, 20)
         Me.txtcm.TabIndex = 24
         '
@@ -1100,6 +1156,7 @@ Partial Class EmployeeDetails
         '
         Me.txtidno.Location = New System.Drawing.Point(119, 101)
         Me.txtidno.Name = "txtidno"
+        Me.txtidno.Properties.ReadOnly = True
         Me.txtidno.Size = New System.Drawing.Size(199, 20)
         Me.txtidno.TabIndex = 22
         '
@@ -1107,6 +1164,7 @@ Partial Class EmployeeDetails
         '
         Me.txtkg.Location = New System.Drawing.Point(119, 127)
         Me.txtkg.Name = "txtkg"
+        Me.txtkg.Properties.ReadOnly = True
         Me.txtkg.Size = New System.Drawing.Size(40, 20)
         Me.txtkg.TabIndex = 23
         '
@@ -1121,6 +1179,7 @@ Partial Class EmployeeDetails
         '
         Me.txtbp.Location = New System.Drawing.Point(119, 47)
         Me.txtbp.Name = "txtbp"
+        Me.txtbp.Properties.ReadOnly = True
         Me.txtbp.Size = New System.Drawing.Size(199, 20)
         Me.txtbp.TabIndex = 20
         '
@@ -1354,6 +1413,7 @@ Partial Class EmployeeDetails
         Me.ComboBoxEdit10.Name = "ComboBoxEdit10"
         Me.ComboBoxEdit10.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit10.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation"})
+        Me.ComboBoxEdit10.Properties.ReadOnly = True
         Me.ComboBoxEdit10.Size = New System.Drawing.Size(188, 20)
         Me.ComboBoxEdit10.TabIndex = 18
         '
@@ -1371,6 +1431,7 @@ Partial Class EmployeeDetails
         Me.ComboBoxEdit11.Name = "ComboBoxEdit11"
         Me.ComboBoxEdit11.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit11.Properties.Items.AddRange(New Object() {"V-DB", "V-KMP-KIM-3", "V-KMP-KIM-4", "V-MG", "V-PLABU"})
+        Me.ComboBoxEdit11.Properties.ReadOnly = True
         Me.ComboBoxEdit11.Size = New System.Drawing.Size(188, 20)
         Me.ComboBoxEdit11.TabIndex = 16
         '
@@ -1389,6 +1450,7 @@ Partial Class EmployeeDetails
         Me.ComboBoxEdit12.Name = "ComboBoxEdit12"
         Me.ComboBoxEdit12.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit12.Properties.Items.AddRange(New Object() {"PT.MAKMUR BINTANG PLASTINDO", "V-PLABU", "V-PT.MAKMUR BINTANG PLASTINDO", "V-PT.MAKMUR BINTANG ROLLINDO"})
+        Me.ComboBoxEdit12.Properties.ReadOnly = True
         Me.ComboBoxEdit12.Size = New System.Drawing.Size(159, 20)
         Me.ComboBoxEdit12.TabIndex = 14
         '
@@ -1407,6 +1469,7 @@ Partial Class EmployeeDetails
         Me.ComboBoxEdit13.Name = "ComboBoxEdit13"
         Me.ComboBoxEdit13.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit13.Properties.Items.AddRange(New Object() {"V-A.Leader", "V-Chief", "V-Head", "V-Leader", "V-Manager", "V-Operator", "V-SPV", "v-Staff"})
+        Me.ComboBoxEdit13.Properties.ReadOnly = True
         Me.ComboBoxEdit13.Size = New System.Drawing.Size(159, 20)
         Me.ComboBoxEdit13.TabIndex = 12
         '
@@ -1425,6 +1488,7 @@ Partial Class EmployeeDetails
         Me.ComboBoxEdit14.Name = "ComboBoxEdit14"
         Me.ComboBoxEdit14.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit14.Properties.Items.AddRange(New Object() {"Demotion", "Promotion", "Mutation"})
+        Me.ComboBoxEdit14.Properties.ReadOnly = True
         Me.ComboBoxEdit14.Size = New System.Drawing.Size(159, 20)
         Me.ComboBoxEdit14.TabIndex = 11
         '
@@ -1435,38 +1499,6 @@ Partial Class EmployeeDetails
         Me.LabelControl4.Size = New System.Drawing.Size(69, 13)
         Me.LabelControl4.TabIndex = 10
         Me.LabelControl4.Text = "Change type :"
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(18, 109)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(63, 13)
-        Me.Label23.TabIndex = 45
-        Me.Label23.Text = "No NPWP :"
-        '
-        'TextEdit1
-        '
-        Me.TextEdit1.Location = New System.Drawing.Point(111, 107)
-        Me.TextEdit1.Name = "TextEdit1"
-        Me.TextEdit1.Size = New System.Drawing.Size(189, 20)
-        Me.TextEdit1.TabIndex = 46
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(19, 134)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(56, 13)
-        Me.Label24.TabIndex = 47
-        Me.Label24.Text = "No BPJS :"
-        '
-        'TextEdit2
-        '
-        Me.TextEdit2.Location = New System.Drawing.Point(111, 131)
-        Me.TextEdit2.Name = "TextEdit2"
-        Me.TextEdit2.Size = New System.Drawing.Size(189, 20)
-        Me.TextEdit2.TabIndex = 48
         '
         'EmployeeDetails
         '
@@ -1495,6 +1527,8 @@ Partial Class EmployeeDetails
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         GroupControl5.ResumeLayout(False)
         GroupControl5.PerformLayout()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.npwp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl8.ResumeLayout(False)
@@ -1573,8 +1607,6 @@ Partial Class EmployeeDetails
         CType(Me.ComboBoxEdit12.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit13.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit14.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -890,3 +890,5 @@ C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Tile_Control.reso
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Approvement.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Customize.resources
 C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRIS.vbprojResolveAssemblyReference.cache
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Addskill.resources
+C:\Users\IT-Steven\Desktop\HRIS-master\HRMS\obj\x86\Debug\HRMS.Pending.resources

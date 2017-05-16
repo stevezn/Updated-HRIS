@@ -1616,7 +1616,7 @@ Partial Class NewRec
         Me.ComboBoxEdit4.MenuManager = Me.RibbonControl1
         Me.ComboBoxEdit4.Name = "ComboBoxEdit4"
         Me.ComboBoxEdit4.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit4.Properties.Items.AddRange(New Object() {"Single", "Married"})
+        Me.ComboBoxEdit4.Properties.Items.AddRange(New Object() {"Single", "Married", "Widow", "Widower"})
         Me.ComboBoxEdit4.Size = New System.Drawing.Size(183, 20)
         Me.ComboBoxEdit4.TabIndex = 38
         '

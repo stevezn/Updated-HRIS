@@ -67,22 +67,22 @@ Public Class ChangeData
     End Function
 
 
-    Private Sub loadinfo()
-        GridControl1.RefreshDataSource()
-        Dim table As New DataTable
-        Dim sqlcommand As New MySqlCommand
-        Try
-            'sqlcommand.CommandText = "Select IdRec as IdRecruitment, FullName from db_recruitment where status = 'Pending' or status = 'In Progress'"
-            sqlcommand.CommandText = "select idrec as IdRecruitment, FullName from db_recruitment"
-            sqlcommand.Connection = SQLConnection
-            Dim tbl_par As New DataTable
-            Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(table)
-            GridControl1.DataSource = table
-        Catch ex As Exception
-        End Try
-    End Sub
+    'Private Sub loadinfo()
+    '    GridControl1.RefreshDataSource()
+    '    Dim table As New DataTable
+    '    Dim sqlcommand As New MySqlCommand
+    '    Try
+    '        'sqlcommand.CommandText = "Select IdRec as IdRecruitment, FullName from db_recruitment where status = 'Pending' or status = 'In Progress'"
+    '        sqlcommand.CommandText = "select idrec as IdRecruitment, FullName from db_recruitment"
+    '        sqlcommand.Connection = SQLConnection
+    '        Dim tbl_par As New DataTable
+    '        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+    '        Dim cb As New MySqlCommandBuilder(adapter)
+    '        adapter.Fill(table)
+    '        GridControl1.DataSource = table
+    '    Catch ex As Exception
+    '    End Try
+    'End Sub
 
     Sub insertexp()
         Dim dtb, dtr As Date
@@ -596,92 +596,166 @@ Public Class ChangeData
         End Try
     End Sub
 
-    Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridView1.FocusedRowChanged
-        Dim datatabl As New DataTable
-        Dim sqlCommand As New MySqlCommand
-        datatabl.Clear()
-        Dim param As String = ""
-        Try
-            param = "and FullName='" + GridView1.GetFocusedRowCellValue("FullName").ToString() + "'"
-        Catch ex As Exception
-        End Try
-        Try
-            sqlCommand.CommandText = "SELECT * FROM db_recruitment WHERE 1 = 1 " + param.ToString()
-            sqlCommand.Connection = SQLConnection
-            Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
-            Dim cb As New MySqlCommandBuilder(adapter)
-            adapter.Fill(datatabl)
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-        If datatabl.Rows.Count > -1 Then
-            txtidrec.Text = datatabl.Rows(0).Item(0).ToString()
-            TextEdit1.Text = datatabl.Rows(0).Item(1).ToString
-            txtcandname.Text = datatabl.Rows(0).Item(2).ToString()
-            txtbp.Text = datatabl.Rows(0).Item(3).ToString
-            txtbod.Text = datatabl.Rows(0).Item(4).ToString
-            txtadd.Text = datatabl.Rows(0).Item(5).ToString
-            txtgend.Text = datatabl.Rows(0).Item(6).ToString()
-            txtrel.Text = datatabl.Rows(0).Item(7).ToString
-            txtphoneno.Text = datatabl.Rows(0).Item(8).ToString
-            txtidno.Text = datatabl.Rows(0).Item(9).ToString()
-            txtofloc.Text = datatabl.Rows(0).Item(11).ToString()
-            ' DateTimePicker2.Value = CDate(datatabl.Rows(0).Item(12).ToString())
-            txtcandreason.Text = datatabl.Rows(0).Item(15).ToString()
-            Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(10), Byte())
+    Private Sub GridView1_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs)
+        'Dim datatabl As New DataTable
+        'Dim sqlCommand As New MySqlCommand
+        'datatabl.Clear()
+        'Dim param As String = ""
+        'Try
+        '    param = "and FullName='" + GridView1.GetFocusedRowCellValue("FullName").ToString() + "'"
+        'Catch ex As Exception
+        'End Try
+        'Try
+        '    sqlCommand.CommandText = "SELECT * FROM db_recruitment WHERE 1 = 1 " + param.ToString()
+        '    sqlCommand.Connection = SQLConnection
+        '    Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
+        '    Dim cb As New MySqlCommandBuilder(adapter)
+        '    adapter.Fill(datatabl)
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        'If datatabl.Rows.Count > -1 Then
+        '    txtidrec.Text = datatabl.Rows(0).Item(0).ToString()
+        '    TextEdit1.Text = datatabl.Rows(0).Item(1).ToString
+        '    txtcandname.Text = datatabl.Rows(0).Item(2).ToString()
+        '    txtbp.Text = datatabl.Rows(0).Item(3).ToString
+        '    txtbod.Text = datatabl.Rows(0).Item(4).ToString
+        '    txtadd.Text = datatabl.Rows(0).Item(5).ToString
+        '    txtgend.Text = datatabl.Rows(0).Item(6).ToString()
+        '    txtrel.Text = datatabl.Rows(0).Item(7).ToString
+        '    txtphoneno.Text = datatabl.Rows(0).Item(8).ToString
+        '    txtidno.Text = datatabl.Rows(0).Item(9).ToString()
+        '    txtofloc.Text = datatabl.Rows(0).Item(11).ToString()
+        '    ' DateTimePicker2.Value = CDate(datatabl.Rows(0).Item(12).ToString())
+        '    txtcandreason.Text = datatabl.Rows(0).Item(15).ToString()
+        '    Dim filefoto As Byte() = CType(datatabl.Rows(0).Item(10), Byte())
+        '    If filefoto.Length > 0 Then
+        '        pictureEdit.Image = ByteToImage(filefoto)
+        '    Else
+        '        pictureEdit.Image = Nothing
+        '        pictureEdit.Refresh()
+        '    End If
+        '    TextEdit7.Text = datatabl.Rows(0).Item(17).ToString()
+        '    txtnick.Text = datatabl.Rows(0).Item(19).ToString()
+        '    txtapplieddate.Text = datatabl.Rows(0).Item(20).ToString()
+        '    txtkg.Text = datatabl.Rows(0).Item(21).ToString
+        '    txtcm.Text = datatabl.Rows(0).Item(22).ToString
+        '    txtblood.Text = datatabl.Rows(0).Item(23).ToString
+        '    txtcity.Text = datatabl.Rows(0).Item(24).ToString
+        '    txtzip.Text = datatabl.Rows(0).Item(25).ToString
+        '    txthome.Text = datatabl.Rows(0).Item(26).ToString
+        '    txtrecby.Text = datatabl.Rows(0).Item(27).ToString
+        '    ComboBoxEdit4.Text = datatabl.Rows(0).Item(28).ToString
+        '    TextBox3.Text = datatabl.Rows(0).Item(29).ToString
+        '    TextBox4.Text = datatabl.Rows(0).Item(30).ToString
+        '    TextBox5.Text = datatabl.Rows(0).Item(18).ToString
+        '    RichTextBox1.Text = datatabl.Rows(0).Item(31).ToString
+        '    TextBox6.Text = datatabl.Rows(0).Item(32).ToString
+        '    RichTextBox2.Text = datatabl.Rows(0).Item(33).ToString
+        '    CheckEdit1.Checked = CBool(datatabl.Rows(0).Item(34).ToString)
+        '    RichTextBox3.Text = datatabl.Rows(0).Item(35).ToString
+        '    CheckEdit2.Checked = CBool(datatabl.Rows(0).Item(36).ToString)
+        '    RichTextBox4.Text = datatabl.Rows(0).Item(37).ToString
+        '    RichTextBox5.Text = datatabl.Rows(0).Item(38).ToString
+        '    RichTextBox6.Text = datatabl.Rows(0).Item(39).ToString
+        '    RichTextBox7.Text = datatabl.Rows(0).Item(40).ToString
+        '    RichTextBox8.Text = datatabl.Rows(0).Item(41).ToString
+        '    RichTextBox9.Text = datatabl.Rows(0).Item(42).ToString
+        '    txtwemail.Text = datatabl.Rows(0).Item(43).ToString
+        '    edu()
+        '    cert()
+        '    skill()
+        '    fam()
+        '    exp()
+        'End If
+    End Sub
+
+    Dim tbl_par2 As New DataTable
+
+    Sub loaddata1()
+        Dim sqlcommand As MySqlCommand = SQLConnection.CreateCommand
+        sqlcommand.CommandText = "SELECT * from db_recruitment where idrec = '" & txtidrec.Text & "'"
+        Dim adapter As New MySqlDataAdapter(sqlcommand.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(tbl_par2)
+        For index As Integer = 0 To tbl_par2.Rows.Count - 1
+        Next
+    End Sub
+
+    Sub autochange()
+        For index As Integer = 0 To tbl_par2.Rows.Count - 1
+            Label25.Text = tbl_par2.Rows(index).Item(0).ToString
+            Label26.Text = tbl_par2.Rows(index).Item(2).ToString
+            txtcandname.Text = tbl_par2.Rows(index).Item(2).ToString
+            txtnick.Text = tbl_par2.Rows(index).Item(19).ToString
+            txtgend.Text = tbl_par2.Rows(index).Item(6).ToString
+            txtapplieddate.Text = tbl_par2.Rows(index).Item(20).ToString
+            txtbp.Text = tbl_par2.Rows(index).Item(3).ToString
+            txtbod.Text = tbl_par2.Rows(index).Item(4).ToString
+            txtidno.Text = tbl_par2.Rows(index).Item(9).ToString
+            txtkg.Text = tbl_par2.Rows(index).Item(21).ToString
+            txtcm.Text = tbl_par2.Rows(index).Item(22).ToString
+            txtrel.Text = tbl_par2.Rows(index).Item(7).ToString
+            txtblood.Text = tbl_par2.Rows(index).Item(23).ToString
+            txtphoneno.Text = tbl_par2.Rows(index).Item(8).ToString
+            txtwemail.Text = tbl_par2.Rows(index).Item(43).ToString
+            txtzip.Text = tbl_par2.Rows(index).Item(25).ToString
+            txtcity.Text = tbl_par2.Rows(index).Item(24).ToString
+            txthome.Text = tbl_par2.Rows(index).Item(26).ToString
+            txtadd.Text = tbl_par2.Rows(index).Item(5).ToString
+            txtrecby.Text = tbl_par2.Rows(index).Item(27).ToString
+            TextEdit7.Text = tbl_par2.Rows(index).Item(17).ToString
+            ComboBoxEdit4.Text = tbl_par2.Rows(index).Item(28).ToString
+            txtofloc.Text = tbl_par2.Rows(index).Item(11).ToString
+            txtcandreason.Text = tbl_par2.Rows(index).Item(15).ToString
+            TextBox3.Text = tbl_par2.Rows(index).Item(29).ToString
+            TextBox4.Text = tbl_par2.Rows(index).Item(30).ToString
+            TextBox5.Text = tbl_par2.Rows(index).Item(18).ToString
+            RichTextBox1.Text = tbl_par2.Rows(index).Item(31).ToString
+            TextBox6.Text = tbl_par2.Rows(index).Item(32).ToString
+            RichTextBox2.Text = tbl_par2.Rows(index).Item(33).ToString
+            CheckEdit1.Checked = CType(tbl_par2.Rows(index).Item(34).ToString, Boolean)
+            RichTextBox3.Text = tbl_par2.Rows(index).Item(35).ToString
+            CheckEdit2.Checked = CType(tbl_par2.Rows(index).Item(36).ToString, Boolean)
+            RichTextBox4.Text = tbl_par2.Rows(index).Item(37).ToString
+            RichTextBox5.Text = tbl_par2.Rows(index).Item(38).ToString
+            RichTextBox6.Text = tbl_par2.Rows(index).Item(39).ToString
+            RichTextBox7.Text = tbl_par2.Rows(index).Item(40).ToString
+            RichTextBox8.Text = tbl_par2.Rows(index).Item(41).ToString
+            RichTextBox9.Text = tbl_par2.Rows(index).Item(42).ToString
+            Dim filefoto As Byte() = CType(tbl_par2.Rows(0).Item(10), Byte())
             If filefoto.Length > 0 Then
                 pictureEdit.Image = ByteToImage(filefoto)
             Else
                 pictureEdit.Image = Nothing
                 pictureEdit.Refresh()
             End If
-            TextEdit7.Text = datatabl.Rows(0).Item(17).ToString()
-            txtnick.Text = datatabl.Rows(0).Item(19).ToString()
-            txtapplieddate.Text = datatabl.Rows(0).Item(20).ToString()
-            txtkg.Text = datatabl.Rows(0).Item(21).ToString
-            txtcm.Text = datatabl.Rows(0).Item(22).ToString
-            txtblood.Text = datatabl.Rows(0).Item(23).ToString
-            txtcity.Text = datatabl.Rows(0).Item(24).ToString
-            txtzip.Text = datatabl.Rows(0).Item(25).ToString
-            txthome.Text = datatabl.Rows(0).Item(26).ToString
-            txtrecby.Text = datatabl.Rows(0).Item(27).ToString
-            ComboBoxEdit4.Text = datatabl.Rows(0).Item(28).ToString
-            TextBox3.Text = datatabl.Rows(0).Item(29).ToString
-            TextBox4.Text = datatabl.Rows(0).Item(30).ToString
-            TextBox5.Text = datatabl.Rows(0).Item(18).ToString
-            RichTextBox1.Text = datatabl.Rows(0).Item(31).ToString
-            TextBox6.Text = datatabl.Rows(0).Item(32).ToString
-            RichTextBox2.Text = datatabl.Rows(0).Item(33).ToString
-            CheckEdit1.Checked = CBool(datatabl.Rows(0).Item(34).ToString)
-            RichTextBox3.Text = datatabl.Rows(0).Item(35).ToString
-            CheckEdit2.Checked = CBool(datatabl.Rows(0).Item(36).ToString)
-            RichTextBox4.Text = datatabl.Rows(0).Item(37).ToString
-            RichTextBox5.Text = datatabl.Rows(0).Item(38).ToString
-            RichTextBox6.Text = datatabl.Rows(0).Item(39).ToString
-            RichTextBox7.Text = datatabl.Rows(0).Item(40).ToString
-            RichTextBox8.Text = datatabl.Rows(0).Item(41).ToString
-            RichTextBox9.Text = datatabl.Rows(0).Item(42).ToString
-            txtwemail.Text = datatabl.Rows(0).Item(43).ToString
-            edu()
-            cert()
-            skill()
-            fam()
-            exp()
-        End If
+        Next
     End Sub
 
     Private Sub ChangeData_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
-        loadinfo()
-        GridView1.BestFitColumns()
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select name from db_tmpname"
+            Dim quer1 As String = CType(query.ExecuteScalar, String)
+            txtcandname.Text = quer1.ToString
+            query.CommandText = "select employeecode from db_tmpname"
+            Dim quer2 As String = CType(query.ExecuteScalar, String)
+            txtidrec.Text = quer2.ToString
+        Catch ex As Exception
+        End Try
+        loaddata1()
+        autochange()
+        'GridView1.BestFitColumns()
         GridView2.BestFitColumns()
         GridView3.BestFitColumns()
         GridView4.BestFitColumns()
         GridView5.BestFitColumns()
         GridView6.BestFitColumns()
         act = "input"
-        Label39.Text = "C:\pdffile\file.pdf"
+        Label39.Text = "file.pdf"
         edu()
     End Sub
 
@@ -1260,5 +1334,9 @@ Public Class ChangeData
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
             e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf SimpleButton19_Click)))
         End If
+    End Sub
+
+    Private Sub txtidrec_TextChanged(sender As Object, e As EventArgs) Handles txtidrec.TextChanged
+
     End Sub
 End Class

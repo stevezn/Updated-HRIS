@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports DevExpress.XtraBars.Alerter
 
 Public Class Tile_Control
     Dim connectionString As String
@@ -64,17 +65,13 @@ Public Class Tile_Control
         If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             Try
                 Dim del As MySqlCommand = SQLConnection.CreateCommand
-                ' del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
                 del.CommandText = "truncate db_hasil"
                 del.ExecuteNonQuery()
                 Dim dele As MySqlCommand = SQLConnection.CreateCommand
-                'dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
                 dele.CommandText = "truncate db_temp"
-                dele.Parameters.Clear()
                 dele.ExecuteNonQuery()
 
                 dele.CommandText = "truncate db_tmpname"
-                dele.Parameters.Clear()
                 dele.ExecuteNonQuery()
             Catch ex As Exception
 
@@ -124,15 +121,16 @@ Public Class Tile_Control
     End Sub
 
     Private Sub Tile_Control_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        SQLConnection.ConnectionString = connectionString
+        SQLConnection.Open()
+        'ShowAlert()
+        alert()
     End Sub
 
     Private Sub Tile_Control_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-    End Sub
-
-    Private Sub TileControl1_Click(sender As Object, e As EventArgs) Handles TileControl1.Click
 
     End Sub
+
     Dim cus As New Customize
 
     Private Sub TileItem8_ItemClick(sender As Object, e As DevExpress.XtraEditors.TileItemEventArgs) Handles TileItem8.ItemClick
@@ -171,5 +169,73 @@ Public Class Tile_Control
             approve = New Approvement
         End If
         approve.Show()
+    End Sub
+
+    Private Sub AlertControl1_AlertClick(sender As Object, e As DevExpress.XtraBars.Alerter.AlertClickEventArgs)
+
+    End Sub
+
+    Private Function GetImage() As Image
+        Return ImageCollection1.Images(0)
+    End Function
+
+    Private Function GetImage1() As Image
+        Return ImageCollection1.Images(1)
+    End Function
+
+    Sub alert()
+        Dim btn1 As AlertButton = New AlertButton(GetImage)
+        Dim btn2 As AlertButton = New AlertButton(GetImage1)
+        btn1.Hint = "View Progress"
+        btn1.Name = "btnProg"
+        btn2.Hint = "View Candidates"
+        btn2.Name = "btnview"
+        AlertControl1.Buttons.Add(btn1)
+        AlertControl1.Buttons.Add(btn2)
+        AddHandler AlertControl1.ButtonClick, AddressOf AlertControl1_ButtonClick
+        AddHandler AlertControl1.ButtonDownChanged,
+        AddressOf AlertControl1_ButtonDownChanged
+        Dim info As AlertInfo = New AlertInfo("Welcome User", "HRIS")
+        'AlertControl1.Show(Me, info)
+        Try
+            Dim query As MySqlCommand = SQLConnection.CreateCommand
+            query.CommandText = "select user from db_temp"
+            Dim quer As String = CStr(query.ExecuteScalar)
+            query.CommandText = "select count(status) from db_recruitment where status = 'In progress'"
+            Dim quer2 As Integer = CInt(query.ExecuteScalar)
+            query.CommandText = "select count(interviewdate) from db_recruitment where interviewdate = @d1"
+            query.Parameters.AddWithValue("@d1", Date.Now)
+            Dim quer1 As Integer = CInt(query.ExecuteScalar)
+            query.CommandText = "select "
+            If quer2 > 1 Then
+                AlertControl1.Show(Me, "Welcome To HRIS", "<color=green> " & quer.ToString & " you have " & quer2 & " 'In Progress' Status in Recruitment</color> <color=green> and " & quer1.ToString & " interviews schedules for today </color>")
+            Else
+                AlertControl1.Show(Me, "Welcome To HRIS", "<color=green>" & quer.ToString & "</color><br>")
+            End If
+        Catch ex As Exception
+            'MsgBox(" alert" & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub AlertControl1_BeforeFormShow(sender As Object, e As AlertFormEventArgs)
+        e.AlertForm.OpacityLevel = 1
+    End Sub
+
+    Dim prog As New RecProcess
+
+    Private Sub AlertControl1_ButtonClick(sender As Object, e As AlertButtonClickEventArgs) Handles AlertControl1.ButtonClick
+        If e.ButtonName = "btnProg" Then
+            If prog Is Nothing OrElse prog.IsDisposed OrElse prog.MinimizeBox Then
+                prog.Close()
+                prog = New RecProcess
+            End If
+            prog.Show()
+        ElseIf e.ButtonName = "btnview" Then
+            MsgBox("No idea")
+        End If
+    End Sub
+
+    Private Sub AlertControl1_ButtonDownChanged(sender As Object, e As AlertButtonDownChangedEventArgs) Handles AlertControl1.ButtonDownChanged
+
     End Sub
 End Class

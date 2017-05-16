@@ -107,6 +107,7 @@ Partial Class Warning
         '
         Me.TextBox2.Location = New System.Drawing.Point(101, 34)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(202, 20)
         Me.TextBox2.TabIndex = 6
         '
@@ -114,6 +115,7 @@ Partial Class Warning
         '
         Me.TextBox3.Location = New System.Drawing.Point(341, 34)
         Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(225, 20)
         Me.TextBox3.TabIndex = 9
         '
@@ -284,7 +286,7 @@ Partial Class Warning
         '
         'SimpleButton2
         '
-        Me.SimpleButton2.Location = New System.Drawing.Point(145, 457)
+        Me.SimpleButton2.Location = New System.Drawing.Point(161, 456)
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(116, 23)
         Me.SimpleButton2.TabIndex = 23
@@ -292,7 +294,7 @@ Partial Class Warning
         '
         'SimpleButton3
         '
-        Me.SimpleButton3.Location = New System.Drawing.Point(6, 457)
+        Me.SimpleButton3.Location = New System.Drawing.Point(19, 457)
         Me.SimpleButton3.Name = "SimpleButton3"
         Me.SimpleButton3.Size = New System.Drawing.Size(131, 23)
         Me.SimpleButton3.TabIndex = 24
@@ -324,7 +326,10 @@ Partial Class Warning
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtmemo)
         Me.Controls.Add(Me.Label1)
+        Me.MaximumSize = New System.Drawing.Size(594, 522)
+        Me.MinimumSize = New System.Drawing.Size(594, 522)
         Me.Name = "Warning"
+        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Warning Notice"
         Me.TabControl1.ResumeLayout(False)

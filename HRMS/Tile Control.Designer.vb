@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Tile_Control
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,8 +20,9 @@ Partial Class Tile_Control
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Tile_Control))
         Dim TileItemElement1 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
         Dim TileItemElement2 As DevExpress.XtraEditors.TileItemElement = New DevExpress.XtraEditors.TileItemElement()
@@ -43,31 +44,43 @@ Partial Class Tile_Control
         Me.TileItem4 = New DevExpress.XtraEditors.TileItem()
         Me.TileItem9 = New DevExpress.XtraEditors.TileItem()
         Me.TileItem10 = New DevExpress.XtraEditors.TileItem()
+        Me.TileItem8 = New DevExpress.XtraEditors.TileItem()
         Me.TileItem11 = New DevExpress.XtraEditors.TileItem()
         Me.TileItem12 = New DevExpress.XtraEditors.TileItem()
         Me.TileGroup3 = New DevExpress.XtraEditors.TileGroup()
         Me.TileItem5 = New DevExpress.XtraEditors.TileItem()
-        Me.TileItem7 = New DevExpress.XtraEditors.TileItem()
-        Me.TileGroup5 = New DevExpress.XtraEditors.TileGroup()
-        Me.TileItem8 = New DevExpress.XtraEditors.TileItem()
-        Me.TileGroup1 = New DevExpress.XtraEditors.TileGroup()
         Me.TileItem6 = New DevExpress.XtraEditors.TileItem()
+        Me.TileItem7 = New DevExpress.XtraEditors.TileItem()
+        Me.PopupMenu1 = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.AlertControl1 = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
+        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TileControl1
         '
-        Me.TileControl1.AppearanceGroupText.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TileControl1.AppearanceGroupText.BackColor = System.Drawing.Color.White
         Me.TileControl1.AppearanceGroupText.Options.UseBackColor = True
         Me.TileControl1.AppearanceItem.Hovered.BackColor = System.Drawing.Color.Silver
         Me.TileControl1.AppearanceItem.Hovered.Options.UseBackColor = True
         Me.TileControl1.AppearanceItem.Normal.BackColor = System.Drawing.Color.White
         Me.TileControl1.AppearanceItem.Normal.Options.UseBackColor = True
+        Me.TileControl1.BackColor = System.Drawing.Color.Black
         Me.TileControl1.BackgroundImage = CType(resources.GetObject("TileControl1.BackgroundImage"), System.Drawing.Image)
         Me.TileControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.TileControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003
         Me.TileControl1.Groups.Add(Me.TileGroup2)
         Me.TileControl1.Groups.Add(Me.TileGroup3)
-        Me.TileControl1.Groups.Add(Me.TileGroup5)
-        Me.TileControl1.Groups.Add(Me.TileGroup1)
         Me.TileControl1.Location = New System.Drawing.Point(1, -1)
         Me.TileControl1.MaxId = 28
         Me.TileControl1.Name = "TileControl1"
@@ -83,6 +96,7 @@ Partial Class Tile_Control
         Me.TileGroup2.Items.Add(Me.TileItem4)
         Me.TileGroup2.Items.Add(Me.TileItem9)
         Me.TileGroup2.Items.Add(Me.TileItem10)
+        Me.TileGroup2.Items.Add(Me.TileItem8)
         Me.TileGroup2.Items.Add(Me.TileItem11)
         Me.TileGroup2.Items.Add(Me.TileItem12)
         Me.TileGroup2.Name = "TileGroup2"
@@ -215,6 +229,28 @@ Partial Class Tile_Control
         Me.TileItem10.Id = 24
         Me.TileItem10.Name = "TileItem10"
         '
+        'TileItem8
+        '
+        Me.TileItem8.AppearanceItem.Normal.BackColor = System.Drawing.Color.Transparent
+        Me.TileItem8.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Transparent
+        Me.TileItem8.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Transparent
+        Me.TileItem8.AppearanceItem.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TileItem8.AppearanceItem.Normal.ForeColor = System.Drawing.Color.Black
+        Me.TileItem8.AppearanceItem.Normal.Options.UseBackColor = True
+        Me.TileItem8.AppearanceItem.Normal.Options.UseBorderColor = True
+        Me.TileItem8.AppearanceItem.Normal.Options.UseFont = True
+        Me.TileItem8.AppearanceItem.Normal.Options.UseForeColor = True
+        Me.TileItem8.AppearanceItem.Selected.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TileItem8.AppearanceItem.Selected.Options.UseFont = True
+        TileItemElement7.Image = CType(resources.GetObject("TileItemElement7.Image"), System.Drawing.Image)
+        TileItemElement7.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
+        TileItemElement7.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
+        TileItemElement7.Text = "Customize"
+        TileItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
+        Me.TileItem8.Elements.Add(TileItemElement7)
+        Me.TileItem8.Id = 21
+        Me.TileItem8.Name = "TileItem8"
+        '
         'TileItem11
         '
         Me.TileItem11.AppearanceItem.Normal.BackColor = System.Drawing.Color.Transparent
@@ -224,11 +260,11 @@ Partial Class Tile_Control
         Me.TileItem11.AppearanceItem.Normal.Options.UseBackColor = True
         Me.TileItem11.AppearanceItem.Normal.Options.UseBorderColor = True
         Me.TileItem11.AppearanceItem.Normal.Options.UseForeColor = True
-        TileItemElement7.Image = CType(resources.GetObject("TileItemElement7.Image"), System.Drawing.Image)
-        TileItemElement7.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
-        TileItemElement7.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
-        TileItemElement7.Text = "Approvement"
-        Me.TileItem11.Elements.Add(TileItemElement7)
+        TileItemElement8.Image = CType(resources.GetObject("TileItemElement8.Image"), System.Drawing.Image)
+        TileItemElement8.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
+        TileItemElement8.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
+        TileItemElement8.Text = "Approvement"
+        Me.TileItem11.Elements.Add(TileItemElement8)
         Me.TileItem11.Id = 25
         Me.TileItem11.Name = "TileItem11"
         '
@@ -241,12 +277,12 @@ Partial Class Tile_Control
         Me.TileItem12.AppearanceItem.Normal.Options.UseBackColor = True
         Me.TileItem12.AppearanceItem.Normal.Options.UseBorderColor = True
         Me.TileItem12.AppearanceItem.Normal.Options.UseForeColor = True
-        TileItemElement8.Image = CType(resources.GetObject("TileItemElement8.Image"), System.Drawing.Image)
-        TileItemElement8.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
-        TileItemElement8.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
-        TileItemElement8.Text = "Check Update"
-        TileItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopCenter
-        Me.TileItem12.Elements.Add(TileItemElement8)
+        TileItemElement9.Image = CType(resources.GetObject("TileItemElement9.Image"), System.Drawing.Image)
+        TileItemElement9.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
+        TileItemElement9.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
+        TileItemElement9.Text = "Check Update"
+        TileItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopCenter
+        Me.TileItem12.Elements.Add(TileItemElement9)
         Me.TileItem12.Id = 27
         Me.TileItem12.Name = "TileItem12"
         Me.TileItem12.Visible = False
@@ -254,6 +290,7 @@ Partial Class Tile_Control
         'TileGroup3
         '
         Me.TileGroup3.Items.Add(Me.TileItem5)
+        Me.TileGroup3.Items.Add(Me.TileItem6)
         Me.TileGroup3.Items.Add(Me.TileItem7)
         Me.TileGroup3.Name = "TileGroup3"
         Me.TileGroup3.Text = Nothing
@@ -263,22 +300,47 @@ Partial Class Tile_Control
         Me.TileItem5.AppearanceItem.Normal.BackColor = System.Drawing.Color.Transparent
         Me.TileItem5.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Transparent
         Me.TileItem5.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Transparent
-        Me.TileItem5.AppearanceItem.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TileItem5.AppearanceItem.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TileItem5.AppearanceItem.Normal.ForeColor = System.Drawing.Color.Black
         Me.TileItem5.AppearanceItem.Normal.Options.UseBackColor = True
         Me.TileItem5.AppearanceItem.Normal.Options.UseBorderColor = True
         Me.TileItem5.AppearanceItem.Normal.Options.UseFont = True
         Me.TileItem5.AppearanceItem.Normal.Options.UseForeColor = True
         Me.TileItem5.ContentAnimation = DevExpress.XtraEditors.TileItemContentAnimationType.Fade
-        TileItemElement9.Image = CType(resources.GetObject("TileItemElement9.Image"), System.Drawing.Image)
-        TileItemElement9.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
-        TileItemElement9.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
-        TileItemElement9.Text = "Main Application"
-        TileItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
-        Me.TileItem5.Elements.Add(TileItemElement9)
+        TileItemElement10.Image = CType(resources.GetObject("TileItemElement10.Image"), System.Drawing.Image)
+        TileItemElement10.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
+        TileItemElement10.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
+        TileItemElement10.Text = "Main Application"
+        TileItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
+        Me.TileItem5.Elements.Add(TileItemElement10)
         Me.TileItem5.Id = 16
         Me.TileItem5.IsLarge = True
         Me.TileItem5.Name = "TileItem5"
+        '
+        'TileItem6
+        '
+        Me.TileItem6.AppearanceItem.Hovered.BackColor = System.Drawing.Color.Silver
+        Me.TileItem6.AppearanceItem.Hovered.ForeColor = System.Drawing.Color.White
+        Me.TileItem6.AppearanceItem.Hovered.Options.UseBackColor = True
+        Me.TileItem6.AppearanceItem.Hovered.Options.UseForeColor = True
+        Me.TileItem6.AppearanceItem.Normal.BackColor = System.Drawing.Color.Transparent
+        Me.TileItem6.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Transparent
+        Me.TileItem6.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Transparent
+        Me.TileItem6.AppearanceItem.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TileItem6.AppearanceItem.Normal.ForeColor = System.Drawing.Color.Black
+        Me.TileItem6.AppearanceItem.Normal.Options.UseBackColor = True
+        Me.TileItem6.AppearanceItem.Normal.Options.UseBorderColor = True
+        Me.TileItem6.AppearanceItem.Normal.Options.UseFont = True
+        Me.TileItem6.AppearanceItem.Normal.Options.UseForeColor = True
+        Me.TileItem6.AppearanceItem.Selected.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.TileItem6.AppearanceItem.Selected.Options.UseBackColor = True
+        TileItemElement11.Image = CType(resources.GetObject("TileItemElement11.Image"), System.Drawing.Image)
+        TileItemElement11.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
+        TileItemElement11.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
+        TileItemElement11.Text = "Close / Exit"
+        Me.TileItem6.Elements.Add(TileItemElement11)
+        Me.TileItem6.Id = 17
+        Me.TileItem6.Name = "TileItem6"
         '
         'TileItem7
         '
@@ -291,73 +353,95 @@ Partial Class Tile_Control
         Me.TileItem7.AppearanceItem.Normal.Options.UseBorderColor = True
         Me.TileItem7.AppearanceItem.Normal.Options.UseFont = True
         Me.TileItem7.AppearanceItem.Normal.Options.UseForeColor = True
-        TileItemElement10.Image = CType(resources.GetObject("TileItemElement10.Image"), System.Drawing.Image)
-        TileItemElement10.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
-        TileItemElement10.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
-        TileItemElement10.Text = "Reports"
-        Me.TileItem7.Elements.Add(TileItemElement10)
+        TileItemElement12.Image = CType(resources.GetObject("TileItemElement12.Image"), System.Drawing.Image)
+        TileItemElement12.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
+        TileItemElement12.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
+        TileItemElement12.Text = "Reports"
+        Me.TileItem7.Elements.Add(TileItemElement12)
         Me.TileItem7.Id = 20
         Me.TileItem7.Name = "TileItem7"
         Me.TileItem7.Visible = False
         '
-        'TileGroup5
+        'PopupMenu1
         '
-        Me.TileGroup5.Items.Add(Me.TileItem8)
-        Me.TileGroup5.Name = "TileGroup5"
-        Me.TileGroup5.Text = Nothing
+        Me.PopupMenu1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem3)})
+        Me.PopupMenu1.Manager = Me.BarManager1
+        Me.PopupMenu1.Name = "PopupMenu1"
         '
-        'TileItem8
+        'BarButtonItem1
         '
-        Me.TileItem8.AppearanceItem.Normal.BackColor = System.Drawing.Color.Transparent
-        Me.TileItem8.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Transparent
-        Me.TileItem8.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Transparent
-        Me.TileItem8.AppearanceItem.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TileItem8.AppearanceItem.Normal.ForeColor = System.Drawing.Color.Black
-        Me.TileItem8.AppearanceItem.Normal.Options.UseBackColor = True
-        Me.TileItem8.AppearanceItem.Normal.Options.UseBorderColor = True
-        Me.TileItem8.AppearanceItem.Normal.Options.UseFont = True
-        Me.TileItem8.AppearanceItem.Normal.Options.UseForeColor = True
-        Me.TileItem8.AppearanceItem.Selected.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TileItem8.AppearanceItem.Selected.Options.UseFont = True
-        TileItemElement11.Image = CType(resources.GetObject("TileItemElement11.Image"), System.Drawing.Image)
-        TileItemElement11.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
-        TileItemElement11.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
-        TileItemElement11.Text = "Customize"
-        TileItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
-        Me.TileItem8.Elements.Add(TileItemElement11)
-        Me.TileItem8.Id = 21
-        Me.TileItem8.Name = "TileItem8"
+        Me.BarButtonItem1.Caption = "Test 1"
+        Me.BarButtonItem1.Id = 0
+        Me.BarButtonItem1.Name = "BarButtonItem1"
         '
-        'TileGroup1
+        'BarButtonItem2
         '
-        Me.TileGroup1.Items.Add(Me.TileItem6)
-        Me.TileGroup1.Name = "TileGroup1"
-        Me.TileGroup1.Text = Nothing
+        Me.BarButtonItem2.Caption = "Test 2"
+        Me.BarButtonItem2.Id = 1
+        Me.BarButtonItem2.Name = "BarButtonItem2"
         '
-        'TileItem6
+        'BarButtonItem3
         '
-        Me.TileItem6.AppearanceItem.Hovered.BackColor = System.Drawing.Color.Silver
-        Me.TileItem6.AppearanceItem.Hovered.ForeColor = System.Drawing.Color.White
-        Me.TileItem6.AppearanceItem.Hovered.Options.UseBackColor = True
-        Me.TileItem6.AppearanceItem.Hovered.Options.UseForeColor = True
-        Me.TileItem6.AppearanceItem.Normal.BackColor = System.Drawing.Color.Transparent
-        Me.TileItem6.AppearanceItem.Normal.BackColor2 = System.Drawing.Color.Transparent
-        Me.TileItem6.AppearanceItem.Normal.BorderColor = System.Drawing.Color.Transparent
-        Me.TileItem6.AppearanceItem.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TileItem6.AppearanceItem.Normal.ForeColor = System.Drawing.Color.Black
-        Me.TileItem6.AppearanceItem.Normal.Options.UseBackColor = True
-        Me.TileItem6.AppearanceItem.Normal.Options.UseBorderColor = True
-        Me.TileItem6.AppearanceItem.Normal.Options.UseFont = True
-        Me.TileItem6.AppearanceItem.Normal.Options.UseForeColor = True
-        Me.TileItem6.AppearanceItem.Selected.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.TileItem6.AppearanceItem.Selected.Options.UseBackColor = True
-        TileItemElement12.Image = CType(resources.GetObject("TileItemElement12.Image"), System.Drawing.Image)
-        TileItemElement12.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter
-        TileItemElement12.ImageToTextAlignment = DevExpress.XtraEditors.TileControlImageToTextAlignment.Top
-        TileItemElement12.Text = "Close / Exit"
-        Me.TileItem6.Elements.Add(TileItemElement12)
-        Me.TileItem6.Id = 17
-        Me.TileItem6.Name = "TileItem6"
+        Me.BarButtonItem3.Caption = "Test 3"
+        Me.BarButtonItem3.Id = 2
+        Me.BarButtonItem3.Name = "BarButtonItem3"
+        '
+        'BarManager1
+        '
+        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager1.Form = Me
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarButtonItem1, Me.BarButtonItem2, Me.BarButtonItem3})
+        Me.BarManager1.MaxItemId = 3
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Size = New System.Drawing.Size(801, 0)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 535)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(801, 0)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 535)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(801, 0)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 535)
+        '
+        'ImageCollection1
+        '
+        Me.ImageCollection1.ImageStream = CType(resources.GetObject("ImageCollection1.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
+        Me.ImageCollection1.InsertGalleryImage("cancel_16x16.png", "images/actions/cancel_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/cancel_16x16.png"), 0)
+        Me.ImageCollection1.Images.SetKeyName(0, "cancel_16x16.png")
+        Me.ImageCollection1.InsertGalleryImage("apply_16x16.png", "images/actions/apply_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/apply_16x16.png"), 1)
+        Me.ImageCollection1.Images.SetKeyName(1, "apply_16x16.png")
+        Me.ImageCollection1.InsertGalleryImage("show_16x16.png", "images/actions/show_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/show_16x16.png"), 2)
+        Me.ImageCollection1.Images.SetKeyName(2, "show_16x16.png")
+        '
+        'AlertControl1
+        '
+        Me.AlertControl1.AllowHtmlText = True
+        Me.AlertControl1.AutoFormDelay = 100000000
+        Me.AlertControl1.LookAndFeel.SkinName = "DevExpress Dark Style"
+        Me.AlertControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat
+        Me.AlertControl1.LookAndFeel.UseWindowsXPTheme = True
+        Me.AlertControl1.PopupMenu = Me.PopupMenu1
         '
         'Tile_Control
         '
@@ -367,12 +451,19 @@ Partial Class Tile_Control
         Me.ClientSize = New System.Drawing.Size(801, 535)
         Me.ControlBox = False
         Me.Controls.Add(Me.TileControl1)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(817, 574)
         Me.MinimumSize = New System.Drawing.Size(817, 574)
         Me.Name = "Tile_Control"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Human Resources Information System"
+        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -391,7 +482,16 @@ Partial Class Tile_Control
     Friend WithEvents TileItem9 As DevExpress.XtraEditors.TileItem
     Friend WithEvents TileItem10 As DevExpress.XtraEditors.TileItem
     Friend WithEvents TileItem11 As DevExpress.XtraEditors.TileItem
-    Friend WithEvents TileGroup5 As DevExpress.XtraEditors.TileGroup
-    Friend WithEvents TileGroup1 As DevExpress.XtraEditors.TileGroup
     Friend WithEvents TileItem12 As DevExpress.XtraEditors.TileItem
+    Friend WithEvents PopupMenu1 As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
+    Friend WithEvents AlertControl1 As DevExpress.XtraBars.Alerter.AlertControl
 End Class

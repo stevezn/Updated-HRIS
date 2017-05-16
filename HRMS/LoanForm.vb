@@ -1,6 +1,7 @@
 ﻿Imports System.Globalization
 Imports System.IO
 Imports System.Windows.Forms.DataVisualization.Charting
+Imports DevExpress
 Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraEditors.Repository
 Imports DevExpress.XtraGrid.Columns
@@ -23,6 +24,19 @@ Public Class Payments
         For index As Integer = 0 To tbl_par.Rows.Count - 1
             txtname1.Properties.Items.Add(tbl_par.Rows(index).Item(0).ToString())
         Next
+    End Sub
+
+    Public ReadOnly Property DisplayFormat As DevExpress.Utils.FormatInfo
+
+    Sub viewthousand()
+        Dim newtab As New DataTable
+        GridControl2.RefreshDataSource()
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "select EmployeeCode, FullName, BasicRate as BasicSalary from db_payrolldata"
+        Dim adapter As New MySqlDataAdapter(query.CommandText, SQLConnection)
+        Dim cb As New MySqlCommandBuilder(adapter)
+        adapter.Fill(newtab)
+        GridControl2.DataSource = newtab
     End Sub
 
     Dim tbl_par3 As New DataTable
@@ -82,9 +96,6 @@ Public Class Payments
         Dim cb As New MySqlCommandBuilder(adapter)
         adapter.Fill(tbl_par2)
         For index As Integer = 0 To tbl_par2.Rows.Count - 1
-            'txtname2.Properties.Items.Add(tbl_par2.Rows(index).Item(0).ToString())
-            'txtname3.Properties.Items.Add(tbl_par2.Rows(index).Item(0).ToString())
-            'txtname.Properties.Items.Add(tbl_par2.Rows(index).Item(0).ToString())
         Next
     End Sub
 
@@ -753,8 +764,6 @@ Public Class Payments
         End Try
     End Sub
 
-    Public ReadOnly Property DisplayFormat As DevExpress.Utils.FormatInfo
-
     Private Sub loadpayroll()
         Dim customCurrencyInfo As CultureInfo = CultureInfo.CreateSpecificCulture("id-ID")
         customCurrencyInfo.NumberFormat.CurrencyNegativePattern = 8
@@ -885,15 +894,28 @@ Public Class Payments
         Next
     End Sub
 
+    Private Function inprogress(ByVal view As GridView, ByVal row As Integer) As Boolean
+        Try
+            Dim val As String = Convert.ToString(view.GetRowCellValue(row, "Realisasi"))
+            Return (val = "PAID")
+        Catch
+            Return False
+        End Try
+    End Function
+
     Private Sub LoanForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
-        'txtyears.Text = Year(Now).ToString
-        'selectname()
+        Dim table As New DataTable
+        GridControl2.DataSource = DBNull.Value
+        GridControl2.RefreshDataSource()
         holidays()
         loaddata()
         loaddata1()
-        loadpayroll()
+        'fill1000(table)
+        'viewthousandsep(table)
+        viewthousand()
+        'loadpayroll()
         loadpayroll1()
         loadloan()
         loanlists()
@@ -902,10 +924,10 @@ Public Class Payments
         txtcompletedon1.CustomFormat = "MMMM yyyy"
         txtmonth.CustomFormat = "MMMM yyyy"
         GridView1.BestFitColumns()
-        GridView2.BestFitColumns()
         GridView4.BestFitColumns()
         GridView6.BestFitColumns()
         GridView7.BestFitColumns()
+        GridView2.BestFitColumns()
         autofill()
         LabelControl6.Text = "file.pdf"
     End Sub
@@ -1731,8 +1753,33 @@ Public Class Payments
         End If
     End Sub
 
-    Private Sub GroupControl6_Paint(sender As Object, e As PaintEventArgs) Handles GroupControl6.Paint
+    Private Sub GridView2_CustomColumnDisplayText(sender As Object, e As Base.CustomColumnDisplayTextEventArgs) Handles GridView2.CustomColumnDisplayText
+        Dim customCurrencyInfo As CultureInfo = CultureInfo.CreateSpecificCulture("id-ID")
+        customCurrencyInfo.NumberFormat.CurrencyNegativePattern = 8
+        If e.Column.FieldName = "BasicSalary" Then
+            e.Column.DisplayFormat.FormatType = Utils.FormatType.Numeric
+            e.Column.DisplayFormat.FormatString = "n2"
+        End If
+    End Sub
 
+    Private Sub GridView1_RowCellStyle(sender As Object, e As RowCellStyleEventArgs) Handles GridView1.RowCellStyle
+        If inprogress(GridView1, e.RowHandle) Then
+            e.Appearance.BackColor = Color.Silver
+        End If
+    End Sub
+
+    Private Sub GridView4_CustomColumnDisplayText(sender As Object, e As Base.CustomColumnDisplayTextEventArgs) Handles GridView4.CustomColumnDisplayText
+        If e.Column.FieldName = "BasicSalary" Then
+            e.Column.DisplayFormat.FormatType = Utils.FormatType.Numeric
+            e.Column.DisplayFormat.FormatString = "n2"
+        End If
+    End Sub
+
+    Private Sub GridView7_CustomColumnDisplayText(sender As Object, e As Base.CustomColumnDisplayTextEventArgs) Handles GridView7.CustomColumnDisplayText
+        If e.Column.FieldName = "AmountOfLoan" OrElse e.Column.FieldName = "PaymentPerMonth" Then
+            e.Column.DisplayFormat.FormatType = Utils.FormatType.Numeric
+            e.Column.DisplayFormat.FormatString = "n2"
+        End If
     End Sub
 
     Private Sub lcpayment_EditValueChanged(sender As Object, e As EventArgs) Handles lcpayment.EditValueChanged

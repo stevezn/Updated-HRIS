@@ -88,7 +88,6 @@ Public Class MainApp
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
         GridView1.BestFitColumns()
-
         'Dim query As MySqlCommand = SQLConnection.CreateCommand
         'query.CommandText = "select leveluser from db_user where username = @user"
         'query.Parameters.AddWithValue("@user", Label1.Text)
@@ -191,6 +190,7 @@ Public Class MainApp
         GridView1.Columns.Clear()
         'CardView1.Columns.Clear()
         loadDataReq()
+        GridView1.Columns("Blacklist").SortOrder = DevExpress.Data.ColumnSortOrder.Ascending
         GridView1.MoveLast()
     End Sub
 
@@ -231,17 +231,12 @@ Public Class MainApp
         If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
             Try
                 Dim del As MySqlCommand = SQLConnection.CreateCommand
-                ' del.CommandText = "delete from db_hasil where EmployeeCode != 'absbahsgedeg'"
                 del.CommandText = "truncate db_hasil"
                 del.ExecuteNonQuery()
                 Dim dele As MySqlCommand = SQLConnection.CreateCommand
-                'dele.CommandText = "delete from db_temp where EmployeeCode != 'absbahsgedeg'"
                 dele.CommandText = "truncate db_temp"
-                dele.Parameters.Clear()
                 dele.ExecuteNonQuery()
-
                 dele.CommandText = "truncate db_tmpname"
-                dele.Parameters.Clear()
                 dele.ExecuteNonQuery()
             Catch ex As Exception
 
@@ -561,11 +556,11 @@ Public Class MainApp
         Dim sqlCommand As New MySqlCommand
         Try
             If barJudul.Caption = "Module Recruitment" Then
-                sqlCommand.CommandText = "select  IdRec, InterviewTimes as AppliedTimes, FullName, Blacklist,  PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, InterviewDate, Reason, Position, ExpectedSalary, NickName, ApplicationDate, Weight, Height, BloodType, City, ZIP, HomeNumber, RecommendedBy, Martial as MartialStatus, LastSalary, OtherIncome, ExpFacilities as ExpectedFacilities, FavoriteJob, Reference, CreatedDate from db_recruitment"
+                sqlCommand.CommandText = "select Blacklist, IdRec, InterviewTimes as AppliedTimes, FullName,  PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, Status, InterviewDate, Position, NickName, ApplicationDate,  City, ZIP, HomeNumber, RecommendedBy, Martial as MartialStatus, CreatedDate from db_recruitment where status != 'Processed'"
                 'sqlCommand.CommandText = "Select IdRec as IDRecruitment, InterviewTimes, FullName, PlaceOfBirth, DateOfBirth, Address, Gender, Religion, PhoneNumber, IdNumber, InterviewDate, Status, CreatedDate from db_recruitment where status != 'In Progress'"
             ElseIf barJudul.Caption = "Module Employee" Then
                 'sqlCommand.CommandText = "Select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, Email, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, TrainingSampai, EmployeeType FROM db_pegawai where status != 'Fired' and status != 'Terminated'"
-                sqlCommand.CommandText = "select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType, NickName, Weight, Height, BloodType, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks from db_pegawai where status <> 'Terminate'"
+                sqlCommand.CommandText = "select EmployeeCode, CompanyCode, FullName, Position, PlaceOfBirth, DateOfBirth, Gender, Religion, Address, IdNumber, OfficeLocation, WorkDate, PhoneNumber, Status, EmployeeType, NickName, WorkEmail, PrivateEmail, RecommendedBy, Grouping, Department, Jobdesks from db_pegawai where status != 'Terminate' and  status != 'Terminated'"
             End If
             sqlCommand.Connection = SQLConnection
             Dim tbl_par As New DataTable
@@ -1079,6 +1074,14 @@ Public Class MainApp
         Return ImageCollection1.Images(11)
     End Function
 
+    Private Function GetImage12() As Image
+        Return ImageCollection1.Images(12)
+    End Function
+
+    Private Function getimage13() As Image
+        Return ImageCollection1.Images(13)
+    End Function
+
     Private Sub GridView1_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles GridView1.PopupMenuShowing
         Dim view As GridView = CType(sender, GridView)
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
@@ -1098,23 +1101,49 @@ Public Class MainApp
 
         If barJudul.Caption = "Module Recruitment" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
-                e.Menu.Items.Add(New DXMenuItem("Status : " & quer & ""))
-                e.Menu.Items.Add(New DXMenuItem("Add", New EventHandler(AddressOf Button4_Click), GetImage1))
-                e.Menu.Items.Add(New DXMenuItem("View Candidates", New EventHandler(AddressOf Button6_Click), GetImage2))
-                e.Menu.Items.Add(New DXMenuItem("View Progress", New EventHandler(AddressOf Button7_Click), GetImage3()))
-                e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button9_Click), GetImage8))
-                e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
-                e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf btnHapus_Click)))
+                If quer = "Pending" Then
+                    e.Menu.Items.Add(New DXMenuItem("Add Candidates", New EventHandler(AddressOf Button4_Click), GetImage1))
+                    e.Menu.Items.Add(New DXMenuItem("View Candidates", New EventHandler(AddressOf Button6_Click), GetImage2))
+                    e.Menu.Items.Add(New DXMenuItem("Add Skills", New EventHandler(AddressOf Button12_Click), GetImage12))
+                    e.Menu.Items.Add(New DXMenuItem("Change status to be In Progress", New EventHandler(AddressOf Button13_Click), GetImage3()))
+                    e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button9_Click), GetImage8))
+                    e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
+                    e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf btnHapus_Click), getimage13))
+                ElseIf quer = "In Progress" Then
+                    e.Menu.Items.Add(New DXMenuItem("Add Candidates", New EventHandler(AddressOf Button4_Click), GetImage1))
+                    e.Menu.Items.Add(New DXMenuItem("View Candidates", New EventHandler(AddressOf Button6_Click), GetImage2))
+                    e.Menu.Items.Add(New DXMenuItem("Add Skills", New EventHandler(AddressOf Button11_Click), GetImage12))
+                    'e.Menu.Items.Add(New DXMenuItem("Change status to be In Progress", New EventHandler(AddressOf Button12_Click), GetImage3()))
+                    e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button9_Click), GetImage8))
+                    e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
+                    e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf btnHapus_Click), getimage13))
+                ElseIf quer = "Rejected" Then
+                    e.Menu.Items.Add(New DXMenuItem("Add Candidates", New EventHandler(AddressOf Button4_Click), GetImage1))
+                    e.Menu.Items.Add(New DXMenuItem("View Candidates", New EventHandler(AddressOf Button6_Click), GetImage2))
+                    'e.Menu.Items.Add(New DXMenuItem("Add Skills", New EventHandler(AddressOf Button12_Click), GetImage12))
+                    'e.Menu.Items.Add(New DXMenuItem("Change status to be In Progress", New EventHandler(AddressOf Button12_Click), GetImage3))
+                    e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button12_Click), GetImage8))
+                    e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
+                    e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf btnHapus_Click), getimage13))
+                ElseIf quer = "Processed" Then
+                    e.Menu.Items.Add(New DXMenuItem("Add Candidates", New EventHandler(AddressOf Button4_Click), GetImage1))
+                    e.Menu.Items.Add(New DXMenuItem("View Candidates", New EventHandler(AddressOf Button6_Click), GetImage2))
+                    'e.Menu.Items.Add(New DXMenuItem("Add Skills", New EventHandler(AddressOf Button12_Click), GetImage12))
+                    'e.Menu.Items.Add(New DXMenuItem("Change status to be In Progress", New EventHandler(AddressOf Button12_Click), GetImage3))
+                    'e.Menu.Items.Add(New DXMenuItem("Change status to be In Progress"))
+                    'e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button12_Click), GetImage8))
+                    e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
+                    e.Menu.Items.Add(New DXMenuItem("Delete..", New EventHandler(AddressOf btnHapus_Click), getimage13))
+                End If
             End If
         ElseIf barJudul.Caption = "Module Employee" Then
             If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
                 Dim submenu As New DXSubMenuItem("rows")
                 e.Menu.Items.Add(New DXMenuItem("Import Accepted Candidates From Recruitment", New EventHandler(AddressOf btnImport_Click), GetImage5))
-                e.Menu.Items.Add(New DXMenuItem("Add", New EventHandler(AddressOf Button3_Click), GetImage1))
+                e.Menu.Items.Add(New DXMenuItem("Add Employee", New EventHandler(AddressOf Button3_Click), GetImage1))
                 e.Menu.Items.Add(New DXMenuItem("View Employee", New EventHandler(AddressOf Button1_Click), GetImage2))
                 e.Menu.Items.Add(New DXMenuItem("Status Change", New EventHandler(AddressOf SimpleButton5_Click), GetImage6))
                 e.Menu.Items.Add(New DXMenuItem("Termination", New EventHandler(AddressOf SimpleButton6_Click), GetImage7))
-                'e.Menu.Items.Add(New DXMenuItem("Give A Reprimand Letter To " & quer2 & "", New EventHandler(AddressOf Button10_Click), GetImage11))
                 e.Menu.Items.Add(New DXMenuItem("Warning Notice", New EventHandler(AddressOf SimpleButton4_Click), GetImage4))
                 e.Menu.Items.Add(New DXMenuItem("Modify...", New EventHandler(AddressOf Button8_Click), GetImage8))
                 e.Menu.Items.Add(New DXMenuItem("Refresh..", New EventHandler(AddressOf btnSegarkan_Click), GetImage9))
@@ -1145,9 +1174,7 @@ Public Class MainApp
             If datatabl.Rows.Count > 0 Then
                 SimpleButton2.Text = datatabl.Rows(0).Item(0).ToString
                 Button5.Text = datatabl.Rows(0).Item(1).ToString
-
             End If
-
         ElseIf barJudul.Caption = "Module Recruitment" Then
             Dim datatabl As New DataTable
             Dim sqlCommand As New MySqlCommand
@@ -1158,7 +1185,7 @@ Public Class MainApp
             Catch ex As Exception
             End Try
             Try
-                sqlCommand.CommandText = "SELECT IdRec FROM db_recruitment WHERE 1=1 " + param.ToString()
+                sqlCommand.CommandText = "SELECT IdRec , FullName FROM db_recruitment WHERE 1=1 " + param.ToString()
                 sqlCommand.Connection = SQLConnection
                 Dim adapter As New MySqlDataAdapter(sqlCommand.CommandText, SQLConnection)
                 Dim cb As New MySqlCommandBuilder(adapter)
@@ -1168,6 +1195,7 @@ Public Class MainApp
             End Try
             If datatabl.Rows.Count > 0 Then
                 SimpleButton2.Text = datatabl.Rows(0).Item(0).ToString
+                Button5.Text = datatabl.Rows(0).Item(1).ToString
             End If
         End If
     End Sub
@@ -1354,6 +1382,16 @@ Public Class MainApp
     Dim chx As New ChangeEmp
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, Name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
         If chx Is Nothing OrElse chx.IsDisposed OrElse chx.MinimizeBox Then
             chx.Close()
             chx = New ChangeEmp
@@ -1364,6 +1402,16 @@ Public Class MainApp
     Dim chxx As New ChangeData
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, Name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
         If chxx Is Nothing OrElse chxx.IsDisposed OrElse chxx.MinimizeBox Then
             chxx.Close()
             chxx = New ChangeData
@@ -1472,10 +1520,65 @@ Public Class MainApp
             e.Appearance.ForeColor = Color.Black
         ElseIf rejected(GridView1, e.RowHandle) Then
             e.Appearance.BackColor = Color.PaleVioletRed
+            e.Appearance.ForeColor = Color.Bisque
         ElseIf inprogress(GridView1, e.RowHandle) Then
             e.Appearance.BackColor = Color.LightCyan
+            e.Appearance.ForeColor = Color.Black
         ElseIf pending(gridview1, e.rowhandle) Then
             e.Appearance.BackColor = Color.AntiqueWhite
+            e.Appearance.ForeColor = Color.LightSteelBlue
         End If
+    End Sub
+    Dim addsk As New Addskill
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "select count(idrec) from db_skills where idrec = '" & SimpleButton2.Text & "'"
+        Dim quer As Integer = CInt(query.ExecuteScalar)
+        If quer = 1 Then
+            MsgBox("data already exists")
+        Else
+            query.CommandText = "truncate db_tmpname"
+            query.ExecuteNonQuery()
+            query.CommandText = "insert into db_tmpname " +
+                                "(EmployeeCode, Name)" +
+                                "values (@employeecode, @Name)"
+            query.Parameters.Clear()
+            query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+            query.Parameters.AddWithValue("@Name", Button5.Text)
+            query.ExecuteNonQuery()
+            If addsk Is Nothing OrElse addsk.IsDisposed OrElse addsk.MinimizeBox Then
+                addsk.Close()
+                addsk = New Addskill
+            End If
+            addsk.Show()
+        End If
+    End Sub
+
+    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
+        MsgBox("")
+    End Sub
+
+    Dim pen As New Pending
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "truncate db_tmpname"
+        query.ExecuteNonQuery()
+        query.CommandText = "insert into db_tmpname " +
+                            "(EmployeeCode, Name)" +
+                            "values (@employeecode, @Name)"
+        query.Parameters.Clear()
+        query.Parameters.AddWithValue("@EmployeeCode", SimpleButton2.Text)
+        query.Parameters.AddWithValue("@Name", Button5.Text)
+        query.ExecuteNonQuery()
+        If pen Is Nothing OrElse pen.IsDisposed OrElse pen.MinimizeBox Then
+            pen.Close()
+            pen = New Pending
+        End If
+        pen.Show()
+    End Sub
+
+    Private Sub AlertControl1_BeforeFormShow(sender As Object, e As DevExpress.XtraBars.Alerter.AlertFormEventArgs) Handles AlertControl1.BeforeFormShow
+        e.AlertForm.OpacityLevel = 1
     End Sub
 End Class

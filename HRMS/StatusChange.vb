@@ -211,8 +211,6 @@ Public Class StatusChange
         query.CommandText = "select initial from db_tmpname"
         Dim quer3 As String = CStr(query.ExecuteScalar)
         Label14.Text = quer3.ToString
-
-        'changer()
         loadjob()
         loadofloc()
         loaddept()

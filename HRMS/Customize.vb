@@ -39,10 +39,6 @@ Public Class Customize
         connectionString = "Server=" + host + "; User Id=" + id + "; Password=" + password + "; Database=" + db + ""
     End Sub
 
-    Private Sub TextEdit1_EditValueChanged(sender As Object, e As EventArgs) Handles TextEdit1.EditValueChanged
-
-    End Sub
-
     Private Sub Customize_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SQLConnection.ConnectionString = connectionString
         SQLConnection.Open()
@@ -170,38 +166,44 @@ Public Class Customize
     Sub insertion()
         Dim query As MySqlCommand = SQLConnection.CreateCommand
         If ComboBox1.Text = "Job Title" Then
-            query.CommandText = "insert into db_jobtitle (jobtitle) values (@jobs)"
+            query.CommandText = "insert into db_jobtitle (jobtitle, isenable) values (@jobs, @isenable)"
             query.Parameters.AddWithValue("@jobs", TextEdit1.Text)
+            query.Parameters.AddWithValue("@isenable", CheckEdit1.Checked)
             query.ExecuteNonQuery()
             TextEdit1.Text = ""
             changes()
         ElseIf ComboBox1.Text = "Company Code" Then
-            query.CommandText = "insert into db_companycode (companycode) values (@comp)"
+            query.CommandText = "insert into db_companycode (companycode, isenable) values (@comp, @isenable)"
             query.Parameters.AddWithValue("@comp", TextEdit1.Text)
+            query.Parameters.AddWithValue("@isenable", CheckEdit1.Checked)
             query.ExecuteNonQuery()
             TextEdit1.Text = ""
             changes()
         ElseIf ComboBox1.Text = "Office Location" Then
-            query.CommandText = "insert into db_officelocation (OfficeLocation) values (@offloc)"
+            query.CommandText = "insert into db_officelocation (OfficeLocation, isenable) values (@offloc, @isenable)"
             query.Parameters.AddWithValue("@offloc", TextEdit1.Text)
+            query.Parameters.AddWithValue("@isenable", CheckEdit1.Checked)
             query.ExecuteNonQuery()
             TextEdit1.Text = ""
             changes()
         ElseIf ComboBox1.Text = "Group" Then
-            query.CommandText = "insert into db_groupmbp (groupname) values (@groupname)"
+            query.CommandText = "insert into db_groupmbp (groupname, isenable) values (@groupname, @isenable)"
             query.Parameters.AddWithValue("@groupname", TextEdit1.Text)
+            query.Parameters.AddWithValue("@isenable", CheckEdit1.Checked)
             query.ExecuteNonQuery()
             TextEdit1.Text = ""
             changes()
         ElseIf ComboBox1.Text = "Department" Then
-            query.CommandText = "insert into db_departmentmbp (departmentname) values (@departmentname)"
+            query.CommandText = "insert into db_departmentmbp (departmentname, isenable) values (@departmentname, @isenable)"
             query.Parameters.AddWithValue("@departmentname", TextEdit1.Text)
+            query.Parameters.AddWithValue("@isenable", CheckEdit1.Checked)
             query.ExecuteNonQuery()
             TextEdit1.Text = ""
             changes()
         ElseIf ComboBox1.Text = "Type Of Offense" Then
-            query.CommandText = "insert into db_offense (typeofoffense) values (@offensetype)"
+            query.CommandText = "insert into db_offense (typeofoffense, isenable) values (@offensetype, @isenable)"
             query.Parameters.AddWithValue("@offensetype", TextEdit1.Text)
+            query.Parameters.AddWithValue("@isenable", CheckEdit1.Checked)
             query.ExecuteNonQuery()
             TextEdit1.Text = ""
             changes()

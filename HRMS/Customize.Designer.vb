@@ -29,9 +29,11 @@ Partial Class Customize
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl1
@@ -55,13 +57,14 @@ Partial Class Customize
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.ReadOnly = True
         Me.GridView1.OptionsFind.AlwaysVisible = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
         Me.GridView1.PaintStyleName = "Office2003"
         '
         'SimpleButton2
         '
-        Me.SimpleButton2.Location = New System.Drawing.Point(209, 506)
+        Me.SimpleButton2.Location = New System.Drawing.Point(284, 505)
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(75, 23)
         Me.SimpleButton2.TabIndex = 4
@@ -92,11 +95,20 @@ Partial Class Customize
         Me.ComboBox1.Size = New System.Drawing.Size(241, 21)
         Me.ComboBox1.TabIndex = 7
         '
+        'CheckEdit1
+        '
+        Me.CheckEdit1.Location = New System.Drawing.Point(208, 507)
+        Me.CheckEdit1.Name = "CheckEdit1"
+        Me.CheckEdit1.Properties.Caption = "Enable"
+        Me.CheckEdit1.Size = New System.Drawing.Size(75, 19)
+        Me.CheckEdit1.TabIndex = 8
+        '
         'Customize
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(372, 532)
+        Me.Controls.Add(Me.CheckEdit1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.TextEdit1)
         Me.Controls.Add(Me.SimpleButton3)
@@ -111,6 +123,7 @@ Partial Class Customize
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -123,4 +136,5 @@ Partial Class Customize
     Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents TextEdit1 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents CheckEdit1 As DevExpress.XtraEditors.CheckEdit
 End Class

@@ -23,14 +23,14 @@ Partial Class CandidatesDetails
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim RadarDiagram2 As DevExpress.XtraCharts.RadarDiagram = New DevExpress.XtraCharts.RadarDiagram()
-        Dim Series3 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim RadarPointSeriesLabel3 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
-        Dim RadarLineSeriesView3 As DevExpress.XtraCharts.RadarLineSeriesView = New DevExpress.XtraCharts.RadarLineSeriesView()
-        Dim Series4 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
-        Dim RadarPointSeriesLabel4 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
-        Dim RadarLineSeriesView4 As DevExpress.XtraCharts.RadarLineSeriesView = New DevExpress.XtraCharts.RadarLineSeriesView()
-        Dim SideBySideBarSeriesLabel2 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
+        Dim RadarDiagram1 As DevExpress.XtraCharts.RadarDiagram = New DevExpress.XtraCharts.RadarDiagram()
+        Dim Series1 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim RadarPointSeriesLabel1 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
+        Dim RadarLineSeriesView1 As DevExpress.XtraCharts.RadarLineSeriesView = New DevExpress.XtraCharts.RadarLineSeriesView()
+        Dim Series2 As DevExpress.XtraCharts.Series = New DevExpress.XtraCharts.Series()
+        Dim RadarPointSeriesLabel2 As DevExpress.XtraCharts.RadarPointSeriesLabel = New DevExpress.XtraCharts.RadarPointSeriesLabel()
+        Dim RadarLineSeriesView2 As DevExpress.XtraCharts.RadarLineSeriesView = New DevExpress.XtraCharts.RadarLineSeriesView()
+        Dim SideBySideBarSeriesLabel1 As DevExpress.XtraCharts.SideBySideBarSeriesLabel = New DevExpress.XtraCharts.SideBySideBarSeriesLabel()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CandidatesDetails))
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
         Me.txtidrec = New System.Windows.Forms.TextBox()
@@ -54,6 +54,8 @@ Partial Class CandidatesDetails
         Me.Label26 = New System.Windows.Forms.Label()
         Me.ChartControl2 = New DevExpress.XtraCharts.ChartControl()
         Me.GroupControl8 = New DevExpress.XtraEditors.GroupControl()
+        Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.Label25 = New System.Windows.Forms.Label()
@@ -127,6 +129,8 @@ Partial Class CandidatesDetails
         Me.Label23 = New System.Windows.Forms.Label()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.Label39 = New System.Windows.Forms.Label()
         Me.SimpleButton14 = New DevExpress.XtraEditors.SimpleButton()
         Me.Label37 = New System.Windows.Forms.Label()
@@ -181,8 +185,6 @@ Partial Class CandidatesDetails
         Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         Me.TabControl3 = New System.Windows.Forms.TabControl()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
-        Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         CType(Me.txtgend.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl5, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,14 +195,14 @@ Partial Class CandidatesDetails
         CType(Me.GroupControl10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl10.SuspendLayout()
         CType(Me.ChartControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarDiagram2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarPointSeriesLabel3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarLineSeriesView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Series4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarPointSeriesLabel4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(RadarLineSeriesView4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(SideBySideBarSeriesLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarDiagram1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarPointSeriesLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarLineSeriesView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarPointSeriesLabel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(RadarLineSeriesView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(SideBySideBarSeriesLabel1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl8.SuspendLayout()
         Me.TabPage11.SuspendLayout()
@@ -238,6 +240,7 @@ Partial Class CandidatesDetails
         Me.TabPage3.SuspendLayout()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CheckEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -259,7 +262,6 @@ Partial Class CandidatesDetails
         CType(Me.txtkg.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtbp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl3.SuspendLayout()
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl1
@@ -292,6 +294,7 @@ Partial Class CandidatesDetails
         '
         Me.txtcandname.Location = New System.Drawing.Point(144, 21)
         Me.txtcandname.Name = "txtcandname"
+        Me.txtcandname.ReadOnly = True
         Me.txtcandname.Size = New System.Drawing.Size(199, 20)
         Me.txtcandname.TabIndex = 77
         '
@@ -308,6 +311,7 @@ Partial Class CandidatesDetails
         '
         Me.txtnick.Location = New System.Drawing.Point(359, 21)
         Me.txtnick.Name = "txtnick"
+        Me.txtnick.ReadOnly = True
         Me.txtnick.Size = New System.Drawing.Size(199, 20)
         Me.txtnick.TabIndex = 79
         '
@@ -326,6 +330,7 @@ Partial Class CandidatesDetails
         Me.txtgend.Name = "txtgend"
         Me.txtgend.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtgend.Properties.Items.AddRange(New Object() {"Male", "Female"})
+        Me.txtgend.Properties.ReadOnly = True
         Me.txtgend.Size = New System.Drawing.Size(100, 20)
         Me.txtgend.TabIndex = 81
         '
@@ -439,11 +444,11 @@ Partial Class CandidatesDetails
         'ChartControl2
         '
         Me.ChartControl2.AppearanceNameSerializable = "Chameleon"
-        RadarDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = True
-        RadarDiagram2.AxisY.Range.AlwaysShowZeroLevel = True
-        RadarDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = True
-        RadarDiagram2.AxisY.Range.SideMarginsEnabled = True
-        Me.ChartControl2.Diagram = RadarDiagram2
+        RadarDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = True
+        RadarDiagram1.AxisY.Range.AlwaysShowZeroLevel = True
+        RadarDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = True
+        RadarDiagram1.AxisY.Range.SideMarginsEnabled = True
+        Me.ChartControl2.Diagram = RadarDiagram1
         Me.ChartControl2.IndicatorsPaletteName = "Palette 1"
         Me.ChartControl2.IndicatorsPaletteRepository.Add("Palette 1", New DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.Red, System.Drawing.Color.Red), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.Yellow, System.Drawing.Color.Yellow)}))
         Me.ChartControl2.Location = New System.Drawing.Point(3, 2)
@@ -451,22 +456,24 @@ Partial Class CandidatesDetails
         Me.ChartControl2.PaletteName = "Palette 1"
         Me.ChartControl2.PaletteRepository.Add("Palette 1", New DevExpress.XtraCharts.Palette("Palette 1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.Red, System.Drawing.Color.Red), New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.Aqua, System.Drawing.Color.Aqua)}))
         Me.ChartControl2.PaletteRepository.Add("Palette 2", New DevExpress.XtraCharts.Palette("Palette 2", DevExpress.XtraCharts.PaletteScaleMode.Repeat, New DevExpress.XtraCharts.PaletteEntry() {New DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.Silver, System.Drawing.Color.Silver)}))
-        RadarPointSeriesLabel3.LineVisible = True
-        Series3.Label = RadarPointSeriesLabel3
-        Series3.Name = "Series 1"
-        Series3.View = RadarLineSeriesView3
-        RadarPointSeriesLabel4.LineVisible = True
-        Series4.Label = RadarPointSeriesLabel4
-        Series4.Name = "Series 2"
-        Series4.View = RadarLineSeriesView4
-        Me.ChartControl2.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series3, Series4}
-        SideBySideBarSeriesLabel2.LineVisible = True
-        Me.ChartControl2.SeriesTemplate.Label = SideBySideBarSeriesLabel2
+        RadarPointSeriesLabel1.LineVisible = True
+        Series1.Label = RadarPointSeriesLabel1
+        Series1.Name = "Series 1"
+        Series1.View = RadarLineSeriesView1
+        RadarPointSeriesLabel2.LineVisible = True
+        Series2.Label = RadarPointSeriesLabel2
+        Series2.Name = "Series 2"
+        Series2.View = RadarLineSeriesView2
+        Me.ChartControl2.SeriesSerializable = New DevExpress.XtraCharts.Series() {Series1, Series2}
+        SideBySideBarSeriesLabel1.LineVisible = True
+        Me.ChartControl2.SeriesTemplate.Label = SideBySideBarSeriesLabel1
         Me.ChartControl2.Size = New System.Drawing.Size(612, 405)
         Me.ChartControl2.TabIndex = 46
         '
         'GroupControl8
         '
+        Me.GroupControl8.Controls.Add(Me.SimpleButton6)
+        Me.GroupControl8.Controls.Add(Me.SimpleButton5)
         Me.GroupControl8.Controls.Add(Me.SimpleButton3)
         Me.GroupControl8.Controls.Add(Me.SimpleButton2)
         Me.GroupControl8.Controls.Add(Me.Label25)
@@ -487,6 +494,31 @@ Partial Class CandidatesDetails
         Me.GroupControl8.Name = "GroupControl8"
         Me.GroupControl8.Size = New System.Drawing.Size(290, 405)
         Me.GroupControl8.TabIndex = 91
+        '
+        'SimpleButton6
+        '
+        Me.SimpleButton6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SimpleButton6.Appearance.Options.UseFont = True
+        Me.SimpleButton6.Image = CType(resources.GetObject("SimpleButton6.Image"), System.Drawing.Image)
+        Me.SimpleButton6.Location = New System.Drawing.Point(8, 310)
+        Me.SimpleButton6.Name = "SimpleButton6"
+        Me.SimpleButton6.Size = New System.Drawing.Size(226, 49)
+        Me.SimpleButton6.TabIndex = 103
+        Me.SimpleButton6.Text = "REJECT"
+        '
+        'SimpleButton5
+        '
+        Me.SimpleButton5.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SimpleButton5.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.SimpleButton5.Appearance.Options.UseFont = True
+        Me.SimpleButton5.Appearance.Options.UseForeColor = True
+        Me.SimpleButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.SimpleButton5.Image = CType(resources.GetObject("SimpleButton5.Image"), System.Drawing.Image)
+        Me.SimpleButton5.Location = New System.Drawing.Point(8, 260)
+        Me.SimpleButton5.Name = "SimpleButton5"
+        Me.SimpleButton5.Size = New System.Drawing.Size(226, 44)
+        Me.SimpleButton5.TabIndex = 102
+        Me.SimpleButton5.Text = "ACCEPT"
         '
         'SimpleButton3
         '
@@ -528,6 +560,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox10.Location = New System.Drawing.Point(91, 184)
         Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.ReadOnly = True
         Me.TextBox10.Size = New System.Drawing.Size(143, 20)
         Me.TextBox10.TabIndex = 99
         '
@@ -544,6 +577,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox9.Location = New System.Drawing.Point(91, 128)
         Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.ReadOnly = True
         Me.TextBox9.Size = New System.Drawing.Size(143, 20)
         Me.TextBox9.TabIndex = 98
         '
@@ -560,6 +594,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox8.Location = New System.Drawing.Point(91, 102)
         Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.ReadOnly = True
         Me.TextBox8.Size = New System.Drawing.Size(143, 20)
         Me.TextBox8.TabIndex = 96
         '
@@ -576,6 +611,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox7.Location = New System.Drawing.Point(91, 76)
         Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.ReadOnly = True
         Me.TextBox7.Size = New System.Drawing.Size(143, 20)
         Me.TextBox7.TabIndex = 94
         '
@@ -592,6 +628,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox2.Location = New System.Drawing.Point(91, 48)
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(143, 20)
         Me.TextBox2.TabIndex = 92
         '
@@ -608,6 +645,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox1.Location = New System.Drawing.Point(91, 21)
         Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(143, 20)
         Me.TextBox1.TabIndex = 91
         '
@@ -652,6 +690,7 @@ Partial Class CandidatesDetails
         '
         Me.RichTextBox9.Location = New System.Drawing.Point(19, 317)
         Me.RichTextBox9.Name = "RichTextBox9"
+        Me.RichTextBox9.ReadOnly = True
         Me.RichTextBox9.Size = New System.Drawing.Size(344, 87)
         Me.RichTextBox9.TabIndex = 93
         Me.RichTextBox9.Text = ""
@@ -668,6 +707,7 @@ Partial Class CandidatesDetails
         '
         Me.RichTextBox8.Location = New System.Drawing.Point(391, 180)
         Me.RichTextBox8.Name = "RichTextBox8"
+        Me.RichTextBox8.ReadOnly = True
         Me.RichTextBox8.Size = New System.Drawing.Size(492, 96)
         Me.RichTextBox8.TabIndex = 92
         Me.RichTextBox8.Text = ""
@@ -684,6 +724,7 @@ Partial Class CandidatesDetails
         '
         Me.RichTextBox7.Location = New System.Drawing.Point(19, 180)
         Me.RichTextBox7.Name = "RichTextBox7"
+        Me.RichTextBox7.ReadOnly = True
         Me.RichTextBox7.Size = New System.Drawing.Size(344, 96)
         Me.RichTextBox7.TabIndex = 91
         Me.RichTextBox7.Text = ""
@@ -700,6 +741,7 @@ Partial Class CandidatesDetails
         '
         Me.RichTextBox6.Location = New System.Drawing.Point(391, 43)
         Me.RichTextBox6.Name = "RichTextBox6"
+        Me.RichTextBox6.ReadOnly = True
         Me.RichTextBox6.Size = New System.Drawing.Size(492, 96)
         Me.RichTextBox6.TabIndex = 90
         Me.RichTextBox6.Text = ""
@@ -716,6 +758,7 @@ Partial Class CandidatesDetails
         '
         Me.RichTextBox5.Location = New System.Drawing.Point(19, 43)
         Me.RichTextBox5.Name = "RichTextBox5"
+        Me.RichTextBox5.ReadOnly = True
         Me.RichTextBox5.Size = New System.Drawing.Size(344, 96)
         Me.RichTextBox5.TabIndex = 89
         Me.RichTextBox5.Text = ""
@@ -956,6 +999,7 @@ Partial Class CandidatesDetails
         Me.RichTextBox4.Enabled = False
         Me.RichTextBox4.Location = New System.Drawing.Point(493, 294)
         Me.RichTextBox4.Name = "RichTextBox4"
+        Me.RichTextBox4.ReadOnly = True
         Me.RichTextBox4.Size = New System.Drawing.Size(254, 108)
         Me.RichTextBox4.TabIndex = 98
         Me.RichTextBox4.Text = ""
@@ -982,6 +1026,7 @@ Partial Class CandidatesDetails
         Me.RichTextBox3.Enabled = False
         Me.RichTextBox3.Location = New System.Drawing.Point(129, 295)
         Me.RichTextBox3.Name = "RichTextBox3"
+        Me.RichTextBox3.ReadOnly = True
         Me.RichTextBox3.Size = New System.Drawing.Size(254, 108)
         Me.RichTextBox3.TabIndex = 96
         Me.RichTextBox3.Text = ""
@@ -991,9 +1036,9 @@ Partial Class CandidatesDetails
         Me.Label35.AutoSize = True
         Me.Label35.Location = New System.Drawing.Point(37, 293)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(38, 13)
+        Me.Label35.Size = New System.Drawing.Size(42, 13)
         Me.Label35.TabIndex = 100
-        Me.Label35.Text = "Why ?"
+        Me.Label35.Text = "What ?"
         '
         'CheckEdit1
         '
@@ -1007,6 +1052,7 @@ Partial Class CandidatesDetails
         '
         Me.RichTextBox2.Location = New System.Drawing.Point(129, 202)
         Me.RichTextBox2.Name = "RichTextBox2"
+        Me.RichTextBox2.ReadOnly = True
         Me.RichTextBox2.Size = New System.Drawing.Size(743, 54)
         Me.RichTextBox2.TabIndex = 94
         Me.RichTextBox2.Text = ""
@@ -1024,6 +1070,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox6.Location = New System.Drawing.Point(129, 173)
         Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.ReadOnly = True
         Me.TextBox6.Size = New System.Drawing.Size(743, 20)
         Me.TextBox6.TabIndex = 93
         '
@@ -1050,6 +1097,7 @@ Partial Class CandidatesDetails
         '
         Me.RichTextBox1.Location = New System.Drawing.Point(129, 81)
         Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.ReadOnly = True
         Me.RichTextBox1.Size = New System.Drawing.Size(743, 54)
         Me.RichTextBox1.TabIndex = 92
         Me.RichTextBox1.Text = ""
@@ -1076,6 +1124,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox5.Location = New System.Drawing.Point(585, 46)
         Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.ReadOnly = True
         Me.TextBox5.Size = New System.Drawing.Size(126, 20)
         Me.TextBox5.TabIndex = 91
         '
@@ -1083,6 +1132,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox4.Location = New System.Drawing.Point(361, 47)
         Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.ReadOnly = True
         Me.TextBox4.Size = New System.Drawing.Size(126, 20)
         Me.TextBox4.TabIndex = 90
         '
@@ -1099,6 +1149,7 @@ Partial Class CandidatesDetails
         '
         Me.TextBox3.Location = New System.Drawing.Point(129, 47)
         Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(126, 20)
         Me.TextBox3.TabIndex = 89
         '
@@ -1192,7 +1243,21 @@ Partial Class CandidatesDetails
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(907, 410)
         Me.GroupControl2.TabIndex = 17
-        Me.GroupControl2.Text = "Auto"
+        '
+        'TextEdit2
+        '
+        Me.TextEdit2.Location = New System.Drawing.Point(771, 340)
+        Me.TextEdit2.Name = "TextEdit2"
+        Me.TextEdit2.Size = New System.Drawing.Size(129, 20)
+        Me.TextEdit2.TabIndex = 98
+        '
+        'LabelControl3
+        '
+        Me.LabelControl3.Location = New System.Drawing.Point(700, 342)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(68, 13)
+        Me.LabelControl3.TabIndex = 91
+        Me.LabelControl3.Text = "Interview By :"
         '
         'Label39
         '
@@ -1270,6 +1335,7 @@ Partial Class CandidatesDetails
         '
         Me.txtrecby.Location = New System.Drawing.Point(475, 243)
         Me.txtrecby.Name = "txtrecby"
+        Me.txtrecby.Properties.ReadOnly = True
         Me.txtrecby.Size = New System.Drawing.Size(208, 20)
         Me.txtrecby.TabIndex = 36
         '
@@ -1293,6 +1359,7 @@ Partial Class CandidatesDetails
         '
         Me.TextEdit7.Location = New System.Drawing.Point(135, 296)
         Me.TextEdit7.Name = "TextEdit7"
+        Me.TextEdit7.Properties.ReadOnly = True
         Me.TextEdit7.Size = New System.Drawing.Size(183, 20)
         Me.TextEdit7.TabIndex = 37
         '
@@ -1302,6 +1369,7 @@ Partial Class CandidatesDetails
         Me.ComboBoxEdit4.Name = "ComboBoxEdit4"
         Me.ComboBoxEdit4.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ComboBoxEdit4.Properties.Items.AddRange(New Object() {"Single", "Married"})
+        Me.ComboBoxEdit4.Properties.ReadOnly = True
         Me.ComboBoxEdit4.Size = New System.Drawing.Size(183, 20)
         Me.ComboBoxEdit4.TabIndex = 38
         '
@@ -1317,6 +1385,7 @@ Partial Class CandidatesDetails
         '
         Me.txtzip.Location = New System.Drawing.Point(213, 242)
         Me.txtzip.Name = "txtzip"
+        Me.txtzip.Properties.ReadOnly = True
         Me.txtzip.Size = New System.Drawing.Size(105, 20)
         Me.txtzip.TabIndex = 33
         '
@@ -1324,6 +1393,7 @@ Partial Class CandidatesDetails
         '
         Me.txtcandreason.Location = New System.Drawing.Point(474, 290)
         Me.txtcandreason.Name = "txtcandreason"
+        Me.txtcandreason.ReadOnly = True
         Me.txtcandreason.Size = New System.Drawing.Size(209, 80)
         Me.txtcandreason.TabIndex = 40
         Me.txtcandreason.Text = ""
@@ -1352,6 +1422,7 @@ Partial Class CandidatesDetails
         '
         Me.txtadd.Location = New System.Drawing.Point(475, 215)
         Me.txtadd.Name = "txtadd"
+        Me.txtadd.Properties.ReadOnly = True
         Me.txtadd.Size = New System.Drawing.Size(208, 20)
         Me.txtadd.TabIndex = 35
         '
@@ -1359,6 +1430,7 @@ Partial Class CandidatesDetails
         '
         Me.txthome.Location = New System.Drawing.Point(475, 189)
         Me.txthome.Name = "txthome"
+        Me.txthome.Properties.ReadOnly = True
         Me.txthome.Size = New System.Drawing.Size(208, 20)
         Me.txthome.TabIndex = 34
         '
@@ -1384,6 +1456,7 @@ Partial Class CandidatesDetails
         '
         Me.txtcity.Location = New System.Drawing.Point(119, 242)
         Me.txtcity.Name = "txtcity"
+        Me.txtcity.Properties.ReadOnly = True
         Me.txtcity.Size = New System.Drawing.Size(89, 20)
         Me.txtcity.TabIndex = 32
         '
@@ -1399,6 +1472,7 @@ Partial Class CandidatesDetails
         '
         Me.txtwemail.Location = New System.Drawing.Point(119, 216)
         Me.txtwemail.Name = "txtwemail"
+        Me.txtwemail.Properties.ReadOnly = True
         Me.txtwemail.Size = New System.Drawing.Size(199, 20)
         Me.txtwemail.TabIndex = 31
         '
@@ -1417,6 +1491,7 @@ Partial Class CandidatesDetails
         Me.txtofloc.Name = "txtofloc"
         Me.txtofloc.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtofloc.Properties.Items.AddRange(New Object() {"In Process", "Pending", "Accepted", "Rejected"})
+        Me.txtofloc.Properties.ReadOnly = True
         Me.txtofloc.Size = New System.Drawing.Size(183, 20)
         Me.txtofloc.TabIndex = 39
         '
@@ -1485,6 +1560,7 @@ Partial Class CandidatesDetails
         '
         Me.txtphoneno.Location = New System.Drawing.Point(119, 190)
         Me.txtphoneno.Name = "txtphoneno"
+        Me.txtphoneno.Properties.ReadOnly = True
         Me.txtphoneno.Size = New System.Drawing.Size(199, 20)
         Me.txtphoneno.TabIndex = 30
         '
@@ -1494,6 +1570,7 @@ Partial Class CandidatesDetails
         Me.txtblood.Name = "txtblood"
         Me.txtblood.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtblood.Properties.Items.AddRange(New Object() {"A", "B", "AB", "O"})
+        Me.txtblood.Properties.ReadOnly = True
         Me.txtblood.Size = New System.Drawing.Size(203, 20)
         Me.txtblood.TabIndex = 28
         '
@@ -1512,6 +1589,7 @@ Partial Class CandidatesDetails
         Me.txtrel.Name = "txtrel"
         Me.txtrel.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtrel.Properties.Items.AddRange(New Object() {"KRISTEN", "BUDDHA", "ISLAM", "HINDU"})
+        Me.txtrel.Properties.ReadOnly = True
         Me.txtrel.Size = New System.Drawing.Size(203, 20)
         Me.txtrel.TabIndex = 27
         '
@@ -1537,6 +1615,7 @@ Partial Class CandidatesDetails
         '
         Me.txtcm.Location = New System.Drawing.Point(245, 127)
         Me.txtcm.Name = "txtcm"
+        Me.txtcm.Properties.ReadOnly = True
         Me.txtcm.Size = New System.Drawing.Size(40, 20)
         Me.txtcm.TabIndex = 24
         '
@@ -1553,6 +1632,7 @@ Partial Class CandidatesDetails
         '
         Me.txtidno.Location = New System.Drawing.Point(119, 101)
         Me.txtidno.Name = "txtidno"
+        Me.txtidno.Properties.ReadOnly = True
         Me.txtidno.Size = New System.Drawing.Size(199, 20)
         Me.txtidno.TabIndex = 22
         '
@@ -1560,6 +1640,7 @@ Partial Class CandidatesDetails
         '
         Me.txtkg.Location = New System.Drawing.Point(119, 127)
         Me.txtkg.Name = "txtkg"
+        Me.txtkg.Properties.ReadOnly = True
         Me.txtkg.Size = New System.Drawing.Size(40, 20)
         Me.txtkg.TabIndex = 23
         '
@@ -1574,6 +1655,7 @@ Partial Class CandidatesDetails
         '
         Me.txtbp.Location = New System.Drawing.Point(119, 47)
         Me.txtbp.Name = "txtbp"
+        Me.txtbp.Properties.ReadOnly = True
         Me.txtbp.Size = New System.Drawing.Size(199, 20)
         Me.txtbp.TabIndex = 20
         '
@@ -1647,21 +1729,6 @@ Partial Class CandidatesDetails
         'Timer1
         '
         '
-        'LabelControl3
-        '
-        Me.LabelControl3.Location = New System.Drawing.Point(700, 342)
-        Me.LabelControl3.Name = "LabelControl3"
-        Me.LabelControl3.Size = New System.Drawing.Size(68, 13)
-        Me.LabelControl3.TabIndex = 91
-        Me.LabelControl3.Text = "Interview By :"
-        '
-        'TextEdit2
-        '
-        Me.TextEdit2.Location = New System.Drawing.Point(771, 340)
-        Me.TextEdit2.Name = "TextEdit2"
-        Me.TextEdit2.Size = New System.Drawing.Size(129, 20)
-        Me.TextEdit2.TabIndex = 98
-        '
         'CandidatesDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1695,14 +1762,14 @@ Partial Class CandidatesDetails
         CType(Me.GroupControl10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl10.ResumeLayout(False)
         Me.GroupControl10.PerformLayout()
-        CType(RadarDiagram2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarPointSeriesLabel3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarLineSeriesView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarPointSeriesLabel4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(RadarLineSeriesView4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Series4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(SideBySideBarSeriesLabel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarDiagram1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarPointSeriesLabel1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarLineSeriesView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarPointSeriesLabel2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(RadarLineSeriesView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Series2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(SideBySideBarSeriesLabel1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ChartControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl8.ResumeLayout(False)
@@ -1746,6 +1813,7 @@ Partial Class CandidatesDetails
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
         Me.GroupControl2.PerformLayout()
+        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CheckEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1767,7 +1835,6 @@ Partial Class CandidatesDetails
         CType(Me.txtkg.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtbp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl3.ResumeLayout(False)
-        CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1924,4 +1991,6 @@ Partial Class CandidatesDetails
     Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents TextEdit2 As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents SimpleButton6 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButton5 As DevExpress.XtraEditors.SimpleButton
 End Class

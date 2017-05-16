@@ -141,17 +141,13 @@ Public Class Payslip
             a.Parameters.AddWithValue("@date2", txtto.Value)
             Dim hk As Integer = CInt(a.ExecuteScalar)
 
-            'Dim b As MySqlCommand = SQLConnection.CreateCommand
-            'b.CommandText = "select (a.basicrate * b.bpjs / 100) + (a.basicrate * b.JamKecelakaanKerja / 100 ) + (a.basicrate * b.JaminanKesehatan/ 100) + (a.basicrate * b.IuranPensiun/100) + (a.basicrate * b.JaminanHariTua / 100) + (a.basicrate * b.biayajabatan / 100) + (a.basicrate * b.lates / 100) + (a.basicrate * b.JaminanKematian / 100) from db_payrolldata a, db_setpayroll b where employeecode = '" & emp & "'"
-            'Dim deduc As Integer = CInt(b.ExecuteScalar)
             Dim b As MySqlCommand = SQLConnection.CreateCommand
             b.CommandText = "select (calc_deductions(a.basicrate, a.Bpjs, b.Bpjs, a.JaminanKecelakaanKerja, b.JamKecelakaanKerja, a.JaminanKematian, b.JaminanKematian, a.JaminanHariTua, b.JaminanHariTua, a.IuranPensiun, b.IuranPensiun, a.BiayaJabatan, b.BiayaJabatan)) from db_payrolldata a join db_setpayroll b  where a.EmployeeCode = @emp"
             b.Parameters.AddWithValue("@emp", emp)
             Dim deduc As Integer = CInt(b.ExecuteScalar)
-            MsgBox(deduc)
 
             Dim salary As MySqlCommand = SQLConnection.CreateCommand
-            salary.CommandText = "select basicrate from db_payrolldata where EmployeeCode = '" & emp & "'"
+            salary.CommandText = "select basicrate + allowance + incentives + mealrate + transport from db_payrolldata where EmployeeCode = '" & emp & "'"
             Dim realsalary As Integer = CInt(salary.ExecuteScalar)
 
             Dim adp As New MySqlDataAdapter(q)
@@ -189,7 +185,7 @@ Public Class Payslip
             collect.ExecuteNonQuery()
             Dim table As New DataTable
             Dim sqlCommand As New MySqlCommand
-            sqlCommand.CommandText = "Select b.Dated as Dates, a.EmployeeCode, b.HK as JumlahHariKerja, a.FullName, a.BasicRate as Salary, a.MealRate, a.Allowance, a.Incentives, b.Overtime as OvertimeHours, b.Deductions, b.FixedSalary FROM db_payrolldata a, db_temp b where a.Employeecode = b.Employeecode"
+            sqlCommand.CommandText = "Select b.Dated as Dates, a.EmployeeCode, b.HK as JumlahHariKerja, a.FullName, a.BasicRate as Salary, a.MealRate, a.Allowance, a.Incentives, a.Transport, b.Overtime as OvertimeHours, b.Deductions, b.FixedSalary FROM db_payrolldata a, db_temp b where a.Employeecode = b.Employeecode"
             sqlCommand.Connection = SQLConnection
             Dim dt As New DataTable
             dt.Load(sqlCommand.ExecuteReader)

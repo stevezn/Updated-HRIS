@@ -46,7 +46,8 @@ Partial Class Login
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(9, 66)
+        Me.LabelControl1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.LabelControl1.Location = New System.Drawing.Point(8, 69)
         Me.LabelControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(48, 13)
@@ -55,7 +56,8 @@ Partial Class Login
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(9, 93)
+        Me.LabelControl2.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.LabelControl2.Location = New System.Drawing.Point(7, 96)
         Me.LabelControl2.Margin = New System.Windows.Forms.Padding(2)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(46, 13)
@@ -64,29 +66,29 @@ Partial Class Login
         '
         'teUsername
         '
-        Me.teUsername.Location = New System.Drawing.Point(80, 63)
+        Me.teUsername.Location = New System.Drawing.Point(60, 66)
         Me.teUsername.Margin = New System.Windows.Forms.Padding(2)
         Me.teUsername.Name = "teUsername"
-        Me.teUsername.Size = New System.Drawing.Size(238, 20)
+        Me.teUsername.Size = New System.Drawing.Size(221, 20)
         Me.teUsername.TabIndex = 1
         '
         'tePassword
         '
-        Me.tePassword.Location = New System.Drawing.Point(80, 90)
+        Me.tePassword.Location = New System.Drawing.Point(60, 94)
         Me.tePassword.Margin = New System.Windows.Forms.Padding(2)
         Me.tePassword.Name = "tePassword"
         Me.tePassword.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.tePassword.Size = New System.Drawing.Size(238, 20)
+        Me.tePassword.Size = New System.Drawing.Size(221, 20)
         Me.tePassword.TabIndex = 2
         '
         'LabelControl4
         '
-        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelControl4.Location = New System.Drawing.Point(118, 38)
+        Me.LabelControl4.Appearance.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelControl4.Location = New System.Drawing.Point(44, 41)
         Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(123, 15)
+        Me.LabelControl4.Size = New System.Drawing.Size(204, 15)
         Me.LabelControl4.TabIndex = 70
-        Me.LabelControl4.Text = "Sign In To Enter HRIS"
+        Me.LabelControl4.Text = "Human Resources Information System"
         '
         'Timer1
         '
@@ -94,24 +96,25 @@ Partial Class Login
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(9, 116)
+        Me.ProgressBar1.Location = New System.Drawing.Point(7, 124)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(208, 32)
+        Me.ProgressBar1.Size = New System.Drawing.Size(168, 24)
         Me.ProgressBar1.TabIndex = 81
         Me.ProgressBar1.Visible = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 159)
+        Me.Label1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(11, 153)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(0, 13)
+        Me.Label1.Size = New System.Drawing.Size(0, 14)
         Me.Label1.TabIndex = 82
         '
         'WebBrowser1
         '
         Me.WebBrowser1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.WebBrowser1.Location = New System.Drawing.Point(190, 165)
+        Me.WebBrowser1.Location = New System.Drawing.Point(44, -8)
         Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.Name = "WebBrowser1"
         Me.WebBrowser1.Size = New System.Drawing.Size(20, 20)
@@ -123,7 +126,7 @@ Partial Class Login
         Me.AutomaticUpdater1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AutomaticUpdater1.ContainerForm = Me
         Me.AutomaticUpdater1.GUID = "f59e7ad5-abbf-4a4a-91f5-f37710530bbe"
-        Me.AutomaticUpdater1.Location = New System.Drawing.Point(309, 149)
+        Me.AutomaticUpdater1.Location = New System.Drawing.Point(265, 27)
         Me.AutomaticUpdater1.Name = "AutomaticUpdater1"
         Me.AutomaticUpdater1.Size = New System.Drawing.Size(16, 16)
         Me.AutomaticUpdater1.TabIndex = 84
@@ -143,7 +146,7 @@ Partial Class Login
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(329, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(284, 24)
         Me.MenuStrip1.TabIndex = 85
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -164,7 +167,7 @@ Partial Class Login
         'SimpleButton1
         '
         Me.SimpleButton1.Image = CType(resources.GetObject("SimpleButton1.Image"), System.Drawing.Image)
-        Me.SimpleButton1.Location = New System.Drawing.Point(291, 2)
+        Me.SimpleButton1.Location = New System.Drawing.Point(260, 1)
         Me.SimpleButton1.Name = "SimpleButton1"
         Me.SimpleButton1.Size = New System.Drawing.Size(24, 22)
         Me.SimpleButton1.TabIndex = 86
@@ -172,26 +175,27 @@ Partial Class Login
         'btnTest
         '
         Me.btnTest.Image = CType(resources.GetObject("btnTest.Image"), System.Drawing.Image)
-        Me.btnTest.Location = New System.Drawing.Point(218, 116)
+        Me.btnTest.Location = New System.Drawing.Point(181, 123)
         Me.btnTest.Name = "btnTest"
-        Me.btnTest.Size = New System.Drawing.Size(100, 30)
+        Me.btnTest.Size = New System.Drawing.Size(100, 26)
         Me.btnTest.TabIndex = 79
         Me.btnTest.Text = "Connect.."
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(287, 165)
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Location = New System.Drawing.Point(243, 155)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(38, 13)
         Me.Label2.TabIndex = 87
-        Me.Label2.Text = "V 1.27"
+        Me.Label2.Text = "V 1.29"
         '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(329, 179)
+        Me.ClientSize = New System.Drawing.Size(284, 172)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.SimpleButton1)

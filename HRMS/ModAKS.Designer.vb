@@ -118,6 +118,7 @@ Partial Class ModAKS
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.ReadOnly = True
         Me.GridView1.PaintStyleName = "Office2003"
         '
         'GridControl1
@@ -150,6 +151,7 @@ Partial Class ModAKS
         '
         Me.TextEdit2.Location = New System.Drawing.Point(133, 29)
         Me.TextEdit2.Name = "TextEdit2"
+        Me.TextEdit2.Properties.ReadOnly = True
         Me.TextEdit2.Size = New System.Drawing.Size(496, 20)
         Me.TextEdit2.TabIndex = 23
         '
@@ -157,6 +159,7 @@ Partial Class ModAKS
         '
         Me.TextEdit1.Location = New System.Drawing.Point(18, 30)
         Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Properties.ReadOnly = True
         Me.TextEdit1.Size = New System.Drawing.Size(100, 20)
         Me.TextEdit1.TabIndex = 22
         '

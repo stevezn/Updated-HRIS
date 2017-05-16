@@ -24,7 +24,7 @@ Partial Class Payments
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Payments))
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
@@ -97,9 +97,9 @@ Partial Class Payments
         Me.lcpaymonth = New DevExpress.XtraLayout.LayoutControlItem()
         Me.lcmon = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem26 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.XtraTabPage5 = New DevExpress.XtraTab.XtraTabPage()
         Me.XtraTabControl3 = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage7 = New DevExpress.XtraTab.XtraTabPage()
@@ -277,9 +277,9 @@ Partial Class Payments
         CType(Me.lcpaymonth, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lcmon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage5.SuspendLayout()
         CType(Me.XtraTabControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControl3.SuspendLayout()
@@ -512,7 +512,7 @@ Partial Class Payments
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup5, Me.RibbonPageGroup9, Me.RibbonPageGroup4, Me.RibbonPageGroup6, Me.RibbonPageGroup8, Me.RibbonPageGroup2, Me.RibbonPageGroup7})
         Me.RibbonPage1.Name = "RibbonPage1"
-        Me.RibbonPage1.Text = "Loan"
+        Me.RibbonPage1.Text = "Payroll"
         '
         'RibbonPageGroup3
         '
@@ -734,8 +734,8 @@ Partial Class Payments
         '
         'GridControl1
         '
-        GridLevelNode2.RelationName = "Level1"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "Level1"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.GridControl1.Location = New System.Drawing.Point(0, 53)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.MenuManager = Me.RibbonControl1
@@ -748,6 +748,7 @@ Partial Class Payments
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.ReadOnly = True
         Me.GridView1.OptionsSelection.MultiSelect = True
         Me.GridView1.OptionsView.ColumnAutoWidth = False
         Me.GridView1.PaintStyleName = "Office2003"
@@ -801,6 +802,7 @@ Partial Class Payments
         '
         Me.GridView7.GridControl = Me.GridControl7
         Me.GridView7.Name = "GridView7"
+        Me.GridView7.OptionsBehavior.ReadOnly = True
         Me.GridView7.OptionsFind.AlwaysVisible = True
         Me.GridView7.OptionsView.ColumnAutoWidth = False
         Me.GridView7.PaintStyleName = "Office2003"
@@ -1003,7 +1005,7 @@ Partial Class Payments
         Me.LayoutControlGroup7.CustomizationFormText = "LayoutControlGroup2"
         Me.LayoutControlGroup7.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup7.GroupBordersVisible = False
-        Me.LayoutControlGroup7.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem22, Me.lcpaymonth, Me.lcmon, Me.LayoutControlItem26, Me.LayoutControlItem10, Me.LayoutControlItem1, Me.LayoutControlItem18})
+        Me.LayoutControlGroup7.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem22, Me.lcpaymonth, Me.lcmon, Me.LayoutControlItem26, Me.LayoutControlItem1, Me.LayoutControlItem18, Me.LayoutControlItem10})
         Me.LayoutControlGroup7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup7.Name = "LayoutControlGroup2"
         Me.LayoutControlGroup7.Size = New System.Drawing.Size(405, 187)
@@ -1052,16 +1054,6 @@ Partial Class Payments
         Me.LayoutControlItem26.TextToControlDistance = 0
         Me.LayoutControlItem26.TextVisible = False
         '
-        'LayoutControlItem10
-        '
-        Me.LayoutControlItem10.Control = Me.txtmonth
-        Me.LayoutControlItem10.CustomizationFormText = "Month"
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 95)
-        Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(385, 24)
-        Me.LayoutControlItem10.Text = "Month"
-        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(89, 13)
-        '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.txtdates
@@ -1081,6 +1073,16 @@ Partial Class Payments
         Me.LayoutControlItem18.Size = New System.Drawing.Size(385, 24)
         Me.LayoutControlItem18.Text = "Completed"
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(89, 13)
+        '
+        'LayoutControlItem10
+        '
+        Me.LayoutControlItem10.Control = Me.txtmonth
+        Me.LayoutControlItem10.CustomizationFormText = "Month"
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 95)
+        Me.LayoutControlItem10.Name = "LayoutControlItem10"
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(385, 24)
+        Me.LayoutControlItem10.Text = "Month"
+        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(89, 13)
         '
         'XtraTabPage5
         '
@@ -1133,7 +1135,9 @@ Partial Class Payments
         '
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
+        Me.GridView2.OptionsBehavior.ReadOnly = True
         Me.GridView2.OptionsFind.AlwaysVisible = True
+        Me.GridView2.OptionsView.ColumnAutoWidth = False
         Me.GridView2.PaintStyleName = "Office2003"
         '
         'LayoutControl5
@@ -1681,6 +1685,7 @@ Partial Class Payments
         '
         Me.GridView4.GridControl = Me.GridControl4
         Me.GridView4.Name = "GridView4"
+        Me.GridView4.OptionsBehavior.ReadOnly = True
         Me.GridView4.OptionsFind.AlwaysVisible = True
         Me.GridView4.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateAllContent
         Me.GridView4.OptionsView.ColumnAutoWidth = False
@@ -2219,6 +2224,7 @@ Partial Class Payments
         '
         Me.GridView6.GridControl = Me.GridControl6
         Me.GridView6.Name = "GridView6"
+        Me.GridView6.OptionsBehavior.ReadOnly = True
         Me.GridView6.OptionsFind.AlwaysVisible = True
         Me.GridView6.OptionsView.ColumnAutoWidth = False
         Me.GridView6.PaintStyleName = "Office2003"
@@ -2402,11 +2408,12 @@ Partial Class Payments
         Me.GroupControl6.Controls.Add(Me.TextBox8)
         Me.GroupControl6.Controls.Add(Me.TextBox7)
         Me.GroupControl6.Controls.Add(Me.TextBox6)
-        Me.GroupControl6.Location = New System.Drawing.Point(739, 12)
+        Me.GroupControl6.Location = New System.Drawing.Point(804, 12)
         Me.GroupControl6.Name = "GroupControl6"
-        Me.GroupControl6.Size = New System.Drawing.Size(75, 103)
+        Me.GroupControl6.Size = New System.Drawing.Size(10, 103)
         Me.GroupControl6.TabIndex = 17
         Me.GroupControl6.Text = "GroupControl6"
+        Me.GroupControl6.Visible = False
         '
         'TextBox12
         '
@@ -2535,9 +2542,9 @@ Partial Class Payments
         CType(Me.lcpaymonth, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lcmon, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage5.ResumeLayout(False)
         CType(Me.XtraTabControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControl3.ResumeLayout(False)

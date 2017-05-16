@@ -65,6 +65,16 @@ Public Class CandidatesDetails
         GridView6.BestFitColumns()
         GridView7.BestFitColumns()
         GridView8.BestFitColumns()
+        Dim query1 As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "select status from db_recruitment where idrec = '" & txtidrec.Text & "'"
+        Dim quer1 As String = CStr(query.ExecuteScalar)
+        If quer1 = "In progress" Then
+            SimpleButton5.Enabled = True
+            SimpleButton6.Enabled = True
+        ElseIf quer1 = "Rejected" OrElse quer1 = "Processed" OrElse quer1 = "Pending" Then
+            SimpleButton5.Enabled = False
+            SimpleButton6.Enabled = False
+        End If
     End Sub
 
     Private Sub grafik3()
@@ -248,6 +258,7 @@ Public Class CandidatesDetails
         Catch ex As Exception
         End Try
     End Sub
+
     Dim sel As New selectcand
 
     Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
@@ -325,6 +336,44 @@ Public Class CandidatesDetails
 
     Private Sub SimpleButton14_Click(sender As Object, e As EventArgs) Handles SimpleButton14.Click
         download()
+    End Sub
+
+    Public Function AcceptReq() As Boolean
+        Dim sqlCommand As New MySqlCommand
+        Dim pesan As String
+        pesan = CType(MsgBox("Are You Sure To Change This Employee Status To Be Accepted ?", MsgBoxStyle.YesNo, "Warning"), String)
+        If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+            sqlCommand.Connection = SQLConnection
+            sqlCommand.CommandType = CommandType.Text
+            sqlCommand.CommandText = "update db_recruitment set status = 'Accepted' WHERE IdRec = '" & txtidrec.Text & "'"
+            sqlCommand.ExecuteNonQuery()
+            MsgBox("Status Change To Be Accepted", MsgBoxStyle.Information, "Success")
+            Me.Close()
+        End If
+        Return Nothing
+    End Function
+
+    Public Function RejectReq() As Boolean
+        Dim sqlCommand As New MySqlCommand
+        Dim pesan As String
+        pesan = CType(MsgBox("Are You Sure To Change This Employee Status To Be Rejected ?", MsgBoxStyle.YesNo, "Warning"), String)
+        If CType(pesan, Global.Microsoft.VisualBasic.MsgBoxResult) = vbYes Then
+            sqlCommand.Connection = SQLConnection
+            sqlCommand.CommandType = CommandType.Text
+            sqlCommand.CommandText = "update db_recruitment set status = 'Rejected' WHERE IdRec = '" & txtidrec.Text & "'"
+            sqlCommand.ExecuteNonQuery()
+            MsgBox("Status Change To Be Rejected", MsgBoxStyle.Information, "Success")
+            Me.Close()
+        End If
+        Return Nothing
+    End Function
+
+    Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
+        AcceptReq()
+    End Sub
+
+    Private Sub SimpleButton6_Click(sender As Object, e As EventArgs) Handles SimpleButton6.Click
+        RejectReq()
     End Sub
 
     Sub autochange()

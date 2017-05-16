@@ -200,35 +200,44 @@ Public Class Approvement
 
     Sub approvement()
         Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "select user from db_temp"
+        Dim quer As String = CStr(query.ExecuteScalar)
+        Dim fn As String
+        fn = InputBox("Reason")
         If LabelControl5.Text = "Status Change" Then
-            query.CommandText = "update db_statuschange set status = 'Approved', ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_statuschange set status = 'Approved', reason = @reason, ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@reason", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Approved")
             updatest()
             sc()
         ElseIf LabelControl5.Text = "Termination" Then
-            query.CommandText = "update db_terminate set ApprovedStatus = 'Approved',  ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_terminate set ApprovedStatus = 'Approved', purpose = @purpose,  ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@purpose", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Approved")
             updateterminate()
             terminate()
         ElseIf LabelControl5.Text = "Leave Request" Then
-            query.CommandText = "update db_attrec set ApprovedStatus = 'Approved',  ApprovedBy = @app where MemoNo ='" & Label1.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_attrec set ApprovedStatus = 'Approved', purpose = @purpose,  ApprovedBy = @app where MemoNo ='" & Label1.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@purpose", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Approved")
             leaves()
         ElseIf LabelControl5.Text = "Loans" Then
-            query.CommandText = "update db_loan set status = 'Approved', ApprovedBy = @app where EmployeeCode = '" & TextBox3.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_loan set status = 'Approved',  reason = @purpose, ApprovedBy = @app where EmployeeCode = '" & TextBox3.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@purpose", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Approved")
             loans()
         ElseIf LabelControl5.Text = "Other Income" Then
-            query.CommandText = "update db_addition set status = 'Approved', ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_addition set status = 'Approved', purpose = @purpose, ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@purpose", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Approved")
             others()
@@ -237,33 +246,42 @@ Public Class Approvement
 
     Sub rejection()
         Dim query As MySqlCommand = SQLConnection.CreateCommand
+        query.CommandText = "select user from db_temp"
+        Dim quer As String = CStr(query.ExecuteScalar)
+        Dim fn As String
+        fn = InputBox("Reason")
         If LabelControl5.Text = "Status Change" Then
-            query.CommandText = "update db_statuschange set status = 'Rejected', ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_statuschange set status = 'Rejected', Reason = @reason, ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@reason", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Rejected")
             sc()
         ElseIf LabelControl5.Text = "Termination" Then
-            query.CommandText = "update db_terminate set ApprovedStatus = 'Rejected', ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_terminate set ApprovedStatus = 'Rejected', Purpose = @reason, ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@reason", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Rejected")
             terminate()
         ElseIf LabelControl5.Text = "Leave Request" Then
-            query.CommandText = "update db_attrec set ApprovedStatus = 'Rejected', ApprovedBy = @app where MemoNo ='" & Label1.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_attrec set ApprovedStatus = 'Rejected', Purpose = @reason, ApprovedBy = @app where MemoNo ='" & Label1.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@reason", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Rejected")
             leaves()
         ElseIf LabelControl5.Text = "Loans" Then
-            query.CommandText = "update db_loan set status = 'Rejected', ApprovedBy = @app where EmployeeCode = '" & TextBox3.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_loan set status = 'Rejected', Reason = @purpose, ApprovedBy = @app where EmployeeCode = '" & TextBox3.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@purpose", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Rejected")
             loans()
         ElseIf LabelControl5.Text = "Other Income" Then
-            query.CommandText = "update db_addition set status = 'Rejected', ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
-            query.Parameters.AddWithValue("@app", TextBox2.Text)
+            query.CommandText = "update db_addition set status = 'Rejected', purpose = @purpose, ApprovedBy = @app where MemoNo = '" & Label1.Text & "'"
+            query.Parameters.AddWithValue("@app", quer.ToString)
+            query.Parameters.AddWithValue("@purpose", fn.ToString)
             query.ExecuteNonQuery()
             MsgBox("Rejected")
             others()
@@ -358,23 +376,23 @@ Public Class Approvement
     End Sub
 
     Private Sub SimpleButton5_Click(sender As Object, e As EventArgs) Handles SimpleButton5.Click
-        If TextBox1.Text = "" OrElse TextBox2.Text = "" Then
-            MsgBox("Fill Approvement field")
-        Else
-            approvement()
-            TextBox1.Text = ""
-            TextBox2.Text = ""
-        End If
+        'If TextBox1.Text = "" OrElse TextBox2.Text = "" Then
+        '    MsgBox("Fill Approvement field")
+        'Else
+        approvement()
+        'TextBox1.Text = ""
+        ''TextBox2.Text = ""
+        'End If
     End Sub
 
     Private Sub SimpleButton7_Click(sender As Object, e As EventArgs) Handles SimpleButton7.Click
-        If TextBox1.Text = "" OrElse TextBox2.Text = "" Then
-            MsgBox("Fill Approvement field")
-        Else
-            rejection()
-            TextBox1.Text = ""
-            TextBox2.Text = ""
-        End If
+        'If TextBox1.Text = "" OrElse TextBox2.Text = "" Then
+        '    MsgBox("Fill Approvement field")
+        'Else
+        rejection()
+        '    TextBox1.Text = ""
+        '    TextBox2.Text = ""
+        'End If
     End Sub
 
     Dim sch As New StatusChange

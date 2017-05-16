@@ -74,7 +74,7 @@ Public Class NewRec
         TextEdit1.Text = lastres.ToString
         If lastres = 1 OrElse lastres = 2 Then
             txtofloc.Text = "Pending"
-        ElseIf lastres > 3 Then
+        ElseIf lastres = 4 OrElse lastres > 4 Then
             txtofloc.Text = "Blocked"
         End If
         Try

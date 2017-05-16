@@ -246,6 +246,12 @@
     <Import Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addskill.Designer.vb">
+      <DependentUpon>Addskill.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Addskill.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Analytical.Designer.vb">
       <DependentUpon>Analytical.vb</DependentUpon>
     </Compile>
@@ -438,6 +444,12 @@
     <Compile Include="pdfviewer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pending.Designer.vb">
+      <DependentUpon>Pending.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pending.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="RecProcess.Designer.vb">
@@ -509,6 +521,9 @@
     <Compile Include="Warning.vb">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="Addskill.resx">
+      <DependentUpon>Addskill.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Analytical.resx">
       <DependentUpon>Analytical.vb</DependentUpon>
     </EmbeddedResource>
@@ -611,6 +626,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pdfviewer.resx">
       <DependentUpon>pdfviewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pending.resx">
+      <DependentUpon>Pending.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecProcess.resx">
       <DependentUpon>RecProcess.vb</DependentUpon>

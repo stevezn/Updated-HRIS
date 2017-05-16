@@ -23,8 +23,6 @@ Partial Class ChangeData
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ChangeData))
-        Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.TabControl3 = New System.Windows.Forms.TabControl()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
@@ -218,8 +216,6 @@ Partial Class ChangeData
         Me.txtapplieddate = New System.Windows.Forms.DateTimePicker()
         Me.SimpleButton9 = New DevExpress.XtraEditors.SimpleButton()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl3.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -301,30 +297,13 @@ Partial Class ChangeData
         CType(Me.txtgend.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'GridControl1
-        '
-        Me.GridControl1.Location = New System.Drawing.Point(2, 4)
-        Me.GridControl1.MainView = Me.GridView1
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(221, 484)
-        Me.GridControl1.TabIndex = 4
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
-        '
-        'GridView1
-        '
-        Me.GridView1.GridControl = Me.GridControl1
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsFind.AlwaysVisible = True
-        Me.GridView1.OptionsView.ColumnAutoWidth = False
-        Me.GridView1.PaintStyleName = "Office2003"
-        '
         'TabControl3
         '
         Me.TabControl3.Controls.Add(Me.TabPage3)
         Me.TabControl3.Controls.Add(Me.TabPage9)
         Me.TabControl3.Controls.Add(Me.TabPage10)
         Me.TabControl3.Controls.Add(Me.TabPage11)
-        Me.TabControl3.Location = New System.Drawing.Point(227, 52)
+        Me.TabControl3.Location = New System.Drawing.Point(0, 52)
         Me.TabControl3.Name = "TabControl3"
         Me.TabControl3.SelectedIndex = 0
         Me.TabControl3.Size = New System.Drawing.Size(914, 440)
@@ -529,7 +508,7 @@ Partial Class ChangeData
         Me.ComboBoxEdit4.Location = New System.Drawing.Point(135, 323)
         Me.ComboBoxEdit4.Name = "ComboBoxEdit4"
         Me.ComboBoxEdit4.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit4.Properties.Items.AddRange(New Object() {"Single", "Married"})
+        Me.ComboBoxEdit4.Properties.Items.AddRange(New Object() {"Single", "Married", "Widow", "Widower"})
         Me.ComboBoxEdit4.Size = New System.Drawing.Size(183, 20)
         Me.ComboBoxEdit4.TabIndex = 38
         '
@@ -1233,6 +1212,7 @@ Partial Class ChangeData
         '
         Me.GridView2.GridControl = Me.GridControl2
         Me.GridView2.Name = "GridView2"
+        Me.GridView2.OptionsBehavior.ReadOnly = True
         Me.GridView2.OptionsView.ColumnAutoWidth = False
         Me.GridView2.PaintStyleName = "Office2003"
         '
@@ -1249,6 +1229,7 @@ Partial Class ChangeData
         '
         Me.GridView3.GridControl = Me.GridControl3
         Me.GridView3.Name = "GridView3"
+        Me.GridView3.OptionsBehavior.ReadOnly = True
         Me.GridView3.OptionsView.ColumnAutoWidth = False
         Me.GridView3.PaintStyleName = "Office2003"
         '
@@ -1422,6 +1403,7 @@ Partial Class ChangeData
         '
         Me.GridView4.GridControl = Me.GridControl4
         Me.GridView4.Name = "GridView4"
+        Me.GridView4.OptionsBehavior.ReadOnly = True
         Me.GridView4.OptionsView.ColumnAutoWidth = False
         Me.GridView4.PaintStyleName = "Office2003"
         '
@@ -1683,6 +1665,7 @@ Partial Class ChangeData
         '
         Me.GridView5.GridControl = Me.GridControl5
         Me.GridView5.Name = "GridView5"
+        Me.GridView5.OptionsBehavior.ReadOnly = True
         Me.GridView5.OptionsView.ColumnAutoWidth = False
         Me.GridView5.PaintStyleName = "Office2003"
         '
@@ -1850,6 +1833,7 @@ Partial Class ChangeData
         '
         Me.GridView6.GridControl = Me.GridControl6
         Me.GridView6.Name = "GridView6"
+        Me.GridView6.OptionsBehavior.ReadOnly = True
         Me.GridView6.OptionsFind.AlwaysVisible = True
         Me.GridView6.OptionsView.ColumnAutoWidth = False
         Me.GridView6.PaintStyleName = "Office2003"
@@ -1964,7 +1948,7 @@ Partial Class ChangeData
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(231, 6)
+        Me.LabelControl1.Location = New System.Drawing.Point(9, 6)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(79, 13)
         Me.LabelControl1.TabIndex = 73
@@ -1972,7 +1956,7 @@ Partial Class ChangeData
         '
         'txtidrec
         '
-        Me.txtidrec.Location = New System.Drawing.Point(230, 24)
+        Me.txtidrec.Location = New System.Drawing.Point(6, 24)
         Me.txtidrec.Name = "txtidrec"
         Me.txtidrec.ReadOnly = True
         Me.txtidrec.Size = New System.Drawing.Size(122, 20)
@@ -1982,7 +1966,7 @@ Partial Class ChangeData
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(362, 6)
+        Me.Label1.Location = New System.Drawing.Point(142, 6)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(92, 13)
         Me.Label1.TabIndex = 75
@@ -1990,15 +1974,15 @@ Partial Class ChangeData
         '
         'txtcandname
         '
-        Me.txtcandname.Location = New System.Drawing.Point(363, 24)
+        Me.txtcandname.Location = New System.Drawing.Point(144, 24)
         Me.txtcandname.Name = "txtcandname"
-        Me.txtcandname.Size = New System.Drawing.Size(199, 20)
+        Me.txtcandname.Size = New System.Drawing.Size(169, 20)
         Me.txtcandname.TabIndex = 76
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(570, 6)
+        Me.Label2.Location = New System.Drawing.Point(323, 7)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(61, 13)
         Me.Label2.TabIndex = 77
@@ -2006,15 +1990,15 @@ Partial Class ChangeData
         '
         'txtnick
         '
-        Me.txtnick.Location = New System.Drawing.Point(573, 24)
+        Me.txtnick.Location = New System.Drawing.Point(326, 24)
         Me.txtnick.Name = "txtnick"
-        Me.txtnick.Size = New System.Drawing.Size(199, 20)
+        Me.txtnick.Size = New System.Drawing.Size(158, 20)
         Me.txtnick.TabIndex = 78
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(781, 5)
+        Me.Label3.Location = New System.Drawing.Point(497, 7)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(48, 13)
         Me.Label3.TabIndex = 79
@@ -2022,7 +2006,7 @@ Partial Class ChangeData
         '
         'txtgend
         '
-        Me.txtgend.Location = New System.Drawing.Point(783, 24)
+        Me.txtgend.Location = New System.Drawing.Point(497, 24)
         Me.txtgend.Name = "txtgend"
         Me.txtgend.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.txtgend.Properties.Items.AddRange(New Object() {"Male", "Female"})
@@ -2032,7 +2016,7 @@ Partial Class ChangeData
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(892, 6)
+        Me.Label4.Location = New System.Drawing.Point(612, 7)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(32, 13)
         Me.Label4.TabIndex = 81
@@ -2040,7 +2024,7 @@ Partial Class ChangeData
         '
         'txtage
         '
-        Me.txtage.Location = New System.Drawing.Point(891, 24)
+        Me.txtage.Location = New System.Drawing.Point(612, 24)
         Me.txtage.Name = "txtage"
         Me.txtage.ReadOnly = True
         Me.txtage.Size = New System.Drawing.Size(61, 20)
@@ -2050,7 +2034,7 @@ Partial Class ChangeData
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(959, 6)
+        Me.Label5.Location = New System.Drawing.Point(690, 7)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(91, 13)
         Me.Label5.TabIndex = 83
@@ -2058,15 +2042,15 @@ Partial Class ChangeData
         '
         'txtapplieddate
         '
-        Me.txtapplieddate.Location = New System.Drawing.Point(962, 25)
+        Me.txtapplieddate.Location = New System.Drawing.Point(691, 24)
         Me.txtapplieddate.Name = "txtapplieddate"
-        Me.txtapplieddate.Size = New System.Drawing.Size(152, 20)
+        Me.txtapplieddate.Size = New System.Drawing.Size(183, 20)
         Me.txtapplieddate.TabIndex = 88
         '
         'SimpleButton9
         '
         Me.SimpleButton9.Image = CType(resources.GetObject("SimpleButton9.Image"), System.Drawing.Image)
-        Me.SimpleButton9.Location = New System.Drawing.Point(1117, 23)
+        Me.SimpleButton9.Location = New System.Drawing.Point(883, 22)
         Me.SimpleButton9.Name = "SimpleButton9"
         Me.SimpleButton9.Size = New System.Drawing.Size(24, 23)
         Me.SimpleButton9.TabIndex = 89
@@ -2079,7 +2063,7 @@ Partial Class ChangeData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1143, 493)
+        Me.ClientSize = New System.Drawing.Size(912, 493)
         Me.Controls.Add(Me.SimpleButton9)
         Me.Controls.Add(Me.txtapplieddate)
         Me.Controls.Add(Me.Label5)
@@ -2094,17 +2078,14 @@ Partial Class ChangeData
         Me.Controls.Add(Me.txtidrec)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.TabControl3)
-        Me.Controls.Add(Me.GridControl1)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1159, 532)
-        Me.MinimumSize = New System.Drawing.Size(1159, 532)
+        Me.MaximumSize = New System.Drawing.Size(928, 532)
+        Me.MinimumSize = New System.Drawing.Size(928, 532)
         Me.Name = "ChangeData"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " "
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl3.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2195,8 +2176,6 @@ Partial Class ChangeData
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents TabControl3 As TabControl
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents GroupControl2 As DevExpress.XtraEditors.GroupControl

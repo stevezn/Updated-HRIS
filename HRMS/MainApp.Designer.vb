@@ -25,13 +25,13 @@ Partial Class MainApp
         Me.components = New System.ComponentModel.Container()
         Dim RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainApp))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode5 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode6 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode7 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode8 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode9 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode10 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode11 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode12 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode13 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode14 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
@@ -144,10 +144,14 @@ Partial Class MainApp
         Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton5 = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.SimpleButton6 = New DevExpress.XtraEditors.SimpleButton()
+        Me.AlertControl1 = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         CType(RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -633,14 +637,14 @@ Partial Class MainApp
         'GridControl1
         '
         Me.GridControl1.EmbeddedNavigator.Margin = New System.Windows.Forms.Padding(2)
-        GridLevelNode1.RelationName = "Level1"
-        GridLevelNode2.RelationName = "Level2"
-        GridLevelNode3.RelationName = "Level3"
-        GridLevelNode4.RelationName = "Level4"
-        GridLevelNode5.RelationName = "Level5"
-        GridLevelNode6.RelationName = "Level6"
-        GridLevelNode7.RelationName = "Level7"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1, GridLevelNode2, GridLevelNode3, GridLevelNode4, GridLevelNode5, GridLevelNode6, GridLevelNode7})
+        GridLevelNode8.RelationName = "Level1"
+        GridLevelNode9.RelationName = "Level2"
+        GridLevelNode10.RelationName = "Level3"
+        GridLevelNode11.RelationName = "Level4"
+        GridLevelNode12.RelationName = "Level5"
+        GridLevelNode13.RelationName = "Level6"
+        GridLevelNode14.RelationName = "Level7"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode8, GridLevelNode9, GridLevelNode10, GridLevelNode11, GridLevelNode12, GridLevelNode13, GridLevelNode14})
         Me.GridControl1.Location = New System.Drawing.Point(342, 23)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Margin = New System.Windows.Forms.Padding(2)
@@ -658,6 +662,7 @@ Partial Class MainApp
         Me.GridView1.OptionsBehavior.Editable = False
         Me.GridView1.OptionsBehavior.ReadOnly = True
         Me.GridView1.OptionsFind.AlwaysVisible = True
+        Me.GridView1.OptionsMenu.ShowGroupSummaryEditorItem = True
         Me.GridView1.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateFocusedItem
         Me.GridView1.OptionsView.ColumnAutoWidth = False
         Me.GridView1.OptionsView.ShowFooter = True
@@ -1184,7 +1189,6 @@ Partial Class MainApp
         Me.Button5.TabIndex = 23
         Me.Button5.Text = "Button5"
         Me.Button5.UseVisualStyleBackColor = True
-        Me.Button5.Visible = False
         '
         'Button6
         '
@@ -1219,6 +1223,10 @@ Partial Class MainApp
         Me.ImageCollection1.Images.SetKeyName(10, "assignto_16x16.png")
         Me.ImageCollection1.InsertGalleryImage("deletefooter_16x16.png", "images/reports/deletefooter_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/reports/deletefooter_16x16.png"), 11)
         Me.ImageCollection1.Images.SetKeyName(11, "deletefooter_16x16.png")
+        Me.ImageCollection1.InsertGalleryImage("chart_16x16.png", "images/chart/chart_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/chart/chart_16x16.png"), 12)
+        Me.ImageCollection1.Images.SetKeyName(12, "chart_16x16.png")
+        Me.ImageCollection1.InsertGalleryImage("clear_16x16.png", "images/actions/clear_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/clear_16x16.png"), 13)
+        Me.ImageCollection1.Images.SetKeyName(13, "clear_16x16.png")
         '
         'Button7
         '
@@ -1250,6 +1258,9 @@ Partial Class MainApp
         '
         'GroupControl2
         '
+        Me.GroupControl2.Controls.Add(Me.Button13)
+        Me.GroupControl2.Controls.Add(Me.Button12)
+        Me.GroupControl2.Controls.Add(Me.Button11)
         Me.GroupControl2.Controls.Add(Me.Button10)
         Me.GroupControl2.Controls.Add(Me.Button9)
         Me.GroupControl2.Controls.Add(Me.Button8)
@@ -1267,10 +1278,37 @@ Partial Class MainApp
         Me.GroupControl2.Controls.Add(Me.Label1)
         Me.GroupControl2.Location = New System.Drawing.Point(734, 27)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(100, 42)
+        Me.GroupControl2.Size = New System.Drawing.Size(166, 82)
         Me.GroupControl2.TabIndex = 31
         Me.GroupControl2.Text = "GroupControl2"
         Me.GroupControl2.Visible = False
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(53, 49)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(75, 23)
+        Me.Button13.TabIndex = 33
+        Me.Button13.Text = "Button13"
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(12, 29)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(75, 23)
+        Me.Button12.TabIndex = 33
+        Me.Button12.Text = "Button12"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(0, 0)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(75, 23)
+        Me.Button11.TabIndex = 36
+        Me.Button11.Text = "Button11"
+        Me.Button11.UseVisualStyleBackColor = True
         '
         'Button10
         '
@@ -1307,6 +1345,9 @@ Partial Class MainApp
         Me.SimpleButton6.TabIndex = 32
         Me.SimpleButton6.Text = "SimpleButton6"
         Me.SimpleButton6.Visible = False
+        '
+        'AlertControl1
+        '
         '
         'MainApp
         '
@@ -1505,4 +1546,8 @@ Partial Class MainApp
     Friend WithEvents RibbonPageGroup7 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents BarButtonItem16 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents Button10 As Button
+    Friend WithEvents Button11 As Button
+    Friend WithEvents Button12 As Button
+    Friend WithEvents Button13 As Button
+    Friend WithEvents AlertControl1 As DevExpress.XtraBars.Alerter.AlertControl
 End Class

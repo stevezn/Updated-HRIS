@@ -34,7 +34,6 @@ Partial Class StatusChange
         Me.CheckEdit4 = New DevExpress.XtraEditors.CheckEdit()
         Me.CheckEdit3 = New DevExpress.XtraEditors.CheckEdit()
         Me.CheckEdit2 = New DevExpress.XtraEditors.CheckEdit()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -73,6 +72,7 @@ Partial Class StatusChange
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         GroupControl3 = New DevExpress.XtraEditors.GroupControl()
         CType(GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -209,15 +209,6 @@ Partial Class StatusChange
         Me.CheckEdit2.Size = New System.Drawing.Size(253, 19)
         Me.CheckEdit2.TabIndex = 10
         '
-        'SimpleButton2
-        '
-        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
-        Me.SimpleButton2.Location = New System.Drawing.Point(271, 229)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(26, 20)
-        Me.SimpleButton2.TabIndex = 26
-        Me.SimpleButton2.Visible = False
-        '
         'TextBox3
         '
         Me.TextBox3.Location = New System.Drawing.Point(112, 230)
@@ -309,7 +300,7 @@ Partial Class StatusChange
         Me.ComboBoxEdit6.Location = New System.Drawing.Point(112, 27)
         Me.ComboBoxEdit6.Name = "ComboBoxEdit6"
         Me.ComboBoxEdit6.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit6.Properties.Items.AddRange(New Object() {"Single", "Married"})
+        Me.ComboBoxEdit6.Properties.Items.AddRange(New Object() {"Single", "Married", "Widow", "Widower"})
         Me.ComboBoxEdit6.Size = New System.Drawing.Size(188, 20)
         Me.ComboBoxEdit6.TabIndex = 17
         '
@@ -547,6 +538,15 @@ Partial Class StatusChange
         '
         'Timer2
         '
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.Image = CType(resources.GetObject("SimpleButton2.Image"), System.Drawing.Image)
+        Me.SimpleButton2.Location = New System.Drawing.Point(271, 229)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(26, 20)
+        Me.SimpleButton2.TabIndex = 26
+        Me.SimpleButton2.Visible = False
         '
         'SimpleButton1
         '

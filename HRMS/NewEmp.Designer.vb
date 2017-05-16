@@ -25,6 +25,16 @@ Partial Class NewEmp
         Me.components = New System.ComponentModel.Container()
         Dim GroupControl5 As DevExpress.XtraEditors.GroupControl
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewEmp))
+        Me.TextEdit4 = New DevExpress.XtraEditors.TextEdit()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
+        Me.barJudul = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
+        Me.Employee = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.TextEdit3 = New DevExpress.XtraEditors.TextEdit()
+        Me.Label35 = New System.Windows.Forms.Label()
         Me.npwp = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.GroupControl8 = New DevExpress.XtraEditors.GroupControl()
@@ -49,12 +59,6 @@ Partial Class NewEmp
         Me.Label33 = New System.Windows.Forms.Label()
         Me.ComboBoxEdit6 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.Label34 = New System.Windows.Forms.Label()
-        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
-        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
-        Me.barJudul = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
-        Me.Employee = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.pictureEdit = New System.Windows.Forms.PictureBox()
         Me.btnCapture = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
@@ -223,13 +227,12 @@ Partial Class NewEmp
         Me.BackstageViewControl2 = New DevExpress.XtraBars.Ribbon.BackstageViewControl()
         Me.BackstageViewClientControl2 = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
         Me.BackstageViewTabItem2 = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.TextEdit3 = New DevExpress.XtraEditors.TextEdit()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.TextEdit4 = New DevExpress.XtraEditors.TextEdit()
         GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         GroupControl5.SuspendLayout()
+        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.npwp.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl8.SuspendLayout()
@@ -244,7 +247,6 @@ Partial Class NewEmp
         CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit7.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit6.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtgender.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -323,8 +325,6 @@ Partial Class NewEmp
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BackstageViewControl1.SuspendLayout()
         Me.BackstageViewControl2.SuspendLayout()
-        CType(Me.TextEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupControl5
@@ -354,6 +354,87 @@ Partial Class NewEmp
         GroupControl5.Size = New System.Drawing.Size(889, 414)
         GroupControl5.TabIndex = 1
         GroupControl5.Text = "Status"
+        '
+        'TextEdit4
+        '
+        Me.TextEdit4.Location = New System.Drawing.Point(112, 131)
+        Me.TextEdit4.MenuManager = Me.RibbonControl1
+        Me.TextEdit4.Name = "TextEdit4"
+        Me.TextEdit4.Size = New System.Drawing.Size(188, 20)
+        Me.TextEdit4.TabIndex = 47
+        '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.barJudul, Me.BarButtonItem2})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 5
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.Employee})
+        Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
+        Me.RibbonControl1.Size = New System.Drawing.Size(911, 144)
+        Me.RibbonControl1.Toolbar.ItemLinks.Add(Me.barJudul)
+        Me.RibbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above
+        '
+        'BarButtonItem1
+        '
+        Me.BarButtonItem1.Caption = "Add Employee"
+        Me.BarButtonItem1.Glyph = CType(resources.GetObject("BarButtonItem1.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem1.Id = 1
+        Me.BarButtonItem1.Name = "BarButtonItem1"
+        Me.BarButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'barJudul
+        '
+        Me.barJudul.Caption = "barJudul"
+        Me.barJudul.Id = 3
+        Me.barJudul.Name = "barJudul"
+        '
+        'BarButtonItem2
+        '
+        Me.BarButtonItem2.Caption = "Change Data"
+        Me.BarButtonItem2.Glyph = CType(resources.GetObject("BarButtonItem2.Glyph"), System.Drawing.Image)
+        Me.BarButtonItem2.Id = 4
+        Me.BarButtonItem2.Name = "BarButtonItem2"
+        Me.BarButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'Employee
+        '
+        Me.Employee.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.Employee.Name = "Employee"
+        Me.Employee.Text = "Employee"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonItem1)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "                                  "
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(20, 133)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(53, 13)
+        Me.Label36.TabIndex = 46
+        Me.Label36.Text = "No BPJS :"
+        '
+        'TextEdit3
+        '
+        Me.TextEdit3.Location = New System.Drawing.Point(112, 106)
+        Me.TextEdit3.MenuManager = Me.RibbonControl1
+        Me.TextEdit3.Name = "TextEdit3"
+        Me.TextEdit3.Size = New System.Drawing.Size(188, 20)
+        Me.TextEdit3.TabIndex = 18
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(19, 109)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(59, 13)
+        Me.Label35.TabIndex = 45
+        Me.Label35.Text = "No NPWP :"
         '
         'npwp
         '
@@ -560,7 +641,7 @@ Partial Class NewEmp
         Me.ComboBoxEdit6.Location = New System.Drawing.Point(112, 27)
         Me.ComboBoxEdit6.Name = "ComboBoxEdit6"
         Me.ComboBoxEdit6.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEdit6.Properties.Items.AddRange(New Object() {"Single", "Married"})
+        Me.ComboBoxEdit6.Properties.Items.AddRange(New Object() {"Single", "Married", "Widow", "Widower"})
         Me.ComboBoxEdit6.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         Me.ComboBoxEdit6.Size = New System.Drawing.Size(188, 20)
         Me.ComboBoxEdit6.TabIndex = 17
@@ -573,53 +654,6 @@ Partial Class NewEmp
         Me.Label34.Size = New System.Drawing.Size(80, 13)
         Me.Label34.TabIndex = 2
         Me.Label34.Text = "Marital Status :"
-        '
-        'RibbonControl1
-        '
-        Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.BarButtonItem1, Me.barJudul, Me.BarButtonItem2})
-        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 5
-        Me.RibbonControl1.Name = "RibbonControl1"
-        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.Employee})
-        Me.RibbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
-        Me.RibbonControl1.Size = New System.Drawing.Size(911, 144)
-        Me.RibbonControl1.Toolbar.ItemLinks.Add(Me.barJudul)
-        Me.RibbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above
-        '
-        'BarButtonItem1
-        '
-        Me.BarButtonItem1.Caption = "Add Employee"
-        Me.BarButtonItem1.Glyph = CType(resources.GetObject("BarButtonItem1.Glyph"), System.Drawing.Image)
-        Me.BarButtonItem1.Id = 1
-        Me.BarButtonItem1.Name = "BarButtonItem1"
-        Me.BarButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'barJudul
-        '
-        Me.barJudul.Caption = "barJudul"
-        Me.barJudul.Id = 3
-        Me.barJudul.Name = "barJudul"
-        '
-        'BarButtonItem2
-        '
-        Me.BarButtonItem2.Caption = "Change Data"
-        Me.BarButtonItem2.Glyph = CType(resources.GetObject("BarButtonItem2.Glyph"), System.Drawing.Image)
-        Me.BarButtonItem2.Id = 4
-        Me.BarButtonItem2.Name = "BarButtonItem2"
-        Me.BarButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'Employee
-        '
-        Me.Employee.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
-        Me.Employee.Name = "Employee"
-        Me.Employee.Text = "Employee"
-        '
-        'RibbonPageGroup1
-        '
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.BarButtonItem1)
-        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
-        Me.RibbonPageGroup1.Text = "                                  "
         '
         'pictureEdit
         '
@@ -2135,40 +2169,6 @@ Partial Class NewEmp
         Me.BackstageViewTabItem2.Name = "BackstageViewTabItem2"
         Me.BackstageViewTabItem2.Selected = False
         '
-        'Label35
-        '
-        Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(19, 109)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(59, 13)
-        Me.Label35.TabIndex = 45
-        Me.Label35.Text = "No NPWP :"
-        '
-        'TextEdit3
-        '
-        Me.TextEdit3.Location = New System.Drawing.Point(112, 106)
-        Me.TextEdit3.MenuManager = Me.RibbonControl1
-        Me.TextEdit3.Name = "TextEdit3"
-        Me.TextEdit3.Size = New System.Drawing.Size(188, 20)
-        Me.TextEdit3.TabIndex = 18
-        '
-        'Label36
-        '
-        Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(20, 133)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(53, 13)
-        Me.Label36.TabIndex = 46
-        Me.Label36.Text = "No BPJS :"
-        '
-        'TextEdit4
-        '
-        Me.TextEdit4.Location = New System.Drawing.Point(112, 131)
-        Me.TextEdit4.MenuManager = Me.RibbonControl1
-        Me.TextEdit4.Name = "TextEdit4"
-        Me.TextEdit4.Size = New System.Drawing.Size(188, 20)
-        Me.TextEdit4.TabIndex = 47
-        '
         'NewEmp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2202,6 +2202,9 @@ Partial Class NewEmp
         CType(GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         GroupControl5.ResumeLayout(False)
         GroupControl5.PerformLayout()
+        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.npwp.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl8.ResumeLayout(False)
@@ -2217,7 +2220,6 @@ Partial Class NewEmp
         CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit7.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit6.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtgender.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
@@ -2301,8 +2303,6 @@ Partial Class NewEmp
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BackstageViewControl1.ResumeLayout(False)
         Me.BackstageViewControl2.ResumeLayout(False)
-        CType(Me.TextEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
